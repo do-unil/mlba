@@ -34,7 +34,7 @@ jobs:
         with:
           auto-update-conda: true
           miniconda-version: "latest"
-          python-version: 3.x
+          python-version: 3.9
           auto-activate-base: false
 
       - name: Set up R
