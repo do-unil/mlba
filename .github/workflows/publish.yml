@@ -53,6 +53,11 @@ jobs:
         with:
           cache-version: 1
 
+      - name: Setup Conda Environment
+        run: |
+          conda create --name MLBA python=3.9 -y
+          conda activate MLBA
+          
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
 
