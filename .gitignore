@@ -1,2 +1,9 @@
-/.quarto/
 .Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+/.quarto/
+_site/
+/.luarc.json
+*Check-in*.csv

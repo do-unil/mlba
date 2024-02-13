@@ -2,6 +2,7 @@
 title: "Schedule"
 execute: 
   freeze: false
+  output: true
 ---
 
 ::: {.callout-important}
@@ -85,5 +86,3 @@ d |>
     )
   )
 ```
-
-

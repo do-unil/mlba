@@ -2,6 +2,7 @@ project:
   type: website
   render:
     - "labs/00_lab/setup.qmd"
+    - schedule.qmd
     - "*.qmd"
     - "!labs/00_lab/renv/"
     - "!renv/"
