@@ -1,0 +1,3 @@
+---
+title: "Structure of the labs"
+---

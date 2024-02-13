@@ -1,0 +1,89 @@
+---
+title: "Schedule"
+execute: 
+  freeze: false
+---
+
+::: {.callout-important}
+
+## Important dates (more info during the class)
+- Monday the 29^th^ of April: **[Written exam (in-class)]{.underline}**
+- Sunday the 19^th^ of May: **[Project report deadline]{.underline}**
+- Monday the 27^th^ of May: **[Presentations of the projects]{.underline}**
+:::
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(googlesheets4)
+library(gt)
+library(tidyverse)
+gs4_deauth()
+d <- read_sheet("https://docs.google.com/spreadsheets/d/1B_KRL3Wc_81RpNvD6eNxGdaTFazhuqOpqQUyHmh1gqo/edit?usp=sharing")
+```
+
+
+```{r}
+#| echo: false
+
+d |>
+  select(-dow) |>
+  mutate(
+    date = as.Date(date)
+  ) |>
+  gt() |>
+  fmt_date(date, date_style = 31) |>
+  sub_missing(columns = c(week, topic, lecture_pdf, lecture_qmd, lab), missing_text = "") |>
+  cols_align(
+    align = "center", 
+    columns = c(week)
+    ) |>
+  cols_align(
+    align = "right",
+    columns = c(date)
+  ) |>
+  cols_align(
+    align = "left", 
+    columns = c(topic, lecture_pdf, lecture_qmd, lab)
+    ) |>
+  tab_style(
+    style = cell_borders(
+      sides = "right",
+      color = "#D3D3D3",
+      style = "solid"
+    ),
+    locations = cells_body(
+      columns = c(date, topic, lecture_pdf, lecture_qmd, lab)
+    )
+  ) |>
+  fmt_markdown(
+    columns = c(topic, lecture_pdf, lecture_qmd, lab)
+  ) |>
+  cols_width(
+    week ~ px(45),
+    date ~ px(100), 
+    topic ~ px(120),
+    lecture_pdf ~ px(90),
+    lecture_qmd ~ px(90),
+    lab ~ px(120),
+  ) |>
+  cols_label_with(fn = function(x) {
+      janitor::make_clean_names(x, case = "title") |>
+        str_to_title() |>
+        stringr::str_replace_all("^|$", "**") |>
+        md()
+    }) |>
+  tab_options(table.font.size = 13) |>
+  opt_row_striping() |>
+  tab_footnote(
+    footnote = "📩 Report submission at 23:59",
+    locations = cells_body(
+      columns = 2,
+      rows = date == as.Date("2024-05-19")
+    )
+  )
+```
+
+

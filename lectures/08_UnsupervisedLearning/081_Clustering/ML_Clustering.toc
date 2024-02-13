@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Concepts}{3}{0}{1}
+\beamer@sectionintoc {2}{Hierarchical clustering}{6}{0}{2}
+\beamer@sectionintoc {3}{Partitioning methods}{18}{0}{3}
+\beamer@sectionintoc {4}{Number of clusters}{27}{0}{4}
+\beamer@sectionintoc {5}{Interpretation}{39}{0}{5}

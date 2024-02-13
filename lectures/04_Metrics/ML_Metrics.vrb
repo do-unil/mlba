@@ -1,0 +1,8 @@
+\frametitle{The $R^2$}
+In the ML context, the $R^2$ ({\bf $R$ squared}) is the square of the correlation between the observations and the predictions.
+$$
+R^2 = cor(y,f(x;\theta))
+$$
+The $R^2$ is bounded between 0 and 1. The larger the $R^2$, the better the model.\\
+\vspace{0.3cm}
+The $R^2$ is an attempt to approximate / replace the usual $R^2$ of a linear regression. However, these two must not be confounded because they will often be different (though conveying the same idea).

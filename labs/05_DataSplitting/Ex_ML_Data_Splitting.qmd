@@ -1,0 +1,731 @@
+---
+title: "Data splitting"
+---
+
+```{r global_options, include = FALSE}
+knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+```
+
+# Data preparation
+
+In this series, we practice the data splitting strategies seen in class. The data are the doctor visits, already used in previous applications: cross-validation, bootstrap, and balancing.
+
+We'll be using the `DocVis` dataset for this lab session.
+
+```{r}
+DocVis <- read.csv(here::here("labs/data/DocVis.csv"))
+DocVis$visits <- as.factor(DocVis$visits) ## make sure that visits is a factor
+```
+
+We need to set aside a test set. This will be used after to check that there was no overfitting during the training of the model and to ensure that the score we have obtained generalizes outside the training data.
+
+```{r}
+library(caret)
+library(dplyr)
+set.seed(346)
+index_tr <- createDataPartition(y = DocVis$visits, p= 0.8, list = FALSE)
+df_tr <- DocVis[index_tr,]
+df_te <- DocVis[-index_tr,]
+```
+
+Note that the splitting techniques used are applied `on the training set` only.
+
+# 10-fold Cross-validation
+
+In this part, we practice the cross-validation by first building it "by hand" then in an automatic way using `caret`. A 10-fold cross-validation is prepared.
+
+## First fold
+
+::: panel-tabset
+### R
+
+First, we create the folds by using the `createFolds` function of `caret`.
+
+```{r}
+index_CV <- createFolds(y = df_tr$visits, k=10)
+index_CV[[1]]
+```
+
+As seen before, the `index_CV` object is a list of row indices. The first element of the list `index_CV[[1]]` corresponds to the first fold. It is the vector of row indices of the validation set for the first fold (i.e., the validation is made of the rows of the training set that are in this vector). All the indices that are not in `index_CV[[1]]` will be in the training set (for this fold).
+
+```{r}
+df_cv_tr <- df_tr[-index_CV[[1]],]
+df_cv_val <- df_tr[index_CV[[1]],]
+```
+
+For this fold, `df_cv_tr` is the training set (it contains 9/10 of the original training set `df_tr`) and `df_cv_val` is the validation set (it contains 1/10 of the original training set `df_tr`). These two sets are disjoints.
+
+Now, we simply fit the model with the training set and compute its accuracy on the validation set. For this exercise, we use a logistic regression with AIC-based variable selection.
+
+```{r}
+Doc_cv <- glm(visits~., data=df_cv_tr, family="binomial") %>% step()
+Doc_cv_prob <- predict(Doc_cv, newdata=df_cv_val, type="response")
+Doc_cv_pred <- ifelse(Doc_cv_prob>0.5,"Yes","No")
+confusionMatrix(data=as.factor(Doc_cv_pred), reference = df_cv_val$visits)$overall[1]
+```
+
+### Python
+
+```{r}
+# Load the course python environment as usual with a r code chunks.
+library(reticulate)
+use_condaenv("MLBA", required = TRUE)
+```
+
+We will one-hot encode the categorical variables using `pd.get_dummies()` and then divide the data into `X_train`, `y_train`, `X_test` and `y_test`.
+
+```{python}
+import pandas as pd
+
+# One-hot encoding the categorical columns
+X_train = pd.get_dummies(r.df_tr.drop('visits', axis=1))
+y_train = r.df_tr['visits']
+X_test = pd.get_dummies(r.df_te.drop('visits', axis=1))
+y_test = r.df_te['visits']
+```
+
+Then, we create the folds by using the `KFold` function of `scikit-learn`.
+
+```{python}
+from sklearn.model_selection import KFold
+# We setup the 10-k fold
+kf = KFold(n_splits=10, random_state=346, shuffle=True)
+fold_indices = list(kf.split(X_train, y_train))
+first_fold_train, first_fold_val = fold_indices[0]
+```
+
+As seen before, the `fold_indices` object is a list of tuple pairs. The first element of the list `fold_indices[0]` corresponds to the first fold. It is the tuple of row indices of the training set and the validation set for the first fold. All the indices that are not in `first_fold_val` will be in the training set (for this fold).
+
+```{python}
+X_cv_tr = X_train.iloc[first_fold_train, :]
+y_cv_tr = y_train.iloc[first_fold_train]
+
+X_cv_val = X_train.iloc[first_fold_val, :]
+y_cv_val = y_train.iloc[first_fold_val]
+```
+
+This part, will be slightly different from the R approach. Here, we fit the model with the training set and compute its accuracy on the validation set. For the python approach, we use a logistic regression with recursive feature elimination to select the best number of features.
+
+```{python}
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.feature_selection import RFE
+import numpy as np
+
+model = LogisticRegression(solver='liblinear')
+rfe = RFE(model)
+rfe.fit(X_cv_tr, y_cv_tr)
+pred_probs = rfe.predict_proba(X_cv_val)[:, 1]
+Doc_cv_pred = np.where(pred_probs > 0.5, "Yes", "No")
+acc = accuracy_score(y_cv_val, Doc_cv_pred)
+acc
+
+# alternatively, you could use `cross_val_score`
+# from sklearn.model_selection import cross_val_score
+# cv_scores = cross_val_score(rfe, X_cv_tr, y_cv_tr, cv=kf, scoring="accuracy")
+# cv_scores
+```
+
+:::
+
+## Loop on the 10 folds
+
+Now we repeat the previous steps for all the folds.
+
+::: panel-tabset
+### R
+
+In order to track the 10 accuracy measures obtained, we store them into a vector (`acc_vec`). Note also that the option `trace=0` was set in the function `step` to avoid all the print outs of the AIC selections.
+
+```{r}
+acc_vec <- numeric(10)
+for (i in 1:10){
+  df_cv_tr <- df_tr[-index_CV[[i]],]
+  df_cv_val <- df_tr[index_CV[[i]],]
+  
+  Doc_cv <- glm(visits~., data=df_cv_tr, family="binomial") %>% step(trace=0)
+  Doc_cv_prob <- predict(Doc_cv, newdata=df_cv_val, type="response")
+  Doc_cv_pred <- ifelse(Doc_cv_prob>0.5,"Yes","No")
+  acc_vec[i] <- confusionMatrix(data=as.factor(Doc_cv_pred), reference = df_cv_val$visits)$overall[1]
+}
+acc_vec
+```
+
+By definition of the CV, all the 10 validations sets in this loop are disjoints. Thus, these 10 accuracy measures are in a way representative of what can be expected on the test set, except if we are very unlucky when we created the test set.
+
+Now we can estimate the expected accuracy (i.e., the mean) and its variation (below we use the standard deviation).
+
+```{r}
+mean(acc_vec)
+sd(acc_vec)
+```
+
+The small SD shows that the results are reliable and that we have good chance that the model, trained on the whole training set, will have this accuracy on the test set.
+
+### Python
+
+For python, in order to track the 10 accuracy measures obtained, we store them into a list (`acc_list`).
+
+```{python}
+acc_list = []
+for train_idx, val_idx in kf.split(X_train, y_train):
+    X_cv_tr, y_cv_tr = X_train.iloc[train_idx, :], y_train.iloc[train_idx]
+    X_cv_val, y_cv_val = X_train.iloc[val_idx, :], y_train.iloc[val_idx]
+    
+    rfe.fit(X_cv_tr, y_cv_tr)
+    pred_probs = rfe.predict_proba(X_cv_val)[:, 1]
+    Doc_cv_pred = np.where(pred_probs > 0.5, "Yes", "No")
+    acc = accuracy_score(y_cv_val, Doc_cv_pred)
+    acc_list.append(acc)
+acc_list
+```
+
+Once again, we can estimate the expected accuracy and its variation.
+
+```{python}
+mean_acc = np.mean(acc_list)
+std_acc = np.std(acc_list)
+mean_acc, std_acc
+```
+
+Now, we fit the final model using the whole training set and evaluate its performance on the test set.
+
+```{python}
+rfe.fit(X_train, y_train)
+y_test_pred = rfe.predict(X_test)
+test_accuracy = accuracy_score(y_test, y_test_pred)
+test_cm = confusion_matrix(y_test, y_test_pred)
+test_accuracy, test_cm
+```
+:::
+
+## Automated approach
+
+::: panel-tabset
+### R - `caret`
+
+The 10-CV can be easily obtained from `caret`. First, set up the splitting data method using the `trainControl` function.
+
+```{r}
+trctrl <- trainControl(method = "cv", number=10)
+```
+
+Then pass this method to the `train` function (from `caret`). In addition, we use the model (below unhappily called "method" also) `glmStepAIC` which, combined with the `binomial` family, applies a logistic regression and a AIC-based variable selection (backward; exactly like the `step` function used above). Of course, we also provide the model formula.
+
+```{r}
+set.seed(346)
+Doc_cv <- train(visits ~., data = df_tr, method = "glmStepAIC", family="binomial",
+                    trControl=trctrl, trace=0)
+Doc_cv
+```
+
+Note that the function "only" provides the expected accuracy and the expected kappa. It does not provides their standard deviations.
+
+The final model (i.e., the model trained on the whole training set `df_tr`) is stored in `Doc_cv$finalModel`. It can be used to compute the accuracy on the test set.
+
+```{r}
+Doc_pred <- predict(Doc_cv, newdata = df_te)
+confusionMatrix(data=Doc_pred, reference = df_te$visits)
+```
+
+### Python - `sklearn`
+
+In python, a similar approach demonstrated in `caret` would be using `GridSearchCV` from `scikit-learn`. We use the same 10-CV `kf` object created earlier. Then pass this method to the `GridSearchCV` function with `LogisticRegression` model with `RFE` for feature selection with the grid of parameters we would like to search for (in this case the number of features). Then, we output the (hyper-)parameters with the best performance.
+
+```{python}
+from sklearn.model_selection import GridSearchCV
+
+model = LogisticRegression(solver='liblinear')
+rfe = RFE(model)
+param_grid = {'n_features_to_select': list(range(1, X_train.shape[1] + 1))}
+grid_search = GridSearchCV(rfe, param_grid, scoring='accuracy', cv=kf)
+grid_search.fit(X_train, y_train)
+print(grid_search.best_score_, grid_search.best_params_)
+```
+
+The final model (i.e., the model trained on the whole training set `X_train`) is stored in `grid_search.best_estimator_`. It can be used to compute the accuracy on the test set.
+
+```{python}
+y_test_pred = grid_search.best_estimator_.predict(X_test)
+test_accuracy = accuracy_score(y_test, y_test_pred)
+test_cm = confusion_matrix(y_test, y_test_pred)
+print(test_accuracy, test_cm)
+```
+
+Our results did improve compared to the last python model.
+:::
+
+# Bootstrap with 100 replicates
+
+We now apply the bootstrap with 100 replicates. Like for CV, we first make it by hand and then we use some kind of automated approach like `caret`.
+
+## First sample
+
+::: panel-tabset
+### R
+
+We need to first create the replicates using the `caret` function `createResample`.
+
+```{r}
+set.seed(897)
+index_boot <- createResample(y=df_tr$visits, times=100)
+index_boot[[1]]
+```
+
+Again, it creates a list of indices. The first element of the list, `index_boot[[1]]`, contains the row indices that will be in the training set. Note that, it is of length 4,153. In other words, the training set during this first replicate is of the same dimension as the whole training set `df_tr`. Note also that, in `index_boot[[1]]`, there are indices that are replicated. This is the bootstrap sampling process. Some rows will be replicated in the training set. This also means that some rows of `df_tr` will not be in `index_boot[[1]]`. These rows are said to be `out-of-bag` and form the validation set. See below the dimensions of the data frames.
+
+```{r}
+df_boot_tr <- df_tr[index_boot[[1]],]
+dim(df_boot_tr)
+df_boot_val <- df_tr[-index_boot[[1]],]
+dim(df_boot_val)
+```
+
+We now fit the data to this first sample training set.
+
+```{r}
+Doc_boot <- glm(visits~., data=df_boot_tr, family="binomial") %>% step()
+```
+
+The accuracy is then computed with the 632-rule: first, the apparent accuracy is computed (accuracy on the sample training set), then the out-of-bag accuracy (the accuracy on the validation set), then the final accuracy estimate is the 0.368/0.632-combination of the two.
+
+```{r}
+Doc_boot_prob_val <- predict(Doc_boot, newdata=df_boot_val, type="response")
+Doc_boot_pred_val <- ifelse(Doc_boot_prob_val>0.5,"Yes","No")
+oob_acc <- confusionMatrix(data=as.factor(Doc_boot_pred_val), reference = df_boot_val$visits)$overall[1]
+
+Doc_boot_prob_tr <- predict(Doc_boot, newdata=df_boot_tr, type="response")
+Doc_boot_pred_tr <- ifelse(Doc_boot_prob_tr>0.5,"Yes","No")
+app_acc <- confusionMatrix(data=as.factor(Doc_boot_pred_tr), reference = df_boot_tr$visits)$overall[1]
+
+oob_acc ## out-of-bag accuracy
+app_acc ## apparent accuracy
+0.368*app_acc + 0.632*oob_acc ## accuracy estimate
+```
+
+### Python
+
+First, we create the replicates using the `resample` function from `sklearn.utils`. Please note that unlike `caret::createResample()`, in `sklearn` (to the best of our knowledge), there's no method that returns a list of the samples, so with `resample`, we get one set of resampled data points. This doesn't matter for now, but in the following sub-section, we will write a function to do the same thing in python.
+
+```{python}
+from sklearn.utils import resample
+
+np.random.seed(897)
+df_boot_tr = resample(r.df_tr, n_samples=len(r.df_tr), random_state=897)
+```
+
+The `resample` function returns a new data frames with the same number of samples as the original `r.df_tr`, but some rows will be replicated. This also means that some rows of `r.df_tr` will not be in the bootstrapped data frames These rows are said to be `out-of-bag` and form the validation set. See below the dimensions of the data frames.
+
+```{python}
+df_boot_tr.shape
+oob_mask = ~r.df_tr.index.isin(df_boot_tr.index.values)
+df_boot_val = r.df_tr[oob_mask]
+df_boot_val.shape
+```
+
+There's a difference between the shape of `df_boot_val` because of the difference in random generators between R & python. If you change the number for the random generator in python (i.e., `np.random.seed(897)`) or in R (i.e., `set.seed(897)`), you'll see that the results will be slightly different.
+:::
+
+## Loop on the 100 sample
+
+::: panel-tabset
+### R
+
+The previous code is looped. The accuracy measures are stored in vectors. The code can be quite long to run.
+
+```{r}
+oob_acc_vec <- numeric(100)
+app_acc_vec <- numeric(100)
+acc_vec <- numeric(100)
+for (i in 1:100){
+  df_boot_tr <- df_tr[index_boot[[i]],]
+  df_boot_val <- df_tr[-index_boot[[i]],]
+  
+  Doc_boot <- glm(visits~., data=df_boot_tr, family="binomial") %>% step(trace=0)
+  Doc_boot_prob_val <- predict(Doc_boot, newdata=df_boot_val, type="response")
+  Doc_boot_pred_val <- ifelse(Doc_boot_prob_val>0.5,"Yes","No")
+  oob_acc_vec[i] <- confusionMatrix(data=as.factor(Doc_boot_pred_val), reference = df_boot_val$visits)$overall[1]
+  
+  Doc_boot_prob_tr <- predict(Doc_boot, newdata=df_boot_tr, type="response")
+  Doc_boot_pred_tr <- ifelse(Doc_boot_prob_tr>0.5,"Yes","No")
+  app_acc_vec[i] <- confusionMatrix(data=as.factor(Doc_boot_pred_tr), reference = df_boot_tr$visits)$overall[1]
+  
+  acc_vec[i] <- 0.368*app_acc_vec[i] + 0.632*oob_acc_vec[i]
+}
+
+acc_vec
+```
+
+Like for the CV, we can estimate the expected accuracy and its dispersion.
+
+```{r}
+mean(acc_vec)
+sd(acc_vec)
+```
+
+### Python
+
+In this part of the code, we perform the bootstrap procedure with 100 samples. To that, we will implement our own function to create the index n-times for a given dataset. This ensures that we get a similar output to `caret::createResample()`. In this case, we apply this function to our main training dataframe 100 times.
+
+```{python}
+def create_resample(data, times=100, random_seed=None):
+    # If you're not familiar with the documentation below, they are called
+    # `docstrings` and whenever you ask help for a function or see it's documentation,
+    # they are generated from that
+    """
+    Generate bootstrap sample indices for data.
+    
+    Args:
+    - data (array-like): The data to bootstrap.
+    - times (int): The number of bootstrap samples to generate.
+    - random_seed (int): The random seed to use for reproducibility.
+    
+    Returns:
+    - samples (list of arrays): A list of times bootstrap sample indices.
+    """
+    np.random.seed(random_seed)
+    n_samples = len(data)
+    samples = []
+    for _ in range(times):
+        indices = np.random.choice(n_samples, n_samples, replace=True)
+        samples.append(indices)
+    return samples
+
+# apply the new created function
+index_boot = create_resample(r.df_tr, times=100, random_seed = 123)
+# we can see if we successfully replicated the sampling process 100 times
+print(len(index_boot))
+# check if we have the correct number of rows (e.g. for the first element)
+print(len(index_boot[0]))
+# alternatively to see this information, you can uncomment & run the code below
+# np.asarray(index_boot).shape
+```
+
+::: callout-note
+One thing to note is that we could have used the `sklearn.utils.resample` introduced earlier to directly get a list of dataframes with the randomly chosen indices. The issue here would be rather a computational one, as we have to extract the rows many times from the dataset and then hold all this data in memory, which is redundant. So although this may not be a problem for 100 replications, it can quickly start to become an issue if you want to replicated many more times (e.g., 100,000 times). The best approach is to get the indices, and then subset the rows only when needed.
+
+```{python, eval = F}
+import numpy as np
+from sklearn.utils import resample
+
+def create_n_resamples(data, times, random_seed=None):
+    """
+    Generate n_bootstraps bootstrap samples of data.
+    
+    Args:
+    - data (array-like): The data to bootstrap.
+    - n_bootstraps (int): The number of bootstrap samples to generate.
+    - random_seed (int): The random seed to use for reproducibility.
+    
+    Returns:
+    - bootstrap_samples (list of lists): A list of n_bootstraps bootstrap samples.
+    """
+    np.random.seed(random_seed)
+    bootstrap_samples = []
+    for i in range(times):
+        sample = resample(data)
+        bootstrap_samples.append(sample)
+    return bootstrap_samples
+
+dfs_boot = create_n_resamples(r.df_tr, times=100, random_seed = 123) 
+```
+:::
+
+For each sample, we calculate the out-of-bag accuracy, the apparent accuracy, and the final accuracy estimate using the 0.368/0.632 rule. This is done using a loop that iterates 100 times, once for each bootstrap sample. The steps that the code follows are similar to R, and are outlined below:
+
+1.  We set up three arrays to store the out-of-bag accuracy, the apparent accuracy, and the final accuracy estimate for each of the 100 bootstrap samples.
+2.  In the loop, we perform the following steps for each bootstrap sample:
+    a.  Use the generate a random list of indices with replacement, which forms the bootstrap training set.
+    b.  Create a mask to extract the out-of-bag (validation) set from the original training set.
+    c.  Train the logistic regression model with RFE on the bootstrap training set.
+    d.  Compute the out-of-bag accuracy by predicting on the validation set and comparing the predicted labels to the true labels.
+    e.  Compute the apparent accuracy by predicting on the bootstrap training set and comparing the predicted labels to the true labels.
+    f.  Calculate the final accuracy estimate for the current bootstrap sample using the 0.368/0.632 rule.
+3.  Once the loop is complete, the `acc_vec` array will contain the final accuracy estimates for all 100 bootstrap samples. We can then calculate the mean and standard deviation of these accuracy estimates to get an overall understanding of the model's performance.
+
+```{python}
+# we one-hote encode the categorical variables
+## notice that we didn't use the argument `drop_first` before, since this is like
+## making dummy variable m - 1 where m is the number of variables you have
+r.df_tr_encoded = pd.get_dummies(r.df_tr, drop_first=True)
+
+oob_acc_vec = np.zeros(100)
+app_acc_vec = np.zeros(100)
+acc_vec = np.zeros(100)
+
+for i in range(100):
+    df_boot_tr = r.df_tr_encoded.iloc[index_boot[i]]
+    y_boot_tr = df_boot_tr["visits_Yes"].astype(int)
+    X_boot_tr = df_boot_tr.drop("visits_Yes", axis=1)
+
+    oob_mask = ~r.df_tr_encoded.index.isin(df_boot_tr.index.values)
+    df_boot_val = r.df_tr_encoded[oob_mask]
+    y_boot_val = df_boot_val["visits_Yes"].astype(int)
+    X_boot_val = df_boot_val.drop("visits_Yes", axis=1)
+
+    model = LogisticRegression(solver='liblinear')
+    rfe = RFE(model)
+    rfe.fit(X_boot_tr, y_boot_tr)
+
+    pred_probs_val = rfe.predict_proba(X_boot_val)[:, 1]
+    Doc_boot_pred_val = (pred_probs_val > 0.5).astype(int)
+    oob_acc = accuracy_score(y_boot_val, Doc_boot_pred_val)
+    oob_acc_vec[i] = oob_acc
+
+    pred_probs_tr = rfe.predict_proba(X_boot_tr)[:, 1]
+    Doc_boot_pred_tr = (pred_probs_tr > 0.5).astype(int)
+    app_acc = accuracy_score(y_boot_tr, Doc_boot_pred_tr)
+    app_acc_vec[i] = app_acc
+
+    acc_vec[i] = 0.368 * app_acc + 0.632 * oob_acc
+
+print(acc_vec)
+
+```
+:::
+
+## Automated approach
+
+::: panel-tabset
+### R - `caret`
+
+We only need to change the method in the `trainControl` function. The corresponding method is "boot632".
+
+```{r}
+set.seed(346)
+trctrl <- trainControl(method = "boot632", number=100)
+Doc_boot <- train(visits ~., data = df_tr, method = "glmStepAIC", family="binomial",
+                   trControl=trctrl, trace = 0)
+Doc_boot
+```
+
+### Python - `sklearn` & `mlxtend`
+
+As `sklearn` does not offer bootstrap with the 0.632 rule, we use `bootstrap_point632_score` function from the `mlxtend` library to perform bootstrapping with the 0.632 rule for our Logistic Regression model. We will use `mlxtend` with R for bootstrapping with the 0.632 rule.
+
+Please note for this part, we don't make any step-wise feature selection here as in the case of `caret` (i.e., `glmStepAIC`), but similar feature selections such as `sklearn.feature_selection.RFE` can be implemented since, as mentioned in the `Ex_ML_LinLogReg` exercises, there are no exact implementations of step-wise AIC regression with the libraries of interest in python.
+
+```{python}
+from mlxtend.evaluate import bootstrap_point632_score
+
+np.random.seed(346)
+
+# Fit the logistic regression model
+model = LogisticRegression(solver='liblinear')
+
+# Compute bootstrap point 632 scores
+scores = bootstrap_point632_score(estimator=model, X=X_train, y=y_train, n_splits=100, random_seed=123)
+
+# Print the mean accuracy and standard deviation
+print("Mean accuracy:", np.mean(scores))
+print("Standard deviation:", np.std(scores))
+```
+
+The results are now very close to our model in `caret`.
+:::
+
+# Balancing data
+
+In this part, we apply the balancing data technique in order to improve the prediction of "yes" with the doctor visit data. The table below reveals the unbalance problem.
+
+::: panel-tabset
+## R
+
+```{r}
+## Statistics on the training set
+table(df_tr$visits)
+```
+
+Since there are many more "No" than "Yes", any model favors the prediction of the "No". It results a good accuracy but the specificity (or the sensitivity depending on the choice of the positive class) is low, as well as the balanced accuracy.
+
+```{r}
+Doc_lr <- glm(visits~., data=df_tr, family="binomial") %>% step(trace=0)
+Doc_lr_prob <- predict(Doc_lr, newdata=df_te, type="response")
+Doc_lr_pred <- ifelse(Doc_lr_prob>0.5,"Yes","No")
+confusionMatrix(data=as.factor(Doc_lr_pred), reference = df_te$visits)
+```
+
+## Python
+
+```{python}
+r.df_tr['visits'].value_counts()
+```
+
+```{python}
+lr = LogisticRegression(solver='liblinear')
+lr.fit(X_train, y_train)
+lr_pred = lr.predict(X_test)
+lr_cf = confusion_matrix(y_test, lr_pred)
+print(lr_cf)
+```
+
+To calculate all the other scores aside from the confusion matrix, we actually have to compute them manually:
+
+```{python}
+from sklearn.metrics import balanced_accuracy_score, recall_score
+
+tn, fp, fn, tp = lr_cf.ravel()
+
+specificity = tn / (tn + fp)
+sensitivity = recall_score(y_test, lr_pred, pos_label='Yes')
+balanced_acc = balanced_accuracy_score(y_test, lr_pred)
+accuracy = accuracy_score(y_test, lr_pred)
+
+print(f"Accuracy: {accuracy:.3f}")
+print(f"Balanced Accuracy: {balanced_acc:.3f}")
+print(f"Specificity: {specificity:.3f}")
+print(f"Sensitivity: {sensitivity:.3f}")
+
+```
+
+Please note that `Specificity` and `Sensitivity` have the reverse values compared to R, and that's because the confusion matrix in R first takes the predicted values and then the true values. In contrast, it is the confusion matrix from `sklearn`, the true values are given before the predicted ones. The interpretation does not change, and it's only about which class you consider as your positive class.
+:::
+
+## Sub-sampling
+
+Balancing using sub-sampling consists of taking all the cases in the smallest class (i.e., `Yes`) and extract at random the same amount of cases in the largest category (i.e., `No`).
+
+::: panel-tabset
+### R
+
+```{r}
+n_yes <- min(table(df_tr$visits)) ## 840
+
+df_tr_no <- filter(df_tr, visits=="No") ## the "No" cases
+df_tr_yes <- filter(df_tr, visits=="Yes") ## The "Yes" cases
+
+index_no <- sample(size=n_yes, x=1:nrow(df_tr_no), replace=FALSE) ## sub-sample 840 instances from the "No"
+
+df_tr_subs <- data.frame(rbind(df_tr_yes, df_tr_no[index_no,])) ## Bind all the "Yes" and the sub-sampled "No"
+table(df_tr_subs$visits) ## The cases are balanced
+```
+
+Now let us see the result on the accuracy measures.
+
+```{r}
+Doc_lr_subs <- glm(visits~., data=df_tr_subs, family="binomial") %>% step(trace=0)
+Doc_lr_subs_prob <- predict(Doc_lr_subs, newdata=df_te, type="response")
+Doc_lr_subs_pred <- ifelse(Doc_lr_subs_prob>0.5,"Yes","No")
+confusionMatrix(data=as.factor(Doc_lr_subs_pred), reference = df_te$visits)
+```
+
+### Python
+
+```{python}
+n_yes = min(r.df_tr['visits'].value_counts()) ## 840
+
+df_tr_no = r.df_tr[r.df_tr['visits'] == "No"] ## the "No" cases
+df_tr_yes = r.df_tr[r.df_tr['visits'] == "Yes"] ## The "Yes" cases
+
+index_no = np.random.choice(df_tr_no.index, size=n_yes, replace=False)
+
+df_tr_subs = pd.concat([df_tr_yes, df_tr_no.loc[index_no]])
+df_tr_subs['visits'].value_counts() ## The cases like R are balanced
+```
+
+Now to the calculating the scores again:
+
+```{python}
+X_train_subs = pd.get_dummies(df_tr_subs.drop(columns=['visits']))
+y_train_subs = df_tr_subs['visits']
+
+lr_subs = LogisticRegression(solver='liblinear')
+lr_subs.fit(X_train_subs, y_train_subs)
+lr_subs_pred = lr_subs.predict(X_test)
+lr_subs_cf = confusion_matrix(y_test, lr_subs_pred)
+
+tn_subs, fp_subs, fn_subs, tp_subs = lr_subs_cf.ravel()
+
+specificity_subs = tn_subs / (tn_subs + fp_subs)
+sensitivity_subs = recall_score(y_test, lr_subs_pred, pos_label='Yes')
+balanced_acc_subs = balanced_accuracy_score(y_test, lr_subs_pred)
+accuracy_subs = accuracy_score(y_test, lr_subs_pred)
+
+print(lr_subs_cf)
+print(f"Accuracy: {accuracy_subs:.3f}")
+print(f"Balanced Accuracy: {balanced_acc_subs:.3f}")
+print(f"Specificity: {specificity_subs:.3f}")
+print(f"Sensitivity: {sensitivity_subs:.3f}")
+
+```
+
+Same conclusion as R (albeit with slightly different values).
+:::
+
+As expected, the accuracy has decreased but the balanced accuracy has increased. Depending on the aim of the prediction, this model may be much better to use than the one trained on the unbalanced data.
+
+## Resampling
+
+Balancing by resampling follows the same aim. The difference with sub-sampling is that the resampling increases the number of cases in the smallest class by resampling at random from them. The codes below are explicit:
+
+::: panel-tabset
+### R
+
+```{r}
+n_no <- max(table(df_tr$visits)) ## 3313
+
+df_tr_no <- filter(df_tr, visits=="No")
+df_tr_yes <- filter(df_tr, visits=="Yes")
+
+index_yes <- sample(size=n_no, x=1:nrow(df_tr_yes), replace=TRUE)
+df_tr_res <- data.frame(rbind(df_tr_no, df_tr_yes[index_yes,]))
+table(df_tr_res$visits)
+```
+
+Now, we have a balanced data set where each class has the same amount as the largest class (i.e., "No") in the original training set. The effect on the model fit is very similar to the subsampling:
+
+```{r}
+Doc_lr_res <- glm(visits~., data=df_tr_res, family="binomial") %>% step(trace=0)
+Doc_lr_res_prob <- predict(Doc_lr_res, newdata=df_te, type="response")
+Doc_lr_res_pred <- ifelse(Doc_lr_res_prob>0.5,"Yes","No")
+confusionMatrix(data=as.factor(Doc_lr_res_pred), reference = df_te$visits)
+```
+
+### Python
+
+```{python}
+n_no = max(r.df_tr['visits'].value_counts()) ## 3313
+
+df_tr_no = r.df_tr[r.df_tr['visits'] == "No"]
+df_tr_yes = r.df_tr[r.df_tr['visits'] == "Yes"]
+
+index_yes = np.random.choice(df_tr_yes.index, size=n_no, replace=True)
+df_tr_res = pd.concat([df_tr_no, df_tr_yes.loc[index_yes]])
+df_tr_res['visits'].value_counts()
+```
+
+Now we can model again with the resampled data
+
+```{python}
+X_train_res = pd.get_dummies(df_tr_res.drop(columns=['visits']))
+y_train_res = df_tr_res['visits']
+
+lr_res = LogisticRegression(solver='liblinear')
+lr_res.fit(X_train_res, y_train_res)
+lr_res_pred = lr_res.predict(X_test)
+
+lr_res_cf = confusion_matrix(y_test, lr_res_pred)
+
+tn_res, fp_res, fn_res, tp_res = lr_res_cf.ravel()
+
+specificity_res = tn_res / (tn_res + fp_res)
+sensitivity_res = recall_score(y_test, lr_res_pred, pos_label='Yes')
+balanced_acc_res = balanced_accuracy_score(y_test, lr_res_pred)
+accuracy_res = accuracy_score(y_test, lr_res_pred)
+
+print(lr_res_cf)
+print(f"Accuracy: {accuracy_res:.3f}")
+print(f"Balanced Accuracy: {balanced_acc_res:.3f}")
+print(f"Specificity: {specificity_res:.3f}")
+print(f"Sensitivity: {sensitivity_res:.3f}")
+
+```
+:::
+
+Whether one should prefer sub-sampling or resampling depends on the amount and the richness of the data.
+
+# Your turn
+
+Repeat the analysis on the German credit data. Balance the data using either method. Then, using `caret` (R) or `sklearn` (python) and either CV or Bootstrap, put several models in competition. Select the best one according to your choice of score. Finally, use the test set to see if the best model does not overfit the training set.
+
+Doing this will have achieved a complete supervised learning task from A to Z.

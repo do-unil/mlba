@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Concept}{3}{0}{1}
+\beamer@sectionintoc {2}{Interpretability}{26}{0}{2}
+\beamer@sectionintoc {3}{Selection of variables}{28}{0}{3}
+\beamer@sectionintoc {4}{General cases}{30}{0}{4}

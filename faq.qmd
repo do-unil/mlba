@@ -1,0 +1,50 @@
+---
+title: "FAQ"
+toc: true
+toc-depth: 2
+repo-actions: [issue]
+---
+
+::: callout-tip
+If you do not find the answer to your question here, you can use the search bar on the top left to search the entire site. If you are still unable to find the answer, you can ask your question during the exercise hours. If you found the solution and think it would be useful to other students, you can  report an issue (see on the right) with the questions and the solution, and we will add it to the FAQ.
+:::
+
+## FAQ
+
+### Organizational
+
+#### Which language will we be using?
+
+You can use either R or Python. We will be providing code examples and suppport in all three languages. 
+
+
+
+#### What software do I need to install?
+
+You will need to use git, and a text editor or an Integrated Development Environment (IDE).
+
+<!-- For git, please see [here](resources/tutorials/github.qmd) for instructions on how to install it.
+
+You can use any kind of text editor or IDE you like. We recomment using [VS Code](https://code.visualstudio.com/) with the extension corresponding to your language of choice. You can also use [Rstudio](https://rstudio.com/products/rstudio/download/) for R. See [here](resources/tutorials/installing_software.qmd) for instructions on how to install the software and IDEs. -->
+
+#### How do I submit an assignment?
+
+We will be using Github-classroom to distribute and collect assignments. You will need to create a Github account if you don't already have one.
+
+
+### Technical issues
+
+#### I am lost with Github, what should I do?
+
+GitHub has possibly the best tutorials and documentation of any software out there. You can find the [Hello world](https://docs.github.com/en/get-started/quickstart/hello-world) there. Most of the time googling your issue will lead you to the right place.
+
+
+#### I have bugs in my code/ something doesn't work/ I don't know how to do something, what should I do?
+
+First google your issue. 90 times out of 100 this will solve your issues. Another 9% can be resolved by reading the documentation of 
+the software you are using. For the very last percent you can ask your question during the exercises hours. 
+
+
+#### I cannot find the repository linked to the assignment, what should I do?
+
+At the top of each assignment there should be a link you can manually click to accept the assignment. If this happens *after* the first assignment, please let us know.

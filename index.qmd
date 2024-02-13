@@ -1,0 +1,43 @@
+---
+title: "Machine Learning in Business Analytics 2023-2024"
+repo-actions: false
+toc: false
+---
+
+🧑🏻‍🏫 **Teaching staff:** [Dr. Marc-Olivier Boldi](https://applicationspub.unil.ch/interpub/noauth/php/Un/UnPers.php?PerNum=1073453&LanCode=8) (Lecturer) & [Ilia Azizi](https://iliaazizi.com/) (TA).
+
+🕛 **Time:** Mondays 8:30-12:00, starting on Monday the 19^th^ of February 2024.
+
+🏫 **Room:** [Anthropole 3174](https://planete.unil.ch/?local=ANT-3174) (*no live broadcasting or recording*).
+
+### 📖 Content
+
+This course presents several machine learning techniques in business and management contexts. The list of topics is meant to cover mainly supervised methods of classification and prediction although unsupervised methods are also seen. Below is a tentative lists of topics. It will be adapted according to the pace of the class:
+
+-   Supervised learning models: regressions, trees, support vector machine, neural networks.
+-   Data splitting: training/test sets, cross-validation, bootstrap.
+-   Metrics: MSE, Accuracy, ...
+-   Ensemble methods: bagging, random forests, boosting.
+-   Unsupervised learning: clustering, PCA, FAMD, Auto-Encoder
+-   Interpretable machine learning: variale importance, partial dependence plots, LIME.
+
+Exercises and theory are equally important for the success of the class. For the excercises we use primarly R, with equivalent code in Python.
+
+### 📝 Evaluation
+
+1.  Partial written exam: organized during the semester.
+2.  Applied project: individual or in group (depending on the number of participants to the course).
+    -   One report (incl. supplementary material, codes, etc.)
+    -   One final presentation will be organized during the semester or during the exam session (depending on the number of participants).
+
+``` {.md code-copy="false"}
+Final grade = (0.3 x exam) + (0.3 x presentation) + (0.4 x report)
+```
+
+::: callout-caution
+## Project member contributions
+
+The project grade is a group grade. However, if the contribution of the members of the groups to the project is unbalanced, an individual adaptation of the grade will be made, e.g., absence of one of the members of the group during the presentation (in catch-up, a subsequent and adapted presentation of the absent member may be required).
+:::
+
+Further directives and guidelines are provided here.

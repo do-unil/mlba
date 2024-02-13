@@ -1,0 +1,15 @@
+---
+title: "References"
+---
+
+### Book references
+
+### License
+
+This course is provided under [![Creative Commons License](https://licensebuttons.net/l/by-sa/4.0/88x31.png){alt="Creative Commons License"}](https://creativecommons.org/licenses/by-sa/4.0/)\ which is the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) license.
+
+### Acknowledgements
+The `MLBA` course website design was adapted and inspired from the following sources:
+
+- [Dr. Mine Çetinkaya-Rundel STA 101 website](https://sta101-f23.github.io/course-overview.html)
+- [Dr. Tomas Masák, Dr. Linda Mhalla and Charles Dufour MATH-517 website](https://math-517.github.io/math_517_website/)

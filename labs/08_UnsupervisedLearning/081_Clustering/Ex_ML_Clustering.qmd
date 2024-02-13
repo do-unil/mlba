@@ -1,0 +1,445 @@
+---
+title: "Clustering"
+---
+
+```{r global_options, include = FALSE}
+knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+```
+
+# Data
+
+In this exercise, we'll use the same `wine` data introduced in the ensemble exercises. As noted before, all the numerical features have units. Additionally, the original objective of this dataset was to predict the wine `quality` from the other features (supervised learning). The data will only be used for unsupervised task here.
+
+First, load the data and scale the numerical features:
+
+::: {.panel-tabset}
+### R
+```{r}
+wine <- read.csv(here::here("labs/data/Wine.csv"))
+row.names(wine) <- paste("W", c(1:nrow(wine)), sep="") # row names are used after
+head(wine)
+summary(wine)
+wine[,-12] <- scale(wine[,-12]) ## scale all the features except "quality"
+```
+
+### Python
+
+```{r}
+library(reticulate)
+use_condaenv("MLBA")
+```
+
+```{python}
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+wine = pd.read_csv('../../data/Wine.csv')
+wine.index = ["W" + str(i) for i in range(1, len(wine)+1)]
+scaler = StandardScaler()
+wine.iloc[:, :-1] = scaler.fit_transform(wine.iloc[:, :-1])
+wine.head()
+wine.describe()
+```
+
+::: {.callout-warning}
+
+Please note that all the interpretations will be based on the R outputs (like PCA and most other exercises). As usual, the python outputs may be slightly different due to differences in the implementations of the algorithms.
+
+:::
+
+:::
+
+# Hierarchical clustering
+
+## Distances
+
+We apply here an agglomerative hierarchical clustering (AGNES). Only the numerical features are used here. First, we compute the distances and plot them. We use Manhattan distance below.
+
+::: {.panel-tabset}
+### R
+```{r}
+library(reshape2) # contains the melt function
+library(ggplot2)
+wine_d <- dist(wine[,-12], method = "manhattan") # matrix of Manhattan distances 
+
+wine_melt <- melt(as.matrix(wine_d)) # create a data frame of the distances in long format
+head(wine_melt)
+
+ggplot(data = wine_melt, aes(x=Var1, y=Var2, fill=value)) + 
+  geom_tile() 
+```
+
+### Python
+```{python}
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# wine_d = pd.DataFrame(np.abs(wine.iloc[:, :-1].values[:, None] - wine.iloc[:, :-1].values), columns=wine.index, index=wine.index)
+# from scipy.spatial.distance import pdist, squareform
+
+# wine_d = pdist(wine.iloc[:, :-1], metric='cityblock')
+# wine_d = squareform(wine_d)
+# wine_d_df = pd.DataFrame(wine_d, index=wine.index, columns=wine.index)
+from scipy.spatial.distance import cdist
+
+wine_d = pd.DataFrame(cdist(wine.iloc[:, :-1], wine.iloc[:, :-1], metric='cityblock'), columns=wine.index, index=wine.index)
+
+wine_melt = wine_d.reset_index().melt(id_vars='index', var_name='Var1', value_name='value')
+
+plt.figure(figsize=(10, 8))
+sns.heatmap(wine_d, cmap="coolwarm", center=0)
+plt.show()
+```
+:::
+
+We can see that some wines are closer than others (darker color). However, it is not really possible to extract any information from such a graph.
+
+## Dendrogram
+
+Now, we build a dendrogram using a complete linkage.
+
+::: {.panel-tabset}
+### R
+```{r}
+wine_hc <- hclust(wine_d, method = "complete")
+plot(wine_hc, hang=-1)
+```
+
+### Python
+```{python}
+from scipy.cluster.hierarchy import dendrogram, linkage
+
+wine_linkage = linkage(wine.iloc[:, :-1], method='complete', metric='cityblock')
+plt.figure(figsize=(10, 8))
+dendrogram(wine_linkage, labels=wine.index, orientation='top', color_threshold=0, leaf_font_size=10)
+plt.show()
+```
+:::
+
+We cut the tree to 4 clusters, and represent the result. We also extract the cluster assignment of each wine.
+
+::: {.panel-tabset}
+### R
+
+```{r}
+
+plot(wine_hc, hang=-1)
+rect.hclust(wine_hc, k=4)
+wine_clust <- cutree(wine_hc, k=4)
+wine_clust
+```
+
+
+### Python
+
+```{python}
+
+from scipy.cluster.hierarchy import fcluster
+
+plt.figure(figsize=(10, 8))
+dendrogram(wine_linkage, labels=wine.index, orientation='top', color_threshold=80, leaf_font_size=10)
+plt.axhline(y=80, color='black', linestyle='--')
+plt.show()
+
+wine_clust = fcluster(wine_linkage, 4, criterion='maxclust')
+wine_clust
+```
+
+
+
+:::
+## Interpretation of the clusters
+
+Now we analyze the clusters by looking at the distribution of the features within each cluster.
+
+::: {.panel-tabset}
+### R
+
+```{r}
+
+wine_comp <- data.frame(wine[,-12], Clust=factor(wine_clust), Id=row.names(wine))
+wine_df <- melt(wine_comp, id=c("Id", "Clust"))
+head(wine_df)
+
+ggplot(wine_df, aes(y=value, group=Clust, fill=Clust)) +
+  geom_boxplot() +
+  facet_wrap(~variable, ncol=4, nrow=3)
+```
+
+
+### Python
+
+```{python}
+wine_comp = wine.iloc[:, :-1].copy()
+wine_comp['Clust'] = wine_clust
+wine_comp['Id'] = wine.index
+wine_melt = wine_comp.melt(id_vars=['Id', 'Clust'])
+
+plt.figure(figsize=(14, 10))
+sns.boxplot(x='variable', y='value', hue='Clust', data=wine_melt)
+plt.xticks(rotation=90)
+plt.legend(title='Cluster')
+plt.show()
+```
+:::
+
+We can see for example that
+- Cluster 4 (the smallest): small pH, large fixed.acidity and citric.acid, a large density, and a small alcohol. Also a large free.sulfur.dioxide.
+- Cluster 2: also has large fixed.acidity but not citric.acid. It looks like less acid than cluster 3.
+- Cluster 3: apparently has a large alcohol.
+- Etc.
+
+## Choice of the number of clusters
+
+To choose the number of cluster, we can inspect the dendrogram (judgmental approach), or we can rely on a statistics. Below, we use the within sum-of-squares, the GAP statistics, and the silhouette. It is obtained by the function `fviz_nbclust` in package `factoextra`. It uses the dendrogram with complete linkage on Manhattan distance is obtained using the function `hcut` with `hc_method="complete"` and `hc_metric="manhattan"`.
+
+::: {.panel-tabset}
+### R
+
+```{r}
+
+library(factoextra)
+fviz_nbclust(wine[,-12],
+             hcut, hc_method="complete",
+             hc_metric="manhattan",
+             method = "wss", 
+             k.max = 25, verbose = FALSE)
+fviz_nbclust(wine[,-12],
+             hcut, hc_method="complete",
+             hc_metric="manhattan",
+             method = "silhouette", 
+             k.max = 25, verbose = FALSE)
+fviz_nbclust(wine[,-12],
+             hcut, hc_method="complete",
+             hc_metric="manhattan",
+             method = "gap", 
+             k.max = 25, verbose = FALSE)
+```
+
+
+### Python
+
+We need to install the `gap_statistic` for obtaining a suggested number of clusters. For more information, see https://github.com/milesgranger/gap_statistic
+
+```{r}
+py_install(c("gap-stat","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
+```
+
+```{python}
+from sklearn.cluster import AgglomerativeClustering
+from sklearn.metrics import silhouette_score
+from gap_statistic import OptimalK
+import numpy as np
+
+X = wine.iloc[:, :-1].values
+
+# Clear previous plot (if any)
+plt.clf()
+
+# Within sum-of-squares
+wss = []
+for k in range(1, 26):
+    model = AgglomerativeClustering(n_clusters=k, metric='manhattan', linkage='complete')
+    model.fit(X)
+    labels = model.labels_
+    centroids = np.array([X[labels == i].mean(axis=0) for i in range(k)])
+    wss.append(sum(((X - centroids[labels]) ** 2).sum(axis=1)))
+
+plt.plot(range(1, 26), wss, marker='o')
+plt.xlabel('Number of clusters')
+plt.ylabel('Within sum-of-squares')
+plt.show()
+
+# Clear previous plot (if any)
+plt.clf()
+
+# Silhouette
+silhouette_scores = []
+for k in range(2, 26):
+    model = AgglomerativeClustering(n_clusters=k, metric='manhattan', linkage='complete')
+    model.fit(X)
+    labels = model.labels_
+    silhouette_scores.append(silhouette_score(X, labels))
+
+plt.plot(range(2, 26), silhouette_scores, marker='o')
+plt.xlabel('Number of clusters')
+plt.ylabel('Silhouette score')
+plt.show()
+
+# Clear previous plot (if any)
+plt.clf()
+
+# Gap statistic
+gs_obj = OptimalK(n_jobs=1)
+n_clusters = gs_obj(X, cluster_array=np.arange(1, 26))
+gap_stats = gs_obj.gap_df
+
+plt.plot(gap_stats['n_clusters'], gap_stats['gap_value'], marker='o')
+plt.xlabel('Number of clusters')
+plt.ylabel('Gap statistic')
+plt.show()
+```
+
+:::
+
+Like often, these methods are not easy to interpret. Globally, they choose $k=2$ or $k=3$.
+
+# K-means
+
+The K-means application follows the same logic as before. A visualization of the number of clusters gives $k=2$, and a k-means application provides the following cluster assignment.
+
+::: {.panel-tabset}
+### R
+
+```{r}
+fviz_nbclust(wine[,-12],
+             kmeans,
+             method = "wss", 
+             k.max = 25, verbose = FALSE)
+fviz_nbclust(wine[,-12],
+             kmeans, 
+             method = "silhouette", 
+             k.max = 25, verbose = FALSE)
+fviz_nbclust(wine[,-12],
+             kmeans,
+             method = "gap", 
+             k.max = 25, verbose = FALSE)
+
+wine_km <- kmeans(wine[,-12], centers=2)
+wine_km$cluster ## see also wine_km for more information about the clustering hence obtained
+```
+
+
+### Python
+
+```{python}
+from sklearn.cluster import KMeans
+
+# Clear previous plot (if any)
+plt.clf()
+
+# Within sum-of-squares
+wss = []
+for k in range(1, 26):
+    model = KMeans(n_clusters=k, n_init = 10) #this is a default value that with this version of the library has to be set
+    model.fit(X)
+    wss.append(model.inertia_)
+
+plt.plot(range(1, 26), wss, marker='o')
+plt.xlabel('Number of clusters')
+plt.ylabel('Within sum-of-squares')
+plt.show()
+
+# Clear previous plot (if any)
+plt.clf()
+
+# Silhouette
+silhouette_scores = []
+for k in range(2, 26):
+    model = KMeans(n_clusters=k, n_init = 10)
+    model.fit(X)
+    labels = model.labels_
+    silhouette_scores.append(silhouette_score(X, labels))
+
+plt.plot(range(2, 26), silhouette_scores, marker='o')
+plt.xlabel('Number of clusters')
+plt.ylabel('Silhouette score')
+plt.show()
+
+# Clear previous plot (if any)
+plt.clf()
+
+# Silhouette
+gs_obj = OptimalK(n_jobs = 1)
+n_clusters = gs_obj(X, cluster_array=np.arange(1, 26))
+gap_stats = gs_obj.gap_df
+
+plt.plot(gap_stats['n_clusters'], gap_stats['gap_value'], marker='o')
+plt.xlabel('Number of clusters')
+plt.ylabel('Gap statistic')
+plt.show()
+
+wine_km = KMeans(n_clusters=2, n_init = 10)
+wine_km.fit(X)
+wine_km.labels_
+```
+:::
+
+Again the clusters can be inspected through their features exactly the same way as before.
+
+# PAM and silhouette plot
+
+The application of the PAM is similar to K-means. We use the `pam` function from package `cluster`. Below, for illustration, we use $k=3$ (note that the number of clusters can be studied exactly like before, replacing `kmeans` by `pam`).
+
+::: {.panel-tabset}
+### R
+
+```{r}
+library(cluster)
+wine_pam <- pam(wine[,-12], k=3)
+wine_pam
+```
+
+
+### Python
+
+```{python}
+from sklearn_extra.cluster import KMedoids
+
+wine_pam = KMedoids(n_clusters=3, metric='manhattan', method='pam')
+wine_pam.fit(X)
+wine_pam.labels_
+```
+:::
+
+To inspect if the cluster is good, we can produce the silhouette graph.
+
+::: {.panel-tabset}
+### R
+
+```{r}
+plot(silhouette(wine_pam))
+```
+
+
+### Python
+
+```{python}
+from sklearn.metrics import silhouette_samples
+from scipy.spatial.distance import pdist, squareform
+
+def plot_silhouette(data, labels, metric='euclidean', figsize=(10, 6)):
+    distances = pdist(data, metric='cityblock' if metric == 'manhattan' else metric)
+    dist_matrix = squareform(distances)
+    silhouette_vals = silhouette_samples(dist_matrix, labels, metric='precomputed')
+    
+    fig, ax = plt.subplots(figsize=figsize)
+    y_lower, y_upper = 0, 0
+    n_clusters = len(np.unique(labels))
+    
+    for i in range(n_clusters):
+        cluster_silhouette_vals = silhouette_vals[labels == i]
+        cluster_silhouette_vals.sort()
+        y_upper += len(cluster_silhouette_vals)
+        ax.barh(range(y_lower, y_upper), cluster_silhouette_vals, height=1)
+        ax.text(-0.03, (y_lower + y_upper) / 2, str(i + 1))
+        y_lower += len(cluster_silhouette_vals)
+    
+    silhouette_avg = np.mean(silhouette_vals)
+    ax.axvline(silhouette_avg, color='red', linestyle='--')
+    ax.set_xlabel('Silhouette coefficient values')
+    ax.set_ylabel('Cluster labels')
+    ax.set_title('Silhouette plot for the various clusters')
+    plt.show()
+
+plot_silhouette(X, wine_pam.labels_, metric='manhattan')
+
+```
+:::
+
+We see that the average silhouette considering the all three clusters is 0.12. Cluster 2 has some wines badly clustered (silhouette of 0.06, the lowest, and several wine with negative silhouettes). Cluster 3 is the most homogeneous cluster and the best separated from the other two.
+
+# Your turn
+
+Repeat the clustering analysis on one of the datasets seen in the course (like the `real_estate_data` or `nursing_home`). Evidently, this is not a supervised task, therefore, you may choose to leave the outcome variable out of your analysis.

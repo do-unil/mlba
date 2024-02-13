@@ -1,0 +1,23 @@
+---
+title: "Extra credit"
+---
+
+## Extra credit
+
+-   Create a GitHub account at [https://github.com](https://github.com/), make sure to use your real name in your profile so that I can match your name to you. You can use whatever username you like, but here is some helpful [username advice](https://happygitwithr.com/github-acct#username-advice).[^1]
+
+-   Go to <https://github.com/OpenIntroStat/ims/issues/new/choose> and select either "Suggestion" or "Typo".
+
+    -   If Suggestion, describe in detail your suggestion, giving as much information and justification as possible.
+
+    -   If Typo, fill in the blanks to provide as much information as possible for the typo to be fixed.
+
+-   When done, hit Submit.
+
+-   Later in the course you will be asked to fill out a form where you let us know if you've opened any feedback issues in the GitHub repo. I'll confirm your answers by referring back to the issues you opened, and you'll have the opportunity to earn 2 extra points (out of 100) on each of your exams for opening "useful" issues. "Useful" can be based on the number of issues (quantity) or the depth of your feedback (quality).
+
+-   Before opening an issue, you must the existing ones at <https://github.com/OpenIntroStat/ims/issues> to make sure you're not reporting something someone else has already reported.
+
+-   Issues can refer to the text of the book or the interactive tutorials.
+
+[^1]: GitHub is a code hosting platform for collaboration and version control. You will not need to learn about GitHub for this class (it's something you will learn in a higher level statistics or data science course) however it is also where our open-source textbook is hosted so we're asking you to make an account on GitHub to be able to provide feedback on the book.

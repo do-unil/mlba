@@ -1,0 +1,32 @@
+\frametitle{Only categorical data}
+To illustrate, we create an artificial {\tt iris} data containing
+\begin{itemize}
+\item Length (S/M/L): category of length (sum of petal and sepal length),
+\item Width (S/M/L): category of width (sum of petal and sepal width),
+\item Species: the original feature; used as supplementary variable.
+\end{itemize}
+The association between length and width are shown on the tables:\\
+\scriptsize
+\begin{columns}
+\begin{column}{0.5\linewidth}
+\begin{verbatim}
+          Width
+Length      Width_L Width_M Width_S
+  Length_L  0.8889  0.2000  0.0000
+  Length_M  0.1111  0.5375  0.2558
+  Length_S  0.0000  0.2625  0.7442
+\end{verbatim}
+\end{column}
+\vrule
+\hspace{0.2cm}
+\begin{column}{0.5\linewidth}
+\begin{verbatim}
+          Width
+Length     Width_L Width_M Width_S
+  Length_L 0.60000 0.40000 0.00000
+  Length_M 0.05263 0.75439 0.19298
+  Length_S 0.00000 0.39623 0.60377
+\end{verbatim}
+\end{column}
+\end{columns}
+\normalsize

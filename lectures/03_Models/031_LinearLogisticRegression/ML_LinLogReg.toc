@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Linear regression}{3}{0}{1}
+\beamer@sectionintoc {2}{Logistic regression}{7}{0}{2}
+\beamer@sectionintoc {3}{Interpretation}{13}{0}{3}
+\beamer@sectionintoc {4}{Selection of variables}{22}{0}{4}

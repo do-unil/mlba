@@ -1,0 +1,338 @@
+---
+title: "Autoencoders"
+---
+
+```{r global_options, include = FALSE}
+knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+```
+
+# Data preparation
+
+In this series of exercises, we illustrate autoencoders on the `wine` data already used for clustering & PCA. We first load the data.
+
+::: panel-tabset
+### R
+
+```{r}
+wine <- read.csv(here::here("labs/data/Wine.csv"))
+row.names(wine) <- paste("W", c(1:nrow(wine)), sep="") 
+wine[,-12] <- scale(wine[,-12])
+```
+
+
+### Python
+
+```{r}
+library(reticulate)
+use_condaenv("MLBA")
+```
+
+```{python}
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+
+wine = pd.read_csv('../../data/Wine.csv')
+wine.index = ["W" + str(i) for i in range(1, len(wine)+1)]
+scaler = StandardScaler()
+wine.iloc[:, :-1] = scaler.fit_transform(wine.iloc[:, :-1])
+```
+
+:::
+
+Note that here the scaling of the variables is optional. Scaling the features can sometimes help with the autoencoder, especially when creating lower-dimensional representation of the data.
+
+# Dimension reduction
+
+We will use `keras` to build an autoencoder for the `wine` dataset. Here, the aim is to represent the 11 wine variables in 2 dimensions. Please note that you can also 'increase' the dimension for some applications where you want to find interactions and interesting relationships between different variables for a supervised task (probably not unsupervised like this case).
+
+::: panel-tabset
+
+### R
+```{r}
+library(keras)
+
+# Define the autoencoder model
+input_dim <- ncol(wine[,-12])
+encoding_dim <- 2
+
+input_layer <- layer_input(shape = input_dim)
+encoder_layer <- layer_dense(units = encoding_dim, activation = 'relu')(input_layer)
+
+decoder_layer <- layer_dense(units = input_dim, activation = 'linear')(encoder_layer)
+
+autoencoder <- keras_model(input_layer, decoder_layer)
+summary(autoencoder)
+
+# Compile the autoencoder
+autoencoder %>% compile(optimizer = "adam", loss = "mse")
+
+# Train the autoencoder
+history <- autoencoder %>% fit(x = as.matrix(wine[,-12]), y = as.matrix(wine[,-12]), epochs = 500, batch_size = 32, shuffle = TRUE, verbose = 0)
+
+# Extract the encoder model
+encoder <- keras_model(inputs = input_layer, outputs = encoder_layer)
+encoded_wine <- encoder %>% predict(as.matrix(wine[,-12]))
+head(encoded_wine)
+
+
+```
+
+### Python
+
+```{python}
+from tensorflow.keras.layers import Input, Dense
+from tensorflow.keras.models import Model
+
+# Define the autoencoder model
+input_dim = wine.shape[1] - 1
+encoding_dim = 2
+
+input_layer = Input(shape=(input_dim,))
+encoder_layer = Dense(encoding_dim, activation='relu')(input_layer)
+
+decoder_layer = Dense(input_dim, activation='linear')(encoder_layer)
+
+autoencoder = Model(input_layer, decoder_layer)
+autoencoder.summary()
+# Compile the autoencoder
+
+autoencoder.compile(optimizer='adam', loss='mse')
+# Train the autoencoder
+
+history = autoencoder.fit(wine.iloc[:, :-1], wine.iloc[:, :-1], epochs=500, batch_size=32, shuffle=True, verbose=0)
+# Extract the encoder model
+
+encoder = Model(inputs=input_layer, outputs=encoder_layer)
+encoded_wine = encoder.predict(wine.iloc[:, :-1])
+print(encoded_wine[:5])
+
+```
+:::
+
+It is important to remember that autoencoders can be more complex and include multiple layers in the encoder and decoder. In this example, we used a simple linear activation function and a single-layer architecture. The choice of the autoencoder architecture and the activation functions will depend on the specific problem and dataset at hand (hence the fine-tuning process).
+
+# Visualize the encoded dimension
+
+Now that we have trained our autoencoder and created a 2-dimensional representation of the data, we can visualize the results of the encoded dimension.
+
+::: panel-tabset
+
+### R
+
+```{r}
+library(ggplot2)
+
+wine_2d <- data.frame(encoded_wine)
+colnames(wine_2d) <- c("X", "Y")
+wine_2d$Type <- wine$Type
+
+ggplot(wine_2d, aes(x = X, y = Y)) +
+  geom_point(size = 2, alpha = 0.7) +
+  theme_minimal() +
+  labs(title = "Wine data reduced to 2D using Autoencoder",
+       x = "Dimension 1",
+       y = "Dimension 2")
+```
+
+### Python
+
+```{python}
+import matplotlib.pyplot as plt
+
+plt.clf()
+plt.figure(figsize=(10, 8))
+plt.scatter(encoded_wine[:, 0], encoded_wine[:, 1], s=50, alpha=0.8)
+plt.xlabel('Dimension 1')
+plt.ylabel('Dimension 2')
+plt.title('2D Representation of Wine Data using Autoencoders')
+
+# OPTIONAL: Add the wine index as labels (you can comment the code below)
+for i in range(len(wine)):
+  plt.annotate(wine.index[i], (encoded_wine[i, 0], encoded_wine[i, 1]), fontsize=8)
+
+plt.show()
+```
+
+:::
+
+The plot above shows the 2-dimensional representation of the wine data using the autoencoder. The autoencoder has effectively reduced the dimensionality of the data while preserving the structure and relationships between the samples.
+
+# Inferring missing values
+
+Autoencoders are not only used for dimensionality reduction, but they can also be used to infer missing values in a dataset. In this part of the exercise, we will create an autoencoder to reconstruct the original dataset and use it to infer missing values.
+
+Let's first divide the data into training and test sets. Then, we must simulate a scenario where some values are missing from our `wine` dataset.
+
+## Simulate missing values
+This step is done only for demonstration since the `wine` data does not contain missing values, and we must artificially create them and place them in a dataframe called `wine_missing`. Applying this technique doesn't require this step since your dataset already should already contain the missing values.
+
+::: panel-tabset
+### R
+
+```{r}
+set.seed(123)
+wine_missing <- wine
+wine_missing[sample(1:nrow(wine_missing), size = nrow(wine_missing)*0.2), sample(1:ncol(wine_missing), size = ncol(wine_missing)*0.2)] <- NA
+```
+
+### Python
+
+```{python}
+import numpy as np
+import random
+np.random.seed(123)
+# Create a copy of the wine dataset and randomly remove 20% of the data
+wine_missing = wine.copy()
+ix = [(row, col) for row in range(wine_missing.shape[0]) for col in range(wine_missing.shape[1])]
+for row, col in random.sample(ix, int(round(.2*len(ix)))):
+    wine_missing.iat[row, col] = np.nan
+```
+:::
+
+## Train with complete data
+Now, we can use an autoencoder to infer these missing values. To do so, we can train the autoencoder with the complete data and then use it to infer the missing values.
+
+::: panel-tabset
+### R
+
+```{r}
+# Re-define the autoencoder model
+input_layer <- layer_input(shape = input_dim)
+encoder_layer <-
+  layer_dense(units = encoding_dim, activation = 'relu')(input_layer)
+decoder_layer <-
+  layer_dense(units = input_dim, activation = 'linear')(encoder_layer)
+autoencoder <- keras_model(input_layer, decoder_layer)
+summary(autoencoder)
+autoencoder %>% compile(optimizer = "adam", loss = "mse")
+
+# Train the autoencoder with the complete data
+hist <- 
+  autoencoder %>% fit(
+  x = as.matrix(wine[, -12]),
+  y = as.matrix(wine[, -12]),
+  epochs = 300,
+  batch_size = 32,
+  shuffle = TRUE,
+  verbose = 0, #set it as `1` if you want to see the training messages
+  validation_split = 0.2,
+  callbacks = callback_early_stopping(
+    monitor = "val_loss",
+    patience = 5,
+    restore_best_weights = TRUE
+  ),
+)
+
+## uncomment if you want to see the training plot
+# plot(hist)
+
+# Replace missing values with the inferred values
+wine_missing_original <- wine_missing
+
+# replace the missing values with something before being able to make a prediction on it (model cannot re-construct NA directly)
+wine_missing[is.na(wine_missing)] <- 0  # Mask the missing values as 0
+
+# Use the autoencoder to infer the missing values
+predicted_wine <- autoencoder %>% predict(as.matrix(wine_missing[, -12]))
+```
+
+
+### Python
+
+```{python}
+# to introduce early stopping
+from keras.callbacks import EarlyStopping
+
+# Re-define the autoencoder model
+input_layer = Input(shape=(input_dim,))
+encoder_layer = Dense(encoding_dim, activation='relu')(input_layer)
+decoder_layer = Dense(input_dim, activation='linear')(encoder_layer)
+autoencoder = Model(input_layer, decoder_layer)
+autoencoder.compile(optimizer='adam', loss='mse')
+
+# Train the autoencoder with the complete data
+hist = autoencoder.fit(wine.iloc[:, :-1], 
+  wine.iloc[:, :-1], 
+  epochs=300, 
+  batch_size=32, 
+  shuffle=True, 
+  verbose=0, #set it as `1` if you want to see the training messages
+  validation_split=0.2, 
+  callbacks=[EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True)])
+
+# # uncomment if you want to see the training plot
+# plt.clf()
+# plt.plot(hist.history['loss'])
+# plt.plot(hist.history['val_loss'])
+# plt.title('Model loss')
+# plt.ylabel('Loss')
+# plt.xlabel('Epoch')
+# plt.legend(['Train', 'Val'], loc='upper right')
+# plt.show()
+
+# Replace missing values with the inferred values
+wine_missing_original = wine_missing.copy()
+
+# replace the missing values with something before being able to make a prediction on it (model cannot re-construct NA directly)
+wine_missing.fillna(0, inplace=True)  # Mask the missing values as 0
+
+# Use the autoencoder to infer the missing values
+predicted_wine = autoencoder.predict(wine_missing.iloc[:, :-1].values)
+```
+
+:::
+
+
+## Predict missing values
+
+Finally, we replace the missing values in the wine dataset with the inferred values from the autoencoder.
+
+::: panel-tabset
+### R
+
+```{r}
+wine_missing[is.na(wine_missing_original)] <- predicted_wine[is.na(wine_missing_original)]
+
+library(dplyr)
+# see the old vs new values by filtering for the rows that contained an NA
+missing_rows <- wine_missing_original %>% 
+  mutate(row_index = row_number()) %>%
+  dplyr::filter_at(vars(dplyr::everything()),any_vars(is.na(.)))
+
+# you can see the new values that were re-constructed
+wine_missing_original[missing_rows$row_index,]
+wine_missing[missing_rows$row_index,]
+
+```
+
+### Python
+
+```{python}
+# Identify the missing values in the original dataframe
+missing_mask = wine_missing_original.iloc[:, :-1].isna()
+
+# Replace the missing values with the predicted ones
+for i in range(wine_missing.shape[1] - 1):  # iterate over all columns except the last one
+    wine_missing.loc[missing_mask.iloc[:, i], wine_missing.columns[i]] = predicted_wine[missing_mask.iloc[:, i], i]
+
+# see the old vs new values by filtering for the rows that contained an NA
+missing_rows = wine_missing_original[wine_missing_original.iloc[:, :-1].isna().any(axis=1)]
+
+# you can see the new values that were re-constructed
+print(wine_missing_original.loc[missing_rows.index, :])
+print(wine_missing.loc[missing_rows.index, :])
+```
+
+:::
+
+Note how the dataset `wine_missing` doesn't contain any missing values. The missing values have been inferred by the autoencoder. This method can be a powerful tool to deal with missing data in machine learning projects. 
+
+::: {.callout-important}
+
+There are two essential things to note about using autoencoders for imputation:
+
+- Alternative to our approach, you can train with incomplete data and mask the "NA" in the training data with 0s (as shown for inference). In theory, you can put anything for the mask value, for example, the mean or median value for the missing inputs, and then try to recover those (although if you scale your data, 0 may work better in practice). Once the model is trained, you can recover the value for NA while masking the NAs again with 0s (as already implemented by us). In that case, you're pushing your model to predict 0 for the missing instances, which can sometimes be inappropriate.
+
+- Please note for auto-encoders to work well, you'll need a lot of observations. Additionally, you should always compare the performance of this technique against simply using mean and median values for the missing data. Another library in R commonly used for dealing with missing data is called `missForest`, which uses a random forest for imputation. If you need techniques to deal with missing data, feel free to check it out and make sure you understand how it works (it falls beyond the scope of this course).
+
+:::
