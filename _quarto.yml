@@ -137,7 +137,7 @@ format:
     mainfont: "Atkinson Hyperlegible"
 
     # This script changes the image src depending on the body class (quarto-light or quarto-dark). We primarly use it to change the logo in the navbar.
-    include-after-body:
+    include-before-body:
       - text: |
           <script type="application/javascript">
           // Description: Change image src depending on body class (quarto-light or quarto-dark)

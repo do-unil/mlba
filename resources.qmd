@@ -1,5 +1,7 @@
 ---
 title: "Extra credit"
+code-tools: false
+code-link: false
 ---
 
 ## Extra credit
