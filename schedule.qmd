@@ -34,7 +34,9 @@ d <- read_sheet("https://docs.google.com/spreadsheets/d/1B_KRL3Wc_81RpNvD6eNxGda
 d |>
   select(-dow) |>
   mutate(
-    date = as.Date(date)
+    date = as.Date(date),
+    topic = gsub("\\+", "+\n", topic), # New line after +
+    topic = gsub("\\s*\\(", "\n(", topic) # New line before opening parenthesis
   ) |>
   gt() |>
   fmt_date(date, date_style = 31) |>

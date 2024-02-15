@@ -9,32 +9,6 @@ project:
     - "!images/"
     - "!styles/"
     - "!site_libs/"
-    # - labs/03_Models/031_LinearLogisticRegression/Ex_ML_LinLogReg.qmd
-    # - index.qmd
-    # - schedule.qmd
-    # - links.qmd
-    # - references.qmd
-    # - faq.qmd
-    # - labs/03_Models/032_Trees/Ex_ML_Tree.qmd
-    # - labs/03_Models/033_NeuralNetworks/EX_ML_NN.qmd
-    # - labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.qmd
-    # - labs/03_Models/035_KNN/Ex_ML_KNN.qmd
-    # - labs/04_Metrics/Ex_ML_Scoring.qmd
-    # - labs/05_DataSplitting/Ex_ML_Data_Splitting.qmd
-    # - labs/06_Ensembles/Ex_ML_Ensemble.qmd
-    # - labs/07_InterpretableML/Ex_ML_VarImp.qmd
-    # - labs/08_UnsupervisedLearning/081_Clustering/Ex_ML_Clustering.qmd
-    # - labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.qmd
-    # - labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.qmd
-    # - assessments/exam.qmd
-    # - assessments/project.qmd
-    # - resources.qmd
-
-# jupyter: 
-#   kernelspec: 
-#     name: "conda-env-MLBA-py"
-#     language: "python"
-#     display_name: "MLBA"
 
 website:
   page-navigation: true
@@ -91,8 +65,8 @@ website:
             text: "Neural Networks"
           - href: labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.qmd
             text: "Support Vector Machines"
-          - href: labs/03_Models/035_KNN/Ex_ML_KNN.qmd
-            text: "K-Nearest Neighbors"
+          # - href: labs/03_Models/035_KNN/Ex_ML_KNN.qmd
+          #   text: "K-Nearest Neighbors"
           - href: labs/04_Metrics/Ex_ML_Scoring.qmd
             text: "Metrics"
           - href: labs/05_DataSplitting/Ex_ML_Data_Splitting.qmd
@@ -105,8 +79,8 @@ website:
             text: "Clustering"
           - href: labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.qmd
             text: "PCA"
-          - href: labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.qmd
-            text: "Autoencoders"
+          # - href: labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.qmd
+          #   text: "Autoencoders"
       - section: "Assessments"
         contents:
           - href: assessments/exam.qmd
