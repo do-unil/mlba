@@ -23,7 +23,7 @@ jobs:
     #   run:
     #     shell: bash -l {0}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Install Quarto CLI
         uses: quarto-dev/quarto-actions/setup@v2
@@ -35,7 +35,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libglu1-mesa-dev libxml2-dev libssl-dev libv8-dev libfontconfig1-dev libfreetype6-dev cmake libmagick++-dev
-
+  
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
