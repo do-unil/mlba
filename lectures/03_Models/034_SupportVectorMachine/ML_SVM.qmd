@@ -239,9 +239,8 @@ create new features $h(x)$. New features can help in separating the
 cases: e.g., below a non-separable case in $(x,y)$ becomes separable by
 the new feature $(x^2+y^2)$:\
 
-![](../../Graphs/svm_quad.png){width="7cm" fig-align="center"}
+![](../../Graphs/svm_quad.png){width=40% fig-align="center"}
 
-![](../../Graphs/svm_quad2.png){width="3.4cm" fig-align="center"}
 
 However, with the kernel, the exact form of these new features cannot be
 known.

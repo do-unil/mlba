@@ -14,12 +14,7 @@ Ensemble and bagging
 ### Ensemble
 
 Until now we have tried to train the best learner among several
-candidates to solve a given task.\
-On the contrary, an **ensemble** learner is made of several learners (so
-called **base learners** or **sub-learners**) that are combined for the
-prediction.\
-Base learners are often simple learners, coming from an homogenous
-family of learners (e.g. regression trees, regressions, etc.).
+candidates to solve a given task. On the contrary, an **ensemble** learner is made of several learners (so called **base learners** or **sub-learners**) that are combined for the prediction. Base learners are often simple learners, coming from an homogenous family of learners (e.g. regression trees, regressions, etc.).
 
 **Bagging** stands for **Bootstrap AGGregatING**. It is a way to build
 an ensemble learner from several versions of the same learner, trained
@@ -48,13 +43,7 @@ Does it work and why? (in theory\...)
     whole training set.
 
 Thus, in theory, there is no reason why each model has a lower accuracy
-than a model that would be trained on the whole training set.\
-In addition, there is no reason why they, together, could overfit the
-training set since no model can overfit it.
-
-In practice, bagging is efficient when the features are unstable and
-very influential on the model (e.g., outliers).\
-The properties of bagging come at the cost of extra complexity:
+than a model that would be trained on the whole training set. In addition, there is no reason why they, together, could overfit the training set since no model can overfit it. In practice, bagging is efficient when the features are unstable and very influential on the model (e.g., outliers). The properties of bagging come at the cost of extra complexity:
 
 -   A **large number of models** must be kept in memory to make the
     final prediction.
@@ -102,9 +91,7 @@ enhance sub-model non-correlation.
 
 ### Why does that work?
 
-The reasons are the same as for bagging.\
-Furthermore, with the additional mixing of the features when
-constructing the trees:
+The reasons are the same as for bagging. Furthermore, with the additional mixing of the features when constructing the trees:
 
 -   each tree remains unbiased (it has the same chance to get the best
     features).
@@ -240,11 +227,7 @@ The learning rate can be tuned.
 ### Stochastic gradient boosting
 
 The evaluation of the gradient can be costly (and useless) if $N$ is
-large. One can act by random batches of data.\
-At each step, only a proportion $0 < p \leq 1$ of the training set is
-used. The batch set is selected at random.\
-Using random batches can also diminish the risk of overfitting since it
-takes more time for the model to see all the data set.
+large. One can act by random batches of data. At each step, only a proportion $0 < p \leq 1$ of the training set is used. The batch set is selected at random. Using random batches can also diminish the risk of overfitting since it takes more time for the model to see all the data set.
 
 ![](../Graphs/Bagging_Boosting_Illustrations.png){width="13cm" fig-align="center"}
 

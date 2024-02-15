@@ -18,14 +18,14 @@ $y$-axes.\
 **Example:** `iris` data has $4$ features (species not used). The data
 cannot be represented on a single graph.
 
-![](../../Graphs/Iris_raw.png){width="11cm" fig-align="center"}
+![](../../Graphs/Iris_raw.png){width=100% fig-align="center"}
 
 Observation: `Petal.Length` and `Petal.Width` are highly correlated: if
 we know one, we can predict the other one.\
 To simplify the representation, we do not need these two features:
 replace them by their average `Petal.WL = (Petal.W+Petal.L)/2`:
 
-![](../../Graphs/Iris_raw2.png){width="10cm" fig-align="center"}
+![](../../Graphs/Iris_raw2.png){width=75% fig-align="center"}
 
 Same observation for `Petal.WL` and `Sepal.Length`\...
 
@@ -50,17 +50,9 @@ the variance along it. That is, $a$ should be the solution to
 $$\begin{aligned}
 \max_a &&Var (a_1 x_{1} + \cdots + a_p x_{p})\\
 s.t.&& \sum_j a_j^2 = 1\end{aligned}$$ where the variance is computed on
-the data set.\
-The constraint on $a$ is here because $a$ is only indicating a direction
-and should therefore be scaled to 1.
+the data set. The constraint on $a$ is here because $a$ is only indicating a direction and should therefore be scaled to 1. As an example, let's look at a toy case where we only have 2 features $x_1$ and $x_2$ showed below. We want to represent the data in one dimension, that is, along a line (dimension reduction). The dashed line shows more variability of the data and is a better principal component than the solid line.
 
-As an example, let's look at a toy case where we only have 2 features
-$x_1$ and $x_2$ showed below. We want to represent the data in one
-dimension, that is, along a line (dimension reduction). The dashed line
-shows more variability of the data and is a better principal component
-than the solid line.\
-
-![](../../Graphs/PCA_Illustr.png){width="8cm" fig-align="center"}
+![](../../Graphs/PCA_Illustr.png){width=40% fig-align="center"}
 
 ### PCA: the first component
 
@@ -89,9 +81,7 @@ decomposition** of the variance matrix of the data.
 
 Before computing the PCA, the data can be standardized. Like any
 standardization, this is a choice of the user, which depends strongly on
-the application and on the scale (units) of the data.\
-When the data are first standardized, the **spectral decomposition** is
-made on the correlation matrix of the data.
+the application and on the scale (units) of the data. When the data are first standardized, the **spectral decomposition** is made on the correlation matrix of the data.
 
 ### PCA: projection
 
@@ -113,7 +103,7 @@ proportion of the total variance explained by the PC $z_j$ is thus
 $$var(z_j)/\sum_{j'=1}^p var(z_{j'}).$$ It represents how well the data
 are represented on the component $z_j$.
 
-![](../../Graphs/Iris_pca.png){width="7cm" fig-align="center"}
+![](../../Graphs/Iris_pca.png){width=50% fig-align="center"}
 
 ### PCA: example
 
@@ -136,10 +126,10 @@ Together, PC1 and PC2 explain $95.8\%$ of the variation of the data. The
 scatter plot matrix shows that it is a good representation of the data
 with only two dimensions (PC$_1$, PC$_2$).
 
-Correlation between the PC and the features $x$ can be computed to see
+The correlation between the PC and the features $x$ can be computed to see
 how is PC is correlated to each features.
 
-![](../../Graphs/Iris_pcacircle.png){width="10cm" fig-align="center"}
+![](../../Graphs/Iris_pcacircle.png){width=60% fig-align="center"}
 
 ### PCA: the circle of correlations
 
@@ -168,12 +158,12 @@ Another view is the **$cos^2$** graph. It is interpreted as the quality
 of the representation of the feature by the dimension. Of course this is
 intimately related to the correlations.
 
-![](../../Graphs/Iris_cos2.png){width="8cm" fig-align="center"}
+![](../../Graphs/Iris_cos2.png){width=60% fig-align="center"}
 
 The **biplot** shows a **map of the individuals** in the dimensions and
 adds the circle of correlations.
 
-![](../../Graphs/Iris_biplot.png){width="9cm" fig-align="center"}
+![](../../Graphs/Iris_biplot.png){width=60% fig-align="center"}
 
 ### PCA: the biplot
 
@@ -192,16 +182,13 @@ For example, we can conclude that
 ### PCA: number of components
 
 Here, two components explain more than $95\%$ of the data variability.
-Sometimes, more components are needed.\
-One way to set the number of components is to target the proportion of
-explained variance: often between $75\%$ and $95\%$.\
+Sometimes, more components are needed. One way to set the number of components is to target the proportion of explained variance: often between $75\%$ and $95\%$.\
 If the features are independent, this number is likely to be large. If
-the features are correlated, this number will be smaller.\
-The **screeplot** may help.
+the features are correlated, this number will be smaller. The **screeplot** may help.
 
 ### PCA: the screeplot
 
-![](../../Graphs/Iris_scree.png){width="9cm" fig-align="center"}
+![](../../Graphs/Iris_scree.png){width=60% fig-align="center"}
 
 ### PCA and machine learning
 
@@ -238,10 +225,7 @@ Much less known than PCA, FAMD is a mixture of two techniques
 -   **Multiple Correspondence Analysis** (MCA) for categorical features.
 
 For sake of time, we do not see MCA in detail in this course. The focus
-is made on the interpretation and its use for dimensional reduction.\
-One must pay attention to the subtleties of different interpretations
-between the part of numerical features (PCA) and the one for categorical
-features (MCA).
+is made on the interpretation and its use for dimensional reduction. One must pay attention to the subtleties of different interpretations between the part of numerical features (PCA) and the one for categorical features (MCA).
 
 To illustrate, we create an artificial `iris` data containing
 
@@ -253,17 +237,17 @@ To illustrate, we create an artificial `iris` data containing
 
 The association between length and width are shown on the tables:
 ```{.r}
-              Width
-    Length      Width_L Width_M Width_S
-      Length_L  0.8889  0.2000  0.0000
-      Length_M  0.1111  0.5375  0.2558
-      Length_S  0.0000  0.2625  0.7442
+            Width
+Length      Width_L Width_M Width_S
+    Length_L  0.8889  0.2000  0.0000
+    Length_M  0.1111  0.5375  0.2558
+    Length_S  0.0000  0.2625  0.7442
 
-              Width
-    Length     Width_L Width_M Width_S
-      Length_L 0.60000 0.40000 0.00000
-      Length_M 0.05263 0.75439 0.19298
-      Length_S 0.00000 0.39623 0.60377
+            Width
+Length     Width_L Width_M Width_S
+    Length_L 0.60000 0.40000 0.00000
+    Length_M 0.05263 0.75439 0.19298
+    Length_S 0.00000 0.39623 0.60377
 ```
 
 MCA[^1] builds artificial dimension that locates width and length
@@ -279,35 +263,33 @@ modalities reflecting the previous associations:
 Similar to the PCA, these dimensions can be represented on a map,
 associated to the modalities of the variables, explains a proportion of
 the information of the data. Unlike PCA, the information is not measure
-by variance but by the **inertia**.\
-Because proportions sum up to 1, there are $(3-1)\times (3-1) = 4$
-possible dimensions.
+by variance but by the **inertia**. Because proportions sum up to 1, there are $(3-1)\times (3-1) = 4$ possible dimensions.
 
 The scree plot shows the percentage of inertia explained by each
 dimension.
 
-![](../../Graphs/FAMD_Screeplot.png){width="7cm" fig-align="center"}
+![](../../Graphs/FAMD_Screeplot.png){width=40% fig-align="center"}
 
 The plots of the contributions shows the contributions of each variable
 (Length and Width) to the dimensions (1 and 2).
 
-![](../../Graphs/FAMD_contrib_xy.png){width="6cm" fig-align="center"}
+![](../../Graphs/FAMD_contrib_xy.png){width=40% fig-align="center"}
 
-![](../../Graphs/FAMD_contrib_x.png){width="4.5cm" fig-align="center"}
+![](../../Graphs/FAMD_contrib_x.png){width=40% fig-align="center"}
 
-![](../../Graphs/FAMD_contrib_y.png){width="4.5cm" fig-align="center"}
+![](../../Graphs/FAMD_contrib_y.png){width=40% fig-align="center"}
 
 The plot of the modalities locates the modalities of each variable on
 the map of the dimensions.
 
-![](../../Graphs/FAMD_quali.png){width="7cm" fig-align="center"}
+![](../../Graphs/FAMD_quali.png){width=40% fig-align="center"}
 
 ### Only categorical data
 
 The biplot of the individuals and modalities relates the observations.
 Below we added the species[^2].
 
-![](../../Graphs/FAMD_biplot_species.png){width="7cm" fig-align="center"}
+![](../../Graphs/FAMD_biplot_species.png){width=70% fig-align="center"}
 
 ### Mixed data
 
@@ -321,7 +303,7 @@ correlation between the features. Auto-encoder are neural network. The
 idea is to train a model that recovers an instance with an intermediate
 layer of lower dimension than the number of features.\
 
-![](../../Graphs/autoencod_illustr.png){width="7cm" fig-align="center"}
+![](../../Graphs/autoencod_illustr.png){width=40% fig-align="center"}
 
 ### encoder + decoder = autoencoder
 
@@ -357,28 +339,21 @@ In ML, often autoencoder are used to
 -   Represent the data (dimension reduction)
 
 Unlike PCA, autoencoder do not provide interpretation of the dimensions,
-which dimension is the most important, etc.\
-On the other hand, autoencoders can produce better final representation
-of the data: the recovery of $X$ with $k$ components is better than with
-PCA.
+which dimension is the most important, etc. On the other hand, autoencoders can produce better final representation of the data: the recovery of $X$ with $k$ components is better than with PCA. Like PCA make two-dimensional plots to discover pattern. Below is autoencoder with 3-node intermediate-layer:
 
-Like PCA make two-dimensional plots to discover pattern. Below,
-autoencoder (see example file) with 3-node intermediate-layer:
-
-![](../../Graphs/Iris_AE_embed.png){width="9cm" fig-align="center"}
+![](../../Graphs/Iris_AE_embed.png){width=50% fig-align="center"}
 
 ### Interpretability
 
 Relate each component of $h(X)$ to each component of $X$ using variable
-importance (or another technique). Below, Node 1 to 3 (left to right;
-top to bottom).
+importance (or another technique). Below, Node 1 to 3 (left to right).
 
-::: {#fig-elephants layout-ncol=3}
-![](../../Graphs/Iris_AE_VImp1.png){width="5cm" fig-align="center"}
+::: {layout-ncol=3}
+![](../../Graphs/Iris_AE_VImp1.png){fig-align="center"}
 
-![](../../Graphs/Iris_AE_VImp2.png){width="5cm" fig-align="center"}
+![](../../Graphs/Iris_AE_VImp2.png){fig-align="center"}
 
-![](../../Graphs/Iris_AE_VImp3.png){width="5cm" fig-align="center"}
+![](../../Graphs/Iris_AE_VImp3.png){fig-align="center"}
 :::
 
 [^1]: With only categorical variables, FAMD is simply an MCA.

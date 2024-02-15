@@ -12,8 +12,7 @@ Concept
 =======
 
 A good model should have the good metric (predictions) and a good
-capacity to extrapolate outside the data base.\
-Consider the following stupid but feasible model to predict an instance:
+capacity to extrapolate outside the data base. Consider the following stupid but feasible model to predict an instance:
 
 -   if the instance is already in the data base, the predicted class is
     the same as the one in the data base.
@@ -27,16 +26,7 @@ useless for new instances.
 ### Overfitting
 
 This example illustrates that it is easy to build good predictions when
-the data base is available: predicting the past is easy.\
-In the context of a supervised learning, a model may be good at
-predicting the data base on which it is trained but not the future/other
-data points. In practice however, this **generalization capacity** is
-crucial.\
-A model having very good predictions on the data base, and a poor
-extrapolation capacity (for new instances) is said to **overfit** the
-data.\
-**Overfitting** is one of the worst enemy in machine learning: it looks
-like things are going well, when in fact no good new predictions can be
+the data base is available: predicting the past is easy. In the context of a supervised learning, a model may be good at predicting the data base on which it is trained but not the future/other data points. In practice however, this **generalization capacity** is crucial. A model having very good predictions on the data base, and a poor extrapolation capacity (for new instances) is said to **overfit** the data. **Overfitting** is one of the worst enemy in machine learning: it looks like things are going well, when in fact no good new predictions can be
 obtained.
 
 Training and test sets
@@ -94,15 +84,15 @@ A data set with 1000 instances,
 -   The apparent followed by test confusion matrices:
 
 ```{.r}
-                  Reference
-        Prediction Bad Good
-              Bad   30   19
-              Good 195  506
+            Reference
+Prediction   Bad Good
+        Bad   30   19
+        Good 195  506
 
-                  Reference
-        Prediction Bad Good
-              Bad    6    7
-              Good  69  168
+            Reference
+Prediction   Bad Good
+        Bad    6    7
+        Good  69  168
 ```
 
 The apparent and test accuracies are
@@ -136,7 +126,7 @@ selection, early stopping, etc. See below.
 
 ### Illustration
 
-![](../Graphs/Validation_set.png){width="8cm" fig-align="center"}
+![](../Graphs/Validation_set.png){width=50% fig-align="center"}
 
 Repeated splits
 ===============
@@ -171,7 +161,7 @@ their average: $$\hat{S} = \frac{1}{K}\sum_{k=1}^K S_k.$$ In addition,
 these metrics are used to estimate the standard deviation[^3] of
 $\hat{S}$.
 
-![](../Graphs/10-CV.png){width="10cm" fig-align="center"}
+![](../Graphs/10-CV.png){width=50% fig-align="center"}
 
 ### Example
 
@@ -254,8 +244,7 @@ In practice, one bootstrap step consists of
 
 The previous bootstrap step is repeated a large number of times;
 typically 500 to 10'000, depending on the time it takes (computation
-power).\
-The final estimate is the average of each $\hat{S}$. Standard deviation
+power). The final estimate is the average of each $\hat{S}$. Standard deviation
 can be also computed.\
 
 ### Bootstrap samples
@@ -286,9 +275,7 @@ Solving the overfitting problem
 ### Solving overfitting
 
 Comparing apparent and test metrics allows to detect overfitting only.
-How can we improve the situation?\
-A model that overfits the training data set is too flexible/complex. We
-can use the methods seen for each model to try to simplify them:
+How can we improve the situation? A model that overfits the training data set is too flexible/complex. We can use the methods seen for each model to try to simplify them:
 
 -   Linear and logistic regression: variable selection and/or use $L_1$
     and $L_2$ penalization.
@@ -303,12 +290,7 @@ can use the methods seen for each model to try to simplify them:
 ### Hyperparameters
 
 Some of these methods require to set parameters: penalization parameter,
-cost parameter, others.\
-These are called **hyperparameters**.Hyperparameters are structural
-parameters or \"pseudo-parameters\" of the models.\
-An informal definition is \"whatever cannot be optimized by the training
-algorithm\".\
-To set these parameters is called **tuning**.
+cost parameter, others. These are called **hyperparameters**.Hyperparameters are structural parameters or \"pseudo-parameters\" of the models. An informal definition is \"whatever cannot be optimized by the training algorithm\". To set these parameters is called **tuning**.
 
 ### Tuning hyperparameters
 
@@ -328,9 +310,7 @@ This approach can be done on
 
 The choice of the hyperparameters must not be done on the test: a part
 of the information contained in the test set may *leaks* to the model
-choice and thus to the training.\
-Avoid any **information leakage**: the **test set must not be seen** by
-the model, at any stage.
+choice and thus to the training. Avoid any **information leakage**: the **test set must not be seen** by the model, at any stage.
 
 Solving the unbalance problem
 =============================
@@ -339,8 +319,10 @@ Solving the unbalance problem
 are unbalanced. E.g., doctor visit data have 4 times more "No" than
 "Yes".\
 
-      No  Yes 
-    4141 1049
+```{.r}
+No   Yes 
+4141 1049
+```
 
 During the training, the model favors the predictions of the "No" to
 reach a better accuracy.
@@ -350,14 +332,14 @@ reach a better accuracy.
 E.g., the logistic regression, gives:
 
 ```{.r}
-    Confusion Matrix and Statistics
-    [...]
-                   Accuracy : 0.8091          
-    [...]                                          
-                Sensitivity : 0.9771          
-                Specificity : 0.1435          
-    [...]
-          Balanced Accuracy : 0.5603
+Confusion Matrix and Statistics
+[...]
+                Accuracy : 0.8091          
+[...]                                          
+            Sensitivity : 0.9771          
+            Specificity : 0.1435          
+[...]
+        Balanced Accuracy : 0.5603
 ```
 
 This problem is **detected** with
@@ -382,14 +364,14 @@ this optimization is always at at cost of a lower accuracy.
 Example after optimization:
 
 ```{.r}
-    Confusion Matrix and Statistics
-    [...]                     
-                   Accuracy : 0.6991          
-    [...]
-                Sensitivity : 0.7186          
-                Specificity : 0.6220          
-    [...]
-          Balanced Accuracy : 0.6703  
+Confusion Matrix and Statistics
+[...]                     
+                Accuracy : 0.6991          
+[...]
+            Sensitivity : 0.7186          
+            Specificity : 0.6220          
+[...]
+        Balanced Accuracy : 0.6703  
 ```
 
 Sensitivity decreased, specificity increased. Overall BA increased (and
@@ -422,23 +404,23 @@ Note: **the test set must NOT be balanced**.
 
 Examples, with sub-sampling
 ```{.r}
-                   Accuracy : 0.7049          
-    [...]
-                Sensitivity : 0.7331          
-                Specificity : 0.5933          
-    [...]
-          Balanced Accuracy : 0.6632          
+                Accuracy : 0.7049          
+[...]
+            Sensitivity : 0.7331          
+            Specificity : 0.5933          
+[...]
+        Balanced Accuracy : 0.6632          
 ```
 
 and with re-sampling
 
 ```{.r}
-                   Accuracy : 0.7097       
-    [...]
-                Sensitivity : 0.7391          
-                Specificity : 0.5933          
-    [...]
-          Balanced Accuracy : 0.6662          
+                Accuracy : 0.7097       
+[...]
+            Sensitivity : 0.7391          
+            Specificity : 0.5933          
+[...]
+        Balanced Accuracy : 0.6662          
 ```
 
 The results are similar to tuning of $\lambda$.

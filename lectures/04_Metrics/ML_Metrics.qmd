@@ -15,8 +15,7 @@ Concept
 ### Concept
 
 A **metric** (score) is a numerical value measuring the performance of a
-model\
-To compare the different models, the metric *only* depends on the
+model. To compare the different models, the metric *only* depends on the
 observed and predicted values or classes. There are two types of
 metrics: for regression and for classification.
 
@@ -44,11 +43,11 @@ The **confusion matrix** reports the frequencies of \"observed\" vs
 iris data:\
 
 ```{.r}
-                Reference
-    Prediction   setosa versicolor virginica
-      setosa         50          0         0
-      versicolor      0         48         2
-      virginica       0          2        48
+            Reference
+Prediction   setosa versicolor virginica
+    setosa         50          0         0
+    versicolor      0         48         2
+    virginica       0          2        48
 ```
 
 All the metrics based on predicted classes can be computed from the
@@ -71,13 +70,13 @@ Information Rate**.
 
 With the iris data, we have the following observations from the model:
 
-![](../Graphs/Kappa_Obs.png){width="12cm" fig-align="center"}
+![](../Graphs/Kappa_Obs.png){width=65% fig-align="center"}
 
 The **observed accuracy** is $A_o = 0.973$.
 
 A random model would have balanced proportions in each cell:
 
-![](../Graphs/Kappa_Exp.png){width="12cm" fig-align="center"}
+![](../Graphs/Kappa_Exp.png){width=65% fig-align="center"}
 
 where $$0.111 = 0.333\times 0.333.$$ The expected accuracy is
 $A_e = 0.111+0.111+0.111 = 0.333$.\
@@ -139,10 +138,10 @@ A logistic regression was fitted to a data set[^3]. The positive class
 is "Good". There are 700 \"Good\" and 300 \"Bad\" in the data set.\
 
 ```{.r}
-          Pred
-    Obs    Good Bad
-      Good  686  14
-      Bad   273  27
+        Pred
+Obs    Good Bad
+    Good  686  14
+    Bad   273  27
 ```
 
 Then, $$TP=686, \, FP=273, \, TN=27, \, FN=14\,$$ and
@@ -225,8 +224,7 @@ The larger $F_1$, the better the model.
 
 The **Receiver Operating Characteristic** curve shows the sensitivities
 and the specificities of a model when *the threshold for the prediction
-varies*.\
-E.g., the sensitivity is 0.98, and the specificity is 0.09 with a
+varies*. E.g., the sensitivity is 0.98, and the specificity is 0.09 with a
 threshold of $\lambda=0.5$: $$f(x_i;\theta)=
 \left\{\begin{array}{ll}
 1 & \mbox{if } p(x_i;\theta) \geq 0.5,\\
@@ -244,19 +242,14 @@ The ROC curve is obtained when $\lambda$ varies between 0 and 1,
 $Spec=x$, and $y=Sens$. The specificies are usually in the reverse
 order.
 
-![](../Graphs/ROC_curve.png){width="5cm" fig-align="center"}
+![](../Graphs/ROC_curve.png){width=35% fig-align="center"}
 
 ### ROC curve and AUC
 
 A perfect model have large sensitivity **and** specificity **for all**
 $\lambda$ (except $0$ and $1$). This corresponds to a single point in
-the upper left corner of the ROC.\
-The diagonal in gray corresponds to the random model. The further the
-curve up that diagonal, the better the model.\
-The **Area Under the Curve** (AUC) is the area between the diagonal and
-the ROC curve. The larger it is, the better the model is.\
-E.g., $AUC=0.628$.\
-The ROC curve provides a way to **tune** the threshold for the
+the upper left corner of the ROC. The diagonal in gray corresponds to the random model. The further the curve up that diagonal, the better the model. The **Area Under the Curve** (AUC) is the area between the diagonal and
+the ROC curve. The larger it is, the better the model is.E.g., $AUC=0.628$. The ROC curve provides a way to **tune** the threshold for the
 prediction under unbalanced class: select the threshold with maximum
 balanced accuracy (Youden Index point). See later.
 

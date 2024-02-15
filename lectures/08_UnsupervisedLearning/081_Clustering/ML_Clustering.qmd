@@ -14,10 +14,7 @@ Concepts
 ### Clusters
 
 A **cluster** is a group of instances that share some common
-characteristics measured by the features. They are **similar**.\
-Unlike classification (supervised learning) where groups are already
-defined, clustering aims at finding groups that **do not exist a
-priori**.
+characteristics measured by the features. They are **similar**. Unlike classification (supervised learning) where groups are already defined, clustering aims at finding groups that **do not exist a priori**.
 
 ### Hierarchical clustering and partitioning
 
@@ -111,10 +108,7 @@ $$\sqrt{(5.1-4.9)^2+(3.5-3.0)^2+(1.4-1.4)^2+(0.2-0.2)^2}=0.54$$
 When categorical features are present in the data set, the **Gower
 index** can be used. It combines dissimilarities to build a global one:
 $$d_{ij} = \frac{\sum_{k=1}^p w_k d_{ij,k}}{\sum_{k=1}^p w_k}$$ is the
-dissimilarity between instances $i$ and $j$ over the $p$ features.\
-The weight $w_k$ are always 1, except if $x_ik$ or $x_jk$ is missing, in
-which case it is $0$. The dissimilarity $d_{ij,k}$ depends on the type
-of the feature $x_k$:
+dissimilarity between instances $i$ and $j$ over the $p$ features. The weight $w_k$ are always 1, except if $x_ik$ or $x_jk$ is missing, in which case it is $0$. The dissimilarity $d_{ij,k}$ depends on the type of the feature $x_k$:
 
 -   Numerical: $$d_{ij,k} = |x_{ik} - x_{jk}|/r_k,$$ where $r_k$ is the
     range of variable $k$,
@@ -179,13 +173,12 @@ Source:
 
 AGNES is **agglomerating** because it starts from individual points and
 run up to a unique cluster, merging clusters one after the other. It is called \"hierarchical\" because when an instance is attached to a
-group, it cannot be separated from it anymore.\
+group, it cannot be separated from it anymore.
+
 There also exist **divisive** hierarchical clustering, **DIANA**, for
 DIvise ANAlysis. It starts from one unique cluster with all the
 instances, and splits clusters one after the other, going down to one
-instance per cluster.\
-Divise clustering is considered complex because at each step there exist
-a lot of possibilities to split a cluster.
+instance per cluster. Divise clustering is considered complex because at each step there exist a lot of possibilities to split a cluster.
 
 Partitioning methods
 ====================
@@ -193,11 +186,8 @@ Partitioning methods
 ### Partitioning methods
 
 Unlike the hierarchical clustering, **partitioning methods** apply for a
-given number of clusters.\
-From an initial assignment of instances to $k$ clusters, the method
-allocates the instances to clusters such that a given criterion is
-optimized.\
-Two popular methods are
+given number of clusters. From an initial assignment of instances to $k$ clusters, the method allocates the instances to clusters such that a given criterion is
+optimized. Two popular methods are
 
 -   The **K-means**.
 
@@ -217,42 +207,37 @@ For $k$ clusters:
     satisfied.
 
 The K-means is suitable for **numerical features only**. The Euclidean
-distance is often used.
+distance is often used. Below is an illustration on simulated data, with $k=2$, and the data ($p=2$)
 
-Illustration on simulated data, with $k=2$. Below, the data ($p=2$)
-
-![](../../Graphs/kmeans1.png){width="7cm" fig-align="center"}
+![](../../Graphs/kmeans1.png){width=35% fig-align="center"}
 
 First step, each instance is randomly assigned (circles and triangles).
 The centers are computed (dots).
 
-![](../../Graphs/kmeans2.png){width="7cm" fig-align="center"}
+![](../../Graphs/kmeans2.png){width=35% fig-align="center"}
 
 Next step, instances are re-assigned to the closest center. Then, new
 centers are computed. The clustering is already finished.
 
-![](../../Graphs/kmeans3.png){width="7cm" fig-align="center"}
+![](../../Graphs/kmeans3.png){width=35% fig-align="center"}
 
 ### K-means
 
 Illustration for $k=3$ clusters.
 
-![](../../Graphs/kmeans4.png){width="7cm" fig-align="center"}
+![](../../Graphs/kmeans4.png){width=35% fig-align="center"}
 
 ### Partitioning Around the Medoid
 
 **PAM** extends the K-mean to **features of mixed types** (numerical and
 categorical) by extending the definition of the center of the cluster to
-**a medoid**.\
-The medoid of cluster is the most representative instance belonging to
-it.\
-The medoid of a cluster $A$ is the instance with smallest sum of
+**a medoid**. The medoid of cluster is the most representative instance belonging to
+it. The medoid of a cluster $A$ is the instance with smallest sum of
 dissimilarities with the other instances in the cluster $A$:
 $$m_A = \arg \min_{x \in A} \sum_{y\in A; y\neq x} d_{xy}$$ Unlike for
 the K-means, where the center is computed by averaging the features
 values (and thus may not be an instance of the data base), the medoid is
-an instance of its cluster.\
-Therefore, PAM can be used for numerical and categorical features.
+an instance of its cluster. Therefore, PAM can be used for numerical and categorical features.
 
 With the Italian cities, consider the cluster {BA, NA, RM}. Then the
 medoı̈d is NA. Indeed, the sum of dissimilarities are
@@ -263,8 +248,7 @@ medoı̈d is NA. Indeed, the sum of dissimilarities are
 
 -   RM: $d_{RM,BA}+d_{RM,NA} = 212+219=631$
 
-Thus NA is the most representative city of this cluster.\
-Note that the medoı̈d of cluster {MI, TO} is either MI or TO (at random).
+Thus NA is the most representative city of this cluster. Note that the medoı̈d of cluster {MI, TO} is either MI or TO (at random).
 
 Number of clusters
 ==================
@@ -273,10 +257,8 @@ Number of clusters
 
 The number of clusters is often an **arbitrary choice** guided by the
 domain and the business application. This approach should be preferred
-if possible.\
-It is also possible to select of the number of clusters with an index.
-There are a lot of such index[^2].\
-In this course, we see
+if possible. It is also possible to select of the number of clusters with an index.
+There are a lot of such index[^2]. In this course, we see
 
 -   The **total within-cluster sum of squares** (TWSS),
 
@@ -293,30 +275,23 @@ $$\quad W_C=\sum_{i \in C} \Vert x_i - x_C\Vert^2 = \sum_{i \in C}\sum_{j=1}^p (
 The TWSS is the sum of all $W_k$ over the $K$ clusters $C_1,\ldots,C_K$,
 $$\sum_{k=1}^K W_{C_k}$$ The Each time a cluster is created
 ($K \rightarrow K+1$), TWSS diminishes. The number of clusters is
-selected at **an elbow** on the graph.
+selected at **an elbow** on the graph. Below is a plot of clustering on data with TWSS (dendrogram with complete linkage):
 
-Clustering on data with TWSS (dendrogram with complete linkage):
-
-![](../../Graphs/Nb_agnes_hc_wss.png){width="8cm" fig-align="center"}
+![](../../Graphs/Nb_agnes_hc_wss.png){width=50% fig-align="center"}
 
 $k=3$ is a good choice here.
 
 The **silhouette** measures how \"well\" an instance is within its
-cluster.\
-Consider an instance $x$ assigned to cluster $C$. Let $d(x,A)$ be **the
+cluster. Consider an instance $x$ assigned to cluster $C$. Let $d(x,A)$ be **the
 dissimilarity from $x$ to any cluster $A$**: the average dissimilarity
 between $x$ and all the instances in cluster $A$:
 $$d(x,A) = \frac{1}{|A|} \sum_{y\in A} d_{xy}.$$ In particular,
-**$d(x, C)$ is the dissimilarity from $x$ to its cluster**.\
-A small $d(x,C)$ indicates a good clustering of $x$ within its cluster
-$C$.
+**$d(x, C)$ is the dissimilarity from $x$ to its cluster**. A small $d(x,C)$ indicates a good clustering of $x$ within its cluster $C$.
 
 Now, consider $d(x,\bar{C})$, the smallest average dissimilarities from
 $x$ to all the clusters to which it is not assigned (all but $C$):
 $$d(x,\bar{C}) = \min_{A\neq C} d(x, A)$$ This measures how $x$ is
-separated from the other clusters.\
-A large $d(x,\bar{C})$ indicates a good separation of $x$ from all the
-other clusters (i.e., the ones in which $x$ is not).
+separated from the other clusters. A large $d(x,\bar{C})$ indicates a good separation of $x$ from all the other clusters (i.e., the ones in which $x$ is not).
 
 ### Silhouette
 
@@ -328,8 +303,7 @@ The silhouette of $x$ combines
 
 The silhouette of $x$ is
 $$s_x=\frac{d(x,\bar{C})-d(x,C)}{\max\left\{d(x,\bar{C}),d(x,C)\right\}}$$
-The denominator ensures that $-1\leq s_x\leq 1$.\
-The larger $s_x$, the better the clustering of $x$ in $C$.
+The denominator ensures that $-1\leq s_x\leq 1$. The larger $s_x$, the better the clustering of $x$ in $C$.
 
 ### Average silhouette
 
@@ -337,19 +311,16 @@ The **average silhouette** of all instances is taken as a measure of the
 **goodness of the clustering**: $$s = \frac{1}{n}\sum_{i=1}^n s_{x_i}.$$
 The larger the average silhouette $s$, the better the clustering
 overall. The number of clusters $k$ should maximize the average
-silhouette.\
-The average silhouette should not be interpreted for itself.
+silhouette. The average silhouette should not be interpreted for itself. Now, we show a graph of clustering on data with average silhouette:
 
-Clustering on data with average silhouette:
-
-![](../../Graphs/Nb_pam_sil.png){width="8cm" fig-align="center"}
+![](../../Graphs/Nb_pam_sil.png){width=50% fig-align="center"}
 
 $k=8$ is a good choice here.
 
 A detailed analysis of the clustering can be obtained using the
 **silhouette plot** shows: the silhouettes of all the instances.
 
-![](../../Graphs/Polstress-silhou.png){width="8cm" fig-align="center"}
+![](../../Graphs/Polstress-silhou.png){width=80% fig-align="center"}
 
 Clusters 1 and 3 are well formed, Clusters 2 and 3 are less homogeneous.
 
@@ -357,17 +328,12 @@ Clusters 1 and 3 are well formed, Clusters 2 and 3 are less homogeneous.
 
 Policemen - PAM $k=4$
 
-![](../../Graphs/Polstress-silhou.png){width="8cm" fig-align="center"}
+![](../../Graphs/Polstress-silhou.png){width=80% fig-align="center"}
 
 ### Divisive hierarchical clustering
 
 AGNES is \"agglomerating\" because it starts from individual points and
-run up to a unique cluster, merging clusters one after the other.\
-It is called \"hierarchical\" because when an instance is attached to a
-group, it cannot be separated from it anymore.\
-\"Divisive\" hierarchical clustering also exists: **DIANA** for DIvise
-ANAlysis. It starts from one unique cluster with all the instances, and
-splits clusters one after the other, going down to one instance per
+run up to a unique cluster, merging clusters one after the other. It is called \"hierarchical\" because when an instance is attached to a group, it cannot be separated from it anymore. \"Divisive\" hierarchical clustering also exists: **DIANA** for DIvise ANAlysis. It starts from one unique cluster with all the instances, and splits clusters one after the other, going down to one instance per
 cluster.
 
 Interpretation
@@ -376,9 +342,7 @@ Interpretation
 ### Interpretation
 
 What are the features behind: what feature/combination of features makes
-that an individual belong to a cluster.\
-A usual method consists of representing each feature against the
-clusters.
+that an individual belong to a cluster. A usual method consists of representing each feature against the clusters.
 
 **Example**: 170 Swiss policemen recorded their emotional state in time
 using a questionnaire with ordinal scales (1 to 6). The features are
@@ -398,9 +362,7 @@ using a questionnaire with ordinal scales (1 to 6). The features are
 -   material support.
 
 There is nothing to predict: the interest is to discover patterns in the
-data.
-
-Below the scatter plots of the features (jittering points for more
+data. Below is the scatter plots of the features (jittering points for more
 readability).
 
 ![](../../Graphs/Polstress-scat-jit.png){width=60% fig-align="center"}

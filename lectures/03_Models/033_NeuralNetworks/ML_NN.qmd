@@ -114,7 +114,8 @@ Empirical rules are
 
 In the example, the sigmoid function was applied at each hidden layer
 node. This is not the only available choice: other functions can be
-used. These function are called **activation** functions.\
+used. These function are called **activation** functions.
+
 For the hidden layers, usual choices are
 
 -   (so-called) **Linear**; meaning no function (identity). $$g(x) = x$$
@@ -176,8 +177,7 @@ Training algorithm
 ### Gradient Descent
 
 The training is done by minimizing $\bar{\cal L}(\theta)$, which is an
-intensive computation.\
-The most used algorithm is the **gradient descent**.
+intensive computation. The most used algorithm is the **gradient descent**.
 
 -   Start at a random set of weights $\theta$,
 
@@ -195,9 +195,7 @@ weight (AdaGrad, RMSProp, Adam).
 ### Backpropagation
 
 The computation of the gradient $\nabla \bar{\cal L}(\theta)$ can be
-very heavy on a NN.\
-**Backpropagation** is a method exploiting the iterative structure of
-the network to compute this gradient.
+very heavy on a NN. **Backpropagation** is a method exploiting the iterative structure of the network to compute this gradient.
 
 ### Stochastic Gradient Descent
 
@@ -247,20 +245,14 @@ Model simplification
 By construction NN are complex models: they have a lot of weights. E.g.,
 even a small model with $10$ features, $2$ hidden layers with $(16,8)$
 nodes, and 3 classes has
-$$(10+1)\times 16 + (16+1)\times 8 + (8+1)\times 3 = 339$$ weights.\
-With such a large number of parameters, the model is at risk of
-overfitting the training set by learning too much. One can regularize
-the model in a similar way to linear and logistic regressions.
+$$(10+1)\times 16 + (16+1)\times 8 + (8+1)\times 3 = 339$$ weights. With such a large number of parameters, the model is at risk of overfitting the training set by learning too much. One can regularize the model in a similar way to linear and logistic regressions.
 
 ### Regularization
 
 The idea is to use $L_1$ and/or $L_2$ penalties on the loss during the
 training
-$$\bar{\cal L}(\theta) + \lambda_1 \sum_{j} |\theta_j| + \lambda_2 \sum_{j} \theta_j^2.$$
-Again there is no simple way to set the penalty parameters $\lambda_1$
+$$\bar{\cal L}(\theta) + \lambda_1 \sum_{j} |\theta_j| + \lambda_2 \sum_{j} \theta_j^2.$$ Again there is no simple way to set the penalty parameters $\lambda_1$
 and $\lambda_2$. Note that it is possible to have different penalty
-parameters in different layers.\
-Unlike regression and trees, and like SVM, this regularization can help
-to avoid overfitting but cannot be interpreted easily.
+parameters in different layers. Unlike regression and trees, and like SVM, this regularization can help to avoid overfitting but cannot be interpreted easily.
 
 [^1]: See logistic regression.

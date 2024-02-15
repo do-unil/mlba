@@ -19,7 +19,6 @@ website:
   repo-url: https://github.com/do-unil/mlba
   repo-actions: [source, issue]
   open-graph: true
-  reader-mode: true
 
   sidebar:
     # background: "#798b93"
@@ -130,7 +129,7 @@ website:
 
 format:
   html:
-    highlight-style: gruvbox
+    highlight-style: breeze
     theme:
       light: [cosmo, style/mlba.scss]
       dark: [cosmo, style/mlba.scss,style/dark.scss]

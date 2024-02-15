@@ -170,12 +170,11 @@ Models
 
 ### Models
 
-Supervised learning has two pillars: the data and the models.\
-A **model** is a trainable algorithm which takes features $x$ and
+Supervised learning has two pillars: the data and the models. A **model** is a trainable algorithm which takes features $x$ and
 returns an output $\hat{y}$, a prediction of the outcome $y$
 corresponding to $x$.
 
-![](../Graphs/ML1.png){width="10cm" fig-align="center"}
+![](../Graphs/ML1.png){width=50% fig-align="center"}
 
 Synonyms: **learners**, **algorithms**. For classification,
 **classifiers**.\
@@ -185,9 +184,7 @@ prediction at $x$.
 ### Model training
 
 The model is **trainable**. It can be trained to the available data to
-produce good predictions.\
-The model, which is itself an algorithm, comes with an training
-algorithm that can adapt the parameters of the model to optimize a
+produce good predictions. The model, which is itself an algorithm, comes with an training algorithm that can adapt the parameters of the model to optimize a
 quality criterion. The training algorithm is specific to the model and
 the criterion. For a given model, you may have several choices (several
 criteria, several training algorithms, etc.).
@@ -213,15 +210,8 @@ In general, each criterion leads to a different set of parameters and a
 different model. No one is uniformly better than the others. E.g., the
 OLS has a smaller MSE on the training data (better fit) but the LASSO is
 more robust against overfitting. It however comes at the cost of
-selecting $\lambda$.\
-Depending on the model, it can have several options for its training. It
-requires the *minimization* (resp. *maximization*) of a **loss** (resp.
-**goodness-of-fit**) function. It is **always data based**.\
-How the optimization is done is part of the so-called **black box**
-aspect of machine learning models: people don't know what is going on
-with the mathematics put in action when pushing the training button.\
-Fortunately, in this course, we will study some of these optimizations
-for some models.
+selecting $\lambda$. Depending on the model, it can have several options for its training. It requires the *minimization* (resp. *maximization*) of a **loss** (resp.
+**goodness-of-fit**) function. It is **always data based**. How the optimization is done is part of the so-called **black box** aspect of machine learning models: people don't know what is going on with the mathematics put in action when pushing the training button. Fortunately, in this course, we will study some of these optimizations for some models.
 
 Metrics
 =======
@@ -239,33 +229,19 @@ model predictions:
 -   Regression: $R^2$, RMSE, etc.
 
 Interpreting/comparing these metrics allows to evaluate the model
-performance.\
-A fundamental aspect of metrics is that **they are only based on the
+performance.A fundamental aspect of metrics is that **they are only based on the
 predictions and the data**. Thus, different models can be compared.
 
 ### Model selection
 
 A classical approach in ML consists of putting several models in
 competition. These cross-model comparisons are achieved comparing their
-metrics: the best model achieved the best metric.\
-E.g., you want to build a predictor for real estate prices from
-observable features ($m^2$, location, type, etc.). You train one linear
-regression with OLS, one linear regression with LASSO, one regression
-tree, one neural network, etc. You select the model with the lowest MSE
-on unseen data set aside before the training.\
-This is possible only because (again) **the metrics are only based on
-the predictions and the data**.
+metrics: the best model achieved the best metric. E.g., you want to build a predictor for real estate prices from observable features ($m^2$, location, type, etc.). You train one linear regression with OLS, one linear regression with LASSO, one regression tree, one neural network, etc. You select the model with the lowest MSE on unseen data set aside before the training. This is possible only because (again) **the metrics are only based on the predictions and the data**.
 
 ### Base model
 
 It is a good practice to have a **base model** to get a reference
-whether a final is worthy or not.\
-E.g., for the prediction of the real estate price, the base model could
-be the linear regression with OLS since this model is common. Suppose at
-the end of the selection, you select the neural network. The improvement
-over the OLS on the MSE is $1\%$.\
-Is it worth using a complex neural network, heavy to manipulate, not
-transparent, and energy consuming for such a small improvement ?
+whether a final is worthy or not. E.g., for the prediction of the real estate price, the base model could be the linear regression with OLS since this model is common. Suppose at the end of the selection, you select the neural network. The improvement over the OLS on the MSE is $1\%$. Is it worth using a complex neural network, heavy to manipulate, not transparent, and energy consuming for such a small improvement ?
 
 Overfitting
 ===========
@@ -289,8 +265,7 @@ E.g., for the real estate example, consider the silly model:
 -   If it is a new apartment, the predicted price is random.
 
 The MSE on the data base will be close to zero since the model predicts
-all observed data exactly.\
-However, this model is useless to the company that cannot use it for new
+all observed data exactly. However, this model is useless to the company that cannot use it for new
 apartments.
 
 ### Detect overfitting
@@ -313,17 +288,11 @@ More complex strategies exist like
 
 Data splitting is useful to select one model among several to avoid
 overfitting. However, if all the models are prompt to overfit, data
-splitting will not help.\
-Overfitting often results from too much complexity in the model.
-Complexity arises when the model has a lot of parameters. Avoiding
-overfitting can be obtained by constraining the model to less
-parameters, i.e., less complexity.\
-When a model is trained, **goodness-of-fit** and **complexity** are
+splitting will not help. Overfitting often results from too much complexity in the model. Complexity arises when the model has a lot of parameters. Avoiding
+overfitting can be obtained by constraining the model to less parameters, i.e., less complexity. When a model is trained, **goodness-of-fit** and **complexity** are
 taken into account. A complex model is prompt to overfit while a too
 simple model will be prompt to under-fit. The trained model should
-satisfy a **compromise** between these two.\
-E.g., LASSO is a constrained OLS that penalizes the complexity by
-shrinking toward $0$ some of the components of $\beta$.
+satisfy a **compromise** between these two. E.g., LASSO is a constrained OLS that penalizes the complexity by shrinking toward $0$ some of the components of $\beta$.
 
 Interpretation
 ==============
@@ -340,15 +309,13 @@ Interpretation in ML consists in
 -   Discover **how** the feature is related to the outcome. E.g., Does
     the price increase when you move away from the city center?
 
-Several techniques exist (see later).\
-Interpretation is often an aim in itself for ML (more important than the
-prediction task itself).
+Several techniques exist (see later). Interpretation is often an aim in itself for ML (more important than the prediction task itself).
 
 ### Supervised learning steps
 
-With training/test set splitting\
+With training/test set splitting
 
-![](../Graphs/ML_steps.png){width="9cm" fig-align="center"}
+![](../Graphs/ML_steps.png){width=50% fig-align="center"}
 
 Skills and tools
 ================

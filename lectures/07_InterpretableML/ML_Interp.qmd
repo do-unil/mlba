@@ -14,9 +14,7 @@ Concept
 ### Concept
 
 In ML, some models are interpretable (e.g., regression, CART) and some
-are not (e.g., SVM, NN).\
-So called **interpretable machine learning** is a set of techniques
-aiming at
+are not (e.g., SVM, NN). So called **interpretable machine learning** is a set of techniques aiming at
 
 -   Discover / rank variables or features by their importance on the
     predicted outcome,
@@ -30,9 +28,7 @@ Variable importance
 ### Variable importance
 
 **Variable importance** is a method that provides a measure of the
-importance of each feature for the model prediction.\
-The variables importance **for a trained model** can be evaluated for
-one variable by:
+importance of each feature for the model prediction. The variables importance **for a trained model** can be evaluated for one variable by:
 
 -   In the test set, shuffle the instances on one variable,
 
@@ -52,10 +48,7 @@ This is repeated for each variable.
 ![](../Graphs/VI_Illustr.png){width="10cm" fig-align="center"}
 
 If predictions using the right-hand side data are the same as the
-left-hand side ones, then Var2 is not important.
-
-With the iris data and a CART, trained on $80\%$ of the data (test set
-at $20\%$). The tree is
+left-hand side ones, then Var2 is not important. With the iris data and a CART, trained on $80\%$ of the data (test set at $20\%$). The tree is
 
 ![](../Graphs/VarImp_iris_CART.png){width="6cm" fig-align="center"}
 
@@ -65,30 +58,44 @@ important features (except in case of missing data).
 To measure this, in the test set, we shuffle Petal length. The accuracy
 of the shuffled test set is much lower than the original one (left:
 original test set; right: modified test set). This confirms that Petal
-length is essential for a good prediction of the species by the model.\
+length is essential for a good prediction of the species by the model.
 
-0.5 ![](../Graphs/VarImp_iris_acc_orig.png){width="6.5cm" fig-align="center"}
+::: {layout-ncol=2}
 
-0.5 ![](../Graphs/VarImp_iris_acc_PLsh.png){width="6.5cm" fig-align="center"}
+![](../Graphs/VarImp_iris_acc_orig.png){fig-align="center"}
+
+
+![](../Graphs/VarImp_iris_acc_PLsh.png){fig-align="center"}
+
+:::
 
 On the other hand, the Sepal length does not appear on the graph. And,
 indeed, it is not important for the prediction as shown below.\
 
-0.5 ![](../Graphs/VarImp_iris_acc_orig.png){width="6.5cm" fig-align="center"}
 
-0.5 ![](../Graphs/VarImp_iris_acc_SLsh.png){width="6.5cm" fig-align="center"}
+::: {layout-ncol=2}
+
+![](../Graphs/VarImp_iris_acc_orig.png){fig-align="center"}
+
+![](../Graphs/VarImp_iris_acc_SLsh.png){fig-align="center"}
+
+:::
 
 For tree, the importance of a variable can be read to some extend
 directly on the graph (if it is not too large). For a model like SVM, it
 is not. But we can still make the same analysis by shuffling the
 instances for a given feature (top: original; left: Petal length; right:
-Sepal length).\
+Sepal length).
 
-![](../Graphs/VarImp_iris_acc_svm.png){width="5cm" fig-align="center"}
+![](../Graphs/VarImp_iris_acc_svm.png){width=50% fig-align="center"}
 
-0.5 ![](../Graphs/VarImp_iris_acc_svm_PL.png){width="5cm" fig-align="center"}
+::: {layout-ncol=2}
 
-0.5 ![](../Graphs/VarImp_iris_acc_svm_SL.png){width="5cm" fig-align="center"}
+![](../Graphs/VarImp_iris_acc_svm_PL.png){fig-align="center"}
+
+![](../Graphs/VarImp_iris_acc_svm_SL.png){fig-align="center"}
+
+:::
 
 ### Several versions
 
@@ -118,12 +125,14 @@ In `R`,
 
 VI on SVM estimated on cross-entropy, repeated 100 times.
 
-    library(iml)
-    iris.iml <- Predictor$new(iris.svm, data = iris.te[,-5], y = iris.te[,5])
-    iris.imp <- FeatureImp$new(iris.iml, loss = "ce", n.repetitions = 100)
-    plot(iris.imp)
+```{.r}
+library(iml)
+iris.iml <- Predictor$new(iris.svm, data = iris.te[,-5], y = iris.te[,5])
+iris.imp <- FeatureImp$new(iris.iml, loss = "ce", n.repetitions = 100)
+plot(iris.imp)
+```
 
-![](../Graphs/VarImp_iml_ce_svm.png){width="8cm" fig-align="center"}
+![](../Graphs/VarImp_iml_ce_svm.png){width=40% fig-align="center"}
 
 ### Example: `iml`
 
@@ -134,34 +143,40 @@ plot.
 
 VI on SVM estimated on AUC.
 
-    library(caret)
-    trctrl <- trainControl(method = "repeatedcv", repeats= 3, number=5)
-    iris.caret <- caret::train(form=Species ~., data = iris.tr, 
-                        method = "svmLinear", 
-                        trControl=trctrl)
-    plot(varImp(iris.caret))
+```{.r}
+library(caret)
+trctrl <- trainControl(method = "repeatedcv", repeats= 3, number=5)
+iris.caret <- caret::train(form=Species ~., data = iris.tr, 
+                    method = "svmLinear", 
+                    trControl=trctrl)
+plot(varImp(iris.caret))
+```
 
-![](../Graphs/VarImp_caret_svm.png){width="8cm" fig-align="center"}
+![](../Graphs/VarImp_caret_svm.png){width=40% fig-align="center"}
 
 ### Example: `caret` and `VarImp`
 
 Since no specific method was developped for SVM, a **filter-based**
-method is implemented. From the help of `VarImp`:\
+method is implemented. From the help of `VarImp`:
 
-    For classification, [...] the area under the ROC curve [...] is used 
-    as the measure of variable importance. For multi-class outcomes, the problem 
-    is decomposed into all pair-wise problems and the area under the curve is
-    calculated for each class pair (i.e class 1 vs. class 2, class 2 vs. 
-    class 3 etc.). For a specific class, the maximum area under the 
-    curve across the relevant pair-wise AUC's is used as the variable importance 
-    measure.
+```{.md}
+For classification, [...] the area under the ROC curve [...] is used 
+as the measure of variable importance. For multi-class outcomes, the problem 
+is decomposed into all pair-wise problems and the area under the curve is
+calculated for each class pair (i.e class 1 vs. class 2, class 2 vs. 
+class 3 etc.). For a specific class, the maximum area under the 
+curve across the relevant pair-wise AUC's is used as the variable importance 
+measure.
+```
 
 Even for one model, there may exist lots of implementations. Below, we
 give one example: `VarImp` for CART. CART is recognized as *Recursive
-Partitioning* (from `rpart`). From the help of `VarImp`:\
+Partitioning* (from `rpart`). From the help of `VarImp`:
 
-    The reduction in the loss function (e.g. mean squared error) attributed 
-    to each variable at each split is tabulated and the sum is returned. 
+```{.md}
+The reduction in the loss function (e.g. mean squared error) attributed 
+to each variable at each split is tabulated and the sum is returned. 
+```
 
 -   At each split, the reduction of loss due to the best split on each
     variable is extracted.
@@ -175,8 +190,7 @@ Partitioning* (from `rpart`). From the help of `VarImp`:\
 ![](../Graphs/VI_iris_rp.png){width="8cm" fig-align="center"}
 
 Whatever implementation you use, VI aims at the same objective: quantify
-the importance of variables for the predictions of the model.\
-Some limitations are:
+the importance of variables for the predictions of the model. Some limitations are:
 
 -   **Instability**: the estimation of the importance can be unstable
     due to the random perturbation. Resampling can help (i.e., repeat
@@ -213,18 +227,22 @@ $$\hat{F}_{X_s}(x_s) = \frac{1}{N}\sum_{i=1}^N f(x_s, x_{-s}^{(i)}).$$
 
 ### Estimation
 
-![](../Graphs/PDP_Illustr.png){width="10cm" fig-align="center"}
+![](../Graphs/PDP_Illustr.png){width=50% fig-align="center"}
 
 ### Interpretation
-
-![](../Graphs/PDP_Growing.png){width="5cm" fig-align="center"}
-![](../Graphs/PDP_Stable.png){width="5cm" fig-align="center"}
 
 -   Left: PDP increases. The prediction increases in average when the
     feature increases ; it is a positive association.
 
 -   Right: PDP is stable. The prediction does not change in average when
     the feature value changes; there is no association.
+
+::: {layout-ncol=2}
+![](../Graphs/PDP_growing.png){fig-align="center"}
+
+![](../Graphs/PDP_stable.png){fig-align="center"}
+
+:::
 
 -   PDP allows to explore the link between response and any feature
     **with the eyes of the model**.
@@ -266,7 +284,7 @@ it (right plot), a logistic regression could be used. If you fit it on
 the black dots, you will find a positive association between large width
 and \"being green\", and no association with length.
 
-![](../Graphs/LIME_illustr.png){width="12cm" fig-align="center"}
+![](../Graphs/LIME_illustr.png){width=60% fig-align="center"}
 
 ### Technical details
 
@@ -290,7 +308,7 @@ There is no unique way to build/interpret surrogate models. Often,
 With the bank data (see R code of examples). Three cases: Label 0 with
 high prob., label 1 with high prob., Label 1 with prob. $\approx 50\%$.
 
-![](../Graphs/LIME_interpret.png){width="8cm" fig-align="center"}
+![](../Graphs/LIME_interpret.png){width=60% fig-align="center"}
 
 ### Interpretation for duration: no local behavior discovered
 
@@ -306,10 +324,7 @@ high prob., label 1 with high prob., Label 1 with prob. $\approx 50\%$.
 
 Regarding duration, case 1 and case 2 coincide. They also coincide with
 the general previous findings that duration is an important factor, with
-prob. of label 1 increasing with it.\
-The exploration of this two cases did not reveal any local behavior
-linked to duration. A similar analysis can be done for contact, housing,
-etc.
+prob. of label 1 increasing with it. The exploration of this two cases did not reveal any local behavior linked to duration. A similar analysis can be done for contact, housing, etc.
 
 ### Interpretation for campaign: local behavior
 
@@ -323,10 +338,7 @@ etc.
 
 This example shows that a global behavior (campaign is positively
 associated with label 1) can change locally. The fact that Case 3 has a
-probability around 0.5 makes it interesting.\
-Limitation: here the effect of Campaign is so small that a good
-explanation is that it has almost no effect everywhere. That was just a
-toy example.
+probability around 0.5 makes it interesting. Limitation: here the effect of Campaign is so small that a good explanation is that it has almost no effect everywhere. That was just a toy example.
 
 ### Discussion
 

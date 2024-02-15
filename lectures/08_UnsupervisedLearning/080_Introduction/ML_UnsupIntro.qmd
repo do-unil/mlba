@@ -12,10 +12,7 @@ code-link: false
 
 **Supervised learning** aims to predict an outcome $y$ from features
 $x$. The quality of the model can be inspected by comparing the
-predictions to the true outcomes.\
-**Unsupervised learning** aims to analyze the link between the features.
-There is no "supervisor". Unsupervised methods can be separated in two
-main ones:
+predictions to the true outcomes. **Unsupervised learning** aims to analyze the link between the features. There is no "supervisor". Unsupervised methods can be separated in two main ones:
 
 -   **Clustering**: group instances according to their similarities
     across the features.

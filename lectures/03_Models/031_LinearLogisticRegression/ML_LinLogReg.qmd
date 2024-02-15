@@ -102,10 +102,7 @@ To obtain the optimal parameters, the best algorithm is the
     optimal one using these derivatives.
 
 This algorithm is very fast and efficient. However, there is no explicit
-formula for $\hat{\theta}$, unlike the OLS.\
-The optimal $\hat{\theta}$ is sometimes called the **maximum likelihood
-estimator**, **MLE**. That terminology is however less usual among
-machine learners than statisticians.
+formula for $\hat{\theta}$, unlike the OLS. The optimal $\hat{\theta}$ is sometimes called the **maximum likelihood estimator**, **MLE**. That terminology is however less usual among machine learners than statisticians.
 
 Interpretation
 ==============
@@ -157,7 +154,8 @@ linear regression:
 
 For **linear regression**, certainty can be measured by **prediction
 intervals**. In practice, the main interest relies in the prediction
-interval for **the future value**[^1].\
+interval for **the future value**[^1].
+
 Let $x$ be a set of new features, the **point** prediction for $y(x)$
 uses the estimate $\hat{\theta}$:
 $$f(x;\hat{\theta}) = \theta_0 + \theta_1 x_1 + \cdots + \theta_p x_p.$$
@@ -202,12 +200,7 @@ provides on a classification. Consider:
 
 In both cases, the predicted class is the same but the probability
 provides a more precise view on it: if the instance is far in the class
-or on the edge between the two classes.\
-The prediction \"Good\" for a customer with a probability of $0.51$ is
-uncertain. Alternatively, the prediction rule could set to a larger
-value than 0.5 to increase the certainty.\
-Also, a model with a lot of predictions close to 0.5 is of considered as
-poor because of its uncertainty[^2].
+or on the edge between the two classes. The prediction \"Good\" for a customer with a probability of $0.51$ is uncertain. Alternatively, the prediction rule could set to a larger value than 0.5 to increase the certainty. Also, a model with a lot of predictions close to 0.5 is of considered as poor because of its uncertainty[^2].
 
 Selection of variables
 ======================
@@ -275,8 +268,7 @@ computationally intense.
 
 A different approach consists of penalizing the loss function so that,
 during the training of the parameters, the variable selection applies
-directly.\
-The most common penalties are:
+directly. The most common penalties are:
 
 -   $L_1$ penalty (LASSO)
     $$\min_\theta \bar{\cal L}(\theta) + \lambda \sum_{j=1}^p \vert \theta_j \vert$$
@@ -294,10 +286,8 @@ The penalty parameter $\lambda \geq 0$:
     $\theta \longrightarrow 0$.
 
 For intermediate values, some components of $\theta$ will be small,
-pushed toward $0$.\
-This is equivalent to variable selection: setting $\theta_j=0$ is
-equivalent to not including $x_j$.\
-Selection of $\lambda$ can be done with cross-validation (see later).
+pushed toward $0$. This is equivalent to variable selection: setting $\theta_j=0$ is
+equivalent to not including $x_j$. Selection of $\lambda$ can be done with cross-validation (see later).
 
 ### Variable selection with penalization
 

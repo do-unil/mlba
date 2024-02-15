@@ -1,5 +1,5 @@
 ---
-title: Trees
+title: Decision Trees
 format: html
 execute:
   freeze: auto
@@ -20,17 +20,12 @@ consists of
 
 -   A representation in a shape of a tree.
 
-It applies to both regression and classification tasks.
+It applies to both regression and classification tasks. The Iris data has 125 data; with the classes equally divided in 35 observations.
 
-Iris data (on 125 data; 35/35/35).
+![](../../Graphs/IRIS_CART.png){width="10cm" fig-align="center"}
 
-0.5
+In this case the rule is that if Petal length $< 2.45$ then Setosa, else if Petal width $< 1.65$ then Versicolor, else Virginica.
 
-![](../../Graphs/IRIS_CART.png){width="6.5cm" fig-align="center"}
-
-0.5 If Petal length $< 2.45$ then Setosa, else
-
--   if Petal width $< 1.65$ then Versicolor, else Virginica.
 
 ### The prediction formula
 
@@ -202,13 +197,7 @@ Pruning
 ### Occam's razor
 
 For linear and logistic regressions, the more variables are in the
-model, the more complex that model is.\
-For trees, model complexities can be measured by the length of the tree:
-a shorter tree is more simple than a longer one.\
-To apply Occan's razor, one needs to shorten the tree without impeding
-too much its prediction quality.\
-To **prune** the tree consists of cutting branches while maintaining
-enough prediction quality.
+model, the more complex that model is. For trees, model complexities can be measured by the length of the tree: *a shorter tree is more simple than a longer one*. To apply Occan's razor, one needs to shorten the tree without impeding too much its prediction quality. To **prune** the tree consists of cutting branches while maintaining enough prediction quality.
 
 ### 1-SE rule
 

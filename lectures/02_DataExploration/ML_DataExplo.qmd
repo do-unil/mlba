@@ -161,13 +161,13 @@ Note: one variable, called **intercept**[^1], made of 1's, is added.
 A variable indicates a shape. It has three levels `Cloud`, `Moon`, and
 `Star`. The reference level below is `Cloud`. Below, 15 instances.
 
-![](../Graphs/Dummy_1.png){width="8cm" fig-align="center"}
+![](../Graphs/Dummy_1.png){width=40% fig-align="center"}
 
 ### Dummy variable example
 
 The same example when the reference level below is `Moon`.
 
-![](../Graphs/Dummy_2.png){width="8cm" fig-align="center"}
+![](../Graphs/Dummy_2.png){width=45%  fig-align="center"}
 
 Missing values
 ==============
