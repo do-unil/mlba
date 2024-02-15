@@ -42,4 +42,4 @@ Final grade = (0.3 x exam) + (0.3 x presentation) + (0.4 x report)
 The project grade is a group grade. However, if the contribution of the members of the groups to the project is unbalanced, an individual adaptation of the grade will be made, e.g., absence of one of the members of the group during the presentation (in catch-up, a subsequent and adapted presentation of the absent member may be required).
 :::
 
-Further directives and guidelines are provided here.
+Further directives and guidelines are provided in the `Assessments` section.
