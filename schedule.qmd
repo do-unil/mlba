@@ -31,12 +31,14 @@ d <- read_sheet("https://docs.google.com/spreadsheets/d/1B_KRL3Wc_81RpNvD6eNxGda
 ```{r}
 #| echo: false
 
+#| echo: false
+
 d |>
   select(-dow) |>
   mutate(
     date = as.Date(date),
-    topic = gsub("\\+", "+\n", topic), # New line after +
-    topic = gsub("\\s*\\(", "\n(", topic) # New line before opening parenthesis
+    topic = gsub("\\+", "+<br>", topic), # Insert HTML line break after +
+    topic = gsub("\\s*\\(", "<br>(", topic) # Insert HTML line break before opening parenthesis
   ) |>
   gt() |>
   fmt_date(date, date_style = 31) |>
@@ -67,12 +69,12 @@ d |>
     columns = c(topic, lecture_pdf, lecture_qmd, lab)
   ) |>
   cols_width(
-    week ~ px(45),
-    date ~ px(100), 
-    topic ~ px(120),
+    week ~ px(10),
+    date ~ px(120), 
+    topic ~ px(10),
     lecture_pdf ~ px(90),
     lecture_qmd ~ px(90),
-    lab ~ px(120),
+    lab ~ px(140),
   ) |>
   cols_label_with(fn = function(x) {
       janitor::make_clean_names(x, case = "title") |>
@@ -80,7 +82,7 @@ d |>
         stringr::str_replace_all("^|$", "**") |>
         md()
     }) |>
-  tab_options(table.font.size = 13) |>
+  tab_options(table.font.size = 12) |>
   opt_row_striping() |>
   tab_footnote(
     footnote = "📩 Report submission at 23:59",
@@ -89,4 +91,5 @@ d |>
       rows = date == as.Date("2024-05-19")
     )
   )
+
 ```
