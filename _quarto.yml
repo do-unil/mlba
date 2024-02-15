@@ -87,8 +87,8 @@ website:
             text: Exam
           - href: assessments/project.qmd
             text: Project
-      - href: resources.qmd
-        text: Resources
+      # - href: resources.qmd
+      #   text: Resources
 
   page-footer:
     right: "This page is built with 🤍 and [Quarto](https://quarto.org/)."
