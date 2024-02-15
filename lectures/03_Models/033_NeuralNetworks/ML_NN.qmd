@@ -1,5 +1,5 @@
 ---
-title: NN
+title: Neural Networks
 format: html
 execute:
   freeze: auto

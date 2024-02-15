@@ -1,5 +1,5 @@
 ---
-title: Interp
+title: Interpretable ML
 format: html
 execute:
   freeze: auto

@@ -92,14 +92,16 @@ cases:
 ### Numerical features
 
 Example on the `iris` data. The Euclidean distance between instances 1
-and 2 is $0.54$\
+and 2 is $0.54$
 
-    > iris[1:2,-5]
-      Sepal.Length Sepal.Width Petal.Length Petal.Width 
-    1          5.1         3.5          1.4         0.2 
-    2          4.9         3.0          1.4         0.2 
-    > dist(iris[1:2, -5], p=2)
-      0.5385165
+```{.r}
+> iris[1:2,-5]
+    Sepal.Length Sepal.Width Petal.Length Petal.Width 
+1          5.1         3.5          1.4         0.2 
+2          4.9         3.0          1.4         0.2 
+> dist(iris[1:2, -5], p=2)
+    0.5385165
+```
 
 In detail,
 $$\sqrt{(5.1-4.9)^2+(3.5-3.0)^2+(1.4-1.4)^2+(0.2-0.2)^2}=0.54$$
@@ -124,10 +126,12 @@ of the feature $x_k$:
 
 Example:
 
-      Sepal.Length Sepal.Width Petal.Length Petal.Width    Color    Species
-    1          5.1         3.5          1.4         0.2    mauve     setosa
-    2          4.9         3.0          1.4         0.2   violet     setosa
-    3          4.7         3.2          1.3         0.2   violet  virginica
+```{.r}
+    Sepal.Length Sepal.Width Petal.Length Petal.Width    Color    Species
+1          5.1         3.5          1.4         0.2    mauve     setosa
+2          4.9         3.0          1.4         0.2   violet     setosa
+3          4.7         3.2          1.3         0.2   violet  virginica
+```
 
 The ranges are respectively $3.6,2.4,5.9,2.4$ (from the full data set).
 $$\begin{aligned}
@@ -162,16 +166,19 @@ clustered.
 
 Italian cities: Bari, Firenze, Napoli, Roma, Torino.
 
-0.6 ![](../../Graphs/Italy1.png){width="6cm" fig-align="center"}
+::: {layout-ncol=2}
 
-0.4 ![](../../Graphs/Italy2.png){width="4cm" fig-align="center"}
+![](../../Graphs/Italy1.png){fig-align="center"}
+
+![](../../Graphs/Italy2.png){fig-align="center"}
+
+:::
 
 Source:
 <https://home.deib.polimi.it/matteucc/Clustering/tutorial_html/hierarchical.html>
 
 AGNES is **agglomerating** because it starts from individual points and
-run up to a unique cluster, merging clusters one after the other.\
-It is called \"hierarchical\" because when an instance is attached to a
+run up to a unique cluster, merging clusters one after the other. It is called \"hierarchical\" because when an instance is attached to a
 group, it cannot be separated from it anymore.\
 There also exist **divisive** hierarchical clustering, **DIANA**, for
 DIvise ANAlysis. It starts from one unique cluster with all the
@@ -396,13 +403,12 @@ data.
 Below the scatter plots of the features (jittering points for more
 readability).
 
-![](../../Graphs/Polstress-scat-jit.png){width="7cm" fig-align="center"}
+![](../../Graphs/Polstress-scat-jit.png){width=60% fig-align="center"}
 
 4 clusters of policemen were formed using AGNES. They can be analyzed by
 the feature values within each cluster.
 
-![image](../../Graphs/Polstress-groups-4.png){width="9cm"
-height="11.5cm"}
+![](../../Graphs/Polstress-groups-4.png){width=60% fig-align="center"}
 
 ### Example
 

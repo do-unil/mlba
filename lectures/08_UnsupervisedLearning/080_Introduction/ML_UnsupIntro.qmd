@@ -1,5 +1,5 @@
 ---
-title: UnsupIntro
+title: Introduction to Unsupervised Learning
 format: html
 execute:
   freeze: auto

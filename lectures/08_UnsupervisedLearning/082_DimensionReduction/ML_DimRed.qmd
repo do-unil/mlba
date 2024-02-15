@@ -1,5 +1,5 @@
 ---
-title: DimRed
+title: Dimension Reduction
 format: html
 execute:
   freeze: auto
@@ -117,18 +117,20 @@ are represented on the component $z_j$.
 
 ### PCA: example
 
-    > iris.pca <- PCA(iris[,-5], graph=FALSE) 
-    > summary(iris.pca)
+```{.r}
+> iris.pca <- PCA(iris[,-5], graph=FALSE) 
+> summary(iris.pca)
 
-    Call:
-    PCA(X = iris[, -5], graph = FALSE) 
+Call:
+PCA(X = iris[, -5], graph = FALSE) 
 
 
-    Eigenvalues
-                           Dim.1   Dim.2   Dim.3   Dim.4
-    Variance               2.918   0.914   0.147   0.021
-    % of var.             72.962  22.851   3.669   0.518
-    Cumulative % of var.  72.962  95.813  99.482 100.000
+Eigenvalues
+                        Dim.1   Dim.2   Dim.3   Dim.4
+Variance               2.918   0.914   0.147   0.021
+% of var.             72.962  22.851   3.669   0.518
+Cumulative % of var.  72.962  95.813  99.482 100.000
+```
 
 Together, PC1 and PC2 explain $95.8\%$ of the variation of the data. The
 scatter plot matrix shows that it is a good representation of the data
@@ -249,23 +251,20 @@ To illustrate, we create an artificial `iris` data containing
 
 -   Species: the original feature; used as supplementary variable.
 
-The association between length and width are shown on the tables:\
-
-0.5
-
+The association between length and width are shown on the tables:
+```{.r}
               Width
     Length      Width_L Width_M Width_S
       Length_L  0.8889  0.2000  0.0000
       Length_M  0.1111  0.5375  0.2558
       Length_S  0.0000  0.2625  0.7442
 
-0.5
-
               Width
     Length     Width_L Width_M Width_S
       Length_L 0.60000 0.40000 0.00000
       Length_M 0.05263 0.75439 0.19298
       Length_S 0.00000 0.39623 0.60377
+```
 
 MCA[^1] builds artificial dimension that locates width and length
 modalities reflecting the previous associations:
@@ -287,14 +286,15 @@ possible dimensions.
 The scree plot shows the percentage of inertia explained by each
 dimension.
 
-![](../../Graphs/FAMD_screeplot.png){width="7cm" fig-align="center"}
+![](../../Graphs/FAMD_Screeplot.png){width="7cm" fig-align="center"}
 
 The plots of the contributions shows the contributions of each variable
 (Length and Width) to the dimensions (1 and 2).
 
-0.55 ![](../../Graphs/FAMD_contrib_xy.png){width="6cm" fig-align="center"}
+![](../../Graphs/FAMD_contrib_xy.png){width="6cm" fig-align="center"}
 
-0.45 ![](../../Graphs/FAMD_contrib_x.png){width="4.5cm" fig-align="center"}\
+![](../../Graphs/FAMD_contrib_x.png){width="4.5cm" fig-align="center"}
+
 ![](../../Graphs/FAMD_contrib_y.png){width="4.5cm" fig-align="center"}
 
 The plot of the modalities locates the modalities of each variable on
@@ -373,9 +373,13 @@ Relate each component of $h(X)$ to each component of $X$ using variable
 importance (or another technique). Below, Node 1 to 3 (left to right;
 top to bottom).
 
+::: {#fig-elephants layout-ncol=3}
 ![](../../Graphs/Iris_AE_VImp1.png){width="5cm" fig-align="center"}
+
 ![](../../Graphs/Iris_AE_VImp2.png){width="5cm" fig-align="center"}
+
 ![](../../Graphs/Iris_AE_VImp3.png){width="5cm" fig-align="center"}
+:::
 
 [^1]: With only categorical variables, FAMD is simply an MCA.
 

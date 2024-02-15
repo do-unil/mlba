@@ -7,6 +7,7 @@ execute:
 code-tools: false
 code-fold: false
 code-link: false
+reader-mode: true
 ---
 Concept
 =======

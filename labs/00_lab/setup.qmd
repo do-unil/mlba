@@ -1,5 +1,5 @@
 ---
-title: "ML-Lab: General Instructions"
+title: "General Instructions"
 format: html
 ---
 

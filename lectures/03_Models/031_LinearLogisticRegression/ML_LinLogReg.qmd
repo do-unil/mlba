@@ -1,5 +1,5 @@
 ---
-title: LinLogReg
+title: Linear & Logistic Regression
 format: html
 execute:
   freeze: auto

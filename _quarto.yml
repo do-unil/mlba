@@ -18,8 +18,8 @@ website:
   favicon: images/logo.dark.png
   repo-url: https://github.com/do-unil/mlba
   repo-actions: [source, issue]
-
   open-graph: true
+  reader-mode: true
 
   sidebar:
     # background: "#798b93"
@@ -37,7 +37,7 @@ website:
     style: docked
     search: true
     collapse-level: 1
-
+    lightbox: true
 
     contents:
       - section: "Course information"
@@ -55,11 +55,11 @@ website:
       - section: "Lectures"
         contents:
           - href: "lectures/01_Introduction/ML_Intro.qmd"
-            text: "Introduction to Machine Learning"
+            text: "Intro to ML"
           - href: "lectures/02_DataExploration/ML_DataExplo.qmd"
             text: "Data Exploration"
           - href: "lectures/03_Models/030_Introduction/ML_Models_Intro.qmd"
-            text: "Models Introduction"
+            text: "Intro to Models"
           - href: "lectures/03_Models/031_LinearLogisticRegression/ML_LinLogReg.qmd"
             text: "Linear & Logistic Regression"
           - href: "lectures/03_Models/032_Trees/ML_Trees.qmd"
@@ -77,7 +77,7 @@ website:
           - href: "lectures/07_InterpretableML/ML_Interp.qmd"
             text: "Interpretable ML"
           - href: "lectures/08_UnsupervisedLearning/080_Introduction/ML_UnsupIntro.qmd"
-            text: "Unsupervised Learning Introduction"
+            text: "Intro to Unsuperised Learning"
           - href: "lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.qmd"
             text: "Clustering"
           - href: "lectures/08_UnsupervisedLearning/082_DimensionReduction/ML_DimRed.qmd"
@@ -85,7 +85,7 @@ website:
       - section: "Labs"
         contents:
           - href: labs/00_lab/setup.qmd
-            text: "Structure & Setup"
+            text: "Setup"
           - href: labs/03_Models/031_LinearLogisticRegression/Ex_ML_LinLogReg.qmd
             text: "Linear & Logistic Regression"
           - href: labs/03_Models/032_Trees/Ex_ML_Tree.qmd
@@ -108,8 +108,8 @@ website:
             text: "Clustering"
           - href: labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.qmd
             text: "PCA"
-          # - href: labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.qmd
-          #   text: "Autoencoders"
+          - href: labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.qmd
+            text: "Autoencoders"
       - section: "Assessments"
         contents:
           - href: assessments/exam.qmd
