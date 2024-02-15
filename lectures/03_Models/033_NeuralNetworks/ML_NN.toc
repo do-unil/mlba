@@ -1,6 +1,0 @@
-\beamer@sectionintoc {1}{Concept and prediction formula}{2}{0}{1}
-\beamer@sectionintoc {2}{Neural network design}{10}{0}{2}
-\beamer@sectionintoc {3}{Loss functions}{16}{0}{3}
-\beamer@sectionintoc {4}{Training algorithm}{18}{0}{4}
-\beamer@sectionintoc {5}{Interpretation}{23}{0}{5}
-\beamer@sectionintoc {6}{Model simplification}{25}{0}{6}

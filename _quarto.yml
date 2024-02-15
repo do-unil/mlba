@@ -53,6 +53,35 @@ website:
           - href: faq.qmd
             text: FAQ
       - section: "Lectures"
+        contents:
+          - href: "lectures/01_Introduction/ML_Intro.qmd"
+            text: "Introduction to Machine Learning"
+          - href: "lectures/02_DataExploration/ML_DataExplo.qmd"
+            text: "Data Exploration"
+          - href: "lectures/03_Models/030_Introduction/ML_Models_Intro.qmd"
+            text: "Models Introduction"
+          - href: "lectures/03_Models/031_LinearLogisticRegression/ML_LinLogReg.qmd"
+            text: "Linear & Logistic Regression"
+          - href: "lectures/03_Models/032_Trees/ML_Trees.qmd"
+            text: "Decision Trees"
+          - href: "lectures/03_Models/033_NeuralNetworks/ML_NN.qmd"
+            text: "Neural Networks"
+          - href: "lectures/03_Models/034_SupportVectorMachine/ML_SVM.qmd"
+            text: "Support Vector Machines"
+          - href: "lectures/04_Metrics/ML_Metrics.qmd"
+            text: "Metrics"
+          - href: "lectures/05_DataSplitting/ML_DataSplitting.qmd"
+            text: "Data Splitting"
+          - href: "lectures/06_Ensembles/ML_Ensemble.qmd"
+            text: "Ensemble Methods"
+          - href: "lectures/07_InterpretableML/ML_Interp.qmd"
+            text: "Interpretable ML"
+          - href: "lectures/08_UnsupervisedLearning/080_Introduction/ML_UnsupIntro.qmd"
+            text: "Unsupervised Learning Introduction"
+          - href: "lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.qmd"
+            text: "Clustering"
+          - href: "lectures/08_UnsupervisedLearning/082_DimensionReduction/ML_DimRed.qmd"
+            text: "Dimension Reduction"
       - section: "Labs"
         contents:
           - href: labs/00_lab/setup.qmd
@@ -147,7 +176,7 @@ format:
 
           updateImageSrc();
           </script>
-    html-math-method: katex
+    html-math-method: mathjax
     code-tools: true
     code-fold: false
     code-link: true

@@ -1,4 +1,0 @@
-\beamer@sectionintoc {1}{Dimension reduction}{3}{0}{1}
-\beamer@sectionintoc {2}{Principal Components Analysis}{7}{0}{2}
-\beamer@sectionintoc {3}{Factor Analysis of Mixed Data}{27}{0}{3}
-\beamer@sectionintoc {4}{Auto-encoders}{36}{0}{4}

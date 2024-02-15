@@ -1,6 +1,0 @@
-\beamer@sectionintoc {1}{Meta data}{3}{0}{1}
-\beamer@sectionintoc {2}{Data Expolration}{5}{0}{2}
-\beamer@sectionintoc {3}{Data transformation}{11}{0}{3}
-\beamer@sectionintoc {4}{Missing values}{18}{0}{4}
-\beamer@sectionintoc {5}{Outliers}{24}{0}{5}
-\beamer@sectionintoc {6}{Further words}{28}{0}{6}

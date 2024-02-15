@@ -1,0 +1,25 @@
+---
+title: UnsupIntro
+format: html
+execute:
+  freeze: auto
+  output: true
+code-tools: false
+code-fold: false
+code-link: false
+---
+### Supervised vs unsupervised learning
+
+**Supervised learning** aims to predict an outcome $y$ from features
+$x$. The quality of the model can be inspected by comparing the
+predictions to the true outcomes.\
+**Unsupervised learning** aims to analyze the link between the features.
+There is no "supervisor". Unsupervised methods can be separated in two
+main ones:
+
+-   **Clustering**: group instances according to their similarities
+    across the features.
+
+-   **Dimension reduction**: link the features according to their
+    similarities across the instances, find commonalities, and combine
+    the features in fewer dimensions.

@@ -1,3 +1,0 @@
-\beamer@sectionintoc {1}{Ensemble and bagging}{3}{0}{1}
-\beamer@sectionintoc {2}{Random forest}{10}{0}{2}
-\beamer@sectionintoc {3}{Boosting}{16}{0}{3}
