@@ -130,6 +130,7 @@ website:
 
 format:
   html:
+    highlight-style: gruvbox
     theme:
       light: [cosmo, style/mlba.scss]
       dark: [cosmo, style/mlba.scss,style/dark.scss]
