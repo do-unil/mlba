@@ -46,8 +46,8 @@ website:
             text: Overview
           - href: schedule.qmd
             text: Schedule
-          - href: links.qmd
-            text: Useful links
+          # - href: links.qmd
+          #   text: Useful links
           - href: references.qmd
             text: References
           - href: faq.qmd
