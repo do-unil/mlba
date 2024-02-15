@@ -9,6 +9,7 @@ name: Build Site
 
 permissions:
   contents: write
+  pages: write
 
 jobs:
   build-website:
@@ -45,8 +46,8 @@ jobs:
         with:
           cache-version: 2
       
-      - name: Render Quarto Project
-        uses: quarto-dev/quarto-actions/render@v2
+      - name: Publish Quarto Project
+        uses: quarto-dev/quarto-actions/publish@v2
 
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
