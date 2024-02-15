@@ -337,12 +337,7 @@ The next element is `Explanation Fit`. These values indicate how well LIME expla
 We'll be using provide a small demonstration on how this can be achieved in python. Please note the same logic for the 
 interpretation (and explanation) of the R version applies here, therefore, the code is shorter and there's no further comment provided for its output.
 
-We first need to install `lime` in python:
-```{r}
-reticulate::py_install(c("lime"), envname = "MLBA", pip=TRUE)
-```
-
-Then we can run our model in the same way as R
+We use `lime` package in python (already installed in the lab `setup`). Then we can run our model in the same way as R:
 
 ```{python}
 from sklearn import svm

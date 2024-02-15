@@ -420,12 +420,7 @@ print(paste("RMSE:", rmse_xgb))
 
 ### Python
 
-We will first install the `xgboost` with a R code chunk:
-```{r, eval = F}
-reticulate::py_install("xgboost", pip=TRUE)
-```
-
-Then we can run the XGBoost model with `xgboost`.
+We used the python installation of `xgboost` from our lab `setup`.
 
 ```{python}
 # Install and load the package

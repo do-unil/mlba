@@ -220,11 +220,7 @@ fviz_nbclust(wine[,-12],
 
 ### Python
 
-We need to install the `gap_statistic` for obtaining a suggested number of clusters. For more information, see https://github.com/milesgranger/gap_statistic
-
-```{r}
-py_install(c("gap-stat","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
-```
+We need to use the `gap_statistic` for obtaining a suggested number of clusters. For more information, see https://github.com/milesgranger/gap_statistic . Please note during the lab `setup`, you must have already installed the package.
 
 ```{python}
 from sklearn.cluster import AgglomerativeClustering

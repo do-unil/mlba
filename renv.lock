@@ -8,6 +8,10 @@
       }
     ]
   },
+  "Python": {
+    "Version": "3.9.18",
+    "Type": "conda"
+  },
   "Packages": {
     "ConsRank": {
       "Package": "ConsRank",

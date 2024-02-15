@@ -172,7 +172,7 @@ We will install all the packages we need for this particular setup. This should 
 
 ```{r results=F}
 # Install python package into virtual environment
-reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service"), envname = "MLBA", pip=TRUE)
+reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost", "lime", "gap-stat","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
 ```
 
 Let's checked if the package is installed successfully.
