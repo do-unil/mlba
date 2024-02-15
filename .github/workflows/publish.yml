@@ -74,6 +74,7 @@ jobs:
         shell: Rscript {0}
         run: |
           path_to_conda <- reticulate::conda_create(MLBA', packages = c('python==3.9'))
+          install.packages("remotes")
           remotes::install_local()
           keras::install_keras(tensorflow = Sys.getenv('TF_VERSION')
           # renv::use_python(python = path_to_conda)
