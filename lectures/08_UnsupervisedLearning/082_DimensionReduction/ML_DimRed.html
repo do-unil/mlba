@@ -481,14 +481,14 @@ updateImageSrc();
 <strong>Example:</strong> <code>iris</code> data has <span class="math inline">\(4\)</span> features (species not used). The data cannot be represented on a single graph.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/Iris_raw.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:11cm"></p>
+<p><img src="../../Graphs/Iris_raw.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:11cm"></p>
 </figure>
 </div>
 <p>Observation: <code>Petal.Length</code> and <code>Petal.Width</code> are highly correlated: if we know one, we can predict the other one.<br>
 To simplify the representation, we do not need these two features: replace them by their average <code>Petal.WL = (Petal.W+Petal.L)/2</code>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/Iris_raw2.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:10cm"></p>
+<p><img src="../../Graphs/Iris_raw2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
 </figure>
 </div>
 <p>Same observation for <code>Petal.WL</code> and <code>Sepal.Length</code>...</p>
@@ -545,7 +545,7 @@ When the data are first standardized, the <strong>spectral decomposition</strong
 <p>By construction, the first principal component <span class="math inline">\(z_1\)</span> has larger variance than <span class="math inline">\(z_2\)</span> and so on. Also, by construction, the total of the variance is preserved: <span class="math display">\[\sum_{j=1}^p var(x_j) = \sum_{j=1}^p var(z_j).\]</span> The proportion of the total variance explained by the PC <span class="math inline">\(z_j\)</span> is thus <span class="math display">\[var(z_j)/\sum_{j'=1}^p var(z_{j'}).\]</span> It represents how well the data are represented on the component <span class="math inline">\(z_j\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/Iris_pca.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:7cm"></p>
+<p><img src="../../Graphs/Iris_pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
 </figure>
 </div>
 </section>
@@ -567,7 +567,7 @@ Cumulative % of var.  72.962  95.813  99.482 100.000</code></pre>
 <p>Correlation between the PC and the features <span class="math inline">\(x\)</span> can be computed to see how is PC is correlated to each features.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/Iris_pcacircle.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:10cm"></p>
+<p><img src="../../Graphs/Iris_pcacircle.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
 </figure>
 </div>
 </section>
@@ -590,13 +590,13 @@ Cumulative % of var.  72.962  95.813  99.482 100.000</code></pre>
 <p>The circle of correlations relates the dimensions and the features. Another view is the <strong><span class="math inline">\(cos^2\)</span></strong> graph. It is interpreted as the quality of the representation of the feature by the dimension. Of course this is intimately related to the correlations.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/Iris_cos2.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:8cm"></p>
+<p><img src="../../Graphs/Iris_cos2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
 </figure>
 </div>
 <p>The <strong>biplot</strong> shows a <strong>map of the individuals</strong> in the dimensions and adds the circle of correlations.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/Iris_biplot.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:9cm"></p>
+<p><img src="../../Graphs/Iris_biplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:9cm"></p>
 </figure>
 </div>
 </section>
@@ -620,7 +620,7 @@ The <strong>screeplot</strong> may help.</p>
 <h3 class="anchored" data-anchor-id="pca-the-screeplot">PCA: the screeplot</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/Iris_scree.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:9cm"></p>
+<p><img src="../../Graphs/Iris_scree.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:9cm"></p>
 </figure>
 </div>
 </section>
@@ -684,17 +684,17 @@ Because proportions sum up to 1, there are <span class="math inline">\((3-1)\tim
 <p>The scree plot shows the percentage of inertia explained by each dimension.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/FAMD_screeplot.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:7cm"></p>
+<p><img src="../../Graphs/FAMD_screeplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
 </figure>
 </div>
 <p>The plots of the contributions shows the contributions of each variable (Length and Width) to the dimensions (1 and 2).</p>
-<p>0.55 <embed src="../../Graphs/FAMD_contrib_xy.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:6cm"></p>
-<p>0.45 <embed src="../../Graphs/FAMD_contrib_x.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:4.5cm"><br>
-<embed src="../../Graphs/FAMD_contrib_y.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:4.5cm"></p>
+<p>0.55 <img src="../../Graphs/FAMD_contrib_xy.png" class="img-fluid quarto-figure quarto-figure-center" style="width:6cm"></p>
+<p>0.45 <img src="../../Graphs/FAMD_contrib_x.png" class="img-fluid quarto-figure quarto-figure-center" style="width:4.5cm"><br>
+<img src="../../Graphs/FAMD_contrib_y.png" class="img-fluid quarto-figure quarto-figure-center" style="width:4.5cm"></p>
 <p>The plot of the modalities locates the modalities of each variable on the map of the dimensions.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/FAMD_quali.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:7cm"></p>
+<p><img src="../../Graphs/FAMD_quali.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
 </figure>
 </div>
 </section>
@@ -751,14 +751,14 @@ On the other hand, autoencoders can produce better final representation of the d
 <p>Like PCA make two-dimensional plots to discover pattern. Below, autoencoder (see example file) with 3-node intermediate-layer:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/Iris_AE_embed.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:9cm"></p>
+<p><img src="../../Graphs/Iris_AE_embed.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:9cm"></p>
 </figure>
 </div>
 </section>
 <section id="interpretability" class="level3">
 <h3 class="anchored" data-anchor-id="interpretability">Interpretability</h3>
 <p>Relate each component of <span class="math inline">\(h(X)\)</span> to each component of <span class="math inline">\(X\)</span> using variable importance (or another technique). Below, Node 1 to 3 (left to right; top to bottom).</p>
-<p><embed src="../../Graphs/Iris_AE_VImp1.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"> <embed src="../../Graphs/Iris_AE_VImp2.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"> <embed src="../../Graphs/Iris_AE_VImp3.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"></p>
+<p><img src="../../Graphs/Iris_AE_VImp1.png" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"> <img src="../../Graphs/Iris_AE_VImp2.png" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"> <img src="../../Graphs/Iris_AE_VImp3.png" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"></p>
 
 
 </section>

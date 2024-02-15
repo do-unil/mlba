@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -503,11 +537,11 @@ To compare the different models, the metric <em>only</em> depends on the observe
 <h3 class="anchored" data-anchor-id="confusion-matrix">Confusion matrix</h3>
 <p>The <strong>confusion matrix</strong> reports the frequencies of "observed" vs "predicted" classes. E.g., SVM with linear kernel and cost of 1, on iris data:<br>
 </p>
-<pre><code>            Reference
-Prediction   setosa versicolor virginica
-  setosa         50          0         0
-  versicolor      0         48         2
-  virginica       0          2        48</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>                Reference</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    Prediction   setosa versicolor virginica</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      setosa         <span class="dv">50</span>          <span class="dv">0</span>         <span class="dv">0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      versicolor      <span class="dv">0</span>         <span class="dv">48</span>         <span class="dv">2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      virginica       <span class="dv">0</span>          <span class="dv">2</span>        <span class="dv">48</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>All the metrics based on predicted classes can be computed from the confusion matrix.</p>
 </section>
 <section id="accuracy" class="level3">
@@ -590,10 +624,10 @@ The expected frequencies are not of direct use. These are the expected proportio
 <h3 class="anchored" data-anchor-id="metrics-for-binary-classification">Metrics for binary classification</h3>
 <p>A logistic regression was fitted to a data set<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. The positive class is “Good”. There are 700 "Good" and 300 "Bad" in the data set.<br>
 </p>
-<pre><code>      Pred
-Obs    Good Bad
-  Good  686  14
-  Bad   273  27</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>          Pred</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    Obs    Good Bad</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      Good  <span class="dv">686</span>  <span class="dv">14</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      Bad   <span class="dv">273</span>  <span class="dv">27</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, <span class="math display">\[TP=686, \, FP=273, \, TN=27, \, FN=14\,\]</span> and <span class="math display">\[P=700, \, N=300, \, PP=959, \, PN=41.\]</span></p>
 </section>
 <section id="sensitivity" class="level3">
@@ -614,9 +648,16 @@ Obs    Good Bad
 </section>
 <section id="summary" class="level3">
 <h3 class="anchored" data-anchor-id="summary">Summary</h3>
-<p><img src="../Graphs/CondProb.png" class="img-fluid quarto-figure quarto-figure-center" style="width:10cm"><br>
-<img src="../Graphs/CondProb_example.png" class="img-fluid quarto-figure quarto-figure-center" style="width:10cm"><br>
-</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Graphs/CondProb.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Graphs/CondProb_example.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
+</figure>
+</div>
 </section>
 <section id="balanced-accuracy" class="level3">
 <h3 class="anchored" data-anchor-id="balanced-accuracy">Balanced accuracy</h3>
@@ -647,7 +688,7 @@ E.g., the sensitivity is 0.98, and the specificity is 0.09 with a threshold of <
 <p>The ROC curve is obtained when <span class="math inline">\(\lambda\)</span> varies between 0 and 1, <span class="math inline">\(Spec=x\)</span>, and <span class="math inline">\(y=Sens\)</span>. The specificies are usually in the reverse order.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../Graphs/ROC_curve.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"></p>
+<p><img src="../Graphs/ROC_curve.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:5cm"></p>
 </figure>
 </div>
 </section>

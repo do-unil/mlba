@@ -507,7 +507,7 @@ updateImageSrc();
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/SVM_Borders_4.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:7cm"></p>
+<p><img src="../../Graphs/SVM_Borders_4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
 </figure>
 </div>
 <p>For a good separation, we generally look for a central line <span class="math display">\[w^TX + b = 0,\]</span> at the middle of the two closest points (<span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> on the next slide) and such that</p>
@@ -522,7 +522,7 @@ updateImageSrc();
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/SVM_Borders_5.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:7cm"></p>
+<p><img src="../../Graphs/SVM_Borders_5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
 </figure>
 </div>
 <p>It can be shown that the distance between the two borders is the margin <span class="math inline">\(M\)</span>, and can be computed as <span class="math display">\[M=2/\sqrt{w^T w}.\]</span> Thus, one should look for</p>
@@ -557,7 +557,7 @@ The solution of this problem will provide a perfect separation between the 2 cat
 Most cases are non-separable: no line can reach the perfect separation.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><embed src="../../Graphs/SVM_SoftMargins.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:6cm"></p>
+<p><img src="../../Graphs/SVM_SoftMargins.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:6cm"></p>
 </figure>
 </div>
 <p>Under the perfect separation case, <span class="math inline">\(y_i(w^Tx_i + b) \geq 1\)</span>, for all <span class="math inline">\(i\)</span>.<br>
@@ -640,8 +640,16 @@ It is a way to control the tolerance to bad classification:</p>
 <h3 class="anchored" data-anchor-id="underlying-features">Underlying features</h3>
 <p>Using a kernel other than <span class="math inline">\(x^Tx'\)</span> can be shown to be equivalent to create new features <span class="math inline">\(h(x)\)</span>. New features can help in separating the cases: e.g., below a non-separable case in <span class="math inline">\((x,y)\)</span> becomes separable by the new feature <span class="math inline">\((x^2+y^2)\)</span>:<br>
 </p>
-<p>0.66 <embed src="../../Graphs/svm_quad.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:7cm"></p>
-<p>0.34 <embed src="../../Graphs/svm_quad2.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:3.4cm"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/svm_quad.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/svm_quad2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:3.4cm"></p>
+</figure>
+</div>
 <p>However, with the kernel, the exact form of these new features cannot be known.</p>
 </section>
 </section>
