@@ -48,11 +48,3 @@ $input-bg: #242424;
       color: white !important;
     }
   }
-
-@media (prefers-color-scheme: dark) {
-code {
-    background-color: transparent !important;
-    color: #0086CA !important; /* or another color that fits your dark theme */
-}
-}
-  

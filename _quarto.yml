@@ -139,6 +139,7 @@ format:
     code-copy: true
     code-overflow: wrap
     mainfont: "Atkinson Hyperlegible"
+    # monofont: 'Fira Code'
 
     # This script changes the image src depending on the body class (quarto-light or quarto-dark). We primarly use it to change the logo in the navbar.
     include-before-body:

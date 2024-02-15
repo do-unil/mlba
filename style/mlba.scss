@@ -2,6 +2,8 @@
 
 @import 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap';
 
+@import 'https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap';
+
 $font-family: "Atkinson Hyperlegible", sans-serif;
 $link-color: #5d6d74;
 $hover-color: lighten($link-color, 40%);
@@ -33,3 +35,17 @@ div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, 
 div[data-code-copy="false"] button.code-copy-button {
   display: none;
 }
+
+@media (prefers-color-scheme: dark) {
+  code {
+      background-color: transparent !important;
+      color: #0086CA !important; /* or another color that fits your dark theme */
+  }
+}
+
+// @media (prefers-color-scheme: light) {
+//   code {
+//       color: #0086CA !important; /* or another color that fits your dark theme */
+//   }
+// }
+      
