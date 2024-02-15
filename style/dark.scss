@@ -41,3 +41,18 @@ $input-bg: #242424;
       box-sizing: border-box; // Ensures padding is included in the total width and height
     }
   }
+
+/* Make the tabset headers white */
+@media (prefers-color-scheme: dark) {
+    [id^='tabset-'][id$='-tab'] {
+      color: white !important;
+    }
+  }
+
+@media (prefers-color-scheme: dark) {
+code {
+    background-color: transparent !important;
+    color: purple !important; /* or another color that fits your dark theme */
+}
+}
+  
