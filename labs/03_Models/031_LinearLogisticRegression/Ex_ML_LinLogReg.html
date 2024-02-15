@@ -105,22 +105,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
-  <script>document.addEventListener("DOMContentLoaded", function () {
- var mathElements = document.getElementsByClassName("math");
- var macros = [];
- for (var i = 0; i < mathElements.length; i++) {
-  var texText = mathElements[i].firstChild;
-  if (mathElements[i].tagName == "SPAN") {
-   katex.render(texText.data, mathElements[i], {
-    displayMode: mathElements[i].classList.contains('display'),
-    throwOnError: false,
-    macros: macros,
-    fleqn: false
-   });
-}}});
-  </script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -230,8 +216,99 @@ window.Quarto = {
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Lectures</span></span>
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Lectures</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/01_Introduction/ML_Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Machine Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/02_DataExploration/ML_DataExplo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Exploration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/03_Models/030_Introduction/ML_Models_Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Models Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/03_Models/031_LinearLogisticRegression/ML_LinLogReg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linear &amp; Logistic Regression</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/03_Models/032_Trees/ML_Trees.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Decision Trees</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/03_Models/033_NeuralNetworks/ML_NN.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural Networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/03_Models/034_SupportVectorMachine/ML_SVM.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Support Vector Machines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/04_Metrics/ML_Metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Metrics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/05_DataSplitting/ML_DataSplitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Splitting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/06_Ensembles/ML_Ensemble.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Ensemble Methods</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/07_InterpretableML/ML_Interp.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Interpretable ML</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/08_UnsupervisedLearning/080_Introduction/ML_UnsupIntro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Unsupervised Learning Introduction</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Clustering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/08_UnsupervisedLearning/082_DimensionReduction/ML_DimRed.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dimension Reduction</span></a>
+  </div>
+</li>
+      </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
@@ -570,7 +647,7 @@ Explaining feature elimination in python (while loop)
 </section>
 <section id="inference" class="level2">
 <h2 class="anchored" data-anchor-id="inference">Inference</h2>
-<p>We now predict the prices in the test set. We can make a scatter plot of the predictions versus the observed prices to inspect that. We already know by looking at the <span class="math inline">R^2</span> in the summary that the prediction quality is not good.</p>
+<p>We now predict the prices in the test set. We can make a scatter plot of the predictions versus the observed prices to inspect that. We already know by looking at the <span class="math inline">\(R^2\)</span> in the summary that the prediction quality is not good.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
@@ -603,9 +680,9 @@ Answer
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>mod_lm_pred[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><span class="math display">
+<p><span class="math display">\[
 y = -0.000133 + 3.66\times TransDate -0.243\times HouseAge \\-0.00464\times Dist + 1.027\times NumStores + 237.8\times Lat
-</span></p>
+\]</span></p>
 </details>
 </section>
 </section>
@@ -771,7 +848,7 @@ For more explanation of the code, click on me
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
-<p>The <strong>predict</strong> function with <strong>type=“response”</strong> will predict the probability of the positive class (“1”). If it is set to <strong>“link”</strong> it produces the linear predictor (i.e., the <span class="math inline">z</span>). To make the prediction, we thus have to identify if the predicted probability is larger or lower than 0.5.</p>
+<p>The <strong>predict</strong> function with <strong>type=“response”</strong> will predict the probability of the positive class (“1”). If it is set to <strong>“link”</strong> it produces the linear predictor (i.e., the <span class="math inline">\(z\)</span>). To make the prediction, we thus have to identify if the predicted probability is larger or lower than 0.5.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>prob_te_visit <span class="ot">&lt;-</span> <span class="fu">predict</span>(vis_logr_sel, <span class="at">newdata =</span> dat_te_visit, <span class="at">type=</span><span class="st">"response"</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>pred_te_visit <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(prob_te_visit <span class="sc">&gt;=</span> <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
@@ -823,18 +900,18 @@ Answer
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>prob_te_visit[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><span class="math display">
+<p><span class="math display">\[
 z(x) = -2.31795-0.31838\times gender\_male+0.39762\times age+\\0.28431\times illness+0.16340\times reduced+0.05589\times health+\\0.27249\times private\_eyes -0.65344\times freepoor\_yes+\\0.38038\times freerepat\_yes  
-</span> Then <span class="math display">
+\]</span> Then <span class="math display">\[
 P(Y=1 | X=x) = \frac{e^{z(x)}}{1+e^{z(x)}}
-</span></p>
+\]</span></p>
 </details>
 </section>
 </section>
 <section id="lasso-ridge-regressions" class="level1">
 <h1>LASSO &amp; Ridge regressions</h1>
 <p>You have been introduced to lasso and ridge regression during the <em>Variable selection with penalization</em> part of the lecture.</p>
-<p>Lasso and Ridge Regression are two regularization techniques used in regression models to prevent overfitting by adding a penalty term to the loss function. Lasso regression (aka <span class="math inline">L_1</span>) adds a penalty term equal to the absolute value of the coefficients. In contrast, Ridge regression (aka <span class="math inline">L_2</span>) adds a penalty term equal to the squared value of the coefficients. The effect of the penalty term is to shrink the coefficients towards zero, which can help reduce model complexity and improve generalization performance. In this case, we apply lasso and ridge to the real estate data and do not cover logistic regression (example already seen during the class).</p>
+<p>Lasso and Ridge Regression are two regularization techniques used in regression models to prevent overfitting by adding a penalty term to the loss function. Lasso regression (aka <span class="math inline">\(L_1\)</span>) adds a penalty term equal to the absolute value of the coefficients. In contrast, Ridge regression (aka <span class="math inline">\(L_2\)</span>) adds a penalty term equal to the squared value of the coefficients. The effect of the penalty term is to shrink the coefficients towards zero, which can help reduce model complexity and improve generalization performance. In this case, we apply lasso and ridge to the real estate data and do not cover logistic regression (example already seen during the class).</p>
 <p>First, we need to turn our predictors into matrices, as this is required by the <code>glmnet</code> package in R and works with the python implementation.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># glmnet can only work with matrix objects, columns 2-7 correspond to the same ones used by `lm`</span></span>
@@ -847,7 +924,7 @@ P(Y=1 | X=x) = \frac{e^{z(x)}}{1+e^{z(x)}}
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
-<p>On the newly created matrices, we run cross-validated lasso and ridge with the <code>cv.glmnet()</code>, function where setting the <code>alpha</code> (penalty) parameter as 1 produces lasso regression and 0 produces ridge regression. The default value of alpha is 1, which corresponds to lasso regression. For 0&lt;alpha&lt;1, it performs Elastic Net regression (a combination of <span class="math inline">L_1</span> and <span class="math inline">L_2</span> regularization).</p>
+<p>On the newly created matrices, we run cross-validated lasso and ridge with the <code>cv.glmnet()</code>, function where setting the <code>alpha</code> (penalty) parameter as 1 produces lasso regression and 0 produces ridge regression. The default value of alpha is 1, which corresponds to lasso regression. For 0&lt;alpha&lt;1, it performs Elastic Net regression (a combination of <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> regularization).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load appropriate library and set a seed</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmnet)</span>
@@ -2547,7 +2624,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </a></style><div id="sk-container-id-4" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Ridge(alpha=0.1)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-4" type="checkbox" checked=""><label for="sk-estimator-id-4" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;Ridge<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.linear_model.Ridge.html">?<span>Documentation for Ridge</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>Ridge(alpha=0.1)</pre></div> </div></div></div></div>
 </div>
 </div>
-<p>The <code>lambda</code> argument in <code>cv.glmnet()</code> from R corresponds to the <code>alpha</code> argument in <code>RidgeCV()</code>/<code>LassoCV()</code> in python. In <code>cv.glmnet()</code>, the lambda argument specifies the range of regularization parameters to be tested in the model selection process. By default, lambda is set to NULL, which means that <code>glmnet()</code> will automatically choose a sequence of lambda values to search over. Note that in <code>glmnet()</code>, lambda values are used for both <span class="math inline">L_1</span> (lasso) and <span class="math inline">L_2</span> (ridge) regularization, whereas in <code>RidgeCV()</code>, alpha values are used to control the mix of L1 and L2 regularization, with alpha = 0 corresponding to pure L2 regularization (i.e., ridge regression).</p>
+<p>The <code>lambda</code> argument in <code>cv.glmnet()</code> from R corresponds to the <code>alpha</code> argument in <code>RidgeCV()</code>/<code>LassoCV()</code> in python. In <code>cv.glmnet()</code>, the lambda argument specifies the range of regularization parameters to be tested in the model selection process. By default, lambda is set to NULL, which means that <code>glmnet()</code> will automatically choose a sequence of lambda values to search over. Note that in <code>glmnet()</code>, lambda values are used for both <span class="math inline">\(L_1\)</span> (lasso) and <span class="math inline">\(L_2\)</span> (ridge) regularization, whereas in <code>RidgeCV()</code>, alpha values are used to control the mix of L1 and L2 regularization, with alpha = 0 corresponding to pure L2 regularization (i.e., ridge regression).</p>
 <p>On the contrary (and to avoid confusion), the <code>alpha</code> argument in <code>cv.glmnet()</code> corresponds to the <code>fit_intercept</code> argument in <code>RidgeCV()</code>/<code>LassoCV()</code>. In <code>cv.glmnet()</code>, the alpha argument specifies the mixing parameter between L1 and L2 regularization.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># python lasso &amp; ridge performance on the training set</span></span>
@@ -2613,7 +2690,7 @@ Data Description
 <li><strong>minut_mob</strong>: numerical variable that represents the total number of minutes of help with movement per week</li>
 <li><strong>need_comm</strong>: categorical variable with levels “<em>Yes</em>” for a person who needs extra communication sessions with an employee, and “<em>No</em>” otherwise</li>
 <li><strong>minut_comm</strong>: numerical variable that represents the total number of minutes of communication per week</li>
-<li><strong>tot_minut</strong>: numerical variable that represents the total number of minutes spent on a patient per week, <span class="math inline">tot\_minut = minut\_mob + minut\_comm</span></li>
+<li><strong>tot_minut</strong>: numerical variable that represents the total number of minutes spent on a patient per week, <span class="math inline">\(tot\_minut = minut\_mob + minut\_comm\)</span></li>
 <li><strong>cost</strong>: numerical variable that represents the total costs of having a patient in the nursing house per month.</li>
 </ul>
 </details>
