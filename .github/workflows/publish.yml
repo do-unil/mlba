@@ -35,61 +35,15 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libcurl4-openssl-dev libglu1-mesa-dev libxml2-dev libssl-dev libv8-dev libfontconfig1-dev libfreetype6-dev cmake libmagick++-dev
 
-      # - name: Install Miniconda
-      #   uses: conda-incubator/setup-miniconda@v2
-      #   with:
-      #     auto-update-conda: true
-      #     miniconda-version: "latest"
-      #     python-version: 3.9
-      #     auto-activate-base: false
-
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
           use-public-rspm: true     
 
-      # - name: Install Miniconda
-      #   run: |
-      #     Rscript -e "remotes::install_github('rstudio/reticulate')"
-      #     Rscript -e "reticulate::install_miniconda()"
-      # - if: runner.os == 'macOS'
-      #   run: echo "options(reticulate.conda_binary = reticulate:::miniconda_conda())" >> .Rprofile
-
-      # - name: Install TensorFlow
-      #   run: |
-      #     Rscript -e "reticulate::conda_create(MLBA', packages = c('python==3.9'))"
-      #     Rscript -e "remotes::install_local()"
-      #     Rscript -e "keras::install_keras(tensorflow = Sys.getenv('TF_VERSION'), extra_packages = c('IPython', 'requests', 'certifi', 'urllib3'))"
-          
-      #     writeLines(
-      #       paste0("RETICULATE_PYTHON=", virtualenv_python(path_to_venv)),
-      #       Sys.getenv("GITHUB_ENV"))
-
       - name: Set up renv
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
-
-      # - name: Setup Conda Environment
-      #   shell: Rscript {0}
-      #   run: |
-      #     path_to_conda <- reticulate::conda_create(MLBA', packages = c('python==3.9'))
-      #     # install.packages("remotes")
-      #     remotes::install_local()
-      #     keras::install_keras(tensorflow = Sys.getenv('TF_VERSION')
-      #     # renv::use_python(python = path_to_conda)
-
-      #     writeLines(
-      #       paste0("RETICULATE_PYTHON=", reticulate::conda_python(path_to_conda)),
-      #       Sys.getenv("GITHUB_ENV"))
-
-      #     renv::restore(prompt = FALSE)
-  
-      #     # - name: Setup Conda Environment
-      # #   run: |
-      # #     conda create --name MLBA python=3.9 -y
-      # #     conda activate MLBA
-
       
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2

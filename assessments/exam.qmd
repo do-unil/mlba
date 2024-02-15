@@ -1,5 +1,8 @@
 ---
 title: "Exam"
-format: html
+format: 
+    html:
+        code-tools: false
+        code-link: false
 ---
 

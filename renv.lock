@@ -10,7 +10,8 @@
   },
   "Python": {
     "Version": "3.9.18",
-    "Type": "conda"
+    "Type": "conda",
+    "Name": "./renv/python/condaenvs/MLBA"
   },
   "Packages": {
     "ConsRank": {

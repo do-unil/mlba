@@ -2,6 +2,8 @@
 title: "Machine Learning in Business Analytics 2023-2024"
 repo-actions: false
 toc: false
+code-tools: false
+code-link: false
 ---
 
 🧑🏻‍🏫 **Teaching staff:** [Dr. Marc-Olivier Boldi](https://applicationspub.unil.ch/interpub/noauth/php/Un/UnPers.php?PerNum=1073453&LanCode=8) (Lecturer) & [Ilia Azizi](https://iliaazizi.com/) (TA).

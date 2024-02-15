@@ -3,6 +3,8 @@ title: "FAQ"
 toc: true
 toc-depth: 2
 repo-actions: [issue]
+code-tools: false
+code-link: false
 ---
 
 ::: callout-tip
@@ -29,7 +31,7 @@ You can use any kind of text editor or IDE you like. We recomment using [VS Code
 
 #### How do I submit an assignment?
 
-We will be using Github-classroom to distribute and collect assignments. You will need to create a Github account if you don't already have one.
+We will be using moodle to distribute and collect assignments. It'll also be good to create a Github account if you don't already have one.
 
 
 ### Technical issues

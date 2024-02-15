@@ -3,6 +3,8 @@ title: "Schedule"
 execute: 
   freeze: false
   output: true
+code-tools: false
+code-link: false
 ---
 
 ::: {.callout-important}

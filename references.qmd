@@ -1,5 +1,7 @@
 ---
 title: "References"
+code-tools: false
+code-link: false
 ---
 
 ### Book references
