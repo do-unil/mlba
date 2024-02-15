@@ -31,7 +31,7 @@ For unsupervised learning, {\bf data representation and simplification} is an im
 \vspace{0.2cm}
 {\bf Example:} {\tt iris} data has $4$ features (species not used). The data cannot be represented on a single graph.
 \begin{center}
-\includegraphics[width=11cm]{../../Graphs/Iris_raw.pdf}
+\includegraphics[width=11cm]{../../Graphs/Iris_raw.png}
 \end{center} 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,7 +41,7 @@ Observation: {\tt Petal.Length} and {\tt Petal.Width} are highly correlated: if 
 \vspace{0.3cm}
 To simplify the representation, we do not need these two features: replace them by their average {\tt Petal.WL = (Petal.W+Petal.L)/2}:
 \begin{center}
-\includegraphics[width=10cm]{../../Graphs/Iris_raw2.pdf}
+\includegraphics[width=10cm]{../../Graphs/Iris_raw2.png}
 \end{center} 
 Same observation for {\tt Petal.WL} and {\tt Sepal.Length}...
 \end{frame}
@@ -143,7 +143,7 @@ It represents how well the data are represented on the component $z_j$.
 \begin{frame}
 \frametitle{PCA: example}
 \begin{center}
-\includegraphics[width=7cm]{../../Graphs/Iris_pca.pdf}
+\includegraphics[width=7cm]{../../Graphs/Iris_pca.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,7 +172,7 @@ Together, PC1 and PC2 explain $95.8\%$ of the variation of the data. The scatter
 \frametitle{PCA: the circle of correlations}
 Correlation between the PC and the features $x$ can be computed to see how is PC is correlated to each features.
 \begin{center}
-\includegraphics[width=10cm]{../../Graphs/Iris_pcacircle.pdf}
+\includegraphics[width=10cm]{../../Graphs/Iris_pcacircle.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,7 +195,7 @@ With one graph, we know
 \frametitle{PCA: the $cos^2$}
 The circle of correlations relates the dimensions and the features. Another view is the {\bf $cos^2$} graph. It is interpreted as the quality of the representation of the feature by the dimension. Of course this is intimately related to the correlations.
 \begin{center}
-\includegraphics[width=8cm]{../../Graphs/Iris_cos2.pdf}
+\includegraphics[width=8cm]{../../Graphs/Iris_cos2.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -203,7 +203,7 @@ The circle of correlations relates the dimensions and the features. Another view
 \frametitle{PCA: the biplot}
 The {\bf biplot} shows a {\bf map of the individuals} in the dimensions and adds the circle of correlations. 
 \begin{center}
-\includegraphics[width=9cm]{../../Graphs/Iris_biplot.pdf}
+\includegraphics[width=9cm]{../../Graphs/Iris_biplot.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -231,7 +231,7 @@ The {\bf screeplot} may help.
 \begin{frame}
 \frametitle{PCA: the screeplot}
 \begin{center}
-\includegraphics[width=9cm]{../../Graphs/Iris_scree.pdf}
+\includegraphics[width=9cm]{../../Graphs/Iris_scree.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -320,7 +320,7 @@ Because proportions sum up to 1, there are $(3-1)\times (3-1) = 4$ possible dime
 \frametitle{Only categorical data}
 The scree plot shows the percentage of inertia explained by each dimension.
 \begin{center}
-\includegraphics[width=7cm]{../../Graphs/FAMD_screeplot.pdf}
+\includegraphics[width=7cm]{../../Graphs/FAMD_screeplot.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -331,11 +331,11 @@ The plots of the contributions shows the contributions of each variable (Length 
 \normalsize
 \begin{columns}
 \begin{column}{0.55\textwidth}
-\includegraphics[width=6cm]{../../Graphs/FAMD_contrib_xy.pdf}
+\includegraphics[width=6cm]{../../Graphs/FAMD_contrib_xy.png}
 \end{column}
 \begin{column}{0.45\textwidth}
-\includegraphics[width=4.5cm]{../../Graphs/FAMD_contrib_x.pdf}\\
-\includegraphics[width=4.5cm]{../../Graphs/FAMD_contrib_y.pdf}
+\includegraphics[width=4.5cm]{../../Graphs/FAMD_contrib_x.png}\\
+\includegraphics[width=4.5cm]{../../Graphs/FAMD_contrib_y.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -344,7 +344,7 @@ The plots of the contributions shows the contributions of each variable (Length 
 \frametitle{Only categorical data}
 The plot of the modalities locates the modalities of each variable on the map of the dimensions.
 \begin{center}
-\includegraphics[width=7cm]{../../Graphs/FAMD_quali.pdf}
+\includegraphics[width=7cm]{../../Graphs/FAMD_quali.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -408,7 +408,7 @@ On the other hand, autoencoders can produce better final representation of the d
 \frametitle{Interpretability}
 Like PCA make two-dimensional plots to discover pattern. Below, autoencoder (see example file) with 3-node intermediate-layer:
 \begin{center}
-\includegraphics[width=9cm]{../../Graphs/Iris_AE_embed.pdf}
+\includegraphics[width=9cm]{../../Graphs/Iris_AE_embed.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -416,9 +416,9 @@ Like PCA make two-dimensional plots to discover pattern. Below, autoencoder (see
 \frametitle{Interpretability}
 Relate each component of $h(X)$ to each component of $X$ using variable importance (or another technique). Below, Node 1 to 3 (left to right; top to bottom).
 \begin{center}
-\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp1.pdf}
-\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp2.pdf}
-\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp3.pdf}
+\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp1.png}
+\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp2.png}
+\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp3.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -26,9 +26,7 @@ $(x_4)$.
 
 A neural network looks like this
 
-0.6 ![](../../Graphs/NN_Iris.pdf){width="8cm" fig-align="center"}
-
-0.4
+![](../../Graphs/NN_Iris.png){width="8cm" fig-align="center"}
 
 -   4 input **nodes** (circles)
 
@@ -125,7 +123,7 @@ For the hidden layers, usual choices are
 
 -   **Sigmoid** $$g(x) = \frac{e^x}{1+e^x} = \frac{1}{1+e^{-x}}$$
 
-![](../../Graphs/Activation_graphs.pdf){width="10cm" fig-align="center"}
+![](../../Graphs/Activation_graphs.png){width="10cm" fig-align="center"}
 
 For the output layer, choices are
 

@@ -24,9 +24,13 @@ It applies to both regression and classification tasks.
 
 Iris data (on 125 data; 35/35/35).
 
-![](../../Graphs/IRIS_CART.pdf){width="6.5cm" fig-align="center"}
+0.5
 
-- If Petal length $< 2.45$ then Setosa, else if Petal width $< 1.65$ then Versicolor, else Virginica.
+![](../../Graphs/IRIS_CART.png){width="6.5cm" fig-align="center"}
+
+0.5 If Petal length $< 2.45$ then Setosa, else
+
+-   if Petal width $< 1.65$ then Versicolor, else Virginica.
 
 ### The prediction formula
 

@@ -245,12 +245,12 @@ Using random batches can also diminish the risk of overfitting since it takes mo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Bagging vs boosting}
-\includegraphics[width=13cm, page=1]{../Graphs/Bagging_Boosting_Illustrations.pdf}
+\includegraphics[width=13cm, page=1]{../Graphs/Bagging_Boosting_Illustrations.png}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Bagging vs boosting}
-\includegraphics[width=13cm, page=2]{../Graphs/Bagging_Boosting_Illustrations.pdf}
+\includegraphics[width=13cm, page=2]{../Graphs/Bagging_Boosting_Illustrations.png}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -331,9 +331,9 @@ For RF, a consequence of forcing the exclusion of some features in some splits i
 {\bf Example}: with the Boston data set, below are two small trees with features selected at random, with MSE's on the test set at 70.2 and 64.2.
 \vspace{-1cm}
 \begin{center}
-\includegraphics[width=6cm]{SmallTree1.pdf}\\
+\includegraphics[width=6cm]{SmallTree1.png}\\
 \vspace{-3cm}
-\includegraphics[width=6cm]{SmallTree2.pdf}
+\includegraphics[width=6cm]{SmallTree2.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -341,7 +341,7 @@ For RF, a consequence of forcing the exclusion of some features in some splits i
 \frametitle{Why does it work?}
 The comparison of the predictions on the test set of the two trees gives
 \begin{center}
-\includegraphics[width=5cm]{SmallTreesPred.pdf}
+\includegraphics[width=5cm]{SmallTreesPred.png}
 \end{center}
 The correlation between their predictions is 0.45. The one with the bagging trees was 0.89. That is, these models have a lower correlation due to feature random selection.
 \end{frame}
@@ -350,7 +350,7 @@ The correlation between their predictions is 0.45. The one with the bagging tree
 \frametitle{Why does it work?}
 Comparing the predictions with the observed values gives
 \begin{center}
-\includegraphics[width=5cm]{SmallTreesPredvsObs.pdf}
+\includegraphics[width=5cm]{SmallTreesPredvsObs.png}
 \end{center}
 The averaging is important to bring stability in the predictions because of the size of the two trees.
 \end{frame}
@@ -359,7 +359,7 @@ The averaging is important to bring stability in the predictions because of the 
 \frametitle{Why does it work?}
 With the averages,
 \begin{center}
-\includegraphics[width=6cm]{SmallTreesPredvsObsAvg.pdf}
+\includegraphics[width=6cm]{SmallTreesPredvsObsAvg.png}
 \end{center}
 The MSE of the average is 60.44, lower than the MSE of each model (70.2 and 64.2).
 \end{frame}
@@ -368,7 +368,7 @@ The MSE of the average is 60.44, lower than the MSE of each model (70.2 and 64.2
 \frametitle{Why does it work?}
 The procedure is now extended using function {\tt randomForest} of the eponymous package. It gives the following predictions, below compared to a single (pruned) regression tree:
 \begin{center}
-\includegraphics[width=5cm]{RFPred.pdf}
+\includegraphics[width=5cm]{RFPred.png}
 \end{center}
 The MSE's are 26.9 (single tree) and 14.0 (RF).
 \end{frame}
@@ -399,7 +399,7 @@ If predictions using the right-hand side data are the same as the left-hand side
 \frametitle{Variable importance}
 {\bf Example}: with the Boston data set, below is the tree on a training set of 380 instances (after pruning). Its MSE on the test set is 34.42.
 \begin{center}
-\includegraphics[width=6cm]{Boston_RT.pdf}
+\includegraphics[width=6cm]{Boston_RT.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -407,7 +407,7 @@ If predictions using the right-hand side data are the same as the left-hand side
 \frametitle{Variable importance}
 Now, in the test set, the variable {\tt lstat} is shuffled at random. The MSE on the new test set is 63.62. 
 \begin{center}
-\includegraphics[width=8cm]{Boston_RT_shufflstat.pdf}
+\includegraphics[width=8cm]{Boston_RT_shufflstat.png}
 \end{center}
 Going from RMSE=34.42 to RMSE=63.62 looks like a substantial increase. Variable {\tt lstat} is important.
 \end{frame}
@@ -416,7 +416,7 @@ Going from RMSE=34.42 to RMSE=63.62 looks like a substantial increase. Variable 
 \frametitle{Variable importance}
 The experience is now repeated with variable {\tt zn}. The MSE on the new test set is 34.42 (i.e. the same as when {\tt zn} is not shuffled). 
 \begin{center}
-\includegraphics[width=8cm]{Boston_RT_shuffzn.pdf}
+\includegraphics[width=8cm]{Boston_RT_shuffzn.png}
 \end{center}
 Since the RMSE is unchanged when variable {\tt zn} is perturbed, this variable is not important for the prediction. This is not surprising since {\tt zn} is not used by the model. 
 \end{frame}
@@ -425,7 +425,7 @@ Since the RMSE is unchanged when variable {\tt zn} is perturbed, this variable i
 %\frametitle{Variable importance}
 %Repeating with variable {\tt age}. The MSE on the new test set is still 34.42. 
 %\begin{center}
-%\includegraphics[width=8cm]{Boston_RT_shuffage.pdf}
+%\includegraphics[width=8cm]{Boston_RT_shuffage.png}
 %\end{center}
 %Even if used by the model, {\tt age} is not an important variable. 
 %\end{frame}
@@ -445,7 +445,7 @@ This is repeated for all the models. For each feature, the average increase of t
 \begin{frame}
 \frametitle{Variable importance}
 \begin{center}
-\includegraphics[width=6cm]{Boston_RT_VI1.pdf}
+\includegraphics[width=6cm]{Boston_RT_VI1.png}
 \end{center}
 The above method is called the {\bf permutation measure}. For classification, the Gini index replaces the MSE. Any other score could be used in theory.
 \end{frame}
@@ -454,7 +454,7 @@ The above method is called the {\bf permutation measure}. For classification, th
 \frametitle{Variable importance}
 Another computation of the importance is by measuring the average increase in the node purity each time a feature is used in a split. The average is taken over all the splits and all the trees. 
 \begin{center}
-\includegraphics[width=6cm]{Boston_RT_VI2.pdf}
+\includegraphics[width=6cm]{Boston_RT_VI2.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

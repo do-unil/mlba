@@ -246,11 +246,11 @@ used. The batch set is selected at random.\
 Using random batches can also diminish the risk of overfitting since it
 takes more time for the model to see all the data set.
 
-![](../Graphs/Bagging_Boosting_Illustrations.pdf){width="13cm" fig-align="center"}
+![](../Graphs/Bagging_Boosting_Illustrations.png){width="13cm" fig-align="center"}
 
 ### Bagging vs boosting
 
-![](../Graphs/Bagging_Boosting_Illustrations.pdf){width="13cm" fig-align="center"}
+![](../Graphs/Bagging_Boosting_Illustrations.png){width="13cm" fig-align="center"}
 
 [^1]: Freund, Y and Schapire, R E (1997). \"A decision-theoretic
     generalization of on-line learning and an application to boosting\".

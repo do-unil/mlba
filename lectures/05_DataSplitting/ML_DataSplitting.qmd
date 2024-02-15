@@ -91,21 +91,19 @@ A data set with 1000 instances,
     set predictions. These are compared to the correct classes in the
     test set.
 
--   The apparent (left) and test (right) confusion matrices:\
+-   The apparent followed by test confusion matrices:
 
-    0.5
-
+```{.r}
                   Reference
         Prediction Bad Good
               Bad   30   19
               Good 195  506
 
-    0.5
-
                   Reference
         Prediction Bad Good
               Bad    6    7
               Good  69  168
+```
 
 The apparent and test accuracies are
 $$A_{tr} = \frac{30+506}{750} = 0.715, \quad
@@ -349,8 +347,9 @@ reach a better accuracy.
 
 ### Unbalanced classes
 
-E.g., the logistic regression, gives:\
+E.g., the logistic regression, gives:
 
+```{.r}
     Confusion Matrix and Statistics
     [...]
                    Accuracy : 0.8091          
@@ -359,6 +358,7 @@ E.g., the logistic regression, gives:\
                 Specificity : 0.1435          
     [...]
           Balanced Accuracy : 0.5603
+```
 
 This problem is **detected** with
 
@@ -379,8 +379,9 @@ this optimization is always at at cost of a lower accuracy.
 
 ### Tuning probability threshold
 
-Example after optimization:\
+Example after optimization:
 
+```{.r}
     Confusion Matrix and Statistics
     [...]                     
                    Accuracy : 0.6991          
@@ -389,6 +390,7 @@ Example after optimization:\
                 Specificity : 0.6220          
     [...]
           Balanced Accuracy : 0.6703  
+```
 
 Sensitivity decreased, specificity increased. Overall BA increased (and
 accuracy decreased).\
@@ -418,24 +420,26 @@ Note: **the test set must NOT be balanced**.
 
 ### Class balancing
 
-Example,\
-With sub-sampling
-
+Examples, with sub-sampling
+```{.r}
                    Accuracy : 0.7049          
     [...]
                 Sensitivity : 0.7331          
                 Specificity : 0.5933          
     [...]
           Balanced Accuracy : 0.6632          
+```
 
-With re-sampling
+and with re-sampling
 
+```{.r}
                    Accuracy : 0.7097       
     [...]
                 Sensitivity : 0.7391          
                 Specificity : 0.5933          
     [...]
           Balanced Accuracy : 0.6662          
+```
 
 The results are similar to tuning of $\lambda$.
 

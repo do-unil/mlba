@@ -48,7 +48,7 @@ next slide example,
 
 -   $b=0$.
 
-![](../../Graphs/SVM_Borders_4.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/SVM_Borders_4.png){width="7cm" fig-align="center"}
 
 For a good separation, we generally look for a central line
 $$w^TX + b = 0,$$ at the middle of the two closest points ($A$ and $B$
@@ -68,7 +68,7 @@ translates into
 -   $w^T X_i + b \geq 1$, for all $i$ such that $Y_i$ is \"blue
     circle\".
 
-![](../../Graphs/SVM_Borders_5.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/SVM_Borders_5.png){width="7cm" fig-align="center"}
 
 It can be shown that the distance between the two borders is the margin
 $M$, and can be computed as $$M=2/\sqrt{w^T w}.$$ Thus, one should look
@@ -117,7 +117,7 @@ perfectly separable**: there exists a line that perfectly separates the
 classes.\
 Most cases are non-separable: no line can reach the perfect separation.
 
-![](../../Graphs/SVM_SoftMargins.pdf){width="6cm" fig-align="center"}
+![](../../Graphs/SVM_SoftMargins.png){width="6cm" fig-align="center"}
 
 Under the perfect separation case, $y_i(w^Tx_i + b) \geq 1$, for all
 $i$.\
@@ -239,9 +239,9 @@ create new features $h(x)$. New features can help in separating the
 cases: e.g., below a non-separable case in $(x,y)$ becomes separable by
 the new feature $(x^2+y^2)$:\
 
-0.66 ![](../../Graphs/svm_quad.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/svm_quad.png){width="7cm" fig-align="center"}
 
-0.34 ![](../../Graphs/svm_quad2.pdf){width="3.4cm" fig-align="center"}
+![](../../Graphs/svm_quad2.png){width="3.4cm" fig-align="center"}
 
 However, with the kernel, the exact form of these new features cannot be
 known.

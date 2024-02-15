@@ -213,12 +213,12 @@ $$\hat{F}_{X_s}(x_s) = \frac{1}{N}\sum_{i=1}^N f(x_s, x_{-s}^{(i)}).$$
 
 ### Estimation
 
-![](../Graphs/PDP_Illustr.pdf){width="10cm" fig-align="center"}
+![](../Graphs/PDP_Illustr.png){width="10cm" fig-align="center"}
 
 ### Interpretation
 
-![](../Graphs/PDP_Growing.pdf){width="5cm" fig-align="center"}
-![](../Graphs/PDP_Stable.pdf){width="5cm" fig-align="center"}
+![](../Graphs/PDP_Growing.png){width="5cm" fig-align="center"}
+![](../Graphs/PDP_Stable.png){width="5cm" fig-align="center"}
 
 -   Left: PDP increases. The prediction increases in average when the
     feature increases ; it is a positive association.
@@ -266,7 +266,7 @@ it (right plot), a logistic regression could be used. If you fit it on
 the black dots, you will find a positive association between large width
 and \"being green\", and no association with length.
 
-![](../Graphs/LIME_illustr.pdf){width="12cm" fig-align="center"}
+![](../Graphs/LIME_illustr.png){width="12cm" fig-align="center"}
 
 ### Technical details
 

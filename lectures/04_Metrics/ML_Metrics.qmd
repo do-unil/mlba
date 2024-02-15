@@ -42,11 +42,13 @@ The **confusion matrix** reports the frequencies of \"observed\" vs
 \"predicted\" classes. E.g., SVM with linear kernel and cost of 1, on
 iris data:\
 
+```{.r}
                 Reference
     Prediction   setosa versicolor virginica
       setosa         50          0         0
       versicolor      0         48         2
       virginica       0          2        48
+```
 
 All the metrics based on predicted classes can be computed from the
 confusion matrix.
@@ -135,10 +137,12 @@ where\
 A logistic regression was fitted to a data set[^3]. The positive class
 is "Good". There are 700 \"Good\" and 300 \"Bad\" in the data set.\
 
+```{.r}
           Pred
     Obs    Good Bad
       Good  686  14
       Bad   273  27
+```
 
 Then, $$TP=686, \, FP=273, \, TN=27, \, FN=14\,$$ and
 $$P=700, \, N=300, \, PP=959, \, PN=41.$$
@@ -184,8 +188,10 @@ $$NPV = \frac{27}{14+27} = 0.66$$ Given that the model predicts a
 
 ### Summary
 
-![](../Graphs/CondProb.png){width="10cm" fig-align="center"}\
-![](../Graphs/CondProb_example.png){width="10cm" fig-align="center"}\
+![](../Graphs/CondProb.png){width="10cm" fig-align="center"}
+
+![](../Graphs/CondProb_example.png){width="10cm" fig-align="center"}
+
 
 ### Balanced accuracy
 
@@ -237,7 +243,7 @@ The ROC curve is obtained when $\lambda$ varies between 0 and 1,
 $Spec=x$, and $y=Sens$. The specificies are usually in the reverse
 order.
 
-![](../Graphs/ROC_curve.pdf){width="5cm" fig-align="center"}
+![](../Graphs/ROC_curve.png){width="5cm" fig-align="center"}
 
 ### ROC curve and AUC
 

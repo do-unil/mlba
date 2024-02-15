@@ -214,23 +214,23 @@ distance is often used.
 
 Illustration on simulated data, with $k=2$. Below, the data ($p=2$)
 
-![](../../Graphs/kmeans1.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/kmeans1.png){width="7cm" fig-align="center"}
 
 First step, each instance is randomly assigned (circles and triangles).
 The centers are computed (dots).
 
-![](../../Graphs/kmeans2.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/kmeans2.png){width="7cm" fig-align="center"}
 
 Next step, instances are re-assigned to the closest center. Then, new
 centers are computed. The clustering is already finished.
 
-![](../../Graphs/kmeans3.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/kmeans3.png){width="7cm" fig-align="center"}
 
 ### K-means
 
 Illustration for $k=3$ clusters.
 
-![](../../Graphs/kmeans4.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/kmeans4.png){width="7cm" fig-align="center"}
 
 ### Partitioning Around the Medoid
 
@@ -396,12 +396,12 @@ data.
 Below the scatter plots of the features (jittering points for more
 readability).
 
-![](../../Graphs/Polstress-scat-jit.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/Polstress-scat-jit.png){width="7cm" fig-align="center"}
 
 4 clusters of policemen were formed using AGNES. They can be analyzed by
 the feature values within each cluster.
 
-![image](../../Graphs/Polstress-groups-4.pdf){width="9cm"
+![image](../../Graphs/Polstress-groups-4.png){width="9cm"
 height="11.5cm"}
 
 ### Example

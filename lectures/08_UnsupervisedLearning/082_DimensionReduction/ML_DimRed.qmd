@@ -18,14 +18,14 @@ $y$-axes.\
 **Example:** `iris` data has $4$ features (species not used). The data
 cannot be represented on a single graph.
 
-![](../../Graphs/Iris_raw.pdf){width="11cm" fig-align="center"}
+![](../../Graphs/Iris_raw.png){width="11cm" fig-align="center"}
 
 Observation: `Petal.Length` and `Petal.Width` are highly correlated: if
 we know one, we can predict the other one.\
 To simplify the representation, we do not need these two features:
 replace them by their average `Petal.WL = (Petal.W+Petal.L)/2`:
 
-![](../../Graphs/Iris_raw2.pdf){width="10cm" fig-align="center"}
+![](../../Graphs/Iris_raw2.png){width="10cm" fig-align="center"}
 
 Same observation for `Petal.WL` and `Sepal.Length`\...
 
@@ -113,7 +113,7 @@ proportion of the total variance explained by the PC $z_j$ is thus
 $$var(z_j)/\sum_{j'=1}^p var(z_{j'}).$$ It represents how well the data
 are represented on the component $z_j$.
 
-![](../../Graphs/Iris_pca.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/Iris_pca.png){width="7cm" fig-align="center"}
 
 ### PCA: example
 
@@ -137,7 +137,7 @@ with only two dimensions (PC$_1$, PC$_2$).
 Correlation between the PC and the features $x$ can be computed to see
 how is PC is correlated to each features.
 
-![](../../Graphs/Iris_pcacircle.pdf){width="10cm" fig-align="center"}
+![](../../Graphs/Iris_pcacircle.png){width="10cm" fig-align="center"}
 
 ### PCA: the circle of correlations
 
@@ -166,12 +166,12 @@ Another view is the **$cos^2$** graph. It is interpreted as the quality
 of the representation of the feature by the dimension. Of course this is
 intimately related to the correlations.
 
-![](../../Graphs/Iris_cos2.pdf){width="8cm" fig-align="center"}
+![](../../Graphs/Iris_cos2.png){width="8cm" fig-align="center"}
 
 The **biplot** shows a **map of the individuals** in the dimensions and
 adds the circle of correlations.
 
-![](../../Graphs/Iris_biplot.pdf){width="9cm" fig-align="center"}
+![](../../Graphs/Iris_biplot.png){width="9cm" fig-align="center"}
 
 ### PCA: the biplot
 
@@ -199,7 +199,7 @@ The **screeplot** may help.
 
 ### PCA: the screeplot
 
-![](../../Graphs/Iris_scree.pdf){width="9cm" fig-align="center"}
+![](../../Graphs/Iris_scree.png){width="9cm" fig-align="center"}
 
 ### PCA and machine learning
 
@@ -287,20 +287,20 @@ possible dimensions.
 The scree plot shows the percentage of inertia explained by each
 dimension.
 
-![](../../Graphs/FAMD_screeplot.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/FAMD_screeplot.png){width="7cm" fig-align="center"}
 
 The plots of the contributions shows the contributions of each variable
 (Length and Width) to the dimensions (1 and 2).
 
-0.55 ![](../../Graphs/FAMD_contrib_xy.pdf){width="6cm" fig-align="center"}
+0.55 ![](../../Graphs/FAMD_contrib_xy.png){width="6cm" fig-align="center"}
 
-0.45 ![](../../Graphs/FAMD_contrib_x.pdf){width="4.5cm" fig-align="center"}\
-![](../../Graphs/FAMD_contrib_y.pdf){width="4.5cm" fig-align="center"}
+0.45 ![](../../Graphs/FAMD_contrib_x.png){width="4.5cm" fig-align="center"}\
+![](../../Graphs/FAMD_contrib_y.png){width="4.5cm" fig-align="center"}
 
 The plot of the modalities locates the modalities of each variable on
 the map of the dimensions.
 
-![](../../Graphs/FAMD_quali.pdf){width="7cm" fig-align="center"}
+![](../../Graphs/FAMD_quali.png){width="7cm" fig-align="center"}
 
 ### Only categorical data
 
@@ -365,7 +365,7 @@ PCA.
 Like PCA make two-dimensional plots to discover pattern. Below,
 autoencoder (see example file) with 3-node intermediate-layer:
 
-![](../../Graphs/Iris_AE_embed.pdf){width="9cm" fig-align="center"}
+![](../../Graphs/Iris_AE_embed.png){width="9cm" fig-align="center"}
 
 ### Interpretability
 
@@ -373,9 +373,9 @@ Relate each component of $h(X)$ to each component of $X$ using variable
 importance (or another technique). Below, Node 1 to 3 (left to right;
 top to bottom).
 
-![](../../Graphs/Iris_AE_VImp1.pdf){width="5cm" fig-align="center"}
-![](../../Graphs/Iris_AE_VImp2.pdf){width="5cm" fig-align="center"}
-![](../../Graphs/Iris_AE_VImp3.pdf){width="5cm" fig-align="center"}
+![](../../Graphs/Iris_AE_VImp1.png){width="5cm" fig-align="center"}
+![](../../Graphs/Iris_AE_VImp2.png){width="5cm" fig-align="center"}
+![](../../Graphs/Iris_AE_VImp3.png){width="5cm" fig-align="center"}
 
 [^1]: With only categorical variables, FAMD is simply an MCA.
 
