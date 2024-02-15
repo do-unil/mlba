@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.549">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
 <title>MLBA - S24 - Model scoring</title>
 <style>
 code{white-space: pre-wrap;}
@@ -53,6 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -60,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
 <link href="../../labs/05_DataSplitting/Ex_ML_Data_Splitting.html" rel="next">
-<link href="../../labs/03_Models/035_KNN/Ex_ML_KNN.html" rel="prev">
+<link href="../../labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.html" rel="prev">
 <link href="../../images/logo.dark.png" rel="icon" type="image/png">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -72,7 +76,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -98,7 +103,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script><script>document.addEventListener("DOMContentLoaded", function () {
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
  var mathElements = document.getElementsByClassName("math");
  var macros = [];
  for (var i = 0; i < mathElements.length; i++) {
@@ -111,7 +119,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     fleqn: false
    });
 }}});
-  </script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
 <script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
@@ -137,14 +147,19 @@ const typesetMath = (el) => {
 window.Quarto = {
   typesetMath
 };
-</script><link rel="stylesheet" href="../labs.css">
+</script>
+
+<link rel="stylesheet" href="../labs.css">
 <meta property="og:title" content="MLBA - S24 - Model scoring">
 <meta property="og:site_name" content="MLBA - S24 ">
 </head>
+
 <body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -155,11 +170,16 @@ window.Quarto = {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../images/logo.light.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none"></a>
+      <img src="../../images/logo.light.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
@@ -173,7 +193,7 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
@@ -181,8 +201,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -192,12 +212,6 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../links.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Useful links</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -213,7 +227,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
  <span class="menu-text">Lectures</span></span>
@@ -226,8 +240,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/00_lab/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Structure &amp; Setup</span></a>
@@ -255,12 +269,6 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../../labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support Vector Machines</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../labs/03_Models/035_KNN/Ex_ML_KNN.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">K-Nearest Neighbors</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -299,14 +307,8 @@ window.Quarto = {
  <span class="menu-text">PCA</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Autoencoders</span></a>
-  </div>
-</li>
       </ul>
-</li>
+  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
@@ -315,8 +317,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../assessments/exam.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exam</span></a>
@@ -329,54 +331,46 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../resources.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Resources</span></a>
-  </div>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#regression-task" id="toc-regression-task" class="nav-link active" data-scroll-target="#regression-task">Regression task</a>
+  <li><a href="#regression-task" id="toc-regression-task" class="nav-link active" data-scroll-target="#regression-task">Regression task</a>
   <ul class="collapse">
-<li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   <li><a href="#models" id="toc-models" class="nav-link" data-scroll-target="#models">Models</a></li>
   <li><a href="#r-squared" id="toc-r-squared" class="nav-link" data-scroll-target="#r-squared">R-squared</a></li>
   <li><a href="#rmse" id="toc-rmse" class="nav-link" data-scroll-target="#rmse">RMSE</a></li>
   <li><a href="#mae" id="toc-mae" class="nav-link" data-scroll-target="#mae">MAE</a></li>
   <li><a href="#best-model" id="toc-best-model" class="nav-link" data-scroll-target="#best-model">Best model</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#classification-task" id="toc-classification-task" class="nav-link" data-scroll-target="#classification-task">Classification task</a>
+  </ul></li>
+  <li><a href="#classification-task" id="toc-classification-task" class="nav-link" data-scroll-target="#classification-task">Classification task</a>
   <ul class="collapse">
-<li><a href="#data-1" id="toc-data-1" class="nav-link" data-scroll-target="#data-1">Data</a></li>
+  <li><a href="#data-1" id="toc-data-1" class="nav-link" data-scroll-target="#data-1">Data</a></li>
   <li><a href="#models-1" id="toc-models-1" class="nav-link" data-scroll-target="#models-1">Models</a></li>
   <li><a href="#predictions" id="toc-predictions" class="nav-link" data-scroll-target="#predictions">Predictions</a></li>
   <li><a href="#confusion-matrices-prediction-based-measures" id="toc-confusion-matrices-prediction-based-measures" class="nav-link" data-scroll-target="#confusion-matrices-prediction-based-measures">Confusion matrices &amp; prediction-based measures</a></li>
   <li><a href="#probability-based-measures" id="toc-probability-based-measures" class="nav-link" data-scroll-target="#probability-based-measures">Probability-based measures</a></li>
   <li><a href="#roc-curve-prob-threshold-tuning" id="toc-roc-curve-prob-threshold-tuning" class="nav-link" data-scroll-target="#roc-curve-prob-threshold-tuning">ROC curve &amp; prob threshold tuning</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your turn</a>
+  </ul></li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your turn</a>
   <ul class="collapse">
-<li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a></li>
+  <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a></li>
   <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
+  </ul></li>
   </ul>
-</li>
-  </ul><div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/labs/04_Metrics/Ex_ML_Scoring.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/labs/04_Metrics/Ex_ML_Scoring.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><script type="application/javascript">
+<main class="content" id="quarto-document-content">
+<script type="application/javascript">
 // Description: Change image src depending on body class (quarto-light or quarto-dark)
 function updateImageSrc() {
   var bodyClass = window.document.body.classList;
@@ -409,7 +403,10 @@ observer.observe(window.document.body, {
 });
 
 updateImageSrc();
-</script><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/00_lab/setup.html">Labs</a></li><li class="breadcrumb-item"><a href="../../labs/04_Metrics/Ex_ML_Scoring.html">Metrics</a></li></ol></nav><div class="quarto-title">
+</script>
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/00_lab/setup.html">Labs</a></li><li class="breadcrumb-item"><a href="../../labs/04_Metrics/Ex_ML_Scoring.html">Metrics</a></li></ol></nav>
+<div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Model scoring</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -424,45 +421,49 @@ updateImageSrc();
   
 
 
-</header><section id="regression-task" class="level1"><h1>Regression task</h1>
-<section id="data" class="level2"><h2 class="anchored" data-anchor-id="data">Data</h2>
+</header>
+
+
+<section id="regression-task" class="level1">
+<h1>Regression task</h1>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
 <p>The data set is the one used in the series on linear regressions.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
-<span><span class="va">real_estate_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"labs/data/real_estate_data.csv"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>real_estate_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"labs/data/real_estate_data.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we split the data in a training and a test set (0.8/0.2). For this, we use the <code>createDataPartition</code> function of the <code>caret</code> package.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">234</span><span class="op">)</span></span>
-<span><span class="va">index_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/createDataPartition.html">createDataPartition</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">real_estate_data</span><span class="op">$</span><span class="va">Price</span>, p<span class="op">=</span> <span class="fl">0.8</span>, list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="va">df_tr</span> <span class="op">&lt;-</span> <span class="va">real_estate_data</span><span class="op">[</span><span class="va">index_tr</span>,<span class="op">]</span></span>
-<span><span class="va">df_te</span> <span class="op">&lt;-</span> <span class="va">real_estate_data</span><span class="op">[</span><span class="op">-</span><span class="va">index_tr</span>,<span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">234</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>index_tr <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> real_estate_data<span class="sc">$</span>Price, <span class="at">p=</span> <span class="fl">0.8</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df_tr <span class="ot">&lt;-</span> real_estate_data[index_tr,]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_te <span class="ot">&lt;-</span> real_estate_data[<span class="sc">-</span>index_tr,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="models" class="level2"><h2 class="anchored" data-anchor-id="models">Models</h2>
+</section>
+<section id="models" class="level2">
+<h2 class="anchored" data-anchor-id="models">Models</h2>
 <p>We will compare a linear regression, a regression tree and a 3-NN (KNN).</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">R</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bethatkinson/rpart">rpart</a></span><span class="op">)</span></span>
-<span><span class="va">est_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">Price</span><span class="op">~</span><span class="va">TransDate</span><span class="op">+</span><span class="va">HouseAge</span><span class="op">+</span><span class="va">Dist</span><span class="op">+</span></span>
-<span>               <span class="va">NumStores</span><span class="op">+</span><span class="va">Lat</span><span class="op">+</span><span class="va">Long</span>, data<span class="op">=</span><span class="va">df_tr</span><span class="op">)</span></span>
-<span><span class="va">est_rt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rpart/man/rpart.html">rpart</a></span><span class="op">(</span><span class="va">Price</span><span class="op">~</span><span class="va">TransDate</span><span class="op">+</span><span class="va">HouseAge</span><span class="op">+</span><span class="va">Dist</span><span class="op">+</span></span>
-<span>                      <span class="va">NumStores</span><span class="op">+</span><span class="va">Lat</span><span class="op">+</span><span class="va">Long</span>, data<span class="op">=</span><span class="va">df_tr</span><span class="op">)</span></span>
-<span><span class="va">est_knn</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/knnreg.html">knnreg</a></span><span class="op">(</span><span class="va">Price</span><span class="op">~</span><span class="va">TransDate</span><span class="op">+</span><span class="va">HouseAge</span><span class="op">+</span><span class="va">Dist</span><span class="op">+</span></span>
-<span>                      <span class="va">NumStores</span><span class="op">+</span><span class="va">Lat</span><span class="op">+</span><span class="va">Long</span>, data<span class="op">=</span><span class="va">df_tr</span>, k <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>est_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price<span class="sc">~</span>TransDate<span class="sc">+</span>HouseAge<span class="sc">+</span>Dist<span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>               NumStores<span class="sc">+</span>Lat<span class="sc">+</span>Long, <span class="at">data=</span>df_tr)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>est_rt <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Price<span class="sc">~</span>TransDate<span class="sc">+</span>HouseAge<span class="sc">+</span>Dist<span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                      NumStores<span class="sc">+</span>Lat<span class="sc">+</span>Long, <span class="at">data=</span>df_tr)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>est_knn <span class="ot">&lt;-</span> <span class="fu">knnreg</span>(Price<span class="sc">~</span>TransDate<span class="sc">+</span>HouseAge<span class="sc">+</span>Dist<span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>                      NumStores<span class="sc">+</span>Lat<span class="sc">+</span>Long, <span class="at">data=</span>df_tr, <span class="at">k =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the course python environment as usual with a r code chunks.</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/reticulate/">reticulate</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html">use_condaenv</a></span><span class="op">(</span><span class="st">"MLBA"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the course python environment as usual with a r code chunks.</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">"MLBA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the models: linear regression, regression tree, and KNN</span></span>
@@ -482,23 +483,22 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section><section id="r-squared" class="level2"><h2 class="anchored" data-anchor-id="r-squared">R-squared</h2>
+</section>
+<section id="r-squared" class="level2">
+<h2 class="anchored" data-anchor-id="r-squared">R-squared</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>We now compute the R2 for each model using the <code>R2</code> function (in <code>caret</code>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">R2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_lm</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, <span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">R2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_rt</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, <span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">R2</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_knn</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, <span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">R2</span>(<span class="fu">predict</span>(est_lm, <span class="at">newdata =</span> df_te), df_te<span class="sc">$</span>Price)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">R2</span>(<span class="fu">predict</span>(est_rt, <span class="at">newdata =</span> df_te), df_te<span class="sc">$</span>Price)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">R2</span>(<span class="fu">predict</span>(est_knn, <span class="at">newdata =</span> df_te), df_te<span class="sc">$</span>Price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Just for the exercise, we can compute it by hand (square of the correlation)</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/cor.html">cor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_lm</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, <span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(<span class="fu">predict</span>(est_lm, <span class="at">newdata =</span> df_te), df_te<span class="sc">$</span>Price)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
@@ -514,28 +514,27 @@ updateImageSrc();
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Computing it by hand gives us the same result as R</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>np.corrcoef(est_lm.predict(r.df_te[predictors]), r.df_te[target])[<span class="dv">0</span>][<span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>To understand why the results are different in <code><a href="https://rdrr.io/pkg/caret/man/postResample.html">caret::R2()</a></code> vs.&nbsp;<code>sklearn.metrics.r2_score()</code>, see <a href="https://stats.stackexchange.com/questions/586821/what-is-the-interpretation-of-the-traditional-r2">this post on stackoverflow</a>. If you want to get the same results in both, you can set the argument <code>form = 'corr'</code> to <code>form = "traditional"</code> in <code><a href="https://rdrr.io/pkg/caret/man/postResample.html">caret::R2()</a></code> so that for instance <code>R2(predict(est_lm, newdata = df_te), df_te$Price, form = "traditional")</code>, produces the same result of 0.642401.</p>
+<p>To understand why the results are different in <code>caret::R2()</code> vs.&nbsp;<code>sklearn.metrics.r2_score()</code>, see <a href="https://stats.stackexchange.com/questions/586821/what-is-the-interpretation-of-the-traditional-r2">this post on stackoverflow</a>. If you want to get the same results in both, you can set the argument <code>form = 'corr'</code> to <code>form = "traditional"</code> in <code>caret::R2()</code> so that for instance <code>R2(predict(est_lm, newdata = df_te), df_te$Price, form = "traditional")</code>, produces the same result of 0.642401.</p>
 <p>Additionally, please note that the performance of the tree is highly dependent on the seed, so setting a different seed can lead to different results.</p>
 </div>
 </div>
 </div>
-</section><section id="rmse" class="level2"><h2 class="anchored" data-anchor-id="rmse">RMSE</h2>
+</section>
+<section id="rmse" class="level2">
+<h2 class="anchored" data-anchor-id="rmse">RMSE</h2>
 <p>Now, we compute the RMSE.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">RMSE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_lm</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, <span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">RMSE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_rt</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, <span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">RMSE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_knn</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, <span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">RMSE</span>(<span class="fu">predict</span>(est_lm, <span class="at">newdata =</span> df_te), df_te<span class="sc">$</span>Price)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">RMSE</span>(<span class="fu">predict</span>(est_rt, <span class="at">newdata =</span> df_te), df_te<span class="sc">$</span>Price)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">RMSE</span>(<span class="fu">predict</span>(est_knn, <span class="at">newdata =</span> df_te), df_te<span class="sc">$</span>Price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The formula would be:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_lm</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span><span class="op">-</span><span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>((<span class="fu">predict</span>(est_lm, <span class="at">newdata =</span> df_te)<span class="sc">-</span>df_te<span class="sc">$</span>Price)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
@@ -552,23 +551,22 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section><section id="mae" class="level2"><h2 class="anchored" data-anchor-id="mae">MAE</h2>
+</section>
+<section id="mae" class="level2">
+<h2 class="anchored" data-anchor-id="mae">MAE</h2>
 <p>Now, we compute the MAE.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">MAE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_lm</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, <span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">MAE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_rt</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, <span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">MAE</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_knn</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, <span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">MAE</span>(<span class="fu">predict</span>(est_lm, <span class="at">newdata =</span> df_te), df_te<span class="sc">$</span>Price)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">MAE</span>(<span class="fu">predict</span>(est_rt, <span class="at">newdata =</span> df_te), df_te<span class="sc">$</span>Price)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">MAE</span>(<span class="fu">predict</span>(est_knn, <span class="at">newdata =</span> df_te), df_te<span class="sc">$</span>Price)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The formula would be:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_lm</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span><span class="op">-</span><span class="va">df_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(<span class="fu">predict</span>(est_lm, <span class="at">newdata =</span> df_te)<span class="sc">-</span>df_te<span class="sc">$</span>Price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
@@ -583,27 +581,26 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section><section id="best-model" class="level2"><h2 class="anchored" data-anchor-id="best-model">Best model</h2>
+</section>
+<section id="best-model" class="level2">
+<h2 class="anchored" data-anchor-id="best-model">Best model</h2>
 <p>These three measures agree on the fact that the regression tree is the best model. To inspect further the predictions, we use scatterplots:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>,<span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_te</span><span class="op">$</span><span class="va">Price</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_lm</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, xlab<span class="op">=</span><span class="st">"Prediction"</span>, </span>
-<span>     ylab<span class="op">=</span><span class="st">"Observed prices"</span>, main<span class="op">=</span><span class="st">"Lin. Reg."</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_te</span><span class="op">$</span><span class="va">Price</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_rt</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, xlab<span class="op">=</span><span class="st">"Prediction"</span>, </span>
-<span>     ylab<span class="op">=</span><span class="st">"Observed prices"</span>, main<span class="op">=</span><span class="st">"Lin. Reg."</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">df_te</span><span class="op">$</span><span class="va">Price</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">est_knn</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span>, xlab<span class="op">=</span><span class="st">"Prediction"</span>, </span>
-<span>     ylab<span class="op">=</span><span class="st">"Observed prices"</span>, main<span class="op">=</span><span class="st">"Lin. Reg."</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_te<span class="sc">$</span>Price <span class="sc">~</span> <span class="fu">predict</span>(est_lm, <span class="at">newdata =</span> df_te), <span class="at">xlab=</span><span class="st">"Prediction"</span>, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Observed prices"</span>, <span class="at">main=</span><span class="st">"Lin. Reg."</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_te<span class="sc">$</span>Price <span class="sc">~</span> <span class="fu">predict</span>(est_rt, <span class="at">newdata =</span> df_te), <span class="at">xlab=</span><span class="st">"Prediction"</span>, </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Observed prices"</span>, <span class="at">main=</span><span class="st">"Lin. Reg."</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(df_te<span class="sc">$</span>Price <span class="sc">~</span> <span class="fu">predict</span>(est_knn, <span class="at">newdata =</span> df_te), <span class="at">xlab=</span><span class="st">"Prediction"</span>, </span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab=</span><span class="st">"Observed prices"</span>, <span class="at">main=</span><span class="st">"Lin. Reg."</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
@@ -641,49 +638,52 @@ updateImageSrc();
 </div>
 </div>
 <p>The scatterplots are in line with the conclusion that KNN is the best, even though it is not easy to declare from a plot. We can in addition see that the regression tree (RT) has made more error on the larger prices.</p>
-</section></section><section id="classification-task" class="level1"><h1>Classification task</h1>
-<section id="data-1" class="level2"><h2 class="anchored" data-anchor-id="data-1">Data</h2>
+</section>
+</section>
+<section id="classification-task" class="level1">
+<h1>Classification task</h1>
+<section id="data-1" class="level2">
+<h2 class="anchored" data-anchor-id="data-1">Data</h2>
 <p>The data set is the visit data (already used in previous exercises). For simplicity, we turn the outcome (<code>visits</code>) into factor. Like before, that are also split into a training and a test set.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">DocVis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"labs/data/DocVis.csv"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">DocVis</span><span class="op">$</span><span class="va">visits</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">DocVis</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">346</span><span class="op">)</span></span>
-<span><span class="va">index_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/caret/man/createDataPartition.html">createDataPartition</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">DocVis</span><span class="op">$</span><span class="va">visits</span>, p<span class="op">=</span> <span class="fl">0.8</span>, list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="va">df_tr</span> <span class="op">&lt;-</span> <span class="va">DocVis</span><span class="op">[</span><span class="va">index_tr</span>,<span class="op">]</span></span>
-<span><span class="va">df_te</span> <span class="op">&lt;-</span> <span class="va">DocVis</span><span class="op">[</span><span class="op">-</span><span class="va">index_tr</span>,<span class="op">]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>DocVis <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"labs/data/DocVis.csv"</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>DocVis<span class="sc">$</span>visits <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(DocVis<span class="sc">$</span>visits)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">346</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>index_tr <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> DocVis<span class="sc">$</span>visits, <span class="at">p=</span> <span class="fl">0.8</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>df_tr <span class="ot">&lt;-</span> DocVis[index_tr,]</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>df_te <span class="ot">&lt;-</span> DocVis[<span class="sc">-</span>index_tr,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section><section id="models-1" class="level2"><h2 class="anchored" data-anchor-id="models-1">Models</h2>
+</section>
+<section id="models-1" class="level2">
+<h2 class="anchored" data-anchor-id="models-1">Models</h2>
 <p>We will compare a logistic regression, a classification tree (pruned) and a SVM with radial basis (cost and gamma tuned).</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <p>Note that the <em>code for tuning the SVM</em> is provided below in comments because of the time it takes to run. The final parameters have been selected accordingly. Also, the SVM fit includes the argument <code>probability=TRUE</code> to allow the calculations of predicted probabilities later.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">adabag</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## Logistic regression</span></span>
-<span><span class="va">Doc_lr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">visits</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">df_tr</span>, family<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span></span>
-<span><span class="va">Doc_lr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/step.html">step</a></span><span class="op">(</span><span class="va">Doc_lr</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## Classification tree </span></span>
-<span><span class="va">Doc_ct</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/adabag/man/autoprune.html">autoprune</a></span><span class="op">(</span><span class="va">visits</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">df_tr</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## SVM radial basis</span></span>
-<span><span class="co"># grid_radial &lt;- expand.grid(sigma = c(0.0001, 0.001, 0.01, 0.1),</span></span>
-<span><span class="co">#                           C = c(0.1, 1, 10, 100, 1000))</span></span>
-<span><span class="co"># trctrl &lt;- trainControl(method = "cv", number=10)</span></span>
-<span><span class="co"># set.seed(143)</span></span>
-<span><span class="co"># Doc_svm &lt;- train(visits ~., data = df_tr, method = "svmRadial",</span></span>
-<span><span class="co">#                          trControl=trctrl,</span></span>
-<span><span class="co">#                          tuneGrid = grid_radial)</span></span>
-<span><span class="va">Doc_svm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/e1071/man/svm.html">svm</a></span><span class="op">(</span><span class="va">visits</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">df_tr</span>, gamma<span class="op">=</span><span class="fl">0.001</span>, cost<span class="op">=</span><span class="fl">1000</span>, probability<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adabag)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Logistic regression</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>Doc_lr <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits<span class="sc">~</span>., <span class="at">data=</span>df_tr, <span class="at">family=</span><span class="st">"binomial"</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>Doc_lr <span class="ot">&lt;-</span> <span class="fu">step</span>(Doc_lr)</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Classification tree </span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>Doc_ct <span class="ot">&lt;-</span> <span class="fu">autoprune</span>(visits<span class="sc">~</span>., <span class="at">data=</span>df_tr)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="do">## SVM radial basis</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># grid_radial &lt;- expand.grid(sigma = c(0.0001, 0.001, 0.01, 0.1),</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                           C = c(0.1, 1, 10, 100, 1000))</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="co"># trctrl &lt;- trainControl(method = "cv", number=10)</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="co"># set.seed(143)</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Doc_svm &lt;- train(visits ~., data = df_tr, method = "svmRadial",</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                          trControl=trctrl,</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                          tuneGrid = grid_radial)</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>Doc_svm <span class="ot">&lt;-</span> <span class="fu">svm</span>(visits<span class="sc">~</span>., <span class="at">data=</span>df_tr, <span class="at">gamma=</span><span class="fl">0.001</span>, <span class="at">cost=</span><span class="dv">1000</span>, <span class="at">probability=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
@@ -1107,15 +1107,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-</a></style>
-<div id="sk-container-id-1" class="sk-top-container">
-<div class="sk-text-repr-fallback">
-<pre>LogisticRegression()</pre>
-<b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b>
-</div>
-<div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable">
-<input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LogisticRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LogisticRegression()</pre></div> </div></div></div>
-</div>
+</a></style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>LogisticRegression()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;LogisticRegression<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.linear_model.LogisticRegression.html">?<span>Documentation for LogisticRegression</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>LogisticRegression()</pre></div> </div></div></div></div>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Classification tree</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>doc_ct <span class="op">=</span> DecisionTreeClassifier(random_state<span class="op">=</span><span class="dv">123</span>)</span>
@@ -1525,15 +1517,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-</a></style>
-<div id="sk-container-id-2" class="sk-top-container">
-<div class="sk-text-repr-fallback">
-<pre>DecisionTreeClassifier(random_state=123)</pre>
-<b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b>
-</div>
-<div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable">
-<input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked=""><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;DecisionTreeClassifier<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.tree.DecisionTreeClassifier.html">?<span>Documentation for DecisionTreeClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>DecisionTreeClassifier(random_state=123)</pre></div> </div></div></div>
-</div>
+</a></style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeClassifier(random_state=123)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked=""><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;DecisionTreeClassifier<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.tree.DecisionTreeClassifier.html">?<span>Documentation for DecisionTreeClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>DecisionTreeClassifier(random_state=123)</pre></div> </div></div></div></div>
 </div>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">## SVM radial basis</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>doc_svm <span class="op">=</span> SVC(kernel<span class="op">=</span><span class="st">'rbf'</span>, gamma<span class="op">=</span><span class="fl">0.001</span>, C<span class="op">=</span><span class="dv">1000</span>, probability<span class="op">=</span><span class="va">True</span>, random_state<span class="op">=</span><span class="dv">123</span>)</span>
@@ -1943,43 +1927,34 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   /* fitted */
   background-color: var(--sklearn-color-fitted-level-3);
 }
-</a></style>
-<div id="sk-container-id-3" class="sk-top-container">
-<div class="sk-text-repr-fallback">
-<pre>SVC(C=1000, gamma=0.001, probability=True, random_state=123)</pre>
-<b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b>
-</div>
-<div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable">
-<input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked=""><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;SVC<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.svm.SVC.html">?<span>Documentation for SVC</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>SVC(C=1000, gamma=0.001, probability=True, random_state=123)</pre></div> </div></div></div>
+</a></style><div id="sk-container-id-3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(C=1000, gamma=0.001, probability=True, random_state=123)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-3" type="checkbox" checked=""><label for="sk-estimator-id-3" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;SVC<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.svm.SVC.html">?<span>Documentation for SVC</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>SVC(C=1000, gamma=0.001, probability=True, random_state=123)</pre></div> </div></div></div></div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-</section><section id="predictions" class="level2"><h2 class="anchored" data-anchor-id="predictions">Predictions</h2>
+</section>
+<section id="predictions" class="level2">
+<h2 class="anchored" data-anchor-id="predictions">Predictions</h2>
 <p>We now compute the predicted probabilities and the predictions of all the models.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <p>Note that, for SVM, we need to extract the <em>attribute</em> “probabilities” from the predicted object. This can be done with the <code>attr</code> function.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Logistic regression</span></span>
-<span><span class="va">Doc_lr_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_lr</span>, newdata<span class="op">=</span><span class="va">df_te</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
-<span><span class="va">Doc_lr_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_lr_prob</span><span class="op">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## Classification tree </span></span>
-<span><span class="va">Doc_ct_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_ct</span>, newdata<span class="op">=</span><span class="va">df_te</span>, type<span class="op">=</span><span class="st">"prob"</span><span class="op">)</span></span>
-<span><span class="va">Doc_ct_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_ct</span>, newdata<span class="op">=</span><span class="va">df_te</span>, type<span class="op">=</span><span class="st">"class"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">## SVM radial basis</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span><span class="va">Doc_svm_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_svm</span>, newdata<span class="op">=</span><span class="va">df_te</span>, probability<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="st">"probabilities"</span><span class="op">)</span></span>
-<span><span class="va">Doc_svm_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_svm</span>, newdata<span class="op">=</span><span class="va">df_te</span>, type<span class="op">=</span><span class="st">"class"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Logistic regression</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>Doc_lr_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_lr, <span class="at">newdata=</span>df_te, <span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>Doc_lr_pred <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_lr_prob<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Classification tree </span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>Doc_ct_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_ct, <span class="at">newdata=</span>df_te, <span class="at">type=</span><span class="st">"prob"</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>Doc_ct_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_ct, <span class="at">newdata=</span>df_te, <span class="at">type=</span><span class="st">"class"</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="do">## SVM radial basis</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>Doc_svm_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_svm, <span class="at">newdata=</span>df_te, <span class="at">probability=</span><span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">attr</span>(<span class="st">"probabilities"</span>)</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>Doc_svm_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_svm, <span class="at">newdata=</span>df_te, <span class="at">type=</span><span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
@@ -2000,19 +1975,18 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
-</section><section id="confusion-matrices-prediction-based-measures" class="level2"><h2 class="anchored" data-anchor-id="confusion-matrices-prediction-based-measures">Confusion matrices &amp; prediction-based measures</h2>
+</section>
+<section id="confusion-matrices-prediction-based-measures" class="level2">
+<h2 class="anchored" data-anchor-id="confusion-matrices-prediction-based-measures">Confusion matrices &amp; prediction-based measures</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">R</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Python</a></li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <p>The <code>confusionMatrix</code> function provides all the accuracy measures that we want.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/confusionMatrix.html">confusionMatrix</a></span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_lr_pred</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/confusionMatrix.html">confusionMatrix</a></span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_ct_pred</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/confusionMatrix.html">confusionMatrix</a></span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_svm_pred</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_lr_pred), <span class="at">reference =</span> df_te<span class="sc">$</span>visits)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_ct_pred), <span class="at">reference =</span> df_te<span class="sc">$</span>visits)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_svm_pred), <span class="at">reference =</span> df_te<span class="sc">$</span>visits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
@@ -2048,48 +2022,47 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </ul>
 <p>Looking at the confusion matrix, we see that the data is highly unbalanced (many more “No” than “Yes”). Therefore, measures like balanced accuracy and kappa are interesting because they take this characteristics into account. This shows that the CT is probably better than the SVM because it reaches a better balance between predicting “Yes” and “No”.</p>
 <p>By looking at the sensitivity and specificity (<u>!! here the positive class is “No”</u>), we see that the best model to recover the “No” is the logistic regression (largest sensitivity) and the best model to recover the “Yes” is the classification tree (largest specificity).</p>
-</section><section id="probability-based-measures" class="level2"><h2 class="anchored" data-anchor-id="probability-based-measures">Probability-based measures</h2>
+</section>
+<section id="probability-based-measures" class="level2">
+<h2 class="anchored" data-anchor-id="probability-based-measures">Probability-based measures</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">R</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Python</a></li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
-<p>To compute the AUC (area under the ROC curve) we can use the <code><a href="https://rdrr.io/pkg/caret/man/postResample.html">caret::twoClassSummary</a></code> function. The use of this function can be tricky. Its argument should be a data frame with columns (names are fixed):</p>
+<p>To compute the AUC (area under the ROC curve) we can use the <code>caret::twoClassSummary</code> function. The use of this function can be tricky. Its argument should be a data frame with columns (names are fixed):</p>
 <ul>
 <li>“obs”: the observed classes</li>
 <li>“pred”: the predicted classes</li>
 <li>two columns with names being the levels of the classes, here “Yes” and “No”, containing the predicted probabilities.</li>
 </ul>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_pred_lr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>obs<span class="op">=</span><span class="va">df_te</span><span class="op">$</span><span class="va">visits</span>,</span>
-<span>                         Yes<span class="op">=</span><span class="va">Doc_lr_prob</span>,</span>
-<span>                         No<span class="op">=</span><span class="fl">1</span><span class="op">-</span><span class="va">Doc_lr_prob</span>,</span>
-<span>                         pred<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_lr_pred</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_pred_lr</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">df_pred_ct</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>obs<span class="op">=</span><span class="va">df_te</span><span class="op">$</span><span class="va">visits</span>,</span>
-<span>                         <span class="va">Doc_ct_prob</span>,</span>
-<span>                         pred<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_ct_pred</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_pred_ct</span><span class="op">)</span></span>
-<span><span class="va">df_pred_svm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>obs<span class="op">=</span><span class="va">df_te</span><span class="op">$</span><span class="va">visits</span>,</span>
-<span>                          <span class="va">Doc_svm_prob</span>,</span>
-<span>                          pred<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_svm_pred</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df_pred_svm</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df_pred_lr <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obs=</span>df_te<span class="sc">$</span>visits,</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">Yes=</span>Doc_lr_prob,</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">No=</span><span class="dv">1</span><span class="sc">-</span>Doc_lr_prob,</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pred=</span><span class="fu">as.factor</span>(Doc_lr_pred))</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_pred_lr)</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>df_pred_ct <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obs=</span>df_te<span class="sc">$</span>visits,</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>                         Doc_ct_prob,</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">pred=</span><span class="fu">as.factor</span>(Doc_ct_pred))</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_pred_ct)</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>df_pred_svm <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obs=</span>df_te<span class="sc">$</span>visits,</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>                          Doc_svm_prob,</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a>                          <span class="at">pred=</span><span class="fu">as.factor</span>(Doc_svm_pred))</span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df_pred_svm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Then we pass these objects to the function, and levels of the classes to be predicted (for the function to be able to recover them in the data frame). The function compute the AUC by default (under the name ROC_.. not very wise) as well as sensitivity and specificity (that we already have).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">twoClassSummary</a></span><span class="op">(</span><span class="va">df_pred_lr</span>, lev <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">df_pred_lr</span><span class="op">$</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">twoClassSummary</a></span><span class="op">(</span><span class="va">df_pred_ct</span>, lev <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">df_pred_lr</span><span class="op">$</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">twoClassSummary</a></span><span class="op">(</span><span class="va">df_pred_svm</span>, lev <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">df_pred_lr</span><span class="op">$</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">twoClassSummary</span>(df_pred_lr, <span class="at">lev =</span> <span class="fu">levels</span>(df_pred_lr<span class="sc">$</span>obs))</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">twoClassSummary</span>(df_pred_ct, <span class="at">lev =</span> <span class="fu">levels</span>(df_pred_lr<span class="sc">$</span>obs))</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">twoClassSummary</span>(df_pred_svm, <span class="at">lev =</span> <span class="fu">levels</span>(df_pred_lr<span class="sc">$</span>obs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This brings us another view: the logistic regression has the highest AUC. This shows that varying the prediction threshold provides a good potential of improving the specificity and the sensitivity (in fine, the balanced accuracy).</p>
 <p>Now we compute the entropy using the <code>mnLogLoss</code> function (entropy is also called <em>log-loss</em>).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">mnLogLoss</a></span><span class="op">(</span><span class="va">df_pred_lr</span>, lev <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">df_pred_lr</span><span class="op">$</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">mnLogLoss</a></span><span class="op">(</span><span class="va">df_pred_ct</span>, lev <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">df_pred_lr</span><span class="op">$</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/postResample.html">mnLogLoss</a></span><span class="op">(</span><span class="va">df_pred_svm</span>, lev <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">df_pred_lr</span><span class="op">$</span><span class="va">obs</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mnLogLoss</span>(df_pred_lr, <span class="at">lev =</span> <span class="fu">levels</span>(df_pred_lr<span class="sc">$</span>obs))</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mnLogLoss</span>(df_pred_ct, <span class="at">lev =</span> <span class="fu">levels</span>(df_pred_lr<span class="sc">$</span>obs))</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mnLogLoss</span>(df_pred_svm, <span class="at">lev =</span> <span class="fu">levels</span>(df_pred_lr<span class="sc">$</span>obs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here again, the entropy selects the logistic regression as the best model, though close to classification tree and SVM.</p>
 </div>
@@ -2117,38 +2090,37 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
-</section><section id="roc-curve-prob-threshold-tuning" class="level2"><h2 class="anchored" data-anchor-id="roc-curve-prob-threshold-tuning">ROC curve &amp; prob threshold tuning</h2>
+</section>
+<section id="roc-curve-prob-threshold-tuning" class="level2">
+<h2 class="anchored" data-anchor-id="roc-curve-prob-threshold-tuning">ROC curve &amp; prob threshold tuning</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist">
-<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">R</a></li>
-<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Python</a></li>
-</ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-10-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-1" role="tab" aria-controls="tabset-10-1" aria-selected="true">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-10-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-10-2" role="tab" aria-controls="tabset-10-2" aria-selected="false">Python</a></li></ul>
 <div class="tab-content">
 <div id="tabset-10-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-10-1-tab">
 <p>To go deeper in the analysis, we now produce the ROC curve of each model using the <code>roc</code> function of the <code>proc</code> package.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://xrobin.github.io/pROC/">pROC</a></span><span class="op">)</span></span>
-<span><span class="va">ROC_lr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pROC/man/roc.html">roc</a></span><span class="op">(</span><span class="va">obs</span> <span class="op">~</span> <span class="va">Yes</span>, data<span class="op">=</span><span class="va">df_pred_lr</span><span class="op">)</span></span>
-<span><span class="va">ROC_ct</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pROC/man/roc.html">roc</a></span><span class="op">(</span><span class="va">obs</span> <span class="op">~</span> <span class="va">Yes</span>, data<span class="op">=</span><span class="va">df_pred_ct</span><span class="op">)</span></span>
-<span><span class="va">ROC_svm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pROC/man/roc.html">roc</a></span><span class="op">(</span><span class="va">obs</span> <span class="op">~</span> <span class="va">Yes</span>, data<span class="op">=</span><span class="va">df_pred_svm</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ROC_lr</span>, print.thres<span class="op">=</span><span class="st">"best"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ROC_ct</span>, print.thres<span class="op">=</span><span class="st">"best"</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ROC_svm</span>, print.thres<span class="op">=</span><span class="st">"best"</span>, add<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pROC)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>ROC_lr <span class="ot">&lt;-</span> <span class="fu">roc</span>(obs <span class="sc">~</span> Yes, <span class="at">data=</span>df_pred_lr)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>ROC_ct <span class="ot">&lt;-</span> <span class="fu">roc</span>(obs <span class="sc">~</span> Yes, <span class="at">data=</span>df_pred_ct)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>ROC_svm <span class="ot">&lt;-</span> <span class="fu">roc</span>(obs <span class="sc">~</span> Yes, <span class="at">data=</span>df_pred_svm)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ROC_lr, <span class="at">print.thres=</span><span class="st">"best"</span>)</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ROC_ct, <span class="at">print.thres=</span><span class="st">"best"</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ROC_svm, <span class="at">print.thres=</span><span class="st">"best"</span>, <span class="at">add=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The plotting function provides an “optimal” threshold that reaches the best trade-off between sensitivity and specificity (according to some criterion). We see that there is room to improve this trade-off.</p>
 <p>Now, to tune this threshold, we need to do it <em>on the training set</em> to avoid overfitting. To do this, we just repeat the previous calculations (predictions) on the training set. To simplify, we only do this on the logistic regression (note that you can try on the other models; you may find that logistic regression is the best one).</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Doc_lr_prob_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_lr</span>, newdata<span class="op">=</span><span class="va">df_tr</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
-<span><span class="va">df_pred_lr_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>obs<span class="op">=</span><span class="va">df_tr</span><span class="op">$</span><span class="va">visits</span>,</span>
-<span>                            Yes<span class="op">=</span><span class="va">Doc_lr_prob_tr</span><span class="op">)</span></span>
-<span><span class="va">ROC_lr_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/pROC/man/roc.html">roc</a></span><span class="op">(</span><span class="va">obs</span> <span class="op">~</span> <span class="va">Yes</span>, data<span class="op">=</span><span class="va">df_pred_lr_tr</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ROC_lr_tr</span>, print.thres<span class="op">=</span><span class="st">"best"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>Doc_lr_prob_tr <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_lr, <span class="at">newdata=</span>df_tr, <span class="at">type=</span><span class="st">"response"</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>df_pred_lr_tr <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">obs=</span>df_tr<span class="sc">$</span>visits,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>                            <span class="at">Yes=</span>Doc_lr_prob_tr)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>ROC_lr_tr <span class="ot">&lt;-</span> <span class="fu">roc</span>(obs <span class="sc">~</span> Yes, <span class="at">data=</span>df_pred_lr_tr)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ROC_lr_tr, <span class="at">print.thres=</span><span class="st">"best"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The best threshold is 0.193. Now let us compute the confusion table with this threshold.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Doc_lr_pred_opt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_lr_prob</span><span class="op">&gt;</span><span class="fl">0.193</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/caret/man/confusionMatrix.html">confusionMatrix</a></span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_lr_pred_opt</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>Doc_lr_pred_opt <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_lr_prob<span class="sc">&gt;</span><span class="fl">0.193</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_lr_pred_opt), <span class="at">reference =</span> df_te<span class="sc">$</span>visits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We now have a model with an accuracy of circa <span class="math inline">70\%</span> but with a balanced accuracy of <span class="math inline">67\%</span>. Far from perfect, this is still an interesting improvement compare to the CT <span class="math inline">62\%</span>. The specificity and sensitivity are now respectively <span class="math inline">62\%</span> and <span class="math inline">72\%</span>. The specificity in particular made a huge improvement (from around <span class="math inline">29\%</span> at best - by CT - to <span class="math inline">62\%</span> - by log. reg).</p>
 <p>If the aim is to predict both “Yes” and “No”, this last model (log. reg. with tuned threshold) is the best one to use.</p>
@@ -2204,16 +2176,26 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </div>
-</section></section><section id="your-turn" class="level1"><h1>Your turn</h1>
-<section id="classification" class="level2"><h2 class="anchored" data-anchor-id="classification">Classification</h2>
+</section>
+</section>
+<section id="your-turn" class="level1">
+<h1>Your turn</h1>
+<section id="classification" class="level2">
+<h2 class="anchored" data-anchor-id="classification">Classification</h2>
 <p>Repeat the analysis on the German credit data. Put several models in competition. Tune them and try to optimize their threshold. Select the best one and analyze its performance.</p>
-</section><section id="regression" class="level2"><h2 class="anchored" data-anchor-id="regression">Regression</h2>
+</section>
+<section id="regression" class="level2">
+<h2 class="anchored" data-anchor-id="regression">Regression</h2>
 <p>Repeat the analysis on the nursing cost data. Put several models in competition. Tune them and select the best one. Analyze its performance using a scatterplot.</p>
 
 
 <!-- -->
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -2794,9 +2776,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../../labs/03_Models/035_KNN/Ex_ML_KNN.html" class="pagination-link  aria-label=" k-nearest="" neighbors="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">K-Nearest Neighbors</span>
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.html" class="pagination-link  aria-label=" support="" vector="" machines"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Support Vector Machines</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
@@ -3394,7 +3378,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+<footer class="footer">
+  <div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2024, <a href="https://iliaazizi.com/">Ilia Azizi &amp; Marc-Olivier Boldi</a></p>
 </div>   
@@ -3406,6 +3391,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
+
+
 
 
 </body></html>
