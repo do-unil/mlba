@@ -135,11 +135,6 @@ window.Quarto = {
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -546,8 +541,7 @@ updateImageSrc();
 <li><p>To compute the first and second derivatives of <span class="math inline">\(\bar{\cal L}(\theta)\)</span>,</p></li>
 <li><p>To build a sequence of <span class="math inline">\(\hat{\theta}_k\)</span> that converges to the optimal one using these derivatives.</p></li>
 </ul>
-<p>This algorithm is very fast and efficient. However, there is no explicit formula for <span class="math inline">\(\hat{\theta}\)</span>, unlike the OLS.<br>
-The optimal <span class="math inline">\(\hat{\theta}\)</span> is sometimes called the <strong>maximum likelihood estimator</strong>, <strong>MLE</strong>. That terminology is however less usual among machine learners than statisticians.</p>
+<p>This algorithm is very fast and efficient. However, there is no explicit formula for <span class="math inline">\(\hat{\theta}\)</span>, unlike the OLS. The optimal <span class="math inline">\(\hat{\theta}\)</span> is sometimes called the <strong>maximum likelihood estimator</strong>, <strong>MLE</strong>. That terminology is however less usual among machine learners than statisticians.</p>
 </section>
 </section>
 <section id="interpretation" class="level1">
@@ -576,8 +570,8 @@ The optimal <span class="math inline">\(\hat{\theta}\)</span> is sometimes calle
 <li><p>The larger the coefficient, the larger the increase. However, it the increase is not linear and depends on the other features.</p></li>
 <li><p>A negative coefficient means a decrease in the probability of the positive class (<span class="math inline">\(y=1\)</span>).</p></li>
 </ul>
-<p>For <strong>linear regression</strong>, certainty can be measured by <strong>prediction intervals</strong>. In practice, the main interest relies in the prediction interval for <strong>the future value</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.<br>
-Let <span class="math inline">\(x\)</span> be a set of new features, the <strong>point</strong> prediction for <span class="math inline">\(y(x)\)</span> uses the estimate <span class="math inline">\(\hat{\theta}\)</span>: <span class="math display">\[f(x;\hat{\theta}) = \theta_0 + \theta_1 x_1 + \cdots + \theta_p x_p.\]</span> Now, rather than a point estimate, we want to build an interval <span class="math inline">\([L,U]\)</span> such that <span class="math display">\[P(L \leq y(x) \leq U) = 1-\alpha,\]</span> where <span class="math inline">\(\alpha\)</span> is usually set to <span class="math inline">\(5\%\)</span> for an interval at <span class="math inline">\(95\%\)</span>. To build this interval, we rely on probabilistic assumptions of the model.</p>
+<p>For <strong>linear regression</strong>, certainty can be measured by <strong>prediction intervals</strong>. In practice, the main interest relies in the prediction interval for <strong>the future value</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>Let <span class="math inline">\(x\)</span> be a set of new features, the <strong>point</strong> prediction for <span class="math inline">\(y(x)\)</span> uses the estimate <span class="math inline">\(\hat{\theta}\)</span>: <span class="math display">\[f(x;\hat{\theta}) = \theta_0 + \theta_1 x_1 + \cdots + \theta_p x_p.\]</span> Now, rather than a point estimate, we want to build an interval <span class="math inline">\([L,U]\)</span> such that <span class="math display">\[P(L \leq y(x) \leq U) = 1-\alpha,\]</span> where <span class="math inline">\(\alpha\)</span> is usually set to <span class="math inline">\(5\%\)</span> for an interval at <span class="math inline">\(95\%\)</span>. To build this interval, we rely on probabilistic assumptions of the model.</p>
 <p>Therefore, <span class="math display">\[0.95 = P(L \leq y(x) \leq U) = P\left(\frac{L-f(x;\theta)}{\sigma} \leq e \leq \frac{U-f(x;\theta}{\sigma})\right).\]</span> Using the normal distribution, we find that <span class="math display">\[L-f(x;\theta) = -\sigma z_{1-\alpha/2}, \quad U-f(x;\theta) = \sigma z_{1-\alpha/2}.\]</span> This gives <span class="math display">\[L = f(x;\theta) -\sigma z_{1-\alpha/2}, \quad U = f(x;\theta) + \sigma z_{1-\alpha/2}.\]</span> For <span class="math inline">\(\alpha=5\%\)</span>, this gives <span class="math display">\[(L,U) = f(x;\theta) \pm 1.96 \sigma.\]</span></p>
 </section>
 <section id="certainty-for-linear-regression" class="level3">
@@ -596,9 +590,7 @@ Let <span class="math inline">\(x\)</span> be a set of new features, the <strong
 <li><p><span class="math inline">\(\hat{y}=1\)</span> with <span class="math inline">\(\hat{p} = 0.99\)</span>: the prediction is <strong>certain</strong>.</p></li>
 <li><p><span class="math inline">\(\hat{y}=1\)</span> with <span class="math inline">\(\hat{p} = 0.53\)</span>: the prediction is <strong>uncertain</strong>.</p></li>
 </ul>
-<p>In both cases, the predicted class is the same but the probability provides a more precise view on it: if the instance is far in the class or on the edge between the two classes.<br>
-The prediction "Good" for a customer with a probability of <span class="math inline">\(0.51\)</span> is uncertain. Alternatively, the prediction rule could set to a larger value than 0.5 to increase the certainty.<br>
-Also, a model with a lot of predictions close to 0.5 is of considered as poor because of its uncertainty<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>In both cases, the predicted class is the same but the probability provides a more precise view on it: if the instance is far in the class or on the edge between the two classes. The prediction "Good" for a customer with a probability of <span class="math inline">\(0.51\)</span> is uncertain. Alternatively, the prediction rule could set to a larger value than 0.5 to increase the certainty. Also, a model with a lot of predictions close to 0.5 is of considered as poor because of its uncertainty<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 </section>
 </section>
 <section id="selection-of-variables" class="level1">
@@ -641,8 +633,7 @@ Also, a model with a lot of predictions close to 0.5 is of considered as poor be
 <li><p>Both: start to add or remove at each step.</p></li>
 </ul>
 <p>At each step, all the models in competition are fitted. The procedure is computationally intense.</p>
-<p>A different approach consists of penalizing the loss function so that, during the training of the parameters, the variable selection applies directly.<br>
-The most common penalties are:</p>
+<p>A different approach consists of penalizing the loss function so that, during the training of the parameters, the variable selection applies directly. The most common penalties are:</p>
 <ul>
 <li><p><span class="math inline">\(L_1\)</span> penalty (LASSO) <span class="math display">\[\min_\theta \bar{\cal L}(\theta) + \lambda \sum_{j=1}^p \vert \theta_j \vert\]</span></p></li>
 <li><p><span class="math inline">\(L_2\)</span> penalty (Ridge) <span class="math display">\[\displaystyle \min_\theta \bar{\cal L}(\theta) + \lambda \sum_{j=1}^p \theta_j^2\]</span></p></li>
@@ -653,9 +644,7 @@ The most common penalties are:</p>
 <li><p>If <span class="math inline">\(\lambda =0\)</span>, then there is no penalty.</p></li>
 <li><p>If <span class="math inline">\(\lambda \longrightarrow \infty\)</span>, then <span class="math inline">\(\theta \longrightarrow 0\)</span>.</p></li>
 </ul>
-<p>For intermediate values, some components of <span class="math inline">\(\theta\)</span> will be small, pushed toward <span class="math inline">\(0\)</span>.<br>
-This is equivalent to variable selection: setting <span class="math inline">\(\theta_j=0\)</span> is equivalent to not including <span class="math inline">\(x_j\)</span>.<br>
-Selection of <span class="math inline">\(\lambda\)</span> can be done with cross-validation (see later).</p>
+<p>For intermediate values, some components of <span class="math inline">\(\theta\)</span> will be small, pushed toward <span class="math inline">\(0\)</span>. This is equivalent to variable selection: setting <span class="math inline">\(\theta_j=0\)</span> is equivalent to not including <span class="math inline">\(x_j\)</span>. Selection of <span class="math inline">\(\lambda\)</span> can be done with cross-validation (see later).</p>
 </section>
 <section id="variable-selection-with-penalization" class="level3">
 <h3 class="anchored" data-anchor-id="variable-selection-with-penalization">Variable selection with penalization</h3>

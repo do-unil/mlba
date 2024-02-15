@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -136,11 +170,6 @@ window.Quarto = {
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -488,8 +517,7 @@ updateImageSrc();
 <h1>Concept</h1>
 <section id="concept-1" class="level3">
 <h3 class="anchored" data-anchor-id="concept-1">Concept</h3>
-<p>In ML, some models are interpretable (e.g., regression, CART) and some are not (e.g., SVM, NN).<br>
-So called <strong>interpretable machine learning</strong> is a set of techniques aiming at</p>
+<p>In ML, some models are interpretable (e.g., regression, CART) and some are not (e.g., SVM, NN). So called <strong>interpretable machine learning</strong> is a set of techniques aiming at</p>
 <ul>
 <li><p>Discover / rank variables or features by their importance on the predicted outcome,</p></li>
 <li><p>Associate variation of the important features with a direction of the outcome (positive vs negative association).</p></li>
@@ -500,8 +528,7 @@ So called <strong>interpretable machine learning</strong> is a set of techniques
 <h1>Variable importance</h1>
 <section id="variable-importance-1" class="level3">
 <h3 class="anchored" data-anchor-id="variable-importance-1">Variable importance</h3>
-<p><strong>Variable importance</strong> is a method that provides a measure of the importance of each feature for the model prediction.<br>
-The variables importance <strong>for a trained model</strong> can be evaluated for one variable by:</p>
+<p><strong>Variable importance</strong> is a method that provides a measure of the importance of each feature for the model prediction. The variables importance <strong>for a trained model</strong> can be evaluated for one variable by:</p>
 <ul>
 <li><p>In the test set, shuffle the instances on one variable,</p></li>
 <li><p>Make the predictions of this new test set,</p></li>
@@ -518,31 +545,85 @@ The variables importance <strong>for a trained model</strong> can be evaluated f
 <p><img src="../Graphs/VI_Illustr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
 </figure>
 </div>
-<p>If predictions using the right-hand side data are the same as the left-hand side ones, then Var2 is not important.</p>
-<p>With the iris data and a CART, trained on <span class="math inline">\(80\%\)</span> of the data (test set at <span class="math inline">\(20\%\)</span>). The tree is</p>
+<p>If predictions using the right-hand side data are the same as the left-hand side ones, then Var2 is not important. With the iris data and a CART, trained on <span class="math inline">\(80\%\)</span> of the data (test set at <span class="math inline">\(20\%\)</span>). The tree is</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../Graphs/VarImp_iris_CART.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:6cm"></p>
 </figure>
 </div>
 <p>We see directly that Petal length and Petal width are the only two important features (except in case of missing data).</p>
-<p>To measure this, in the test set, we shuffle Petal length. The accuracy of the shuffled test set is much lower than the original one (left: original test set; right: modified test set). This confirms that Petal length is essential for a good prediction of the species by the model.<br>
-</p>
-<p>0.5 <img src="../Graphs/VarImp_iris_acc_orig.png" class="img-fluid quarto-figure quarto-figure-center" style="width:6.5cm"></p>
-<p>0.5 <img src="../Graphs/VarImp_iris_acc_PLsh.png" class="img-fluid quarto-figure quarto-figure-center" style="width:6.5cm"></p>
-<p>On the other hand, the Sepal length does not appear on the graph. And, indeed, it is not important for the prediction as shown below.<br>
-</p>
-<p>0.5 <img src="../Graphs/VarImp_iris_acc_orig.png" class="img-fluid quarto-figure quarto-figure-center" style="width:6.5cm"></p>
-<p>0.5 <img src="../Graphs/VarImp_iris_acc_SLsh.png" class="img-fluid quarto-figure quarto-figure-center" style="width:6.5cm"></p>
-<p>For tree, the importance of a variable can be read to some extend directly on the graph (if it is not too large). For a model like SVM, it is not. But we can still make the same analysis by shuffling the instances for a given feature (top: original; left: Petal length; right: Sepal length).<br>
-</p>
+<p>To measure this, in the test set, we shuffle Petal length. The accuracy of the shuffled test set is much lower than the original one (left: original test set; right: modified test set). This confirms that Petal length is essential for a good prediction of the species by the model.</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/VarImp_iris_acc_svm.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:5cm"></p>
+<p><img src="../Graphs/VarImp_iris_acc_orig.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<p>0.5 <img src="../Graphs/VarImp_iris_acc_svm_PL.png" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"></p>
-<p>0.5 <img src="../Graphs/VarImp_iris_acc_svm_SL.png" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"></p>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Graphs/VarImp_iris_acc_PLsh.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>On the other hand, the Sepal length does not appear on the graph. And, indeed, it is not important for the prediction as shown below.<br>
+</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Graphs/VarImp_iris_acc_orig.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Graphs/VarImp_iris_acc_SLsh.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<p>For tree, the importance of a variable can be read to some extend directly on the graph (if it is not too large). For a model like SVM, it is not. But we can still make the same analysis by shuffling the instances for a given feature (top: original; left: Petal length; right: Sepal length).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Graphs/VarImp_iris_acc_svm.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Graphs/VarImp_iris_acc_svm_PL.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Graphs/VarImp_iris_acc_svm_SL.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="several-versions" class="level3">
 <h3 class="anchored" data-anchor-id="several-versions">Several versions</h3>
@@ -560,13 +641,13 @@ In <code>R</code>,</p>
 <li><p><code>caret</code> allows to compute mainly model-specific variable importance. Also model-agnostic type (limited choice of loss functions).</p></li>
 </ul>
 <p>VI on SVM estimated on cross-entropy, repeated 100 times.</p>
-<pre><code>library(iml)
-iris.iml &lt;- Predictor$new(iris.svm, data = iris.te[,-5], y = iris.te[,5])
-iris.imp &lt;- FeatureImp$new(iris.iml, loss = "ce", n.repetitions = 100)
-plot(iris.imp)</code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(iml)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>iris.iml <span class="ot">&lt;-</span> Predictor<span class="sc">$</span><span class="fu">new</span>(iris.svm, <span class="at">data =</span> iris.te[,<span class="sc">-</span><span class="dv">5</span>], <span class="at">y =</span> iris.te[,<span class="dv">5</span>])</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>iris.imp <span class="ot">&lt;-</span> FeatureImp<span class="sc">$</span><span class="fu">new</span>(iris.iml, <span class="at">loss =</span> <span class="st">"ce"</span>, <span class="at">n.repetitions =</span> <span class="dv">100</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(iris.imp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/VarImp_iml_ce_svm.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
+<p><img src="../Graphs/VarImp_iml_ce_svm.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
 </div>
 </section>
@@ -574,33 +655,31 @@ plot(iris.imp)</code></pre>
 <h3 class="anchored" data-anchor-id="example-iml">Example: <code>iml</code></h3>
 <p>For each feature: The difference in entropy obtained between the original data set and the shuffled data set is computed. This is repeated 100 times. These differences are averaged and shown on the plot.</p>
 <p>VI on SVM estimated on AUC.</p>
-<pre><code>library(caret)
-trctrl &lt;- trainControl(method = "repeatedcv", repeats= 3, number=5)
-iris.caret &lt;- caret::train(form=Species ~., data = iris.tr, 
-                    method = "svmLinear", 
-                    trControl=trctrl)
-plot(varImp(iris.caret))</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>trctrl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"repeatedcv"</span>, <span class="at">repeats=</span> <span class="dv">3</span>, <span class="at">number=</span><span class="dv">5</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>iris.caret <span class="ot">&lt;-</span> caret<span class="sc">::</span><span class="fu">train</span>(<span class="at">form=</span>Species <span class="sc">~</span>., <span class="at">data =</span> iris.tr, </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">method =</span> <span class="st">"svmLinear"</span>, </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trControl=</span>trctrl)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">varImp</span>(iris.caret))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/VarImp_caret_svm.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
+<p><img src="../Graphs/VarImp_caret_svm.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
 </div>
 </section>
 <section id="example-caret-and-varimp" class="level3">
 <h3 class="anchored" data-anchor-id="example-caret-and-varimp">Example: <code>caret</code> and <code>VarImp</code></h3>
-<p>Since no specific method was developped for SVM, a <strong>filter-based</strong> method is implemented. From the help of <code>VarImp</code>:<br>
-</p>
-<pre><code>For classification, [...] the area under the ROC curve [...] is used 
-as the measure of variable importance. For multi-class outcomes, the problem 
-is decomposed into all pair-wise problems and the area under the curve is
-calculated for each class pair (i.e class 1 vs. class 2, class 2 vs. 
-class 3 etc.). For a specific class, the maximum area under the 
-curve across the relevant pair-wise AUC's is used as the variable importance 
-measure.</code></pre>
-<p>Even for one model, there may exist lots of implementations. Below, we give one example: <code>VarImp</code> for CART. CART is recognized as <em>Recursive Partitioning</em> (from <code>rpart</code>). From the help of <code>VarImp</code>:<br>
-</p>
-<pre><code>The reduction in the loss function (e.g. mean squared error) attributed 
-to each variable at each split is tabulated and the sum is returned. </code></pre>
+<p>Since no specific method was developped for SVM, a <strong>filter-based</strong> method is implemented. From the help of <code>VarImp</code>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>For classification, <span class="co">[</span><span class="ot">...</span><span class="co">]</span> the area under the ROC curve <span class="co">[</span><span class="ot">...</span><span class="co">]</span> is used </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>as the measure of variable importance. For multi-class outcomes, the problem </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>is decomposed into all pair-wise problems and the area under the curve is</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>calculated for each class pair (i.e class 1 vs. class 2, class 2 vs. </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>class 3 etc.). For a specific class, the maximum area under the </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>curve across the relevant pair-wise AUC's is used as the variable importance </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>measure.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Even for one model, there may exist lots of implementations. Below, we give one example: <code>VarImp</code> for CART. CART is recognized as <em>Recursive Partitioning</em> (from <code>rpart</code>). From the help of <code>VarImp</code>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode md code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>The reduction in the loss function (e.g. mean squared error) attributed </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>to each variable at each split is tabulated and the sum is returned. </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><p>At each split, the reduction of loss due to the best split on each variable is extracted.</p></li>
 <li><p>These loss reductions are summed.</p></li>
@@ -614,8 +693,7 @@ to each variable at each split is tabulated and the sum is returned. </code></pr
 <p><img src="../Graphs/VI_iris_rp.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
 </figure>
 </div>
-<p>Whatever implementation you use, VI aims at the same objective: quantify the importance of variables for the predictions of the model.<br>
-Some limitations are:</p>
+<p>Whatever implementation you use, VI aims at the same objective: quantify the importance of variables for the predictions of the model. Some limitations are:</p>
 <ul>
 <li><p><strong>Instability</strong>: the estimation of the importance can be unstable due to the random perturbation. Resampling can help (i.e., repeat the shufling several times).</p></li>
 <li><p><strong>Interactions</strong>: sometimes it is the combination of two features that makes a good prediction (typ. trees). Variable importance cannot see this.</p></li>
@@ -636,16 +714,38 @@ The estimation of the expectation above is obtained by averaging on the training
 <h3 class="anchored" data-anchor-id="estimation">Estimation</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/PDP_Illustr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
+<p><img src="../Graphs/PDP_Illustr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 </section>
 <section id="interpretation" class="level3">
 <h3 class="anchored" data-anchor-id="interpretation">Interpretation</h3>
-<p><img src="../Graphs/PDP_Growing.png" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"> <img src="../Graphs/PDP_Stable.png" class="img-fluid quarto-figure quarto-figure-center" style="width:5cm"></p>
 <ul>
 <li><p>Left: PDP increases. The prediction increases in average when the feature increases ; it is a positive association.</p></li>
 <li><p>Right: PDP is stable. The prediction does not change in average when the feature value changes; there is no association.</p></li>
+</ul>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Graphs/PDP_growing.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../Graphs/PDP_stable.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<ul>
 <li><p>PDP allows to explore the link between response and any feature <strong>with the eyes of the model</strong>.</p></li>
 <li><p>PDP can be also used to see the <strong>feature importance</strong> with the <strong>amplitude</strong> of the graph (the larger the more important): <span class="math display">\[\vert \max_{x_s} F_{X_s}(x_s) - \min F_{X_s}(x_s) \vert.\]</span> It is richer than VI but also longer to run.</p></li>
 <li><p>PDP can be made <strong>multivariate</strong> with <span class="math inline">\(X_s\)</span> being several features (usually, max. 2).</p></li>
@@ -670,7 +770,7 @@ The estimation of the expectation above is obtained by averaging on the training
 <p>On iris data, a random forest predicts setosa/virginica/versicolor from length and width (sum of the petal/sepal features). It is globally complex (left graph). Select a point of interest (blue circle). Around it (right plot), a logistic regression could be used. If you fit it on the black dots, you will find a positive association between large width and "being green", and no association with length.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/LIME_illustr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:12cm"></p>
+<p><img src="../Graphs/LIME_illustr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
 </section>
@@ -690,7 +790,7 @@ The estimation of the expectation above is obtained by averaging on the training
 <p>With the bank data (see R code of examples). Three cases: Label 0 with high prob., label 1 with high prob., Label 1 with prob. <span class="math inline">\(\approx 50\%\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/LIME_interpret.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
+<p><img src="../Graphs/LIME_interpret.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
 </section>
@@ -701,8 +801,7 @@ The estimation of the expectation above is obtained by averaging on the training
 <li><p>Around Case 2: Duration being greater than 759 (lower than 1514) supports label 1. This means that a large duration supports label 1 and, consequently, a lower duration would support label 0.</p></li>
 <li><p>Around case 3: same as Case 2.</p></li>
 </ul>
-<p>Regarding duration, case 1 and case 2 coincide. They also coincide with the general previous findings that duration is an important factor, with prob. of label 1 increasing with it.<br>
-The exploration of this two cases did not reveal any local behavior linked to duration. A similar analysis can be done for contact, housing, etc.</p>
+<p>Regarding duration, case 1 and case 2 coincide. They also coincide with the general previous findings that duration is an important factor, with prob. of label 1 increasing with it. The exploration of this two cases did not reveal any local behavior linked to duration. A similar analysis can be done for contact, housing, etc.</p>
 </section>
 <section id="interpretation-for-campaign-local-behavior" class="level3">
 <h3 class="anchored" data-anchor-id="interpretation-for-campaign-local-behavior">Interpretation for campaign: local behavior</h3>
@@ -711,8 +810,7 @@ The exploration of this two cases did not reveal any local behavior linked to du
 <li><p>Around Case 2: Campaign being low contradicts label 1. This is in line with Case 1.</p></li>
 <li><p>Around Case 3: Campaign being low supports label 1. This is in contradiction with Cases 1 and 2.</p></li>
 </ul>
-<p>This example shows that a global behavior (campaign is positively associated with label 1) can change locally. The fact that Case 3 has a probability around 0.5 makes it interesting.<br>
-Limitation: here the effect of Campaign is so small that a good explanation is that it has almost no effect everywhere. That was just a toy example.</p>
+<p>This example shows that a global behavior (campaign is positively associated with label 1) can change locally. The fact that Case 3 has a probability around 0.5 makes it interesting. Limitation: here the effect of Campaign is so small that a good explanation is that it has almost no effect everywhere. That was just a toy example.</p>
 </section>
 <section id="discussion" class="level3">
 <h3 class="anchored" data-anchor-id="discussion">Discussion</h3>

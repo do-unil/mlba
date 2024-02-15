@@ -136,11 +136,6 @@ window.Quarto = {
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -480,9 +475,7 @@ updateImageSrc();
 <h1>Ensemble and bagging</h1>
 <section id="ensemble" class="level3">
 <h3 class="anchored" data-anchor-id="ensemble">Ensemble</h3>
-<p>Until now we have tried to train the best learner among several candidates to solve a given task.<br>
-On the contrary, an <strong>ensemble</strong> learner is made of several learners (so called <strong>base learners</strong> or <strong>sub-learners</strong>) that are combined for the prediction.<br>
-Base learners are often simple learners, coming from an homogenous family of learners (e.g.&nbsp;regression trees, regressions, etc.).</p>
+<p>Until now we have tried to train the best learner among several candidates to solve a given task. On the contrary, an <strong>ensemble</strong> learner is made of several learners (so called <strong>base learners</strong> or <strong>sub-learners</strong>) that are combined for the prediction. Base learners are often simple learners, coming from an homogenous family of learners (e.g.&nbsp;regression trees, regressions, etc.).</p>
 <p><strong>Bagging</strong> stands for <strong>Bootstrap AGGregatING</strong>. It is a way to build an ensemble learner from several versions of the same learner, trained on bootstrapped versions of the same training set:</p>
 <ul>
 <li><p>Draw several random samples (with replacement) from the training data set,</p></li>
@@ -500,10 +493,7 @@ Base learners are often simple learners, coming from an homogenous family of lea
 <li><p>Overfitting: no model is trained on the whole training set. Thus, no model can overfit it.</p></li>
 <li><p>Accuracy: each resampled data set is similar to the training set. Thus, it can produce the same accuracy as the one trained on the whole training set.</p></li>
 </ul>
-<p>Thus, in theory, there is no reason why each model has a lower accuracy than a model that would be trained on the whole training set.<br>
-In addition, there is no reason why they, together, could overfit the training set since no model can overfit it.</p>
-<p>In practice, bagging is efficient when the features are unstable and very influential on the model (e.g., outliers).<br>
-The properties of bagging come at the cost of extra complexity:</p>
+<p>Thus, in theory, there is no reason why each model has a lower accuracy than a model that would be trained on the whole training set. In addition, there is no reason why they, together, could overfit the training set since no model can overfit it. In practice, bagging is efficient when the features are unstable and very influential on the model (e.g., outliers). The properties of bagging come at the cost of extra complexity:</p>
 <ul>
 <li><p>A <strong>large number of models</strong> must be kept in memory to make the final prediction.</p></li>
 <li><p>Even if each model are interpretable (e.g., regressions), the final model is <strong>not interpretable</strong>.</p></li>
@@ -533,8 +523,7 @@ The properties of bagging come at the cost of extra complexity:</p>
 <p>Point 1. is bagging. Point 2 is an additional mixing technique to enhance sub-model non-correlation.</p>
 <section id="why-does-that-work" class="level3">
 <h3 class="anchored" data-anchor-id="why-does-that-work">Why does that work?</h3>
-<p>The reasons are the same as for bagging.<br>
-Furthermore, with the additional mixing of the features when constructing the trees:</p>
+<p>The reasons are the same as for bagging. Furthermore, with the additional mixing of the features when constructing the trees:</p>
 <ul>
 <li><p>each tree remains unbiased (it has the same chance to get the best features).</p></li>
 <li><p>the trees are even less correlated than with bagging alone. This brings more stability.</p></li>
@@ -624,9 +613,7 @@ The learning rate can be tuned.</p>
 </section>
 <section id="stochastic-gradient-boosting" class="level3">
 <h3 class="anchored" data-anchor-id="stochastic-gradient-boosting">Stochastic gradient boosting</h3>
-<p>The evaluation of the gradient can be costly (and useless) if <span class="math inline">\(N\)</span> is large. One can act by random batches of data.<br>
-At each step, only a proportion <span class="math inline">\(0 &lt; p \leq 1\)</span> of the training set is used. The batch set is selected at random.<br>
-Using random batches can also diminish the risk of overfitting since it takes more time for the model to see all the data set.</p>
+<p>The evaluation of the gradient can be costly (and useless) if <span class="math inline">\(N\)</span> is large. One can act by random batches of data. At each step, only a proportion <span class="math inline">\(0 &lt; p \leq 1\)</span> of the training set is used. The batch set is selected at random. Using random batches can also diminish the risk of overfitting since it takes more time for the model to see all the data set.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../Graphs/Bagging_Boosting_Illustrations.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:13cm"></p>

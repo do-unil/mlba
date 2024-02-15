@@ -169,11 +169,6 @@ window.Quarto = {
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -523,8 +518,7 @@ updateImageSrc();
 <h1>Concept</h1>
 <section id="concept-1" class="level3">
 <h3 class="anchored" data-anchor-id="concept-1">Concept</h3>
-<p>A <strong>metric</strong> (score) is a numerical value measuring the performance of a model<br>
-To compare the different models, the metric <em>only</em> depends on the observed and predicted values or classes. There are two types of metrics: for regression and for classification.</p>
+<p>A <strong>metric</strong> (score) is a numerical value measuring the performance of a model. To compare the different models, the metric <em>only</em> depends on the observed and predicted values or classes. There are two types of metrics: for regression and for classification.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../Graphs/ML3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
@@ -548,11 +542,11 @@ To compare the different models, the metric <em>only</em> depends on the observe
 <h3 class="anchored" data-anchor-id="confusion-matrix">Confusion matrix</h3>
 <p>The <strong>confusion matrix</strong> reports the frequencies of "observed" vs "predicted" classes. E.g., SVM with linear kernel and cost of 1, on iris data:<br>
 </p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>                Reference</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    Prediction   setosa versicolor virginica</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      setosa         <span class="dv">50</span>          <span class="dv">0</span>         <span class="dv">0</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      versicolor      <span class="dv">0</span>         <span class="dv">48</span>         <span class="dv">2</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      virginica       <span class="dv">0</span>          <span class="dv">2</span>        <span class="dv">48</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>            Reference</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Prediction   setosa versicolor virginica</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    setosa         <span class="dv">50</span>          <span class="dv">0</span>         <span class="dv">0</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    versicolor      <span class="dv">0</span>         <span class="dv">48</span>         <span class="dv">2</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    virginica       <span class="dv">0</span>          <span class="dv">2</span>        <span class="dv">48</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>All the metrics based on predicted classes can be computed from the confusion matrix.</p>
 </section>
 <section id="accuracy" class="level3">
@@ -564,14 +558,14 @@ The <strong>expected accuracy</strong> from a random model is computed as the ac
 <p>With the iris data, we have the following observations from the model:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/Kappa_Obs.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:12cm"></p>
+<p><img src="../Graphs/Kappa_Obs.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
 </figure>
 </div>
 <p>The <strong>observed accuracy</strong> is <span class="math inline">\(A_o = 0.973\)</span>.</p>
 <p>A random model would have balanced proportions in each cell:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/Kappa_Exp.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:12cm"></p>
+<p><img src="../Graphs/Kappa_Exp.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:65.0%"></p>
 </figure>
 </div>
 <p>where <span class="math display">\[0.111 = 0.333\times 0.333.\]</span> The expected accuracy is <span class="math inline">\(A_e = 0.111+0.111+0.111 = 0.333\)</span>.<br>
@@ -635,10 +629,10 @@ The expected frequencies are not of direct use. These are the expected proportio
 <h3 class="anchored" data-anchor-id="metrics-for-binary-classification">Metrics for binary classification</h3>
 <p>A logistic regression was fitted to a data set<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. The positive class is “Good”. There are 700 "Good" and 300 "Bad" in the data set.<br>
 </p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>          Pred</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    Obs    Good Bad</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      Good  <span class="dv">686</span>  <span class="dv">14</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      Bad   <span class="dv">273</span>  <span class="dv">27</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>        Pred</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Obs    Good Bad</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    Good  <span class="dv">686</span>  <span class="dv">14</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    Bad   <span class="dv">273</span>  <span class="dv">27</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then, <span class="math display">\[TP=686, \, FP=273, \, TN=27, \, FN=14\,\]</span> and <span class="math display">\[P=700, \, N=300, \, PP=959, \, PN=41.\]</span></p>
 </section>
 <section id="sensitivity" class="level3">
@@ -685,8 +679,7 @@ The <strong>balance accuracy</strong> is the accuracy computed <em>as if</em> th
 <li><p><span class="math inline">\(F_1 = 1\)</span> when both Prec and Sens are 1.</p></li>
 </ul>
 <p>The larger <span class="math inline">\(F_1\)</span>, the better the model.</p>
-<p>The <strong>Receiver Operating Characteristic</strong> curve shows the sensitivities and the specificities of a model when <em>the threshold for the prediction varies</em>.<br>
-E.g., the sensitivity is 0.98, and the specificity is 0.09 with a threshold of <span class="math inline">\(\lambda=0.5\)</span>: <span class="math display">\[f(x_i;\theta)=
+<p>The <strong>Receiver Operating Characteristic</strong> curve shows the sensitivities and the specificities of a model when <em>the threshold for the prediction varies</em>. E.g., the sensitivity is 0.98, and the specificity is 0.09 with a threshold of <span class="math inline">\(\lambda=0.5\)</span>: <span class="math display">\[f(x_i;\theta)=
 \left\{\begin{array}{ll}
 1 &amp; \mbox{if } p(x_i;\theta) \geq 0.5,\\
 0&amp; \mbox{if } p(x_i;\theta) &lt; 0.5.
@@ -699,17 +692,13 @@ E.g., the sensitivity is 0.98, and the specificity is 0.09 with a threshold of <
 <p>The ROC curve is obtained when <span class="math inline">\(\lambda\)</span> varies between 0 and 1, <span class="math inline">\(Spec=x\)</span>, and <span class="math inline">\(y=Sens\)</span>. The specificies are usually in the reverse order.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/ROC_curve.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:5cm"></p>
+<p><img src="../Graphs/ROC_curve.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
 </figure>
 </div>
 </section>
 <section id="roc-curve-and-auc" class="level3">
 <h3 class="anchored" data-anchor-id="roc-curve-and-auc">ROC curve and AUC</h3>
-<p>A perfect model have large sensitivity <strong>and</strong> specificity <strong>for all</strong> <span class="math inline">\(\lambda\)</span> (except <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>). This corresponds to a single point in the upper left corner of the ROC.<br>
-The diagonal in gray corresponds to the random model. The further the curve up that diagonal, the better the model.<br>
-The <strong>Area Under the Curve</strong> (AUC) is the area between the diagonal and the ROC curve. The larger it is, the better the model is.<br>
-E.g., <span class="math inline">\(AUC=0.628\)</span>.<br>
-The ROC curve provides a way to <strong>tune</strong> the threshold for the prediction under unbalanced class: select the threshold with maximum balanced accuracy (Youden Index point). See later.</p>
+<p>A perfect model have large sensitivity <strong>and</strong> specificity <strong>for all</strong> <span class="math inline">\(\lambda\)</span> (except <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>). This corresponds to a single point in the upper left corner of the ROC. The diagonal in gray corresponds to the random model. The further the curve up that diagonal, the better the model. The <strong>Area Under the Curve</strong> (AUC) is the area between the diagonal and the ROC curve. The larger it is, the better the model is.E.g., <span class="math inline">\(AUC=0.628\)</span>. The ROC curve provides a way to <strong>tune</strong> the threshold for the prediction under unbalanced class: select the threshold with maximum balanced accuracy (Youden Index point). See later.</p>
 </section>
 </section>
 <section id="metrics-for-regression" class="level1">

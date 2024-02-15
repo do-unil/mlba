@@ -169,11 +169,6 @@ window.Quarto = {
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -529,8 +524,7 @@ updateImageSrc();
 <h1>Concepts</h1>
 <section id="clusters" class="level3">
 <h3 class="anchored" data-anchor-id="clusters">Clusters</h3>
-<p>A <strong>cluster</strong> is a group of instances that share some common characteristics measured by the features. They are <strong>similar</strong>.<br>
-Unlike classification (supervised learning) where groups are already defined, clustering aims at finding groups that <strong>do not exist a priori</strong>.</p>
+<p>A <strong>cluster</strong> is a group of instances that share some common characteristics measured by the features. They are <strong>similar</strong>. Unlike classification (supervised learning) where groups are already defined, clustering aims at finding groups that <strong>do not exist a priori</strong>.</p>
 </section>
 <section id="hierarchical-clustering-and-partitioning" class="level3">
 <h3 class="anchored" data-anchor-id="hierarchical-clustering-and-partitioning">Hierarchical clustering and partitioning</h3>
@@ -594,8 +588,7 @@ Unlike classification (supervised learning) where groups are already defined, cl
 </section>
 <section id="categorical-and-mixed-features-types" class="level3">
 <h3 class="anchored" data-anchor-id="categorical-and-mixed-features-types">Categorical and mixed features types</h3>
-<p>When categorical features are present in the data set, the <strong>Gower index</strong> can be used. It combines dissimilarities to build a global one: <span class="math display">\[d_{ij} = \frac{\sum_{k=1}^p w_k d_{ij,k}}{\sum_{k=1}^p w_k}\]</span> is the dissimilarity between instances <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> over the <span class="math inline">\(p\)</span> features.<br>
-The weight <span class="math inline">\(w_k\)</span> are always 1, except if <span class="math inline">\(x_ik\)</span> or <span class="math inline">\(x_jk\)</span> is missing, in which case it is <span class="math inline">\(0\)</span>. The dissimilarity <span class="math inline">\(d_{ij,k}\)</span> depends on the type of the feature <span class="math inline">\(x_k\)</span>:</p>
+<p>When categorical features are present in the data set, the <strong>Gower index</strong> can be used. It combines dissimilarities to build a global one: <span class="math display">\[d_{ij} = \frac{\sum_{k=1}^p w_k d_{ij,k}}{\sum_{k=1}^p w_k}\]</span> is the dissimilarity between instances <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> over the <span class="math inline">\(p\)</span> features. The weight <span class="math inline">\(w_k\)</span> are always 1, except if <span class="math inline">\(x_ik\)</span> or <span class="math inline">\(x_jk\)</span> is missing, in which case it is <span class="math inline">\(0\)</span>. The dissimilarity <span class="math inline">\(d_{ij,k}\)</span> depends on the type of the feature <span class="math inline">\(x_k\)</span>:</p>
 <ul>
 <li><p>Numerical: <span class="math display">\[d_{ij,k} = |x_{ik} - x_{jk}|/r_k,\]</span> where <span class="math inline">\(r_k\)</span> is the range of variable <span class="math inline">\(k\)</span>,</p></li>
 <li><p>Categorical: <span class="math inline">\(d_{ij,k} = 1\)</span> if <span class="math inline">\(x_{ik}\neq x_{jk}\)</span>, <span class="math inline">\(d_{ij,k} = 0\)</span> if <span class="math inline">\(x_{ik}= x_{jk}\)</span>.</p></li>
@@ -648,18 +641,15 @@ d_{23} &amp;=&amp; 0.1926\end{aligned}\]</span></p>
 </div>
 </div>
 <p>Source: <a href="https://home.deib.polimi.it/matteucc/Clustering/tutorial_html/hierarchical.html" class="uri">https://home.deib.polimi.it/matteucc/Clustering/tutorial_html/hierarchical.html</a></p>
-<p>AGNES is <strong>agglomerating</strong> because it starts from individual points and run up to a unique cluster, merging clusters one after the other. It is called "hierarchical" because when an instance is attached to a group, it cannot be separated from it anymore.<br>
-There also exist <strong>divisive</strong> hierarchical clustering, <strong>DIANA</strong>, for DIvise ANAlysis. It starts from one unique cluster with all the instances, and splits clusters one after the other, going down to one instance per cluster.<br>
-Divise clustering is considered complex because at each step there exist a lot of possibilities to split a cluster.</p>
+<p>AGNES is <strong>agglomerating</strong> because it starts from individual points and run up to a unique cluster, merging clusters one after the other. It is called "hierarchical" because when an instance is attached to a group, it cannot be separated from it anymore.</p>
+<p>There also exist <strong>divisive</strong> hierarchical clustering, <strong>DIANA</strong>, for DIvise ANAlysis. It starts from one unique cluster with all the instances, and splits clusters one after the other, going down to one instance per cluster. Divise clustering is considered complex because at each step there exist a lot of possibilities to split a cluster.</p>
 </section>
 </section>
 <section id="partitioning-methods" class="level1">
 <h1>Partitioning methods</h1>
 <section id="partitioning-methods-1" class="level3">
 <h3 class="anchored" data-anchor-id="partitioning-methods-1">Partitioning methods</h3>
-<p>Unlike the hierarchical clustering, <strong>partitioning methods</strong> apply for a given number of clusters.<br>
-From an initial assignment of instances to <span class="math inline">\(k\)</span> clusters, the method allocates the instances to clusters such that a given criterion is optimized.<br>
-Two popular methods are</p>
+<p>Unlike the hierarchical clustering, <strong>partitioning methods</strong> apply for a given number of clusters. From an initial assignment of instances to <span class="math inline">\(k\)</span> clusters, the method allocates the instances to clusters such that a given criterion is optimized. Two popular methods are</p>
 <ul>
 <li><p>The <strong>K-means</strong>.</p></li>
 <li><p>The <strong>Partitioning Around the Medoid</strong> (PAM).</p></li>
@@ -671,23 +661,22 @@ Two popular methods are</p>
 <li><p>Each instance is then re-assigned to the cluster with the closest center.</p></li>
 <li><p>Step 2. and 3. are repeated until a convergence criterion is satisfied.</p></li>
 </ol>
-<p>The K-means is suitable for <strong>numerical features only</strong>. The Euclidean distance is often used.</p>
-<p>Illustration on simulated data, with <span class="math inline">\(k=2\)</span>. Below, the data (<span class="math inline">\(p=2\)</span>)</p>
+<p>The K-means is suitable for <strong>numerical features only</strong>. The Euclidean distance is often used. Below is an illustration on simulated data, with <span class="math inline">\(k=2\)</span>, and the data (<span class="math inline">\(p=2\)</span>)</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/kmeans1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
+<p><img src="../../Graphs/kmeans1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
 </figure>
 </div>
 <p>First step, each instance is randomly assigned (circles and triangles). The centers are computed (dots).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/kmeans2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
+<p><img src="../../Graphs/kmeans2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
 </figure>
 </div>
 <p>Next step, instances are re-assigned to the closest center. Then, new centers are computed. The clustering is already finished.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/kmeans3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
+<p><img src="../../Graphs/kmeans3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
 </figure>
 </div>
 </section>
@@ -696,33 +685,27 @@ Two popular methods are</p>
 <p>Illustration for <span class="math inline">\(k=3\)</span> clusters.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/kmeans4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
+<p><img src="../../Graphs/kmeans4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:35.0%"></p>
 </figure>
 </div>
 </section>
 <section id="partitioning-around-the-medoid" class="level3">
 <h3 class="anchored" data-anchor-id="partitioning-around-the-medoid">Partitioning Around the Medoid</h3>
-<p><strong>PAM</strong> extends the K-mean to <strong>features of mixed types</strong> (numerical and categorical) by extending the definition of the center of the cluster to <strong>a medoid</strong>.<br>
-The medoid of cluster is the most representative instance belonging to it.<br>
-The medoid of a cluster <span class="math inline">\(A\)</span> is the instance with smallest sum of dissimilarities with the other instances in the cluster <span class="math inline">\(A\)</span>: <span class="math display">\[m_A = \arg \min_{x \in A} \sum_{y\in A; y\neq x} d_{xy}\]</span> Unlike for the K-means, where the center is computed by averaging the features values (and thus may not be an instance of the data base), the medoid is an instance of its cluster.<br>
-Therefore, PAM can be used for numerical and categorical features.</p>
+<p><strong>PAM</strong> extends the K-mean to <strong>features of mixed types</strong> (numerical and categorical) by extending the definition of the center of the cluster to <strong>a medoid</strong>. The medoid of cluster is the most representative instance belonging to it. The medoid of a cluster <span class="math inline">\(A\)</span> is the instance with smallest sum of dissimilarities with the other instances in the cluster <span class="math inline">\(A\)</span>: <span class="math display">\[m_A = \arg \min_{x \in A} \sum_{y\in A; y\neq x} d_{xy}\]</span> Unlike for the K-means, where the center is computed by averaging the features values (and thus may not be an instance of the data base), the medoid is an instance of its cluster. Therefore, PAM can be used for numerical and categorical features.</p>
 <p>With the Italian cities, consider the cluster {BA, NA, RM}. Then the medoı̈d is NA. Indeed, the sum of dissimilarities are</p>
 <ul>
 <li><p>BA: <span class="math inline">\(d_{BA,NA}+d_{BA,RM} = 255+412=667\)</span></p></li>
 <li><p>NA: <span class="math inline">\(d_{NA,BA}+d_{NA,RM} = 255+219=474\)</span></p></li>
 <li><p>RM: <span class="math inline">\(d_{RM,BA}+d_{RM,NA} = 212+219=631\)</span></p></li>
 </ul>
-<p>Thus NA is the most representative city of this cluster.<br>
-Note that the medoı̈d of cluster {MI, TO} is either MI or TO (at random).</p>
+<p>Thus NA is the most representative city of this cluster. Note that the medoı̈d of cluster {MI, TO} is either MI or TO (at random).</p>
 </section>
 </section>
 <section id="number-of-clusters" class="level1">
 <h1>Number of clusters</h1>
 <section id="choice-or-selection" class="level3">
 <h3 class="anchored" data-anchor-id="choice-or-selection">Choice or selection?</h3>
-<p>The number of clusters is often an <strong>arbitrary choice</strong> guided by the domain and the business application. This approach should be preferred if possible.<br>
-It is also possible to select of the number of clusters with an index. There are a lot of such index<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.<br>
-In this course, we see</p>
+<p>The number of clusters is often an <strong>arbitrary choice</strong> guided by the domain and the business application. This approach should be preferred if possible. It is also possible to select of the number of clusters with an index. There are a lot of such index<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. In this course, we see</p>
 <ul>
 <li><p>The <strong>total within-cluster sum of squares</strong> (TWSS),</p></li>
 <li><p>The <strong>silhouette</strong>.</p></li>
@@ -731,19 +714,15 @@ In this course, we see</p>
 </section>
 <section id="total-within-cluster-sum-of-squares" class="level3">
 <h3 class="anchored" data-anchor-id="total-within-cluster-sum-of-squares">Total within-cluster sum of squares</h3>
-<p>The sum of squares within cluster <span class="math inline">\(C\)</span>, whose center (mean or medoid) is <span class="math inline">\(x_C\)</span>, is the <span class="math display">\[\quad W_C=\sum_{i \in C} \Vert x_i - x_C\Vert^2 = \sum_{i \in C}\sum_{j=1}^p (x_{ij} - x_{Cj})^2.\]</span> The TWSS is the sum of all <span class="math inline">\(W_k\)</span> over the <span class="math inline">\(K\)</span> clusters <span class="math inline">\(C_1,\ldots,C_K\)</span>, <span class="math display">\[\sum_{k=1}^K W_{C_k}\]</span> The Each time a cluster is created (<span class="math inline">\(K \rightarrow K+1\)</span>), TWSS diminishes. The number of clusters is selected at <strong>an elbow</strong> on the graph.</p>
-<p>Clustering on data with TWSS (dendrogram with complete linkage):</p>
+<p>The sum of squares within cluster <span class="math inline">\(C\)</span>, whose center (mean or medoid) is <span class="math inline">\(x_C\)</span>, is the <span class="math display">\[\quad W_C=\sum_{i \in C} \Vert x_i - x_C\Vert^2 = \sum_{i \in C}\sum_{j=1}^p (x_{ij} - x_{Cj})^2.\]</span> The TWSS is the sum of all <span class="math inline">\(W_k\)</span> over the <span class="math inline">\(K\)</span> clusters <span class="math inline">\(C_1,\ldots,C_K\)</span>, <span class="math display">\[\sum_{k=1}^K W_{C_k}\]</span> The Each time a cluster is created (<span class="math inline">\(K \rightarrow K+1\)</span>), TWSS diminishes. The number of clusters is selected at <strong>an elbow</strong> on the graph. Below is a plot of clustering on data with TWSS (dendrogram with complete linkage):</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Nb_agnes_hc_wss.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
+<p><img src="../../Graphs/Nb_agnes_hc_wss.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 <p><span class="math inline">\(k=3\)</span> is a good choice here.</p>
-<p>The <strong>silhouette</strong> measures how "well" an instance is within its cluster.<br>
-Consider an instance <span class="math inline">\(x\)</span> assigned to cluster <span class="math inline">\(C\)</span>. Let <span class="math inline">\(d(x,A)\)</span> be <strong>the dissimilarity from <span class="math inline">\(x\)</span> to any cluster <span class="math inline">\(A\)</span></strong>: the average dissimilarity between <span class="math inline">\(x\)</span> and all the instances in cluster <span class="math inline">\(A\)</span>: <span class="math display">\[d(x,A) = \frac{1}{|A|} \sum_{y\in A} d_{xy}.\]</span> In particular, <strong><span class="math inline">\(d(x, C)\)</span> is the dissimilarity from <span class="math inline">\(x\)</span> to its cluster</strong>.<br>
-A small <span class="math inline">\(d(x,C)\)</span> indicates a good clustering of <span class="math inline">\(x\)</span> within its cluster <span class="math inline">\(C\)</span>.</p>
-<p>Now, consider <span class="math inline">\(d(x,\bar{C})\)</span>, the smallest average dissimilarities from <span class="math inline">\(x\)</span> to all the clusters to which it is not assigned (all but <span class="math inline">\(C\)</span>): <span class="math display">\[d(x,\bar{C}) = \min_{A\neq C} d(x, A)\]</span> This measures how <span class="math inline">\(x\)</span> is separated from the other clusters.<br>
-A large <span class="math inline">\(d(x,\bar{C})\)</span> indicates a good separation of <span class="math inline">\(x\)</span> from all the other clusters (i.e., the ones in which <span class="math inline">\(x\)</span> is not).</p>
+<p>The <strong>silhouette</strong> measures how "well" an instance is within its cluster. Consider an instance <span class="math inline">\(x\)</span> assigned to cluster <span class="math inline">\(C\)</span>. Let <span class="math inline">\(d(x,A)\)</span> be <strong>the dissimilarity from <span class="math inline">\(x\)</span> to any cluster <span class="math inline">\(A\)</span></strong>: the average dissimilarity between <span class="math inline">\(x\)</span> and all the instances in cluster <span class="math inline">\(A\)</span>: <span class="math display">\[d(x,A) = \frac{1}{|A|} \sum_{y\in A} d_{xy}.\]</span> In particular, <strong><span class="math inline">\(d(x, C)\)</span> is the dissimilarity from <span class="math inline">\(x\)</span> to its cluster</strong>. A small <span class="math inline">\(d(x,C)\)</span> indicates a good clustering of <span class="math inline">\(x\)</span> within its cluster <span class="math inline">\(C\)</span>.</p>
+<p>Now, consider <span class="math inline">\(d(x,\bar{C})\)</span>, the smallest average dissimilarities from <span class="math inline">\(x\)</span> to all the clusters to which it is not assigned (all but <span class="math inline">\(C\)</span>): <span class="math display">\[d(x,\bar{C}) = \min_{A\neq C} d(x, A)\]</span> This measures how <span class="math inline">\(x\)</span> is separated from the other clusters. A large <span class="math inline">\(d(x,\bar{C})\)</span> indicates a good separation of <span class="math inline">\(x\)</span> from all the other clusters (i.e., the ones in which <span class="math inline">\(x\)</span> is not).</p>
 </section>
 <section id="silhouette" class="level3">
 <h3 class="anchored" data-anchor-id="silhouette">Silhouette</h3>
@@ -752,24 +731,21 @@ A large <span class="math inline">\(d(x,\bar{C})\)</span> indicates a good separ
 <li><p><span class="math inline">\(d(x, C)\)</span>, how well <span class="math inline">\(x\)</span> is integrated to its cluster <span class="math inline">\(C\)</span>, and</p></li>
 <li><p><span class="math inline">\(d(x,\bar{C})\)</span>, how well <span class="math inline">\(x\)</span> is separated from the other clusters.</p></li>
 </ul>
-<p>The silhouette of <span class="math inline">\(x\)</span> is <span class="math display">\[s_x=\frac{d(x,\bar{C})-d(x,C)}{\max\left\{d(x,\bar{C}),d(x,C)\right\}}\]</span> The denominator ensures that <span class="math inline">\(-1\leq s_x\leq 1\)</span>.<br>
-The larger <span class="math inline">\(s_x\)</span>, the better the clustering of <span class="math inline">\(x\)</span> in <span class="math inline">\(C\)</span>.</p>
+<p>The silhouette of <span class="math inline">\(x\)</span> is <span class="math display">\[s_x=\frac{d(x,\bar{C})-d(x,C)}{\max\left\{d(x,\bar{C}),d(x,C)\right\}}\]</span> The denominator ensures that <span class="math inline">\(-1\leq s_x\leq 1\)</span>. The larger <span class="math inline">\(s_x\)</span>, the better the clustering of <span class="math inline">\(x\)</span> in <span class="math inline">\(C\)</span>.</p>
 </section>
 <section id="average-silhouette" class="level3">
 <h3 class="anchored" data-anchor-id="average-silhouette">Average silhouette</h3>
-<p>The <strong>average silhouette</strong> of all instances is taken as a measure of the <strong>goodness of the clustering</strong>: <span class="math display">\[s = \frac{1}{n}\sum_{i=1}^n s_{x_i}.\]</span> The larger the average silhouette <span class="math inline">\(s\)</span>, the better the clustering overall. The number of clusters <span class="math inline">\(k\)</span> should maximize the average silhouette.<br>
-The average silhouette should not be interpreted for itself.</p>
-<p>Clustering on data with average silhouette:</p>
+<p>The <strong>average silhouette</strong> of all instances is taken as a measure of the <strong>goodness of the clustering</strong>: <span class="math display">\[s = \frac{1}{n}\sum_{i=1}^n s_{x_i}.\]</span> The larger the average silhouette <span class="math inline">\(s\)</span>, the better the clustering overall. The number of clusters <span class="math inline">\(k\)</span> should maximize the average silhouette. The average silhouette should not be interpreted for itself. Now, we show a graph of clustering on data with average silhouette:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Nb_pam_sil.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
+<p><img src="../../Graphs/Nb_pam_sil.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 <p><span class="math inline">\(k=8\)</span> is a good choice here.</p>
 <p>A detailed analysis of the clustering can be obtained using the <strong>silhouette plot</strong> shows: the silhouettes of all the instances.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Polstress-silhou.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
+<p><img src="../../Graphs/Polstress-silhou.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 <p>Clusters 1 and 3 are well formed, Clusters 2 and 3 are less homogeneous.</p>
@@ -779,23 +755,20 @@ The average silhouette should not be interpreted for itself.</p>
 <p>Policemen - PAM <span class="math inline">\(k=4\)</span></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Polstress-silhou.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
+<p><img src="../../Graphs/Polstress-silhou.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </section>
 <section id="divisive-hierarchical-clustering" class="level3">
 <h3 class="anchored" data-anchor-id="divisive-hierarchical-clustering">Divisive hierarchical clustering</h3>
-<p>AGNES is "agglomerating" because it starts from individual points and run up to a unique cluster, merging clusters one after the other.<br>
-It is called "hierarchical" because when an instance is attached to a group, it cannot be separated from it anymore.<br>
-"Divisive" hierarchical clustering also exists: <strong>DIANA</strong> for DIvise ANAlysis. It starts from one unique cluster with all the instances, and splits clusters one after the other, going down to one instance per cluster.</p>
+<p>AGNES is "agglomerating" because it starts from individual points and run up to a unique cluster, merging clusters one after the other. It is called "hierarchical" because when an instance is attached to a group, it cannot be separated from it anymore. "Divisive" hierarchical clustering also exists: <strong>DIANA</strong> for DIvise ANAlysis. It starts from one unique cluster with all the instances, and splits clusters one after the other, going down to one instance per cluster.</p>
 </section>
 </section>
 <section id="interpretation" class="level1">
 <h1>Interpretation</h1>
 <section id="interpretation-1" class="level3">
 <h3 class="anchored" data-anchor-id="interpretation-1">Interpretation</h3>
-<p>What are the features behind: what feature/combination of features makes that an individual belong to a cluster.<br>
-A usual method consists of representing each feature against the clusters.</p>
+<p>What are the features behind: what feature/combination of features makes that an individual belong to a cluster. A usual method consists of representing each feature against the clusters.</p>
 <p><strong>Example</strong>: 170 Swiss policemen recorded their emotional state in time using a questionnaire with ordinal scales (1 to 6). The features are</p>
 <ul>
 <li><p>mood,</p></li>
@@ -806,8 +779,7 @@ A usual method consists of representing each feature against the clusters.</p>
 <li><p>situation familiarity,</p></li>
 <li><p>material support.</p></li>
 </ul>
-<p>There is nothing to predict: the interest is to discover patterns in the data.</p>
-<p>Below the scatter plots of the features (jittering points for more readability).</p>
+<p>There is nothing to predict: the interest is to discover patterns in the data. Below is the scatter plots of the features (jittering points for more readability).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../Graphs/Polstress-scat-jit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>

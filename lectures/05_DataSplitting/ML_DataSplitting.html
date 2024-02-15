@@ -170,11 +170,6 @@ window.Quarto = {
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -530,8 +525,7 @@ updateImageSrc();
 
 <section id="concept" class="level1">
 <h1>Concept</h1>
-<p>A good model should have the good metric (predictions) and a good capacity to extrapolate outside the data base.<br>
-Consider the following stupid but feasible model to predict an instance:</p>
+<p>A good model should have the good metric (predictions) and a good capacity to extrapolate outside the data base. Consider the following stupid but feasible model to predict an instance:</p>
 <ul>
 <li><p>if the instance is already in the data base, the predicted class is the same as the one in the data base.</p></li>
 <li><p>if the instance is not already in the data base, the prediction is random.</p></li>
@@ -539,10 +533,7 @@ Consider the following stupid but feasible model to predict an instance:</p>
 <p>The model will have a perfect accuracy on the data base. However, it is useless for new instances.</p>
 <section id="overfitting" class="level3">
 <h3 class="anchored" data-anchor-id="overfitting">Overfitting</h3>
-<p>This example illustrates that it is easy to build good predictions when the data base is available: predicting the past is easy.<br>
-In the context of a supervised learning, a model may be good at predicting the data base on which it is trained but not the future/other data points. In practice however, this <strong>generalization capacity</strong> is crucial.<br>
-A model having very good predictions on the data base, and a poor extrapolation capacity (for new instances) is said to <strong>overfit</strong> the data.<br>
-<strong>Overfitting</strong> is one of the worst enemy in machine learning: it looks like things are going well, when in fact no good new predictions can be obtained.</p>
+<p>This example illustrates that it is easy to build good predictions when the data base is available: predicting the past is easy. In the context of a supervised learning, a model may be good at predicting the data base on which it is trained but not the future/other data points. In practice however, this <strong>generalization capacity</strong> is crucial. A model having very good predictions on the data base, and a poor extrapolation capacity (for new instances) is said to <strong>overfit</strong> the data. <strong>Overfitting</strong> is one of the worst enemy in machine learning: it looks like things are going well, when in fact no good new predictions can be obtained.</p>
 </section>
 </section>
 <section id="training-and-test-sets" class="level1">
@@ -584,15 +575,15 @@ A model having very good predictions on the data base, and a poor extrapolation 
 <li><p>The features of the test set are given to the model to make the test set predictions. These are compared to the correct classes in the test set.</p></li>
 <li><p>The apparent followed by test confusion matrices:</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>                  Reference</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        Prediction Bad Good</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>              Bad   <span class="dv">30</span>   <span class="dv">19</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>              Good <span class="dv">195</span>  <span class="dv">506</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>            Reference</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Prediction   Bad Good</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        Bad   <span class="dv">30</span>   <span class="dv">19</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        Good <span class="dv">195</span>  <span class="dv">506</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                  Reference</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        Prediction Bad Good</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>              Bad    <span class="dv">6</span>    <span class="dv">7</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>              Good  <span class="dv">69</span>  <span class="dv">168</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            Reference</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Prediction   Bad Good</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        Bad    <span class="dv">6</span>    <span class="dv">7</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        Good  <span class="dv">69</span>  <span class="dv">168</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The apparent and test accuracies are <span class="math display">\[A_{tr} = \frac{30+506}{750} = 0.715, \quad
 A_{te} = \frac{6+168}{250} = 0.696.\]</span> The accuracy on the test set is closer to the one that can be expected if the model was used on new instances (e.g., in production).<br>
 Here, the test accuracy is lower than the apparent accuracy. This is a usual sign of over-fitting<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
@@ -615,7 +606,7 @@ Validation set is also used for cross-validation, hyperparameter selection, earl
 <h3 class="anchored" data-anchor-id="illustration">Illustration</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/Validation_set.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
+<p><img src="../Graphs/Validation_set.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 </section>
@@ -643,7 +634,7 @@ Validation set is also used for cross-validation, hyperparameter selection, earl
 <p>This provides <span class="math inline">\(K\)</span> metrics: <span class="math inline">\(S_1, \ldots, S_K\)</span>. The final CV metric is their average: <span class="math display">\[\hat{S} = \frac{1}{K}\sum_{k=1}^K S_k.\]</span> In addition, these metrics are used to estimate the standard deviation<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> of <span class="math inline">\(\hat{S}\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/10-CV.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
+<p><img src="../Graphs/10-CV.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 </section>
@@ -707,8 +698,7 @@ The logistic regression should be preferred here.</p>
 </section>
 <section id="bootstrap-estimate" class="level3">
 <h3 class="anchored" data-anchor-id="bootstrap-estimate">Bootstrap estimate</h3>
-<p>The previous bootstrap step is repeated a large number of times; typically 500 to 10’000, depending on the time it takes (computation power).<br>
-The final estimate is the average of each <span class="math inline">\(\hat{S}\)</span>. Standard deviation can be also computed.<br>
+<p>The previous bootstrap step is repeated a large number of times; typically 500 to 10’000, depending on the time it takes (computation power). The final estimate is the average of each <span class="math inline">\(\hat{S}\)</span>. Standard deviation can be also computed.<br>
 </p>
 </section>
 <section id="bootstrap-samples" class="level3">
@@ -733,8 +723,7 @@ The final estimate is the average of each <span class="math inline">\(\hat{S}\)<
 <h1>Solving the overfitting problem</h1>
 <section id="solving-overfitting" class="level3">
 <h3 class="anchored" data-anchor-id="solving-overfitting">Solving overfitting</h3>
-<p>Comparing apparent and test metrics allows to detect overfitting only. How can we improve the situation?<br>
-A model that overfits the training data set is too flexible/complex. We can use the methods seen for each model to try to simplify them:</p>
+<p>Comparing apparent and test metrics allows to detect overfitting only. How can we improve the situation? A model that overfits the training data set is too flexible/complex. We can use the methods seen for each model to try to simplify them:</p>
 <ul>
 <li><p>Linear and logistic regression: variable selection and/or use <span class="math inline">\(L_1\)</span> and <span class="math inline">\(L_2\)</span> penalization.</p></li>
 <li><p>Trees: prune the tree.</p></li>
@@ -744,10 +733,7 @@ A model that overfits the training data set is too flexible/complex. We can use 
 </section>
 <section id="hyperparameters" class="level3">
 <h3 class="anchored" data-anchor-id="hyperparameters">Hyperparameters</h3>
-<p>Some of these methods require to set parameters: penalization parameter, cost parameter, others.<br>
-These are called <strong>hyperparameters</strong>.Hyperparameters are structural parameters or "pseudo-parameters" of the models.<br>
-An informal definition is "whatever cannot be optimized by the training algorithm".<br>
-To set these parameters is called <strong>tuning</strong>.</p>
+<p>Some of these methods require to set parameters: penalization parameter, cost parameter, others. These are called <strong>hyperparameters</strong>.Hyperparameters are structural parameters or "pseudo-parameters" of the models. An informal definition is "whatever cannot be optimized by the training algorithm". To set these parameters is called <strong>tuning</strong>.</p>
 </section>
 <section id="tuning-hyperparameters" class="level3">
 <h3 class="anchored" data-anchor-id="tuning-hyperparameters">Tuning hyperparameters</h3>
@@ -762,28 +748,27 @@ To set these parameters is called <strong>tuning</strong>.</p>
 <li><p>A simple split: training and validation</p></li>
 <li><p>A repeated split: bootstrap or CV.</p></li>
 </ul>
-<p>The choice of the hyperparameters must not be done on the test: a part of the information contained in the test set may <em>leaks</em> to the model choice and thus to the training.<br>
-Avoid any <strong>information leakage</strong>: the <strong>test set must not be seen</strong> by the model, at any stage.</p>
+<p>The choice of the hyperparameters must not be done on the test: a part of the information contained in the test set may <em>leaks</em> to the model choice and thus to the training. Avoid any <strong>information leakage</strong>: the <strong>test set must not be seen</strong> by the model, at any stage.</p>
 </section>
 </section>
 <section id="solving-the-unbalance-problem" class="level1">
 <h1>Solving the unbalance problem</h1>
 <p>"Unbalanced classes" refers to data set where the classes frequencies are unbalanced. E.g., doctor visit data have 4 times more “No” than “Yes”.<br>
 </p>
-<pre><code>  No  Yes 
-4141 1049</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>No   Yes </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">4141</span> <span class="dv">1049</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>During the training, the model favors the predictions of the “No” to reach a better accuracy.</p>
 <section id="unbalanced-classes" class="level3">
 <h3 class="anchored" data-anchor-id="unbalanced-classes">Unbalanced classes</h3>
 <p>E.g., the logistic regression, gives:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    Confusion Matrix and Statistics</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    [...]</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                   Accuracy <span class="sc">:</span> <span class="fl">0.8091</span>          </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    [...]                                          </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>                Sensitivity <span class="sc">:</span> <span class="fl">0.9771</span>          </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                Specificity <span class="sc">:</span> <span class="fl">0.1435</span>          </span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    [...]</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>          Balanced Accuracy <span class="sc">:</span> <span class="fl">0.5603</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Confusion Matrix and Statistics</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>[...]</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                Accuracy <span class="sc">:</span> <span class="fl">0.8091</span>          </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>[...]                                          </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>            Sensitivity <span class="sc">:</span> <span class="fl">0.9771</span>          </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>            Specificity <span class="sc">:</span> <span class="fl">0.1435</span>          </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>[...]</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        Balanced Accuracy <span class="sc">:</span> <span class="fl">0.5603</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This problem is <strong>detected</strong> with</p>
 <ul>
 <li><p>low balanced accuracy</p></li>
@@ -799,14 +784,14 @@ Avoid any <strong>information leakage</strong>: the <strong>test set must not be
 <section id="tuning-probability-threshold" class="level3">
 <h3 class="anchored" data-anchor-id="tuning-probability-threshold">Tuning probability threshold</h3>
 <p>Example after optimization:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    Confusion Matrix and Statistics</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    [...]                     </span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                   Accuracy <span class="sc">:</span> <span class="fl">0.6991</span>          </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    [...]</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>                Sensitivity <span class="sc">:</span> <span class="fl">0.7186</span>          </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>                Specificity <span class="sc">:</span> <span class="fl">0.6220</span>          </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    [...]</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>          Balanced Accuracy <span class="sc">:</span> <span class="fl">0.6703</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Confusion Matrix and Statistics</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>[...]                     </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                Accuracy <span class="sc">:</span> <span class="fl">0.6991</span>          </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>[...]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>            Sensitivity <span class="sc">:</span> <span class="fl">0.7186</span>          </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>            Specificity <span class="sc">:</span> <span class="fl">0.6220</span>          </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>[...]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        Balanced Accuracy <span class="sc">:</span> <span class="fl">0.6703</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Sensitivity decreased, specificity increased. Overall BA increased (and accuracy decreased).<br>
 <strong>The probability threshold <span class="math inline">\(\lambda\)</span> is an hyperparameter</strong>. Use the splitting data method to avoid overfitting.</p>
 <p>Another approach consists of <strong>balancing</strong> the classes <em>in the training set</em>. Two possible approaches:</p>
@@ -830,19 +815,19 @@ Note: <strong>the test set must NOT be balanced</strong>.</p>
 <section id="class-balancing" class="level3">
 <h3 class="anchored" data-anchor-id="class-balancing">Class balancing</h3>
 <p>Examples, with sub-sampling</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>                   Accuracy <span class="sc">:</span> <span class="fl">0.7049</span>          </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    [...]</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                Sensitivity <span class="sc">:</span> <span class="fl">0.7331</span>          </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                Specificity <span class="sc">:</span> <span class="fl">0.5933</span>          </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    [...]</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>          Balanced Accuracy <span class="sc">:</span> <span class="fl">0.6632</span>          </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>                Accuracy <span class="sc">:</span> <span class="fl">0.7049</span>          </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>[...]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            Sensitivity <span class="sc">:</span> <span class="fl">0.7331</span>          </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            Specificity <span class="sc">:</span> <span class="fl">0.5933</span>          </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>[...]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        Balanced Accuracy <span class="sc">:</span> <span class="fl">0.6632</span>          </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and with re-sampling</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>                   Accuracy <span class="sc">:</span> <span class="fl">0.7097</span>       </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    [...]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                Sensitivity <span class="sc">:</span> <span class="fl">0.7391</span>          </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                Specificity <span class="sc">:</span> <span class="fl">0.5933</span>          </span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    [...]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>          Balanced Accuracy <span class="sc">:</span> <span class="fl">0.6662</span>          </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>                Accuracy <span class="sc">:</span> <span class="fl">0.7097</span>       </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>[...]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>            Sensitivity <span class="sc">:</span> <span class="fl">0.7391</span>          </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>            Specificity <span class="sc">:</span> <span class="fl">0.5933</span>          </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>[...]</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        Balanced Accuracy <span class="sc">:</span> <span class="fl">0.6662</span>          </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The results are similar to tuning of <span class="math inline">\(\lambda\)</span>.</p>
 </section>
 <section id="discussion-on-class-balancing" class="level3">

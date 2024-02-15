@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MLBA - S24 - Trees</title>
+<title>MLBA - S24 - Decision Trees</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,7 +101,7 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="MLBA - S24 - Trees">
+<meta property="og:title" content="MLBA - S24 - Decision Trees">
 <meta property="og:site_name" content="MLBA - S24 ">
 </head>
 
@@ -135,11 +135,6 @@ window.Quarto = {
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -464,7 +459,7 @@ updateImageSrc();
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../lectures/01_Introduction/ML_Intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="../../../lectures/03_Models/032_Trees/ML_Trees.html">Decision Trees</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Trees</h1>
+<h1 class="title">Decision Trees</h1>
 </div>
 
 
@@ -490,18 +485,13 @@ updateImageSrc();
 <li><p>A hierarchical set of binary rules,</p></li>
 <li><p>A representation in a shape of a tree.</p></li>
 </ul>
-<p>It applies to both regression and classification tasks.</p>
-<p>Iris data (on 125 data; 35/35/35).</p>
-<p>0.5</p>
+<p>It applies to both regression and classification tasks. The Iris data has 125 data; with the classes equally divided in 35 observations.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/IRIS_CART.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:6.5cm"></p>
+<p><img src="../../Graphs/IRIS_CART.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
 </figure>
 </div>
-<p>0.5 If Petal length <span class="math inline">\(&lt; 2.45\)</span> then Setosa, else</p>
-<ul>
-<li>if Petal width <span class="math inline">\(&lt; 1.65\)</span> then Versicolor, else Virginica.</li>
-</ul>
+<p>In this case the rule is that if Petal length <span class="math inline">\(&lt; 2.45\)</span> then Setosa, else if Petal width <span class="math inline">\(&lt; 1.65\)</span> then Versicolor, else Virginica.</p>
 </section>
 <section id="the-prediction-formula" class="level3">
 <h3 class="anchored" data-anchor-id="the-prediction-formula">The prediction formula</h3>
@@ -625,10 +615,7 @@ An approximate solution is obtained by the <strong>greedy algorithm</strong>.</p
 <h1>Pruning</h1>
 <section id="occams-razor" class="level3">
 <h3 class="anchored" data-anchor-id="occams-razor">Occam’s razor</h3>
-<p>For linear and logistic regressions, the more variables are in the model, the more complex that model is.<br>
-For trees, model complexities can be measured by the length of the tree: a shorter tree is more simple than a longer one.<br>
-To apply Occan’s razor, one needs to shorten the tree without impeding too much its prediction quality.<br>
-To <strong>prune</strong> the tree consists of cutting branches while maintaining enough prediction quality.</p>
+<p>For linear and logistic regressions, the more variables are in the model, the more complex that model is. For trees, model complexities can be measured by the length of the tree: <em>a shorter tree is more simple than a longer one</em>. To apply Occan’s razor, one needs to shorten the tree without impeding too much its prediction quality. To <strong>prune</strong> the tree consists of cutting branches while maintaining enough prediction quality.</p>
 </section>
 <section id="se-rule" class="level3">
 <h3 class="anchored" data-anchor-id="se-rule">1-SE rule</h3>

@@ -136,11 +136,6 @@ window.Quarto = {
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -616,11 +611,10 @@ Two types of sub-tasks are distinguished depending on the outcome:</p>
 <h1>Models</h1>
 <section id="models-1" class="level3">
 <h3 class="anchored" data-anchor-id="models-1">Models</h3>
-<p>Supervised learning has two pillars: the data and the models.<br>
-A <strong>model</strong> is a trainable algorithm which takes features <span class="math inline">\(x\)</span> and returns an output <span class="math inline">\(\hat{y}\)</span>, a prediction of the outcome <span class="math inline">\(y\)</span> corresponding to <span class="math inline">\(x\)</span>.</p>
+<p>Supervised learning has two pillars: the data and the models. A <strong>model</strong> is a trainable algorithm which takes features <span class="math inline">\(x\)</span> and returns an output <span class="math inline">\(\hat{y}\)</span>, a prediction of the outcome <span class="math inline">\(y\)</span> corresponding to <span class="math inline">\(x\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/ML1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
+<p><img src="../Graphs/ML1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 <p>Synonyms: <strong>learners</strong>, <strong>algorithms</strong>. For classification, <strong>classifiers</strong>.<br>
@@ -628,8 +622,7 @@ Notations: <span class="math inline">\(f(\cdot)\)</span> is the model and <span 
 </section>
 <section id="model-training" class="level3">
 <h3 class="anchored" data-anchor-id="model-training">Model training</h3>
-<p>The model is <strong>trainable</strong>. It can be trained to the available data to produce good predictions.<br>
-The model, which is itself an algorithm, comes with an training algorithm that can adapt the parameters of the model to optimize a quality criterion. The training algorithm is specific to the model and the criterion. For a given model, you may have several choices (several criteria, several training algorithms, etc.).</p>
+<p>The model is <strong>trainable</strong>. It can be trained to the available data to produce good predictions. The model, which is itself an algorithm, comes with an training algorithm that can adapt the parameters of the model to optimize a quality criterion. The training algorithm is specific to the model and the criterion. For a given model, you may have several choices (several criteria, several training algorithms, etc.).</p>
 </section>
 <section id="model-training-example" class="level3">
 <h3 class="anchored" data-anchor-id="model-training-example">Model training: example</h3>
@@ -641,10 +634,7 @@ The model, which is itself an algorithm, comes with an training algorithm that c
 </section>
 <section id="model-training-optimization" class="level3">
 <h3 class="anchored" data-anchor-id="model-training-optimization">Model training: optimization</h3>
-<p>In general, each criterion leads to a different set of parameters and a different model. No one is uniformly better than the others. E.g., the OLS has a smaller MSE on the training data (better fit) but the LASSO is more robust against overfitting. It however comes at the cost of selecting <span class="math inline">\(\lambda\)</span>.<br>
-Depending on the model, it can have several options for its training. It requires the <em>minimization</em> (resp. <em>maximization</em>) of a <strong>loss</strong> (resp. <strong>goodness-of-fit</strong>) function. It is <strong>always data based</strong>.<br>
-How the optimization is done is part of the so-called <strong>black box</strong> aspect of machine learning models: people don’t know what is going on with the mathematics put in action when pushing the training button.<br>
-Fortunately, in this course, we will study some of these optimizations for some models.</p>
+<p>In general, each criterion leads to a different set of parameters and a different model. No one is uniformly better than the others. E.g., the OLS has a smaller MSE on the training data (better fit) but the LASSO is more robust against overfitting. It however comes at the cost of selecting <span class="math inline">\(\lambda\)</span>. Depending on the model, it can have several options for its training. It requires the <em>minimization</em> (resp. <em>maximization</em>) of a <strong>loss</strong> (resp. <strong>goodness-of-fit</strong>) function. It is <strong>always data based</strong>. How the optimization is done is part of the so-called <strong>black box</strong> aspect of machine learning models: people don’t know what is going on with the mathematics put in action when pushing the training button. Fortunately, in this course, we will study some of these optimizations for some models.</p>
 </section>
 </section>
 <section id="metrics" class="level1">
@@ -656,20 +646,15 @@ Fortunately, in this course, we will study some of these optimizations for some 
 <li><p>Classification: accuracy, specificity, sensitivity, balanced accuracy, <span class="math inline">\(F1\)</span>, entropy, etc.</p></li>
 <li><p>Regression: <span class="math inline">\(R^2\)</span>, RMSE, etc.</p></li>
 </ul>
-<p>Interpreting/comparing these metrics allows to evaluate the model performance.<br>
-A fundamental aspect of metrics is that <strong>they are only based on the predictions and the data</strong>. Thus, different models can be compared.</p>
+<p>Interpreting/comparing these metrics allows to evaluate the model performance.A fundamental aspect of metrics is that <strong>they are only based on the predictions and the data</strong>. Thus, different models can be compared.</p>
 </section>
 <section id="model-selection" class="level3">
 <h3 class="anchored" data-anchor-id="model-selection">Model selection</h3>
-<p>A classical approach in ML consists of putting several models in competition. These cross-model comparisons are achieved comparing their metrics: the best model achieved the best metric.<br>
-E.g., you want to build a predictor for real estate prices from observable features (<span class="math inline">\(m^2\)</span>, location, type, etc.). You train one linear regression with OLS, one linear regression with LASSO, one regression tree, one neural network, etc. You select the model with the lowest MSE on unseen data set aside before the training.<br>
-This is possible only because (again) <strong>the metrics are only based on the predictions and the data</strong>.</p>
+<p>A classical approach in ML consists of putting several models in competition. These cross-model comparisons are achieved comparing their metrics: the best model achieved the best metric. E.g., you want to build a predictor for real estate prices from observable features (<span class="math inline">\(m^2\)</span>, location, type, etc.). You train one linear regression with OLS, one linear regression with LASSO, one regression tree, one neural network, etc. You select the model with the lowest MSE on unseen data set aside before the training. This is possible only because (again) <strong>the metrics are only based on the predictions and the data</strong>.</p>
 </section>
 <section id="base-model" class="level3">
 <h3 class="anchored" data-anchor-id="base-model">Base model</h3>
-<p>It is a good practice to have a <strong>base model</strong> to get a reference whether a final is worthy or not.<br>
-E.g., for the prediction of the real estate price, the base model could be the linear regression with OLS since this model is common. Suppose at the end of the selection, you select the neural network. The improvement over the OLS on the MSE is <span class="math inline">\(1\%\)</span>.<br>
-Is it worth using a complex neural network, heavy to manipulate, not transparent, and energy consuming for such a small improvement&nbsp;?</p>
+<p>It is a good practice to have a <strong>base model</strong> to get a reference whether a final is worthy or not. E.g., for the prediction of the real estate price, the base model could be the linear regression with OLS since this model is common. Suppose at the end of the selection, you select the neural network. The improvement over the OLS on the MSE is <span class="math inline">\(1\%\)</span>. Is it worth using a complex neural network, heavy to manipulate, not transparent, and energy consuming for such a small improvement&nbsp;?</p>
 </section>
 </section>
 <section id="overfitting" class="level1">
@@ -687,8 +672,7 @@ Is it worth using a complex neural network, heavy to manipulate, not transparent
 <li><p>If the apartment is already in the observed data base, the predicted price is the one in the data base.</p></li>
 <li><p>If it is a new apartment, the predicted price is random.</p></li>
 </ul>
-<p>The MSE on the data base will be close to zero since the model predicts all observed data exactly.<br>
-However, this model is useless to the company that cannot use it for new apartments.</p>
+<p>The MSE on the data base will be close to zero since the model predicts all observed data exactly. However, this model is useless to the company that cannot use it for new apartments.</p>
 </section>
 <section id="detect-overfitting" class="level3">
 <h3 class="anchored" data-anchor-id="detect-overfitting">Detect overfitting</h3>
@@ -704,10 +688,7 @@ However, this model is useless to the company that cannot use it for new apartme
 </section>
 <section id="avoid-overfitting" class="level3">
 <h3 class="anchored" data-anchor-id="avoid-overfitting">Avoid overfitting</h3>
-<p>Data splitting is useful to select one model among several to avoid overfitting. However, if all the models are prompt to overfit, data splitting will not help.<br>
-Overfitting often results from too much complexity in the model. Complexity arises when the model has a lot of parameters. Avoiding overfitting can be obtained by constraining the model to less parameters, i.e., less complexity.<br>
-When a model is trained, <strong>goodness-of-fit</strong> and <strong>complexity</strong> are taken into account. A complex model is prompt to overfit while a too simple model will be prompt to under-fit. The trained model should satisfy a <strong>compromise</strong> between these two.<br>
-E.g., LASSO is a constrained OLS that penalizes the complexity by shrinking toward <span class="math inline">\(0\)</span> some of the components of <span class="math inline">\(\beta\)</span>.</p>
+<p>Data splitting is useful to select one model among several to avoid overfitting. However, if all the models are prompt to overfit, data splitting will not help. Overfitting often results from too much complexity in the model. Complexity arises when the model has a lot of parameters. Avoiding overfitting can be obtained by constraining the model to less parameters, i.e., less complexity. When a model is trained, <strong>goodness-of-fit</strong> and <strong>complexity</strong> are taken into account. A complex model is prompt to overfit while a too simple model will be prompt to under-fit. The trained model should satisfy a <strong>compromise</strong> between these two. E.g., LASSO is a constrained OLS that penalizes the complexity by shrinking toward <span class="math inline">\(0\)</span> some of the components of <span class="math inline">\(\beta\)</span>.</p>
 </section>
 </section>
 <section id="interpretation" class="level1">
@@ -719,16 +700,14 @@ E.g., LASSO is a constrained OLS that penalizes the complexity by shrinking towa
 <li><p>Discover <strong>if</strong> a feature (variable) is important for the prediction of the outcome. E.g., what influences the price of an apartment<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> according to the model&nbsp;?</p></li>
 <li><p>Discover <strong>how</strong> the feature is related to the outcome. E.g., Does the price increase when you move away from the city center?</p></li>
 </ul>
-<p>Several techniques exist (see later).<br>
-Interpretation is often an aim in itself for ML (more important than the prediction task itself).</p>
+<p>Several techniques exist (see later). Interpretation is often an aim in itself for ML (more important than the prediction task itself).</p>
 </section>
 <section id="supervised-learning-steps" class="level3">
 <h3 class="anchored" data-anchor-id="supervised-learning-steps">Supervised learning steps</h3>
-<p>With training/test set splitting<br>
-</p>
+<p>With training/test set splitting</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../Graphs/ML_steps.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:9cm"></p>
+<p><img src="../Graphs/ML_steps.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 </section>

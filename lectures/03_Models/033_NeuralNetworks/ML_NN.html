@@ -135,11 +135,6 @@ window.Quarto = {
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -563,8 +558,8 @@ Empirical rules are</p>
 <li><p>Hidden layers with more nodes help creating new features (new dimensions).</p></li>
 <li><p>Hidden layers with less nodes help combining the previous features to create strong features (dimension reduction).</p></li>
 </ul>
-<p>In the example, the sigmoid function was applied at each hidden layer node. This is not the only available choice: other functions can be used. These function are called <strong>activation</strong> functions.<br>
-For the hidden layers, usual choices are</p>
+<p>In the example, the sigmoid function was applied at each hidden layer node. This is not the only available choice: other functions can be used. These function are called <strong>activation</strong> functions.</p>
+<p>For the hidden layers, usual choices are</p>
 <ul>
 <li><p>(so-called) <strong>Linear</strong>; meaning no function (identity). <span class="math display">\[g(x) = x\]</span></p></li>
 <li><p>Rectified Linear Activation <strong>ReLu</strong> <span class="math display">\[g(x) = \max(0,x)\]</span></p></li>
@@ -611,8 +606,7 @@ For the hidden layers, usual choices are</p>
 <h1>Training algorithm</h1>
 <section id="gradient-descent" class="level3">
 <h3 class="anchored" data-anchor-id="gradient-descent">Gradient Descent</h3>
-<p>The training is done by minimizing <span class="math inline">\(\bar{\cal L}(\theta)\)</span>, which is an intensive computation.<br>
-The most used algorithm is the <strong>gradient descent</strong>.</p>
+<p>The training is done by minimizing <span class="math inline">\(\bar{\cal L}(\theta)\)</span>, which is an intensive computation. The most used algorithm is the <strong>gradient descent</strong>.</p>
 <ul>
 <li><p>Start at a random set of weights <span class="math inline">\(\theta\)</span>,</p></li>
 <li><p>Update the weights using a descent direction (i.e., a direction guaranteeing a diminution of the loss), usually the negative gradient <span class="math display">\[\theta \leftarrow \theta - \eta \nabla \bar{\cal L}(\theta),\]</span></p></li>
@@ -622,8 +616,7 @@ The most used algorithm is the <strong>gradient descent</strong>.</p>
 </section>
 <section id="backpropagation" class="level3">
 <h3 class="anchored" data-anchor-id="backpropagation">Backpropagation</h3>
-<p>The computation of the gradient <span class="math inline">\(\nabla \bar{\cal L}(\theta)\)</span> can be very heavy on a NN.<br>
-<strong>Backpropagation</strong> is a method exploiting the iterative structure of the network to compute this gradient.</p>
+<p>The computation of the gradient <span class="math inline">\(\nabla \bar{\cal L}(\theta)\)</span> can be very heavy on a NN. <strong>Backpropagation</strong> is a method exploiting the iterative structure of the network to compute this gradient.</p>
 </section>
 <section id="stochastic-gradient-descent" class="level3">
 <h3 class="anchored" data-anchor-id="stochastic-gradient-descent">Stochastic Gradient Descent</h3>
@@ -655,13 +648,11 @@ The most used algorithm is the <strong>gradient descent</strong>.</p>
 <h1>Model simplification</h1>
 <section id="model-complexity" class="level3">
 <h3 class="anchored" data-anchor-id="model-complexity">Model complexity</h3>
-<p>By construction NN are complex models: they have a lot of weights. E.g., even a small model with <span class="math inline">\(10\)</span> features, <span class="math inline">\(2\)</span> hidden layers with <span class="math inline">\((16,8)\)</span> nodes, and 3 classes has <span class="math display">\[(10+1)\times 16 + (16+1)\times 8 + (8+1)\times 3 = 339\]</span> weights.<br>
-With such a large number of parameters, the model is at risk of overfitting the training set by learning too much. One can regularize the model in a similar way to linear and logistic regressions.</p>
+<p>By construction NN are complex models: they have a lot of weights. E.g., even a small model with <span class="math inline">\(10\)</span> features, <span class="math inline">\(2\)</span> hidden layers with <span class="math inline">\((16,8)\)</span> nodes, and 3 classes has <span class="math display">\[(10+1)\times 16 + (16+1)\times 8 + (8+1)\times 3 = 339\]</span> weights. With such a large number of parameters, the model is at risk of overfitting the training set by learning too much. One can regularize the model in a similar way to linear and logistic regressions.</p>
 </section>
 <section id="regularization" class="level3">
 <h3 class="anchored" data-anchor-id="regularization">Regularization</h3>
-<p>The idea is to use <span class="math inline">\(L_1\)</span> and/or <span class="math inline">\(L_2\)</span> penalties on the loss during the training <span class="math display">\[\bar{\cal L}(\theta) + \lambda_1 \sum_{j} |\theta_j| + \lambda_2 \sum_{j} \theta_j^2.\]</span> Again there is no simple way to set the penalty parameters <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>. Note that it is possible to have different penalty parameters in different layers.<br>
-Unlike regression and trees, and like SVM, this regularization can help to avoid overfitting but cannot be interpreted easily.</p>
+<p>The idea is to use <span class="math inline">\(L_1\)</span> and/or <span class="math inline">\(L_2\)</span> penalties on the loss during the training <span class="math display">\[\bar{\cal L}(\theta) + \lambda_1 \sum_{j} |\theta_j| + \lambda_2 \sum_{j} \theta_j^2.\]</span> Again there is no simple way to set the penalty parameters <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>. Note that it is possible to have different penalty parameters in different layers. Unlike regression and trees, and like SVM, this regularization can help to avoid overfitting but cannot be interpreted easily.</p>
 
 
 </section>

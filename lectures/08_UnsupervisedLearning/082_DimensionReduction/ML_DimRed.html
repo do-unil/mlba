@@ -170,11 +170,6 @@ window.Quarto = {
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
-  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
-  <div class="quarto-reader-toggle-btn">
-  <i class="bi"></i>
-  </div>
-</a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -526,14 +521,14 @@ updateImageSrc();
 <strong>Example:</strong> <code>iris</code> data has <span class="math inline">\(4\)</span> features (species not used). The data cannot be represented on a single graph.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Iris_raw.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:11cm"></p>
+<p><img src="../../Graphs/Iris_raw.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
 </figure>
 </div>
 <p>Observation: <code>Petal.Length</code> and <code>Petal.Width</code> are highly correlated: if we know one, we can predict the other one.<br>
 To simplify the representation, we do not need these two features: replace them by their average <code>Petal.WL = (Petal.W+Petal.L)/2</code>:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Iris_raw2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
+<p><img src="../../Graphs/Iris_raw2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
 </figure>
 </div>
 <p>Same observation for <code>Petal.WL</code> and <code>Sepal.Length</code>...</p>
@@ -548,13 +543,10 @@ This is the principle of <strong>Principal Component Analysis</strong> (PCA).</p
 <p>The PCA is a method that looks for dimensions that are linear combinations of the <span class="math inline">\(p\)</span> features: <span class="math display">\[a_1 x_1 + a_2 x_2 + \cdots + a_p x_p.\]</span> These linear combinations are called the principal components. There are <span class="math inline">\(p\)</span> principal components.</p>
 <p>To find the first component (i.e.&nbsp;coefficients <span class="math inline">\(a\)</span>), one should maximize the variance along it. That is, <span class="math inline">\(a\)</span> should be the solution to <span class="math display">\[\begin{aligned}
 \max_a &amp;&amp;Var (a_1 x_{1} + \cdots + a_p x_{p})\\
-s.t.&amp;&amp; \sum_j a_j^2 = 1\end{aligned}\]</span> where the variance is computed on the data set.<br>
-The constraint on <span class="math inline">\(a\)</span> is here because <span class="math inline">\(a\)</span> is only indicating a direction and should therefore be scaled to 1.</p>
-<p>As an example, let’s look at a toy case where we only have 2 features <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> showed below. We want to represent the data in one dimension, that is, along a line (dimension reduction). The dashed line shows more variability of the data and is a better principal component than the solid line.<br>
-</p>
+s.t.&amp;&amp; \sum_j a_j^2 = 1\end{aligned}\]</span> where the variance is computed on the data set. The constraint on <span class="math inline">\(a\)</span> is here because <span class="math inline">\(a\)</span> is only indicating a direction and should therefore be scaled to 1. As an example, let’s look at a toy case where we only have 2 features <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> showed below. We want to represent the data in one dimension, that is, along a line (dimension reduction). The dashed line shows more variability of the data and is a better principal component than the solid line.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/PCA_Illustr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
+<p><img src="../../Graphs/PCA_Illustr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
 </div>
 </section>
@@ -574,8 +566,7 @@ Note: the result can be easily obtained by computing the <strong>spectral decomp
 </section>
 <section id="pca-scaling" class="level3">
 <h3 class="anchored" data-anchor-id="pca-scaling">PCA: scaling</h3>
-<p>Before computing the PCA, the data can be standardized. Like any standardization, this is a choice of the user, which depends strongly on the application and on the scale (units) of the data.<br>
-When the data are first standardized, the <strong>spectral decomposition</strong> is made on the correlation matrix of the data.</p>
+<p>Before computing the PCA, the data can be standardized. Like any standardization, this is a choice of the user, which depends strongly on the application and on the scale (units) of the data. When the data are first standardized, the <strong>spectral decomposition</strong> is made on the correlation matrix of the data.</p>
 </section>
 <section id="pca-projection" class="level3">
 <h3 class="anchored" data-anchor-id="pca-projection">PCA: projection</h3>
@@ -590,7 +581,7 @@ When the data are first standardized, the <strong>spectral decomposition</strong
 <p>By construction, the first principal component <span class="math inline">\(z_1\)</span> has larger variance than <span class="math inline">\(z_2\)</span> and so on. Also, by construction, the total of the variance is preserved: <span class="math display">\[\sum_{j=1}^p var(x_j) = \sum_{j=1}^p var(z_j).\]</span> The proportion of the total variance explained by the PC <span class="math inline">\(z_j\)</span> is thus <span class="math display">\[var(z_j)/\sum_{j'=1}^p var(z_{j'}).\]</span> It represents how well the data are represented on the component <span class="math inline">\(z_j\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Iris_pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
+<p><img src="../../Graphs/Iris_pca.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 </section>
@@ -609,10 +600,10 @@ When the data are first standardized, the <strong>spectral decomposition</strong
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>% of var.             <span class="fl">72.962</span>  <span class="fl">22.851</span>   <span class="fl">3.669</span>   <span class="fl">0.518</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Cumulative % of var.  <span class="fl">72.962</span>  <span class="fl">95.813</span>  <span class="fl">99.482</span> <span class="fl">100.000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Together, PC1 and PC2 explain <span class="math inline">\(95.8\%\)</span> of the variation of the data. The scatter plot matrix shows that it is a good representation of the data with only two dimensions (PC<span class="math inline">\(_1\)</span>, PC<span class="math inline">\(_2\)</span>).</p>
-<p>Correlation between the PC and the features <span class="math inline">\(x\)</span> can be computed to see how is PC is correlated to each features.</p>
+<p>The correlation between the PC and the features <span class="math inline">\(x\)</span> can be computed to see how is PC is correlated to each features.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Iris_pcacircle.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:10cm"></p>
+<p><img src="../../Graphs/Iris_pcacircle.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
 </section>
@@ -635,13 +626,13 @@ When the data are first standardized, the <strong>spectral decomposition</strong
 <p>The circle of correlations relates the dimensions and the features. Another view is the <strong><span class="math inline">\(cos^2\)</span></strong> graph. It is interpreted as the quality of the representation of the feature by the dimension. Of course this is intimately related to the correlations.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Iris_cos2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:8cm"></p>
+<p><img src="../../Graphs/Iris_cos2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
 <p>The <strong>biplot</strong> shows a <strong>map of the individuals</strong> in the dimensions and adds the circle of correlations.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Iris_biplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:9cm"></p>
+<p><img src="../../Graphs/Iris_biplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
 </section>
@@ -656,16 +647,14 @@ When the data are first standardized, the <strong>spectral decomposition</strong
 </section>
 <section id="pca-number-of-components" class="level3">
 <h3 class="anchored" data-anchor-id="pca-number-of-components">PCA: number of components</h3>
-<p>Here, two components explain more than <span class="math inline">\(95\%\)</span> of the data variability. Sometimes, more components are needed.<br>
-One way to set the number of components is to target the proportion of explained variance: often between <span class="math inline">\(75\%\)</span> and <span class="math inline">\(95\%\)</span>.<br>
-If the features are independent, this number is likely to be large. If the features are correlated, this number will be smaller.<br>
-The <strong>screeplot</strong> may help.</p>
+<p>Here, two components explain more than <span class="math inline">\(95\%\)</span> of the data variability. Sometimes, more components are needed. One way to set the number of components is to target the proportion of explained variance: often between <span class="math inline">\(75\%\)</span> and <span class="math inline">\(95\%\)</span>.<br>
+If the features are independent, this number is likely to be large. If the features are correlated, this number will be smaller. The <strong>screeplot</strong> may help.</p>
 </section>
 <section id="pca-the-screeplot" class="level3">
 <h3 class="anchored" data-anchor-id="pca-the-screeplot">PCA: the screeplot</h3>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Iris_scree.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:9cm"></p>
+<p><img src="../../Graphs/Iris_scree.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
 </div>
 </section>
@@ -696,8 +685,7 @@ The <strong>screeplot</strong> may help.</p>
 <li><p>PCA for numerical features,</p></li>
 <li><p><strong>Multiple Correspondence Analysis</strong> (MCA) for categorical features.</p></li>
 </ul>
-<p>For sake of time, we do not see MCA in detail in this course. The focus is made on the interpretation and its use for dimensional reduction.<br>
-One must pay attention to the subtleties of different interpretations between the part of numerical features (PCA) and the one for categorical features (MCA).</p>
+<p>For sake of time, we do not see MCA in detail in this course. The focus is made on the interpretation and its use for dimensional reduction. One must pay attention to the subtleties of different interpretations between the part of numerical features (PCA) and the one for categorical features (MCA).</p>
 <p>To illustrate, we create an artificial <code>iris</code> data containing</p>
 <ul>
 <li><p>Length (S/M/L): category of length (sum of petal and sepal length),</p></li>
@@ -705,51 +693,50 @@ One must pay attention to the subtleties of different interpretations between th
 <li><p>Species: the original feature; used as supplementary variable.</p></li>
 </ul>
 <p>The association between length and width are shown on the tables:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>              Width</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    Length      Width_L Width_M Width_S</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>      Length_L  <span class="fl">0.8889</span>  <span class="fl">0.2000</span>  <span class="fl">0.0000</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      Length_M  <span class="fl">0.1111</span>  <span class="fl">0.5375</span>  <span class="fl">0.2558</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      Length_S  <span class="fl">0.0000</span>  <span class="fl">0.2625</span>  <span class="fl">0.7442</span></span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>            Width</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Length      Width_L Width_M Width_S</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    Length_L  <span class="fl">0.8889</span>  <span class="fl">0.2000</span>  <span class="fl">0.0000</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    Length_M  <span class="fl">0.1111</span>  <span class="fl">0.5375</span>  <span class="fl">0.2558</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    Length_S  <span class="fl">0.0000</span>  <span class="fl">0.2625</span>  <span class="fl">0.7442</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>              Width</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    Length     Width_L Width_M Width_S</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      Length_L <span class="fl">0.60000</span> <span class="fl">0.40000</span> <span class="fl">0.00000</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      Length_M <span class="fl">0.05263</span> <span class="fl">0.75439</span> <span class="fl">0.19298</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      Length_S <span class="fl">0.00000</span> <span class="fl">0.39623</span> <span class="fl">0.60377</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            Width</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Length     Width_L Width_M Width_S</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    Length_L <span class="fl">0.60000</span> <span class="fl">0.40000</span> <span class="fl">0.00000</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    Length_M <span class="fl">0.05263</span> <span class="fl">0.75439</span> <span class="fl">0.19298</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    Length_S <span class="fl">0.00000</span> <span class="fl">0.39623</span> <span class="fl">0.60377</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>MCA<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> builds artificial dimension that locates width and length modalities reflecting the previous associations:</p>
 <ul>
 <li><p>Large width is associated with large length</p></li>
 <li><p>Small width is associated with small length</p></li>
 <li><p>Medium width and medium length (proportions) are in-between large and small width and length.</p></li>
 </ul>
-<p>Similar to the PCA, these dimensions can be represented on a map, associated to the modalities of the variables, explains a proportion of the information of the data. Unlike PCA, the information is not measure by variance but by the <strong>inertia</strong>.<br>
-Because proportions sum up to 1, there are <span class="math inline">\((3-1)\times (3-1) = 4\)</span> possible dimensions.</p>
+<p>Similar to the PCA, these dimensions can be represented on a map, associated to the modalities of the variables, explains a proportion of the information of the data. Unlike PCA, the information is not measure by variance but by the <strong>inertia</strong>. Because proportions sum up to 1, there are <span class="math inline">\((3-1)\times (3-1) = 4\)</span> possible dimensions.</p>
 <p>The scree plot shows the percentage of inertia explained by each dimension.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/FAMD_Screeplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
+<p><img src="../../Graphs/FAMD_Screeplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
 </div>
 <p>The plots of the contributions shows the contributions of each variable (Length and Width) to the dimensions (1 and 2).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/FAMD_contrib_xy.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:6cm"></p>
+<p><img src="../../Graphs/FAMD_contrib_xy.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/FAMD_contrib_x.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4.5cm"></p>
+<p><img src="../../Graphs/FAMD_contrib_x.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/FAMD_contrib_y.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:4.5cm"></p>
+<p><img src="../../Graphs/FAMD_contrib_y.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
 </div>
 <p>The plot of the modalities locates the modalities of each variable on the map of the dimensions.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/FAMD_quali.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
+<p><img src="../../Graphs/FAMD_quali.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
 </div>
 </section>
@@ -758,7 +745,7 @@ Because proportions sum up to 1, there are <span class="math inline">\((3-1)\tim
 <p>The biplot of the individuals and modalities relates the observations. Below we added the species<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/FAMD_biplot_species.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
+<p><img src="../../Graphs/FAMD_biplot_species.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
 </figure>
 </div>
 </section>
@@ -774,7 +761,7 @@ Because proportions sum up to 1, there are <span class="math inline">\((3-1)\tim
 </p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/autoencod_illustr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:7cm"></p>
+<p><img src="../../Graphs/autoencod_illustr.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
 </figure>
 </div>
 </section>
@@ -801,42 +788,43 @@ Thus,</p>
 <li><p>Reduce the memory needed (compressing)</p></li>
 <li><p>Represent the data (dimension reduction)</p></li>
 </ul>
-<p>Unlike PCA, autoencoder do not provide interpretation of the dimensions, which dimension is the most important, etc.<br>
-On the other hand, autoencoders can produce better final representation of the data: the recovery of <span class="math inline">\(X\)</span> with <span class="math inline">\(k\)</span> components is better than with PCA.</p>
-<p>Like PCA make two-dimensional plots to discover pattern. Below, autoencoder (see example file) with 3-node intermediate-layer:</p>
+<p>Unlike PCA, autoencoder do not provide interpretation of the dimensions, which dimension is the most important, etc. On the other hand, autoencoders can produce better final representation of the data: the recovery of <span class="math inline">\(X\)</span> with <span class="math inline">\(k\)</span> components is better than with PCA. Like PCA make two-dimensional plots to discover pattern. Below is autoencoder with 3-node intermediate-layer:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Iris_AE_embed.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:9cm"></p>
+<p><img src="../../Graphs/Iris_AE_embed.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
 </figure>
 </div>
 </section>
 <section id="interpretability" class="level3">
 <h3 class="anchored" data-anchor-id="interpretability">Interpretability</h3>
-<p>Relate each component of <span class="math inline">\(h(X)\)</span> to each component of <span class="math inline">\(X\)</span> using variable importance (or another technique). Below, Node 1 to 3 (left to right; top to bottom).</p>
-<div id="fig-elephants" class="quarto-layout-panel">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-elephants-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<p>Relate each component of <span class="math inline">\(h(X)\)</span> to each component of <span class="math inline">\(X\)</span> using variable importance (or another technique). Below, Node 1 to 3 (left to right).</p>
+<div>
+
+</div>
+<div class="quarto-layout-panel" data-layout-ncol="3">
 <div class="quarto-layout-row">
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Iris_AE_VImp1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:5cm"></p>
+<p><img src="../../Graphs/Iris_AE_VImp1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
 <div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../Graphs/Iris_AE_VImp2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:5cm"></p>
+<p><img src="../../Graphs/Iris_AE_VImp2.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_AE_VImp3.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-elephants-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: <img src="../../Graphs/Iris_AE_VImp3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:5cm">
-</figcaption>
-</figure>
 </div>
 
 
