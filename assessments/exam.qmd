@@ -6,3 +6,7 @@ format:
         code-link: false
 ---
 
+::: {.callout-important}
+## ATTENTION
+🏗 Information will follow regarding this during the semester 🏗
+:::

@@ -113,8 +113,18 @@ website:
         contents:
           - href: assessments/exam.qmd
             text: Exam
-          - href: assessments/project.qmd
-            text: Project
+          - section: "Project"
+            contents:
+              - href: assessments/Project_Directives.qmd
+                text: Project Directives
+              - href: assessments/Proposal_guidelines.qmd
+                text: Proposal Guidelines
+              - href: assessments/Report_Guideline.qmd
+                text: Report Guidelines
+              - href: assessments/Presentation_Guidelines.qmd
+                text: Presentation Guidelines              
+          # - href: assessments/project.qmd
+          #   text: Project
       # - href: resources.qmd
       #   text: Resources
 
