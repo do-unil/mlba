@@ -55,22 +55,41 @@ jobs:
       - if: runner.os == 'macOS'
         run: echo "options(reticulate.conda_binary = reticulate:::miniconda_conda())" >> .Rprofile
 
-      - name: Install TensorFlow
-        run: |
-          Rscript -e "reticulate::conda_create(MLBA', packages = c('python==3.9'))"
-          Rscript -e "remotes::install_local()"
-          Rscript -e "keras::install_keras(tensorflow = Sys.getenv('TF_VERSION'), extra_packages = c('IPython', 'requests', 'certifi', 'urllib3'))"
+      # - name: Install TensorFlow
+      #   run: |
+      #     Rscript -e "reticulate::conda_create(MLBA', packages = c('python==3.9'))"
+      #     Rscript -e "remotes::install_local()"
+      #     Rscript -e "keras::install_keras(tensorflow = Sys.getenv('TF_VERSION'), extra_packages = c('IPython', 'requests', 'certifi', 'urllib3'))"
           
+      #     writeLines(
+      #       paste0("RETICULATE_PYTHON=", virtualenv_python(path_to_venv)),
+      #       Sys.getenv("GITHUB_ENV"))
+
       - name: Set up renv
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 1
 
       - name: Setup Conda Environment
+        shell: Rscript {0}
         run: |
-          conda create --name MLBA python=3.9 -y
-          conda activate MLBA
-          
+          path_to_conda <- reticulate::conda_create(MLBA', packages = c('python==3.9'))
+          remotes::install_local()
+          keras::install_keras(tensorflow = Sys.getenv('TF_VERSION')
+          # renv::use_python(python = path_to_conda)
+
+          writeLines(
+            paste0("RETICULATE_PYTHON=", reticulate::conda_python(path_to_conda)),
+            Sys.getenv("GITHUB_ENV"))
+
+          renv::restore(prompt = FALSE)
+  
+          # - name: Setup Conda Environment
+      #   run: |
+      #     conda create --name MLBA python=3.9 -y
+      #     conda activate MLBA
+
+      
       - name: Render Quarto Project
         uses: quarto-dev/quarto-actions/render@v2
 
