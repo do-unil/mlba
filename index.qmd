@@ -23,7 +23,7 @@ This course presents several machine learning techniques in business and managem
 -   Unsupervised learning: clustering, PCA, FAMD, Auto-Encoder
 -   Interpretable machine learning: variale importance, partial dependence plots, LIME.
 
-Exercises and theory are equally important for the success of the class. For the excercises we use primarly R, with equivalent code in Python.
+Exercises and theory are equally crucial for the success of the class. For the labs, we use primarily R, with equivalent code in Python.
 
 ### 📝 Evaluation
 
