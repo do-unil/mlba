@@ -19,16 +19,16 @@ code-link: false
 The subsection titles belove are indicative
 :::
 
-1. Introduction:
+1. Introduction
    a. The context of the data, domain, and/or field of application. 
    b. The source and/or reference of the data (where it was found, where/when it was previously 
 used).
    c. The global objective of the project and data analysis (i.e., research question).  
-1. Data description: 
+1. Data description
    a. The features: variable names, their description, their modality, etc.
    b. The instances: what they represent (unit of observation), how many, etc.
    c. Any planned cleaning or data modification: removing, imputation, modality merging, etc.  
-2. Planned analysis: 
+2. Planned analysis
    a. Supervised learning: models, splitting strategy, metrics, etc.
    b. (optional) Unsupervised learning: methods used, how they will interact with supervised learning. 
 

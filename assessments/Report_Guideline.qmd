@@ -131,7 +131,7 @@ An opening is often expected here: "What next?" "What can be done for improvemen
 
 #### 6. References
 
-All external sources should be cited. The APA system is a good and safe one. One can use the Reference tool of Word. For more details, see http://www.apastyle.org/manual/index.aspx 
+All external sources should be cited. The APA system is a good and safe one. One can use the Reference tool of Word. For more details, see <http://www.apastyle.org/manual/index.aspx>.
 
 #### 7. Appendix
 
@@ -141,7 +141,9 @@ The appendix section is **not a trash** in which one puts all what was done but 
 
 In this section, you mention and briefly describe all the external documents given with the report. For example, a code file name "OurSuperRCode.R" attached to the report should be mentioned here. 
 
-## Further Remarks General Format And Style
+## Further Remarks 
+
+##### **General Format And Style**
 
 - Font: Times New Roman, 11pts 
 - Page format: A4 

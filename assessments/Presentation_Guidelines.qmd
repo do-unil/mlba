@@ -8,6 +8,7 @@ execute:
   output: true
 code-tools: false
 code-link: false
+toc: false
 ---
 
 ::: {.callout-important}
@@ -42,6 +43,8 @@ code-link: false
 
 Walk away from these guidelines if they are not adapted in your case. Also, feel free to let your originality speaks. 
 
+---
+
 *The further guidelines below are based on the [following link](https://www.elsevier.com/connect/how-to-give-a-dynamicscientific-presentation):*
 
 1. Know Your Audience
@@ -50,33 +53,32 @@ Adapt your speech to your audience. If people think often about adapting the tec
 
 2. Tell audience members up front why they should care and what is in it for them Explain the issue and why it is important. 
 
-3. Convey your excitement If any… but do not overplay this. 
+3. Convey your excitement. If any… but do not overplay this. 
 
-4. Build a story 
-a. Explain the context b. Frame the problem c. Provide highlights: some parts in the analysis/project were striking and determinant. Find 
-and explain these key points. 
-d. Conclude by summing up key points and open to new area, problems, etc. 
+4. Build a story:
+    a. Explain the context
+    b. Frame the problem 
+    c. Provide highlights: some parts in the analysis/project were striking and determinant. Find and explain these key points. 
+    d. Conclude by summing up key points and open to new area, problems, etc. 
  
 5. Keep it simple Depending on your audience, some terms may be difficult to understand. If you use difficult terms, you will not impress the audience, you will annoy them. 
 
-6. Prepare, prepare, prepare 
-a. Set the stage (equipment ready, have a charger in case, have your headphone ready, etc.) b. Get ready (concentrate and calm down, breathe, visualize) 
+6. Prepare, prepare, prepare:
+   a. Set the stage (equipment ready, have a charger in case, have your headphone ready, etc.) 
+   b. Get ready (concentrate and calm down, breathe, visualize) 
  
 
 7. Speak up, talk to the audience (not to the screen) 
  
 
-8. Start and finish on time  
-Nothing worse than a late presentation. If you need more time, mention it during the presentation and apologize, before to end of the presentation. 
+8. Start and finish on time. Nothing worse than a late presentation. If you need more time, mention it during the presentation and apologize, before to end of the presentation. 
 
 9. Do not drift at the end The end of your presentation should be clear. Do not start a new conversation. 
 
 
 *For the slides/support materials:*
 
-1. Less Is More
-
-Though, it is difficult to gives a general rule, a regular slide (not the title or the "Thank you. Any Question?" 
+1. Less Is More. Though, it is difficult to gives a general rule, a regular slide (not the title or the "Thank you. Any Question?" 
 slide) is 1 to 3 minutes. Thus, a 30 minutes presentation cannot have more than 30 slides, and it is already very long. If you are afraid to miss something, have some extra slides with the details that you may show if anyone has a question about it. 
 
 2. Create sections Pretty much like the report. It is especially important for group presentation that must be well structured. 

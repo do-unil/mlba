@@ -20,7 +20,7 @@ trained on data to achieve forecasting or pattern discovery.
     defined by the developers, ML let the model learn by seeing data
     (learning from examples).
 
--   ML is a sub-field of Artificial Intelligence (IA).
+-   ML is a sub-field of Artificial Intelligence (AI).
 
 -   Deep Learning is a popular sub-field of of ML that uses deep neural
     networks, a particular type models.

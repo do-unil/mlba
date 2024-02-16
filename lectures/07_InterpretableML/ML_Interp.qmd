@@ -187,7 +187,7 @@ to each variable at each split is tabulated and the sum is returned.
 
 ### Model-specific VI
 
-![](../Graphs/VI_iris_rp.png){width="8cm" fig-align="center"}
+![](../Graphs/VI_iris_rp.png){width=60% fig-align="center"}
 
 Whatever implementation you use, VI aims at the same objective: quantify
 the importance of variables for the predictions of the model. Some limitations are:
