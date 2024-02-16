@@ -11,7 +11,9 @@ There are no mandatory readings for this course, except our `MLBA` website; howe
 
 - James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An Introduction to Statistical Learning: with Applications in R*. Springer Science & Business Media. Available at: [statlearning.com](https://www.statlearning.com/)
 
-- Kuhn, M. and Johnson, K. (2013) *Applied Predictive Modeling*. Springer Science & Business Media. Available at (but needs to be purchased): [Springer]<https://link.springer.com/book/10.1007/978-1-4614-6849-3>
+- Kuhn, M. and Johnson, K. (2013) *Applied Predictive Modeling*. Springer Science & Business Media. Available at[^1]: [Springer](https://link.springer.com/book/10.1007/978-1-4614-6849-3)
+
+[^1]: This is the only book that is not freely available and must be purchased.
 
 - Boehmke, B. and Greenwell, B. (2020) *Hands-On Machine Learning with R*. Taylor & Francis. Available at: [HOML](https://bradleyboehmke.github.io/HOML/) (retrieved the 2023-01-10)
 
