@@ -1,0 +1,48 @@
+---
+title: "Data Sources"
+# toc: false
+repo-actions: [issue]
+code-tools: false
+code-link: false
+---
+
+Below are some links to data platform that can help you find datasets for your projects:
+
+### Popular platforms
+
+* [Google Dataset Search](https://datasetsearch.research.google.com/)
+* [Data is Plural: Google Sheet with 1000+ datasets](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit#gid=0)
+* [Github Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets)
+* [Open Data Inception - 2600+ Open Data Portals Around the World](https://opendatainception.io/)
+* [data.world](https://data.world/)
+* [Subreddit r/datasets](https://www.reddit.com/r/datasets/)
+* [CORGIS Datasets Project](https://corgis-edu.github.io/corgis/)
+
+### Governments / NGOs websites.
+
+  * Switzerland
+      * [Office Fédéral de la Statistique](https://www.bfs.admin.ch/bfs/fr/home.html)
+      * [Swiss Open Data](https://opendata.swiss/fr)
+  * Europe
+    * [European Data Portal](https://www.europeandataportal.eu/en)
+  * United States
+      * [NYC Open Data](https://opendata.cityofnewyork.us/)
+      * [The General Social Survey](https://gss.norc.org/)
+      * [US Bureau of Labor Statistics](https://www.bls.gov/)
+      * [US Department of Education](https://www2.ed.gov/rschstat/landing.jhtml)
+      * [Federal Reserve Economic Data](https://fred.stlouisfed.org/)
+      * [US Department of Agriculture](https://www.nass.usda.gov/Quick_Stats/)
+  * Global
+    * [World Bank Open Data](https://data.worldbank.org/)
+    * [UN Data](http://data.un.org/) and other UNSD databases
+        * [Monthly Bulletin of Statistics Online](https://unstats.un.org/unsd/mbs/app/DataSearchTable.aspx)
+        * [SDG Indicators](https://unstats.un.org/sdgs/indicators/database)
+        * [UN Comtrade Database](https://comtrade.un.org/)
+
+### Other platforms
+* [News API](https://newsapi.org/)
+* [Kaggle](https://www.kaggle.com/)
+* [10 great sites with free datasets](https://towardsdatascience.com/top-10-great-sites-with-free-data-sets-581ac8f6334)
+
+### Acknowledgements
+Credits to [dfsba_2021](https://tvatter.github.io/dsfba_2021/assignments/project/) for providing these data sources.
