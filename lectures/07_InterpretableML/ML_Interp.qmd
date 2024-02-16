@@ -11,8 +11,6 @@ code-link: false
 Concept
 =======
 
-### Concept
-
 In ML, some models are interpretable (e.g., regression, CART) and some
 are not (e.g., SVM, NN). So called **interpretable machine learning** is a set of techniques aiming at
 
