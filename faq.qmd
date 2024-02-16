@@ -29,7 +29,7 @@ You can use any kind of text editor or IDE you like. We recomment using [VS Code
 
 ### Do we use moodle?
 
-**We will be using moodle to collect the project, and any communication with you**. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check source for any material update.
+**We will be using moodle to collect the project, and any communication with you**. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check the website for any material update.
 
 
 ## Technical issues
