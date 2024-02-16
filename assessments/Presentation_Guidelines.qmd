@@ -17,7 +17,7 @@ code-link: false
 
 ## Some Guidelines For A Presentation
 
-A typical plan: 
+**A typical plan:**
 
 - Title, date and team 
 - Context 
@@ -29,20 +29,22 @@ A typical plan:
 - References if needed 
 - "Thank you + Any Question" slide 
 
-Material:
+**Material:**
 
 - 1-3 minutes per slide (e.g., around 10 to 20 slides for a 30-minutes presentation with only slides). 
 - Keep additional slides hidden (typical technical ones, extra results, etc.) and show them in case of questions/discussion. 
 - Consider also live demo, showing codes, etc.  
  
-Organization: 
+**Organization:**
 
 - In group, define clearly who is going to explain what.  
 - Make fluent transition (useless to start over again the context when the speaker change). 
 
-Walk away from these guidelines if they are not adapted in your case. Also, feel free to let your originality speaks. The further guidelines below are based on the [following link](https://www.elsevier.com/connect/how-to-give-a-dynamicscientific-presentation):
+Walk away from these guidelines if they are not adapted in your case. Also, feel free to let your originality speaks. 
 
-### Know Your Audience
+*The further guidelines below are based on the [following link](https://www.elsevier.com/connect/how-to-give-a-dynamicscientific-presentation):*
+
+1. Know Your Audience
 
 Adapt your speech to your audience. If people think often about adapting the technical content, it is equally important to adapt the context. Including a deep explanation of a context to an audience who knows it can be as counter-productive and time consuming as not explaining this context when it is due. 
 
