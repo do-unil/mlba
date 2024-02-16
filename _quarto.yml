@@ -129,6 +129,8 @@ website:
             text: Beginners in R
           - href: resources/data_sources.qmd
             text: Data Sources
+          - href: resources/cheatsheets.qmd
+            text: Coding Cheatsheets
   
   page-footer:
     right: "This page is built with 🤍 and [Quarto](https://quarto.org/)."
