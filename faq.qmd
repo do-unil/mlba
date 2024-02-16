@@ -17,21 +17,21 @@ If you do not find the answer to your question here, you can use the search bar 
 
 #### Which language will we be using?
 
-You can use either R or Python. We will be providing code examples and suppport in all three languages. 
+You can use either R or Python. We will be providing code examples and suppport in both languages. 
 
 
 
 #### What software do I need to install?
 
-You will need to use git, and a text editor or an Integrated Development Environment (IDE).
+You need a text editor or an Integrated Development Environment (IDE). [RStudio](https://posit.co/downloads/) or [VS Code](https://code.visualstudio.com/) are both good options. We also recommend the use of git abd version control.
 
 <!-- For git, please see [here](resources/tutorials/github.qmd) for instructions on how to install it.
 
 You can use any kind of text editor or IDE you like. We recomment using [VS Code](https://code.visualstudio.com/) with the extension corresponding to your language of choice. You can also use [Rstudio](https://rstudio.com/products/rstudio/download/) for R. See [here](resources/tutorials/installing_software.qmd) for instructions on how to install the software and IDEs. -->
 
-#### How do I submit an assignment?
+#### Do we use moodle?
 
-We will be using moodle to distribute and collect assignments. It'll also be good to create a Github account if you don't already have one.
+**We will be using moodle to collect the project, and any communication with you**. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check source for any material update.
 
 
 ### Technical issues
