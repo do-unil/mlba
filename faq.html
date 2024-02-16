@@ -343,12 +343,41 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Exam</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Project</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./assessments/project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Project</span></a>
+  <a href="./assessments/Project_Directives.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Project Directives</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assessments/Proposal_guidelines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Proposal Guidelines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assessments/Report_Guideline.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Report Guidelines</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./assessments/Presentation_Guidelines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentation Guidelines</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
       </ul>
   </li>
     </ul>
@@ -357,13 +386,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul class="collapse">
-  <li><a href="#faq" id="toc-faq" class="nav-link active" data-scroll-target="#faq">FAQ</a></li>
-  </ul>
-<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/do-unil/mlba/blob/main/faq.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -434,24 +457,22 @@ Tip
 <p>If you do not find the answer to your question here, you can use the search bar on the top left to search the entire site. If you are still unable to find the answer, you can ask your question during the exercise hours. If you found the solution and think it would be useful to other students, you can report an issue (see on the right) with the questions and the solution, and we will add it to the FAQ.</p>
 </div>
 </div>
-<section id="faq" class="level2">
-<h2 class="anchored" data-anchor-id="faq">FAQ</h2>
 <section id="organizational" class="level3">
 <h3 class="anchored" data-anchor-id="organizational">Organizational</h3>
 <section id="which-language-will-we-be-using" class="level4">
 <h4 class="anchored" data-anchor-id="which-language-will-we-be-using">Which language will we be using?</h4>
-<p>You can use either R or Python. We will be providing code examples and suppport in all three languages.</p>
+<p>You can use either R or Python. We will be providing code examples and suppport in both languages.</p>
 </section>
 <section id="what-software-do-i-need-to-install" class="level4">
 <h4 class="anchored" data-anchor-id="what-software-do-i-need-to-install">What software do I need to install?</h4>
-<p>You will need to use git, and a text editor or an Integrated Development Environment (IDE).</p>
+<p>You need a text editor or an Integrated Development Environment (IDE). <a href="https://posit.co/downloads/">RStudio</a> or <a href="https://code.visualstudio.com/">VS Code</a> are both good options. We also recommend the use of git abd version control.</p>
 <!-- For git, please see [here](resources/tutorials/github.qmd) for instructions on how to install it.
 
 You can use any kind of text editor or IDE you like. We recomment using [VS Code](https://code.visualstudio.com/) with the extension corresponding to your language of choice. You can also use [Rstudio](https://rstudio.com/products/rstudio/download/) for R. See [here](resources/tutorials/installing_software.qmd) for instructions on how to install the software and IDEs. -->
 </section>
-<section id="how-do-i-submit-an-assignment" class="level4">
-<h4 class="anchored" data-anchor-id="how-do-i-submit-an-assignment">How do I submit an assignment?</h4>
-<p>We will be using moodle to distribute and collect assignments. It’ll also be good to create a Github account if you don’t already have one.</p>
+<section id="do-we-use-moodle" class="level4">
+<h4 class="anchored" data-anchor-id="do-we-use-moodle">Do we use moodle?</h4>
+<p><strong>We will be using moodle to collect the project, and any communication with you</strong>. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check source for any material update.</p>
 </section>
 </section>
 <section id="technical-issues" class="level3">
@@ -469,7 +490,6 @@ You can use any kind of text editor or IDE you like. We recomment using [VS Code
 <p>At the top of each assignment there should be a link you can manually click to accept the assignment. If this happens <em>after</em> the first assignment, please let us know.</p>
 
 
-</section>
 </section>
 </section>
 
@@ -1025,7 +1045,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/faq.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/faq.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with 🤍 and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

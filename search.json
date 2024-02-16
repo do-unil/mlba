@@ -589,21 +589,69 @@
     "href": "faq.html",
     "title": "FAQ",
     "section": "",
-    "text": "Tip\n\n\n\nIf you do not find the answer to your question here, you can use the search bar on the top left to search the entire site. If you are still unable to find the answer, you can ask your question during the exercise hours. If you found the solution and think it would be useful to other students, you can report an issue (see on the right) with the questions and the solution, and we will add it to the FAQ.",
+    "text": "Tip\n\n\n\nIf you do not find the answer to your question here, you can use the search bar on the top left to search the entire site. If you are still unable to find the answer, you can ask your question during the exercise hours. If you found the solution and think it would be useful to other students, you can report an issue (see on the right) with the questions and the solution, and we will add it to the FAQ.\n\n\n\nOrganizational\n\nWhich language will we be using?\nYou can use either R or Python. We will be providing code examples and suppport in both languages.\n\n\nWhat software do I need to install?\nYou need a text editor or an Integrated Development Environment (IDE). RStudio or VS Code are both good options. We also recommend the use of git abd version control.\n\n\n\nDo we use moodle?\nWe will be using moodle to collect the project, and any communication with you. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check source for any material update.\n\n\n\nTechnical issues\n\nI am lost with Github, what should I do?\nGitHub has possibly the best tutorials and documentation of any software out there. You can find the Hello world there. Most of the time googling your issue will lead you to the right place.\n\n\nI have bugs in my code/ something doesn’t work/ I don’t know how to do something, what should I do?\nFirst google your issue. 90 times out of 100 this will solve your issues. Another 9% can be resolved by reading the documentation of the software you are using. For the very last percent you can ask your question during the exercises hours.\n\n\nI cannot find the repository linked to the assignment, what should I do?\nAt the top of each assignment there should be a link you can manually click to accept the assignment. If this happens after the first assignment, please let us know.",
     "crumbs": [
       "Course information",
       "FAQ"
     ]
   },
   {
-    "objectID": "faq.html#faq",
-    "href": "faq.html#faq",
-    "title": "FAQ",
-    "section": "FAQ",
-    "text": "FAQ\n\nOrganizational\n\nWhich language will we be using?\nYou can use either R or Python. We will be providing code examples and suppport in all three languages.\n\n\nWhat software do I need to install?\nYou will need to use git, and a text editor or an Integrated Development Environment (IDE).\n\n\n\nHow do I submit an assignment?\nWe will be using moodle to distribute and collect assignments. It’ll also be good to create a Github account if you don’t already have one.\n\n\n\nTechnical issues\n\nI am lost with Github, what should I do?\nGitHub has possibly the best tutorials and documentation of any software out there. You can find the Hello world there. Most of the time googling your issue will lead you to the right place.\n\n\nI have bugs in my code/ something doesn’t work/ I don’t know how to do something, what should I do?\nFirst google your issue. 90 times out of 100 this will solve your issues. Another 9% can be resolved by reading the documentation of the software you are using. For the very last percent you can ask your question during the exercises hours.\n\n\nI cannot find the repository linked to the assignment, what should I do?\nAt the top of each assignment there should be a link you can manually click to accept the assignment. If this happens after the first assignment, please let us know.",
+    "objectID": "assessments/exam.html",
+    "href": "assessments/exam.html",
+    "title": "Exam",
+    "section": "",
+    "text": "ATTENTION\n\n\n\n🏗 Information will follow regarding this during the semester 🏗",
     "crumbs": [
-      "Course information",
-      "FAQ"
+      "Assessments",
+      "Exam"
+    ]
+  },
+  {
+    "objectID": "assessments/Proposal_guidelines.html",
+    "href": "assessments/Proposal_guidelines.html",
+    "title": "Proposal Guidelines",
+    "section": "",
+    "text": "ATTENTION\n\n\n\n🏗 This section is still under development (to be updated soon) 🏗\n\n\n\n\n\n\n\n\nNote\n\n\n\nThe subsection titles belove are indicative\n\n\n\nIntroduction:\n\nThe context of the data, domain, and/or field of application.\nThe source and/or reference of the data (where it was found, where/when it was previously used).\nThe global objective of the project and data analysis (i.e., research question).\n\n\nData description:\n\nThe features: variable names, their description, their modality, etc.\nThe instances: what they represent (unit of observation), how many, etc.\nAny planned cleaning or data modification: removing, imputation, modality merging, etc.\n\n\nPlanned analysis:\n\nSupervised learning: models, splitting strategy, metrics, etc.\n(optional) Unsupervised learning: methods used, how they will interact with supervised learning.",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Proposal Guidelines"
+    ]
+  },
+  {
+    "objectID": "assessments/Presentation_Guidelines.html",
+    "href": "assessments/Presentation_Guidelines.html",
+    "title": "Presentation Guidelines",
+    "section": "",
+    "text": "ATTENTION\n\n\n\n🏗 This section is still under development (to be updated soon) 🏗",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Presentation Guidelines"
+    ]
+  },
+  {
+    "objectID": "assessments/Presentation_Guidelines.html#some-guidelines-for-a-presentation",
+    "href": "assessments/Presentation_Guidelines.html#some-guidelines-for-a-presentation",
+    "title": "Presentation Guidelines",
+    "section": "Some Guidelines For A Presentation",
+    "text": "Some Guidelines For A Presentation\nA typical plan:\n\nTitle, date and team\nContext\nAgenda\n\nData description\nMethodology\nResults\nConclusion and discussion\nReferences if needed\n“Thank you + Any Question” slide\n\nMaterial:\n\n1-3 minutes per slide (e.g., around 10 to 20 slides for a 30-minutes presentation with only slides).\nKeep additional slides hidden (typical technical ones, extra results, etc.) and show them in case of questions/discussion.\nConsider also live demo, showing codes, etc.\n\nOrganization:\n\nIn group, define clearly who is going to explain what.\n\nMake fluent transition (useless to start over again the context when the speaker change).\n\nWalk away from these guidelines if they are not adapted in your case. Also, feel free to let your originality speaks. The further guidelines below are based on the following link:\n\nKnow Your Audience\nAdapt your speech to your audience. If people think often about adapting the technical content, it is equally important to adapt the context. Including a deep explanation of a context to an audience who knows it can be as counter-productive and time consuming as not explaining this context when it is due.\n\nTell audience members up front why they should care and what is in it for them Explain the issue and why it is important.\nConvey your excitement If any… but do not overplay this.\nBuild a story\n\n\nExplain the context b. Frame the problem c. Provide highlights: some parts in the analysis/project were striking and determinant. Find and explain these key points.\nConclude by summing up key points and open to new area, problems, etc.\n\n\nKeep it simple Depending on your audience, some terms may be difficult to understand. If you use difficult terms, you will not impress the audience, you will annoy them.\nPrepare, prepare, prepare\n\n\nSet the stage (equipment ready, have a charger in case, have your headphone ready, etc.) b. Get ready (concentrate and calm down, breathe, visualize)\n\n\nSpeak up, talk to the audience (not to the screen)\nStart and finish on time\nNothing worse than a late presentation. If you need more time, mention it during the presentation and apologize, before to end of the presentation.\nDo not drift at the end The end of your presentation should be clear. Do not start a new conversation. For the slides/support materials",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Presentation Guidelines"
+    ]
+  },
+  {
+    "objectID": "assessments/Presentation_Guidelines.html#less-is-more",
+    "href": "assessments/Presentation_Guidelines.html#less-is-more",
+    "title": "Presentation Guidelines",
+    "section": "1. Less Is More",
+    "text": "1. Less Is More\nThough, it is difficult to gives a general rule, a regular slide (not the title or the “Thank you. Any Question?” slide) is 1 to 3 minutes. Thus, a 30 minutes presentation cannot have more than 30 slides, and it is already very long. If you are afraid to miss something, have some extra slides with the details that you may show if anyone has a question about it.\n\nCreate sections Pretty much like the report. It is especially important for group presentation that must be well structured.\nAvoid clutter A slide should be light and easy to read. It is a support for your speech. It is not to be read in detail neither by you nor by the audience.\nMake it readable It is useless to bold or to capitalize every word. Use one appropriate and coherent font. An incomprehensible slide does not become comprehensible or joyful if written in colors.\nUse visual Consider using image, figures, etc. “A drawing is worth a thousand words”. Of course, this is not an objective. Always choose the best way to convey information. If an image is only here to be “nice”, prefer words.\nCheck your spelling We all make typos, especially when it is not our mother tongue. But having too many misspelled words on 20 slides with few words will make you lose credibility. Use correctors, re-read and re-read, ask for help, etc.",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Presentation Guidelines"
     ]
   },
   {
@@ -706,11 +754,95 @@
     ]
   },
   {
+    "objectID": "assessments/Project_Directives.html",
+    "href": "assessments/Project_Directives.html",
+    "title": "Project Directives",
+    "section": "",
+    "text": "ATTENTION\n\n\n\n🏗 This section is still under development (to be updated soon) 🏗",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Project Directives"
+    ]
+  },
+  {
+    "objectID": "assessments/Project_Directives.html#machine-learning-2024-project-guidelines",
+    "href": "assessments/Project_Directives.html#machine-learning-2024-project-guidelines",
+    "title": "Project Directives",
+    "section": "Machine Learning 2024 Project Guidelines",
+    "text": "Machine Learning 2024 Project Guidelines\nThe final grade is the grade of the project that splits into two parts: the report (incl. codes and supplementary material) counts for 70% and the presentation (incl. slides) counts for 30%. Grades are rounded to the closest 0.1. The final grade is rounded to the closest 0.5.\nThe project is conducted in groups of 1-2 students.\n\nOriginality And Style\nThe project consists of an original analysis of a data set. This means that re-analyses of existing data sets are possible when they are not just a repetition of the previous analysis. The re-analysis must have new elements (new models, features, outcome labels, approaches, interpretations, etc.). In any case, the data source must be given. If a previous analysis was done in the reference, this analysis must be explained, and the original aspects of the new analysis must be made clear.\n\n\nCompleteness\nYour analysis must match the complexity and uniqueness of your dataset; your analysis must be comprehensive and not leave major aspects of your dataset unaddressed. The project must include at least:\n\nCleaning of the data, creation of new features if needed.\nExploratory Data Analysis.\nSupervised learning analysis: two or more models, two or more scores, a tuning of one or more hyperparameters per model, a data splitting (if a training/test set split is enough for the global analysis, at least one CV or bootstrap must be used), interpretation of the model.\nUnsupervised analysis: clustering and/or dimension reduction.\n\n\n\nDeliverables\n\nGeneral: a project proposal\nReport: a full PDF or HTML report of your analysis with reproducible code and figures, not exceeding 30 pages (or equivalent for HTML), including title page and appendices.\n\nPresentation: the slides of your presentation.\n\n\n\nDeadlines\nYou must meet the following deadlines (by 23h59):\n\nProject proposal: DATE TO BE ADDED\nProject update: DATE TO BE ADDED\nProject report: DATE TO BE ADDED\nPresentation slide: DATE TO BE ADDED Not meeting the deadline penalizes the grade by 0.1 per started hour of delay. Maximum penalty of 0.5 for the project proposal and up to 0.5 for the project update. No maximum penalty for the project report and presentation slide.\n\n\n\nPresentations\nPresentations will be organized on site on Monday, June 19th in a 15+10-minute format (tentative).\nIf the number of groups is large, then either the presentation time will be reduced, or, if not possible, another oral presentation session will be organized during the June exam session.",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Project Directives"
+    ]
+  },
+  {
+    "objectID": "assessments/Report_Guideline.html",
+    "href": "assessments/Report_Guideline.html",
+    "title": "Report Guidelines",
+    "section": "",
+    "text": "ATTENTION\n\n\n\n🏗 This section is still under development (to be updated soon) 🏗\nQuarto template to be added",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Report Guidelines"
+    ]
+  },
+  {
+    "objectID": "assessments/Report_Guideline.html#why-do-you-write-a-technical-report",
+    "href": "assessments/Report_Guideline.html#why-do-you-write-a-technical-report",
+    "title": "Report Guidelines",
+    "section": "Why Do You Write A (Technical) Report?",
+    "text": "Why Do You Write A (Technical) Report?\nThe aim of writing a report is to communicate results from a study to someone who did not participate to it.\nThe report should be relevant, easy to read and convincing. Advices:\n\nTake some time to ask yourself what the aims of your report are, and to whom it is addressed.\nAsk yourself which messages you report should convey and which is the best way to convey it.",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Report Guidelines"
+    ]
+  },
+  {
+    "objectID": "assessments/Report_Guideline.html#level-of-details",
+    "href": "assessments/Report_Guideline.html#level-of-details",
+    "title": "Report Guidelines",
+    "section": "Level Of Details",
+    "text": "Level Of Details\nIncluding all the minutes of your research is NOT interesting. Relevance and reproducibility are the key words here. On the one hand, the report should include all the needed details for the reader to be able to repeat on his own the relevant part of the study. On the other hand, the report is not a course about a given subject. In particular, it is not expected that you include in the report all the theory about a method that is used. Of course, it is not easy to find the good balance, which anyway probably varies from one reader to another. Often, this contradiction can be solved by referencing to clear and accessible sources (paper, book chapter, webpage, etc.).",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Report Guidelines"
+    ]
+  },
+  {
+    "objectID": "assessments/Report_Guideline.html#the-structure",
+    "href": "assessments/Report_Guideline.html#the-structure",
+    "title": "Report Guidelines",
+    "section": "The Structure",
+    "text": "The Structure\nThere are several ways to write a report. The following structure can be used and adapted according to the specificity of the study.\n\nA. Title Page (Mandatory)\nOne separate page. It should include\n\nTitle: large format. It should be short AND informative. Never more than a sentence.\nLogo: UNIL/HEC at least; optional: logo of the company\nDate of edition\nCourse name and the year\nGroup name\n\n\n\nB. Personal Information And Non-Plagiarism Statement (Mandatory)\nOne separated page containing\n\nFull names of all the group members and their email address\nThe following text hand-signed by all the authors. This project was written by us and in our own words, except for quotations from published and unpublished sources, which are clearly indicated and acknowledged as such. We are conscious that the incorporation of material from other works or a paraphrase of such material without acknowledgement will be treated as plagiarism, subject to the custom and usage of the subject, according to the University Regulations. The source of any picture, map or other illustration is also indicated, as is the source, published or unpublished, of any material not resulting from our own research.\n\n\n\nC. Summary Or Abstract\nUsually one page, it is limited to one-and-a-half-page maximum. The summary states very succinctly and clearly the issue, including a data brief description, the methods used, the main results, and the main conclusions. This summary allows someone to know, without to read your work, what has been done, why and what are the results and implications. Advises for writing it:\n\nWrite it at the very end the work, after the report body is written and clean.\nTake each section (Introduction, etc.) and summarize it in one, two, three, sentences, one paragraph or so. Use the needed space. State the important results.\nOnce finished, read it again. Cut/shorten long and useless words (e.g. “has been” -&gt; “was”, “therefore” -&gt; “hence”, etc.).\nIf it is still too long, cut some part by order of importance.\nThe summary is not a teaser to read the report. It contains the results. It should summary them. It should not be only inviting the reader to read the report but propose an alternative for readers who do not have time to read it all.\nTypically, “We have made an analysis of the data in this report about the influential factors on the sales. We decided to use an ARIMA model to make the forecasts.” It contains a piece of information but is quite frustrating. More useful: “Using an ARIMA model, the [what] sales were found influenced by the [what] factors. Such model achieved an RMSE of [what] on forecasting a [what] test set.”.\n\n\n\nD. Table Of Content (Toc), Table Of Figures (Tof) And Table Of Tables (Tot)\nToC is mandatory. ToF and ToT are nice to have especially for very long reports, or when these elements are central to the report. ToC must be up to date. You gain generating it automatically (easy with tools like word, LateX, Rmarkdown, etc.). ToF and ToT should also be generated automatically. This implies that figures and tables are correctly inserted with a caption.\n\n\nE. Body Of The Report\n\n1. Introduction\nIn brief, the introduction explains why the theme is interesting, what is done in the study and what it will bring. After reading it, the reader should have a broad view on the study, why it is relevant, and how it is organized. The purpose of the introduction is not to detail all theoretical aspects. Introduction is a section that should contain\n\nThe context and background: course, company name, business context.\nAim of the investigation: major terms should be defined, the question of research (more generally the issue), why it is of interest and relevant in that context.\nDescription of the data and the general material provided and how it was made available (and/or collected, if it is relevant). Only in broad terms however, the data will be further described in a following section. Typically, the origin/source of the data (the company, webpage, etc.), the type of files (Excel files, etc.), and what it contains in broad terms (e.g. “a file containing weekly sales with the factors of interest including in particular the promotion characteristics”).\n\nThe method that is used, in broad terms, no details needed at this point. E.g. “Model based machine learning will help us quantifying the important factors on the sales”.\n\nAn outlook: a short paragraph indicating from now what will be treated in each following sections/chapters. E.g. “in Section 3, we describe the data. Section 4 is dedicated to the presentation of the text mining methods…”\n\n\n\n2. Data Description\nThe data description section may be optional. It is typical of report for project oriented toward statistical and machine learning. The data description section can be included as a subsection of the introduction or be a whole section by itself, depending on the complexity and the size of the database. If relevant, it should contain\n\nDescription of the data file format (xlsx, csv, text, video, etc.)\nThe features or variables: type, units, the range (e.g. the time, numerical, in weeks from January 1, 2012 to December 31, 2015), their coding (numerical, the levels for categorical, etc.), etc.\nThe instances: customers, company, products, subjects, etc.\nMissing data pattern: if there are missing data, if they are specific to some features, etc.\nAny modification to the initial data: aggregation, imputation in replacement of missing data, recoding of levels, etc.\nIf only a subset was used, it should be mentioned and explained; e.g. inclusion criteria. Note that if inclusion criteria do not exist and the inclusion was an arbitrary choice, it should be stated as such. One should not try to invent unreal justifications.\n\nIn some cases, data structure can be more complex like images, videos, etc. This should be adapted accordingly. Any unknown element should be mentioned as such. Overall, this description can be quite short or very long, depending on the format of the data. For example, one xlsx file with 10 features and 50’000 instances representing customer behaviors is in general quite easy to describe. If you have 25 files with different formats from different stores representing these customers, with features and instances only partially matching, then it may be more difficult to deal with. Typically, the first and simple case would be included into the introduction as a subsection while the more complex case would deserve a whole data description section.\n\n\n3. Methods\nA very important section describing in detail all the methods that are used in the report. This section explains how the study was conducted. It aims at giving relevant information and tools for others to be able to reproduce the study. It explains the global strategy of the study, and describes each tool used to achieve this goal. For a comprehensive and structured presentation, often it is important to give the general structure of the study, and then to drill down each step. The individual tools (e.g. machine learning methods, etc.) should be described in a concise and relevant way. This section is not a course. For example, one can give a brief definition and the important properties (important for the study), then refer to an external source for the details. In addition, the description should be balanced. Do not spend three pages on explaining the boxplots when a predictive model of random forest is explained in one-half page. It should describe and duly cite\n\nStatistical and machine learning methods to analyze the data\nSoftware, computer programs, function packages (typically for R).\nThe sequence of analysis, the reason of each method.\n\nHowever,\n\nIt does not include methods that are not used, even if you spent a lot of time on it. Except maybe if the fact that a particular method is not useful is of interest for the report.\nIt is not a course about a method. It should contain all the relevant pieces of information, but it should also be stopped at some points. Clear references and well-chosen are of major importance here.\n\n\n\n4. Results\nObviously, this section presents the results: application of the methods to the data. It presents all the results (even negative ones) and only the results (no more data or method descriptions). This section should be very well structured especially if there are lot of results. Use subsections and clear references. In addition, use the appendix. For example, if 30 time series were analyzed and the corresponding 30 figures produced. Then only the most interesting ones should be included in the results section. The other ones should be reported in the appendix (or supplementary material) and appropriately cited. The interpretation can be included at this point but should be limited to technical aspects. Keep discussions for the next section.\n\n\n5. Recommendations And Discussion\nIn this section, the interpretations of the results are given:\n\nSummary of what was observed from the results\nImplications for the business (link with the context and the initial objectives of the study).\nLimitations (this may be the subject of a separated section). An opening is often expected here: “What next?” “What can be done for improvement”, etc.?\n\n\n\n6. References\nAll external sources should be cited. The APA system is a good and safe one. One can use the Reference tool of Word. For more details, see http://www.apastyle.org/manual/index.aspx\n\n\n7. Appendix\nThe appendix section is not a trash in which one puts all what was done but not integrated in the body of the report. All the elements in the appendix must be cited in the text. Appendix can contain graphs, texts, tables, codes, etc. For example, in the body of the report: “Fig. 1 presents the analysis of the times of the process A […]. The 29 other processes are represented in Fig. 40 to 68 in Appendix B.”\n\n\n\nF. Supplementary Material\nIn this section, you mention and briefly describe all the external documents given with the report. For example, a code file name “OurSuperRCode.R” attached to the report should be mentioned here.",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Report Guidelines"
+    ]
+  },
+  {
+    "objectID": "assessments/Report_Guideline.html#further-remarks-general-format-and-style",
+    "href": "assessments/Report_Guideline.html#further-remarks-general-format-and-style",
+    "title": "Report Guidelines",
+    "section": "Further Remarks General Format And Style",
+    "text": "Further Remarks General Format And Style\n\nFont: Times New Roman, 11pts\nPage format: A4\nText justification: even on both side\nMargins: 2.5cm\nMax. 40 pages for the body of the report (i.e. not including title, toc, introduction, reference, appendix, sup. mat.). It is not an expected value. It is an upper bound.\n\n\nText editor\nUsing Word is probably the simplest choice, but \\(LaTeX\\) is also welcomed (see Overleaf for easy and free usage) Free very valuable alternatives exist like LibreOffice. It should be noted that Rmarkdown could also be a useful tool. However, it is not advisable to mix the research (i.e. working R codes, running complex R code or procedure) and the writing of the report. Often, one loses more time and encounter lots of difficulties. In any cases, pay attention to use cache in order to avoid running again and again very heavy computations each time you want to compile the report.\n\n\nMaths and formulae\nIf you need to edit equations or formulae, you may gain using an equation editor like MathWord. Free alternatives exist like LibreOffice.\n\n\nNumbers, figures and other remarks\nUsually, in the text, numbers zero (0) to ten (10) are written in letters, then 11, 12, etc. This not for reference like “in Table 1” should never be written “in Table one”. Figures, tables and sections referenced in the text are names an should have a capital letter. One should write “in Table 1”, “in Figure 3 shown below”, “Section 3.2 shows […]”. It is not the case when you refer to an object like “the next table”, “in the following section we can see […]”, etc.\nDo not use don’t (except when quoting speeches for example). For a better scientific writing, check out this blog.",
+    "crumbs": [
+      "Assessments",
+      "Project",
+      "Report Guidelines"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Machine Learning in Business Analytics 2023-2024",
     "section": "",
-    "text": "🧑🏻‍🏫 Teaching staff: Dr. Marc-Olivier Boldi (Lecturer) & Ilia Azizi (TA).\n🕛 Time: Mondays 8:30-12:00, starting on Monday the 19th of February 2024.\n🏫 Room: Anthropole 3174 (no live broadcasting or recording).\n\n📖 Content\nThis course presents several machine learning techniques in business and management contexts. The list of topics is meant to cover mainly supervised methods of classification and prediction although unsupervised methods are also seen. Below is a tentative lists of topics. It will be adapted according to the pace of the class:\n\nSupervised learning models: regressions, trees, support vector machine, neural networks.\nData splitting: training/test sets, cross-validation, bootstrap.\nMetrics: MSE, Accuracy, …\nEnsemble methods: bagging, random forests, boosting.\nUnsupervised learning: clustering, PCA, FAMD, Auto-Encoder\nInterpretable machine learning: variale importance, partial dependence plots, LIME.\n\nExercises and theory are equally important for the success of the class. For the excercises we use primarly R, with equivalent code in Python.\n\n\n📝 Evaluation\n\nPartial written exam: organized during the semester.\nApplied project: individual or in group (depending on the number of participants to the course).\n\nOne report (incl. supplementary material, codes, etc.)\nOne final presentation will be organized during the semester or during the exam session (depending on the number of participants).\n\n\nFinal grade = (0.3 x exam) + (0.3 x presentation) + (0.4 x report)\n\n\n\n\n\n\nProject member contributions\n\n\n\nThe project grade is a group grade. However, if the contribution of the members of the groups to the project is unbalanced, an individual adaptation of the grade will be made, e.g., absence of one of the members of the group during the presentation (in catch-up, a subsequent and adapted presentation of the absent member may be required).\n\n\nFurther directives and guidelines are provided here.",
+    "text": "🧑🏻‍🏫 Teaching staff: Dr. Marc-Olivier Boldi (Lecturer) & Ilia Azizi (TA).\n🕛 Time: Mondays 8:30-12:00, starting on Monday the 19th of February 2024.\n🏫 Room: Anthropole 3174 (no live broadcasting or recording).\n\n📖 Content\nThis course presents several machine learning techniques in business and management contexts. The list of topics is meant to cover mainly supervised methods of classification and prediction although unsupervised methods are also seen. Below is a tentative lists of topics. It will be adapted according to the pace of the class:\n\nSupervised learning models: regressions, trees, support vector machine, neural networks.\nData splitting: training/test sets, cross-validation, bootstrap.\nMetrics: MSE, Accuracy, …\nEnsemble methods: bagging, random forests, boosting.\nUnsupervised learning: clustering, PCA, FAMD, Auto-Encoder\nInterpretable machine learning: variale importance, partial dependence plots, LIME.\n\nExercises and theory are equally important for the success of the class. For the excercises we use primarly R, with equivalent code in Python.\n\n\n📝 Evaluation\n\nPartial written exam: organized during the semester.\nApplied project: individual or in group (depending on the number of participants to the course).\n\nOne report (incl. supplementary material, codes, etc.)\nOne final presentation will be organized during the semester or during the exam session (depending on the number of participants).\n\n\nFinal grade = (0.3 x exam) + (0.3 x presentation) + (0.4 x report)\n\n\n\n\n\n\nProject member contributions\n\n\n\nThe project grade is a group grade. However, if the contribution of the members of the groups to the project is unbalanced, an individual adaptation of the grade will be made, e.g., absence of one of the members of the group during the presentation (in catch-up, a subsequent and adapted presentation of the absent member may be required).\n\n\nFurther directives and guidelines are provided in the Assessments section.",
     "crumbs": [
       "Course information",
       "Overview"
