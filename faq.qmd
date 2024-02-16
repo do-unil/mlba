@@ -11,8 +11,6 @@ code-link: false
 If you do not find the answer to your question here, you can use the search bar on the top left to search the entire site. If you are still unable to find the answer, you can ask your question during the exercise hours. If you found the solution and think it would be useful to other students, you can  report an issue (see on the right) with the questions and the solution, and we will add it to the FAQ.
 :::
 
-## FAQ
-
 ### Organizational
 
 #### Which language will we be using?
