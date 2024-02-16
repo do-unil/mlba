@@ -4,14 +4,26 @@ code-tools: false
 code-link: false
 ---
 
-### Book references
+### Books
+There are no mandatory readings for this course, except our `MLBA` website; however, here are some of the books that inspired our course. Except for one book, the rest are all freely available:
+
+- Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning: Data Mining, Inference, and Prediction, Second Edition*. Springer Science & Business Media. Available at: [Trevor Hastie's website](https://hastie.su.domains/Papers/ESLII.pdf)
+
+- James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An Introduction to Statistical Learning: with Applications in R*. Springer Science & Business Media. Available at: [statlearning.com](https://www.statlearning.com/)
+
+- Kuhn, M. and Johnson, K. (2013) *Applied Predictive Modeling*. Springer Science & Business Media. Available at (but needs to be purchased): [Springer]<https://link.springer.com/book/10.1007/978-1-4614-6849-3>
+
+- Boehmke, B. and Greenwell, B. (2020) *Hands-On Machine Learning with R*. Taylor & Francis. Available at: [HOML](https://bradleyboehmke.github.io/HOML/) (retrieved the 2023-01-10)
+
+- Molnar C. (2023) *Interpretable Machine Learning: A Guide for Making Black Box Models Explainable*. Available at: [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/) (retrieved the 2023-08-10)
+
 
 ### License
 
 This course is provided under [![Creative Commons License](https://licensebuttons.net/l/by-sa/4.0/88x31.png){alt="Creative Commons License"}](https://creativecommons.org/licenses/by-sa/4.0/)\ which is the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) license.
 
 ### Acknowledgements
-The `MLBA` course website design was adapted and inspired from the following sources:
+The design  of the `MLBA` course website was adapted and inspired from the following sources:
 
 - [Dr. Mine Çetinkaya-Rundel STA 101 website](https://sta101-f23.github.io/course-overview.html)
 - [Dr. Tomas Masák, Dr. Linda Mhalla and Charles Dufour MATH-517 website](https://math-517.github.io/math_517_website/)

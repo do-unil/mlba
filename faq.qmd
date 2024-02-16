@@ -34,7 +34,7 @@ You can use any kind of text editor or IDE you like. We recomment using [VS Code
 
 ## Technical issues
 
-### How do I ask question or report an issue/suggestion with the content?
+### How do I ask a question or report an issue or suggestion regarding the content?
 Follow these steps to propose changes/suggestions to correct the material. First, start off by making a GitHub account:
 
 -   Create a GitHub account at [https://github.com](https://github.com/). You can use whatever username you like, but here is some helpful [username advice](https://happygitwithr.com/github-acct#username-advice).[^1]
