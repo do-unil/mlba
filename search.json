@@ -1,31 +1,25 @@
 [
   {
-    "objectID": "resources.html",
-    "href": "resources.html",
-    "title": "Extra credit",
+    "objectID": "resources/data_sources.html",
+    "href": "resources/data_sources.html",
+    "title": "Data Sources",
     "section": "",
-    "text": "Create a GitHub account at https://github.com, make sure to use your real name in your profile so that I can match your name to you. You can use whatever username you like, but here is some helpful username advice.1\nGo to https://github.com/OpenIntroStat/ims/issues/new/choose and select either “Suggestion” or “Typo”.\n\nIf Suggestion, describe in detail your suggestion, giving as much information and justification as possible.\nIf Typo, fill in the blanks to provide as much information as possible for the typo to be fixed.\n\nWhen done, hit Submit.\nLater in the course you will be asked to fill out a form where you let us know if you’ve opened any feedback issues in the GitHub repo. I’ll confirm your answers by referring back to the issues you opened, and you’ll have the opportunity to earn 2 extra points (out of 100) on each of your exams for opening “useful” issues. “Useful” can be based on the number of issues (quantity) or the depth of your feedback (quality).\nBefore opening an issue, you must the existing ones at https://github.com/OpenIntroStat/ims/issues to make sure you’re not reporting something someone else has already reported.\nIssues can refer to the text of the book or the interactive tutorials."
+    "text": "Below are some links to data platform that can help you find datasets for your projects:\n\nPopular platforms\n\nGoogle Dataset Search\nData is Plural: Google Sheet with 1000+ datasets\nGithub Awesome Public Datasets\nOpen Data Inception - 2600+ Open Data Portals Around the World\ndata.world\nSubreddit r/datasets\nCORGIS Datasets Project\n\n\n\nGovernments / NGOs websites.\n\nSwitzerland\n\nOffice Fédéral de la Statistique\nSwiss Open Data\n\nEurope\n\nEuropean Data Portal\n\nUnited States\n\nNYC Open Data\nThe General Social Survey\nUS Bureau of Labor Statistics\nUS Department of Education\nFederal Reserve Economic Data\nUS Department of Agriculture\n\nGlobal\n\nWorld Bank Open Data\nUN Data and other UNSD databases\n\nMonthly Bulletin of Statistics Online\nSDG Indicators\nUN Comtrade Database\n\n\n\n\n\nOther platforms\n\nNews API\nKaggle\n10 great sites with free datasets\n\n\n\nAcknowledgements\nCredits to dfsba_2021 for providing these data sources.",
+    "crumbs": [
+      "Resources",
+      "Data Sources"
+    ]
   },
   {
-    "objectID": "resources.html#extra-credit",
-    "href": "resources.html#extra-credit",
-    "title": "Extra credit",
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
     "section": "",
-    "text": "Create a GitHub account at https://github.com, make sure to use your real name in your profile so that I can match your name to you. You can use whatever username you like, but here is some helpful username advice.1\nGo to https://github.com/OpenIntroStat/ims/issues/new/choose and select either “Suggestion” or “Typo”.\n\nIf Suggestion, describe in detail your suggestion, giving as much information and justification as possible.\nIf Typo, fill in the blanks to provide as much information as possible for the typo to be fixed.\n\nWhen done, hit Submit.\nLater in the course you will be asked to fill out a form where you let us know if you’ve opened any feedback issues in the GitHub repo. I’ll confirm your answers by referring back to the issues you opened, and you’ll have the opportunity to earn 2 extra points (out of 100) on each of your exams for opening “useful” issues. “Useful” can be based on the number of issues (quantity) or the depth of your feedback (quality).\nBefore opening an issue, you must the existing ones at https://github.com/OpenIntroStat/ims/issues to make sure you’re not reporting something someone else has already reported.\nIssues can refer to the text of the book or the interactive tutorials."
-  },
-  {
-    "objectID": "resources.html#footnotes",
-    "href": "resources.html#footnotes",
-    "title": "Extra credit",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nGitHub is a code hosting platform for collaboration and version control. You will not need to learn about GitHub for this class (it’s something you will learn in a higher level statistics or data science course) however it is also where our open-source textbook is hosted so we’re asking you to make an account on GitHub to be able to provide feedback on the book.↩︎"
-  },
-  {
-    "objectID": "links.html",
-    "href": "links.html",
-    "title": "Useful links",
-    "section": "",
-    "text": "Posit Cloud\n🔗 Posit Cloud\n\n\nLecture recordings\n🔗 Panopto\n\n\nSlack\n🔗 Slack\n\n\nGradebook\n🔗 on Canvas\n\n\nAnnouncements\n🔗 on Canvas\n\n\nTutorial submission\n🔗 on Canvas\n\n\nTextbooks\n🔗 Introduction to Modern Statistics, 2nd Edition\n🔗 R for Data Science, 2nd Edition\n\n\nPackage documentation\n🔗 tidyverse: tidyverse.org\n🔗 tidymodels: tidymodels.org"
+    "text": "Book references\n\n\nLicense\nThis course is provided under  which is the Creative Commons Attribution-ShareAlike 4.0 International license.\n\n\nAcknowledgements\nThe MLBA course website design was adapted and inspired from the following sources:\n\nDr. Mine Çetinkaya-Rundel STA 101 website\nDr. Tomas Masák, Dr. Linda Mhalla and Charles Dufour MATH-517 website",
+    "crumbs": [
+      "Course information",
+      "References"
+    ]
   },
   {
     "objectID": "lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.html",
@@ -600,7 +594,7 @@
     "href": "faq.html#organizational-issues",
     "title": "FAQ",
     "section": "Organizational issues",
-    "text": "Organizational issues\n\nWhich language will we be using?\nYou can use either R or Python. We will be providing code examples and support in both languages.\n\n\nWhat software do I need to install?\nYou need a text editor or an Integrated Development Environment (IDE). RStudio or VS Code are both good options. We also recommend the use of git abd version control.\n\n\n\nDo we use moodle?\nWe will be using moodle to collect the project, and any communication with you. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check source for any material update.",
+    "text": "Organizational issues\n\nWhich language will we be using?\nYou can use either R or Python. We will be providing code examples and support in both languages.\n\n\nWhat software do I need to install?\nYou need a text editor or an Integrated Development Environment (IDE). RStudio or VS Code are both good options. We also recommend the use of git and version control.\n\n\n\nDo we use moodle?\nWe will be using moodle to collect the project, and any communication with you. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check source for any material update.",
     "crumbs": [
       "Course information",
       "FAQ"
@@ -611,7 +605,18 @@
     "href": "faq.html#technical-issues",
     "title": "FAQ",
     "section": "Technical issues",
-    "text": "Technical issues\n\nI am lost with Github, what should I do?\nGitHub has possibly the best tutorials and documentation of any software out there. You can find the Hello world there. Most of the time googling your issue will lead you to the right place.\n\n\nI have bugs in my code/ something doesn’t work/ I don’t know how to do something, what should I do?\nFirst google your issue. 90 times out of 100 this will solve your issues. Another 9% can be resolved by reading the documentation of the software you are using. For the very last percent you can ask your question during the exercises hours.\n\n\nI cannot find the repository linked to the assignment, what should I do?\nAt the top of each assignment there should be a link you can manually click to accept the assignment. If this happens after the first assignment, please let us know.",
+    "text": "Technical issues\n\nHow do I ask question or report an issue/suggestion with the content?\nFollow these steps to propose changes/suggestions to correct the material. First, start off by making a GitHub account:\n\nCreate a GitHub account at https://github.com. You can use whatever username you like, but here is some helpful username advice.1\nGo to https://github.com/do-unil/mlba/issues/new/choose and select either “Suggestion” or “Typo”.\n\nIf Suggestion, describe in detail your suggestion, giving as much information and justification as possible.\nIf Typo, fill in the blanks to provide as much information as possible for the typo to be fixed.\n\nWhen done, hit Submit. \nBefore opening an issue, you must the existing ones at https://github.com/do-unil/mlba/issues to make sure you’re not reporting something someone else has already reported.\nIssues can refer to the text of the lecture or the labs.\n\n\n\nI am lost with Github, what should I do?\nGitHub has possibly the best tutorials and documentation of any software out there. You can find the Hello world there. Most of the time googling your issue will lead you to the right place.\n\n\n\n\n\n\nAdvice for you\n\n\n\nGitHub is super useful for your projects, and working in teams. Ilia will provide you with a tutorial on how to use it.\n\n\n\n\nI have bugs in my code/ something doesn’t work/ I don’t know how to do something, what should I do?\nFirst google your issue. 90 times out of 100 this will solve your issues. Another 9% can be resolved by reading the documentation of the software you are using. For the very last percent you can ask your question during the exercises hours.",
+    "crumbs": [
+      "Course information",
+      "FAQ"
+    ]
+  },
+  {
+    "objectID": "faq.html#footnotes",
+    "href": "faq.html#footnotes",
+    "title": "FAQ",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nGitHub is a code hosting platform for collaboration and version control. You do not need not need to learn about GitHub for this class, however it is also where our open-source textbook is hosted so we’re asking you to make an account on GitHub to be able to provide feedback on the book.↩︎",
     "crumbs": [
       "Course information",
       "FAQ"
@@ -1486,14 +1491,14 @@
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
+    "objectID": "resources/beginners_r.html",
+    "href": "resources/beginners_r.html",
+    "title": "Beginners in R",
     "section": "",
-    "text": "Book references\n\n\nLicense\nThis course is provided under  which is the Creative Commons Attribution-ShareAlike 4.0 International license.\n\n\nAcknowledgements\nThe MLBA course website design was adapted and inspired from the following sources:\n\nDr. Mine Çetinkaya-Rundel STA 101 website\nDr. Tomas Masák, Dr. Linda Mhalla and Charles Dufour MATH-517 website",
+    "text": "R and RStudio installation\n🎬 UNIL course Quantitative Methods for Management (QMM)\n\n\nIntroduction to R\n🎬 Intro to R by the the QMM course\n\n\nswirl\n&lt;/&gt; R package for learning to code directly within the program\n\n\nOther resources\n🔗 http://www.r-tutor.com/r-introduction\n📄 https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf\n📖 https://intro2r.com/",
     "crumbs": [
-      "Course information",
-      "References"
+      "Resources",
+      "Beginners in R"
     ]
   }
 ]
