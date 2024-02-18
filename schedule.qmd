@@ -15,6 +15,10 @@ code-link: false
 - Monday the 27^th^ of May: **[Presentations of the projects]{.underline}**
 :::
 
+::: callout-tip
+The content of the schedule below may be adapted (faster or slower).
+:::
+
 ```{r}
 #| echo: false
 #| message: false
