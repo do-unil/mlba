@@ -3,6 +3,7 @@
 .RData
 .Ruserdata
 
+/announcements/
 /.quarto/
 _site/
 /.luarc.json

@@ -19,7 +19,8 @@ code-link: false
 
 The final grade is the grade of the project that splits into two parts:  the report (incl. codes and supplementary material) counts for 60% and the presentation (incl. slides) counts for 40%. Grades are rounded to the closest 0.1. The final grade is rounded to the closest 0.5. 
 
-The project is conducted in groups of 1-2 students.  
+<!-- The project is conducted in groups of 1-2 students.   -->
+The size of groups will depend on the number of participants and will be announced later.
 
 ### Originality And Style
 
