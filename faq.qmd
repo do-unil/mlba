@@ -13,7 +13,7 @@ If you do not find the answer to your question here, you can use the search bar 
 
 ## Organizational issues
 
-### Which language will we be using?
+### Which programming language will we be using?
 
 You can use either R or Python. We will be providing code examples and support in both languages. 
 
