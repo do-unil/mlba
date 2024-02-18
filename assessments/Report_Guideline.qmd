@@ -15,7 +15,7 @@ code-link: false
 🏗 *This section is still under development (to be updated soon)* 🏗
 :::
 
-Quarto template to be added
+Quarto template will soon be provided here.
 
 ## Why Do You Write A (Technical) Report?
 
