@@ -20,7 +20,7 @@ This course presents several machine learning techniques in business and managem
 -   Data splitting: training/test sets, cross-validation, bootstrap.
 -   Metrics: MSE, Accuracy, ...
 -   Ensemble methods: bagging, random forests, boosting.
--   Unsupervised learning: clustering, PCA, FAMD, Auto-Encoder
+-   Unsupervised learning: clustering, PCA, FAMD, Auto-Encoder.
 -   Interpretable machine learning: variale importance, partial dependence plots, LIME.
 
 Exercises and theory are equally crucial for the success of the class. For the labs, we use primarily R, with equivalent code in Python.
