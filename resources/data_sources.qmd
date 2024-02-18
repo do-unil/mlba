@@ -45,4 +45,4 @@ Below are some links to data platform that can help you find datasets for your p
 * [10 great sites with free datasets](https://towardsdatascience.com/top-10-great-sites-with-free-data-sets-581ac8f6334)
 
 ### Acknowledgements
-Credits to [dfsba_2021](https://tvatter.github.io/dsfba_2021/assignments/project/) for providing these data sources.
+Credits to [dsfba_2021](https://tvatter.github.io/dsfba_2021/assignments/project/) for providing these data sources.
