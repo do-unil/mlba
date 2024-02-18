@@ -13,18 +13,6 @@ If you do not find the answer to your question here, you can use the search bar 
 
 ## Organizational issues
 
-### Which programming language will we be using?
-
-You can use either R or Python. We will be providing code examples and support in both languages. 
-
-### What software do I need to install?
-
-You need a text editor or an Integrated Development Environment (IDE). [RStudio](https://posit.co/downloads/) or [VS Code](https://code.visualstudio.com/) are both good options. We also recommend the use of git and version control.
-
-<!-- For git, please see [here](resources/tutorials/github.qmd) for instructions on how to install it.
-
-You can use any kind of text editor or IDE you like. We recomment using [VS Code](https://code.visualstudio.com/) with the extension corresponding to your language of choice. You can also use [Rstudio](https://rstudio.com/products/rstudio/download/) for R. See [here](resources/tutorials/installing_software.qmd) for instructions on how to install the software and IDEs. -->
-
 ### Do we use moodle?
 
 **We will be using moodle to collect the project, and any communication with you**. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check the website for any material update.
@@ -36,6 +24,18 @@ They contain the same material, except that format-wise, Qmd files are more acce
 ### How are the lab sessions organized?
 
 The lab exercises on different topics can be followed at your own pace, hence why all the materials are available on this website. You may go slower or faster through the content and then show up for support during one of the four physical lab sessions to ask your questions.
+
+### Which programming language will we be using?
+
+You can use either R or Python. We will be providing code examples and support in both languages. 
+
+### What software do I need to install?
+
+You need a text editor or an Integrated Development Environment (IDE). [RStudio](https://posit.co/downloads/) or [VS Code](https://code.visualstudio.com/) are both good options. We also recommend the use of git and version control.
+
+<!-- For git, please see [here](resources/tutorials/github.qmd) for instructions on how to install it.
+
+You can use any kind of text editor or IDE you like. We recomment using [VS Code](https://code.visualstudio.com/) with the extension corresponding to your language of choice. You can also use [Rstudio](https://rstudio.com/products/rstudio/download/) for R. See [here](resources/tutorials/installing_software.qmd) for instructions on how to install the software and IDEs. -->
 
 ## Technical issues
 
