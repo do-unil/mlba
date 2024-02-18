@@ -15,7 +15,7 @@ If you do not find the answer to your question here, you can use the search bar 
 
 ### Do we use moodle?
 
-**We will be using moodle to collect the project, and any communication with you**. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check the website for any material update.
+**We will be using moodle to collect the assessments, and any communication with you**. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check the website for any material update.
 
 ### What is the difference between Pdf and Qmd of the lectures?
 
