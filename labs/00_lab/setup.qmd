@@ -16,9 +16,13 @@ If you are not interested in either objective, skip this Rmd and jump into the m
 
 ::: callout-tip
 ## Accessing the source code
-Although we do not provide the Rmd file for the source code, you can always use the `</> Code` button on the top right of the page to get the source code.
+Although we do not provide the Qmd file for the source code, you can always use the `</> Code` button on the top right of the page to get the source code.
 :::
 
+::: callout-important
+## Data for the labs
+The datasets used for all the labs can be found [here 📁](https://github.com/do-unil/mlba/tree/main/labs/data).
+:::
 
 <!-- Setting the rmardkown global options -->
 

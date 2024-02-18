@@ -17,8 +17,6 @@ If you do not find the answer to your question here, you can use the search bar 
 
 You can use either R or Python. We will be providing code examples and support in both languages. 
 
-
-
 ### What software do I need to install?
 
 You need a text editor or an Integrated Development Environment (IDE). [RStudio](https://posit.co/downloads/) or [VS Code](https://code.visualstudio.com/) are both good options. We also recommend the use of git and version control.
@@ -31,6 +29,10 @@ You can use any kind of text editor or IDE you like. We recomment using [VS Code
 
 **We will be using moodle to collect the project, and any communication with you**. On the other hand, we will use this website to upload the content for the course. You are encouraged to continuously check the website for any material update.
 
+
+### How are the lab sessions organized?
+
+The lab exercises on different topics can be followed at your own pace, hence why all the materials are available on this website. You may go slower or faster through the content and then show up for support during one of the four physical lab sessions to ask your questions.
 
 ## Technical issues
 
