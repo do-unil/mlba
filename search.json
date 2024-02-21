@@ -147,7 +147,7 @@
     "href": "lectures/02_DataExploration/ML_DataExplo.html",
     "title": "Data Exploration",
     "section": "",
-    "text": "Meta data refers to information (data) about the data set itself. In data science, this usually includes\n\nIts origin and/or source, if possible, the first one (not only the web page from which it was retieved).\nIts dates of creation and/or retrieval.\nIts name and/or title.\nIts file type (csv, xlxs, etc.).\nIts shape and a general description of its content (each column for tabular data).\n\nE.g., see ?bank in the package liver.",
+    "text": "In class script &lt;/&gt;\nML_DataExplo.R",
     "crumbs": [
       "Lectures",
       "Data Exploration"
