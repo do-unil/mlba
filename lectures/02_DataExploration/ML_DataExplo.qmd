@@ -7,9 +7,15 @@ execute:
 code-tools: false
 code-fold: false
 code-link: false
+editor: 
+  markdown: 
+    wrap: 72
 ---
-Meta data
-=========
+
+[In class script
+\</\>](https://github.com/do-unil/mlba/blob/main/lectures/02_DataExploration/ML_DataExplo.R)
+
+# Meta data
 
 ### Data set information
 
@@ -30,8 +36,7 @@ data science, this usually includes
 
 E.g., see `?bank` in the package `liver`.
 
-Data Expolration
-================
+# Data Expolration
 
 ### EDA
 
@@ -108,8 +113,7 @@ complexity increases fast and no universal method exists. Consider
 -   cat\*cat\*num: can turn num into cat (intervals) or can make
     cat\*cat = cat (combine modalities).
 
-Data transformation
-===================
+# Data transformation
 
 ### Numerical variables
 
@@ -131,7 +135,7 @@ Many possibilities. Consider,
 -   Turn ordinal into num (1, 2, 3, etc.).
 
 -   Diminish the number of modalities if too many: e.g., A, B, C covers
-    $80\%$ of the cases. Create a category \"other\" for the rest.
+    $80\%$ of the cases. Create a category "other" for the rest.
 
 -   Create dummy variables.
 
@@ -158,19 +162,21 @@ Transform a categorical variable into several numerical variables:
 
 Note: one variable, called **intercept**[^1], made of 1's, is added.
 
+[^1]: In most algorithm, especially in regressions. In Neural Network,
+    it is called the **bias**.
+
 A variable indicates a shape. It has three levels `Cloud`, `Moon`, and
 `Star`. The reference level below is `Cloud`. Below, 15 instances.
 
-![](../Graphs/Dummy_1.png){width=40% fig-align="center"}
+![](../Graphs/Dummy_1.png){width="40%" fig-align="center"}
 
 ### Dummy variable example
 
 The same example when the reference level below is `Moon`.
 
-![](../Graphs/Dummy_2.png){width=45%  fig-align="center"}
+![](../Graphs/Dummy_2.png){width="45%" fig-align="center"}
 
-Missing values
-==============
+# Missing values
 
 Missing value analysis is **never** easy and would deserve a whole
 course. In a quick fix, consider
@@ -218,7 +224,7 @@ Cons:
 
 -   Can leave out important information.
 
-Consider also replacing the feature by indicator \"0/1\" for missing or
+Consider also replacing the feature by indicator "0/1" for missing or
 not.
 
 ### Imputation
@@ -240,8 +246,7 @@ not.
 
 More advanced methods: repeated random imputation, EM algorithm, etc.
 
-Outliers
-========
+# Outliers
 
 ### Definition
 
@@ -291,8 +296,7 @@ bad idea. In an ideal world, only errors should be removed. Consider,
 
 -   In some situation, outliers are of interest: e.g., fraud analytics.
 
-Further words
-=============
+# Further words
 
 ### Further words
 
@@ -316,7 +320,4 @@ Common fallacies:
 
 -   Think that EDA is a one way through. It is a
     recursive/trial-and-error process (not unusual $90\%$ of the
-    work\...)
-
-[^1]: In most algorithm, especially in regressions. In Neural Network,
-    it is called the **bias**.
+    work...)
