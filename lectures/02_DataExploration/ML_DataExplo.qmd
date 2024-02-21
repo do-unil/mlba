@@ -15,6 +15,8 @@ editor:
 [In class script
 \</\>](https://github.com/do-unil/mlba/blob/main/lectures/02_DataExploration/ML_DataExplo.R)
 
+[ML_DataExplo.R](ML_DataExplo.R)
+
 # Meta data
 
 ### Data set information
