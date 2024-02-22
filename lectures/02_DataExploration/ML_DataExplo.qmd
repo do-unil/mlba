@@ -9,7 +9,7 @@ code-fold: false
 code-link: false
 ---
 
-[Attached class script ⚛](ML_DataExplo.R)
+[In-class R script 📄](ML_DataExplo.R)
 
 # Meta data
 
