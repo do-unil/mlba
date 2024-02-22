@@ -7,15 +7,9 @@ execute:
 code-tools: false
 code-fold: false
 code-link: false
-editor: 
-  markdown: 
-    wrap: 72
 ---
 
-[In class script
-\</\>](https://github.com/do-unil/mlba/blob/main/lectures/02_DataExploration/ML_DataExplo.R)
-
-[ML_DataExplo.R](ML_DataExplo.R)
+[Attached class script ⚛](ML_DataExplo.R)
 
 # Meta data
 
