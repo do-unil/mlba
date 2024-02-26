@@ -102,6 +102,7 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="MLBA - S24 - Linear &amp; Logistic Regression">
+<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
 <meta property="og:site_name" content="MLBA - S24 ">
 </head>
 
@@ -534,6 +535,7 @@ updateImageSrc();
 </header>
 
 
+<p><a href="ML_LinLogReg.R">In-class R script 📄</a></p>
 <section id="linear-regression" class="level1">
 <h1>Linear regression</h1>
 <section id="linear-regression-1" class="level3">
@@ -629,7 +631,7 @@ updateImageSrc();
 <li><p>A negative coefficient means a decrease in the probability of the positive class (<span class="math inline">\(y=1\)</span>).</p></li>
 </ul>
 <p>For <strong>linear regression</strong>, certainty can be measured by <strong>prediction intervals</strong>. In practice, the main interest relies in the prediction interval for <strong>the future value</strong><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<p>Let <span class="math inline">\(x\)</span> be a set of new features, the <strong>point</strong> prediction for <span class="math inline">\(y(x)\)</span> uses the estimate <span class="math inline">\(\hat{\theta}\)</span>: <span class="math display">\[f(x;\hat{\theta}) = \theta_0 + \theta_1 x_1 + \cdots + \theta_p x_p.\]</span> Now, rather than a point estimate, we want to build an interval <span class="math inline">\([L,U]\)</span> such that <span class="math display">\[P(L \leq y(x) \leq U) = 1-\alpha,\]</span> where <span class="math inline">\(\alpha\)</span> is usually set to <span class="math inline">\(5\%\)</span> for an interval at <span class="math inline">\(95\%\)</span>. To build this interval, we rely on probabilistic assumptions of the model.</p>
+<p>Let <span class="math inline">\(x\)</span> be a set of new features, the <strong>point</strong> prediction for <span class="math inline">\(y(x)\)</span> uses the estimate <span class="math inline">\(\hat{\theta}\)</span>: <span class="math display">\[f(x;\hat{\theta}) = \hat{\theta}_0 + \hat{\theta}_1 x_1 + \cdots + \hat{\theta}_p x_p.\]</span> Now, rather than a point estimate, we want to build an interval <span class="math inline">\([L,U]\)</span> such that <span class="math display">\[P(L \leq y(x) \leq U) = 1-\alpha,\]</span> where <span class="math inline">\(\alpha\)</span> is usually set to <span class="math inline">\(5\%\)</span> for an interval at <span class="math inline">\(95\%\)</span>. To build this interval, we rely on probabilistic assumptions of the model.</p>
 <p>Therefore, <span class="math display">\[0.95 = P(L \leq y(x) \leq U) = P\left(\frac{L-f(x;\theta)}{\sigma} \leq e \leq \frac{U-f(x;\theta}{\sigma})\right).\]</span> Using the normal distribution, we find that <span class="math display">\[L-f(x;\theta) = -\sigma z_{1-\alpha/2}, \quad U-f(x;\theta) = \sigma z_{1-\alpha/2}.\]</span> This gives <span class="math display">\[L = f(x;\theta) -\sigma z_{1-\alpha/2}, \quad U = f(x;\theta) + \sigma z_{1-\alpha/2}.\]</span> For <span class="math inline">\(\alpha=5\%\)</span>, this gives <span class="math display">\[(L,U) = f(x;\theta) \pm 1.96 \sigma.\]</span></p>
 </section>
 <section id="certainty-for-linear-regression" class="level3">
