@@ -45,7 +45,12 @@ jobs:
         uses: r-lib/actions/setup-renv@v2
         with:
           cache-version: 2
-      
+
+      - name: Increase RAM limit for R
+        run: |
+          ulimit -s 16384
+          ulimit -a
+            
       - name: Publish Quarto Project
         uses: quarto-dev/quarto-actions/publish@v2
 
