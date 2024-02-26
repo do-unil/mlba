@@ -8,6 +8,9 @@ code-tools: false
 code-fold: false
 code-link: false
 ---
+
+[In-class R script 📄](ML_LinLogReg.R)
+
 Linear regression
 =================
 
@@ -158,7 +161,7 @@ interval for **the future value**[^1].
 
 Let $x$ be a set of new features, the **point** prediction for $y(x)$
 uses the estimate $\hat{\theta}$:
-$$f(x;\hat{\theta}) = \theta_0 + \theta_1 x_1 + \cdots + \theta_p x_p.$$
+$$f(x;\hat{\theta}) = \hat{\theta}_0 + \hat{\theta}_1 x_1 + \cdots + \hat{\theta}_p x_p.$$
 Now, rather than a point estimate, we want to build an interval $[L,U]$
 such that $$P(L \leq y(x) \leq U) = 1-\alpha,$$ where $\alpha$ is
 usually set to $5\%$ for an interval at $95\%$. To build this interval,

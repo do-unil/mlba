@@ -71,7 +71,7 @@ $$
 $$
 Example: with the square of the error, this is 
 $$
-\bar{{\cal L}}(\theta) = \frac{1}{n}\sum_{i=1}^n \{y_i, f(x_i;\theta)\}^2.
+\bar{{\cal L}}(\theta) = \frac{1}{n}\sum_{i=1}^n \{y_i, f(x_i-\theta)\}^2.
 $$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -79,7 +79,7 @@ $$
 \frametitle{The optimization algorithm}
 Finding the optimal $\hat{\theta}$ is done by applying an algorithm, i.e., a procedure that finds 
 $$
-\hat{\theta} = \arg\max_{\theta} \bar{{\cal L}}(\theta).
+\hat{\theta} = \arg\min_{\theta} \bar{{\cal L}}(\theta).
 $$
 The algorithm is often a sequential procedure. It builds a sequence $\theta_1, \theta_2, \theta_3, \ldots$ such that
 $$

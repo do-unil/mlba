@@ -8,6 +8,9 @@ code-tools: false
 code-fold: false
 code-link: false
 ---
+
+[In-class R script 📄](ML_Trees.R)
+
 Concept
 =======
 
@@ -20,7 +23,7 @@ consists of
 
 -   A representation in a shape of a tree.
 
-It applies to both regression and classification tasks. The Iris data has 125 data; with the classes equally divided in 35 observations.
+It applies to both regression and classification tasks. The Iris data has 105 data; with the classes equally divided in 35 observations.
 
 ![](../../Graphs/IRIS_CART.png){width="10cm" fig-align="center"}
 
