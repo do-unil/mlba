@@ -1,0 +1,287 @@
+---
+title: "MLBA Lab 1"
+subtitle: "[MLBA]{.flow} Tools & Lab Setup"
+author: "Ilia Azizi"
+date: "03.03.2024"
+date-format: "DD[.]MM[.]YYYY"
+format:
+  revealjs: 
+    theme: [default, ../auxiliary/styles/ml_slides.css, ../auxiliary/styles/flow.scss]
+    slide-number: true
+    preview-links: auto
+    footer: "MLBA 2024"
+    logo: ../auxiliary/images/unil_logo.png
+    self-contained: true
+    html-math-method: katex
+    code-tools: true
+    code-link: true
+    format: "keynote"
+    transition: fade
+    background-transition: fade
+    lightbox: auto
+    output-file: lab1_slides.html
+execute:
+  echo: true
+  output: true
+---
+
+## Objectives
+
+```{r setup, include = F}
+library(reticulate)
+library(tidyverse)
+library(formatR)
+
+knitr::opts_chunk$set(
+  #collapse = TRUE,
+  comment = "#>",
+  #header = paste0("```{", knitr::opts_current$get("engine.name"), "}"),
+ # footer = "```",
+#  fig.align="center",
+  eval = T,
+  echo = T,
+  tidy.opts = list(width.cutoff = 40),
+  tidy = TRUE
+)
+```
+
+- Learn about vesion-control with Git & GitHub
+- Use R and Rstudio
+- Learn about virtual environments in R to ensure reproducibility.
+- Learn about using python 🐍 in (and with) R. This is useful for some ML lab sessions, and cutting-edge ML is often first implemented in python.
+
+
+## Git (& GitHub) for Collaboration
+- **Why Use Git?** Git is a version-control system that helps track changes, collaborate on projects, and revert to previous versions of a file.
+
+![](../auxiliary/images/git_image.png){fig-align="center"}
+
+## Creating a Repository on GitHub
+1. Navigate to [GitHub](https://github.com/new) and create a new repository.
+2. Choose a name and description for your repository.
+3. Select whether the repository is public or private.
+4. Click "Create repository."
+
+## Cloning a Repository with GitHub Desktop
+
+- **Synchronizing Your Project**
+    1. Open GitHub Desktop and clone the repository to your local machine.
+    2. This creates a local copy of the repository for work and synchronization.
+
+<!-- ## Committing Changes -->
+
+- **Recording Changes Locally**
+    1. Make changes to your files in the project directory.
+    2. Use GitHub Desktop to commit these changes, adding a meaningful commit message.
+
+<!-- ## Push and Pull Changes -->
+
+- **Collaboration Workflow**
+    1. Push your committed changes to GitHub to share with collaborators.
+    2. Pull changes made by others to keep your local repository up to date.
+
+## Using RStudio Projects
+
+ - RStudio projects simplify the management of R soure code.
+ - Use the `{here}` package for easy file path management within projects.
+
+<!-- ```{r}
+#| echo: false
+knitr::include_url({"https://quarto.org/"})
+``` -->
+
+<!-- ```{=html}
+<iframe width="1000" height="400" src="https://do-unil.github.io/mlba/resources/beginners_r" data-external="1"></iframe>
+``` -->
+
+```{r}
+#| echo: false
+
+knitr::include_url({"https://do-unil.github.io/mlba/resources/beginners_r"})
+```
+
+## Virtual environments in R (`renv`)
+
+#### The What & The Why
+
+- **`renv`** is a package management tool that helps you manage the packages used in an R project.
+- Ensures that your project is reproducible.
+- Provides a consistent environment by isolating the packages used in your project.
+- Simplifies installation and setup.
+- Helps you avoid compatibility issues.
+- Makes it easy to share your work with others.
+
+## Virtual environments in R (`renv`)
+
+#### The How
+
+1. Create a new **`renv`** project with `renv::init()`.
+2. `renv::restore()` to install packages from the `renv.lock` file.
+3. Use `renv::snapshot()` to occasionally update your packages.
+4. Use `renv::status()` to see if the list in `renv.lock` needs updating.
+
+## Python 🐍 in R (`reticulate`)
+
+### Small Motivation
+
+- Python is arguably more demanded in machine learning than R.
+- Widely-used language in the industry.
+- Powerful libraries for data manipulation, analysis, and modeling.
+- Relatively easy to pick up even for beginners to programming.
+- Combining the strengths of both R and Python can enhance your skills.
+
+
+## Python 🐍 in R (`reticulate`)
+
+### Configuration
+
+1. Install `reticulate` package in R.
+2. Use `reticulate::use_python()` or `reticulate::use_condaenv()` to specify the location of your python environment.
+```{r}
+#| output: false
+reticulate::use_condaenv('MLBA')
+reticulate::py_config()
+```
+
+3. Use `reticulate::import()` to import python modules in R.
+
+```{r}
+pd <- import("pandas")
+```
+
+4. Use `reticulate::py_run_string()` to execute python code in R.
+
+```{r, eval = T}
+py_run_string("x = 3; y = 4; print('The sum of x and y is:', x + y)")
+```
+
+## Running Python code in R
+
+- To run Python code in R, use `{python}` at the beginning of the code chunk.
+```{{python}}
+my_dict = {'a' : 3, 'b' : 5, 'c' : 6} 
+```
+
+- To access R objects in Python, use `r.OBJECT_NAME`.
+```{{r}}
+my_list <- list(a = 1, b = 2, c = 3)
+```
+```{{python}}
+print(r.my_list['b'])
+```
+
+- To access Python objects in R, use `py$OBJECT_NAME`.
+```{{r}}
+print(py$my_dict$b)
+```
+
+
+## Object casting in Python & R
+
+- Use `reticulate::r_to_py()` and `reticulate::py_to_r()` to explicitly change between objects.
+
+![](../auxiliary/images/reticulate_r_python_objects.JPG){fig-align="center"}
+
+## Example: Plotting with R & Python
+```{r, filename = "Load some data"}
+#| output: false
+#| results: false
+
+## load mtcars dataset
+data(mtcars)
+```
+&nbsp;
+
+:::: {.columns}
+
+::: {.column width="40%"}
+```{r filename = "Plotting with base R"}
+#| output: true
+#| results: false
+
+# Using base R plot
+plot(mtcars$mpg, mtcars$disp)
+```
+:::
+
+::: {.column width="60%"}
+```{r filename = "Plotting by using python within R"}
+#| output: false
+#| results: false
+
+# Using `matplotlib`
+plt <- reticulate::import("matplotlib.pyplot")
+plt$scatter(mtcars$mpg, mtcars$disp)
+plt$xlabel('mpg', fontsize = 12)
+plt$ylabel('disp', fontsize = 12)
+```
+
+![](../auxiliary/images/pyplot.png){fig-align="center" width=50%}
+
+:::
+
+::::
+
+## Example: Regression in R & Python
+
+::: panel-tabset
+
+
+### Loading data
+
+```{r filename = "Loading the data R"}
+# load the data in R
+data(iris)
+# exclude the `species` column (we focus on regression here)
+iris <- select(iris, -'Species')
+head(iris)
+```
+
+### R
+
+```{r filename = "Modelling in pure R"}
+# example of running a model on iris data
+r_lm <- lm("Sepal.Length ~. ", data = iris)
+summary(r_lm)
+```
+
+
+### Python
+
+```{python filename = "Modelling in pure Python"}
+# load the required libraries
+import statsmodels.api as sm
+import pandas as pd
+# Fit linear regression model to iris coming from R
+X = r.iris[['Sepal.Width','Petal.Length','Petal.Width']]
+y = r.iris['Sepal.Length']
+X = sm.add_constant(X)
+py_lm_fit = sm.OLS(y, X).fit()
+#print regression results
+print(py_lm_fit.summary())
+```
+
+### Python within R
+
+```{r filename="Modelling in R with Python libraries"}
+# load the library
+sm <- import("statsmodels.api")
+# model the data
+py_lm <- sm$OLS(dplyr::pull(iris, 'Sepal.Length'), dplyr::select(iris, -'Sepal.Length'))
+# fit the data
+py_lm_fit <- py_lm$fit()
+# print the summary
+print(py_lm_fit$summary())
+```
+
+:::
+
+## Conclusion
+
+- `renv` helps with managing packages in R, ensuring reproducibility, and making your work easier to share.
+- `reticulate` allows you to use python in R and combine the strengths of both languages.
+- Learning these tools will help you become more effective in machine learning.
+- Let's get started with the lab exercises!
+
+# Thank You for your attention! 
+Questions?

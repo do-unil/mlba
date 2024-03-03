@@ -1,0 +1,36 @@
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+li {
+  font-size: 30px;
+}
+
+#tabset-1 {
+  font-size: 16px; /* or any other font size you want */
+}
+
+/* special css only for the first session */
+#objectives li {
+  font-size: 40px;
+}
+
+.reveal pre code {
+  max-height: 200px;
+}
+
+.reveal pre {
+  background-color: transparent;
+}
+
+div, iframe {
+  /* width: 100px;
+  height: 50px; */
+  margin: 0 auto;
+  /* background-color: #777; */
+}
+
+iframe {
+  display: block;
+  border-style:none;
+}
