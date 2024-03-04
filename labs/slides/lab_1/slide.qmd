@@ -1,28 +1,7 @@
 ---
 title: "MLBA Lab 1"
 subtitle: "[MLBA]{.flow} Tools & Lab Setup"
-author: "Ilia Azizi"
 date: "03.03.2024"
-date-format: "DD[.]MM[.]YYYY"
-format:
-  revealjs: 
-    theme: [default, ../auxiliary/styles/ml_slides.css, ../auxiliary/styles/flow.scss]
-    slide-number: true
-    preview-links: auto
-    footer: "MLBA 2024"
-    logo: ../auxiliary/images/unil_logo.png
-    self-contained: true
-    html-math-method: katex
-    code-tools: true
-    code-link: true
-    format: "keynote"
-    transition: fade
-    background-transition: fade
-    lightbox: auto
-    # output-file: lab1_slides.html
-execute:
-  echo: true
-  output: true
 ---
 
 ## Objectives
