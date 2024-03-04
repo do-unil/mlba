@@ -1158,6 +1158,11 @@
       ],
       "Hash": "618609b42c9406731ead03adf5379850"
     },
+    "formatR": {
+      "Package": "formatR",
+      "Version": "1.14",
+      "Source": "Repository"
+    },
     "fs": {
       "Package": "fs",
       "Version": "1.6.3",
