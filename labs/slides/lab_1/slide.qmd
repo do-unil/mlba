@@ -45,38 +45,78 @@ knitr::opts_chunk$set(
 )
 ```
 
-- Learn about vesion-control with Git & GitHub
+- Learn about vesion-control, Git & GitHub
 - Use R and Rstudio
 - Learn about virtual environments in R to ensure reproducibility.
 - Learn about using python 🐍 in (and with) R. This is useful for some ML lab sessions, and cutting-edge ML is often first implemented in python.
 
 
-## Git (& GitHub) for Collaboration
-- **Why Use Git?** Git is a version-control system that helps track changes, collaborate on projects, and revert to previous versions of a file.
+## Git & GitHub for Collaboration {.smaller}
 
-![](../auxiliary/images/git_image.png){fig-align="center"}
+<!-- ::: {style="font-size: 50%;"} -->
+
+- **What is Git?** Git is a version-control system that helps track changes, collaborate on projects, and revert to previous versions of a file.
+- **What is GitHub?** GitHub provides a cloud-based hosting service that lets you manage Git repositories.
+- **Git vs. GitHub:** Git is a version-control technology to manage source code history, while GitHub is only one of the hosting service for Git repositories.
+
+<!-- ::: -->
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+![](../auxiliary/images/git_meme.png){fig-align="center" width="85%"}
+
+:::
+
+::: {.column width="50%"}
+
+![](../auxiliary/images/git_image.png){fig-align="center" width="85%"}
+
+:::
+
+::::
 
 ## Creating a Repository on GitHub
+
+:::: {.columns}
+
+::: {.column style="width: 65%; font-size: 30%;"}
+
 1. Navigate to [GitHub](https://github.com/new) and create a new repository.
 2. Choose a name and description for your repository.
 3. Select whether the repository is public or private.
 4. Click "Create repository."
 
-## Cloning a Repository with GitHub Desktop
+![](../auxiliary/images/github_new_repo.png){width="60%" fig-align="center"}
 
-- **Synchronizing Your Project**
+
+:::
+
+::: {.column style="width: 35%; font-size: 60%;"}
+
+*Install GitHub Desktop app to help you with using GitHub.*
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/2048px-Github-desktop-logo-symbol.svg.png){width="30%" fig-align="center"}
+
+![](../auxiliary/images/github_desktop.png){width="100%" fig-align="center"}
+
+
+:::
+
+::::
+
+## GitHub Workflow {.smaller}
+
+- **Cloning a Repository with GitHub Desktop**
     1. Open GitHub Desktop and clone the repository to your local machine.
     2. This creates a local copy of the repository for work and synchronization.
 
-<!-- ## Committing Changes -->
-
-- **Recording Changes Locally**
+- **Committing Changes**
     1. Make changes to your files in the project directory.
     2. Use GitHub Desktop to commit these changes, adding a meaningful commit message.
 
-<!-- ## Push and Pull Changes -->
-
-- **Collaboration Workflow**
+- **Push and Pull Changes**
     1. Push your committed changes to GitHub to share with collaborators.
     2. Pull changes made by others to keep your local repository up to date.
 
@@ -84,19 +124,8 @@ knitr::opts_chunk$set(
 
  - RStudio projects simplify the management of R soure code.
  - Use the `{here}` package for easy file path management within projects.
-
-<!-- ```{r}
-#| echo: false
-knitr::include_url({"https://quarto.org/"})
-``` -->
-
-<!-- ```{=html}
-<iframe width="1000" height="400" src="https://do-unil.github.io/mlba/resources/beginners_r" data-external="1"></iframe>
-``` -->
-
 ```{r}
 #| echo: false
-
 knitr::include_url({"https://do-unil.github.io/mlba/resources/beginners_r"})
 ```
 
@@ -133,7 +162,7 @@ knitr::include_url({"https://do-unil.github.io/mlba/resources/beginners_r"})
 
 ## Python 🐍 in R (`reticulate`)
 
-### Configuration
+### Configuration {.smaller}
 
 1. Install `reticulate` package in R.
 2. Use `reticulate::use_python()` or `reticulate::use_condaenv()` to specify the location of your python environment.
@@ -155,7 +184,7 @@ pd <- import("pandas")
 py_run_string("x = 3; y = 4; print('The sum of x and y is:', x + y)")
 ```
 
-## Running Python code in R
+## Running Python code in R {.smaller}
 
 - To run Python code in R, use `{python}` at the beginning of the code chunk.
 ```{{python}}
