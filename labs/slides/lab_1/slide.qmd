@@ -76,7 +76,7 @@ knitr::opts_chunk$set(
 
 *Install GitHub Desktop app to help you with using GitHub.*
 
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/2048px-Github-desktop-logo-symbol.svg.png){width="30%" fig-align="center"}
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Github-desktop-logo-symbol.svg/2048px-Github-desktop-logo-symbol.svg.png){width="40%" fig-align="center"}
 
 ![](../auxiliary/images/github_desktop.png){width="100%" fig-align="center"}
 
