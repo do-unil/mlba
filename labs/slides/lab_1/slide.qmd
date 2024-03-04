@@ -19,7 +19,7 @@ format:
     transition: fade
     background-transition: fade
     lightbox: auto
-    output-file: lab1_slides.html
+    # output-file: lab1_slides.html
 execute:
   echo: true
   output: true
