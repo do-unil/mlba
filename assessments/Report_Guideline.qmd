@@ -15,7 +15,7 @@ code-link: false
 🏗 *This section is still under development (to be updated soon)* 🏗
 ::: -->
 
-For your report, you can use the [Quarto template we provide here](https://github.com/Unco3892/quarto_ml_template).
+For your report, you can use the [Quarto template we provide here](https://github.com/Unco3892/quarto_ml_template). Please note that the [Personal Information And Non-Plagiarism Statement](https://do-unil.github.io/mlba/assessments/Report_Guideline.html#b.-personal-information-and-non-plagiarism-statement-mandatory) indicated below must be integrated into the final report during your submission.
 
 ## Why Do You Write A (Technical) Report?
 
@@ -153,7 +153,7 @@ In this section, you mention and briefly describe all the external documents giv
 
 
 ##### **Text editor**
-Using Word is probably the simplest choice, but $LaTeX$ is also welcomed (see [Overleaf for easy and free usage](https://overleaf.com/)) Free very valuable alternatives exist like LibreOffice. It should be noted that Rmarkdown could also be a useful tool. However, it is not advisable to mix the research (i.e. working R codes, running complex R code or procedure) and the writing of the report. Often, one loses more time and encounter lots of difficulties. In any cases, pay attention to use cache in order to avoid running again and again very heavy computations each time you want to compile the report. 
+Using Word is probably the simplest choice, but $LaTeX$ is also welcomed (see [Overleaf for easy and free usage](https://overleaf.com/)) Freely available alternatives exist like LibreOffice. It should be noted that `Quarto` and `Rmarkdown` could also be a useful tool. However, be mindful of mixing research (i.e. working R codes, running complex R code or procedure) and the writing of the report. Often, one loses more time and encounter lots of difficulties. Nevertheless, `Quarto` is very valuable for writing reproducible reports. In any cases, pay attention to use cache in order to avoid running again and again very heavy computations each time you want to compile the report. 
 
 ##### **Maths and formulae**
 If you need to edit equations or formulae, you may gain using an equation editor like MathWord. Free alternatives exist like LibreOffice. 

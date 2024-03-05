@@ -176,8 +176,13 @@ We will install all the packages we need for this particular setup. This should 
 
 ```{r results=F}
 # Install python package into virtual environment
-reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost", "lime", "gap-stat","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
+reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost", "gap-stat","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
 ```
+
+::: callout-note
+### `mkl-service` for Mac Users
+Please note that the `mkl-service` python package from above is specific to windows/linux users and is not needed for Mac users. In case of any errors (especially on M1 chips), feel free to remove it.
+:::
 
 Let's checked if the package is installed successfully.
 
