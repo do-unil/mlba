@@ -17,15 +17,15 @@ In `keras`, two main ways to build and run deep learning models are the `sequent
 The `sequential API` is suitable for building simple models quickly and easily. Initially, one has to define the desired network architecture
 by one layer at a time to a new `sequential` model. Once the architecture is defined, we need to `compile` the model and then `fit` the model to the data to start training. Here is a summary of all the steps:
 
-1.  *Define the model architecture*: Create a new sequential model object and add layers to it using the pipe operator (`%>%`), which translates to the `add()` method in Python. We can add as many layers as needed where the type of each layer can also be specified (e.g., dense, convolutional) and any necessary parameters for each layer (e.g., number of nodes, activation function).
+1.  *Define the model architecture:* Create a new sequential model object and add layers to it using the pipe operator (`%>%`), which translates to the `add()` method in Python. We can add as many layers as needed where the type of each layer can also be specified (e.g., dense, convolutional) and any necessary parameters for each layer (e.g., number of nodes, activation function).
 
-2.  *Compile the model*: Once the model's architecture has been defined, it has to be compiled using the `compile()` method. This involves specifying the loss function, optimizer, and any additional metrics you want to track during training.
+2.  *Compile the model:* Once the model's architecture has been defined, it has to be compiled using the `compile()` method. This involves specifying the loss function, optimizer, and any additional metrics you want to track during training.
 
-3.  *Train the model*: To train the model, use the `fit()` method and pass in your training data and any necessary hyperparameters (e.g., batch size, number of epochs). A validation set can also be specified to monitor the model's performance during training. Additionally, there are techniques such as early stopping, which stops the training if the model's performance on the validation set does not improve after a certain number of epochs.
+3.  *Train the model:* To train the model, use the `fit()` method and pass in your training data and any necessary hyperparameters (e.g., batch size, number of epochs). A validation set can also be specified to monitor the model's performance during training. Additionally, there are techniques such as early stopping, which stops the training if the model's performance on the validation set does not improve after a certain number of epochs.
 
-4.  *Evaluate the model*: After training, the model's performance on a test set can be evaluated using the `evaluate()` method. This will return the loss and any metrics specified during compilation (step 2).
+4.  *Evaluate the model:* After training, the model's performance on a test set can be evaluated using the `evaluate()` method. This will return the loss and any metrics specified during compilation (step 2).
 
-5.  *Use the model to make predictions*: Finally, one can use the trained model to make predictions on new data using the `predict()` method either from base R or as an attribute of the model (i.e., `model$predict()`). This stage is also known as "inference" in DL.
+5.  *Use the model to make predictions:* Finally, one can use the trained model to make predictions on new data using the `predict()` method either from base R or as an attribute of the model (i.e., `model$predict()`). This stage is also known as "inference" in DL.
 
 # Setup
 

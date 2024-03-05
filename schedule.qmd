@@ -12,6 +12,7 @@ code-link: false
 ## Important dates (more info during the class)
 - Monday the 29^th^ of April: **[Written exam (in-class)]{.underline}**
 - Sunday the 19^th^ of May: **[Project report deadline]{.underline}**
+- Thursday the 23^rd^ of May: **[Project presentation deadline]{.underline}**
 - Monday the 27^th^ of May: **[Presentations of the projects]{.underline}**
 :::
 
@@ -88,7 +89,7 @@ d |>
     footnote = "📩 Report submission at 23:59",
     locations = cells_body(
       columns = 2,
-      rows = date == as.Date("2024-05-19")
+      rows = date %in% as.Date(c("2024-05-19", "2024-05-23"))
     )
   )
 
