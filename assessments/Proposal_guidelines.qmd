@@ -12,7 +12,7 @@ code-link: false
 
 ::: {.callout-important}
 ## ATTENTION
-🏗 *This section is still under development (to be updated soon)* 🏗
+🏗 *This section is not relevant for 2024* 🏗
 :::
 
 :::{.callout-note}

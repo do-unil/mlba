@@ -10,12 +10,12 @@ code-tools: false
 code-link: false
 ---
 
-::: {.callout-important}
+<!-- ::: {.callout-important}
 ## ATTENTION
 🏗 *This section is still under development (to be updated soon)* 🏗
-:::
+::: -->
 
-Quarto template will soon be provided here.
+For your report, you can use the [Quarto template we provide here](https://github.com/Unco3892/quarto_ml_template).
 
 ## Why Do You Write A (Technical) Report?
 

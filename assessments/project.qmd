@@ -1,8 +1,0 @@
----
-title: "Project"
-format: 
-    html:
-        code-tools: false
-        code-link: false
----
-
