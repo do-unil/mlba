@@ -74,7 +74,7 @@ knitr::opts_chunk$set(
 
 ::: {.column style="width: 35%; font-size: 60%;"}
 
-*Install GitHub Desktop app to help you with using GitHub.*
+*Install [GitHub Desktop app](https://desktop.github.com/) to help you with using GitHub. Additionally, you can see our [FAQ](https://do-unil.github.io/mlba/faq.html#how-do-i-ask-a-question-or-report-an-issue-or-suggestion-regarding-the-content) for obtaining professional accounts.*
 
 ![](../auxiliary/images/github_desktop_logo.png){width="30%" fig-align="center"}
 
