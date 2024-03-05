@@ -19,6 +19,10 @@ code-link: false
 
 The project grade accounts for 70% of the final grade: 30% for the presentation and 40% for the report. The remaining 30% are for the exam. Grades are from 1 to 6 (Absent=0), rounded to the closest 0.1. The final grade (40% report + 30% presentation + 30% exam) is rounded to the closest 0.5.
 
+### Organization of Groups
+
+The size of groups is 3 students. You may now register [via our moodle page](https://moodle.unil.ch/mod/choicegroup/view.php?id=1023777). Because we do not now the final number of participants, we may create groups of 4 by the end of the grouping process. By default, only groups of 3 can register for the moment.
+
 ### Evaluation Criteria
 
 ::: panel-tabset
@@ -56,11 +60,6 @@ The project grade accounts for 70% of the final grade: 30% for the presentation 
 - Grade (Absent=0, min=1, max=6) weighted average
 - Each graded 1 (absent/non satisfactory) up to 5 (completely); eventually 5.5 (outstanding)
 :::
-
-
-### Organization of Groups
-
-The size of groups is 3 students. You may now register via moodle. Because we do not now the final number of participants, we may create groups of 4 by the end of the grouping process. By default, only groups of 3 can register for the moment.
 
 ### Originality And Style
 
