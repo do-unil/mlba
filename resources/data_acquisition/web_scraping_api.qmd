@@ -151,11 +151,13 @@ desc1 <- imdb.html %>%
 desc1
 ```
 
-**Note**: in the `xpath`, you must turn the quotes around `main` to simple quotes.
+::: callout-note
+In the `xpath`, you must turn the quotes around `main` to simple quotes.
+:::
 
 This is convenient when you want to extract a particular text. You can also use the [Selector Gadget](https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en) from Chrome to extract multiple Xpath.
 
-# Scraping PDF files
+# Parsing PDF files
 
 In this exercise, we practice the text extraction from a PDF file. First, we use the `pdf_text` function to read the text on the file "cs.pdf".
 
@@ -173,9 +175,11 @@ cs.text <- cs.text %>%
 head(cs.text)
 ```
 
-Note: the package `tabulizer` does not exist anymore. But we kept the details here. We still need to find a replacement for this package.
+::: callout-warning
+### The package `tabulizer` may not work
+Please note that the package `tabulizer` is not updated as often anymore. Therefore, even when trying to get it from its github page (<https://github.com/ropensci/tabulizer>), it may not work. Nevertheless, we have kept the details here, and you can use it from your side or alternatively look for other alternatives online.
+:::
 
-We tried to get it from its github page (<https://github.com/ropensci/tabulizer>), but I am note sure that this is working. Execute this code:
 
 ```{r, eval=FALSE}
 if (!require("remotes")) {
@@ -200,9 +204,9 @@ cs.table[[1]][1:10,] ## 10 first rows of the table (which is stored in the first
 
 We can note that special characters (here special dashes "-") could not be recognized. But the encoding can now be work out and the table be cleaned for further usage. The technique is far from perfect and is unlikly to be of any use for automatic extraction on a large number of documents, except if they are all very well structured.
 
-# Optical Character Recognition 
+# Optical Character Recognition (OCR)
 
-In this exercise, we use the OCR features of R to read a text from an image. First, we read the image using `image_read` in the package `magick`, the result is then passed to the `image_ocr` function in the package `tesseract`. 
+In this exercise, we use the Optical Character Recognition (OCR) functionalities accessible via R to read a text from an image. First, we read the image using `image_read` in the package `magick`, the result is then passed to the `image_ocr` function in the package `tesseract`. 
 
 ```{r}
 text <- image_read("data/TextFR.png") %>%
