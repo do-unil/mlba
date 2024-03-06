@@ -9,7 +9,7 @@ Below, you can find one of the lectures given by Ilia on web scraping and APIs d
 
 <iframe width="780" height="500" src="https://drive.google.com/file/d/13hz208TzcE0WgnZiS48ZKafAEpnqp_cZ/preview" allow = "autoplay" allowfullscreen></iframe>
 
-[In-class R script shown in the video above 📄](SeleniumRDemo.R.R)
+[In-class R script shown in the video above 📄](SeleniumRDemo.R)
 
 [In-class and practice datasets 📁](data.zip)
 
