@@ -46,11 +46,16 @@ jobs:
         with:
           cache-version: 2
 
-      - name: Increase RAM limit for R
+      # - name: Increase RAM limit for R
+      #   run: |
+      #     ulimit -s 16384
+      #     ulimit -a
+
+      - name: Increase stack size
         run: |
-          ulimit -s 16384
-          ulimit -a
-            
+          sudo ulimit -s unlimited || true
+          sudo ulimit -a
+
       - name: Publish Quarto Project
         uses: quarto-dev/quarto-actions/publish@v2
 
