@@ -96,4 +96,4 @@ You must meet the following deadlines (by 23h59):
 ### Presentations
 
 Presentations will be organized on site on Monday the 27^th^ of May 2024 in a 15+10-minute format (presentation + questions).
-If the number of groups is large, then either the presentation time will be reduced, or, if not possible, another oral presentation session will be organized during later (possibly during the exam session).
+If the number of groups is large, then either the presentation time will be reduced, or, if not possible, another oral presentation session will be organized later (possibly during the exam session).

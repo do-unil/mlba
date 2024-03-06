@@ -245,7 +245,7 @@ tree_preds <- predict(tree_model,newdata = data.frame(test_x))
 caret::MAE(obs = test_y, pred = tree_preds)
 ```
 
-The neural network also outperforms CART (if you run NN for 300 epochs). This is due to multiple reasons, including a higher complexity of the neural network (more parameters), using a validation set, and so on. You will learn about ensemble methods (beginning and boosting) in the upcoming lectures. Ensemble methods are the true champions for structured data (at least as of 2023) and usually outperform neural networks for structured/low-dimensional data.
+The neural network also outperforms CART (if you run NN for 300 epochs). This is due to multiple reasons, including a higher complexity of the neural network (more parameters), using a validation set, and so on. You will learn about ensemble methods (bagging and boosting) in the upcoming lectures. Ensemble methods are the true champions for structured data and usually outperform neural networks for structured/low-dimensional data.
 
 # Image Classification
 
