@@ -163,4 +163,4 @@ Usually, in the text, numbers zero (0) to ten (10) are written in letters, then 
 "in Table 1", "in Figure 3 shown below", "Section 3.2 shows […]". It is not the case when you refer to an object like "the next table", "in the following section we can see […]", etc. 
 
  
-Do not use don't (except when quoting speeches for example). For a better scientific writing, check out [this blog](https://www.americanscientist.org/blog/the-long-view/the-scienceof-scientific-writing).
+Do not use don't (except when quoting speeches for example). For a better scientific writing, check out [this blog](https://www.americanscientist.org/blog/the-long-view/the-science-of-scientific-writing).

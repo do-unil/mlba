@@ -10,7 +10,6 @@ This setup tutorial is optional for those who are interested in the following:
 1. Learning about (and using) virtual environments in R to ensure reproducibility (benefits explained below).
 
 2. Learning about using python 🐍 in (and with) R. This is useful for some ML lab sessions, and cutting-edge ML is often first implemented in python.
-
 :::
 
 ::: callout-tip
