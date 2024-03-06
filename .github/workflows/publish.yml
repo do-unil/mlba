@@ -53,7 +53,7 @@ jobs:
 
       - name: Increase stack size
         run: |
-          ulimit -s unlimited || true
+          ulimit -s unlimited
           ulimit -a
 
       - name: Publish Quarto Project
