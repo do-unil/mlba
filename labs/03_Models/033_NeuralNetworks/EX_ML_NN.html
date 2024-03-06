@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -768,7 +768,7 @@ Learning about some of the hyperparameters
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the performance on tree</span></span>
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">MAE</span>(<span class="at">obs =</span> test_y, <span class="at">pred =</span> tree_preds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The neural network also outperforms CART (if you run NN for 300 epochs). This is due to multiple reasons, including a higher complexity of the neural network (more parameters), using a validation set, and so on. You will learn about ensemble methods (beginning and boosting) in the upcoming lectures. Ensemble methods are the true champions for structured data (at least as of 2023) and usually outperform neural networks for structured/low-dimensional data.</p>
+<p>The neural network also outperforms CART (if you run NN for 300 epochs). This is due to multiple reasons, including a higher complexity of the neural network (more parameters), using a validation set, and so on. You will learn about ensemble methods (bagging and boosting) in the upcoming lectures. Ensemble methods are the true champions for structured data and usually outperform neural networks for structured/low-dimensional data.</p>
 </section>
 </section>
 <section id="image-classification" class="level1">
@@ -1161,6 +1161,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   if (showAllCode) {
     showAllCode.addEventListener("click", toggleCodeHandler(true));
   }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/do-unil\.github\.io\/mlba");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -1195,7 +1213,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -1728,7 +1750,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb25-267"><a href="#cb25-267" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">MAE</span>(<span class="at">obs =</span> test_y, <span class="at">pred =</span> tree_preds)</span>
 <span id="cb25-268"><a href="#cb25-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-269"><a href="#cb25-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-270"><a href="#cb25-270" aria-hidden="true" tabindex="-1"></a>The neural network also outperforms CART (if you run NN for 300 epochs). This is due to multiple reasons, including a higher complexity of the neural network (more parameters), using a validation set, and so on. You will learn about ensemble methods (beginning and boosting) in the upcoming lectures. Ensemble methods are the true champions for structured data (at least as of 2023) and usually outperform neural networks for structured/low-dimensional data.</span>
+<span id="cb25-270"><a href="#cb25-270" aria-hidden="true" tabindex="-1"></a>The neural network also outperforms CART (if you run NN for 300 epochs). This is due to multiple reasons, including a higher complexity of the neural network (more parameters), using a validation set, and so on. You will learn about ensemble methods (bagging and boosting) in the upcoming lectures. Ensemble methods are the true champions for structured data and usually outperform neural networks for structured/low-dimensional data.</span>
 <span id="cb25-271"><a href="#cb25-271" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-272"><a href="#cb25-272" aria-hidden="true" tabindex="-1"></a><span class="fu"># Image Classification</span></span>
 <span id="cb25-273"><a href="#cb25-273" aria-hidden="true" tabindex="-1"></a></span>
