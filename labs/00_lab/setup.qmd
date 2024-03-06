@@ -11,7 +11,6 @@ This setup tutorial is optional for those who are interested in the following:
 
 2. Learning about using python 🐍 in (and with) R. This is useful for some ML lab sessions, and cutting-edge ML is often first implemented in python.
 
-If you are not interested in either objective, skip this Rmd and jump into the modelling exercises starting with `KNN`.
 :::
 
 ::: callout-tip
