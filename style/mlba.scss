@@ -32,9 +32,9 @@ div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, 
   font-weight: bold;
 }
 
-div[data-code-copy="false"] button.code-copy-button {
-  display: none;
-}
+// div[data-code-copy="false"] button.code-copy-button {
+//   display: none;
+// }
 
 @media (prefers-color-scheme: dark) {
   code {
