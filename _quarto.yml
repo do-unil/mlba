@@ -127,8 +127,10 @@ website:
         contents:
           - href: resources/beginners_r.qmd
             text: Beginners in R
-          - href: resources/data_sources.qmd
+          - href: resources/data_acquisition/data_sources.qmd
             text: Data Sources
+          - href: resources/data_acquisition/web_scraping_api.qmd
+            text: Web Scraping
           - href: resources/cheatsheets.qmd
             text: Coding Cheatsheets
   
