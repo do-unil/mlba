@@ -53,8 +53,8 @@ jobs:
 
       - name: Increase stack size
         run: |
-          sudo ulimit -s unlimited || true
-          sudo ulimit -a
+          ulimit -s unlimited || true
+          ulimit -a
 
       - name: Publish Quarto Project
         uses: quarto-dev/quarto-actions/publish@v2
