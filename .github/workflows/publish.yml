@@ -51,6 +51,15 @@ jobs:
       #     ulimit -s 16384
       #     ulimit -a
 
+      # you can also try the solution provided here https://github.com/rstudio/renv/issues/1028 and here https://github.com/randy3k/radian/issues/214
+      # - name: Check Linux
+      #   if: runner.os == 'Linux'
+      #   env:
+      #     _R_CHECK_CRAN_INCOMING_REMOTE_: false
+      #   run: |
+      #     ulimit -s unlimited
+      #     Rscript -e 'rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")'
+
       - name: Increase stack size
         run: |
           ulimit -s unlimited

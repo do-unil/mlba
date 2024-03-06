@@ -1,5 +1,8 @@
 ---
 title: "Web scraping & APIs"
+execute:
+  freeze: auto
+  eval: false
 ---
 
 # Video lecture
@@ -46,7 +49,7 @@ imdb.html <- read_html("data/IMDb _Top 250.html")
 
 Now, we identify *the positions of the titles*. On the web page (opened preferably with Chrome) right-click on a title and select "Inspect". The tag corresponding to the titles appears on the developer window (partially reproduced below).
 
-```{bash eval=FALSE}
+```{bash}
 <div class="lister-item-content">
 <h3 class="lister-item-header">
     <span class="lister-item-index unbold text-primary">1.</span>
@@ -76,7 +79,7 @@ Another way would have been to use the fact that the targeted `h3` tags have a c
 
 <details><summary>**Answer**</summary>
 <p>
-```{r eval = FALSE}
+```{r}
 titles <- imdb.html %>% 
   html_nodes("h3.lister-item-header a") %>% 
   html_text2()
@@ -162,7 +165,6 @@ This is convenient when you want to extract a particular text. You can also use 
 In this exercise, we practice the text extraction from a PDF file. First, we use the `pdf_text` function to read the text on the file "cs.pdf".
 
 ```{r}
-
 cs.text <- pdf_text("data/cs.pdf")
 cs.text[[1]]
 ```
@@ -181,7 +183,7 @@ Please note that the package `tabulizer` is not updated as often anymore. Theref
 :::
 
 
-```{r, eval=FALSE}
+```{r}
 if (!require("remotes")) {
     install.packages("remotes")
 }
@@ -193,7 +195,7 @@ remotes::install_github(c("ropensci/tabulizerjars", "ropensci/tabulizer"))
 
 Suppose now that we want to extract the Table in Appendix p.10. The library `tabulizer` and its function `extract_tables` allows to make a step in this direction. 
 
-```{r, eval=FALSE}
+```{r}
 cs.table <- tabulizer::extract_tables("data/cs.pdf",
   output = "data.frame",
   pages = 10, 
@@ -243,7 +245,7 @@ In this exercise you are invited to create your API key for [The Guardian Open P
 
 First, register to the open platform and save your key character. Then we request articles about "Arsenal Football Club" between for parts of August of 2022.
 
-```{r eval=FALSE}
+```{r}
 library(guardianapi)
 gu_api_key()
 #My Key: "fa9a4ddf-1e70-404f-889c-70ef31414cc5"
@@ -255,7 +257,7 @@ Arsenal <- gu_content("Arsenal Football Club",
 
 As we see on the first article, the text hence read is an HTML code. We now turn it into a text using `rvest`.
 
-```{r eval=FALSE}
+```{r}
 library(rvest)
 read_html(Arsenal$body[1]) %>% html_text()
 ```
