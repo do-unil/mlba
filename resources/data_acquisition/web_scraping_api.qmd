@@ -48,7 +48,8 @@ Unlike the lab sessions, we do not provide the Python code, but the principles b
 
 ## Using CSS
 
-In this pratice, we learn how to use the `rvest` package to extract  information from the famous IMDB (Internet Movie Database) site of the 50 most popular movies (<https://www.imdb.com/search/title/?groups=top_250&sort=user_rating>). The page was saved locally on moodle. You can find in the `/data` folder. Alternatively, you can directly work on the link. However, it may have been updated in a way that the code below might not work anymore. 
+In this pratice, we learn how to use the `rvest` package to extract  information from the famous IMDB (Internet Movie Database) site of the 50 most popular movies (<https://www.imdb.com/search/title/?groups=top_250&sort=user_rating>). The page was 
+saved (downloaded) and is also available in the `data/` folder. Alternatively, you can directly work on the link. However, bear in mind that thr structure of online websites can change in time, therefore, the code below might need adjustments (i.e., change in tags).
 
 First, we load the page. 
 
