@@ -5,8 +5,15 @@ execute:
   eval: false
 ---
 
+# Motivation
+
+Navigating the digital age means unlocking the treasure trove of data available online. Web scraping and APIs aren't just technical skills; they're your keys to a universe of data for any project you can imagine. Think about the ease of analyzing trends, financial markets, or even sports—all through data you gather and analyze yourself.
+
+In this section, Ilia walks us through the essentials of harnessing web data, offering a powerful alternative for those looking to source unique datasets for their projects. Knowing these techniques empowers you to find and utilize data that sparks your curiosity and fuels your research. Let's dive in and discover how these tools can transform your approach to data.
+
 # Video lecture
-Below, you can find one of the lectures given by Ilia on web scraping and use of APIs during the [Text Mining course](https://hec-si.unil.ch/gide-api/web/syllabus/2840?base_url=https://www.unil.ch/hec/fr/home/menuinst/masters/management/cours-et-horaires.html?url=) of 2022.
+
+First, we start with a video lecture given by Ilia on web scraping and the use of APIs during the [Text Mining course](https://hec-si.unil.ch/gide-api/web/syllabus/2840?base_url=https://www.unil.ch/hec/fr/home/menuinst/masters/management/cours-et-horaires.html?url=) of 2022. The rest of this page contains a set of practice exercises that were shared during this lecture.
 
 <!-- {{< video https://drive.google.com/file/d/13hz208TzcE0WgnZiS48ZKafAEpnqp_cZ/preview >}} -->
 
@@ -168,7 +175,7 @@ imdb.top.50 %>%
 
 ## XPath 
 
-In the previous exercise, we used the CSS to identify the tags. We now use an alternative: the XPath. The Xpath is preferably used when we want to extract a specific text. For example, we want to extract the description of the first description: right-click and select inspect. Then right-click the corresponding code line, and select "Copy xpath". Pass this, to the xpath parameter of `html_nodes` like below:
+In the previous part, we used the CSS to identify the tags. We now use an alternative: the XPath. The Xpath is preferably used when we want to extract a specific text. For example, we want to extract the description of the first description: right-click and select inspect. Then right-click the corresponding code line, and select "Copy xpath". Pass this, to the xpath parameter of `html_nodes` like below:
 
 ```{r}
 desc1 <- imdb.html %>% 
@@ -231,7 +238,7 @@ We can note that special characters (here special dashes "-") could not be recog
 
 # Optical Character Recognition (OCR)
 
-In this exercise, we use the Optical Character Recognition (OCR) functionalities accessible via R to read a text from an image. First, we read the image using `image_read` in the package `magick`, the result is then passed to the `image_ocr` function in the package `tesseract`. 
+In this part, we use the Optical Character Recognition (OCR) functionalities accessible via R to read a text from an image. First, we read the image using `image_read` in the package `magick`, the result is then passed to the `image_ocr` function in the package `tesseract`. 
 
 ```{r}
 text <- image_read("data/TextFR.png") %>%
@@ -264,7 +271,7 @@ The result should be close to perfect.
 
 # API
 
-In this exercise you are invited to create your API key for [The Guardian Open Plateform](https://open-platform.theguardian.com/) and to use it to extract papers using the `guardianapi` package.
+In this final part, you are invited to create your API key for [The Guardian Open Plateform](https://open-platform.theguardian.com/) and to use it to extract papers using the `guardianapi` package.
 
 First, register to the open platform and save your key character. Then we request articles about "Arsenal Football Club" between for parts of August of 2022.
 
