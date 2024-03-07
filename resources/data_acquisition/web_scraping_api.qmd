@@ -184,7 +184,7 @@ This is convenient when you want to extract a particular text. You can also use 
 
 # Parsing PDF files
 
-In this exercise, we practice the text extraction from a PDF file. First, we use the `pdf_text` function to read the text on the file "cs.pdf".
+In this part, we practice the text extraction from a PDF file. First, we use the `pdf_text` function to read the text on the file "cs.pdf".
 
 ```{r}
 cs.text <- pdf_text("data/cs.pdf")
@@ -201,7 +201,7 @@ head(cs.text)
 
 ::: callout-warning
 ### The package `tabulizer` may not work
-Please note that the package `tabulizer` is not updated as often anymore. Therefore, even when trying to get it from its github page (<https://github.com/ropensci/tabulizer>), it may not work. Nevertheless, we have kept the details here, and you can use it from your side or alternatively look for other alternatives online.
+Please note that the package `tabulizer` is not updated as often anymore. Therefore, even when trying to get it from its github page (<https://github.com/ropensci/tabulizer>), it may not work. Nevertheless, we have kept the details here, and you can use it from your side or alternatively look for similar packages online.
 :::
 
 
