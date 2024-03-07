@@ -6,7 +6,7 @@ execute:
 ---
 
 # Video lecture
-Below, you can find one of the lectures given by Ilia on web scraping and APIs during the [text mining course](https://hec-si.unil.ch/gide-api/web/syllabus/2840?base_url=https://www.unil.ch/hec/fr/home/menuinst/masters/management/cours-et-horaires.html?url=) of 2022.
+Below, you can find one of the lectures given by Ilia on web scraping and use of APIs during the [Text Mining course](https://hec-si.unil.ch/gide-api/web/syllabus/2840?base_url=https://www.unil.ch/hec/fr/home/menuinst/masters/management/cours-et-horaires.html?url=) of 2022.
 
 <!-- {{< video https://drive.google.com/file/d/13hz208TzcE0WgnZiS48ZKafAEpnqp_cZ/preview >}} -->
 
