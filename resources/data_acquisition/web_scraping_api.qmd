@@ -9,7 +9,7 @@ execute:
 
 Navigating the digital age means unlocking the treasure trove of data available online. Web scraping and APIs aren't just technical skills; they're your keys to a universe of data for any project you can imagine. Think about the ease of analyzing trends, financial markets, or even sports—all through data you gather and analyze yourself.
 
-In this section, Ilia walks us through the essentials of harnessing web data, offering a powerful alternative for those looking to source unique datasets for their projects. Knowing these techniques empowers you to find and utilize data that sparks your curiosity and fuels your research. Let's dive in and discover how these tools can transform your approach to data.
+In this section, Ilia walks us through the essentials of harnessing web data, offering a powerful alternative for those looking to source unique datasets for their projects. Knowing these techniques empowers you to find and utilize data that sparks your curiosity and fuels your research. Let's dive in and discover how these tools can transform your approach to data collection.
 
 # Video lecture
 
