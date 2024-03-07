@@ -16,8 +16,6 @@ toc: false
 🏗 *This section is still under development (to be updated soon)* 🏗
 ::: -->
 
-## Some Guidelines For A Presentation
-
 **A typical plan:**
 
 - Title, date and team 
