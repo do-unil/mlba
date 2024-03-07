@@ -284,5 +284,5 @@ library(rvest)
 read_html(Arsenal$body[1]) %>% html_text()
 ```
 
-From now on, you can tokenize and analyze the data. 
+From this point onwards, you can tokenize and analyze the data on your own.
 
