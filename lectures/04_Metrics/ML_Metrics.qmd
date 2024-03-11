@@ -7,8 +7,10 @@ execute:
 code-tools: false
 code-fold: false
 code-link: false
-reader-mode: true
 ---
+
+[In-class R script 📄](ML_Metrics.R)
+
 Concept
 =======
 
