@@ -8,6 +8,9 @@ code-tools: false
 code-fold: false
 code-link: false
 ---
+
+[In-class Python script 📄](ML_NeuralNetworks.py)
+
 Concept and prediction formula
 ==============================
 
@@ -68,7 +71,7 @@ Z_{12} &=& \sigma(\eta_{12}) = \frac{e^{\eta_{12}}}{1+e^{\eta_{12}}}\end{aligned
 The $Z$ values are now passed to the outcome nodes. E.g., at `setosa`:
 $$\begin{aligned}
 \eta_{12} &=& \theta_{12}^{(0)} + \theta_{12}^{(1)} Z_{11} + \theta_{12}^{(1)} Z_{21} \\
- &=& 0.0 + 0.0 Z_{11} - 1.0 Z_{21} \\\end{aligned}$$ The calculation is
+ &=& 0.0 + 0.0 Z_{11} + 1.0 Z_{21} \\\end{aligned}$$ The calculation is
 repeated for each node giving $\eta_{12}, \eta_{22}, \eta_{32}$. Then,
 the value of the node is obtained applying the **soft-max** function:
 $$\begin{aligned}
@@ -177,7 +180,7 @@ Training algorithm
 ### Gradient Descent
 
 The training is done by minimizing $\bar{\cal L}(\theta)$, which is an
-intensive computation. The most used algorithm is the **gradient descent**.
+intensive computation. The most used algorithm is the **gradient descent**:
 
 -   Start at a random set of weights $\theta$,
 
@@ -249,10 +252,8 @@ $$(10+1)\times 16 + (16+1)\times 8 + (8+1)\times 3 = 339$$ weights. With such a 
 
 ### Regularization
 
-The idea is to use $L_1$ and/or $L_2$ penalties on the loss during the
-training
-$$\bar{\cal L}(\theta) + \lambda_1 \sum_{j} |\theta_j| + \lambda_2 \sum_{j} \theta_j^2.$$ Again there is no simple way to set the penalty parameters $\lambda_1$
-and $\lambda_2$. Note that it is possible to have different penalty
-parameters in different layers. Unlike regression and trees, and like SVM, this regularization can help to avoid overfitting but cannot be interpreted easily.
+The idea is to use $L_1$ and/or $L_2$ penalties on the loss during the training
+$$\bar{\cal L}(\theta) + \lambda_1 \sum_{j} |\theta_j| + \lambda_2 \sum_{j} \theta_j^2$$.
+Again there is no simple way to set the penalty parameters $\lambda_1$ and $\lambda_2$. Note that it is possible to have different penalty parameters in different layers. Unlike regression and trees, and like SVM, this regularization can help to avoid overfitting but cannot be interpreted easily.
 
 [^1]: See logistic regression.
