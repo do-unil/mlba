@@ -111,7 +111,7 @@ website:
             text: "Autoencoders"
       - section: "Assessments"
         contents:
-          - href: assessments/exam.qmd
+          - href: assessments/Exam.qmd
             text: Exam
           - section: "Project"
             contents:
