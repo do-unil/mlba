@@ -328,13 +328,13 @@ What happens when the threshold $\lambda$ ranges from 0 to 1?
 \frametitle{ROC curve and AUC}
 The ROC curve is obtained when $\lambda$ varies between 0 and 1, $Spec=x$, and $y=Sens$. The specificies are usually in the reverse order.
 \begin{center}
-\includegraphics[width=5cm]{../Graphs/ROC_curve.png}
+\includegraphics[width=5cm]{../Graphs/ROC_curve.pdf}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{ROC curve and AUC}
-A perfect model have large sensitivity {\bf and} specificity {\bf for all} $\lambda$ (except $0$ and $1$). This corresponds to a single point in the upper left corner of the ROC.\\
+A perfect model has large sensitivity {\bf and} specificity {\bf for all} $\lambda$ (except $0$ and $1$). This corresponds to a single point in the upper left corner of the ROC.\\
 \vspace{0.2cm}
 The diagonal in gray corresponds to the random model. The further the curve up that diagonal, the better the model. \\
 \vspace{0.2cm}
@@ -396,7 +396,7 @@ RMSE(M2) &<& RMSE(M1)
 \frametitle{The $R^2$}
 In the ML context, the $R^2$ ({\bf $R$ squared}) is the square of the correlation between the observations and the predictions. 
 $$
-R^2 = cor(y,f(x;\theta))
+R^2 = cor^2(y,f(x;\theta))
 $$
 The $R^2$ is bounded between 0 and 1. The larger the $R^2$, the better the model.\\
 \vspace{0.3cm}
@@ -552,7 +552,7 @@ mod.rp <- rpart(crime~poverty+single, data=cdata2)
 The 3 graphs below show the absolute values of the errors made by the models:
 \scriptsize
 \begin{center}
-\includegraphics[width=10cm]{../Graphs/crime_resid.png}
+\includegraphics[width=10cm]{../Graphs/crime_resid.pdf}
 \begin{tabular}{l | ccc}
 & LM & LM with quad & RT \\
 \hline
