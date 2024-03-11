@@ -102,6 +102,7 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="MLBA - S24 - Neural Networks">
+<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
 <meta property="og:site_name" content="MLBA - S24 ">
 </head>
 
@@ -368,7 +369,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../assessments/exam.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../assessments/Exam.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exam</span></a>
   </div>
 </li>
@@ -542,6 +543,7 @@ updateImageSrc();
 </header>
 
 
+<p><a href="ML_NeuralNetworks.py">In-class Python script 📄</a></p>
 <section id="concept-and-prediction-formula" class="level1">
 <h1>Concept and prediction formula</h1>
 <section id="artificial-neural-network" class="level3">
@@ -587,7 +589,7 @@ Z_{12} &amp;=&amp; \sigma(\eta_{12}) = \frac{e^{\eta_{12}}}{1+e^{\eta_{12}}}\end
 <h3 class="anchored" data-anchor-id="the-output">The output</h3>
 <p>The <span class="math inline">\(Z\)</span> values are now passed to the outcome nodes. E.g., at <code>setosa</code>: <span class="math display">\[\begin{aligned}
 \eta_{12} &amp;=&amp; \theta_{12}^{(0)} + \theta_{12}^{(1)} Z_{11} + \theta_{12}^{(1)} Z_{21} \\
-&amp;=&amp; 0.0 + 0.0 Z_{11} - 1.0 Z_{21} \\\end{aligned}\]</span> The calculation is repeated for each node giving <span class="math inline">\(\eta_{12}, \eta_{22}, \eta_{32}\)</span>. Then, the value of the node is obtained applying the <strong>soft-max</strong> function: <span class="math display">\[\begin{aligned}
+&amp;=&amp; 0.0 + 0.0 Z_{11} + 1.0 Z_{21} \\\end{aligned}\]</span> The calculation is repeated for each node giving <span class="math inline">\(\eta_{12}, \eta_{22}, \eta_{32}\)</span>. Then, the value of the node is obtained applying the <strong>soft-max</strong> function: <span class="math display">\[\begin{aligned}
 Z_{12} &amp;=&amp; \frac{e^{\eta_{12}}}{e^{\eta_{12}}+e^{\eta_{22}}+e^{\eta_{32}}},\\
 Z_{22} &amp;=&amp; \frac{e^{\eta_{22}}}{e^{\eta_{12}}+e^{\eta_{22}}+e^{\eta_{32}}},\\
 Z_{32} &amp;=&amp; \frac{e^{\eta_{32}}}{e^{\eta_{12}}+e^{\eta_{22}}+e^{\eta_{32}}}.\end{aligned}\]</span></p>
@@ -664,7 +666,7 @@ Empirical rules are</p>
 <h1>Training algorithm</h1>
 <section id="gradient-descent" class="level3">
 <h3 class="anchored" data-anchor-id="gradient-descent">Gradient Descent</h3>
-<p>The training is done by minimizing <span class="math inline">\(\bar{\cal L}(\theta)\)</span>, which is an intensive computation. The most used algorithm is the <strong>gradient descent</strong>.</p>
+<p>The training is done by minimizing <span class="math inline">\(\bar{\cal L}(\theta)\)</span>, which is an intensive computation. The most used algorithm is the <strong>gradient descent</strong>:</p>
 <ul>
 <li><p>Start at a random set of weights <span class="math inline">\(\theta\)</span>,</p></li>
 <li><p>Update the weights using a descent direction (i.e., a direction guaranteeing a diminution of the loss), usually the negative gradient <span class="math display">\[\theta \leftarrow \theta - \eta \nabla \bar{\cal L}(\theta),\]</span></p></li>
@@ -710,7 +712,7 @@ Empirical rules are</p>
 </section>
 <section id="regularization" class="level3">
 <h3 class="anchored" data-anchor-id="regularization">Regularization</h3>
-<p>The idea is to use <span class="math inline">\(L_1\)</span> and/or <span class="math inline">\(L_2\)</span> penalties on the loss during the training <span class="math display">\[\bar{\cal L}(\theta) + \lambda_1 \sum_{j} |\theta_j| + \lambda_2 \sum_{j} \theta_j^2.\]</span> Again there is no simple way to set the penalty parameters <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>. Note that it is possible to have different penalty parameters in different layers. Unlike regression and trees, and like SVM, this regularization can help to avoid overfitting but cannot be interpreted easily.</p>
+<p>The idea is to use <span class="math inline">\(L_1\)</span> and/or <span class="math inline">\(L_2\)</span> penalties on the loss during the training <span class="math display">\[\bar{\cal L}(\theta) + \lambda_1 \sum_{j} |\theta_j| + \lambda_2 \sum_{j} \theta_j^2\]</span>. Again there is no simple way to set the penalty parameters <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span>. Note that it is possible to have different penalty parameters in different layers. Unlike regression and trees, and like SVM, this regularization can help to avoid overfitting but cannot be interpreted easily.</p>
 
 
 </section>

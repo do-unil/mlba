@@ -136,6 +136,7 @@ window.Quarto = {
 </script>
 
 <meta property="og:title" content="MLBA - S24 - Metrics">
+<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
 <meta property="og:site_name" content="MLBA - S24 ">
 </head>
 
@@ -402,7 +403,7 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../assessments/exam.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assessments/Exam.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exam</span></a>
   </div>
 </li>
@@ -572,6 +573,7 @@ updateImageSrc();
 </header>
 
 
+<p><a href="ML_Metrics.R">In-class R script 📄</a></p>
 <section id="concept" class="level1">
 <h1>Concept</h1>
 <section id="concept-1" class="level3">
@@ -791,8 +793,7 @@ RMSE(M2) &amp;&lt;&amp; RMSE(M1)\end{aligned}\]</span></p>
 </section>
 <section id="the-r2" class="level3">
 <h3 class="anchored" data-anchor-id="the-r2">The <span class="math inline">\(R^2\)</span></h3>
-<p>In the ML context, the <span class="math inline">\(R^2\)</span> (<strong><span class="math inline">\(R\)</span> squared</strong>) is the square of the correlation between the observations and the predictions. <span class="math display">\[R^2 = cor(y,f(x;\theta))\]</span> The <span class="math inline">\(R^2\)</span> is bounded between 0 and 1. The larger the <span class="math inline">\(R^2\)</span>, the better the model.<br>
-The <span class="math inline">\(R^2\)</span> is an attempt to approximate / replace the usual <span class="math inline">\(R^2\)</span> of a linear regression. However, these two must not be confounded because they will often be different (though conveying the same idea).</p>
+<p>In the ML context, the <span class="math inline">\(R^2\)</span> (<strong><span class="math inline">\(R\)</span> squared</strong>) is the square of the correlation between the observations and the predictions. <span class="math display">\[R^2 = cor^2(y,f(x;\theta))\]</span> The <span class="math inline">\(R^2\)</span> is bounded between 0 and 1. The larger the <span class="math inline">\(R^2\)</span>, the better the model. The <span class="math inline">\(R^2\)</span> is an attempt to approximate / replace the usual <span class="math inline">\(R^2\)</span> of a linear regression. However, these two must not be confounded because they will often be different (though conveying the same idea).</p>
 </section>
 </section>
 <section id="final-words" class="level1">
