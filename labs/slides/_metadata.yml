@@ -4,7 +4,7 @@ format:
   revealjs: 
     theme: [default, ../auxiliary/styles/ml_slides.css, ../auxiliary/styles/flow.scss]
     slide-number: true
-    preview-links: auto
+    preview-links: true
     footer: "MLBA 2024"
     logo: ../auxiliary/images/unil_logo.png
     self-contained: true
