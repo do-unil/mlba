@@ -63,7 +63,7 @@ The size of groups is 3 students. You may now register [via our moodle page](htt
 
 ### Originality And Style
 
-The project consists of an original analysis of one data set. We encourage the data set to be extracted from the sources provided on the [webpage of the course](https://do-unil.github.io/mlba/resources/data_sources.html). If you decide to use another one, please ask us a validation. In any case, the data source must be given.
+The project consists of an original analysis of one data set. We encourage the data set to be extracted from the [sources provided on the webpage of the course](https://do-unil.github.io/mlba/resources/data_acquisition/data_sources.html) or alternatively use [web scraping to gather novel data](https://do-unil.github.io/mlba/resources/data_acquisition/web_scraping_api.html). If you decide to use another one, please ask us a validation. In any case, the data source must be given.
 
 If the data comes from a previous analysis, then your analysis must have new elements (new models, features, outcome labels, approaches, interpretations, etc.). In such case, this analysis must be explained, and the original aspects of the new analysis must be made clear, for example, being transparent on the important differences between your and the previous analysis.
 

@@ -1,0 +1,234 @@
+---
+title: "MLBA Lab 2"
+subtitle: "An introduction to [Quarto]{.flow}"
+date: "03.18.2024"
+preview-links: true
+---
+
+## Motivation
+```{r setup, include = F}
+library(reticulate)
+library(tidyverse)
+library(formatR)
+
+knitr::opts_chunk$set(
+  #collapse = TRUE,
+  comment = "#>",
+  #header = paste0("```{", knitr::opts_current$get("engine.name"), "}"),
+ # footer = "```",
+#  fig.align="center",
+  eval = T,
+  echo = T,
+  tidy.opts = list(width.cutoff = 40),
+  tidy = TRUE
+)
+```
+
+-   Learning about [Quarto]{.flow}
+    -   What are its output formats? Reports (PDF, HTML, Docx), Presentations (PPT, KEY, HTML) & websites (HTML).
+-   Learning how to interact with [Quarto]{.flow}
+    -   How can it be used? It can be used with many integrated development environments (IDEs) such as Rstudio, Jupyter Notebook & VSCode.
+-   Using what we have seen in class with [Quarto]{.flow}
+    -   Reason(s) to use? Good application for ML course & reporting in general. It particularly benefits interactive reporting, especially when multiple programming languages are involved.
+
+## What is `Quarto`{.flow}?
+
+-   Quarto® is an open-source scientific and technical publishing system built on Pandoc.
+-   Pandoc is a versatile tool for converting documents from one format to another. It allows you to convert a document written in one markup language to another markup language, such as converting a Markdown document to HTML or LaTeX.
+-   Think of Quarto as R-markdown on steroids.
+
+![](../auxiliary/images/knitr-engine.png)
+
+## Formats
+
+::: panel-tabset
+### Websites
+
+::: {style="text-align: center; margin-top: 1em"}
+[![nbdev.fast.ai](../auxiliary/images/website.png){height="400"}](https://nbdev.fast.ai/){preview-link="true"}
+:::
+
+### Books
+
+::: {style="text-align: center; margin-top: 1em"}
+[![Python for Data Analysis, 3E by Wes McKinney](../auxiliary/images/book.png){height="400"}](https://wesmckinney.com/book/){preview-link="true"}
+:::
+
+### Blogs
+
+::: {style="text-align: center; margin-top: 1em"}
+[![https://jollydata.blog/](../auxiliary/images/blog.png){height="400"}](https://jollydata.blog/){preview-link="true"}
+:::
+
+[![The untold story of palmerpenguins by Dr. Kristen Gorman, Dr. Allison Horst, andDr. Alison Hill](../auxiliary/images/presentation.png){height="400"}](https://apreshill.github.io/palmerpenguins-useR-2022/#/title-slide){preview-link="true"}
+
+### Journals
+
+::: {style="text-align: center; margin-top: 1em"}
+![Journal of Statistical Software (JSS)](https://user-images.githubusercontent.com/163582/42351114-e5deaa1c-8078-11e8-90de-2aff57bba255.png){height="400"}
+:::
+:::
+
+::: notes
+Quarto can make very flexible websites, or books which are a a Quarto website that can be rendered to Word, ePub, etc., blogs with listings and posts and RSS feeds, Quarto has deep feature set for presentations with reveal.js optimized for scientific content, and of course, publishing for journals. There is custom format systems and the ability to flexibly adapt LaTeX templates.
+:::
+
+## Compatibility {.small}
+
+<!-- ::: {layout-ncol="3"} -->
+:::: {.columns}
+
+
+::: {.column width="30%"}
+
+![](https://quarto.org/docs/get-started/images/rstudio-logo.png){width="80"}
+
+![](https://quarto.org/docs/tools/images/rstudio-preview.png){width="500" fig-alt="A screenshot of a Quarto document rendered inside RStudio"}
+:::
+
+::: {.column width="30%"}
+
+![](https://quarto.org/docs/get-started/images/vscode-logo.png){width="80"}
+
+<!-- ![](https://quarto.org/docs/computations/images/python-vscode.png){width="500" fig-alt="A screenshot of a Quarto document rendered inside VSCode" group='vs-code'} -->
+
+![](https://quarto.org/docs/tools/images/vscode-render.png){width="500" fig-alt="A screenshot of a Quarto document rendered inside VSCode"}
+
+:::
+
+<!-- style='align-items: center;' -->
+::: {.column width="30%"}
+
+![](https://quarto.org/docs/get-started/images/jupyter-logo.png){width="80"}
+
+
+![](https://quarto.org/docs/tools/images/jupyterlab-preview.png){width="500" fig-alt="A screenshot of a Quarto document rendered inside JupyterLab"}
+
+:::
+
+::: aside
+..and many other editors. For more info, please see [https://quarto.org/docs/get-started/](https://quarto.org/docs/get-started/)
+:::
+
+::::
+
+<!-- ::: r-stack -->
+<!-- ![](https://quarto.org/docs/tools/images/rstudio-preview.png){.fragment width="1500" fig-alt="A screenshot of a Quarto document rendered inside RStudio"} -->
+
+<!-- ![](https://quarto.org/docs/tools/images/jupyterlab-preview.png){.fragment width="1500" fig-alt="A screenshot of a Quarto document rendered inside JupyterLab"} -->
+
+<!-- ![](https://quarto.org/docs/computations/images/python-vscode.png){.fragment width="1500" fig-alt="A screenshot of a Quarto document rendered inside VSCode"} -->
+<!-- ::: -->
+
+# Rstudio Demo{style="text-align: center;"}
+
+## Presentations: Pretty Code {auto-animate="true"}
+
+-   Over 20 syntax highlighting themes available
+-   Default theme optimized for accessibility
+
+``` r
+# Define a server for the Shiny app
+function(input, output) {
+  
+  # Fill in the spot we created for a plot
+  output$phonePlot <- renderPlot({
+    # Render a barplot
+  })
+}
+```
+
+## Presentations: Code Animations {auto-animate="true"}
+
+-   Over 20 syntax highlighting themes available
+-   Default theme optimized for accessibility
+
+``` r
+# Define a server for the Shiny app
+function(input, output) {
+  
+  # Fill in the spot we created for a plot
+  output$phonePlot <- renderPlot({
+    # Render a barplot
+    barplot(WorldPhones[,input$region]*1000, 
+            main=input$region,
+            ylab="Number of Telephones",
+            xlab="Year")
+  })
+}
+```
+
+## Presentations: Line Highlighting
+
+-   Highlight specific lines for emphasis
+-   Incrementally highlight additional lines
+
+``` {.python code-line-numbers="4-5|7|10"}
+import numpy as np
+import matplotlib.pyplot as plt
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+## Presentations: Executable Code
+
+```{r}
+#| echo: true
+#| fig-width: 10
+#| fig-height: 4.5
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = am)) +
+  geom_point() +
+  geom_smooth(formula = y ~ x, method = "loess")
+```
+
+## Presentations: Auto-Animate {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Automatically animate matching elements across slides with Auto-Animate.
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #3fb618; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #e83e8c; width: 200px; height: 150px; margin: 10px;"}
+:::
+:::
+
+## Presentations: Auto-Animate {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+Automatically animate matching elements across slides with Auto-Animate.
+
+::: r-stack
+::: {data-id="box1" style="background: #2780e3; width: 350px; height: 350px; border-radius: 200px;"}
+:::
+
+::: {data-id="box2" style="background: #3fb618; width: 250px; height: 250px; border-radius: 200px;"}
+:::
+
+::: {data-id="box3" style="background: #e83e8c; width: 150px; height: 150px; border-radius: 200px;"}
+:::
+:::
+
+# Thank You for your attention!
+
+Questions?
+
+## References & Credits {.smaller}
+
+- [Quarto official website & documentation](https://quarto.org)
+
+- Slides taken from `Isabella Velásquez` from Posit (Rstudio) on [this link of `Intro to Quarto`](https://ivelasq.quarto.pub/intro-to-quarto/#/section). For the source code, please see [here](https://github.com/ivelasq/2022-10-27_intro-to-quarto/blob/main/index.qmd).
+
+- Slides taken from the official Posit (Rstudio) website for introducing Quarto.
+
+- Another nice resource is from Tom Mock (Posit/Rstudio), given as [webinar in 2022](https://jthomasmock.github.io/quarto-2hr-webinar). Notably, my set of slides was inspired by his [introduction slides](https://jthomasmock.github.io/quarto-2hr-webinar/materials/01-intro-quarto.html#/TitleSlide). For the entire deck of slides and source code visit this `qmd` file on [his github](https://github.com/rstudio-conf-2022/get-started-quarto/blob/main/materials/01-intro-quarto.qmd).
+
+- Huge list of resources for Quarto with many examples from `mcanouil/awesome-quarto` found [here](https://github.com/mcanouil/awesome-quarto).
