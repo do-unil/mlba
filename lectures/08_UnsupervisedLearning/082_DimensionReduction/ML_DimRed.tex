@@ -31,7 +31,7 @@ For unsupervised learning, {\bf data representation and simplification} is an im
 \vspace{0.2cm}
 {\bf Example:} {\tt iris} data has $4$ features (species not used). The data cannot be represented on a single graph.
 \begin{center}
-\includegraphics[width=11cm]{../../Graphs/Iris_raw.png}
+\includegraphics[width=11cm]{../../Graphs/Iris_raw.pdf}
 \end{center} 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,7 +41,7 @@ Observation: {\tt Petal.Length} and {\tt Petal.Width} are highly correlated: if 
 \vspace{0.3cm}
 To simplify the representation, we do not need these two features: replace them by their average {\tt Petal.WL = (Petal.W+Petal.L)/2}:
 \begin{center}
-\includegraphics[width=10cm]{../../Graphs/Iris_raw2.png}
+\includegraphics[width=10cm]{../../Graphs/Iris_raw2.pdf}
 \end{center} 
 Same observation for {\tt Petal.WL} and {\tt Sepal.Length}...
 \end{frame}
@@ -143,7 +143,7 @@ It represents how well the data are represented on the component $z_j$.
 \begin{frame}
 \frametitle{PCA: example}
 \begin{center}
-\includegraphics[width=7cm]{../../Graphs/Iris_pca.png}
+\includegraphics[width=7cm]{../../Graphs/Iris_pca.pdf}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -172,7 +172,7 @@ Together, PC1 and PC2 explain $95.8\%$ of the variation of the data. The scatter
 \frametitle{PCA: the circle of correlations}
 Correlation between the PC and the features $x$ can be computed to see how is PC is correlated to each features.
 \begin{center}
-\includegraphics[width=10cm]{../../Graphs/Iris_pcacircle.png}
+\includegraphics[width=10cm]{../../Graphs/Iris_pcacircle.pdf}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -195,7 +195,7 @@ With one graph, we know
 \frametitle{PCA: the $cos^2$}
 The circle of correlations relates the dimensions and the features. Another view is the {\bf $cos^2$} graph. It is interpreted as the quality of the representation of the feature by the dimension. Of course this is intimately related to the correlations.
 \begin{center}
-\includegraphics[width=8cm]{../../Graphs/Iris_cos2.png}
+\includegraphics[width=8cm]{../../Graphs/Iris_cos2.pdf}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -203,7 +203,7 @@ The circle of correlations relates the dimensions and the features. Another view
 \frametitle{PCA: the biplot}
 The {\bf biplot} shows a {\bf map of the individuals} in the dimensions and adds the circle of correlations. 
 \begin{center}
-\includegraphics[width=9cm]{../../Graphs/Iris_biplot.png}
+\includegraphics[width=9cm]{../../Graphs/Iris_biplot.pdf}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -231,7 +231,7 @@ The {\bf screeplot} may help.
 \begin{frame}
 \frametitle{PCA: the screeplot}
 \begin{center}
-\includegraphics[width=9cm]{../../Graphs/Iris_scree.png}
+\includegraphics[width=9cm]{../../Graphs/Iris_scree.pdf}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -251,9 +251,94 @@ PCA can only be performed on {\bf numerical features}. When categorical features
 \item for ordinal data, quick and dirty solution: modalities can be mapped to numbers ($1,2,\ldots$) respecting their order,
 \item for nominal data: there is no correct solution; especially replacing by numbers is {\bf incorrect}.
 \end{itemize}
-{\bf Factor Analysis of Mixed Data} (FAMD) is a solution. 
+With only categorical data, {\bf (Multiple) Correspondence Analysis} is a solution. And for mixed data type (categorical and numerical), {\bf Factor Analysis of Mixed Data} (FAMD) is a solution. However, they are not adapted to large data set.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Auto-encoders}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Principle}
+PCA is a "linear" technique, based on the explanation of the correlation between the features. Auto-encoder are neural network. The idea is to train a model that recovers an instance with an intermediate layer of lower dimension than the number of features.\\
+\begin{center}
+\includegraphics[width=7cm]{../../Graphs/autoencod_illustr.png}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{encoder + decoder = autoencoder}
+\begin{itemize}
+\item The input and the output (response) are the same instance ($X$), of dimension $p$.
+\item The intermediate layer (at least one) is of dimension $k<p$.
+\item The model is trained to recover $X$ ate the end.
+\end{itemize}
+If, after traning, the model can recover $X$ from $X$, then it can recover $X$ from its image in the intermediate layer $h(X)$. Thus, only $p$ dimensions would be needed to recover $X$. \\
+\vspace{0.2cm}
+Thus, 
+\begin{itemize}
+\item the left part of the NN {\bf encodes} $X$ in its lower-dimension version $h(X)$
+\item the right part of the NN {\bf decodes} $h(X)$ in an output $g(h(X))$, hopefully close to the original image $X$.
+\end{itemize}
+The better this final image the better the encoding/decoding:
+$$
+g(h(X)) \stackrel{?}{\approx} X.
+$$
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Autoencoder vs PCA}
+In ML, often autoencoder are used to 
+\begin{itemize}
+\item Reduce the noise in the data (smoothing)
+\item Reduce the memory needed (compressing)
+\item Represent the data (dimension reduction)
+\end{itemize}
+Unlike PCA, autoencoder do not provide interpretation of the dimensions, which dimension is the most important, etc.\\
+\vspace{0.3cm}
+On the other hand, autoencoders can produce better final representation of the data: the recovery of $X$ with $k$ components is better than with PCA.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Interpretability}
+Like PCA make two-dimensional plots to discover pattern. Below, autoencoder (see example file) with 3-node intermediate-layer:
+\begin{center}
+\includegraphics[width=9cm]{../../Graphs/Iris_AE_embed.pdf}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Interpretability}
+Relate each component of $h(X)$ to each component of $X$ using variable importance (or another technique). Below, Node 1 to 3 (left to right; top to bottom).
+\begin{center}
+\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp1.pdf}
+\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp2.pdf}
+\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp3.pdf}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+
+\section{Numerical, categorical data}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Categorical features}
+For categorical features, using dummy variables with PCA usually {\bf do not} provide good results.\\
+\vspace{0.2cm}
+For pure categorical data analysis, the technique similar to PCA is {\bf Multiple Correspondence Analysis} (MCA). 
+\begin{itemize}
+\item Based on spectral decomposition and interpretation of its component (mathematics are very similar to PCA)
+\item Not based on the correlation matrix but a the contingency matrix (variance is replaced by inertia).
+\item Different interpretations as features are related through their modalities which is more complex than just correlations.
+\end{itemize}
+We do not have time in this course to see MCA in details. In the following, we see how to interpret it.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{MCA Interpretation}
+The equivalent of the correlation circle is a factor map (i.e., modality of the features).
+
+\end{frame}
+
 \section{Factor Analysis of Mixed Data}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -320,7 +405,7 @@ Because proportions sum up to 1, there are $(3-1)\times (3-1) = 4$ possible dime
 \frametitle{Only categorical data}
 The scree plot shows the percentage of inertia explained by each dimension.
 \begin{center}
-\includegraphics[width=7cm]{../../Graphs/FAMD_screeplot.png}
+\includegraphics[width=7cm]{../../Graphs/FAMD_screeplot.pdf}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -331,11 +416,11 @@ The plots of the contributions shows the contributions of each variable (Length 
 \normalsize
 \begin{columns}
 \begin{column}{0.55\textwidth}
-\includegraphics[width=6cm]{../../Graphs/FAMD_contrib_xy.png}
+\includegraphics[width=6cm]{../../Graphs/FAMD_contrib_xy.pdf}
 \end{column}
 \begin{column}{0.45\textwidth}
-\includegraphics[width=4.5cm]{../../Graphs/FAMD_contrib_x.png}\\
-\includegraphics[width=4.5cm]{../../Graphs/FAMD_contrib_y.png}
+\includegraphics[width=4.5cm]{../../Graphs/FAMD_contrib_x.pdf}\\
+\includegraphics[width=4.5cm]{../../Graphs/FAMD_contrib_y.pdf}
 \end{column}
 \end{columns}
 \end{frame}
@@ -344,7 +429,7 @@ The plots of the contributions shows the contributions of each variable (Length 
 \frametitle{Only categorical data}
 The plot of the modalities locates the modalities of each variable on the map of the dimensions.
 \begin{center}
-\includegraphics[width=7cm]{../../Graphs/FAMD_quali.png}
+\includegraphics[width=7cm]{../../Graphs/FAMD_quali.pdf}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -361,88 +446,3 @@ The biplot of the individuals and modalities relates the observations. Below we 
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Auto-encoders}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Principle}
-PCA is a "linear" technique, based on the explanation of the correlation between the features. Auto-encoder are neural network. The idea is to train a model that recovers an instance with an intermediate layer of lower dimension than the number of features.\\
-\begin{center}
-\includegraphics[width=7cm]{../../Graphs/autoencod_illustr.png}
-\end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{encoder + decoder = autoencoder}
-\begin{itemize}
-\item The input and the output (response) are the same instance ($X$), of dimension $p$.
-\item The intermediate layer (at least one) is of dimension $k<p$.
-\item The model is trained to recover $X$ ate the end.
-\end{itemize}
-If, after traning, the model can recover $X$ from $X$, then it can recover $X$ from its image in the intermediate layer $h(X)$. Thus, only $p$ dimensions would be needed to recover $X$. \\
-\vspace{0.2cm}
-Thus, 
-\begin{itemize}
-\item the left part of the NN {\bf encodes} $X$ in its lower-dimension version $h(X)$
-\item the right part of the NN {\bf decodes} $h(X)$ in an output $g(h(X))$, hopefully close to the original image $X$.
-\end{itemize}
-The better this final image the better the encoding/decoding:
-$$
-g(h(X)) \stackrel{?}{\approx} X.
-$$
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Autoencoder vs PCA}
-In ML, often autoencoder are used to 
-\begin{itemize}
-\item Reduce the noise in the data (smoothing)
-\item Reduce the memory needed (compressing)
-\item Represent the data (dimension reduction)
-\end{itemize}
-Unlike PCA, autoencoder do not provide interpretation of the dimensions, which dimension is the most important, etc.\\
-\vspace{0.3cm}
-On the other hand, autoencoders can produce better final representation of the data: the recovery of $X$ with $k$ components is better than with PCA.
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Interpretability}
-Like PCA make two-dimensional plots to discover pattern. Below, autoencoder (see example file) with 3-node intermediate-layer:
-\begin{center}
-\includegraphics[width=9cm]{../../Graphs/Iris_AE_embed.png}
-\end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Interpretability}
-Relate each component of $h(X)$ to each component of $X$ using variable importance (or another technique). Below, Node 1 to 3 (left to right; top to bottom).
-\begin{center}
-\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp1.png}
-\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp2.png}
-\includegraphics[width=5cm]{../../Graphs/Iris_AE_VImp3.png}
-\end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\end{document}
-
-\section{Numerical, categorical data}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Categorical features}
-For categorical features, using dummy variables with PCA usually {\bf do not} provide good results.\\
-\vspace{0.2cm}
-For pure categorical data analysis, the technique similar to PCA is {\bf Multiple Correspondence Analysis} (MCA). 
-\begin{itemize}
-\item Based on spectral decomposition and interpretation of its component (mathematics are very similar to PCA)
-\item Not based on the correlation matrix but a the contingency matrix (variance is replaced by inertia).
-\item Different interpretations as features are related through their modalities which is more complex than just correlations.
-\end{itemize}
-We do not have time in this course to see MCA in details. In the following, we see how to interpret it.
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{MCA Interpretation}
-The equivalent of the correlation circle is a factor map (i.e., modality of the features).
-
-\end{frame}
-
