@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.552">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -501,12 +501,6 @@ window.Quarto = {
   <li><a href="#pca-and-machine-learning" id="toc-pca-and-machine-learning" class="nav-link" data-scroll-target="#pca-and-machine-learning">PCA and machine learning</a></li>
   <li><a href="#categorical-data" id="toc-categorical-data" class="nav-link" data-scroll-target="#categorical-data">Categorical data</a></li>
   </ul></li>
-  <li><a href="#factor-analysis-of-mixed-data" id="toc-factor-analysis-of-mixed-data" class="nav-link" data-scroll-target="#factor-analysis-of-mixed-data">Factor Analysis of Mixed Data</a>
-  <ul class="collapse">
-  <li><a href="#concept" id="toc-concept" class="nav-link" data-scroll-target="#concept">Concept</a></li>
-  <li><a href="#only-categorical-data" id="toc-only-categorical-data" class="nav-link" data-scroll-target="#only-categorical-data">Only categorical data</a></li>
-  <li><a href="#mixed-data" id="toc-mixed-data" class="nav-link" data-scroll-target="#mixed-data">Mixed data</a></li>
-  </ul></li>
   <li><a href="#auto-encoders" id="toc-auto-encoders" class="nav-link" data-scroll-target="#auto-encoders">Auto-encoders</a>
   <ul class="collapse">
   <li><a href="#principle" id="toc-principle" class="nav-link" data-scroll-target="#principle">Principle</a></li>
@@ -731,84 +725,7 @@ If the features are independent, this number is likely to be large. If the featu
 <li><p>for ordinal data, quick and dirty solution: modalities can be mapped to numbers (<span class="math inline">\(1,2,\ldots\)</span>) respecting their order,</p></li>
 <li><p>for nominal data: there is no correct solution; especially replacing by numbers is <strong>incorrect</strong>.</p></li>
 </ul>
-<p><strong>Factor Analysis of Mixed Data</strong> (FAMD) is a solution.</p>
-</section>
-</section>
-<section id="factor-analysis-of-mixed-data" class="level1">
-<h1>Factor Analysis of Mixed Data</h1>
-<section id="concept" class="level3">
-<h3 class="anchored" data-anchor-id="concept">Concept</h3>
-<p>Much less known than PCA, FAMD is a mixture of two techniques</p>
-<ul>
-<li><p>PCA for numerical features,</p></li>
-<li><p><strong>Multiple Correspondence Analysis</strong> (MCA) for categorical features.</p></li>
-</ul>
-<p>For sake of time, we do not see MCA in detail in this course. The focus is made on the interpretation and its use for dimensional reduction. One must pay attention to the subtleties of different interpretations between the part of numerical features (PCA) and the one for categorical features (MCA).</p>
-<p>To illustrate, we create an artificial <code>iris</code> data containing</p>
-<ul>
-<li><p>Length (S/M/L): category of length (sum of petal and sepal length),</p></li>
-<li><p>Width (S/M/L): category of width (sum of petal and sepal width),</p></li>
-<li><p>Species: the original feature; used as supplementary variable.</p></li>
-</ul>
-<p>The association between length and width are shown on the tables:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>            Width</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Length      Width_L Width_M Width_S</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    Length_L  <span class="fl">0.8889</span>  <span class="fl">0.2000</span>  <span class="fl">0.0000</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    Length_M  <span class="fl">0.1111</span>  <span class="fl">0.5375</span>  <span class="fl">0.2558</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    Length_S  <span class="fl">0.0000</span>  <span class="fl">0.2625</span>  <span class="fl">0.7442</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            Width</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>Length     Width_L Width_M Width_S</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    Length_L <span class="fl">0.60000</span> <span class="fl">0.40000</span> <span class="fl">0.00000</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    Length_M <span class="fl">0.05263</span> <span class="fl">0.75439</span> <span class="fl">0.19298</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    Length_S <span class="fl">0.00000</span> <span class="fl">0.39623</span> <span class="fl">0.60377</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>MCA<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> builds artificial dimension that locates width and length modalities reflecting the previous associations:</p>
-<ul>
-<li><p>Large width is associated with large length</p></li>
-<li><p>Small width is associated with small length</p></li>
-<li><p>Medium width and medium length (proportions) are in-between large and small width and length.</p></li>
-</ul>
-<p>Similar to the PCA, these dimensions can be represented on a map, associated to the modalities of the variables, explains a proportion of the information of the data. Unlike PCA, the information is not measure by variance but by the <strong>inertia</strong>. Because proportions sum up to 1, there are <span class="math inline">\((3-1)\times (3-1) = 4\)</span> possible dimensions.</p>
-<p>The scree plot shows the percentage of inertia explained by each dimension.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../Graphs/FAMD_Screeplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
-</figure>
-</div>
-<p>The plots of the contributions shows the contributions of each variable (Length and Width) to the dimensions (1 and 2).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../Graphs/FAMD_contrib_xy.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../Graphs/FAMD_contrib_x.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../Graphs/FAMD_contrib_y.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
-</figure>
-</div>
-<p>The plot of the modalities locates the modalities of each variable on the map of the dimensions.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../Graphs/FAMD_quali.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:40.0%"></p>
-</figure>
-</div>
-</section>
-<section id="only-categorical-data" class="level3">
-<h3 class="anchored" data-anchor-id="only-categorical-data">Only categorical data</h3>
-<p>The biplot of the individuals and modalities relates the observations. Below we added the species<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../Graphs/FAMD_biplot_species.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-</section>
-<section id="mixed-data" class="level3">
-<h3 class="anchored" data-anchor-id="mixed-data">Mixed data</h3>
+<p>With only categorical data, <strong>(Multiple) Correspondence Analysis</strong> is a solution. And for mixed data type (categorical and numerical), <strong>Factor Analysis of Mixed Data</strong> (FAMD) is a solution. However, they are not adapted to large data set.</p>
 </section>
 </section>
 <section id="auto-encoders" class="level1">
@@ -889,14 +806,7 @@ Thus,</p>
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>With only categorical variables, FAMD is simply an MCA.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Supplementary variables not used in the FAMD.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
