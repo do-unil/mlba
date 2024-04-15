@@ -8,6 +8,9 @@ code-tools: false
 code-fold: false
 code-link: false
 ---
+
+[In-class R script 📄](ML_DimRed.R)
+
 Dimension reduction
 ===================
 
