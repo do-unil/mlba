@@ -98,3 +98,4 @@ d |>
 ::: callout-note
 The content of the schedule may be adapted (faster or slower).
 :::
+
