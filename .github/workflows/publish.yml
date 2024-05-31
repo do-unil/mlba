@@ -41,10 +41,11 @@ jobs:
         with:
           use-public-rspm: true     
 
+      # See here for more info https://github.com/r-lib/actions/tree/v2-branch/setup-renv
       - name: Set up renv
         uses: r-lib/actions/setup-renv@v2
         with:
-          cache-version: 2
+          cache-version: 3
 
       # - name: Increase RAM limit for R
       #   run: |

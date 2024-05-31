@@ -107,6 +107,10 @@ env_name <- "MLBA"
 if (!env_name %in% reticulate::conda_list()$name) {
   reticulate::conda_create(env_name, pip = TRUE) # we use pip for installations
 }
+
+# Print the conda list
+print(reticulate::conda_list())
+
 # make sure we're using the right environment
 reticulate::use_condaenv(env_name)
 
@@ -172,7 +176,7 @@ You can install any python package in R using the `reticulate::py_install()` com
 
 We will install all the packages we need for this particular setup. This should be go smoothly with the following command:
 
-```{r results=F}
+```{r results=F, eval=F}
 # Install python package into virtual environment
 reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost", "gap-stat","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
 ```
