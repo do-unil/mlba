@@ -1,14 +1,15 @@
 project:
   type: website
   render:
-    - "labs/00_lab/setup.qmd"
+    # - "labs/00_lab/setup.qmd"
     - schedule.qmd
     - "*.qmd"
-    - "!labs/00_lab/renv/"
+    # - "!labs/00_lab/renv/"
     - "!renv/"
     - "!images/"
     - "!styles/"
     - "!site_libs/"
+    - "!labs/**"  # This excludes all .qmd files in the labs directory and its subdirectories
 
 website:
   page-navigation: true
@@ -81,34 +82,34 @@ website:
             text: "Clustering"
           - href: "lectures/08_UnsupervisedLearning/082_DimensionReduction/ML_DimRed.qmd"
             text: "Dimension Reduction"
-      - section: "Labs"
-        contents:
-          - href: labs/00_lab/setup.qmd
-            text: "Setup"
-          - href: labs/03_Models/031_LinearLogisticRegression/Ex_ML_LinLogReg.qmd
-            text: "Linear & Logistic Regression"
-          - href: labs/03_Models/032_Trees/Ex_ML_Tree.qmd
-            text: "Decision Trees"
-          - href: labs/03_Models/033_NeuralNetworks/EX_ML_NN.qmd
-            text: "Neural Networks"
-          - href: labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.qmd
-            text: "Support Vector Machines"
-          # - href: labs/03_Models/035_KNN/Ex_ML_KNN.qmd
-          #   text: "K-Nearest Neighbors"
-          - href: labs/04_Metrics/Ex_ML_Scoring.qmd
-            text: "Metrics"
-          - href: labs/05_DataSplitting/Ex_ML_Data_Splitting.qmd
-            text: "Data Splitting"
-          - href: labs/06_Ensembles/Ex_ML_Ensemble.qmd
-            text: "Ensemble Methods"
-          - href: labs/07_InterpretableML/Ex_ML_VarImp.qmd
-            text: "Interpretable ML"
-          - href: labs/08_UnsupervisedLearning/081_Clustering/Ex_ML_Clustering.qmd
-            text: "Clustering"
-          - href: labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.qmd
-            text: "PCA"
-          - href: labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.qmd
-            text: "Autoencoders"
+      # - section: "Labs"
+      #   contents:
+      #     - href: labs/00_lab/setup.qmd
+      #       text: "Setup"
+      #     - href: labs/03_Models/031_LinearLogisticRegression/Ex_ML_LinLogReg.qmd
+      #       text: "Linear & Logistic Regression"
+      #     - href: labs/03_Models/032_Trees/Ex_ML_Tree.qmd
+      #       text: "Decision Trees"
+      #     - href: labs/03_Models/033_NeuralNetworks/EX_ML_NN.qmd
+      #       text: "Neural Networks"
+      #     - href: labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.qmd
+      #       text: "Support Vector Machines"
+      #     # - href: labs/03_Models/035_KNN/Ex_ML_KNN.qmd
+      #     #   text: "K-Nearest Neighbors"
+      #     - href: labs/04_Metrics/Ex_ML_Scoring.qmd
+      #       text: "Metrics"
+      #     - href: labs/05_DataSplitting/Ex_ML_Data_Splitting.qmd
+      #       text: "Data Splitting"
+      #     - href: labs/06_Ensembles/Ex_ML_Ensemble.qmd
+      #       text: "Ensemble Methods"
+      #     - href: labs/07_InterpretableML/Ex_ML_VarImp.qmd
+      #       text: "Interpretable ML"
+      #     - href: labs/08_UnsupervisedLearning/081_Clustering/Ex_ML_Clustering.qmd
+      #       text: "Clustering"
+      #     - href: labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.qmd
+      #       text: "PCA"
+      #     - href: labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.qmd
+      #       text: "Autoencoders"
       - section: "Assessments"
         contents:
           - href: assessments/Exam.qmd

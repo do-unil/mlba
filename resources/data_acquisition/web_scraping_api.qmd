@@ -226,12 +226,12 @@ remotes::install_github(c("ropensci/tabulizerjars", "ropensci/tabulizer"))
 Suppose now that we want to extract the Table in Appendix p.10. The library `tabulizer` and its function `extract_tables` allows to make a step in this direction. 
 
 ```{r}
-cs.table <- tabulizer::extract_tables("data/cs.pdf",
-  output = "data.frame",
-  pages = 10, 
-  guess = TRUE
-)
-cs.table[[1]][1:10,] ## 10 first rows of the table (which is stored in the first element of a list)
+# cs.table <- tabulizer::extract_tables("data/cs.pdf",
+#   output = "data.frame",
+#   pages = 10, 
+#   guess = TRUE
+# )
+# cs.table[[1]][1:10,] ## 10 first rows of the table (which is stored in the first element of a list)
 ```
 
 We can note that special characters (here special dashes "-") could not be recognized. But the encoding can now be work out and the table be cleaned for further usage. The technique is far from perfect and is unlikly to be of any use for automatic extraction on a large number of documents, except if they are all very well structured.

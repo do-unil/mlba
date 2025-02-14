@@ -10,11 +10,13 @@ code-link: false
 ::: {.callout-important}
 
 ## Important dates (more info during the class)
-- Monday the 29^th^ of April: **[Written exam (in-class)]{.underline}**
-- Sunday the 19^th^ of May: **[Project report deadline]{.underline}**
-- Thursday the 23^rd^ of May: **[Project presentation deadline]{.underline}**
-- Monday the 27^th^ of May: **[Presentations of the projects]{.underline}**
+- Monday the 5^th^ of May: **[Written exam (in-class)]{.underline}**
+- Sunday the 21^th^ of May: **[Project report deadline]{.underline}**
+- Monday the 26^th^ of May: **[Presentations of the projects project presentation deadline]{.underline}**
 :::
+
+**Note that the schedule below way be updated after the first week. The lecture notes, i.e., `lecture_qmd`, will definitely be updated.**
+
 
 ```{r}
 #| echo: false
@@ -24,8 +26,16 @@ code-link: false
 library(googlesheets4)
 library(gt)
 library(tidyverse)
+
+# Try to read the sheet without authentication first
 gs4_deauth()
-d <- read_sheet("https://docs.google.com/spreadsheets/d/1B_KRL3Wc_81RpNvD6eNxGdaTFazhuqOpqQUyHmh1gqo/edit?usp=sharing")
+tryCatch({
+  d <- read_sheet("https://docs.google.com/spreadsheets/d/18oYnuxY3hVve3s8g9tG16L7JlTtzfXzJmWMAk__1xK8/edit?usp=sharing")
+}, error = function(e) {
+  # If there's an error, provide a meaningful message
+  stop("Unable to access the Google Sheet. Please check the URL and sharing permissions.")
+})
+
 ```
 
 
@@ -89,7 +99,7 @@ d |>
     footnote = "📩 Report submission at 23:59",
     locations = cells_body(
       columns = 2,
-      rows = date %in% as.Date(c("2024-05-19", "2024-05-23"))
+      rows = date %in% as.Date(c("2025-05-21"))
     )
   )
 
