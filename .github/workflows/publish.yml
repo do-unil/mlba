@@ -69,7 +69,7 @@ jobs:
       - name: Publish Quarto Project
         uses: quarto-dev/quarto-actions/publish@v2
         with:
-          target: "gh-pages"
+          target: gh-pages
 
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
