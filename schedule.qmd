@@ -12,7 +12,7 @@ code-link: false
 ## Important dates (more info during the class)
 - Monday the 5^th^ of May: **[Written exam (in-class)]{.underline}**
 - Sunday the 21^th^ of May: **[Project report deadline]{.underline}**
-- Monday the 26^th^ of May: **[Presentations of the projects project presentation deadline]{.underline}**
+- Monday the 26^th^ of May: **[Presentations of the projects & slides submission deadline]{.underline}**
 :::
 
 **Note that the schedule below way be updated after the first week. The lecture notes, i.e., `lecture_qmd`, will definitely be updated.**
