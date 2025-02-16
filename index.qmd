@@ -1,5 +1,5 @@
 ---
-title: "Machine Learning in Business Analytics 2023-2024"
+title: "Machine Learning in Business Analytics 2024-2025"
 repo-actions: false
 toc: false
 code-tools: false
