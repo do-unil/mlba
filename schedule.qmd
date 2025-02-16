@@ -11,7 +11,7 @@ code-link: false
 
 ## Important dates (more info during the class)
 - Monday the 5^th^ of May: **[Written exam (in-class)]{.underline}**
-- Sunday the 21^th^ of May: **[Project report deadline]{.underline}**
+- Wednesday the 21^th^ of May: **[Project report deadline]{.underline}**
 - Monday the 26^th^ of May: **[Presentations of the projects & slides submission deadline]{.underline}**
 :::
 
