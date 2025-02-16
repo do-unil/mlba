@@ -1,4 +1,4 @@
-# Official repository for MLBA Spring 2024 website
+# Official repository for MLBA Spring 2025 website
 Official repository for the Machine Learning in Business Analytics course taught at [HEC Lausanne](https://hec-si.unil.ch/gide-api/web/syllabus/2736?base_url=https://www.unil.ch/hec/home/menuinst/etudes/cours.html?url=).
 
 ## Instructions to get the website up and running
