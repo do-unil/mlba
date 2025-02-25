@@ -13,63 +13,60 @@ library(summarytools)
 data(bank)
 df <- bank # create a workable copy
 
-## logistic regression on deposit
+## logistic regression with outcome = deposit
 bank_logreg <- glm(deposit ~ ., data=df, family="binomial")
 summary(bank_logreg)
 
-## !!! Important: positive class (success) is the second factor level
+## !!! Important: the positive class is the second factor level
 ## i.e., see levels(bank$deposit) [cf ?family and binomial]
 
-## Some improvement are possible, let's see
-## 1. Simplify jobs
+## Because jobs has lots of levels, we simplify it
 table(df$job) %>% prop.table() %>% sort(decreasing = TRUE) %>% cumsum()
-## 6 modalities accounts for >75% of the instances -> create a category "other"
+## 6 modalities accounts for >75% of the instances -> we create a category "other"
 levels(df$job)[c(3,4,7,6,7,9,11,12)] <- "other"
 levels(df$job)
 
+## Fit again the logistic regression with the new lob variable
 bank_logreg <- glm(deposit ~ ., data=df, family="binomial")
 summary(bank_logreg)
 
-## Example: Linear predictor & predicted probabilty & predicted class
-df[1,]
-predict(bank_logreg, newdata = df[1,], type = "link") # see predict.glm
-exp(-1.25823)/(1+exp(-1.25823)) # sigmoid function
-predict(bank_logreg, newdata = df[1,], type = "response") # directly
+## Example: Linear predictor & predicted probability & predicted class
+## suppose we want to predict this instance, i.e., the first row of df
+df[1,] 
+## we can make it by hand. First, compute the linear predictor:
+predict(bank_logreg, newdata = df[1,], type = "link") # see ?predict.glm
+## Then apply the sigmoid function:
+exp(-1.25823)/(1+exp(-1.25823)) 
+## Alternatively, we can use predict with argument type="response" 
+predict(bank_logreg, newdata = df[1,], type = "response") 
+## In any case, the final prediction ("yes" or "no") must be done by thresholding by hand:
 ifelse(predict(bank_logreg, newdata = df[1,], type = "response") > 0.5, "yes", "no") # only by hand
-
-## also...
-predict(bank_logreg, newdata = df[1,], type = "terms") # contributions to the linear predictor of each variables
-
-## ############################
-## Discussion: 
-## How certain is that case? 
-## If age increases, is it more or less likely to reach deposit==yes?
-## How about switching from education=primary to education==secondary?
 
 ## ###########################
 ## Variable selection
 
 ## using AIC
-step(bank_logreg) 
-bank_logreg_sel <- step(bank_logreg, trace = FALSE) # silent run + store the model
+step(bank_logreg) # see the result in direct
+## Equivalently, we can run it silently (trace=FALSE) and store the final model in a variable
+bank_logreg_sel <- step(bank_logreg, trace = FALSE) 
 
-## ############################
 ## Discussion: 
-## What variables where removed from the model?
-## What type of scheme is it? (backward, forward, both)
+## - Check which variables were removed from the model.
+## - Recover what selection was applied (backward, forwar or both)
 
-## using LASSO 
-
-## first convert the predictor to numerical variable (dummy variables)
+## using LASSO
+## Technically more complex in R
+## First, we convert the predictor to numerical variables
 x <- model.matrix(deposit~., data=df)[,-1] # remove deposit and the intercept
-## set alpha=1 for full LASSO
-## use cv.glmnet to select lambda by cross validation
-fit <- cv.glmnet(x=x, y=df$deposit, family="binomial", alpha=1)
-fit
-## see the coefficients for the penalty lambda.min
-coef(fit, s="lambda.min") 
-## for simplicity, refit the model
-bank_logreg_L1 <- glmnet(x=x, y=df$deposit, family = "binomial", alpha=1, lambda=fit$lambda.min)
+head(x)
+## Discussion:
+## What type of variables are poutcomeother, poutcomesuccess?  (dummy variables)
+
+## For illustration,
+## set alpha=1 for full LASSO (see course, alpha=0 => ridge)
+## set lambda=0.01
+bank_logreg_L1 <- glmnet(x=x, y=df$deposit, family = "binomial", alpha=1, lambda=0.01)
+coef(bank_logreg_L1)
 ## Example of prediction for the first case
 predict(bank_logreg_L1, newx = x[1,], type = "response")
 

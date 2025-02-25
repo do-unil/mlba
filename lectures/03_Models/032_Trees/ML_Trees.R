@@ -9,6 +9,8 @@ data(bank)
 df <- bank
 levels(df$job)[c(3,4,7,6,7,9,11,12)] <- "other"
 
+set.seed(123) ## this is useful for reproducibility because there is randomness in the following
+
 ## fit a tree (use greedy algorithm) and plot it
 bank_ct <- rpart(deposit ~ ., data=df)
 rpart.plot(bank_ct)
@@ -22,20 +24,22 @@ rpart.plot(bank_ct)
 ## start with a large model
 bank_ct <- rpart(deposit ~ ., data=df, control = list(cp=0.0001))
 rpart.plot(bank_ct)
-set.seed(123) ## for reproducibility
-plotcp(bank_ct, upper = "split") # -> select leftmost mean under the line 
-printcp(bank_ct) # look for the corresponding cp
-bank_ct_prun <- prune(bank_ct, cp=0.022) # 3 splits
+
+## Produce the uncertainty plot
+plotcp(bank_ct, upper = "split") 
+## => select leftmost mean under the line (here, 3 splits)
+## Use the table below to identify the corresponding CP (should be 0.0211)
+printcp(bank_ct) 
+## Use the CP to prune the tree at 3 splits (CP=0.022) with the function below
+bank_ct_prun <- prune(bank_ct, cp=0.022)
 rpart.plot(bank_ct_prun)
 
-## Can be done automatically (!!! very long)
-##bank_ct_prun2 <- autoprune(deposit ~ ., data=df)
-##rpart.plot(bank_ct_prun2) 
+## This can be done automatically using function auto.prune
+## !!! very long
+bank_ct_prun2 <- autoprune(deposit ~ ., data=df)
+rpart.plot(bank_ct_prun2) 
 
-## ###############################
-## Discussion
-## What are the advantage / drawbacks of the two approaches? (precision, time, energy consumption)
-
+## #################################
 ## #################################
 ## Example with regression
 data(house) 
