@@ -204,3 +204,8 @@ execute:
   warning: false
   message: false
   output: false
+
+publish:
+  provider: gh-pages
+  output-dir: _site
+  branch: gh-pages
