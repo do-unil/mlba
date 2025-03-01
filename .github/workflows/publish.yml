@@ -13,15 +13,16 @@ permissions:
 
 jobs:
   build-website:
+    # Use a larger runner for more memory
     runs-on: ubuntu-latest
     concurrency:
-      group:  ${{ github.workflow }}
+      group: ${{ github.workflow }}
       cancel-in-progress: true
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-    # defaults:
-    #   run:
-    #     shell: bash -l {0}
+      # Add R-specific memory settings
+      R_MAX_VSIZE: 16Gb
+      R_MAX_NUM_DLLS: 250
     steps:
       - uses: actions/checkout@v3
 
@@ -29,7 +30,6 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           tinytex: true
-          # version: 1.4.330
 
       - name: Install system dependencies
         run: |
@@ -53,27 +53,36 @@ jobs:
       #     ulimit -a
 
       # you can also try the solution provided here https://github.com/rstudio/renv/issues/1028 and here https://github.com/randy3k/radian/issues/214
-      # - name: Check Linux
-      #   if: runner.os == 'Linux'
-      #   env:
-      #     _R_CHECK_CRAN_INCOMING_REMOTE_: false
-      #   run: |
-      #     ulimit -s unlimited
-      #     Rscript -e 'rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")'
-
-      - name: Increase stack size
+      - name: Check Linux
+        if: runner.os == 'Linux'
+        env:
+          _R_CHECK_CRAN_INCOMING_REMOTE_: false
         run: |
           ulimit -s unlimited
-          ulimit -a
+          Rscript -e 'rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")'
+
+      - name: Configure R memory settings
+        run: |
+          mkdir -p ~/.R
+          echo "R_MAX_VSIZE=16Gb" >> ~/.Renviron
+          echo "R_MAX_NUM_DLLS=250" >> ~/.Renviron
+          ulimit -s unlimited
+          Rscript -e 'options(java.parameters = "-Xmx8g")'
+          Rscript -e 'options(future.globals.maxSize = 8 * 1024^3)'
+          Rscript -e 'memory.limit(size = 16000)'
 
       - name: Publish Quarto Project
+        env:
+          QUARTO_DENO_EXTRA_OPTIONS: --v8-flags=--max-old-space-size=16384
         run: |
-          ulimit -s unlimited
-          quarto publish --server gh-pages --id gh-pages
+          # Set MALLOC_ARENA_MAX to limit memory fragmentation
+          export MALLOC_ARENA_MAX=4
+          quarto render --profile gh-pages
+          quarto publish --server gh-pages --id gh-pages --no-render
 
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: _site # The folder the action should deploy.
+          branch: gh-pages
+          folder: _site
