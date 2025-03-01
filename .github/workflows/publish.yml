@@ -51,7 +51,7 @@ jobs:
       - name: Set up renv
         uses: r-lib/actions/setup-renv@v2
         with:
-          cache-version: 3
+          cache-version: 100
       
       # Configure memory settings for R on Windows
       - name: Configure R memory settings
