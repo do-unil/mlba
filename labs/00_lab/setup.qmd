@@ -32,6 +32,7 @@ knitr::opts_chunk$set(
   footer = "```",
   fig.align="center"
 )
+options(expressions = 10000)
 ```
 
 # Virtual environments in R (`renv`)

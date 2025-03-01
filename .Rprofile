@@ -13,3 +13,5 @@ if (Sys.getenv("RETICULATE_PYTHON") == "") {
 #   library(reticulate)
 #   use_virtualenv("MLBA")
 # }
+
+options(expressions = 10000)
