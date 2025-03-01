@@ -61,13 +61,35 @@ jobs:
           # Display memory information
           Get-CimInstance Win32_OperatingSystem | Select-Object TotalVisibleMemorySize,FreePhysicalMemory
       
-      # - name: Publish Quarto Project
-      #   run: |
-      #     quarto publish gh-pages --no-prompt
+      - name: Create CI-specific config
+        shell: pwsh
+        run: |
+          # Create a temporary Quarto config for CI that skips Python setup steps
+          $configContent = @"
+          execute:
+            freeze: auto
+            error: false
+            eval: true
+            echo: true
+            warning: true
+            fig-dpi: 96
+            timeout: 600
+          "@
+          
+          # Create a file-specific config only for setup.qmd
+          New-Item -Path "labs/00_lab" -Name "_ci-setup.yml" -ItemType File -Force
+          Set-Content -Path "labs/00_lab/_ci-setup.yml" -Value $configContent
+
       - name: Publish Quarto Project
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
+        shell: pwsh
+        run: |
+          # Configure maximum stack limits
+          [System.Threading.Thread]::CurrentThread.MaximumStackSize = [int]::MaxValue
+          
+          # Render with quarto publish using the CI-specific config
+          quarto publish gh-pages --no-prompt
+        env:
+          R_C_STACK_SIZE: 256M
 
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'

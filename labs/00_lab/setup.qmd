@@ -258,7 +258,7 @@ print(iris_data.head())
 
 We can do the same thing in R by calling `py$OBJECT_NAME` by using `reticulate::py$OBJECT_NAME`:
 
-```{r}
+```{r, eval = FALSE}
 # plotting the iris data from python
 plot(py$iris_data)
 ```
