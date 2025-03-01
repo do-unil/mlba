@@ -13,8 +13,8 @@ permissions:
 
 jobs:
   build-website:
-    # Use a larger runner for more memory
-    runs-on: ubuntu-latest
+    # Switch to Windows runner
+    runs-on: windows-latest
     concurrency:
       group: ${{ github.workflow }}
       cancel-in-progress: true
@@ -31,11 +31,6 @@ jobs:
         with:
           tinytex: true
 
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libcurl4-openssl-dev libglu1-mesa-dev libxml2-dev libssl-dev libv8-dev libfontconfig1-dev libfreetype6-dev cmake libmagick++-dev libpoppler-cpp-dev tesseract-ocr libtesseract-dev
-  
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
@@ -47,37 +42,28 @@ jobs:
         with:
           cache-version: 3
 
-      # - name: Increase RAM limit for R
-      #   run: |
-      #     ulimit -s 16384
-      #     ulimit -a
-
-      # you can also try the solution provided here https://github.com/rstudio/renv/issues/1028 and here https://github.com/randy3k/radian/issues/214
       - name: Configure R memory settings
+        shell: bash
         run: |
           mkdir -p ~/.R
           echo "R_MAX_VSIZE=16Gb" >> ~/.Renviron
           echo "R_MAX_NUM_DLLS=250" >> ~/.Renviron
-          # Increase C stack size limit
-          ulimit -s unlimited
-          # Set environment variable to increase stack size
           echo "R_C_STACK_SIZE=64M" >> ~/.Renviron
-          Rscript -e 'options(java.parameters = "-Xmx8g")'
-          Rscript -e 'options(future.globals.maxSize = 8 * 1024^3)'
-          Rscript -e 'options(expressions = 500000)'
+          Rscript -e "options(java.parameters = '-Xmx8g')"
+          Rscript -e "options(future.globals.maxSize = 8 * 1024^3)"
+          Rscript -e "options(expressions = 500000)"
 
       - name: Render Problematic Files
+        shell: bash
         run: |
           # Try rendering the problematic file with special settings
-          Rscript -e 'options(expressions = 500000); options(max.print = 1000)' -e 'rmarkdown::render("labs/00_lab/setup.qmd", output_format = "html_document")'
+          Rscript -e "options(expressions = 500000); options(max.print = 1000)" -e "rmarkdown::render('labs/00_lab/setup.qmd', output_format = 'html_document')"
           
       - name: Publish Quarto Project
+        shell: bash
         env:
           QUARTO_DENO_V8_OPTIONS: --max-old-space-size=16384
         run: |
-          # Set MALLOC_ARENA_MAX to limit memory fragmentation
-          export MALLOC_ARENA_MAX=4
-          # Modify render list to exclude already rendered file
           quarto render --profile gh-pages
           quarto publish --server gh-pages --id gh-pages --no-render
 
