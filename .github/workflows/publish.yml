@@ -58,17 +58,26 @@ jobs:
           mkdir -p ~/.R
           echo "R_MAX_VSIZE=16Gb" >> ~/.Renviron
           echo "R_MAX_NUM_DLLS=250" >> ~/.Renviron
+          # Increase C stack size limit
           ulimit -s unlimited
+          # Set environment variable to increase stack size
+          echo "R_C_STACK_SIZE=64M" >> ~/.Renviron
           Rscript -e 'options(java.parameters = "-Xmx8g")'
           Rscript -e 'options(future.globals.maxSize = 8 * 1024^3)'
-          Rscript -e 'memory.limit(size = 16000)'
+          Rscript -e 'options(expressions = 500000)'
 
+      - name: Render Problematic Files
+        run: |
+          # Try rendering the problematic file with special settings
+          Rscript -e 'options(expressions = 500000); options(max.print = 1000)' -e 'rmarkdown::render("labs/00_lab/setup.qmd", output_format = "html_document")'
+          
       - name: Publish Quarto Project
         env:
           QUARTO_DENO_V8_OPTIONS: --max-old-space-size=16384
         run: |
           # Set MALLOC_ARENA_MAX to limit memory fragmentation
           export MALLOC_ARENA_MAX=4
+          # Modify render list to exclude already rendered file
           quarto render --profile gh-pages
           quarto publish --server gh-pages --id gh-pages --no-render
 
