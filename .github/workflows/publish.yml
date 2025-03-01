@@ -19,8 +19,9 @@ jobs:
       cancel-in-progress: true
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      # Add R_MAX_VSIZE to increase memory limit
-      R_MAX_VSIZE: 100Gb
+    # defaults:
+    #   run:
+    #     shell: bash -l {0}
     steps:
       - uses: actions/checkout@v3
 
@@ -46,36 +47,30 @@ jobs:
         with:
           cache-version: 3
 
-      # Modify R's memory limits
-      - name: Configure R memory limits
-        run: |
-          echo "options(java.parameters = '-Xmx16000m')" >> ~/.Rprofile
-          echo "options(future.globals.maxSize = 8 * 1024^3)" >> ~/.Rprofile
-          echo "options(future.rng.onMisuse='ignore')" >> ~/.Rprofile
+      # - name: Increase RAM limit for R
+      #   run: |
+      #     ulimit -s 16384
+      #     ulimit -a
 
-      # Increase system limits
-      - name: Increase system limits
+      # you can also try the solution provided here https://github.com/rstudio/renv/issues/1028 and here https://github.com/randy3k/radian/issues/214
+      # - name: Check Linux
+      #   if: runner.os == 'Linux'
+      #   env:
+      #     _R_CHECK_CRAN_INCOMING_REMOTE_: false
+      #   run: |
+      #     ulimit -s unlimited
+      #     Rscript -e 'rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")'
+
+      - name: Increase stack size
         run: |
           ulimit -s unlimited
-          # Set higher memory limits
-          sudo sysctl -w vm.max_map_count=262144
-          # Display limits for verification
           ulimit -a
 
-      # Create a custom .Renviron file to set R_MAX_VSIZE
-      - name: Set R environment variables
-        run: |
-          echo "R_MAX_VSIZE=100Gb" > ~/.Renviron
-          echo "R_MAX_MEM_SIZE=100Gb" >> ~/.Renviron
-
-      # Render with specific options to avoid stack issues
       - name: Publish Quarto Project
-        run: |
-          # Set R_MAX_NUM_DLLS to a higher value
-          export R_MAX_NUM_DLLS=1000
-          # Use Rscript to set memory limits before rendering
-          Rscript -e 'options(expressions = 500000); options(max.print = 1000); options(scipen = 999); options(width = 120); options(future.globals.maxSize = 8 * 1024^3); quarto::quarto_render(".", as_job = FALSE)'
-          
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
         uses: JamesIves/github-pages-deploy-action@v4
