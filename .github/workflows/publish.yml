@@ -13,17 +13,15 @@ permissions:
 
 jobs:
   build-website:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     concurrency:
-      group: ${{ github.workflow }}
+      group:  ${{ github.workflow }}
       cancel-in-progress: true
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      # Configure R to use more memory
-      R_MAX_MEM_SIZE: 16000M
-      R_MAX_VSIZE: 16000M
-      # Increase this value significantly
-      R_C_STACK_SIZE: 256M
+    # defaults:
+    #   run:
+    #     shell: bash -l {0}
     steps:
       - uses: actions/checkout@v3
 
@@ -33,37 +31,41 @@ jobs:
           tinytex: true
           # version: 1.4.330
 
-      - name: Set up Miniconda
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          auto-update-conda: true
-          python-version: 3.9
-          activate-environment: mlba
-          miniconda-version: "latest"
-          
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libglu1-mesa-dev libxml2-dev libssl-dev libv8-dev libfontconfig1-dev libfreetype6-dev cmake libmagick++-dev libpoppler-cpp-dev tesseract-ocr libtesseract-dev
+  
       - name: Set up R
         uses: r-lib/actions/setup-r@v2
         with:
-          use-public-rspm: true
-          windows-path-include-mingw: true
+          use-public-rspm: true     
 
       # See here for more info https://github.com/r-lib/actions/tree/v2-branch/setup-renv
       - name: Set up renv
         uses: r-lib/actions/setup-renv@v2
         with:
-          cache-version: 100
-      
-      # Configure memory settings for R on Windows
-      - name: Configure R memory settings
-        run: |
-          echo "R_MAX_MEM_SIZE=16000M" | Out-File -FilePath $env:GITHUB_ENV -Append
-          echo "R_MAX_VSIZE=16000M" | Out-File -FilePath $env:GITHUB_ENV -Append
-          # Display memory information
-          Get-CimInstance Win32_OperatingSystem | Select-Object TotalVisibleMemorySize,FreePhysicalMemory
-      
-      # - name: Publish Quarto Project
+          cache-version: 3
+
+      # - name: Increase RAM limit for R
       #   run: |
-      #     quarto publish gh-pages --no-prompt
+      #     ulimit -s 16384
+      #     ulimit -a
+
+      # you can also try the solution provided here https://github.com/rstudio/renv/issues/1028 and here https://github.com/randy3k/radian/issues/214
+      # - name: Check Linux
+      #   if: runner.os == 'Linux'
+      #   env:
+      #     _R_CHECK_CRAN_INCOMING_REMOTE_: false
+      #   run: |
+      #     ulimit -s unlimited
+      #     Rscript -e 'rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")'
+
+      - name: Increase stack size
+        run: |
+          ulimit -s unlimited
+          ulimit -a
+
       - name: Publish Quarto Project
         uses: quarto-dev/quarto-actions/publish@v2
         with:
