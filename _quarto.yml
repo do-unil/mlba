@@ -2,8 +2,8 @@ project:
   type: website
   render:
     - schedule.qmd
+    - "labs/00_lab/setup.qmd"
     - "*.qmd"
-    - "!labs/00_lab/setup.qmd"
     - "!labs/00_lab/renv/"
     - "!renv/"
     - "!images/"
@@ -204,3 +204,8 @@ execute:
   warning: false
   message: false
   output: false
+  eval: true
+  echo: true
+  error: false
+  fig-dpi: 96
+  timeout: 600
