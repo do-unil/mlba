@@ -49,7 +49,7 @@ jobs:
 
       - name: Increase RAM limit for R
         run: |
-          ulimit -s 16384
+          ulimit -s unlimited
           ulimit -a
 
       # you can also try the solution provided here https://github.com/rstudio/renv/issues/1028 and here https://github.com/randy3k/radian/issues/214
