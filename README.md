@@ -8,6 +8,8 @@ We use `renv` for package management. When running the website for the first tim
 renv::restore()
 ```
 
+To install the python packages, following `labs/00_lab/setup.qmd` instructions. Alternaitvely, you can install everything via `conda env create -f environment.yml` from the root of the project.
+
 It prompts whether you would like to activate and install the packages, and you must select the option (1) to do so. The command above installs the packages from the `renv.lock` file. Then run the following to start the website from the command line/terminal (unless you're using Rstudio, in which can go to `Build > Render Website` to render everything at once).
 
 ```bash

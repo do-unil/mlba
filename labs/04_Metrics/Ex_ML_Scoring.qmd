@@ -1,4 +1,4 @@
----
+How can I render the following?---
 title: "Model scoring"
 ---
 
@@ -134,14 +134,14 @@ sqrt(mean((predict(est_lm, newdata = df_te)-df_te$Price)^2))
 ### Python
 
 ```{python}
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, root_mean_squared_error
 import numpy as np
 
-print(mean_squared_error(r.df_te[target], est_lm.predict(r.df_te[predictors]), squared = False))
+print(root_mean_squared_error(r.df_te[target], est_lm.predict(r.df_te[predictors])))
 # alternatively in the older version of `sklearn`, you had to run the code below
 # print(np.sqrt(mean_squared_error(r.df_te[target], est_lm.predict(r.df_te[predictors]))))
-print(mean_squared_error(r.df_te[target], est_rt.predict(r.df_te[predictors]), squared = False))
-print(mean_squared_error(r.df_te[target], est_knn.predict(r.df_te[predictors]), squared = False))
+print(root_mean_squared_error(r.df_te[target], est_rt.predict(r.df_te[predictors])))
+print(root_mean_squared_error(r.df_te[target], est_knn.predict(r.df_te[predictors])))
 ```
 
 :::

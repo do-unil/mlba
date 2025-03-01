@@ -142,6 +142,7 @@ Python provides a range of libraries for data manipulation, analysis, and modeli
 ```{r, fig.align="center", out.width= "80%", echo = F}
 knitr::include_graphics("https://blog.penjee.com/wp-content/uploads/2015/02/pass-by-reference-vs-pass-by-value-animation.gif")
 ```
+
 For those of you new to python, there's an important difference between R and Python when assignment variables. In Python, when you assign a variable to another variable, you are creating a reference to the same object in memory, so any changes made to one variable will be reflected in the other variable as well. This is demonostrated in the example below:
 
 ```{python}
@@ -178,7 +179,7 @@ We will install all the packages we need for this particular setup. This should 
 
 ```{r results=F, eval=F}
 # Install python package into virtual environment
-reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost", "gap-stat","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
+reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
 ```
 
 ::: callout-note
