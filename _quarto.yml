@@ -206,9 +206,4 @@ execute:
   echo: true
   warning: true
   fig-dpi: 96
-  timeout: 600
-
-# Add a special configuration for the labs directory
-_quarto-lab-config.yml: |
-  execute:
-    eval: false
+  # timeout: 600

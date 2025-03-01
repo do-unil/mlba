@@ -28,4 +28,4 @@ This course is provided under [![Creative Commons License](https://licensebutton
 The design  of the `MLBA` course website was adapted and inspired from the following sources:
 
 - [Dr. Mine Çetinkaya-Rundel STA 101 website](https://sta101-f23.github.io/course-overview.html)
-- [Dr. Tomas Masák, Dr. Linda Mhalla and Charles Dufour MATH-517 website](https://math-517.github.io/math_517_website/)
+- [Dr. Tomas Masák, Dr. Linda Mhalla and Charles Dufour MATH-517 website](https://math-516-517-main.github.io/math_517_website/)
