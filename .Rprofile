@@ -9,7 +9,7 @@ if (Sys.getenv("RETICULATE_PYTHON") == "") {
   }
 }
 
-if (interactive()) {
-  library(reticulate)
-  use_virtualenv("MLBA")
-}
+# if (interactive()) {
+#   library(reticulate)
+#   use_virtualenv("MLBA")
+# }
