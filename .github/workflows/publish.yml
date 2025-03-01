@@ -15,13 +15,15 @@ jobs:
   build-website:
     runs-on: windows-latest
     concurrency:
-      group:  ${{ github.workflow }}
+      group: ${{ github.workflow }}
       cancel-in-progress: true
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       # Configure R to use more memory
       R_MAX_MEM_SIZE: 16000M
       R_MAX_VSIZE: 16000M
+      # Increase this value significantly
+      R_C_STACK_SIZE: 256M
     steps:
       - uses: actions/checkout@v3
 
