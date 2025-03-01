@@ -65,7 +65,7 @@ jobs:
 
       - name: Publish Quarto Project
         env:
-          QUARTO_DENO_EXTRA_OPTIONS: --v8-flags=--max-old-space-size=16384
+          QUARTO_DENO_V8_OPTIONS: --max-old-space-size=16384
         run: |
           # Set MALLOC_ARENA_MAX to limit memory fragmentation
           export MALLOC_ARENA_MAX=4
