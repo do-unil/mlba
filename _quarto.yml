@@ -1,14 +1,14 @@
 project:
   type: website
-  render:
-    - schedule.qmd
-    - "labs/00_lab/setup.qmd"
-    - "*.qmd"
-    - "!labs/00_lab/renv/"
-    - "!renv/"
-    - "!images/"
-    - "!styles/"
-    - "!site_libs/"
+  # render:
+  #   - schedule.qmd
+  #   - "*.qmd"
+  #   - "labs/"
+  #   - "!labs/00_lab/renv/"
+  #   - "!renv/"
+  #   - "!images/"
+  #   - "!styles/"
+  #   - "!site_libs/"
 
 website:
   page-navigation: true
