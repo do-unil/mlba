@@ -67,9 +67,9 @@ jobs:
           ulimit -a
 
       - name: Publish Quarto Project
-        uses: quarto-dev/quarto-actions/publish@v2
-        with:
-          target: gh-pages
+        run: |
+          ulimit -s unlimited
+          quarto publish --target gh-pages
 
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
