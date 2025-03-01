@@ -201,11 +201,14 @@ format:
 
 execute:
   freeze: auto
-  warning: false
-  message: false
-  output: false
+  error: false
   eval: true
   echo: true
-  error: false
+  warning: true
   fig-dpi: 96
   timeout: 600
+
+# Add a special configuration for the labs directory
+_quarto-lab-config.yml: |
+  execute:
+    eval: false
