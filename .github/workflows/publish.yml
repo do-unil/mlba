@@ -69,7 +69,7 @@ jobs:
       - name: Publish Quarto Project
         run: |
           ulimit -s unlimited
-          quarto publish --target gh-pages
+          quarto publish --server gh-pages
 
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
