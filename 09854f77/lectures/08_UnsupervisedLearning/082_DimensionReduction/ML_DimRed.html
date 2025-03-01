@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MLBA - S24 - Dimension Reduction</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../labs/00_lab/setup.html" rel="next">
+<link href="../../../lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.html" rel="prev">
+<link href="../../../images/logo.dark.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta property="og:title" content="MLBA - S24 - Dimension Reduction">
+<meta property="og:description" content="In-class R script 📄">
+<meta property="og:site-name" content="MLBA - S24 ">
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Dimension Reduction</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../images/logo.light.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="sidebar-tool px-1"><i class="bi bi-person-rolodex"></i></a>
+    <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Course information</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">Overview</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../schedule.html" class="sidebar-item-text sidebar-link">Schedule</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../faq.html" class="sidebar-item-text sidebar-link">FAQ</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Lectures</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/01_Introduction/ML_Intro.html" class="sidebar-item-text sidebar-link">Intro to ML</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/02_DataExploration/ML_DataExplo.html" class="sidebar-item-text sidebar-link">Data Exploration</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/03_Models/030_Introduction/ML_Models_Intro.html" class="sidebar-item-text sidebar-link">Intro to Models</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/03_Models/031_LinearLogisticRegression/ML_LinLogReg.html" class="sidebar-item-text sidebar-link">Linear &amp; Logistic Regression</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/03_Models/032_Trees/ML_Trees.html" class="sidebar-item-text sidebar-link">Decision Trees</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/03_Models/033_NeuralNetworks/ML_NN.html" class="sidebar-item-text sidebar-link">Neural Networks</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/03_Models/034_SupportVectorMachine/ML_SVM.html" class="sidebar-item-text sidebar-link">Support Vector Machines</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/04_Metrics/ML_Metrics.html" class="sidebar-item-text sidebar-link">Metrics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/05_DataSplitting/ML_DataSplitting.html" class="sidebar-item-text sidebar-link">Data Splitting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/06_Ensembles/ML_Ensemble.html" class="sidebar-item-text sidebar-link">Ensemble Methods</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/07_InterpretableML/ML_Interp.html" class="sidebar-item-text sidebar-link">Interpretable ML</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/08_UnsupervisedLearning/080_Introduction/ML_UnsupIntro.html" class="sidebar-item-text sidebar-link">Intro to Unsuperised Learning</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.html" class="sidebar-item-text sidebar-link">Clustering</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../lectures/08_UnsupervisedLearning/082_DimensionReduction/ML_DimRed.html" class="sidebar-item-text sidebar-link active">Dimension Reduction</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Labs</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/00_lab/setup.html" class="sidebar-item-text sidebar-link">Setup</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/03_Models/031_LinearLogisticRegression/Ex_ML_LinLogReg.html" class="sidebar-item-text sidebar-link">Linear &amp; Logistic Regression</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/03_Models/032_Trees/Ex_ML_Tree.html" class="sidebar-item-text sidebar-link">Decision Trees</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/03_Models/033_NeuralNetworks/EX_ML_NN.html" class="sidebar-item-text sidebar-link">Neural Networks</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.html" class="sidebar-item-text sidebar-link">Support Vector Machines</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/04_Metrics/Ex_ML_Scoring.html" class="sidebar-item-text sidebar-link">Metrics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/05_DataSplitting/Ex_ML_Data_Splitting.html" class="sidebar-item-text sidebar-link">Data Splitting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/06_Ensembles/Ex_ML_Ensemble.html" class="sidebar-item-text sidebar-link">Ensemble Methods</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/07_InterpretableML/Ex_ML_VarImp.html" class="sidebar-item-text sidebar-link">Interpretable ML</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/08_UnsupervisedLearning/081_Clustering/Ex_ML_Clustering.html" class="sidebar-item-text sidebar-link">Clustering</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.html" class="sidebar-item-text sidebar-link">PCA</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.html" class="sidebar-item-text sidebar-link">Autoencoders</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">Assessments</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../assessments/Exam.html" class="sidebar-item-text sidebar-link">Exam</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">Project</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../assessments/Project_Directives.html" class="sidebar-item-text sidebar-link">Project Directives</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../assessments/Report_Guideline.html" class="sidebar-item-text sidebar-link">Report Guidelines</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../assessments/Presentation_Guidelines.html" class="sidebar-item-text sidebar-link">Presentation Guidelines</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Resources</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../resources/beginners_r.html" class="sidebar-item-text sidebar-link">Beginners in R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../resources/data_acquisition/data_sources.html" class="sidebar-item-text sidebar-link">Data Sources</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../resources/data_acquisition/web_scraping_api.html" class="sidebar-item-text sidebar-link">Web Scraping</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../resources/cheatsheets.html" class="sidebar-item-text sidebar-link">Coding Cheatsheets</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#dimension-reduction" id="toc-dimension-reduction" class="nav-link active" data-scroll-target="#dimension-reduction">Dimension reduction</a></li>
+  <li><a href="#principal-components-analysis" id="toc-principal-components-analysis" class="nav-link" data-scroll-target="#principal-components-analysis">Principal Components Analysis</a>
+  <ul class="collapse">
+  <li><a href="#pca" id="toc-pca" class="nav-link" data-scroll-target="#pca">PCA</a></li>
+  <li><a href="#pca-the-first-component" id="toc-pca-the-first-component" class="nav-link" data-scroll-target="#pca-the-first-component">PCA: the first component</a></li>
+  <li><a href="#pca-the-second-component-and-third-etc." id="toc-pca-the-second-component-and-third-etc." class="nav-link" data-scroll-target="#pca-the-second-component-and-third-etc.">PCA: the second component, and third, etc.</a></li>
+  <li><a href="#pca-scaling" id="toc-pca-scaling" class="nav-link" data-scroll-target="#pca-scaling">PCA: scaling</a></li>
+  <li><a href="#pca-projection" id="toc-pca-projection" class="nav-link" data-scroll-target="#pca-projection">PCA: projection</a></li>
+  <li><a href="#pca-variance-proportion" id="toc-pca-variance-proportion" class="nav-link" data-scroll-target="#pca-variance-proportion">PCA: variance proportion</a></li>
+  <li><a href="#pca-example" id="toc-pca-example" class="nav-link" data-scroll-target="#pca-example">PCA: example</a></li>
+  <li><a href="#pca-the-circle-of-correlations" id="toc-pca-the-circle-of-correlations" class="nav-link" data-scroll-target="#pca-the-circle-of-correlations">PCA: the circle of correlations</a></li>
+  <li><a href="#pca-the-cos2" id="toc-pca-the-cos2" class="nav-link" data-scroll-target="#pca-the-cos2">PCA: the <span class="math inline">\(cos^2\)</span></a></li>
+  <li><a href="#pca-the-biplot" id="toc-pca-the-biplot" class="nav-link" data-scroll-target="#pca-the-biplot">PCA: the biplot</a></li>
+  <li><a href="#pca-number-of-components" id="toc-pca-number-of-components" class="nav-link" data-scroll-target="#pca-number-of-components">PCA: number of components</a></li>
+  <li><a href="#pca-the-screeplot" id="toc-pca-the-screeplot" class="nav-link" data-scroll-target="#pca-the-screeplot">PCA: the screeplot</a></li>
+  <li><a href="#pca-and-machine-learning" id="toc-pca-and-machine-learning" class="nav-link" data-scroll-target="#pca-and-machine-learning">PCA and machine learning</a></li>
+  <li><a href="#categorical-data" id="toc-categorical-data" class="nav-link" data-scroll-target="#categorical-data">Categorical data</a></li>
+  </ul></li>
+  <li><a href="#auto-encoders" id="toc-auto-encoders" class="nav-link" data-scroll-target="#auto-encoders">Auto-encoders</a>
+  <ul class="collapse">
+  <li><a href="#principle" id="toc-principle" class="nav-link" data-scroll-target="#principle">Principle</a></li>
+  <li><a href="#encoder-decoder-autoencoder" id="toc-encoder-decoder-autoencoder" class="nav-link" data-scroll-target="#encoder-decoder-autoencoder">encoder + decoder = autoencoder</a></li>
+  <li><a href="#autoencoder-vs-pca" id="toc-autoencoder-vs-pca" class="nav-link" data-scroll-target="#autoencoder-vs-pca">Autoencoder vs PCA</a></li>
+  <li><a href="#interpretability" id="toc-interpretability" class="nav-link" data-scroll-target="#interpretability">Interpretability</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/do-unil/mlba/blob/main/lectures/08_UnsupervisedLearning/082_DimensionReduction/ML_DimRed.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<script type="application/javascript">
+// Description: Change image src depending on body class (quarto-light or quarto-dark)
+function updateImageSrc() {
+  var bodyClass = window.document.body.classList;
+  var images = window.document.getElementsByTagName('img');
+  for (var i = 0; i < images.length; i++) {
+    var image = images[i];
+    var src = image.src;
+    var newSrc = src;
+    if (bodyClass.contains('quarto-light') && src.includes('.dark')) {
+      newSrc = src.replace('.dark', '.light');
+    } else if (bodyClass.contains('quarto-dark') && src.includes('.light')) {
+      newSrc = src.replace('.light', '.dark');
+    }
+    if (newSrc !== src) {
+      image.src = newSrc;
+    }
+  }
+}
+
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+      updateImageSrc();
+    }
+  });
+});
+
+observer.observe(window.document.body, {
+  attributes: true
+});
+
+updateImageSrc();
+</script>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Dimension Reduction</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p><a href="ML_DimRed.R">In-class R script 📄</a></p>
+<section id="dimension-reduction" class="level1">
+<h1>Dimension reduction</h1>
+<p>For unsupervised learning, <strong>data representation and simplification</strong> is an important task. A natural objective is to represent the data on a graph: simplify <span class="math inline">\(p\)</span> features to 2 dimensions and plot on <span class="math inline">\(x\)</span>- and <span class="math inline">\(y\)</span>-axes.<br>
+<strong>Example:</strong> <code>iris</code> data has <span class="math inline">\(4\)</span> features (species not used). The data cannot be represented on a single graph.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_raw.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<p>Observation: <code>Petal.Length</code> and <code>Petal.Width</code> are highly correlated: if we know one, we can predict the other one.<br>
+To simplify the representation, we do not need these two features: replace them by their average <code>Petal.WL = (Petal.W+Petal.L)/2</code>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_raw2.png" class="img-fluid figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+<p>Same observation for <code>Petal.WL</code> and <code>Sepal.Length</code>...</p>
+<p>In summary, two correlated features can be replaced by one combination without keeping the information.<br>
+The resulting representation shows as much variance as possible: theinformation is kept.<br>
+This is the principle of <strong>Principal Component Analysis</strong> (PCA).</p>
+</section>
+<section id="principal-components-analysis" class="level1">
+<h1>Principal Components Analysis</h1>
+<section id="pca" class="level3">
+<h3 class="anchored" data-anchor-id="pca">PCA</h3>
+<p>The PCA is a method that looks for dimensions that are linear combinations of the <span class="math inline">\(p\)</span> features: <span class="math display">\[a_1 x_1 + a_2 x_2 + \cdots + a_p x_p.\]</span> These linear combinations are called the principal components. There are <span class="math inline">\(p\)</span> principal components.</p>
+<p>To find the first component (i.e.&nbsp;coefficients <span class="math inline">\(a\)</span>), one should maximize the variance along it. That is, <span class="math inline">\(a\)</span> should be the solution to <span class="math display">\[\begin{aligned}
+\max_a &amp;&amp;Var (a_1 x_{1} + \cdots + a_p x_{p})\\
+s.t.&amp;&amp; \sum_j a_j^2 = 1\end{aligned}\]</span> where the variance is computed on the data set. The constraint on <span class="math inline">\(a\)</span> is here because <span class="math inline">\(a\)</span> is only indicating a direction and should therefore be scaled to 1. As an example, let’s look at a toy case where we only have 2 features <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> showed below. We want to represent the data in one dimension, that is, along a line (dimension reduction). The dashed line shows more variability of the data and is a better principal component than the solid line.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/PCA_Illustr.png" class="img-fluid figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</section>
+<section id="pca-the-first-component" class="level3">
+<h3 class="anchored" data-anchor-id="pca-the-first-component">PCA: the first component</h3>
+<p>When extended to <span class="math inline">\(p\geq 2\)</span> features, the principle remains the same. For a choice of <span class="math inline">\(a\)</span> with <span class="math inline">\(\sum a_j^2=1\)</span>,</p>
+<ul>
+<li><p><span class="math inline">\(z_i = a_1 x_{i1} + \cdots + a_p x_{ip}\)</span> are computed on the data set (<span class="math inline">\(i=1,\ldots,n\)</span>),</p></li>
+<li><p>the variance of the <span class="math inline">\(z_i\)</span> is computed.</p></li>
+</ul>
+<p>Then this variance is maximized by changing <span class="math inline">\(a\)</span>. The maximum value gives <span class="math inline">\(a^{(1)}\)</span>, the first principle component.</p>
+</section>
+<section id="pca-the-second-component-and-third-etc." class="level3">
+<h3 class="anchored" data-anchor-id="pca-the-second-component-and-third-etc.">PCA: the second component, and third, etc.</h3>
+<p>The second component <span class="math inline">\(a^{(2)}\)</span> is obtained with the same principle and the extra constraint to be orthogonal to the first one: <span class="math display">\[\sum_{j=1}^p a^{(1)}_j a^{(2)}_j = 0.\]</span> The procedure is repeated until <span class="math inline">\(p\)</span> principal components are found (each one is orthogonal to all the previous ones).<br>
+Note: the result can be easily obtained by computing the <strong>spectral decomposition</strong> of the variance matrix of the data.</p>
+</section>
+<section id="pca-scaling" class="level3">
+<h3 class="anchored" data-anchor-id="pca-scaling">PCA: scaling</h3>
+<p>Before computing the PCA, the data can be standardized. Like any standardization, this is a choice of the user, which depends strongly on the application and on the scale (units) of the data. When the data are first standardized, the <strong>spectral decomposition</strong> is made on the correlation matrix of the data.</p>
+</section>
+<section id="pca-projection" class="level3">
+<h3 class="anchored" data-anchor-id="pca-projection">PCA: projection</h3>
+<p>For each PC <span class="math inline">\(j\)</span>, we have the corresponding projections of the data <span class="math inline">\(x_i\)</span> <span class="math display">\[z_i^{(j)} = a^{(j)}_1 x_{i1} + \cdots + a^{(j)}_p x_{ip}.\]</span> We thus have a new data set <span class="math inline">\(z\)</span> whose column are the projection of the features <span class="math inline">\(x\)</span> on the PCA’s. These new features <span class="math inline">\(z_1, \ldots, z_p\)</span> can be used</p>
+<ul>
+<li><p>for data representation (dimension reduction),</p></li>
+<li><p>to describe the dependence between the features (factor analysis).</p></li>
+</ul>
+</section>
+<section id="pca-variance-proportion" class="level3">
+<h3 class="anchored" data-anchor-id="pca-variance-proportion">PCA: variance proportion</h3>
+<p>By construction, the first principal component <span class="math inline">\(z_1\)</span> has larger variance than <span class="math inline">\(z_2\)</span> and so on. Also, by construction, the total of the variance is preserved: <span class="math display">\[\sum_{j=1}^p var(x_j) = \sum_{j=1}^p var(z_j).\]</span> The proportion of the total variance explained by the PC <span class="math inline">\(z_j\)</span> is thus <span class="math display">\[var(z_j)/\sum_{j'=1}^p var(z_{j'}).\]</span> It represents how well the data are represented on the component <span class="math inline">\(z_j\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_pca.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</section>
+<section id="pca-example" class="level3">
+<h3 class="anchored" data-anchor-id="pca-example">PCA: example</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> iris.pca <span class="ot">&lt;-</span> <span class="fu">PCA</span>(iris[,<span class="sc">-</span><span class="dv">5</span>], <span class="at">graph=</span><span class="cn">FALSE</span>) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(iris.pca)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Call<span class="sc">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">PCA</span>(<span class="at">X =</span> iris[, <span class="sc">-</span><span class="dv">5</span>], <span class="at">graph =</span> <span class="cn">FALSE</span>) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Eigenvalues</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                        Dim<span class="fl">.1</span>   Dim<span class="fl">.2</span>   Dim<span class="fl">.3</span>   Dim<span class="fl">.4</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Variance               <span class="fl">2.918</span>   <span class="fl">0.914</span>   <span class="fl">0.147</span>   <span class="fl">0.021</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>% of var.             <span class="fl">72.962</span>  <span class="fl">22.851</span>   <span class="fl">3.669</span>   <span class="fl">0.518</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Cumulative % of var.  <span class="fl">72.962</span>  <span class="fl">95.813</span>  <span class="fl">99.482</span> <span class="fl">100.000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Together, PC1 and PC2 explain <span class="math inline">\(95.8\%\)</span> of the variation of the data. The scatter plot matrix shows that it is a good representation of the data with only two dimensions (PC<span class="math inline">\(_1\)</span>, PC<span class="math inline">\(_2\)</span>).</p>
+<p>The correlation between the PC and the features <span class="math inline">\(x\)</span> can be computed to see how is PC is correlated to each features.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_pcacircle.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section id="pca-the-circle-of-correlations" class="level3">
+<h3 class="anchored" data-anchor-id="pca-the-circle-of-correlations">PCA: the circle of correlations</h3>
+<p>We see that</p>
+<ul>
+<li><p>PC<span class="math inline">\(_1\)</span> is positively and strongly correlated with petal length, petal width, and sepal length. This component summarizes these 3 features: the larger PC<span class="math inline">\(_1\)</span>, the larger these 3 features.</p></li>
+<li><p>PC<span class="math inline">\(_2\)</span> is (negatively) correlated with sepal width. The larger PC<span class="math inline">\(_2\)</span> the smaller this feature.</p></li>
+<li><p>PC<span class="math inline">\(_1\)</span> explains <span class="math inline">\(73\%\)</span> of the total data variation. PC<span class="math inline">\(_2\)</span> explains <span class="math inline">\(23\%\)</span> of it.</p></li>
+</ul>
+<p>With one graph, we know</p>
+<ul>
+<li><p>which features are correlated/independent</p></li>
+<li><p>how to summarize the data into two dimensions.</p></li>
+</ul>
+</section>
+<section id="pca-the-cos2" class="level3">
+<h3 class="anchored" data-anchor-id="pca-the-cos2">PCA: the <span class="math inline">\(cos^2\)</span></h3>
+<p>The circle of correlations relates the dimensions and the features. Another view is the <strong><span class="math inline">\(cos^2\)</span></strong> graph. It is interpreted as the quality of the representation of the feature by the dimension. Of course this is intimately related to the correlations.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_cos2.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>The <strong>biplot</strong> shows a <strong>map of the individuals</strong> in the dimensions and adds the circle of correlations.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_biplot.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section id="pca-the-biplot" class="level3">
+<h3 class="anchored" data-anchor-id="pca-the-biplot">PCA: the biplot</h3>
+<p>For example, we can conclude that</p>
+<ul>
+<li><p>instance 61 has a sepal width smaller than the average (large PC<span class="math inline">\(_2\)</span>) and an average PC<span class="math inline">\(_1\)</span> (which indicates an average petal length, width and sepal length).</p></li>
+<li><p>instance 119 has an average sepal width but a large PC<span class="math inline">\(_1\)</span>, i.e. petal length and width and sepal length.</p></li>
+<li><p>Two clusters can be observed and are well separated by PC<span class="math inline">\(_1\)</span> (in fact these clusters correspond to species here).</p></li>
+</ul>
+</section>
+<section id="pca-number-of-components" class="level3">
+<h3 class="anchored" data-anchor-id="pca-number-of-components">PCA: number of components</h3>
+<p>Here, two components explain more than <span class="math inline">\(95\%\)</span> of the data variability. Sometimes, more components are needed. One way to set the number of components is to target the proportion of explained variance: often between <span class="math inline">\(75\%\)</span> and <span class="math inline">\(95\%\)</span>.<br>
+If the features are independent, this number is likely to be large. If the features are correlated, this number will be smaller. The <strong>screeplot</strong> may help.</p>
+</section>
+<section id="pca-the-screeplot" class="level3">
+<h3 class="anchored" data-anchor-id="pca-the-screeplot">PCA: the screeplot</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_scree.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</section>
+<section id="pca-and-machine-learning" class="level3">
+<h3 class="anchored" data-anchor-id="pca-and-machine-learning">PCA and machine learning</h3>
+<p>In the context of machine learning, PCA is often used</p>
+<ul>
+<li><p>To inspect the data, find/explain clusters, find dependence between the features. <strong>PCA</strong> can be used for <strong>EDA</strong>.</p></li>
+<li><p>To diminish the number of features when there are too many: dimension reduction <span class="math inline">\(=&gt;\)</span> only keep few first PC.</p></li>
+</ul>
+</section>
+<section id="categorical-data" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-data">Categorical data</h3>
+<p>PCA can only be performed on <strong>numerical features</strong>. When categorical features are also included in the analysis,</p>
+<ul>
+<li><p>for ordinal data, quick and dirty solution: modalities can be mapped to numbers (<span class="math inline">\(1,2,\ldots\)</span>) respecting their order,</p></li>
+<li><p>for nominal data: there is no correct solution; especially replacing by numbers is <strong>incorrect</strong>.</p></li>
+</ul>
+<p>With only categorical data, <strong>(Multiple) Correspondence Analysis</strong> is a solution. And for mixed data type (categorical and numerical), <strong>Factor Analysis of Mixed Data</strong> (FAMD) is a solution. However, they are not adapted to large data set.</p>
+</section>
+</section>
+<section id="auto-encoders" class="level1">
+<h1>Auto-encoders</h1>
+<section id="principle" class="level3">
+<h3 class="anchored" data-anchor-id="principle">Principle</h3>
+<p>PCA is a "linear" technique, based on the explanation of the correlation between the features. Auto-encoder are neural network. The idea is to train a model that recovers an instance with an intermediate layer of lower dimension than the number of features.<br>
+</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/autoencod_illustr.png" class="img-fluid figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+</section>
+<section id="encoder-decoder-autoencoder" class="level3">
+<h3 class="anchored" data-anchor-id="encoder-decoder-autoencoder">encoder + decoder = autoencoder</h3>
+<ul>
+<li><p>The input and the output (response) are the same instance (<span class="math inline">\(X\)</span>), of dimension <span class="math inline">\(p\)</span>.</p></li>
+<li><p>The intermediate layer (at least one) is of dimension <span class="math inline">\(k&lt;p\)</span>.</p></li>
+<li><p>The model is trained to recover <span class="math inline">\(X\)</span> ate the end.</p></li>
+</ul>
+<p>If, after traning, the model can recover <span class="math inline">\(X\)</span> from <span class="math inline">\(X\)</span>, then it can recover <span class="math inline">\(X\)</span> from its image in the intermediate layer <span class="math inline">\(h(X)\)</span>. Thus, only <span class="math inline">\(p\)</span> dimensions would be needed to recover <span class="math inline">\(X\)</span>.<br>
+Thus,</p>
+<ul>
+<li><p>the left part of the NN <strong>encodes</strong> <span class="math inline">\(X\)</span> in its lower-dimension version <span class="math inline">\(h(X)\)</span></p></li>
+<li><p>the right part of the NN <strong>decodes</strong> <span class="math inline">\(h(X)\)</span> in an output <span class="math inline">\(g(h(X))\)</span>, hopefully close to the original image <span class="math inline">\(X\)</span>.</p></li>
+</ul>
+<p>The better this final image the better the encoding/decoding: <span class="math display">\[g(h(X)) \stackrel{?}{\approx} X.\]</span></p>
+</section>
+<section id="autoencoder-vs-pca" class="level3">
+<h3 class="anchored" data-anchor-id="autoencoder-vs-pca">Autoencoder vs PCA</h3>
+<p>In ML, often autoencoder are used to</p>
+<ul>
+<li><p>Reduce the noise in the data (smoothing)</p></li>
+<li><p>Reduce the memory needed (compressing)</p></li>
+<li><p>Represent the data (dimension reduction)</p></li>
+</ul>
+<p>Unlike PCA, autoencoder do not provide interpretation of the dimensions, which dimension is the most important, etc. On the other hand, autoencoders can produce better final representation of the data: the recovery of <span class="math inline">\(X\)</span> with <span class="math inline">\(k\)</span> components is better than with PCA. Like PCA make two-dimensional plots to discover pattern. Below is autoencoder with 3-node intermediate-layer:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_AE_embed.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</section>
+<section id="interpretability" class="level3">
+<h3 class="anchored" data-anchor-id="interpretability">Interpretability</h3>
+<p>Relate each component of <span class="math inline">\(h(X)\)</span> to each component of <span class="math inline">\(X\)</span> using variable importance (or another technique). Below, Node 1 to 3 (left to right).</p>
+<div class="quarto-layout-panel">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_AE_VImp1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_AE_VImp2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../Graphs/Iris_AE_VImp3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Clustering</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../labs/00_lab/setup.html" class="pagination-link">
+        <span class="nav-page-text">Setup</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Copyright 2024, <a href="https://iliaazizi.com/">Ilia Azizi &amp; Marc-Olivier Boldi</a></div>   
+    <div class="nav-footer-right">This page is built with 🤍 and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

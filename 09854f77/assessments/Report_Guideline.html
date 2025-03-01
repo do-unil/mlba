@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>MLBA - S24 - Report Guidelines</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assessments/Presentation_Guidelines.html" rel="next">
+<link href="../assessments/Project_Directives.html" rel="prev">
+<link href="../images/logo.dark.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta property="og:title" content="MLBA - S24 - Report Guidelines">
+<meta property="og:description" content="For your report, you can use the Quarto template we provide here.">
+<meta property="og:site-name" content="MLBA - S24 ">
+</head>
+
+<body class="nav-sidebar docked">
+
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Report Guidelines</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/logo.light.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="sidebar-tool px-1"><i class="bi bi-person-rolodex"></i></a>
+    <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="sidebar-tool px-1"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle sidebar-tool" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">Course information</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Overview</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../schedule.html" class="sidebar-item-text sidebar-link">Schedule</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../faq.html" class="sidebar-item-text sidebar-link">FAQ</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Lectures</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/01_Introduction/ML_Intro.html" class="sidebar-item-text sidebar-link">Intro to ML</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/02_DataExploration/ML_DataExplo.html" class="sidebar-item-text sidebar-link">Data Exploration</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/03_Models/030_Introduction/ML_Models_Intro.html" class="sidebar-item-text sidebar-link">Intro to Models</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/03_Models/031_LinearLogisticRegression/ML_LinLogReg.html" class="sidebar-item-text sidebar-link">Linear &amp; Logistic Regression</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/03_Models/032_Trees/ML_Trees.html" class="sidebar-item-text sidebar-link">Decision Trees</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/03_Models/033_NeuralNetworks/ML_NN.html" class="sidebar-item-text sidebar-link">Neural Networks</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/03_Models/034_SupportVectorMachine/ML_SVM.html" class="sidebar-item-text sidebar-link">Support Vector Machines</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/04_Metrics/ML_Metrics.html" class="sidebar-item-text sidebar-link">Metrics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/05_DataSplitting/ML_DataSplitting.html" class="sidebar-item-text sidebar-link">Data Splitting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/06_Ensembles/ML_Ensemble.html" class="sidebar-item-text sidebar-link">Ensemble Methods</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/07_InterpretableML/ML_Interp.html" class="sidebar-item-text sidebar-link">Interpretable ML</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/08_UnsupervisedLearning/080_Introduction/ML_UnsupIntro.html" class="sidebar-item-text sidebar-link">Intro to Unsuperised Learning</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.html" class="sidebar-item-text sidebar-link">Clustering</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../lectures/08_UnsupervisedLearning/082_DimensionReduction/ML_DimRed.html" class="sidebar-item-text sidebar-link">Dimension Reduction</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Labs</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/00_lab/setup.html" class="sidebar-item-text sidebar-link">Setup</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/03_Models/031_LinearLogisticRegression/Ex_ML_LinLogReg.html" class="sidebar-item-text sidebar-link">Linear &amp; Logistic Regression</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/03_Models/032_Trees/Ex_ML_Tree.html" class="sidebar-item-text sidebar-link">Decision Trees</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/03_Models/033_NeuralNetworks/EX_ML_NN.html" class="sidebar-item-text sidebar-link">Neural Networks</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.html" class="sidebar-item-text sidebar-link">Support Vector Machines</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/04_Metrics/Ex_ML_Scoring.html" class="sidebar-item-text sidebar-link">Metrics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/05_DataSplitting/Ex_ML_Data_Splitting.html" class="sidebar-item-text sidebar-link">Data Splitting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/06_Ensembles/Ex_ML_Ensemble.html" class="sidebar-item-text sidebar-link">Ensemble Methods</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/07_InterpretableML/Ex_ML_VarImp.html" class="sidebar-item-text sidebar-link">Interpretable ML</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/08_UnsupervisedLearning/081_Clustering/Ex_ML_Clustering.html" class="sidebar-item-text sidebar-link">Clustering</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.html" class="sidebar-item-text sidebar-link">PCA</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.html" class="sidebar-item-text sidebar-link">Autoencoders</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Assessments</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/Exam.html" class="sidebar-item-text sidebar-link">Exam</a>
+  </div>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Project</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/Project_Directives.html" class="sidebar-item-text sidebar-link">Project Directives</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/Report_Guideline.html" class="sidebar-item-text sidebar-link active">Report Guidelines</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../assessments/Presentation_Guidelines.html" class="sidebar-item-text sidebar-link">Presentation Guidelines</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">Resources</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/beginners_r.html" class="sidebar-item-text sidebar-link">Beginners in R</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/data_acquisition/data_sources.html" class="sidebar-item-text sidebar-link">Data Sources</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/data_acquisition/web_scraping_api.html" class="sidebar-item-text sidebar-link">Web Scraping</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources/cheatsheets.html" class="sidebar-item-text sidebar-link">Coding Cheatsheets</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-do-you-write-a-technical-report" id="toc-why-do-you-write-a-technical-report" class="nav-link active" data-scroll-target="#why-do-you-write-a-technical-report">Why Do You Write A (Technical) Report?</a></li>
+  <li><a href="#level-of-details" id="toc-level-of-details" class="nav-link" data-scroll-target="#level-of-details">Level Of Details</a></li>
+  <li><a href="#the-structure" id="toc-the-structure" class="nav-link" data-scroll-target="#the-structure">The Structure</a>
+  <ul class="collapse">
+  <li><a href="#a.-title-page-mandatory" id="toc-a.-title-page-mandatory" class="nav-link" data-scroll-target="#a.-title-page-mandatory">A. Title Page (Mandatory)</a></li>
+  <li><a href="#b.-personal-information-and-non-plagiarism-statement-mandatory" id="toc-b.-personal-information-and-non-plagiarism-statement-mandatory" class="nav-link" data-scroll-target="#b.-personal-information-and-non-plagiarism-statement-mandatory">B. Personal Information And Non-Plagiarism Statement (Mandatory)</a></li>
+  <li><a href="#c.-summary-or-abstract" id="toc-c.-summary-or-abstract" class="nav-link" data-scroll-target="#c.-summary-or-abstract">C. Summary Or Abstract</a></li>
+  <li><a href="#d.-table-of-content-toc-table-of-figures-tof-and-table-of-tables-tot" id="toc-d.-table-of-content-toc-table-of-figures-tof-and-table-of-tables-tot" class="nav-link" data-scroll-target="#d.-table-of-content-toc-table-of-figures-tof-and-table-of-tables-tot">D. Table Of Content (Toc), Table Of Figures (Tof) And Table Of Tables (Tot)</a></li>
+  <li><a href="#e.-body-of-the-report" id="toc-e.-body-of-the-report" class="nav-link" data-scroll-target="#e.-body-of-the-report">E. Body Of The Report</a></li>
+  <li><a href="#f.-supplementary-material" id="toc-f.-supplementary-material" class="nav-link" data-scroll-target="#f.-supplementary-material">F. Supplementary Material</a></li>
+  </ul></li>
+  <li><a href="#further-remarks" id="toc-further-remarks" class="nav-link" data-scroll-target="#further-remarks">Further Remarks</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/do-unil/mlba/blob/main/assessments/Report_Guideline.qmd" class="toc-action">View source</a></p><p><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<script type="application/javascript">
+// Description: Change image src depending on body class (quarto-light or quarto-dark)
+function updateImageSrc() {
+  var bodyClass = window.document.body.classList;
+  var images = window.document.getElementsByTagName('img');
+  for (var i = 0; i < images.length; i++) {
+    var image = images[i];
+    var src = image.src;
+    var newSrc = src;
+    if (bodyClass.contains('quarto-light') && src.includes('.dark')) {
+      newSrc = src.replace('.dark', '.light');
+    } else if (bodyClass.contains('quarto-dark') && src.includes('.light')) {
+      newSrc = src.replace('.light', '.dark');
+    }
+    if (newSrc !== src) {
+      image.src = newSrc;
+    }
+  }
+}
+
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+      updateImageSrc();
+    }
+  });
+});
+
+observer.observe(window.document.body, {
+  attributes: true
+});
+
+updateImageSrc();
+</script>
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Report Guidelines</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- ::: {.callout-important}
+## ATTENTION
+🏗 *This section is still under development (to be updated soon)* 🏗
+::: -->
+<p>For your report, you can use the <a href="https://github.com/Unco3892/quarto_ml_template">Quarto template we provide here</a>. Please note that the <a href="https://do-unil.github.io/mlba/assessments/Report_Guideline.html#b.-personal-information-and-non-plagiarism-statement-mandatory">Personal Information And Non-Plagiarism Statement</a> indicated below must be integrated into the final report during your submission.</p>
+<section id="why-do-you-write-a-technical-report" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-you-write-a-technical-report">Why Do You Write A (Technical) Report?</h2>
+<p>The aim of writing a report is to communicate results from a study to someone who did not participate to it.</p>
+<p>The report should be relevant, <strong>easy</strong> to read and <strong>convincing</strong>. Advices:</p>
+<ul>
+<li>Take some time to ask yourself what the aims of your report are, and to whom it is addressed.</li>
+<li>Ask yourself which messages you report should convey and which is the best way to convey it.</li>
+</ul>
+</section>
+<section id="level-of-details" class="level2">
+<h2 class="anchored" data-anchor-id="level-of-details">Level Of Details</h2>
+<p>Including all the minutes of your research is NOT interesting. <strong>Relevance</strong> and <strong>reproducibility</strong> are the key words here. On the one hand, the report should include all the needed details for the reader to be able to repeat on his own the relevant part of the study. On the other hand, the report is not a course about a given subject. In particular, it is not expected that you include in the report all the theory about a method that is used. Of course, it is not easy to find the good balance, which anyway probably varies from one reader to another. Often, this contradiction can be solved by referencing to clear and accessible sources (paper, book chapter, webpage, etc.).</p>
+</section>
+<section id="the-structure" class="level2">
+<h2 class="anchored" data-anchor-id="the-structure">The Structure</h2>
+<p>There are several ways to write a report. The following structure can be used and adapted according to the specificity of the study.</p>
+<section id="a.-title-page-mandatory" class="level3">
+<h3 class="anchored" data-anchor-id="a.-title-page-mandatory">A. Title Page (Mandatory)</h3>
+<p>One separate page. It should include</p>
+<ul>
+<li>Title: large format. It should be short AND informative. Never more than a sentence.</li>
+<li>Logo: UNIL/HEC at least; optional: logo of the company</li>
+<li>Date of edition</li>
+<li>Course name and the year</li>
+<li>Group name</li>
+</ul>
+</section>
+<section id="b.-personal-information-and-non-plagiarism-statement-mandatory" class="level3">
+<h3 class="anchored" data-anchor-id="b.-personal-information-and-non-plagiarism-statement-mandatory">B. Personal Information And Non-Plagiarism Statement (Mandatory)</h3>
+<p>One separated page containing</p>
+<ul>
+<li>Full names of all the group members and their email address</li>
+<li>The following text <strong>hand-signed by all the authors</strong>. This project was written by us and in our own words, except for quotations from published and unpublished sources, which are clearly indicated and acknowledged as such. We are conscious that the incorporation of material from other works or a paraphrase of such material without acknowledgement will be treated as plagiarism, subject to the custom and usage of the subject, according to the University Regulations. The source of any picture, map or other illustration is also indicated, as is the source, published or unpublished, of any material not resulting from our own research.</li>
+</ul>
+</section>
+<section id="c.-summary-or-abstract" class="level3">
+<h3 class="anchored" data-anchor-id="c.-summary-or-abstract">C. Summary Or Abstract</h3>
+<p>Usually one page, it is limited to one-and-a-half-page maximum. The summary states very succinctly and clearly the issue, including a data brief description, the methods used, the main results, and the main conclusions. This summary allows someone to know, without to read your work, what has been done, why and what are the results and implications. Advises for writing it:</p>
+<ul>
+<li>Write it at the very end the work, after the report body is written and clean.</li>
+<li>Take each section (Introduction, etc.) and summarize it in one, two, three, sentences, one paragraph or so. Use the needed space. State the important results.</li>
+<li>Once finished, read it again. Cut/shorten long and useless words (e.g.&nbsp;“has been” -&gt; “was”, “therefore” -&gt; “hence”, etc.).</li>
+<li>If it is still too long, cut some part by order of importance.</li>
+<li>The summary is not a teaser to read the report. It contains the results. It should summary them. It should not be only inviting the reader to read the report but propose an alternative for readers who do not have time to read it all.</li>
+<li>Typically, “We have made an analysis of the data in this report about the influential factors on the sales. We decided to use an ARIMA model to make the forecasts.” It contains a piece of information but is quite frustrating. More useful: “Using an ARIMA model, the [what] sales were found influenced by the [what] factors. Such model achieved an RMSE of [what] on forecasting a [what] test set.”.</li>
+</ul>
+</section>
+<section id="d.-table-of-content-toc-table-of-figures-tof-and-table-of-tables-tot" class="level3">
+<h3 class="anchored" data-anchor-id="d.-table-of-content-toc-table-of-figures-tof-and-table-of-tables-tot">D. Table Of Content (Toc), Table Of Figures (Tof) And Table Of Tables (Tot)</h3>
+<p>ToC is mandatory. ToF and ToT are nice to have especially for very long reports, or when these elements are central to the report. ToC must be up to date. You gain generating it automatically (easy with tools like word, LateX, Rmarkdown, etc.). ToF and ToT should also be generated automatically. This implies that figures and tables are correctly inserted with a caption.</p>
+</section>
+<section id="e.-body-of-the-report" class="level3">
+<h3 class="anchored" data-anchor-id="e.-body-of-the-report">E. Body Of The Report</h3>
+<section id="introduction" class="level4">
+<h4 class="anchored" data-anchor-id="introduction">1. Introduction</h4>
+<p>In brief, the introduction explains why the theme is interesting, what is done in the study and what it will bring. After reading it, the reader should have a broad view on the study, why it is relevant, and how it is organized. The purpose of the introduction is not to detail all theoretical aspects. Introduction is a section that should contain</p>
+<ul>
+<li>The context and background: course, company name, business context.</li>
+<li>Aim of the investigation: major terms should be defined, the question of research (more generally the issue), why it is of interest and relevant in that context.</li>
+<li>Description of the data and the general material provided and how it was made available (and/or collected, if it is relevant). Only in broad terms however, the data will be further described in a following section. Typically, the origin/source of the data (the company, webpage, etc.), the type of files (Excel files, etc.), and what it contains in broad terms (e.g.&nbsp;“a file containing weekly sales with the factors of interest including in particular the promotion characteristics”).<br>
+</li>
+<li>The method that is used, in broad terms, no details needed at this point. E.g. “Model based machine learning will help us quantifying the important factors on the sales”.<br>
+</li>
+<li>An outlook: a short paragraph indicating from now what will be treated in each following sections/chapters. E.g. “in Section 3, we describe the data. Section 4 is dedicated to the presentation of the text mining methods…”</li>
+</ul>
+</section>
+<section id="data-description" class="level4">
+<h4 class="anchored" data-anchor-id="data-description">2. Data Description</h4>
+<p>The data description section may be optional. It is typical of report for project oriented toward statistical and machine learning. The data description section can be included as a subsection of the introduction or be a whole section by itself, depending on the complexity and the size of the database. If relevant, it should contain</p>
+<ul>
+<li>Description of the data file format (xlsx, csv, text, video, etc.)</li>
+<li>The features or variables: type, units, the range (e.g.&nbsp;the time, numerical, in weeks from January 1, 2012 to December 31, 2015), their coding (numerical, the levels for categorical, etc.), etc.</li>
+<li>The instances: customers, company, products, subjects, etc.</li>
+<li>Missing data pattern: if there are missing data, if they are specific to some features, etc.</li>
+<li>Any modification to the initial data: aggregation, imputation in replacement of missing data, recoding of levels, etc.</li>
+<li>If only a subset was used, it should be mentioned and explained; e.g.&nbsp;inclusion criteria. Note that if inclusion criteria do not exist and the inclusion was an arbitrary choice, it should be stated as such. One should not try to invent unreal justifications.</li>
+</ul>
+<p>In some cases, data structure can be more complex like images, videos, etc. This should be adapted accordingly. Any unknown element should be mentioned as such. Overall, this description can be quite short or very long, depending on the format of the data. For example, one xlsx file with 10 features and 50’000 instances representing customer behaviors is in general quite easy to describe. If you have 25 files with different formats from different stores representing these customers, with features and instances only partially matching, then it may be more difficult to deal with. Typically, the first and simple case would be included into the introduction as a subsection while the more complex case would deserve a whole data description section.</p>
+</section>
+<section id="methods" class="level4">
+<h4 class="anchored" data-anchor-id="methods">3. Methods</h4>
+<p>A very important section describing in detail all the methods that are used in the report. This section explains how the study was conducted. It aims at giving relevant information and tools for others to be able to reproduce the study. It explains the global strategy of the study, and describes each tool used to achieve this goal. For a comprehensive and structured presentation, often it is important to give the general structure of the study, and then to drill down each step. The individual tools (e.g.&nbsp;machine learning methods, etc.) should be described in a concise and relevant way. <strong>This section is not a course</strong>. For example, one can give a brief definition and the important properties (important for the study), then refer to an external source for the details. In addition, the description should be balanced. Do not spend three pages on explaining the boxplots when a predictive model of random forest is explained in one-half page. It should describe and duly cite</p>
+<ul>
+<li>Statistical and machine learning methods to analyze the data</li>
+<li>Software, computer programs, function packages (typically for R).</li>
+<li>The sequence of analysis, the reason of each method.</li>
+</ul>
+<p>However,</p>
+<ul>
+<li>It does not include methods that are not used, even if you spent a lot of time on it. Except maybe if the fact that a particular method is not useful is of interest for the report.</li>
+<li>It is <strong>not a course</strong> about a method. It should contain all the relevant pieces of information, but it should also be stopped at some points. Clear references and well-chosen are of major importance here.</li>
+</ul>
+</section>
+<section id="results" class="level4">
+<h4 class="anchored" data-anchor-id="results">4. Results</h4>
+<p>Obviously, this section presents the results: application of the methods to the data. It presents all the results (even negative ones) and only the results (no more data or method descriptions). This section should be very well structured especially if there are lot of results. Use subsections and clear references. In addition, use the appendix. For example, if 30 time series were analyzed and the corresponding 30 figures produced. Then only the most interesting ones should be included in the results section. The other ones should be reported in the appendix (or supplementary material) and appropriately cited. The interpretation can be included at this point but should be limited to technical aspects. Keep discussions for the next section.</p>
+</section>
+<section id="recommendations-and-discussion" class="level4">
+<h4 class="anchored" data-anchor-id="recommendations-and-discussion">5. Recommendations And Discussion</h4>
+<p>In this section, the interpretations of the results are given:</p>
+<ul>
+<li>Summary of what was observed from the results</li>
+<li>Implications for the business (link with the context and the initial objectives of the study).</li>
+<li>Limitations (this may be the subject of a separated section). An opening is often expected here: “What next?” “What can be done for improvement”, etc.?</li>
+</ul>
+</section>
+<section id="references" class="level4">
+<h4 class="anchored" data-anchor-id="references">6. References</h4>
+<p>All external sources should be cited. The APA system is a good and safe one. One can use the Reference tool of Word. For more details, see <a href="http://www.apastyle.org/manual/index.aspx" class="uri">http://www.apastyle.org/manual/index.aspx</a>.</p>
+</section>
+<section id="appendix" class="level4">
+<h4 class="anchored" data-anchor-id="appendix">7. Appendix</h4>
+<p>The appendix section is <strong>not a trash</strong> in which one puts all what was done but not integrated in the body of the report. <strong>All the elements in the appendix must be cited in the text</strong>. Appendix can contain graphs, texts, tables, codes, etc. For example, in the body of the report: “Fig. 1 presents the analysis of the times of the process A […]. The 29 other processes are represented in Fig. 40 to 68 in Appendix B.”</p>
+</section>
+</section>
+<section id="f.-supplementary-material" class="level3">
+<h3 class="anchored" data-anchor-id="f.-supplementary-material">F. Supplementary Material</h3>
+<p>In this section, you mention and briefly describe all the external documents given with the report. For example, a code file name “OurSuperRCode.R” attached to the report should be mentioned here.</p>
+</section>
+</section>
+<section id="further-remarks" class="level2">
+<h2 class="anchored" data-anchor-id="further-remarks">Further Remarks</h2>
+<section id="general-format-and-style" class="level5">
+<h5 class="anchored" data-anchor-id="general-format-and-style"><strong>General Format And Style</strong></h5>
+<ul>
+<li>Font: Times New Roman, 11pts</li>
+<li>Page format: A4</li>
+<li>Text justification: even on both side</li>
+<li>Margins: 2.5cm</li>
+<li>Max. 40 pages for the body of the report (i.e.&nbsp;not including title, toc, introduction, reference, appendix, sup. mat.). It is not an expected value. It is an upper bound.</li>
+</ul>
+</section>
+<section id="text-editor" class="level5">
+<h5 class="anchored" data-anchor-id="text-editor"><strong>Text editor</strong></h5>
+<p>Using Word is probably the simplest choice, but <span class="math inline">\(LaTeX\)</span> is also welcomed (see <a href="https://overleaf.com/">Overleaf for easy and free usage</a>) Freely available alternatives exist like LibreOffice. It should be noted that <code>Quarto</code> and <code>Rmarkdown</code> could also be a useful tool. However, be mindful of mixing research (i.e.&nbsp;working R codes, running complex R code or procedure) and the writing of the report. Often, one loses more time and encounter lots of difficulties. Nevertheless, <code>Quarto</code> is very valuable for writing reproducible reports. In any cases, pay attention to use cache in order to avoid running again and again very heavy computations each time you want to compile the report.</p>
+</section>
+<section id="maths-and-formulae" class="level5">
+<h5 class="anchored" data-anchor-id="maths-and-formulae"><strong>Maths and formulae</strong></h5>
+<p>If you need to edit equations or formulae, you may gain using an equation editor like MathWord. Free alternatives exist like LibreOffice.</p>
+</section>
+<section id="numbers-figures-and-other-remarks" class="level5">
+<h5 class="anchored" data-anchor-id="numbers-figures-and-other-remarks"><strong>Numbers, figures and other remarks</strong></h5>
+<p>Usually, in the text, numbers zero (0) to ten (10) are written in letters, then 11, 12, etc. This not for reference like “in Table 1” should never be written “in Table one”. Figures, tables and sections referenced in the text are names an should have a capital letter. One should write “in Table 1”, “in Figure 3 shown below”, “Section 3.2 shows […]”. It is not the case when you refer to an object like “the next table”, “in the following section we can see […]”, etc.</p>
+<p>Do not use don’t (except when quoting speeches for example). For a better scientific writing, check out <a href="https://www.americanscientist.org/blog/the-long-view/the-science-of-scientific-writing">this blog</a>.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../assessments/Project_Directives.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Project Directives</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../assessments/Presentation_Guidelines.html" class="pagination-link">
+        <span class="nav-page-text">Presentation Guidelines</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Copyright 2024, <a href="https://iliaazizi.com/">Ilia Azizi &amp; Marc-Olivier Boldi</a></div>   
+    <div class="nav-footer-right">This page is built with 🤍 and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>
