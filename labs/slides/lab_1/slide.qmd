@@ -1,7 +1,7 @@
 ---
-title: "MLBA Lab 1"
+title: "MLBA Lab 1 - Setup"
 subtitle: "[MLBA]{.flow} Tools & Lab Setup"
-date: "03.03.2024"
+date: "03.03.2025"
 ---
 
 ## Objectives
@@ -103,8 +103,10 @@ knitr::opts_chunk$set(
 
  - RStudio projects simplify the management of R soure code.
  - Use the `{here}` package for easy file path management within projects.
+
 ```{r}
 #| echo: false
+#| eval: true
 knitr::include_url({"https://do-unil.github.io/mlba/resources/beginners_r"})
 ```
 

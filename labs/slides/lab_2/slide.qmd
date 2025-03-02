@@ -1,7 +1,7 @@
 ---
-title: "MLBA Lab 2"
+title: "MLBA Lab 1 - Introduction to Quarto"
 subtitle: "An introduction to [Quarto]{.flow}"
-date: "03.18.2024"
+date: "03.03.2025"
 preview-links: true
 ---
 
@@ -59,8 +59,6 @@ knitr::opts_chunk$set(
 ::: {style="text-align: center; margin-top: 1em"}
 [![https://jollydata.blog/](../auxiliary/images/blog.png){height="400"}](https://jollydata.blog/){preview-link="true"}
 :::
-
-[![The untold story of palmerpenguins by Dr. Kristen Gorman, Dr. Allison Horst, andDr. Alison Hill](../auxiliary/images/presentation.png){height="400"}](https://apreshill.github.io/palmerpenguins-useR-2022/#/title-slide){preview-link="true"}
 
 ### Journals
 

@@ -7,7 +7,7 @@ code-link: false
 ### Books
 There are no mandatory readings for this course, except our `MLBA` website; however, here are some of the books that inspired our course. Except for one book, the rest are all freely available:
 
-- Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning: Data Mining, Inference, and Prediction, Second Edition*. Springer Science & Business Media. Available at: [Trevor Hastie's website](https://hastie.su.domains/Papers/ESLII.pdf)
+- Hastie, T., Tibshirani, R., & Friedman, J. (2009). *The Elements of Statistical Learning: Data Mining, Inference, and Prediction, Second Edition*. Springer Science & Business Media. Available at: [Technically-oriented PDF Collection; GitHub repo](https://github.com/tpn/pdfs/blob/master/The%20Elements%20of%20Statistical%20Learning%20-%20Data%20Mining%2C%20Inference%20and%20Prediction%20-%202nd%20Edition%20(ESLII_print4).pdf)
 
 - James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An Introduction to Statistical Learning: with Applications in R*. Springer Science & Business Media. Available at: [statlearning.com](https://www.statlearning.com/)
 

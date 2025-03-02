@@ -5,7 +5,7 @@ format:
     theme: [default, ../auxiliary/styles/ml_slides.css, ../auxiliary/styles/flow.scss]
     slide-number: true
     preview-links: true
-    footer: "MLBA 2024"
+    footer: "MLBA 2025"
     logo: ../auxiliary/images/unil_logo.png
     self-contained: true
     html-math-method: katex
