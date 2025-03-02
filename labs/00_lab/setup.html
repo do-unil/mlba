@@ -1679,165 +1679,168 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb21-184"><a href="#cb21-184" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-185"><a href="#cb21-185" aria-hidden="true" tabindex="-1"></a>We will install all the packages we need for this particular setup. This should be go smoothly with the following command:</span>
 <span id="cb21-186"><a href="#cb21-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-187"><a href="#cb21-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r results=F, eval=TRUE}</span></span>
-<span id="cb21-188"><a href="#cb21-188" aria-hidden="true" tabindex="-1"></a><span class="in"># Install python package into virtual environment</span></span>
-<span id="cb21-189"><a href="#cb21-189" aria-hidden="true" tabindex="-1"></a><span class="in">reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost","scikit-learn-extra"), envname = "MLBA", pip=TRUE)</span></span>
-<span id="cb21-190"><a href="#cb21-190" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-191"><a href="#cb21-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-192"><a href="#cb21-192" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb21-193"><a href="#cb21-193" aria-hidden="true" tabindex="-1"></a><span class="fu">### `mkl-service` for Mac Users</span></span>
-<span id="cb21-194"><a href="#cb21-194" aria-hidden="true" tabindex="-1"></a>Please note that the <span class="in">`mkl-service`</span> python package from above is specific to windows/linux users and is not needed for Mac users. In case of any errors (especially on M1 chips), feel free to remove it.</span>
-<span id="cb21-195"><a href="#cb21-195" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-189"><a href="#cb21-189" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-190"><a href="#cb21-190" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: hide</span></span>
+<span id="cb21-191"><a href="#cb21-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb21-192"><a href="#cb21-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-193"><a href="#cb21-193" aria-hidden="true" tabindex="-1"></a><span class="co"># Install python package into virtual environment</span></span>
+<span id="cb21-194"><a href="#cb21-194" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(<span class="fu">c</span>(<span class="st">"jupyter"</span>, <span class="st">"pandas"</span>, <span class="st">"matplotlib"</span>,<span class="st">"statsmodels"</span>,<span class="st">"scikit-learn"</span>, <span class="st">"seaborn"</span>, <span class="st">"mlxtend"</span>, <span class="st">"lime"</span>, <span class="st">"mkl-service"</span>, <span class="st">"xgboost"</span>,<span class="st">"scikit-learn-extra"</span>), <span class="at">envname =</span> <span class="st">"MLBA"</span>, <span class="at">pip=</span><span class="cn">TRUE</span>)</span>
+<span id="cb21-195"><a href="#cb21-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-196"><a href="#cb21-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-197"><a href="#cb21-197" aria-hidden="true" tabindex="-1"></a>Let's checked if the package is installed successfully.</span>
-<span id="cb21-198"><a href="#cb21-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-201"><a href="#cb21-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-202"><a href="#cb21-202" aria-hidden="true" tabindex="-1"></a><span class="co"># import package that is used for dealing with data.frames in Python (equivalent of tibble+dplyr)</span></span>
-<span id="cb21-203"><a href="#cb21-203" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"pandas"</span>)</span>
-<span id="cb21-204"><a href="#cb21-204" aria-hidden="true" tabindex="-1"></a><span class="co"># import the package for plotting in python</span></span>
-<span id="cb21-205"><a href="#cb21-205" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"matplotlib.pyplot"</span>)</span>
-<span id="cb21-206"><a href="#cb21-206" aria-hidden="true" tabindex="-1"></a><span class="co"># import the library which we will use for linear regression</span></span>
-<span id="cb21-207"><a href="#cb21-207" aria-hidden="true" tabindex="-1"></a>sm <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"statsmodels.api"</span>)</span>
-<span id="cb21-208"><a href="#cb21-208" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-209"><a href="#cb21-209" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-210"><a href="#cb21-210" aria-hidden="true" tabindex="-1"></a>No error messages? Then installation was successful!</span>
-<span id="cb21-211"><a href="#cb21-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-212"><a href="#cb21-212" aria-hidden="true" tabindex="-1"></a><span class="fu">### Calling Python and R objects interchangeably</span></span>
-<span id="cb21-213"><a href="#cb21-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-214"><a href="#cb21-214" aria-hidden="true" tabindex="-1"></a>All the data types in R vs. Python are explained below (image from <span class="in">`reticulate`</span>'s home page). If you need to explicitly change between objects in R and Python (usually R handles that automatically) to get the objects from the image above, you can use <span class="in">`reticulate::r_to_py()`</span> and <span class="in">`reticulate::py_to_r()`</span> (e.g., R dataframes to pandas dataframes).</span>
-<span id="cb21-215"><a href="#cb21-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-216"><a href="#cb21-216" aria-hidden="true" tabindex="-1"></a><span class="al">![](reticulate_r_python_objects.JPG)</span></span>
-<span id="cb21-217"><a href="#cb21-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-218"><a href="#cb21-218" aria-hidden="true" tabindex="-1"></a>To run objects from python in R, you have to use <span class="in">`$`</span> to access their elements. For instance, when you want to load a python library, you can use <span class="in">`reticulate::import()`</span> function and then assign it to a variable with the name of your choice as we did in the previous part. If that library contains a function (in python called module or sub-module), it always follows the format <span class="in">`LIBRARY$FUNCTION()`</span>. We can see an example of that below:</span>
-<span id="cb21-219"><a href="#cb21-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-220"><a href="#cb21-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, out.width="100%"}</span></span>
-<span id="cb21-221"><a href="#cb21-221" aria-hidden="true" tabindex="-1"></a><span class="in"># Using R</span></span>
-<span id="cb21-222"><a href="#cb21-222" aria-hidden="true" tabindex="-1"></a><span class="in">## load mtcars dataset</span></span>
-<span id="cb21-223"><a href="#cb21-223" aria-hidden="true" tabindex="-1"></a><span class="in">data(mtcars)</span></span>
+<span id="cb21-197"><a href="#cb21-197" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb21-198"><a href="#cb21-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### `mkl-service` for Mac Users</span></span>
+<span id="cb21-199"><a href="#cb21-199" aria-hidden="true" tabindex="-1"></a>Please note that the <span class="in">`mkl-service`</span> python package from above is specific to windows/linux users and is not needed for Mac users. In case of any errors (especially on M1 chips), feel free to remove it.</span>
+<span id="cb21-200"><a href="#cb21-200" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb21-201"><a href="#cb21-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-202"><a href="#cb21-202" aria-hidden="true" tabindex="-1"></a>Let's checked if the package is installed successfully.</span>
+<span id="cb21-203"><a href="#cb21-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-206"><a href="#cb21-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-207"><a href="#cb21-207" aria-hidden="true" tabindex="-1"></a><span class="co"># import package that is used for dealing with data.frames in Python (equivalent of tibble+dplyr)</span></span>
+<span id="cb21-208"><a href="#cb21-208" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"pandas"</span>)</span>
+<span id="cb21-209"><a href="#cb21-209" aria-hidden="true" tabindex="-1"></a><span class="co"># import the package for plotting in python</span></span>
+<span id="cb21-210"><a href="#cb21-210" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"matplotlib.pyplot"</span>)</span>
+<span id="cb21-211"><a href="#cb21-211" aria-hidden="true" tabindex="-1"></a><span class="co"># import the library which we will use for linear regression</span></span>
+<span id="cb21-212"><a href="#cb21-212" aria-hidden="true" tabindex="-1"></a>sm <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"statsmodels.api"</span>)</span>
+<span id="cb21-213"><a href="#cb21-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-214"><a href="#cb21-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-215"><a href="#cb21-215" aria-hidden="true" tabindex="-1"></a>No error messages? Then installation was successful!</span>
+<span id="cb21-216"><a href="#cb21-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-217"><a href="#cb21-217" aria-hidden="true" tabindex="-1"></a><span class="fu">### Calling Python and R objects interchangeably</span></span>
+<span id="cb21-218"><a href="#cb21-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-219"><a href="#cb21-219" aria-hidden="true" tabindex="-1"></a>All the data types in R vs. Python are explained below (image from <span class="in">`reticulate`</span>'s home page). If you need to explicitly change between objects in R and Python (usually R handles that automatically) to get the objects from the image above, you can use <span class="in">`reticulate::r_to_py()`</span> and <span class="in">`reticulate::py_to_r()`</span> (e.g., R dataframes to pandas dataframes).</span>
+<span id="cb21-220"><a href="#cb21-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-221"><a href="#cb21-221" aria-hidden="true" tabindex="-1"></a><span class="al">![](reticulate_r_python_objects.JPG)</span></span>
+<span id="cb21-222"><a href="#cb21-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-223"><a href="#cb21-223" aria-hidden="true" tabindex="-1"></a>To run objects from python in R, you have to use <span class="in">`$`</span> to access their elements. For instance, when you want to load a python library, you can use <span class="in">`reticulate::import()`</span> function and then assign it to a variable with the name of your choice as we did in the previous part. If that library contains a function (in python called module or sub-module), it always follows the format <span class="in">`LIBRARY$FUNCTION()`</span>. We can see an example of that below:</span>
 <span id="cb21-224"><a href="#cb21-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-225"><a href="#cb21-225" aria-hidden="true" tabindex="-1"></a><span class="in">## plot it using base R plot function (or ggplot)</span></span>
-<span id="cb21-226"><a href="#cb21-226" aria-hidden="true" tabindex="-1"></a><span class="in">plot(mtcars$mpg, mtcars$disp)</span></span>
-<span id="cb21-227"><a href="#cb21-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-228"><a href="#cb21-228" aria-hidden="true" tabindex="-1"></a><span class="in"># Using Python</span></span>
-<span id="cb21-229"><a href="#cb21-229" aria-hidden="true" tabindex="-1"></a><span class="in"># plot it using matplotlib in python (or another python library for plots)</span></span>
-<span id="cb21-230"><a href="#cb21-230" aria-hidden="true" tabindex="-1"></a><span class="in">plt$scatter(mtcars$mpg,mtcars$disp)</span></span>
-<span id="cb21-231"><a href="#cb21-231" aria-hidden="true" tabindex="-1"></a><span class="in">plt$xlabel('mpg', fontsize = 12)</span></span>
-<span id="cb21-232"><a href="#cb21-232" aria-hidden="true" tabindex="-1"></a><span class="in">plt$ylabel('disp', fontsize = 12)</span></span>
-<span id="cb21-233"><a href="#cb21-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-234"><a href="#cb21-234" aria-hidden="true" tabindex="-1"></a><span class="in"># save the figure and then include in the Rmd</span></span>
-<span id="cb21-235"><a href="#cb21-235" aria-hidden="true" tabindex="-1"></a><span class="in">plt$savefig("pyplot.png")</span></span>
-<span id="cb21-236"><a href="#cb21-236" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("pyplot.png")</span></span>
-<span id="cb21-237"><a href="#cb21-237" aria-hidden="true" tabindex="-1"></a><span class="in"># alternatively, when not knitting, you can uncomment and run the two following lines</span></span>
-<span id="cb21-238"><a href="#cb21-238" aria-hidden="true" tabindex="-1"></a><span class="in"># instead of save the figure</span></span>
-<span id="cb21-239"><a href="#cb21-239" aria-hidden="true" tabindex="-1"></a><span class="in"># plt$show() # you always have to call this for the plot to be made</span></span>
-<span id="cb21-240"><a href="#cb21-240" aria-hidden="true" tabindex="-1"></a><span class="in"># plt$clf() #this means clear figure</span></span>
-<span id="cb21-241"><a href="#cb21-241" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-242"><a href="#cb21-242" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-243"><a href="#cb21-243" aria-hidden="true" tabindex="-1"></a>Now, this is using R inside Python, but if you wanted to do it the other way around, that's also possible by using a dot <span class="in">`.`</span> instead of <span class="in">`$`</span>. If you're running python in markdown, you can replace <span class="in">`{r...}`</span> at the beginning of the code chunk with <span class="in">`{python...}`</span>, and it'll run python code. Additionally, if you would like to run a script instead (interactively or the whole script), you can do it by going to <span class="in">`file &gt; New File &gt; Python Script`</span> in your Rstudio, and then running any part of your python script starts the interactive python session using <span class="in">`reticulate::repl_python()`</span>. Alternatively, you can call the <span class="in">`repl_python()`</span> to start the interactive session.</span>
-<span id="cb21-244"><a href="#cb21-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-245"><a href="#cb21-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb21-246"><a href="#cb21-246" aria-hidden="true" tabindex="-1"></a><span class="in"># Your python code goes here</span></span>
-<span id="cb21-247"><a href="#cb21-247" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-248"><a href="#cb21-248" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-249"><a href="#cb21-249" aria-hidden="true" tabindex="-1"></a>We will now create a code chunk that purely runs Python and accesses the objects object with <span class="in">`r.OBJECT_NAME`</span>:</span>
-<span id="cb21-250"><a href="#cb21-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-251"><a href="#cb21-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{python dev = "jpg", verbatim = TRUE}</span></span>
-<span id="cb21-252"><a href="#cb21-252" aria-hidden="true" tabindex="-1"></a><span class="in"># we access mtcars dataset from R</span></span>
-<span id="cb21-253"><a href="#cb21-253" aria-hidden="true" tabindex="-1"></a><span class="in">print(r.mtcars.head())</span></span>
-<span id="cb21-254"><a href="#cb21-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-255"><a href="#cb21-255" aria-hidden="true" tabindex="-1"></a><span class="in">from sklearn import datasets</span></span>
-<span id="cb21-256"><a href="#cb21-256" aria-hidden="true" tabindex="-1"></a><span class="in">import pandas as pd</span></span>
-<span id="cb21-257"><a href="#cb21-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-258"><a href="#cb21-258" aria-hidden="true" tabindex="-1"></a><span class="in"># we open iris data from `sklearn` python package</span></span>
-<span id="cb21-259"><a href="#cb21-259" aria-hidden="true" tabindex="-1"></a><span class="in">iris = datasets.load_iris()</span></span>
-<span id="cb21-260"><a href="#cb21-260" aria-hidden="true" tabindex="-1"></a><span class="in">iris_data = pd.DataFrame(data=iris['data'], columns=iris['feature_names'])</span></span>
-<span id="cb21-261"><a href="#cb21-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-262"><a href="#cb21-262" aria-hidden="true" tabindex="-1"></a><span class="in"># Get the head of the DataFrame</span></span>
-<span id="cb21-263"><a href="#cb21-263" aria-hidden="true" tabindex="-1"></a><span class="in">print(iris_data.head())</span></span>
-<span id="cb21-264"><a href="#cb21-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-265"><a href="#cb21-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-225"><a href="#cb21-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, out.width="100%"}</span></span>
+<span id="cb21-226"><a href="#cb21-226" aria-hidden="true" tabindex="-1"></a><span class="in"># Using R</span></span>
+<span id="cb21-227"><a href="#cb21-227" aria-hidden="true" tabindex="-1"></a><span class="in">## load mtcars dataset</span></span>
+<span id="cb21-228"><a href="#cb21-228" aria-hidden="true" tabindex="-1"></a><span class="in">data(mtcars)</span></span>
+<span id="cb21-229"><a href="#cb21-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-230"><a href="#cb21-230" aria-hidden="true" tabindex="-1"></a><span class="in">## plot it using base R plot function (or ggplot)</span></span>
+<span id="cb21-231"><a href="#cb21-231" aria-hidden="true" tabindex="-1"></a><span class="in">plot(mtcars$mpg, mtcars$disp)</span></span>
+<span id="cb21-232"><a href="#cb21-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-233"><a href="#cb21-233" aria-hidden="true" tabindex="-1"></a><span class="in"># Using Python</span></span>
+<span id="cb21-234"><a href="#cb21-234" aria-hidden="true" tabindex="-1"></a><span class="in"># plot it using matplotlib in python (or another python library for plots)</span></span>
+<span id="cb21-235"><a href="#cb21-235" aria-hidden="true" tabindex="-1"></a><span class="in">plt$scatter(mtcars$mpg,mtcars$disp)</span></span>
+<span id="cb21-236"><a href="#cb21-236" aria-hidden="true" tabindex="-1"></a><span class="in">plt$xlabel('mpg', fontsize = 12)</span></span>
+<span id="cb21-237"><a href="#cb21-237" aria-hidden="true" tabindex="-1"></a><span class="in">plt$ylabel('disp', fontsize = 12)</span></span>
+<span id="cb21-238"><a href="#cb21-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-239"><a href="#cb21-239" aria-hidden="true" tabindex="-1"></a><span class="in"># save the figure and then include in the Rmd</span></span>
+<span id="cb21-240"><a href="#cb21-240" aria-hidden="true" tabindex="-1"></a><span class="in">plt$savefig("pyplot.png")</span></span>
+<span id="cb21-241"><a href="#cb21-241" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics("pyplot.png")</span></span>
+<span id="cb21-242"><a href="#cb21-242" aria-hidden="true" tabindex="-1"></a><span class="in"># alternatively, when not knitting, you can uncomment and run the two following lines</span></span>
+<span id="cb21-243"><a href="#cb21-243" aria-hidden="true" tabindex="-1"></a><span class="in"># instead of save the figure</span></span>
+<span id="cb21-244"><a href="#cb21-244" aria-hidden="true" tabindex="-1"></a><span class="in"># plt$show() # you always have to call this for the plot to be made</span></span>
+<span id="cb21-245"><a href="#cb21-245" aria-hidden="true" tabindex="-1"></a><span class="in"># plt$clf() #this means clear figure</span></span>
+<span id="cb21-246"><a href="#cb21-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-247"><a href="#cb21-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-248"><a href="#cb21-248" aria-hidden="true" tabindex="-1"></a>Now, this is using R inside Python, but if you wanted to do it the other way around, that's also possible by using a dot <span class="in">`.`</span> instead of <span class="in">`$`</span>. If you're running python in markdown, you can replace <span class="in">`{r...}`</span> at the beginning of the code chunk with <span class="in">`{python...}`</span>, and it'll run python code. Additionally, if you would like to run a script instead (interactively or the whole script), you can do it by going to <span class="in">`file &gt; New File &gt; Python Script`</span> in your Rstudio, and then running any part of your python script starts the interactive python session using <span class="in">`reticulate::repl_python()`</span>. Alternatively, you can call the <span class="in">`repl_python()`</span> to start the interactive session.</span>
+<span id="cb21-249"><a href="#cb21-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-250"><a href="#cb21-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb21-251"><a href="#cb21-251" aria-hidden="true" tabindex="-1"></a><span class="in"># Your python code goes here</span></span>
+<span id="cb21-252"><a href="#cb21-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-253"><a href="#cb21-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-254"><a href="#cb21-254" aria-hidden="true" tabindex="-1"></a>We will now create a code chunk that purely runs Python and accesses the objects object with <span class="in">`r.OBJECT_NAME`</span>:</span>
+<span id="cb21-255"><a href="#cb21-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-256"><a href="#cb21-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{python dev = "jpg", verbatim = TRUE}</span></span>
+<span id="cb21-257"><a href="#cb21-257" aria-hidden="true" tabindex="-1"></a><span class="in"># we access mtcars dataset from R</span></span>
+<span id="cb21-258"><a href="#cb21-258" aria-hidden="true" tabindex="-1"></a><span class="in">print(r.mtcars.head())</span></span>
+<span id="cb21-259"><a href="#cb21-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-260"><a href="#cb21-260" aria-hidden="true" tabindex="-1"></a><span class="in">from sklearn import datasets</span></span>
+<span id="cb21-261"><a href="#cb21-261" aria-hidden="true" tabindex="-1"></a><span class="in">import pandas as pd</span></span>
+<span id="cb21-262"><a href="#cb21-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-263"><a href="#cb21-263" aria-hidden="true" tabindex="-1"></a><span class="in"># we open iris data from `sklearn` python package</span></span>
+<span id="cb21-264"><a href="#cb21-264" aria-hidden="true" tabindex="-1"></a><span class="in">iris = datasets.load_iris()</span></span>
+<span id="cb21-265"><a href="#cb21-265" aria-hidden="true" tabindex="-1"></a><span class="in">iris_data = pd.DataFrame(data=iris['data'], columns=iris['feature_names'])</span></span>
 <span id="cb21-266"><a href="#cb21-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-267"><a href="#cb21-267" aria-hidden="true" tabindex="-1"></a>We can do the same thing in R by calling <span class="in">`py$OBJECT_NAME`</span> by using <span class="in">`reticulate::py$OBJECT_NAME`</span>:</span>
-<span id="cb21-268"><a href="#cb21-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-269"><a href="#cb21-269" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = FALSE}</span></span>
-<span id="cb21-270"><a href="#cb21-270" aria-hidden="true" tabindex="-1"></a><span class="in"># plotting the iris data from python</span></span>
-<span id="cb21-271"><a href="#cb21-271" aria-hidden="true" tabindex="-1"></a><span class="in">plot(py$iris_data)</span></span>
-<span id="cb21-272"><a href="#cb21-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-267"><a href="#cb21-267" aria-hidden="true" tabindex="-1"></a><span class="in"># Get the head of the DataFrame</span></span>
+<span id="cb21-268"><a href="#cb21-268" aria-hidden="true" tabindex="-1"></a><span class="in">print(iris_data.head())</span></span>
+<span id="cb21-269"><a href="#cb21-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-270"><a href="#cb21-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-271"><a href="#cb21-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-272"><a href="#cb21-272" aria-hidden="true" tabindex="-1"></a>We can do the same thing in R by calling <span class="in">`py$OBJECT_NAME`</span> by using <span class="in">`reticulate::py$OBJECT_NAME`</span>:</span>
 <span id="cb21-273"><a href="#cb21-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-274"><a href="#cb21-274" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modelling in R &amp; Python</span></span>
-<span id="cb21-275"><a href="#cb21-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-276"><a href="#cb21-276" aria-hidden="true" tabindex="-1"></a>Let's take a simple use case of making a regression in R and Python so you can see how the two languages compare:</span>
-<span id="cb21-277"><a href="#cb21-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-280"><a href="#cb21-280" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-281"><a href="#cb21-281" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the spaces and `(cm)` from the column names</span></span>
-<span id="cb21-282"><a href="#cb21-282" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(py<span class="sc">$</span>iris_data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">' '</span>, <span class="st">'_'</span>, <span class="fu">names</span>(py<span class="sc">$</span>iris_data))</span>
-<span id="cb21-283"><a href="#cb21-283" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(py<span class="sc">$</span>iris_data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">'_</span><span class="sc">\\</span><span class="st">(cm</span><span class="sc">\\</span><span class="st">)'</span>, <span class="st">''</span>, <span class="fu">names</span>(py<span class="sc">$</span>iris_data))</span>
-<span id="cb21-284"><a href="#cb21-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-285"><a href="#cb21-285" aria-hidden="true" tabindex="-1"></a><span class="co"># example of running a model on iris data</span></span>
-<span id="cb21-286"><a href="#cb21-286" aria-hidden="true" tabindex="-1"></a>r_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="st">"sepal_length ~. "</span>, <span class="at">data =</span> py<span class="sc">$</span>iris_data)</span>
-<span id="cb21-287"><a href="#cb21-287" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(r_lm)</span>
-<span id="cb21-288"><a href="#cb21-288" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-274"><a href="#cb21-274" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = FALSE}</span></span>
+<span id="cb21-275"><a href="#cb21-275" aria-hidden="true" tabindex="-1"></a><span class="in"># plotting the iris data from python</span></span>
+<span id="cb21-276"><a href="#cb21-276" aria-hidden="true" tabindex="-1"></a><span class="in">plot(py$iris_data)</span></span>
+<span id="cb21-277"><a href="#cb21-277" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-278"><a href="#cb21-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-279"><a href="#cb21-279" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modelling in R &amp; Python</span></span>
+<span id="cb21-280"><a href="#cb21-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-281"><a href="#cb21-281" aria-hidden="true" tabindex="-1"></a>Let's take a simple use case of making a regression in R and Python so you can see how the two languages compare:</span>
+<span id="cb21-282"><a href="#cb21-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-285"><a href="#cb21-285" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-286"><a href="#cb21-286" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the spaces and `(cm)` from the column names</span></span>
+<span id="cb21-287"><a href="#cb21-287" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(py<span class="sc">$</span>iris_data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">' '</span>, <span class="st">'_'</span>, <span class="fu">names</span>(py<span class="sc">$</span>iris_data))</span>
+<span id="cb21-288"><a href="#cb21-288" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(py<span class="sc">$</span>iris_data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">'_</span><span class="sc">\\</span><span class="st">(cm</span><span class="sc">\\</span><span class="st">)'</span>, <span class="st">''</span>, <span class="fu">names</span>(py<span class="sc">$</span>iris_data))</span>
 <span id="cb21-289"><a href="#cb21-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-290"><a href="#cb21-290" aria-hidden="true" tabindex="-1"></a>Within R, you can still use python to run the same linear regression with the <span class="in">`statsmodels`</span> python library.</span>
-<span id="cb21-291"><a href="#cb21-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-294"><a href="#cb21-294" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb21-295"><a href="#cb21-295" aria-hidden="true" tabindex="-1"></a><span class="co"># example of runnning lm model in python -&gt; firstly, process the data</span></span>
-<span id="cb21-296"><a href="#cb21-296" aria-hidden="true" tabindex="-1"></a><span class="co"># specify your dependent variable and independent variables</span></span>
-<span id="cb21-297"><a href="#cb21-297" aria-hidden="true" tabindex="-1"></a>y_iris <span class="ot">=</span> <span class="fu">select</span>(py<span class="sc">$</span>iris_data, <span class="st">"sepal_length"</span>)</span>
-<span id="cb21-298"><a href="#cb21-298" aria-hidden="true" tabindex="-1"></a>x_iris <span class="ot">=</span> <span class="fu">select</span>(py<span class="sc">$</span>iris_data, <span class="sc">-</span><span class="st">"sepal_length"</span>)</span>
-<span id="cb21-299"><a href="#cb21-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-300"><a href="#cb21-300" aria-hidden="true" tabindex="-1"></a><span class="co"># for python approach, we need to add a constant to predictor variables</span></span>
-<span id="cb21-301"><a href="#cb21-301" aria-hidden="true" tabindex="-1"></a>x_iris <span class="ot">=</span> sm<span class="sc">$</span><span class="fu">add_constant</span>(x_iris)</span>
-<span id="cb21-302"><a href="#cb21-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-303"><a href="#cb21-303" aria-hidden="true" tabindex="-1"></a><span class="co"># create a linear regression model and fit it to the data</span></span>
-<span id="cb21-304"><a href="#cb21-304" aria-hidden="true" tabindex="-1"></a>py_lm <span class="ot">=</span> sm<span class="sc">$</span><span class="fu">OLS</span>(y_iris, x_iris)<span class="sc">$</span><span class="fu">fit</span>()</span>
-<span id="cb21-305"><a href="#cb21-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-306"><a href="#cb21-306" aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary</span></span>
-<span id="cb21-307"><a href="#cb21-307" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(py_lm<span class="sc">$</span><span class="fu">summary</span>())</span>
-<span id="cb21-308"><a href="#cb21-308" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-309"><a href="#cb21-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-310"><a href="#cb21-310" aria-hidden="true" tabindex="-1"></a>As you can see, the results are the same (those of <span class="in">`statsmodels`</span> have been rounded). This could have also been done purely in python, as demonstrated below. Please note that here we have brought the iris data from python to R, then manipulated it in R (with the <span class="in">`select()`</span> operation), and now we have two options to use these objects in pure python (just one is needed):</span>
-<span id="cb21-311"><a href="#cb21-311" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-312"><a href="#cb21-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-313"><a href="#cb21-313" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We can simply call the objects from R by <span class="in">`r.x_iris`</span> and <span class="in">`r.y_axis`</span>.</span>
+<span id="cb21-290"><a href="#cb21-290" aria-hidden="true" tabindex="-1"></a><span class="co"># example of running a model on iris data</span></span>
+<span id="cb21-291"><a href="#cb21-291" aria-hidden="true" tabindex="-1"></a>r_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="st">"sepal_length ~. "</span>, <span class="at">data =</span> py<span class="sc">$</span>iris_data)</span>
+<span id="cb21-292"><a href="#cb21-292" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(r_lm)</span>
+<span id="cb21-293"><a href="#cb21-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-294"><a href="#cb21-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-295"><a href="#cb21-295" aria-hidden="true" tabindex="-1"></a>Within R, you can still use python to run the same linear regression with the <span class="in">`statsmodels`</span> python library.</span>
+<span id="cb21-296"><a href="#cb21-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-299"><a href="#cb21-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-300"><a href="#cb21-300" aria-hidden="true" tabindex="-1"></a><span class="co"># example of runnning lm model in python -&gt; firstly, process the data</span></span>
+<span id="cb21-301"><a href="#cb21-301" aria-hidden="true" tabindex="-1"></a><span class="co"># specify your dependent variable and independent variables</span></span>
+<span id="cb21-302"><a href="#cb21-302" aria-hidden="true" tabindex="-1"></a>y_iris <span class="ot">=</span> <span class="fu">select</span>(py<span class="sc">$</span>iris_data, <span class="st">"sepal_length"</span>)</span>
+<span id="cb21-303"><a href="#cb21-303" aria-hidden="true" tabindex="-1"></a>x_iris <span class="ot">=</span> <span class="fu">select</span>(py<span class="sc">$</span>iris_data, <span class="sc">-</span><span class="st">"sepal_length"</span>)</span>
+<span id="cb21-304"><a href="#cb21-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-305"><a href="#cb21-305" aria-hidden="true" tabindex="-1"></a><span class="co"># for python approach, we need to add a constant to predictor variables</span></span>
+<span id="cb21-306"><a href="#cb21-306" aria-hidden="true" tabindex="-1"></a>x_iris <span class="ot">=</span> sm<span class="sc">$</span><span class="fu">add_constant</span>(x_iris)</span>
+<span id="cb21-307"><a href="#cb21-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-308"><a href="#cb21-308" aria-hidden="true" tabindex="-1"></a><span class="co"># create a linear regression model and fit it to the data</span></span>
+<span id="cb21-309"><a href="#cb21-309" aria-hidden="true" tabindex="-1"></a>py_lm <span class="ot">=</span> sm<span class="sc">$</span><span class="fu">OLS</span>(y_iris, x_iris)<span class="sc">$</span><span class="fu">fit</span>()</span>
+<span id="cb21-310"><a href="#cb21-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-311"><a href="#cb21-311" aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary</span></span>
+<span id="cb21-312"><a href="#cb21-312" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(py_lm<span class="sc">$</span><span class="fu">summary</span>())</span>
+<span id="cb21-313"><a href="#cb21-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb21-314"><a href="#cb21-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-315"><a href="#cb21-315" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We can do the same <span class="in">`select()`</span> operation in python with it's own syntax on the original python iris data:</span>
+<span id="cb21-315"><a href="#cb21-315" aria-hidden="true" tabindex="-1"></a>As you can see, the results are the same (those of <span class="in">`statsmodels`</span> have been rounded). This could have also been done purely in python, as demonstrated below. Please note that here we have brought the iris data from python to R, then manipulated it in R (with the <span class="in">`select()`</span> operation), and now we have two options to use these objects in pure python (just one is needed):</span>
 <span id="cb21-316"><a href="#cb21-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-319"><a href="#cb21-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb21-320"><a href="#cb21-320" aria-hidden="true" tabindex="-1"></a>py_y_iris <span class="op">=</span> iris_data[<span class="st">"sepal_length"</span>]</span>
-<span id="cb21-321"><a href="#cb21-321" aria-hidden="true" tabindex="-1"></a>py_x_iris <span class="op">=</span> iris_data.drop(<span class="st">"sepal_length"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb21-322"><a href="#cb21-322" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb21-323"><a href="#cb21-323" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-324"><a href="#cb21-324" aria-hidden="true" tabindex="-1"></a>Needless to say that in this case, the most efficient approach is the first one as demonstrated below:</span>
-<span id="cb21-325"><a href="#cb21-325" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-328"><a href="#cb21-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb21-329"><a href="#cb21-329" aria-hidden="true" tabindex="-1"></a><span class="co"># load the sm library with it's alias</span></span>
-<span id="cb21-330"><a href="#cb21-330" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb21-331"><a href="#cb21-331" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-332"><a href="#cb21-332" aria-hidden="true" tabindex="-1"></a><span class="co"># add the constant again</span></span>
-<span id="cb21-333"><a href="#cb21-333" aria-hidden="true" tabindex="-1"></a>x_iris <span class="op">=</span> sm.add_constant(r.x_iris)</span>
-<span id="cb21-334"><a href="#cb21-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-335"><a href="#cb21-335" aria-hidden="true" tabindex="-1"></a><span class="co"># create a linear regression model and fit it to the data</span></span>
-<span id="cb21-336"><a href="#cb21-336" aria-hidden="true" tabindex="-1"></a>py_lm <span class="op">=</span> sm.OLS(r.y_iris, r.x_iris).fit()</span>
-<span id="cb21-337"><a href="#cb21-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-338"><a href="#cb21-338" aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary</span></span>
-<span id="cb21-339"><a href="#cb21-339" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(py_lm.summary())</span>
-<span id="cb21-340"><a href="#cb21-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-341"><a href="#cb21-341" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-317"><a href="#cb21-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-318"><a href="#cb21-318" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We can simply call the objects from R by <span class="in">`r.x_iris`</span> and <span class="in">`r.y_axis`</span>.</span>
+<span id="cb21-319"><a href="#cb21-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-320"><a href="#cb21-320" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We can do the same <span class="in">`select()`</span> operation in python with it's own syntax on the original python iris data:</span>
+<span id="cb21-321"><a href="#cb21-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-324"><a href="#cb21-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb21-325"><a href="#cb21-325" aria-hidden="true" tabindex="-1"></a>py_y_iris <span class="op">=</span> iris_data[<span class="st">"sepal_length"</span>]</span>
+<span id="cb21-326"><a href="#cb21-326" aria-hidden="true" tabindex="-1"></a>py_x_iris <span class="op">=</span> iris_data.drop(<span class="st">"sepal_length"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb21-327"><a href="#cb21-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-328"><a href="#cb21-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-329"><a href="#cb21-329" aria-hidden="true" tabindex="-1"></a>Needless to say that in this case, the most efficient approach is the first one as demonstrated below:</span>
+<span id="cb21-330"><a href="#cb21-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-333"><a href="#cb21-333" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb21-334"><a href="#cb21-334" aria-hidden="true" tabindex="-1"></a><span class="co"># load the sm library with it's alias</span></span>
+<span id="cb21-335"><a href="#cb21-335" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb21-336"><a href="#cb21-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-337"><a href="#cb21-337" aria-hidden="true" tabindex="-1"></a><span class="co"># add the constant again</span></span>
+<span id="cb21-338"><a href="#cb21-338" aria-hidden="true" tabindex="-1"></a>x_iris <span class="op">=</span> sm.add_constant(r.x_iris)</span>
+<span id="cb21-339"><a href="#cb21-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-340"><a href="#cb21-340" aria-hidden="true" tabindex="-1"></a><span class="co"># create a linear regression model and fit it to the data</span></span>
+<span id="cb21-341"><a href="#cb21-341" aria-hidden="true" tabindex="-1"></a>py_lm <span class="op">=</span> sm.OLS(r.y_iris, r.x_iris).fit()</span>
 <span id="cb21-342"><a href="#cb21-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-343"><a href="#cb21-343" aria-hidden="true" tabindex="-1"></a>The outcome is the same as calling python within R.</span>
-<span id="cb21-344"><a href="#cb21-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-345"><a href="#cb21-345" aria-hidden="true" tabindex="-1"></a><span class="fu"># Closing words: Why not be `polyglot programmers`?</span></span>
-<span id="cb21-346"><a href="#cb21-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-347"><a href="#cb21-347" aria-hidden="true" tabindex="-1"></a>The possibilities for using R and Python are endless. With that said, the integration is not always perfect, therefore sometimes libraries don't translate entirely, and you have to play around with the two, but in most cases, the transition is seamless. Also, many other functions in <span class="in">`reticulate`</span> can help you, which we haven't discussed here, such as <span class="in">`reticulate::source_python()`</span> to run an entire python script, among many of it's other functions. Check out their page if you are interested to learn more.</span>
-<span id="cb21-348"><a href="#cb21-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-349"><a href="#cb21-349" aria-hidden="true" tabindex="-1"></a><span class="fu">### References</span></span>
-<span id="cb21-350"><a href="#cb21-350" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-351"><a href="#cb21-351" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`rnev`: Introduction to `renv`</span><span class="co">](https://rstudio.github.io/renv/articles/renv.html)</span></span>
-<span id="cb21-352"><a href="#cb21-352" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`reticulate`: R Interface to Python</span><span class="co">](https://rstudio.github.io/reticulate/)</span></span>
-<span id="cb21-353"><a href="#cb21-353" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Python for Data Science \[Crash Course\]</span><span class="co">](https://www.youtube.com/watch?v=eAoZjemZXrM)</span> </span>
-<span id="cb21-354"><a href="#cb21-354" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)</span><span class="co">](https://www.youtube.com/watch?v=r-uOLxNrNk8)</span></span>
-<span id="cb21-355"><a href="#cb21-355" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">R vs Python</span><span class="co">](https://www.youtube.com/watch?v=4lcwTGA7MZw)</span></span>
+<span id="cb21-343"><a href="#cb21-343" aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary</span></span>
+<span id="cb21-344"><a href="#cb21-344" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(py_lm.summary())</span>
+<span id="cb21-345"><a href="#cb21-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-346"><a href="#cb21-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-347"><a href="#cb21-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-348"><a href="#cb21-348" aria-hidden="true" tabindex="-1"></a>The outcome is the same as calling python within R.</span>
+<span id="cb21-349"><a href="#cb21-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-350"><a href="#cb21-350" aria-hidden="true" tabindex="-1"></a><span class="fu"># Closing words: Why not be `polyglot programmers`?</span></span>
+<span id="cb21-351"><a href="#cb21-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-352"><a href="#cb21-352" aria-hidden="true" tabindex="-1"></a>The possibilities for using R and Python are endless. With that said, the integration is not always perfect, therefore sometimes libraries don't translate entirely, and you have to play around with the two, but in most cases, the transition is seamless. Also, many other functions in <span class="in">`reticulate`</span> can help you, which we haven't discussed here, such as <span class="in">`reticulate::source_python()`</span> to run an entire python script, among many of it's other functions. Check out their page if you are interested to learn more.</span>
+<span id="cb21-353"><a href="#cb21-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-354"><a href="#cb21-354" aria-hidden="true" tabindex="-1"></a><span class="fu">### References</span></span>
+<span id="cb21-355"><a href="#cb21-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-356"><a href="#cb21-356" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`rnev`: Introduction to `renv`</span><span class="co">](https://rstudio.github.io/renv/articles/renv.html)</span></span>
+<span id="cb21-357"><a href="#cb21-357" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`reticulate`: R Interface to Python</span><span class="co">](https://rstudio.github.io/reticulate/)</span></span>
+<span id="cb21-358"><a href="#cb21-358" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Python for Data Science \[Crash Course\]</span><span class="co">](https://www.youtube.com/watch?v=eAoZjemZXrM)</span> </span>
+<span id="cb21-359"><a href="#cb21-359" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)</span><span class="co">](https://www.youtube.com/watch?v=r-uOLxNrNk8)</span></span>
+<span id="cb21-360"><a href="#cb21-360" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">R vs Python</span><span class="co">](https://www.youtube.com/watch?v=4lcwTGA7MZw)</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
