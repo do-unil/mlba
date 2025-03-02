@@ -181,6 +181,8 @@ We will install all the packages we need for this particular setup. This should 
 ```{r}
 #| results: hide
 #| eval: true
+#| warning: false
+#| output: false
 
 # Install python package into virtual environment
 reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
