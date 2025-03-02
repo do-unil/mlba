@@ -15,13 +15,13 @@ code-link: false
 🏗 *This section is still under development (to be updated soon)* 🏗
 ::: -->
 
-## Machine Learning 2024 Project Guidelines
+## Machine Learning 2025 Project Guidelines
 
 The project grade accounts for 70% of the final grade: 30% for the presentation and 40% for the report. The remaining 30% are for the exam. Grades are from 1 to 6 (Absent=0), rounded to the closest 0.1. The final grade (40% report + 30% presentation + 30% exam) is rounded to the closest 0.5.
 
 ### Organization of Groups
 
-The size of groups is 3 students. You may now register [via our moodle page](https://moodle.unil.ch/mod/choicegroup/view.php?id=1023777). Because we do not know the final number of participants yet, we may create groups of 4 by the end of the grouping process. By default, only groups of 3 can register for the moment.
+The size of groups is 3 students. You may now register [via our moodle page](https://moodle.unil.ch/mod/choicegroup/view.php?id=1889003). Because we do not know the final number of participants yet, we may create groups of 4 by the end of the grouping process. By default, only groups of 3 can register for the moment.
 
 <!-- ### Evaluation Criteria
 
@@ -66,39 +66,51 @@ The criteria for the report and presentation will be provided later.
 - Each graded 1 (absent/non satisfactory) up to 5 (completely); eventually 5.5 (outstanding)
 ::: -->
 
-### Originality And Style
+<!-- ### Originality And Style -->
 
 <!-- The project consists of an original analysis of one data set. We encourage the data set to be extracted from the [sources provided on the webpage of the course](https://do-unil.github.io/mlba/resources/data_acquisition/data_sources.html) or alternatively use [web scraping to gather novel data](https://do-unil.github.io/mlba/resources/data_acquisition/web_scraping_api.html). If you decide to use another one, please ask us a validation. In any case, the data source must be given. -->
 
-If the data comes from a previous analysis, then your analysis must have new elements (new models, features, outcome labels, approaches, interpretations, etc.). In such case, this analysis must be explained, and the original aspects of the new analysis must be made clear, for example, being transparent on the important differences between your and the previous analysis.
+<!-- If the data comes from a previous analysis, then your analysis must have new elements (new models, features, outcome labels, approaches, interpretations, etc.). In such case, this analysis must be explained, and the original aspects of the new analysis must be made clear, for example, being transparent on the important differences between your and the previous analysis. -->
 
-### Completeness
+<!-- ### Template and Writing -->
 
-Your analysis must be comprehensive and not leave major aspects of your dataset unaddressed. The project must include at least:
+### Content
+Your work must match the structure of analysis and of reporting similar to a scientific paper using machine learning. To guide you, 10 scientific papers have been selected as examples of found [here 📁](https://github.com/do-unil/mlba/tree/main/assessments/papers). Note that these papers **are not about developing new machine learning techniques** but rather about predictions in some domain using machine learning techniques.
 
--  Cleaning of the data, creation of new features if needed. 
--  Exploratory Data Analysis. 
--  Supervised learning analysis: two or more models, two or more meaningful metrics, a tuning of one or more hyperparameters per model, a data splitting (if a training/test set split is enough for the global analysis, at least one CV or bootstrap must be used), addressing of the overfitting problem and unbalance, if applicable.
--  Interpretability methods (variable importance and PDP).
-- Unsupervised analysis: clustering and/or dimension reduction. 
+For this work, you must find an interesting case (scientific domain of application), make an extensive literature review about the use of machine learning in this context, find appropriate data set(s), define appropriate methodologies of analysis, apply them, and report the results in a scientific paper
+
+The paper must contain
+
+- An abstract: summary of the paper including the main results.
+- An introduction: context and objective of the study.
+- A literature review: state of the art, previous works, and appropriate citations.
+- A methodology exposure: methods and models that are used in the paper.
+- Results: all the interesting results under the shape of tables, figures, interpretations.
+- Conclusion: limitations, discussion, and outlook subsections.
+- Appendix: extra elements from the paper body.
+- References: in an appropriate style (e.g., APA).
+
+The project must cover methods seen in class such as:
+- Cleaning of the data, creation of new features if needed.
+- Exploratory Data Analysis.
+- Supervised learning analysis: several models, appropriate metrics, a tuning of hyperparameters, data splitting strategies, interpretation of the model.
+- Unsupervised analysis: clustering and/or dimension reduction.
 
 ### Deliverables
 
--  Report: a full PDF or HTML report of your analysis with reproducible code and figures, not exceeding 30 pages (or equivalent for HTML), including title page and appendices.  
+-  Report: One paper in pdf, between 10 to 20 pages (not including appendix or supplementary material)
 -  Presentation: the slides of your presentation. 
 
 ### Deadlines
 
-You must meet the following deadlines (by 23h59): 
+You must meet the following deadlines: 
 
-<!-- -  Project proposal: DATE TO BE ADDED  -->
-<!-- -  Project update: DATE TO BE ADDED -->
--  Project report: Sunday the 19^th^ of May 2024 at 23h59
--  Presentation slide: Thursday the 23^rd^ of May 2024 at 23h59
+-  Project report: Wednesday the 21^st^ of May 2025 at 23h59
+-  Presentation slide: Sunday the 25^th^ of May 2025 at 23h59
 
 **Not meeting the deadline** (presentation and/or report) penalizes the grade by 0.1 per started hour of delay. No maximum penalty for the project report and presentation slide.
 
 ### Presentations
 
-Presentations will be organized on site on Monday the 27^th^ of May 2024 in a 15+5-minutes format (presentation + questions).
+Presentations will be organized on site on Monday the 26^th^ of May 2025 in a 15+10-minutes format (presentation + questions).
 If the number of groups is large, then either the presentation time will be reduced, or, if not possible, another oral presentation session will be organized later (possibly during the exam session).

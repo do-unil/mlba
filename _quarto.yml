@@ -28,7 +28,7 @@ website:
     tools:
       - icon: person-rolodex
         text: Moodle
-        href: http://moodle2.unil.ch/course/view.php?id=8715
+        href: https://moodle.unil.ch/course/view.php?id=33387
       - icon: github
         text: GitHub Repo
         href: https://github.com/do-unil/mlba
