@@ -1,0 +1,90 @@
+\documentclass[twocolumn]{article}
+\usepackage{amsmath, amssymb, graphicx, hyperref}
+\title{Machine Learning: Linear and Logistic Regressions}
+\author{Marc-Olivier Boldi\\Master in Management, Business Analytics, HEC UNIL\\Spring 2024}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Linear Regression}
+Linear regression is a fundamental supervised learning technique used for predicting a continuous outcome variable based on one or more predictor variables. It assumes a linear relationship between the input features and the target variable.
+
+\subsection{Prediction Formula}
+The linear regression model can be expressed as:
+\begin{equation}
+    f(x; \theta) = \theta_0 + \theta_1 x_1 + \cdots + \theta_p x_p
+\end{equation}
+where:
+\begin{itemize}
+    \item $\theta_0$ is the intercept,
+    \item $\theta_1, \dots, \theta_p$ are the coefficients of the model,
+    \item $x_1, \dots, x_p$ are the feature values.
+\end{itemize}
+
+\textbf{Example:} Suppose we have a dataset with one feature $x$ representing the number of study hours and $y$ representing exam scores. The regression equation might look like:
+\begin{equation}
+    y = 50 + 10x
+\end{equation}
+This implies that for each additional hour of study, the expected exam score increases by 10 points.
+
+\subsection{Loss Function}
+The most commonly used loss function for linear regression is the Mean Squared Error (MSE), which measures the average squared difference between the actual and predicted values:
+\begin{equation}
+    \bar{L}(\theta) = \frac{1}{n} \sum_{i=1}^{n} (y_i - f(x_i; \theta))^2
+\end{equation}
+Minimizing the MSE ensures that the predicted values are as close as possible to the actual values.
+
+\textbf{Example:} Given true values $y = [65, 80, 75]$ and predictions $\hat{y} = [60, 85, 70]$, the MSE would be:
+\begin{equation}
+    MSE = \frac{1}{3} ((65-60)^2 + (80-85)^2 + (75-70)^2) = 25
+\end{equation}
+
+\section{Logistic Regression}
+Logistic regression is a classification algorithm used to predict binary outcomes by modeling the probability that a given input belongs to a particular class.
+
+\subsection{Prediction Formula}
+The logistic regression model computes a linear predictor:
+\begin{equation}
+    z(x; \theta) = \theta_0 + \theta_1 x_1 + \cdots + \theta_p x_p
+\end{equation}
+
+The probability of the positive class is then obtained using the sigmoid function:
+\begin{equation}
+    p(x; \theta) = \frac{\exp(z(x; \theta))}{1 + \exp(z(x; \theta))}
+\end{equation}
+
+\textbf{Example:} If the model predicts $z(x) = 2$, then the probability of the positive class is:
+\begin{equation}
+    p(x) = \frac{\exp(2)}{1 + \exp(2)} \approx 0.88
+\end{equation}
+
+\section{Interpretation}
+Interpreting regression models is crucial for understanding the relationships between predictors and the outcome variable.
+
+\subsection{Linear Regression Coefficients}
+\begin{itemize}
+    \item Each coefficient represents the expected change in the response variable for a one-unit increase in the corresponding predictor variable, holding all others constant.
+    \item A positive coefficient indicates a positive association, while a negative coefficient suggests a negative relationship.
+\end{itemize}
+
+\textbf{Example:} In a model predicting house prices, a coefficient of 50000 for the number of rooms means that each additional room increases the predicted price by 50000.
+
+\section{Variable Selection}
+Variable selection helps to improve model interpretability and prevent overfitting by retaining only relevant predictors.
+
+\subsection{Akaike Information Criterion (AIC)}
+AIC is used to balance model complexity and goodness of fit:
+\begin{equation}
+    AIC = -2\hat{\ell} + 2k
+\end{equation}
+where:
+\begin{itemize}
+    \item $\hat{\ell}$ is the maximum log-likelihood,
+    \item $k$ is the number of parameters.
+\end{itemize}
+
+\textbf{Example:} Comparing two models with different numbers of features, the one with the lower AIC is considered better in terms of complexity vs fit.
+
+\end{document}

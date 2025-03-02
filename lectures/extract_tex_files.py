@@ -54,7 +54,8 @@ def extract_tex_files(source_dir, target_dir):
                 
                 # Create new filename with parent dir prepended
                 if parent_dir_name != os.path.basename(source_dir):  # Don't append if it's the root source dir
-                    new_filename = f"{parent_dir_name}_{file}"
+                    # new_filename = f"{parent_dir_name}_{file}"
+                    new_filename = file
                 else:
                     new_filename = file
                 
