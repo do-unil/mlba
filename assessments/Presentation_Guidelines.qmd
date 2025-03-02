@@ -20,9 +20,10 @@ toc: false
 
 - Title, date and team 
 - Context 
-- Agenda  
-- Data description 
-- Methodology 
+- Agenda
+- Problem Description
+- Literature Review
+- Methodology
 - Results 
 - Conclusion and discussion 
 - References if needed 
