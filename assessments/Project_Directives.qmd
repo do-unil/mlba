@@ -99,7 +99,7 @@ The project must cover methods seen in class such as:
 
 ### Deliverables
 
--  Report: One paper in pdf, between 10 to 20 pages (not including appendix or supplementary material)
+-  Report: a pdf, between 10 to 20 pages (not including appendix or supplementary material)
 -  Presentation: the slides of your presentation. 
 
 ### Deadlines
