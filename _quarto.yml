@@ -119,8 +119,8 @@ website:
                 text: Project Directives
               # - href: assessments/Proposal_guidelines.qmd
               #   text: Proposal Guidelines
-              - href: assessments/Report_Guideline.qmd
-                text: Report Guidelines
+              # - href: assessments/Report_Guideline.qmd
+                # text: Report Guidelines
               - href: assessments/Presentation_Guidelines.qmd
                 text: Presentation Guidelines              
       - section: "Resources"

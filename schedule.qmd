@@ -12,7 +12,8 @@ code-link: false
 ## Important dates (more info during the class)
 - Monday the 5^th^ of May: **[Written exam (in-class)]{.underline}**
 - Wednesday the 21^th^ of May: **[Project report deadline]{.underline}**
-- Monday the 26^th^ of May: **[Presentations of the projects & slides submission deadline]{.underline}**
+- Sunday the 25^th^ of May: **[Slides submission deadline]{.underline}**
+- Monday the 26^th^ of May: **[Presentations of the projects]{.underline}**
 :::
 
 **Note that the schedule below way be updated after the first week. The lecture notes, i.e., `lecture_qmd`, will definitely be updated.**
@@ -96,10 +97,10 @@ d |>
   tab_options(table.font.size = 12) |>
   opt_row_striping() |>
   tab_footnote(
-    footnote = "📩 Report submission at 23:59",
+    footnote = "📩 Report & Slides submission at 23:59",
     locations = cells_body(
       columns = 2,
-      rows = date %in% as.Date(c("2025-05-21"))
+      rows = date %in% as.Date(c("2025-05-21", "2025-05-25"))
     )
   )
 
