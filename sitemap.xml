@@ -2,178 +2,166 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://do-unil.github.io/mlba/references.html</loc>
-    <lastmod>2025-03-02T13:19:37.630Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.802Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/02_DataExploration/ML_DataExplo.html</loc>
-    <lastmod>2025-03-02T13:19:37.552Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.725Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/07_InterpretableML/ML_Interp.html</loc>
-    <lastmod>2025-03-02T13:19:37.577Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.750Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/03_Models/030_Introduction/ML_Models_Intro.html</loc>
-    <lastmod>2025-03-02T13:19:37.553Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.726Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/03_Models/033_NeuralNetworks/ML_NN.html</loc>
-    <lastmod>2025-03-02T13:19:37.561Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.733Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/06_Ensembles/ML_Ensemble.html</loc>
-    <lastmod>2025-03-02T13:19:37.570Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.742Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/08_UnsupervisedLearning/082_DimensionReduction/ML_DimRed.html</loc>
-    <lastmod>2025-03-02T13:19:37.586Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.759Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/01_Introduction/ML_Intro.html</loc>
-    <lastmod>2025-03-02T13:19:37.550Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.723Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/04_Metrics/Ex_ML_Scoring.html</loc>
-    <lastmod>2025-03-02T13:19:37.516Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.689Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.html</loc>
-    <lastmod>2025-03-02T13:19:37.515Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.689Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/03_Models/035_KNN/Ex_ML_KNN.html</loc>
-    <lastmod>2025-03-02T13:19:37.516Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.689Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/03_Models/032_Trees/Ex_ML_Tree.html</loc>
-    <lastmod>2025-03-02T13:19:37.511Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.684Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/slides/lab_2/slide.html</loc>
-    <lastmod>2025-03-02T13:19:37.548Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.721Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/00_lab/setup.html</loc>
-    <lastmod>2025-03-02T13:19:37.510Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.683Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.html</loc>
-    <lastmod>2025-03-02T13:19:37.516Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.690Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/schedule.html</loc>
-    <lastmod>2025-03-02T13:19:37.671Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.844Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/resources/data_acquisition/web_scraping_api.html</loc>
-    <lastmod>2025-03-02T13:19:37.671Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.844Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/resources/cheatsheets.html</loc>
-    <lastmod>2025-03-02T13:19:37.631Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.803Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/index.html</loc>
-    <lastmod>2025-03-02T13:19:37.509Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.682Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/assessments/Report_Guideline.html</loc>
-    <lastmod>2025-03-02T13:19:37.440Z</lastmod>
-  </url>
-  <url>
-    <loc>https://do-unil.github.io/mlba/assessments/23-24_criteria/Project_Directives.html</loc>
-    <lastmod>2025-03-02T13:19:37.436Z</lastmod>
-  </url>
-  <url>
-    <loc>https://do-unil.github.io/mlba/assessments/Exam.html</loc>
-    <lastmod>2025-03-02T13:19:37.437Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.613Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/assessments/Presentation_Guidelines.html</loc>
-    <lastmod>2025-03-02T13:19:37.440Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.613Z</lastmod>
   </url>
   <url>
-    <loc>https://do-unil.github.io/mlba/assessments/23-24_criteria/Report_Guideline.html</loc>
-    <lastmod>2025-03-02T13:19:37.436Z</lastmod>
-  </url>
-  <url>
-    <loc>https://do-unil.github.io/mlba/assessments/23-24_criteria/Proposal_guidelines.html</loc>
-    <lastmod>2025-03-02T13:19:37.436Z</lastmod>
+    <loc>https://do-unil.github.io/mlba/assessments/Exam.html</loc>
+    <lastmod>2025-03-02T13:55:42.610Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/assessments/Project_Directives.html</loc>
-    <lastmod>2025-03-02T13:19:37.440Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.613Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/faq.html</loc>
-    <lastmod>2025-03-02T13:19:37.508Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.681Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/resources/data_acquisition/data_sources.html</loc>
-    <lastmod>2025-03-02T13:19:37.671Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.843Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/resources/beginners_r.html</loc>
-    <lastmod>2025-03-02T13:19:37.631Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.803Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/08_UnsupervisedLearning/081_Clustering/Ex_ML_Clustering.html</loc>
-    <lastmod>2025-03-02T13:19:37.516Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.690Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.html</loc>
-    <lastmod>2025-03-02T13:19:37.517Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.690Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/slides/lab_1/slide.html</loc>
-    <lastmod>2025-03-02T13:19:37.548Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.721Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/06_Ensembles/Ex_ML_Ensemble.html</loc>
-    <lastmod>2025-03-02T13:19:37.516Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.689Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/03_Models/033_NeuralNetworks/EX_ML_NN.html</loc>
-    <lastmod>2025-03-02T13:19:37.515Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.689Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/03_Models/031_LinearLogisticRegression/Ex_ML_LinLogReg.html</loc>
-    <lastmod>2025-03-02T13:19:37.510Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.684Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/07_InterpretableML/Ex_ML_VarImp.html</loc>
-    <lastmod>2025-03-02T13:19:37.516Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.689Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/labs/05_DataSplitting/Ex_ML_Data_Splitting.html</loc>
-    <lastmod>2025-03-02T13:19:37.516Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.689Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.html</loc>
-    <lastmod>2025-03-02T13:19:37.584Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.756Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/08_UnsupervisedLearning/080_Introduction/ML_UnsupIntro.html</loc>
-    <lastmod>2025-03-02T13:19:37.578Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.751Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/03_Models/032_Trees/ML_Trees.html</loc>
-    <lastmod>2025-03-02T13:19:37.559Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.732Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/03_Models/031_LinearLogisticRegression/ML_LinLogReg.html</loc>
-    <lastmod>2025-03-02T13:19:37.555Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.728Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/03_Models/034_SupportVectorMachine/ML_SVM.html</loc>
-    <lastmod>2025-03-02T13:19:37.563Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.735Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/04_Metrics/ML_Metrics.html</loc>
-    <lastmod>2025-03-02T13:19:37.565Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.737Z</lastmod>
   </url>
   <url>
     <loc>https://do-unil.github.io/mlba/lectures/05_DataSplitting/ML_DataSplitting.html</loc>
-    <lastmod>2025-03-02T13:19:37.567Z</lastmod>
+    <lastmod>2025-03-02T13:55:42.740Z</lastmod>
   </url>
 </urlset>
