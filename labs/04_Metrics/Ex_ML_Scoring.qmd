@@ -74,9 +74,13 @@ est_knn = KNeighborsRegressor(n_neighbors=3).fit(r.df_tr[predictors], r.df_tr[ta
 
 ::: panel-tabset
 ### R
-We now compute the R2 for each model using the `R2` function (in `caret`).
+We now compute the R2 for each model using the a defined function.
 
 ```{r}
+R2 = function(y_actual,y_predict){
+  cor(y_actual,y_predict)^2
+}
+
 R2(predict(est_lm, newdata = df_te), df_te$Price)
 R2(predict(est_rt, newdata = df_te), df_te$Price)
 R2(predict(est_knn, newdata = df_te), df_te$Price)
@@ -105,8 +109,7 @@ np.corrcoef(est_lm.predict(r.df_te[predictors]), r.df_te[target])[0][1]**2
 
 ```
 
-To understand why the results are different in `caret::R2()` vs. `sklearn.metrics.r2_score()`, 
-see [this post on stackoverflow](https://stats.stackexchange.com/questions/586821/what-is-the-interpretation-of-the-traditional-r2). If you want to get the same results in both, you can set the argument `form = 'corr'` to `form = "traditional"` in `caret::R2()` so that for instance `R2(predict(est_lm, newdata = df_te), df_te$Price, form = "traditional")`, produces the same result of `r R2(predict(est_lm, newdata = df_te), df_te$Price, form = "traditional")`.
+To understand why the results are different in `R2` from our defined function  in R vs. `sklearn.metrics.r2_score()` in Python, see [this post on stackoverflow](https://stats.stackexchange.com/questions/586821/what-is-the-interpretation-of-the-traditional-r2). If you want to recieve the same results in both, you can try computing the R2 not by correlation but by the formula $1 - \frac{SSR}{SST}$ where $SSR$ is the sum of squared residuals and $SST$ is the total sum of squares.
 
 Additionally, please note that the performance of the tree is highly dependent on the seed, so setting a different seed can lead to different results.
 
