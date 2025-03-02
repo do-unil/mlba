@@ -11,3 +11,5 @@ _site/
 /.luarc.json
 *Check-in*.csv
 /final_projects/
+
+/lectures/cours_ml/
