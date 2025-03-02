@@ -75,7 +75,7 @@ The criteria for the report and presentation will be provided later.
 <!-- ### Template and Writing -->
 
 ### Content
-Your work must match the structure of analysis and of reporting similar to a scientific paper using machine learning. To guide you, 10 scientific papers have been selected as examples of found [here 📁](https://github.com/do-unil/mlba/tree/main/assessments/papers). Note that these papers **are not about developing new machine learning techniques** but rather about predictions in some domain using machine learning techniques.
+Your work must match the structure of analysis and of reporting similar to a scientific paper using machine learning. To guide you, 10 scientific papers have been selected as examples [here 📁](https://github.com/do-unil/mlba/tree/main/assessments/papers). Note that these papers **are not about developing new machine learning techniques** but rather about predictions in some domain using machine learning techniques.
 
 For this work, you must find an interesting case (scientific domain of application), make an extensive literature review about the use of machine learning in this context, find appropriate data set(s), define appropriate methodologies of analysis, apply them, and report the results in a scientific paper
 
