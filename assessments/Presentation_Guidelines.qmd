@@ -19,9 +19,8 @@ toc: false
 **A typical plan:**
 
 - Title, date and team 
-- Context 
 - Agenda
-- Problem Description
+- Context (Problem Description)
 - Literature Review
 - Methodology
 - Results 
