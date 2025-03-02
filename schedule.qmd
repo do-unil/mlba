@@ -103,8 +103,8 @@ d |>
 
 ```
 
-::: callout-warning
-# Lecture Slides vs Lecture Notes
+::: callout-caution
+## Lecture Slides vs Lecture Notes
 The most up to the date content of the course are found in the lecture slides. The lecture notes are only there to assist you, and may contain outdated (but still correct) information. Therefore, **always** refer to the lecture slides for the most accurate and up to date content.
 :::
 
