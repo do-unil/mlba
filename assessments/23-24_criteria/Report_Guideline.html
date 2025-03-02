@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Coding Cheatsheets &amp; Books – MLBA - S24</title>
+<title>Report Guidelines – MLBA - S24</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../resources/data_acquisition/web_scraping_api.html" rel="prev">
-<link href="../images/logo.dark.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ce80fb680f754bdddd2e33f428b7c2fe.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-a77d94411ef28645364aa138da2dc249.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-96ccf8338fe666a1f86f626509d49180.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-109dea34fb0ab778c1fa5d25b6154e69.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../images/logo.dark.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ce80fb680f754bdddd2e33f428b7c2fe.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-a77d94411ef28645364aa138da2dc249.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-96ccf8338fe666a1f86f626509d49180.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-109dea34fb0ab778c1fa5d25b6154e69.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,14 +69,39 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="Coding Cheatsheets &amp; Books – MLBA - S24">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Report Guidelines – MLBA - S24">
 <meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
-<meta property="og:image" content="https://do-unil.github.io/mlba/resources/cheatsheets/python-cheatsheets.png">
 <meta property="og:site_name" content="MLBA - S24 ">
-<meta property="og:image:alt" content="python cheatsheet">
-<meta property="og:image:height" content="1654">
-<meta property="og:image:width" content="2339">
 </head>
 
 <body class="nav-sidebar docked">
@@ -89,7 +113,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../resources/beginners_r.html">Resources</a></li><li class="breadcrumb-item"><a href="../resources/cheatsheets.html">Coding Cheatsheets</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Report Guidelines</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -103,8 +127,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../index.html" class="sidebar-logo-link">
-      <img src="../images/logo.light.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../images/logo.light.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="http://moodle2.unil.ch/course/view.php?id=8715" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
@@ -130,25 +154,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../schedule.html" class="sidebar-item-text sidebar-link">
+  <a href="../../schedule.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Schedule</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../faq.html" class="sidebar-item-text sidebar-link">
+  <a href="../../faq.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">FAQ</span></a>
   </div>
 </li>
@@ -165,85 +189,85 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/01_Introduction/ML_Intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/01_Introduction/ML_Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/02_DataExploration/ML_DataExplo.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/02_DataExploration/ML_DataExplo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Exploration</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/03_Models/030_Introduction/ML_Models_Intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/03_Models/030_Introduction/ML_Models_Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to Models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/03_Models/031_LinearLogisticRegression/ML_LinLogReg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/03_Models/031_LinearLogisticRegression/ML_LinLogReg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linear &amp; Logistic Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/03_Models/032_Trees/ML_Trees.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/03_Models/032_Trees/ML_Trees.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Decision Trees</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/03_Models/033_NeuralNetworks/ML_NN.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/03_Models/033_NeuralNetworks/ML_NN.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Neural Networks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/03_Models/034_SupportVectorMachine/ML_SVM.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/03_Models/034_SupportVectorMachine/ML_SVM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support Vector Machines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/04_Metrics/ML_Metrics.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/04_Metrics/ML_Metrics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Metrics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/05_DataSplitting/ML_DataSplitting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/05_DataSplitting/ML_DataSplitting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Splitting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/06_Ensembles/ML_Ensemble.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/06_Ensembles/ML_Ensemble.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ensemble Methods</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/07_InterpretableML/ML_Interp.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/07_InterpretableML/ML_Interp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interpretable ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/08_UnsupervisedLearning/080_Introduction/ML_UnsupIntro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/08_UnsupervisedLearning/080_Introduction/ML_UnsupIntro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to Unsuperised Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/08_UnsupervisedLearning/081_Clustering/ML_Clustering.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Clustering</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../lectures/08_UnsupervisedLearning/082_DimensionReduction/ML_DimRed.html" class="sidebar-item-text sidebar-link">
+  <a href="../../lectures/08_UnsupervisedLearning/082_DimensionReduction/ML_DimRed.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Dimension Reduction</span></a>
   </div>
 </li>
@@ -260,73 +284,73 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/00_lab/setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/00_lab/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/03_Models/031_LinearLogisticRegression/Ex_ML_LinLogReg.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/03_Models/031_LinearLogisticRegression/Ex_ML_LinLogReg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linear &amp; Logistic Regression</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/03_Models/032_Trees/Ex_ML_Tree.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/03_Models/032_Trees/Ex_ML_Tree.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Decision Trees</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/03_Models/033_NeuralNetworks/EX_ML_NN.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/03_Models/033_NeuralNetworks/EX_ML_NN.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Neural Networks</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Support Vector Machines</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/04_Metrics/Ex_ML_Scoring.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/04_Metrics/Ex_ML_Scoring.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Metrics</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/05_DataSplitting/Ex_ML_Data_Splitting.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/05_DataSplitting/Ex_ML_Data_Splitting.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Splitting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/06_Ensembles/Ex_ML_Ensemble.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/06_Ensembles/Ex_ML_Ensemble.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Ensemble Methods</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/07_InterpretableML/Ex_ML_VarImp.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/07_InterpretableML/Ex_ML_VarImp.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Interpretable ML</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/08_UnsupervisedLearning/081_Clustering/Ex_ML_Clustering.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/08_UnsupervisedLearning/081_Clustering/Ex_ML_Clustering.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Clustering</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">PCA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.html" class="sidebar-item-text sidebar-link">
+  <a href="../../labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Autoencoders</span></a>
   </div>
 </li>
@@ -343,7 +367,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../assessments/Exam.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assessments/Exam.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exam</span></a>
   </div>
 </li>
@@ -358,13 +382,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../assessments/Project_Directives.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assessments/Project_Directives.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Directives</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../assessments/Presentation_Guidelines.html" class="sidebar-item-text sidebar-link">
+  <a href="../../assessments/Presentation_Guidelines.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentation Guidelines</span></a>
   </div>
 </li>
@@ -374,34 +398,34 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">Resources</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/beginners_r.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources/beginners_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Beginners in R</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/data_acquisition/data_sources.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources/data_acquisition/data_sources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Sources</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/data_acquisition/web_scraping_api.html" class="sidebar-item-text sidebar-link">
+  <a href="../../resources/data_acquisition/web_scraping_api.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Web Scraping</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../resources/cheatsheets.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../resources/cheatsheets.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Coding Cheatsheets</span></a>
   </div>
 </li>
@@ -417,10 +441,20 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#python" id="toc-python" class="nav-link active" data-scroll-target="#python">Python</a></li>
-  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#why-do-you-write-a-technical-report" id="toc-why-do-you-write-a-technical-report" class="nav-link active" data-scroll-target="#why-do-you-write-a-technical-report">Why Do You Write A (Technical) Report?</a></li>
+  <li><a href="#level-of-details" id="toc-level-of-details" class="nav-link" data-scroll-target="#level-of-details">Level Of Details</a></li>
+  <li><a href="#the-structure" id="toc-the-structure" class="nav-link" data-scroll-target="#the-structure">The Structure</a>
+  <ul class="collapse">
+  <li><a href="#a.-title-page-mandatory" id="toc-a.-title-page-mandatory" class="nav-link" data-scroll-target="#a.-title-page-mandatory">A. Title Page (Mandatory)</a></li>
+  <li><a href="#b.-personal-information-and-non-plagiarism-statement-mandatory" id="toc-b.-personal-information-and-non-plagiarism-statement-mandatory" class="nav-link" data-scroll-target="#b.-personal-information-and-non-plagiarism-statement-mandatory">B. Personal Information And Non-Plagiarism Statement (Mandatory)</a></li>
+  <li><a href="#c.-summary-or-abstract" id="toc-c.-summary-or-abstract" class="nav-link" data-scroll-target="#c.-summary-or-abstract">C. Summary Or Abstract</a></li>
+  <li><a href="#d.-table-of-content-toc-table-of-figures-tof-and-table-of-tables-tot" id="toc-d.-table-of-content-toc-table-of-figures-tof-and-table-of-tables-tot" class="nav-link" data-scroll-target="#d.-table-of-content-toc-table-of-figures-tof-and-table-of-tables-tot">D. Table Of Content (Toc), Table Of Figures (Tof) And Table Of Tables (Tot)</a></li>
+  <li><a href="#e.-body-of-the-report" id="toc-e.-body-of-the-report" class="nav-link" data-scroll-target="#e.-body-of-the-report">E. Body Of The Report</a></li>
+  <li><a href="#f.-supplementary-material" id="toc-f.-supplementary-material" class="nav-link" data-scroll-target="#f.-supplementary-material">F. Supplementary Material</a></li>
+  </ul></li>
+  <li><a href="#further-remarks" id="toc-further-remarks" class="nav-link" data-scroll-target="#further-remarks">Further Remarks</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/resources/cheatsheets.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/assessments/23-24_criteria/Report_Guideline.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Report_Guideline.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -459,9 +493,9 @@ observer.observe(window.document.body, {
 updateImageSrc();
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../resources/beginners_r.html">Resources</a></li><li class="breadcrumb-item"><a href="../resources/cheatsheets.html">Coding Cheatsheets</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Coding Cheatsheets &amp; Books</h1>
+<h1 class="title">Report Guidelines</h1>
 </div>
 
 
@@ -478,81 +512,158 @@ updateImageSrc();
 </header>
 
 
-<section id="python" class="level3">
-<h3 class="anchored" data-anchor-id="python">Python</h3>
-<p>You can find an extensive cheatsheet for Python in addition to a book for learning python:</p>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 63.8%;justify-content: center;">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="https://www.utc.fr/~jlaforet/Suppl/python-cheatsheets.pdf"><img src="cheatsheets/python-cheatsheets.png" class="img-fluid quarto-figure quarto-figure-left figure-img" alt="python cheatsheet" width="300"></a></p>
-</figure>
-</div>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 36.2%;justify-content: center;">
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure">
-<p><a href="https://ehmatthes.github.io/pcc/cheatsheets/README.html"><img src="cheatsheets/python-crash-course.jpg" class="img-fluid quarto-figure quarto-figure-right figure-img" alt="ggplot2 cheat sheet" width="170"></a></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
+<!-- ::: {.callout-important}
+## ATTENTION
+🏗 *This section is still under development (to be updated soon)* 🏗
+::: -->
+<p>For your report, you can use the <a href="https://github.com/Unco3892/quarto_ml_template">Quarto template we provide here</a>. Please note that the <a href="https://do-unil.github.io/mlba/assessments/Report_Guideline.html#b.-personal-information-and-non-plagiarism-statement-mandatory">Personal Information And Non-Plagiarism Statement</a> indicated below must be integrated into the final report during your submission.</p>
+<section id="why-do-you-write-a-technical-report" class="level2">
+<h2 class="anchored" data-anchor-id="why-do-you-write-a-technical-report">Why Do You Write A (Technical) Report?</h2>
+<p>The aim of writing a report is to communicate results from a study to someone who did not participate to it.</p>
+<p>The report should be relevant, <strong>easy</strong> to read and <strong>convincing</strong>. Advices:</p>
+<ul>
+<li>Take some time to ask yourself what the aims of your report are, and to whom it is addressed.</li>
+<li>Ask yourself which messages you report should convey and which is the best way to convey it.</li>
+</ul>
 </section>
-<section id="r" class="level3">
-<h3 class="anchored" data-anchor-id="r">R</h3>
-<p>The following cheatsheets come from <a href="https://posit.co/resources/cheatsheets" class="uri">https://posit.co/resources/cheatsheets</a>. We haven’t covered every function and functionality listed on them, but you might still find them useful as references.</p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf"><img src="cheatsheets/data-visualization.png" class="img-fluid quarto-figure quarto-figure-left figure-img" alt="ggplot2 cheat sheet" width="300"></a></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/tidyr.pdf"><img src="cheatsheets/tidyr.png" class="img-fluid quarto-figure quarto-figure-left figure-img" alt="ggplot2 cheat sheet" width="300"></a></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/strings.pdf"><img src="cheatsheets/strings.png" class="img-fluid quarto-figure quarto-figure-left figure-img" alt="ggplot2 cheat sheet" width="300"></a></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/lubridate.pdf"><img src="cheatsheets/lubridate.png" class="img-fluid quarto-figure quarto-figure-left figure-img" alt="ggplot2 cheat sheet" width="300"></a></p>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure">
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf"><img src="cheatsheets/data-transformation.png" class="img-fluid quarto-figure quarto-figure-right figure-img" alt="ggplot2 cheat sheet" width="300"></a></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure">
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-import.pdf"><img src="cheatsheets/data-import.png" class="img-fluid quarto-figure quarto-figure-right figure-img" alt="ggplot2 cheat sheet" width="300"></a></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure">
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/factors.pdf"><img src="cheatsheets/factors.png" class="img-fluid quarto-figure quarto-figure-right figure-img" alt="ggplot2 cheat sheet" width="300"></a></p>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-right">
-<figure class="figure">
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf"><img src="cheatsheets/rstudio-ide.png" class="img-fluid quarto-figure quarto-figure-right figure-img" alt="ggplot2 cheat sheet" width="300"></a></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="level-of-details" class="level2">
+<h2 class="anchored" data-anchor-id="level-of-details">Level Of Details</h2>
+<p>Including all the minutes of your research is NOT interesting. <strong>Relevance</strong> and <strong>reproducibility</strong> are the key words here. On the one hand, the report should include all the needed details for the reader to be able to repeat on his own the relevant part of the study. On the other hand, the report is not a course about a given subject. In particular, it is not expected that you include in the report all the theory about a method that is used. Of course, it is not easy to find the good balance, which anyway probably varies from one reader to another. Often, this contradiction can be solved by referencing to clear and accessible sources (paper, book chapter, webpage, etc.).</p>
+</section>
+<section id="the-structure" class="level2">
+<h2 class="anchored" data-anchor-id="the-structure">The Structure</h2>
+<p>There are several ways to write a report. The following structure can be used and adapted according to the specificity of the study.</p>
+<section id="a.-title-page-mandatory" class="level3">
+<h3 class="anchored" data-anchor-id="a.-title-page-mandatory">A. Title Page (Mandatory)</h3>
+<p>One separate page. It should include</p>
+<ul>
+<li>Title: large format. It should be short AND informative. Never more than a sentence.</li>
+<li>Logo: UNIL/HEC at least; optional: logo of the company</li>
+<li>Date of edition</li>
+<li>Course name and the year</li>
+<li>Group name</li>
+</ul>
+</section>
+<section id="b.-personal-information-and-non-plagiarism-statement-mandatory" class="level3">
+<h3 class="anchored" data-anchor-id="b.-personal-information-and-non-plagiarism-statement-mandatory">B. Personal Information And Non-Plagiarism Statement (Mandatory)</h3>
+<p>One separated page containing</p>
+<ul>
+<li>Full names of all the group members and their email address</li>
+<li>The following text <strong>hand-signed by all the authors</strong>. This project was written by us and in our own words, except for quotations from published and unpublished sources, which are clearly indicated and acknowledged as such. We are conscious that the incorporation of material from other works or a paraphrase of such material without acknowledgement will be treated as plagiarism, subject to the custom and usage of the subject, according to the University Regulations. The source of any picture, map or other illustration is also indicated, as is the source, published or unpublished, of any material not resulting from our own research.</li>
+</ul>
+</section>
+<section id="c.-summary-or-abstract" class="level3">
+<h3 class="anchored" data-anchor-id="c.-summary-or-abstract">C. Summary Or Abstract</h3>
+<p>Usually one page, it is limited to one-and-a-half-page maximum. The summary states very succinctly and clearly the issue, including a data brief description, the methods used, the main results, and the main conclusions. This summary allows someone to know, without to read your work, what has been done, why and what are the results and implications. Advises for writing it:</p>
+<ul>
+<li>Write it at the very end the work, after the report body is written and clean.</li>
+<li>Take each section (Introduction, etc.) and summarize it in one, two, three, sentences, one paragraph or so. Use the needed space. State the important results.</li>
+<li>Once finished, read it again. Cut/shorten long and useless words (e.g.&nbsp;“has been” -&gt; “was”, “therefore” -&gt; “hence”, etc.).</li>
+<li>If it is still too long, cut some part by order of importance.</li>
+<li>The summary is not a teaser to read the report. It contains the results. It should summary them. It should not be only inviting the reader to read the report but propose an alternative for readers who do not have time to read it all.</li>
+<li>Typically, “We have made an analysis of the data in this report about the influential factors on the sales. We decided to use an ARIMA model to make the forecasts.” It contains a piece of information but is quite frustrating. More useful: “Using an ARIMA model, the [what] sales were found influenced by the [what] factors. Such model achieved an RMSE of [what] on forecasting a [what] test set.”.</li>
+</ul>
+</section>
+<section id="d.-table-of-content-toc-table-of-figures-tof-and-table-of-tables-tot" class="level3">
+<h3 class="anchored" data-anchor-id="d.-table-of-content-toc-table-of-figures-tof-and-table-of-tables-tot">D. Table Of Content (Toc), Table Of Figures (Tof) And Table Of Tables (Tot)</h3>
+<p>ToC is mandatory. ToF and ToT are nice to have especially for very long reports, or when these elements are central to the report. ToC must be up to date. You gain generating it automatically (easy with tools like word, LateX, Rmarkdown, etc.). ToF and ToT should also be generated automatically. This implies that figures and tables are correctly inserted with a caption.</p>
+</section>
+<section id="e.-body-of-the-report" class="level3">
+<h3 class="anchored" data-anchor-id="e.-body-of-the-report">E. Body Of The Report</h3>
+<section id="introduction" class="level4">
+<h4 class="anchored" data-anchor-id="introduction">1. Introduction</h4>
+<p>In brief, the introduction explains why the theme is interesting, what is done in the study and what it will bring. After reading it, the reader should have a broad view on the study, why it is relevant, and how it is organized. The purpose of the introduction is not to detail all theoretical aspects. Introduction is a section that should contain</p>
+<ul>
+<li>The context and background: course, company name, business context.</li>
+<li>Aim of the investigation: major terms should be defined, the question of research (more generally the issue), why it is of interest and relevant in that context.</li>
+<li>Description of the data and the general material provided and how it was made available (and/or collected, if it is relevant). Only in broad terms however, the data will be further described in a following section. Typically, the origin/source of the data (the company, webpage, etc.), the type of files (Excel files, etc.), and what it contains in broad terms (e.g.&nbsp;“a file containing weekly sales with the factors of interest including in particular the promotion characteristics”).<br>
+</li>
+<li>The method that is used, in broad terms, no details needed at this point. E.g. “Model based machine learning will help us quantifying the important factors on the sales”.<br>
+</li>
+<li>An outlook: a short paragraph indicating from now what will be treated in each following sections/chapters. E.g. “in Section 3, we describe the data. Section 4 is dedicated to the presentation of the text mining methods…”</li>
+</ul>
+</section>
+<section id="data-description" class="level4">
+<h4 class="anchored" data-anchor-id="data-description">2. Data Description</h4>
+<p>The data description section may be optional. It is typical of report for project oriented toward statistical and machine learning. The data description section can be included as a subsection of the introduction or be a whole section by itself, depending on the complexity and the size of the database. If relevant, it should contain</p>
+<ul>
+<li>Description of the data file format (xlsx, csv, text, video, etc.)</li>
+<li>The features or variables: type, units, the range (e.g.&nbsp;the time, numerical, in weeks from January 1, 2012 to December 31, 2015), their coding (numerical, the levels for categorical, etc.), etc.</li>
+<li>The instances: customers, company, products, subjects, etc.</li>
+<li>Missing data pattern: if there are missing data, if they are specific to some features, etc.</li>
+<li>Any modification to the initial data: aggregation, imputation in replacement of missing data, recoding of levels, etc.</li>
+<li>If only a subset was used, it should be mentioned and explained; e.g.&nbsp;inclusion criteria. Note that if inclusion criteria do not exist and the inclusion was an arbitrary choice, it should be stated as such. One should not try to invent unreal justifications.</li>
+</ul>
+<p>In some cases, data structure can be more complex like images, videos, etc. This should be adapted accordingly. Any unknown element should be mentioned as such. Overall, this description can be quite short or very long, depending on the format of the data. For example, one xlsx file with 10 features and 50’000 instances representing customer behaviors is in general quite easy to describe. If you have 25 files with different formats from different stores representing these customers, with features and instances only partially matching, then it may be more difficult to deal with. Typically, the first and simple case would be included into the introduction as a subsection while the more complex case would deserve a whole data description section.</p>
+</section>
+<section id="methods" class="level4">
+<h4 class="anchored" data-anchor-id="methods">3. Methods</h4>
+<p>A very important section describing in detail all the methods that are used in the report. This section explains how the study was conducted. It aims at giving relevant information and tools for others to be able to reproduce the study. It explains the global strategy of the study, and describes each tool used to achieve this goal. For a comprehensive and structured presentation, often it is important to give the general structure of the study, and then to drill down each step. The individual tools (e.g.&nbsp;machine learning methods, etc.) should be described in a concise and relevant way. <strong>This section is not a course</strong>. For example, one can give a brief definition and the important properties (important for the study), then refer to an external source for the details. In addition, the description should be balanced. Do not spend three pages on explaining the boxplots when a predictive model of random forest is explained in one-half page. It should describe and duly cite</p>
+<ul>
+<li>Statistical and machine learning methods to analyze the data</li>
+<li>Software, computer programs, function packages (typically for R).</li>
+<li>The sequence of analysis, the reason of each method.</li>
+</ul>
+<p>However,</p>
+<ul>
+<li>It does not include methods that are not used, even if you spent a lot of time on it. Except maybe if the fact that a particular method is not useful is of interest for the report.</li>
+<li>It is <strong>not a course</strong> about a method. It should contain all the relevant pieces of information, but it should also be stopped at some points. Clear references and well-chosen are of major importance here.</li>
+</ul>
+</section>
+<section id="results" class="level4">
+<h4 class="anchored" data-anchor-id="results">4. Results</h4>
+<p>Obviously, this section presents the results: application of the methods to the data. It presents all the results (even negative ones) and only the results (no more data or method descriptions). This section should be very well structured especially if there are lot of results. Use subsections and clear references. In addition, use the appendix. For example, if 30 time series were analyzed and the corresponding 30 figures produced. Then only the most interesting ones should be included in the results section. The other ones should be reported in the appendix (or supplementary material) and appropriately cited. The interpretation can be included at this point but should be limited to technical aspects. Keep discussions for the next section.</p>
+</section>
+<section id="recommendations-and-discussion" class="level4">
+<h4 class="anchored" data-anchor-id="recommendations-and-discussion">5. Recommendations And Discussion</h4>
+<p>In this section, the interpretations of the results are given:</p>
+<ul>
+<li>Summary of what was observed from the results</li>
+<li>Implications for the business (link with the context and the initial objectives of the study).</li>
+<li>Limitations (this may be the subject of a separated section). An opening is often expected here: “What next?” “What can be done for improvement”, etc.?</li>
+</ul>
+</section>
+<section id="references" class="level4">
+<h4 class="anchored" data-anchor-id="references">6. References</h4>
+<p>All external sources should be cited. The APA system is a good and safe one. One can use the Reference tool of Word. For more details, see <a href="http://www.apastyle.org/manual/index.aspx" class="uri">http://www.apastyle.org/manual/index.aspx</a>.</p>
+</section>
+<section id="appendix" class="level4">
+<h4 class="anchored" data-anchor-id="appendix">7. Appendix</h4>
+<p>The appendix section is <strong>not a trash</strong> in which one puts all what was done but not integrated in the body of the report. <strong>All the elements in the appendix must be cited in the text</strong>. Appendix can contain graphs, texts, tables, codes, etc. For example, in the body of the report: “Fig. 1 presents the analysis of the times of the process A […]. The 29 other processes are represented in Fig. 40 to 68 in Appendix B.”</p>
+</section>
+</section>
+<section id="f.-supplementary-material" class="level3">
+<h3 class="anchored" data-anchor-id="f.-supplementary-material">F. Supplementary Material</h3>
+<p>In this section, you mention and briefly describe all the external documents given with the report. For example, a code file name “OurSuperRCode.R” attached to the report should be mentioned here.</p>
+</section>
+</section>
+<section id="further-remarks" class="level2">
+<h2 class="anchored" data-anchor-id="further-remarks">Further Remarks</h2>
+<section id="general-format-and-style" class="level5">
+<h5 class="anchored" data-anchor-id="general-format-and-style"><strong>General Format And Style</strong></h5>
+<ul>
+<li>Font: Times New Roman, 11pts</li>
+<li>Page format: A4</li>
+<li>Text justification: even on both side</li>
+<li>Margins: 2.5cm</li>
+<li>Max. 40 pages for the body of the report (i.e.&nbsp;not including title, toc, introduction, reference, appendix, sup. mat.). It is not an expected value. It is an upper bound.</li>
+</ul>
+</section>
+<section id="text-editor" class="level5">
+<h5 class="anchored" data-anchor-id="text-editor"><strong>Text editor</strong></h5>
+<p>Using Word is probably the simplest choice, but <span class="math inline">\(LaTeX\)</span> is also welcomed (see <a href="https://overleaf.com/">Overleaf for easy and free usage</a>) Freely available alternatives exist like LibreOffice. It should be noted that <code>Quarto</code> and <code>Rmarkdown</code> could also be a useful tool. However, be mindful of mixing research (i.e.&nbsp;working R codes, running complex R code or procedure) and the writing of the report. Often, one loses more time and encounter lots of difficulties. Nevertheless, <code>Quarto</code> is very valuable for writing reproducible reports. In any cases, pay attention to use cache in order to avoid running again and again very heavy computations each time you want to compile the report.</p>
+</section>
+<section id="maths-and-formulae" class="level5">
+<h5 class="anchored" data-anchor-id="maths-and-formulae"><strong>Maths and formulae</strong></h5>
+<p>If you need to edit equations or formulae, you may gain using an equation editor like MathWord. Free alternatives exist like LibreOffice.</p>
+</section>
+<section id="numbers-figures-and-other-remarks" class="level5">
+<h5 class="anchored" data-anchor-id="numbers-figures-and-other-remarks"><strong>Numbers, figures and other remarks</strong></h5>
+<p>Usually, in the text, numbers zero (0) to ten (10) are written in letters, then 11, 12, etc. This not for reference like “in Table 1” should never be written “in Table one”. Figures, tables and sections referenced in the text are names an should have a capital letter. One should write “in Table 1”, “in Figure 3 shown below”, “Section 3.2 shows […]”. It is not the case when you refer to an object like “the next table”, “in the following section we can see […]”, etc.</p>
+<p>Do not use don’t (except when quoting speeches for example). For a better scientific writing, check out <a href="https://www.americanscientist.org/blog/the-long-view/the-science-of-scientific-writing">this blog</a>.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1117,15 +1228,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../resources/data_acquisition/web_scraping_api.html" class="pagination-link" aria-label="Web Scraping">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Web Scraping</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -1134,7 +1236,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/resources/cheatsheets.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/assessments/23-24_criteria/Report_Guideline.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with 🤍 and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
