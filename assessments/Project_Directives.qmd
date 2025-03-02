@@ -91,6 +91,7 @@ The paper must contain
 - References: in an appropriate style (e.g., APA).
 
 The project must cover methods seen in class such as:
+
 - Cleaning of the data, creation of new features if needed.
 - Exploratory Data Analysis.
 - Supervised learning analysis: several models, appropriate metrics, a tuning of hyperparameters, data splitting strategies, interpretation of the model.

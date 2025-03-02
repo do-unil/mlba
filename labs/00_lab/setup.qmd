@@ -178,7 +178,10 @@ You can install any python package in R using the `reticulate::py_install()` com
 
 We will install all the packages we need for this particular setup. This should be go smoothly with the following command:
 
-```{r results=F, eval=TRUE}
+```{r}
+#| results: hide
+#| eval: true
+
 # Install python package into virtual environment
 reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
 ```
