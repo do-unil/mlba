@@ -51,7 +51,7 @@ d |>
   ) |>
   gt() |>
   fmt_date(date, date_style = 31) |>
-  sub_missing(columns = c(week, topic, lecture_pdf, lecture_qmd, lab), missing_text = "") |>
+  sub_missing(columns = c(week, topic, lecture_slide, lecture_note, lab), missing_text = "") |>
   cols_align(
     align = "center", 
     columns = c(week)
@@ -62,7 +62,7 @@ d |>
   ) |>
   cols_align(
     align = "left", 
-    columns = c(topic, lecture_pdf, lecture_qmd, lab)
+    columns = c(topic, lecture_slide, lecture_note, lab)
     ) |>
   tab_style(
     style = cell_borders(
@@ -71,18 +71,18 @@ d |>
       style = "solid"
     ),
     locations = cells_body(
-      columns = c(date, topic, lecture_pdf, lecture_qmd, lab)
+      columns = c(date, topic, lecture_slide, lecture_note, lab)
     )
   ) |>
   fmt_markdown(
-    columns = c(topic, lecture_pdf, lecture_qmd, lab)
+    columns = c(topic, lecture_slide, lecture_note, lab)
   ) |>
   cols_width(
     week ~ px(10),
     date ~ px(120), 
     topic ~ px(10),
-    lecture_pdf ~ px(90),
-    lecture_qmd ~ px(90),
+    lecture_slide ~ px(90),
+    lecture_note ~ px(90),
     lab ~ px(140),
   ) |>
   cols_label_with(fn = function(x) {
@@ -104,6 +104,7 @@ d |>
 ```
 
 ::: callout-caution
+
 ## Lecture Slides vs Lecture Notes
 The most up to the date content of the course are found in the lecture slides. The lecture notes are only there to assist you, and may contain outdated (but still correct) information. Therefore, **always** refer to the lecture slides for the most accurate and up to date content.
 :::

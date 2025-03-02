@@ -16,17 +16,15 @@ It prompts whether you would like to activate and install the packages, and you 
 quarto preview
 ```
 
-## Instructions to update the website
-
-When publishing, first run the following:
+To update the website, without previewing it, run the following:
 ```bash
 quarto render
 ```
 
-## Troubleshoot 
+<!-- ## Troubleshoot 
 In case of memory issues, see [this help page from Quarto](https://quarto.org/docs/troubleshooting/index.html#out-of-memory-issues) and increase your limit
 
 ```bash
 export QUARTO_DENO_EXTRA_OPTIONS=--v8-flags=--max-old-space-size=16384
 ```
-
+ -->
