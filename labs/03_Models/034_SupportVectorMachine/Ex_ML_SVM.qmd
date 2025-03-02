@@ -300,7 +300,6 @@ best_grid_param <- paste(names(py$grid_search$best_params_), '=', py$grid_search
 best_score <- py$grid_search$best_score_
 ```
 
-<!-- of `r round(best_score,2)*100`% is on the training set. -->
 Note that the accuracy is on the training set. The best parameters are returned by`best_grid_param`. We will use a new plotting library for seeing this evolution called `seaborn`, which offers some great visualization tools.
 
 We use the installed `seaborn` package from our Setup which allows for grouping our hyperparameters and displaying them with a heatmap.
