@@ -79,8 +79,9 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
 
 # We copy the training and testing datasets from R to Python.
+# Use r.df_tr to access R objects from Python
 carset_tr_py = r.df_tr.copy()
-carset_te_py= r.df_te.copy()
+carset_te_py = r.df_te.copy()
 
 # We encode categorical variables as numeric, which is necessary for SVM.
 le = LabelEncoder()
@@ -122,7 +123,7 @@ carseats_svm_pred_py = carseats_svm_py.predict(X_test)
 
 # Print a confusion matrix
 print(pd.crosstab(index=y_test, columns=carseats_svm_pred_py, rownames=['True'], colnames=['Predicted']))
-# Alternatively, print a confusin matrix using `sklearn.metrics`
+# Alternatively, print a confusion matrix using `sklearn.metrics`
 # print(confusion_matrix(y_test, carseats_svm_pred_py))
 
 # Compute metrics
@@ -131,7 +132,6 @@ accuracy_linear_py = accuracy_score(y_test, carseats_svm_pred_py)
 
 print(report_linear_py)
 print("Overall accuracy:", accuracy_linear_py)
-
 ```
 
 This performance is worse than our model in R and requires more tuning (due to differences in default values and implementations of the functions).
@@ -271,23 +271,20 @@ param_grid = {'C': [1, 10, 100, 500, 1000],
               'kernel': ['linear', 'rbf']}
 
 # Perform grid search with cross-validation
-grid_search = GridSearchCV(svm.SVC(), param_grid, cv=10, scoring='accuracy', n_jobs = 1) # you can also set n_jobs = -1 to use all the cores and obtain the results faster (but unfortunately atm it only works on Mac/Linux and not Windows OS with `reticulate`)
+grid_search = GridSearchCV(svm.SVC(), param_grid, cv=10, scoring='accuracy', n_jobs=1) # you can also set n_jobs = -1 to use all the cores and obtain the results faster (but unfortunately atm it only works on Mac/Linux and not Windows OS with `reticulate`)
 # for more info, please see https://github.com/rstudio/reticulate/issues/1346
 grid_search.fit(X_train, y_train)
 
-print("Best hyperparameters: ", grid_search.best_params_)
-print("Best score: ", grid_search.best_score_)
+print("Best hyperparameters:", grid_search.best_params_)
+print("Best score:", grid_search.best_score_)
 ```
 
-```{r py-best-scores, echo= F, include = F}
+```{r py-best-scores, echo=FALSE, include=FALSE}
 best_grid_param <- paste(names(py$grid_search$best_params_), '=', py$grid_search$best_params_, collapse = ', ')
 best_score <- py$grid_search$best_score_
 ```
 
-Note that the accuracy of `r round(best_score,2)*100`% is on the training set. The best parameters are `r best_grid_param`. We will use a new plotting library for seeing this evolution called `searborn`, which offers some great visualization tools.
-
-Note that the accuracy of is on the training set. The best parameters are `r best_grid_param`. We will use a new plotting library for seeing this evolution called `searborn`, which offers some great visualization tools.
-
+Note that the accuracy of `r round(best_score,2)*100`% is on the training set. The best parameters are `r best_grid_param`. We will use a new plotting library for seeing this evolution called `seaborn`, which offers some great visualization tools.
 
 We use the installed `seaborn` package from our Setup which allows for grouping our hyperparameters and displaying them with a heatmap.
 
@@ -313,7 +310,6 @@ ax.invert_yaxis()  # invert the y-axis to match your preference
 plt.xlabel('Kernel')
 plt.ylabel('C-Gamma')
 plt.show()
-
 ```
 
 We can see that `rbf` kernel benefits from changes in `C` & `gamma`, however, for the `linear`, we're always using the same gamma of `0.01` so for this kernel, the only changes are coming from `C` parameter.
