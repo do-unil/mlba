@@ -77,7 +77,7 @@ est_knn = KNeighborsRegressor(n_neighbors=3).fit(r.df_tr[predictors], r.df_tr[ta
 We now compute the R2 for each model using the a defined function.
 
 ```{r}
-R2 = function(y_actual,y_predict){
+R2 = function(y_predict, y_actual){
   cor(y_actual,y_predict)^2
 }
 
