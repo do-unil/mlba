@@ -147,8 +147,9 @@ knitr::include_url({"https://do-unil.github.io/mlba/resources/beginners_r"})
 2. Use `reticulate::use_python()` or `reticulate::use_condaenv()` to specify the location of your python environment.
 ```{r}
 #| output: false
-reticulate::use_condaenv('MLBA')
-reticulate::py_config()
+library(reticulate)
+use_condaenv('MLBA')
+py_config()
 ```
 
 3. Use `reticulate::import()` to import python modules in R.
@@ -159,7 +160,7 @@ pd <- import("pandas")
 
 4. Use `reticulate::py_run_string()` to execute python code in R.
 
-```{r, eval = T}
+```{r}
 py_run_string("x = 3; y = 4; print('The sum of x and y is:', x + y)")
 ```
 
