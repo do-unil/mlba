@@ -101,6 +101,8 @@ To install python in R, we will use [miniconda](https://docs.conda.io/en/latest/
 Now, we will create our virtual environment with the command `reticulate::conda_create()`. We will then make sure our rstudio is using this correct conda environment by enforcing it via `reticulate::use_condaenv()`.
 
 ```{r}
+#| eval: true
+
 # assign the right virtual environment for the exercises
 env_name <- "MLBA"
 
