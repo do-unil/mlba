@@ -17,6 +17,6 @@ format:
     lightbox: auto
     # output-file: lab1_slides.html
 execute:
-  # eval: false
+  eval: true
   echo: true
   output: true
