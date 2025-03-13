@@ -9,7 +9,7 @@ code-fold: false
 code-link: false
 ---
 
-[In-class Python script 📄](ML_NeuralNetworks.py)
+[In-class Python Jupyter Notebook 📄](MyNN.ipynb)
 
 Concept and prediction formula
 ==============================

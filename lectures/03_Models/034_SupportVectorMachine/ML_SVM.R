@@ -5,7 +5,7 @@ library(e1071)
 ## load data
 data(bank)
 df <- bank
-levels(df$job)[c(3,4,7,6,7,9,11,12)] <- "other"
+levels(df$job)[c(3,4,7,6,7,9,11,12)] <- "other" # reduce the number of levels of variable job
 
 ## fit an SVM with radial kernel
 bank_svm <- svm(deposit ~ ., data=df, 
@@ -14,10 +14,7 @@ bank_svm <- svm(deposit ~ ., data=df,
                 cost = 1)
 summary(bank_svm)
 
-## ##############################
-## Discussion
-## How many support vectors do we have ? 
-## If cost is increased, will we have more or less support vectors?
+## Example when changing the cost parameter
 bank_svm <- svm(deposit ~ ., data=df, 
                 kernel = "radial", type = "C-classification",
                 gamma = 0.01,
