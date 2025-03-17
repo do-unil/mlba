@@ -35,6 +35,7 @@ We first need to get started with the setup. We will install `keras` into our `M
 
 ```{r}
 install.packages("keras")
+install.packages("tensorflow")
 keras::install_keras(method = "conda", envname = "MLBA")
 ```
 
