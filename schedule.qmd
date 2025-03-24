@@ -36,7 +36,6 @@ tryCatch({
 
 ```
 
-
 ```{r}
 #| echo: false
 
