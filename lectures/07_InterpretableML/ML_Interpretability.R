@@ -17,10 +17,11 @@ levels(df$job)[c(3,4,7,6,7,9,11,12)] <- "other"
 
 ## For interpretation, we skip the training/test split
 
-## Training the model (here logistic regression)
+## Training the model (here logistic regression + AIC-based feature selection)
 bank_lr <- glm(deposit~., data=df, family = binomial())
 bank_lr_sel <- step(bank_lr, trace = FALSE)
 
+## Predictions 
 bank_prob <- predict(bank_lr_sel, newdata=df, type="response")
 bank_pred <- factor(ifelse(bank_prob > 0.5, "yes", "no"))
   
@@ -29,14 +30,14 @@ bank_pred <- factor(ifelse(bank_prob > 0.5, "yes", "no"))
 ## ######################################
 ## ######################################
 ## Variable importance: model agnostic
-## First by hand - Cohen's kappa is a reference
-kapp <- postResample(pred = bank_pred, obs = df$deposit)[[2]] ## reference kappa
+## First by hand - Cohen's kappa is the metric
+kapp <- postResample(pred = bank_pred, obs = df$deposit)[[2]] ## reference kappa = 0.4023
 
-n_var <- ncol(df) - 1
+n_var <- ncol(df) - 1 ## nb of features = nb columns - 1 (the response, deposit)
 kapp_vi <- data.frame(Var=names(df)[1:n_var],
                       VImp=numeric(n_var))
-for (j in 1:n_var){
-  bank_shuffle <- df
+for (j in 1:n_var){ # loop on each feature
+  bank_shuffle <- df # store the data in a temporary data frame
   bank_shuffle[,j] <- sample(bank_shuffle[,j]) ## shuffle column j
   
   ## predictions 
@@ -140,7 +141,7 @@ duration_pdp %>% ggplot(aes(x=duration, y=Probability)) +
 age_pdp %>% ggplot(aes(x=age, y=Probability)) +
   geom_line() + ylim(0,1)
 
-##
+## #############################
 ## Example for categorical variable: here job
 bank_job <- data.frame(df)
 job_seq <- unique(bank_job[,"job"]) # now the sequence is all the possible modalities
@@ -160,11 +161,13 @@ job_pdp %>%
   geom_point(size=2) +
   coord_flip() + ylim(0,1) + xlab("")
 
-## with pdp
+## with pdp package
 pdp::partial(bank_lr_sel, pred.var = "duration", prob=TRUE, plot=TRUE)
 pdp::partial(bank_lr_sel, pred.var = "age", prob=TRUE, plot=TRUE)
 pdp::partial(bank_lr_sel, pred.var = "job", prob=TRUE, plot=TRUE, plot.engine = "ggplot") + coord_flip()
+pdp::partial(bank_lr_sel, pred.var = "education", prob=TRUE, plot=TRUE, plot.engine = "ggplot") + coord_flip()
 
+## !! can be long
 pdp::partial(bank_lr_sel, pred.var = c("duration", "age"), prob=TRUE, plot=TRUE)
 pdp::partial(bank_lr_sel, pred.var = c("duration", "contact"), prob=TRUE, plot=TRUE)
 pdp::partial(bank_lr_sel, pred.var = c("duration", "job"), prob=TRUE, plot=TRUE)
@@ -209,8 +212,12 @@ bank_pdp$set.feature("age")
 bank_pdp$plot(rug=FALSE, ylim=c(0,1))
 bank_pdp$set.feature("job")
 bank_pdp$plot(rug=FALSE, ylim=c(0,1))
+bank_pdp$set.feature("marital")
+bank_pdp$plot(rug=FALSE)
 
-## ICE curves: like PDP but one curve for each data row -> PDP is the point-wise mean
+## ICE curves are like PDP but one curve for each data row 
+## => PDP is the point-wise mean of the ICE curve
+## !!! can be long
 bank_ice <- FeatureEffect$new(predictor, feature = "duration", 
                               method="ice", grid.size = 10)
 bank_ice$plot(rug=FALSE, ylim=c(0,1)) 
