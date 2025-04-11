@@ -52,9 +52,6 @@ ggplot(df_km, aes(y = stores.number, x=Cluster)) +
 ggplot(df_km, aes(y = unit.price, x=Cluster)) +
   geom_boxplot()
 
-## Discussion:
-## - Why the clustering is so influenced by distance.to.MRT? How to adjust this?
-
 ## See clusters in their first two principal components space
 df_km <- kmeans(df, centers=5)
 fviz_cluster(df_km, data = df) 
@@ -62,10 +59,7 @@ fviz_cluster(df_km, data = df)
 ## Inspect the number of clusters
 fviz_nbclust(df, kmeans, method = "wss", k.max = 15) # method = Within Sum of Squares
 
-## Discussion:
-## - Look for an elbow -> what is the optimal nb of clusters? (~3) 
-
-## 
+## ###########################
 ## PAMs 
 
 ## Back to bank data because PAM can use gower distance
@@ -104,7 +98,7 @@ avg_sil <- data.frame(nb_clus=n_clust_min:n_clust_max,
 plot(silhouette~nb_clus, data=avg_sil, type="b", pch=20)
 
 ## ############################
-## Using NbClust: a convinient package but only for numerical 
+## Using NbClust: a convenient package but only for numerical 
 data(house) 
 df <- house[,-c(4,5)] 
 
