@@ -6,8 +6,15 @@ format:
         code-link: false
 ---
 
-[Exam questions with the solutions 📄](Exam_ML_2022_solutions_final.pdf)
+[Mock Exam 2024 📄](Mock_2024.pdf)
 
-[Answer booklet 📄](Answer_Booklet_FamilyName.docx)
+**Directives for the exam 2025 (please read carefully):**
 
-Above is a recent past exam. The course content varies from year to year, as well as its focus. Therefore, it must not be considered as a mock exam but as an example of the type of questions that can be asked. Furthermore, the answer booklet is an example of the file on which you will solve the exam. During the exam, a lot of flexibility is accepted in its use (copy-paste, include images, adapt answer space, etc.) as long as the presentation of the solutions follows the question orders.
+- Room Internef 126 from 9:00 to 11:00. Be there at least 15 minutes before!
+- In-class presence mandatory and controlled
+- Exam on laptop (make sure you have enough battery!) and moodle exam.
+- Open questions answered in text on moodleexam (essay format).
+- Connection to a dedicated wifi.
+- Open documents: you can bring any numerical and printed documents. !! No internet access outside the dedicated wifi. Bring documents locally (no cluster). Use USB Key for security.
+- During the exam, no communication allowed (WhatsApp, emails, etc.) and no internet access (google search, AI agent, etc.), except to access moodleexam
+- During the exam: NO QUESTION (except technical issues). You have enough space to explain and write the context.
