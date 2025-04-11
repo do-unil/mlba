@@ -107,8 +107,8 @@ website:
             text: "Clustering"
           - href: labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.qmd
             text: "PCA"
-          - href: labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.qmd
-            text: "Autoencoders"
+          # - href: labs/08_UnsupervisedLearning/083_AutoEncoders/Ex_ML_Autoencoder.qmd
+          #   text: "Autoencoders"
       - section: "Assessments"
         contents:
           - href: assessments/Exam.qmd
