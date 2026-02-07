@@ -42,11 +42,14 @@ jobs:
           use-public-rspm: true     
 
       # Install minimal packages needed for unfrozen pages (e.g., schedule.qmd)
-      # This avoids full renv restore which fails on packages like reticulate
+      # Using r-lib/actions/setup-r-dependencies for proper binary package handling
       - name: Install R dependencies for unfrozen pages
-        run: |
-          install.packages(c("googlesheets4", "gt", "tidyverse"), repos = "https://cloud.r-project.org")
-        shell: Rscript {0}
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::googlesheets4
+            any::gt
+            any::tidyverse
 
       # Note: renv setup removed - project uses freeze: auto with _freeze directory
       # This avoids compilation failures for packages like reticulate that aren't needed for the build
