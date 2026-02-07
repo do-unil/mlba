@@ -41,6 +41,11 @@ jobs:
         with:
           use-public-rspm: true     
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       # See here for more info https://github.com/r-lib/actions/tree/v2-branch/setup-renv
       - name: Set up renv
         uses: r-lib/actions/setup-renv@v2
