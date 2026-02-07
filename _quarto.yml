@@ -136,7 +136,7 @@ website:
   
   page-footer:
     right: "This page is built with 🤍 and [Quarto](https://quarto.org/)."
-    left: "&copy; Copyright 2024, [Ilia Azizi & Marc-Olivier Boldi](https://iliaazizi.com/)"
+    left: "&copy; Copyright 2026, [Ilia Azizi](https://iliaazizi.com/)"
     background: "#0086CA"
 
   # navbar: 

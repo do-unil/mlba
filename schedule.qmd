@@ -7,14 +7,14 @@ code-tools: false
 code-link: false
 ---
 
-::: {.callout-important}
+<!-- ::: {.callout-important}
 
 ## Important dates (more info during the class)
 - Monday the 5^th^ of May: **[Written exam (in-class)]{.underline}**
 - Wednesday the 21^th^ of May: **[Project report deadline]{.underline}**
 - Sunday the 25^th^ of May: **[Slides submission deadline]{.underline}**
 - Monday the 26^th^ of May: **[Presentations of the projects]{.underline}**
-:::
+::: -->
 
 ```{r}
 #| echo: false
@@ -28,7 +28,7 @@ library(tidyverse)
 # Try to read the sheet without authentication first
 gs4_deauth()
 tryCatch({
-  d <- read_sheet("https://docs.google.com/spreadsheets/d/18oYnuxY3hVve3s8g9tG16L7JlTtzfXzJmWMAk__1xK8/edit?usp=sharing")
+  d <- read_sheet("https://docs.google.com/spreadsheets/d/1DZLs7vEeJrMnkYoXWPfm6ryiFNHzIph5Tkyt-13y7js/edit?usp=sharing")
 }, error = function(e) {
   # If there's an error, provide a meaningful message
   stop("Unable to access the Google Sheet. Please check the URL and sharing permissions.")
@@ -42,7 +42,7 @@ tryCatch({
 #| echo: false
 
 d |>
-  select(-dow) |>
+  select(-dow, -who) |>
   mutate(
     date = as.Date(date),
     topic = gsub("\\+", "+<br>", topic), # Insert HTML line break after +

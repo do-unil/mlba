@@ -6,9 +6,9 @@ code-tools: false
 code-link: false
 ---
 
-🧑🏻‍🏫 **Teaching staff:** [Dr. Marc-Olivier Boldi](https://applicationspub.unil.ch/interpub/noauth/php/Un/UnPers.php?PerNum=1073453&LanCode=8) (Lecturer) & [Ilia Azizi](https://iliaazizi.com/) (TA).
+🧑🏻‍🏫 **Teaching staff:** [Dr. Arnold Vialfont](https://applicationspub.unil.ch/interpub/noauth/php/Un/UnPers.php?PerNum=1265859&LanCode=8) (Lecturer) & [Ilia Azizi](https://iliaazizi.com/) (TA).
 
-🕛 **Time:** Mondays 8:30-12:00, starting on Monday the 17^th^ of February 2025.
+🕛 **Time:** Mondays 8:30-12:00, starting on Monday the 16^th^ of February 2026.
 
 🏫 **Room:** [Anthropole 3021](https://planete.unil.ch/?local=ANT-3021) (*no live broadcasting or recording*).
 
