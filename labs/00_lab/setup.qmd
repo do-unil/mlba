@@ -102,6 +102,7 @@ Now, we will create our virtual environment with the command `reticulate::conda_
 
 ```{r}
 #| eval: true
+#| output: false
 
 # assign the right virtual environment for the exercises
 env_name <- "MLBA"
@@ -111,15 +112,8 @@ if (!env_name %in% reticulate::conda_list()$name) {
   reticulate::conda_create(env_name, pip = TRUE) # we use pip for installations
 }
 
-# Print the conda list
-print(reticulate::conda_list())
-
 # make sure we're using the right environment
 reticulate::use_condaenv(env_name)
-
-# if you preferred, you can also use your own version of python with `use_python()`
-# you can see all the versions of your path here and which one has been assigned
-reticulate::py_config()
 
 # Check if python is setup properly now
 reticulate::py_available()
