@@ -1,5 +1,5 @@
-# Official repository for MLBA Spring 2025 website
-Official repository for the Machine Learning in Business Analytics course taught at [HEC Lausanne](https://hec-si.unil.ch/gide-api/web/syllabus/2736?base_url=https://www.unil.ch/hec/home/menuinst/etudes/cours.html?url=).
+# Official repository for MLBA Spring 2026 website
+Official repository for the Machine Learning in Business Analytics course taught at [HEC Lausanne](https://applicationspub.unil.ch/interpub/noauth/php/Ud/agendaType.php?v_ueid=173&v_semposselected=172&v_langue=en&v_isinterne=&v_etapeid1=35021#).
 
 ## Instructions to get the website up and running
 We use `renv` for package management. When running the website for the first time, execute the following from R (at the root of the project with `mlba.Rproj`):
