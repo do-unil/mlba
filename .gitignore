@@ -14,3 +14,4 @@ _site/
 /final_projects/
 
 /lectures/cours_ml/
+**/*.quarto_ipynb
