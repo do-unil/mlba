@@ -3,7 +3,8 @@
 .RData
 .Ruserdata
 
-/_freeze/
+# Note: _freeze/ directory is now tracked so GitHub Actions can use frozen computations
+# /_freeze/
 
 /announcements/
 /.quarto/
