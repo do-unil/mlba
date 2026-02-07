@@ -75,12 +75,9 @@ jobs:
           ulimit -a
 
       - name: Publish Quarto Project
-        env:
-          QUARTO_PYTHON: none  # Disable Python execution entirely
         uses: quarto-dev/quarto-actions/publish@v2
         with:
           target: gh-pages
-          render: "all"  # Render all pages using frozen outputs
 
       - name: Deploy 🚀
         if: github.event_name != 'pull_request'
