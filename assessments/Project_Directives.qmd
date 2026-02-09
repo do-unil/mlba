@@ -15,7 +15,7 @@ code-link: false
 🏗 *This section is still under development (to be updated soon)* 🏗
 ::: -->
 
-## Machine Learning 2025 Project Guidelines
+## Machine Learning 2026 Project Guidelines
 
 The project grade accounts for 70% of the final grade: 30% for the presentation and 40% for the report. The remaining 30% are for the exam. Grades are from 1 to 6 (Absent=0), rounded to the closest 0.1. The final grade (40% report + 30% presentation + 30% exam) is rounded to the closest 0.5.
 
@@ -102,16 +102,16 @@ The project must cover methods seen in class such as:
 -  Report: a pdf, between 10 to 20 pages (not including appendix or supplementary material)
 -  Presentation: the slides of your presentation. 
 
-### Deadlines
+<!-- ### Deadlines
 
 You must meet the following deadlines: 
 
 -  Project report: Wednesday the 21^st^ of May 2025 at 23h59
--  Presentation slide: Sunday the 25^th^ of May 2025 at 23h59
+-  Presentation slide: Sunday the 25^th^ of May 2025 at 23h59 -->
 
 **Not meeting the deadline** (presentation and/or report) penalizes the grade by 0.1 per started hour of delay. No maximum penalty for the project report and presentation slide.
 
 ### Presentations
 
-Presentations will be organized on site on Monday the 26^th^ of May 2025 in a 10+15-minutes format (presentation + questions).
+Presentations will be organized on site according to the schedule of the course in a 10+15-minutes format (presentation + questions).
 If the number of groups is large, then either the presentation time will be reduced, or, if not possible, another oral presentation session will be organized later (possibly during the exam session).

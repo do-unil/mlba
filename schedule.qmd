@@ -96,7 +96,7 @@ d |>
     footnote = "📩 Report & Slides submission at 23:59",
     locations = cells_body(
       columns = 2,
-      rows = date %in% as.Date(c("2025-05-21", "2025-05-25"))
+      rows = date %in% as.Date(c("2026-05-20", "2026-05-24"))
     )
   )
 
