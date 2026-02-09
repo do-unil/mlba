@@ -7,14 +7,14 @@ code-tools: false
 code-link: false
 ---
 
-<!-- ::: {.callout-important}
+::: {.callout-important}
 
 ## Important dates (more info during the class)
-- Monday the 5^th^ of May: **[Written exam (in-class)]{.underline}**
-- Wednesday the 21^th^ of May: **[Project report deadline]{.underline}**
-- Sunday the 25^th^ of May: **[Slides submission deadline]{.underline}**
-- Monday the 26^th^ of May: **[Presentations of the projects]{.underline}**
-::: -->
+- Monday the 27^th^ of April: **[Written exam (in-class)]{.underline}**
+- Wednesday the 27^th^ of May: **[Project report deadline]{.underline}**
+- Friday the 29^th^ of May: **[Slides submission deadline]{.underline}**
+- Monday the 1^st^ of June: **[Presentations of the projects]{.underline}**
+:::
 
 ```{r}
 #| echo: false
