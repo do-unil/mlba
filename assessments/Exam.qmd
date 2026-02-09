@@ -10,8 +10,9 @@ format:
 
 **Directives for the 2026 exam (please read carefully):**
 
-- Room Internef 126 from 9:00 to 11:00. Be there at least 15 minutes before!
-- In-class presence mandatory and controlled
+<!-- - Room Internef 126 from 9:00 to 11:00. Be there at least 15 minutes before! -->
+- Details (Room, hour) TBA. Be there at least 15 minutes before!
+- In-class presence mandatory and controlled.
 - Exam on laptop (make sure you have enough battery!) and moodle exam.
 - Open questions answered in text on moodleexam (essay format).
 - Connection to a dedicated wifi.
