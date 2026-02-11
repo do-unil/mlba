@@ -64,11 +64,16 @@ ggplot(df, aes(x=job, fill=deposit)) +
   geom_bar(position="dodge") + coord_flip()
 ggplot(df, aes(x=job, fill=education)) + 
   geom_bar(position="stack") + coord_flip()
+
 ## cat*cat: mosaic plot
-library(ggmosaic)
-ggplot(df) +
-  geom_mosaic(aes(x = product(job), fill=deposit), show.legend = FALSE) +
-  coord_flip()
+# Currently archived on CRAN 
+# library(ggmosaic)
+# ggplot(df) +
+#  geom_mosaic(aes(x = product(job), fill=deposit), show.legend = FALSE) +
+#  coord_flip()
+
+tab <- table(df$job, df$deposit)
+mosaicplot(tab)
 
 ## num*num (not deposit here) : scatterplots 
 library(GGally)
@@ -89,6 +94,7 @@ library(ggplot2)
 library(ggalluvial)
 
 # Plot Sankey diagram using ggalluvial
+
 df %>%
   count(housing, deposit, job, name = "count") %>%
 ggplot(aes(axis1 = housing, axis2 = deposit, axis3 = job, y = count)) +
@@ -97,7 +103,7 @@ ggplot(aes(axis1 = housing, axis2 = deposit, axis3 = job, y = count)) +
   geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
   scale_x_discrete(limits = c("Housing", "Deposit", "Job")) +
   theme_minimal() +
-  labs(title = "Sankey Diagram using ggalluvial")
+  labs(title = "Sankey Diagram")
 
 ## Rename job label with category "other"
 job_counts <- df %>%
@@ -108,13 +114,14 @@ cumulative_sum <- cumsum(job_counts$count)
 job_counts <- job_counts %>%
   mutate(cumulative_prop = cumulative_sum / total_count)
 top_jobs <- job_counts$job[job_counts$cumulative_prop <= 0.80]
+
 levels(df$job) <- ifelse(levels(df$job) %in% top_jobs, levels(df$job), "other")
 
 df %>%
   count(housing, deposit, job, name = "count") %>% 
   ggplot(aes(axis1 = housing, axis2 = deposit, axis3 = job, y = count)) +
   geom_alluvium(aes(fill = housing)) +
-  geom_stratum(reverse=FALSE) +
+  geom_stratum() +
   geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
   scale_x_discrete(limits = c("Housing", "Deposit", "Job")) +
   theme_minimal() +
