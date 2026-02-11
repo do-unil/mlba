@@ -5,9 +5,9 @@
 %% Edit the title page
 \title{Machine Learning}
 \subtitle{Module 3.0 - Models: Introduction}
-\author[MOB]{Marc-Olivier Boldi}
+\author[A. Vialfont]{Arnold Vialfont}
 \institute[HEC MSc Mgt BA]{Master in Management, Business Analytics, HEC UNIL}
-\date[Spring 2024]{Spring 2024}
+\date{Spring 2026}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,7 +27,7 @@ In ML, models are mainly used for {\bf supervised learning}, the aim is
 \item From features $x=\{x_1, \ldots, x_p\}$: available at the moment of prediction,
 \item With the best possible quality: built from the data in an optimal way.
 \end{itemize}
-The $n$ observed features and responses are denoted 
+The $n$ observed features and responses are denoted
 $$
 (y_1, x_1), \ldots, (y_n, x_n).
 $$
@@ -37,15 +37,15 @@ $$
 \frametitle{Elements}
 In ML, a model consists mainly of three elements:
 \begin{itemize}
-\item A prediction formula, taking the features $x$, returning a prediction $\hat{y} = f(x)$ for $y$,
-\item A loss function ${\cal L}(y,\hat{y})$ measuring how "wrong" a prediction $\hat{y}$ is for $y$.
-\item An algorithm which can optimize the prediction formula $f$ using the observed data.
+\item A {\bf prediction} formula $f$, taking the features $x$, returning a prediction $f(x)$ for $y$ at $x$,
+\item A {\bf loss function} ${\cal L}(y,\hat{y})$ measuring how "wrong" a prediction $\hat{y}$ is for $y$.
+\item A {\bf training algorithm} which optimizes the prediction formula $f$ with respect to the loss function using the observed data.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{The prediction formula}
-The prediction formula is a mathematical formula (sometimes a more complex algorithm) using {\bf parameters}\footnote{Also called {\bf weights}, especially for Neural Networks.} $\theta$, combining them with the feature $x$, returning a prediction
+The prediction formula $f$ is a mathematical formula, possibly a complex algorithm, using {\bf parameters}\footnote{Also called {\bf weights}, especially for Neural Networks.} $\theta$. The prediction is written
 $$
 f(x;\theta).
 $$
@@ -54,36 +54,36 @@ Thus, $\theta$ must be chosen carefully to obtain good predictions of $y$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{The loss function}
-The loss function indicates how wrong is a prediction $\hat{y}$ of the corresponding $y$.\\
-\vspace{0.3cm} 
+The loss function indicates how wrong is a prediction $\hat{y}$ of the corresponding $y$: a large ${\cal L}(y,\hat{y})$ indicates a poor prediction of $y$ by $\hat{y}$.\\
+\vspace{0.3cm}
 A classical example for regression is the square of the error:
 $$
 {\cal L}(y,\hat{y}) = (y-\hat{y})^2.
-$$ 
+$$
 The larger ${\cal L}(y,\hat{y})$, the further $\hat{y}$ is from $y$.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{The optimal parameters}
-Good parameters $\theta$ must have a low loss. We want ${\cal L}(y,f(x;\theta))$ to be small for all $(y,x)$. To achieve an overall quality on the whole available data base, we want $\theta$ achieving a small
+"Good parameters" $\theta$ must achieve a low loss on the overall data base. We want ${\cal L}(y,f(x;\theta))$ to be small for all $(y,x)$. To achieve an overall quality on the whole available data base, we want $\theta$ achieving a small:
 $$
-\bar{{\cal L}}(\theta) = \frac{1}{n}\sum_{i=1}^n {\cal L}\{y_i, f(x_i;\theta)\}.
+\bar{{\cal L}}(\theta) = \frac{1}{n}\sum_{i=1}^n {\cal L}\left\{y_i, f(x_i;\theta)\right\}.
 $$
-Example: with the square of the error, this is 
+Example: with the square of the error, this is
 $$
-\bar{{\cal L}}(\theta) = \frac{1}{n}\sum_{i=1}^n \{y_i, f(x_i-\theta)\}^2.
+\bar{{\cal L}}(\theta) = \frac{1}{n}\sum_{i=1}^n \left\{y_i, f(x_i-\theta)\right\}^2.
 $$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{The optimization algorithm}
-Finding the optimal $\hat{\theta}$ is done by applying an algorithm, i.e., a procedure that finds 
+Finding the optimal $\hat{\theta}$ is done by applying an algorithm, i.e., a procedure that finds
 $$
 \hat{\theta} = \arg\min_{\theta} \bar{{\cal L}}(\theta).
 $$
 The algorithm is often a sequential procedure. It builds a sequence $\theta_1, \theta_2, \theta_3, \ldots$ such that
 $$
-\bar{{\cal L}}(\theta_1) > \bar{{\cal L}}(\theta_2) > \bar{{\cal L}}(\theta_3) > \ldots 
+\bar{{\cal L}}(\theta_1) > \bar{{\cal L}}(\theta_2) > \bar{{\cal L}}(\theta_3) > \ldots
 $$
 Ultimately, this should reach the minimum possible $\bar{{\cal L}}(\theta)$.
 \end{frame}

@@ -5,9 +5,9 @@
 %% Edit the title page
 \title{Machine Learning}
 \subtitle{Module 3.1 - Models: Linear and Logistic regressions}
-\author[MOB]{Marc-Olivier Boldi}
+\author[A. Vialfont]{Arnold Vialfont}
 \institute[HEC MSc Mgt BA]{Master in Management, Business Analytics, HEC UNIL}
-\date[Spring 2024]{Spring 2024}
+\date{Spring 2026}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,7 +27,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Linear regression}
-The prediction formula is 
+The prediction formula is
 $$
 f(x;\theta) = \theta_0 + \theta_1 x_{1} + \ldots + \theta_p x_{p}
 $$
@@ -53,10 +53,10 @@ $$
 To find the OLS, the algorithm is exact and the final solution can be explicitly computed with the matrix-operation
 $$
 \hat{\theta} = (X^TX)^{-1} X^T y,
-$$ 
+$$
 where
 \begin{itemize}
-\item $X$ is the so-called {\bf design matrix} of size $n\times (p+1)$ and whose $i$-th row contains 
+\item $X$ is the so-called {\bf design matrix} of size $n\times (p+1)$ and whose $i$-th row contains
 $$
 [1,x_{i1},\ldots,x_{ip}],
 $$
@@ -78,7 +78,7 @@ $$
 $$
 p(x;\theta) = P(Y=1 | X=x) = \frac{\exp\{z(x;\theta)\}}{1+\exp\{z(x;\theta)\}}.
 $$
-\item Compute the {\bf prediction of the class}: 
+\item Compute the {\bf prediction of the class}:
 $$
 f(x;\theta) = \left\{
 \begin{array}{ll}
@@ -95,7 +95,7 @@ $$
 The {\bf logit function} is the inverse of the {\bf sigmoid function} and thus transforms $p(x;\theta)$ to $z(x;\theta)$.
 $$
 z(x;\theta) = \log \frac{p(x;\theta)}{1-p(x;\theta)}
-$$ 
+$$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -106,12 +106,12 @@ $$
 $$
 Interpretation,
 \begin{itemize}
-\item If $y=1$, we want $p$ to be large (close to 1). The loss is 
+\item If $y=1$, we want $p$ to be large (close to 1). The contribution to the loss is
 $$
 {\cal L}(1,p) = - \log p
 $$
 It will be small indeed if $p$ is large.
-\item If $y=0$, we want $p$ to be small (close to 0). The loss is
+\item If $y=0$, we want $p$ to be small (close to 0). The contribution to the loss is
 $$
 {\cal L}(0,p) = - \log (1-p)
 $$
@@ -127,29 +127,29 @@ $$
 $$
 The $\log$ in this formula can be in any base. Often,
 \begin{itemize}
-\item Machine learners use $\log_2$,
+\item Machine learners use $\log_2$ for binary classification,
 \item Statisticians use $\ln$.
 \end{itemize}
-This has absolutely no consequence on the final result (all $\log$ are equivalent here). But it can bring confusion from time to time.
+This has no consequence on the final result. But it can bring confusion from time to time.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Optimal parameters}
-To obtain the optimal parameters, the best algorithm is the {\bf Newton-Raphson} algorithm. It requires 
+To obtain the optimal parameters, the best algorithm is the {\bf Newton-Raphson} algorithm. It requires
 \begin{itemize}
 \item To compute the first and second derivatives of $\bar{\cal L}(\theta)$,
-\item To build a sequence of $\hat{\theta}_k$ that converges to the optimal one using these derivatives. 
+\item To build a sequence of $\hat{\theta}_k$ that converges to the optimal one using these derivatives.
 \end{itemize}
 This algorithm is very fast and efficient. However, there is no explicit formula for $\hat{\theta}$, unlike the OLS.\\
 \vspace{0.3cm}
-The optimal $\hat{\theta}$ is sometimes called the {\bf maximum likelihood estimator}, {\bf MLE}. That terminology is however less usual among machine learners than statisticians.
+The optimal $\hat{\theta}$ is called the {\bf maximum likelihood estimator}, {\bf MLE}.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Interpretation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Interpretation}
-Linear and logistic regressions are highly interpretable in that 
+Linear and logistic regressions are highly interpretable in that
 \begin{itemize}
 \item the coefficients quantify the link between the features $x$ and the outcome $y$.
 \item the certainty of the prediction can be quantify.
@@ -163,7 +163,7 @@ For the {\bf linear regression}, coefficients are interpreted as {\it slopes}.
 \item When the feature $x_1$ increases by $1$ unit, the outcome $y$ increases in average by $\theta_1$ units (same for all features $1,\ldots,p$).
 \item A positive coefficient $\theta_j$ means a positive linear association between the feature $x_j$ and the outcome $y$.
 \item The larger the coefficients, the larger the association, in absolute value. (note: pay attention to the scale!)
-\item For the categorical features, the coefficients estimate the average change in the outcome $y$ when the feature switches from the reference level to any other level. It is thus a {\bf contrast} with the reference level.  
+\item For the categorical features, the coefficients estimate the average change in the outcome $y$ when the feature switches from the reference level to any other level. It is thus a {\bf contrast} with the reference level.
 \end{itemize}
 \small
 Note: one should not say that an increase in $x_j$ {\it causes} an increase of the response. It is an association. The causality implies a direction and is more complex to establish.
@@ -172,12 +172,13 @@ Note: one should not say that an increase in $x_j$ {\it causes} an increase of t
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Interpretation of the coefficients}
-For the {\bf logistic regression}, because of the sigmoid transform, the interpretation of the coefficients is more difficult than with the linear regression:
+For the {\bf logistic regression}, because of the sigmoid transform, the interpretation of the coefficients is not direct like with the linear regression:
 \begin{itemize}
-\item With a positive $\theta_j$, an increase of $x_j$ is associated with an increase of the probability that $y=1$. 
+\item With a positive $\theta_j$, an increase of $x_j$ is associated with an increase of the probability that $y=1$.
 \item The larger the coefficient, the larger the increase. However, it the increase is not linear and depends on the other features.
 \item A negative coefficient means a decrease in the probability of the positive class ($y=1$).
 \end{itemize}
+Note: coefficients can be interpreted in terms of odds ratio. We will not pursue this here.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -188,7 +189,7 @@ Let $x$ be a set of new features, the {\bf point} prediction for $y(x)$ uses the
 $$
 f(x;\hat{\theta}) = \hat{\theta}_0 + \hat{\theta}_1 x_1 + \cdots + \hat{\theta}_p x_p.
 $$
-Now, rather than a point estimate, we want to build an interval $[L,U]$ such that 
+Now, rather than a point estimate, we want to build an interval $[L,U]$ such that
 $$
 P(L \leq y(x) \leq U) = 1-\alpha,
 $$
@@ -199,10 +200,10 @@ where $\alpha$ is usually set to $5\%$ for an interval at $95\%$. To build this 
 \frametitle{Certainty for linear regression}
 It is often assumed that the true response $y(x)$ for feature $x$ satisfies
 $$
-y(x) = \theta_0 + \theta_1 x_1 + \cdots + \theta_p x_p + e = f(x;\theta) + \sigma e,
+y(x) = \theta_0 + \theta_1 x_1 + \cdots + \theta_p x_p + \sigma e = f(x;\theta) + \sigma e,
 $$
-where the residual $e$ is normally distributed, $e \sim N(0, \sigma^2)$, and $\sigma$ is the standard deviation.\\
-\vspace{0.2cm} 
+where the residual $e$ is standard normal, $e \sim N(0, 1)$, and $\sigma$ is the standard deviation.\\
+\vspace{0.2cm}
 In particular, we expect the residual distribution to be symmetric around $0$ and (informally) respect the 68-95-99.7 rule:
 \begin{center}
 \includegraphics[width=5cm]{../../Graphs/68-95-99.jpg}
@@ -212,7 +213,7 @@ In particular, we expect the residual distribution to be symmetric around $0$ an
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Certainty for linear regression}
-Therefore,
+Therefore, to find $[L,U]$, we set
 $$
 0.95 = P(L \leq y(x) \leq U) = P\left(\frac{L-f(x;\theta)}{\sigma} \leq e \leq \frac{U-f(x;\theta}{\sigma})\right).
 $$
@@ -220,13 +221,13 @@ Using the normal distribution, we find that
 $$
 L-f(x;\theta) = -\sigma z_{1-\alpha/2}, \quad U-f(x;\theta) = \sigma z_{1-\alpha/2}.
 $$
-This gives 
+This gives
 $$
 L = f(x;\theta) -\sigma z_{1-\alpha/2}, \quad U = f(x;\theta) + \sigma z_{1-\alpha/2}.
 $$
-For $\alpha=5\%$, this gives
+For $\alpha=5\%$, $z_{1-\alpha/2}=1.96$, and
 $$
-(L,U) = f(x;\theta) \pm 1.96 \sigma.
+[L,U] = \left[f(x;\theta) \pm 1.96 \sigma\right].
 $$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -234,7 +235,7 @@ $$
 \frametitle{Certainty for linear regression}
 Using a plug-in estimate, this gives us a {\it rough} prediction interval (at $95\%$) of
 $$
-(\hat{L},\hat{U}) = f(x;\hat{\theta}) \pm 1.96 s, 
+\left[\hat{L},\hat{U}\right] = \left[f(x;\hat{\theta}) \pm 1.96 s\right],
 $$
 where $s$ is the unbiased estimate of the standard deviation
 $$
@@ -245,12 +246,12 @@ This prediction interval is however hardly used/implemented because
 \item the estimate $s$ carries uncertainty. If taken into account, the Student $t_{n-(p+1)}$ distribution should be used.
 \item the estimate $\hat{\theta}$ carries uncertainty. If taken into account, the estimate of $s$ should be changed to $s \sqrt{1+x^T(X^TX)^{-1}x}$.
 \end{itemize}
-Both adaptations widen the interval. 
+Both adaptations widen the interval.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Certainty for logistic regression}
-The probability provides an interpretation of the certainty the model provides on a classification. Consider: 
+The probability provides an interpretation of the certainty the model provides on a classification. Consider:
 \begin{itemize}
 \item $\hat{y}=1$ with $\hat{p} = 0.99$: the prediction is {\bf certain}.
 \item $\hat{y}=1$ with $\hat{p} = 0.53$: the prediction is {\bf uncertain}.
@@ -259,7 +260,7 @@ In both cases, the predicted class is the same but the probability provides a mo
 \vspace{0.2cm}
 The prediction "Good" for a customer with a probability of $0.51$ is uncertain. Alternatively, the prediction rule could set to a larger value than 0.5 to increase the certainty. \\
 \vspace{0.2cm}
-Also, a model with a lot of predictions close to 0.5 is of considered as poor because of its uncertainty\footnote{A little thought on that will brings us back to the entropy.}.
+Also, a model with a lot of predictions close to 0.5 is considered as poor because of its uncertainty\footnote{A little thought on that will brings us back to the entropy.}.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Selection of variables}
@@ -271,21 +272,21 @@ A parsimony principle:
 "All else being equal, the simplest explanation is the best one"
 \end{center}
 \begin{itemize}
-\item In other words, among two models with approximately the same prediction quality, choose the simplest one. 
-\item In practice, we remove from the model variables that do not impair too much the prediction quality. 
+\item In other words, among two models with approximately the same prediction quality, choose the simplest one.
+\item In practice, we remove from the model variables that do not impair too much the prediction quality.
 \end{itemize}
 Simplifying the model is a solution to {\bf overfitting}. This will be studied later in the course.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Akaike Information Criterion}
-The {\bf AIC} (Akaike Information Criterion) is 
+The {\bf AIC} (Akaike Information Criterion) is
 $$
 AIC = -2\hat{\ell} + 2k
 $$
-where 
+where
 \begin{itemize}
-\item $\hat{\ell}$ is the maximum {\bf log-likelihood} and measure the goodness-of-fit, 
+\item $\hat{\ell}$ is the maximum {\bf log-likelihood} and measure the goodness-of-fit,
 \item $k$ is the number of parameters and measure the model complexity.
 \end{itemize}
 {\bf Minimizing} the AIC achieves a trade-off between the quality of prediction and the model complexity.
@@ -304,7 +305,7 @@ where $\hat{\sigma}^2 = (n-p-1)s^2/n$.
 \end{itemize}
 For logistic regressions,
 \begin{itemize}
-\item The number of parameters is $k=p+1$ for $\theta_0,\theta_1,\ldots,\theta_p$, 
+\item The number of parameters is $k=p+1$ for $\theta_0,\theta_1,\ldots,\theta_p$,
 \item The log-likelihood part equals
 $$
 -2\hat{\ell} = 2 \sum_{i=1}^n y_i \ln p(x_i;\hat{\theta}) + (1-y_i) \ln \{1-p(x_i;\hat{\theta})\}.
@@ -314,7 +315,7 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Variables selection with AIC}
-Automatic variable selection using stepwise minimization of the AIC can be performed. There are 
+Automatic variable selection using stepwise minimization of the AIC can be performed. There are
 \begin{itemize}
 \item Backward: start from the most complete model and try to remove variable one at a time (if it decreases the AIC)
 \item Forward: start from the empty model and try to add one variable at a time (if it decreases the AIC).
@@ -337,8 +338,8 @@ $$
 $$
 \displaystyle \min_\theta \bar{\cal L}(\theta) + \lambda \sum_{j=1}^p \theta_j^2
 $$
-\end{itemize} 
-Usually, $\theta_0$ is not penalized. 
+\end{itemize}
+Usually, $\theta_0$ is not penalized.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -351,14 +352,14 @@ The penalty parameter $\lambda \geq 0$:
 For intermediate values, some components of $\theta$ will be small, pushed toward $0$.\\ \vspace{0.3cm}
 This is equivalent to variable selection: setting $\theta_j=0$ is equivalent to not including $x_j$.\\
 \vspace{0.3cm}
-Selection of $\lambda$ can be done with cross-validation (see later).
+Selection of $\lambda$ can be done with {\bf cross-validation} (CV ; see later).
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Variable selection with penalization}
 \begin{itemize}
 \item $L_1$ shrink some of the $\theta_j$, set some $\theta_j = 0$, select variables.
-\item $L_2$ shrink all the $\theta_j$'s, avoiding extremes $\theta_j$, regularize $\theta$. 
+\item $L_2$ shrink all the $\theta_j$'s, avoiding extremes $\theta_j$, regularize $\theta$.
 \end{itemize}
 {\bf Elastic net} combines $L_1$ and $L_2$:
 $$
@@ -369,7 +370,7 @@ with $0 \leq \alpha \leq 1$,
 \item If $\alpha=0$, it is the ridge ($L_2$)
 \item If $\alpha=1$, it is the LASSO ($L_1$)
 \end{itemize}
-Often, $\lambda$ is selected by the data (cv), while $\alpha$ is set by the user.
+Often, $\lambda$ is selected by the data (CV), while $\alpha$ is set by the user.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
@@ -386,7 +387,7 @@ The selection (backward direction) based on the AIC
 \begin{verbatim}
 > step(fb3.lm)
 Start:  AIC=6634.25
-Lifetime.Post.Consumers ~ Page.total.likes + Type + Category + 
+Lifetime.Post.Consumers ~ Page.total.likes + Type + Category +
     Post.Month + Post.Weekday + Post.Hour + Paid
 
                    Df Sum of Sq       RSS    AIC
@@ -400,7 +401,7 @@ Lifetime.Post.Consumers ~ Page.total.likes + Type + Category +
 - Type              3  81007578 348204009 6760.4
 
 Step:  AIC=6630.99
-Lifetime.Post.Consumers ~ Page.total.likes + Type + Category + 
+Lifetime.Post.Consumers ~ Page.total.likes + Type + Category +
     Post.Month + Post.Hour + Paid
 
                    Df Sum of Sq       RSS    AIC
@@ -419,7 +420,7 @@ Lifetime.Post.Consumers ~ Page.total.likes + Type + Category +
 \tiny
 \begin{verbatim}
 Step:  AIC=6628.49
-Lifetime.Post.Consumers ~ Page.total.likes + Type + Category + 
+Lifetime.Post.Consumers ~ Page.total.likes + Type + Category +
     Post.Hour + Paid
 
                    Df Sum of Sq       RSS    AIC
@@ -431,7 +432,7 @@ Lifetime.Post.Consumers ~ Page.total.likes + Type + Category +
 - Type              3  81149016 363901202 6748.4
 
 Step:  AIC=6626.94
-Lifetime.Post.Consumers ~ Page.total.likes + Type + Category + 
+Lifetime.Post.Consumers ~ Page.total.likes + Type + Category +
     Paid
 
                    Df Sum of Sq       RSS    AIC
@@ -450,15 +451,15 @@ The final model is
 \tiny
 \begin{verbatim}
 Call:
-lm(formula = Lifetime.Post.Consumers ~ Page.total.likes + Type + 
+lm(formula = Lifetime.Post.Consumers ~ Page.total.likes + Type +
     Category + Paid, data = facebook.dat)
 
 Coefficients:
-     (Intercept)  Page.total.likes         TypePhoto  
-       1903.6819           -0.0142          554.8457  
-      TypeStatus         TypeVideo        CategoryC2  
-       1989.8878         1484.3815         -105.0015  
-      CategoryC3           PaidYes  
+     (Intercept)  Page.total.likes         TypePhoto
+       1903.6819           -0.0142          554.8457
+      TypeStatus         TypeVideo        CategoryC2
+       1989.8878         1484.3815         -105.0015
+      CategoryC3           PaidYes
        -179.4245          199.5205
 \end{verbatim}
 \normalsize
@@ -469,7 +470,7 @@ It removes first {\tt Post.Weekday} then {\tt Post.Month} then {\tt Post.Hour} t
 
 \begin{frame}[fragile]
 \frametitle{Model assumptions}
-A commonly used (unbiased) estimate of $\sigma^2$ is\footnote{for short we write $y(x_i;\hat{a})=\hat{y}_i$.} 
+A commonly used (unbiased) estimate of $\sigma^2$ is\footnote{for short we write $y(x_i;\hat{a})=\hat{y}_i$.}
 $$
 s^2 = \frac{1}{n-(p+1)} \sum_{i=1}^n (y_i-\hat{y}_i)^2
 $$
@@ -496,10 +497,10 @@ Are model assumptions important? Yes and No.
 \frametitle{Coefficients and weights}
 The previous graph represents the linear regression as a neural network (a very simple one).
 \begin{itemize}
-\item The coefficients $a_0, a_1, \ldots, a_p$ are also called the {\bf weights} of the model (NN). 
+\item The coefficients $a_0, a_1, \ldots, a_p$ are also called the {\bf weights} of the model (NN).
 \item The coefficient $a_0$ is called the {\bf intercept} (linear model) or the {\bf bias} (NN)
 \item The $p+1$ coefficient $a=(a_0,\ldots,a_p)$ are estimated during the training of the model.\\
-\item All the features in $x$ are numerical; in particular, all categorical variables are interpreted through their dummy variables. 
+\item All the features in $x$ are numerical; in particular, all categorical variables are interpreted through their dummy variables.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -537,7 +538,7 @@ Below, we focus on the numerical outcome {\tt Lifetime Post Consumers} to illust
 \frametitle{Example}
 \begin{itemize}
 \item Outcome $y$: {\tt Lifetime Post Consumers} - the number of people who clicked anywhere in a post.
-\item The seven features are 
+\item The seven features are
 \begin{itemize}
 \scriptsize
 \item $x_1$: {\tt Page.total.likes} Number of people who have liked the company's page (!!page $\neq$ post).
@@ -557,12 +558,12 @@ Saturday)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
 \frametitle{Example}
-With the two features {\tt Page.total.likes} $(x_1)$ and {\tt Paid} $(x_7)$\\ 
+With the two features {\tt Page.total.likes} $(x_1)$ and {\tt Paid} $(x_7)$\\
 \scriptsize
 \begin{verbatim}
 Coefficients:
-     (Intercept)  Page.total.likes           PaidYes  
-      1734.52147          -0.00801         186.77882   
+     (Intercept)  Page.total.likes           PaidYes
+      1734.52147          -0.00801         186.77882
 \end{verbatim}
 \normalsize
 In this case,
@@ -587,13 +588,13 @@ $y_1$ & $x_{11}$ & $x_{17}$ & $\hat{y}_1$ & $e_1$\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
 \frametitle{Example}
-When adding {\tt Category} to the model gives\\ 
+When adding {\tt Category} to the model gives\\
 \scriptsize
 \begin{verbatim}
 Coefficients:
-     (Intercept)  Page.total.likes        CategoryC2  
-      1968.68322          -0.01022         288.64808  
-      CategoryC3           PaidYes  
+     (Intercept)  Page.total.likes        CategoryC2
+      1968.68322          -0.01022         288.64808
+      CategoryC3           PaidYes
       -128.47698         195.95560
 \end{verbatim}
 \normalsize
@@ -605,28 +606,28 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
 \frametitle{Example}
-{\bf Example}: Extending this with all the available features gives\\ 
+{\bf Example}: Extending this with all the available features gives\\
 \tiny
 \begin{verbatim}
 Coefficients:
-     (Intercept)  Page.total.likes         TypePhoto  
-       5348.8727           -0.0463          534.9196  
-      TypeStatus         TypeVideo        CategoryC2  
-       1993.5764         1527.9009         -194.5406  
-      CategoryC3     Post.MonthAug     Post.MonthDec  
-       -227.0303          795.2857         1034.8361  
-   Post.MonthFeb     Post.MonthJan     Post.MonthJul  
-       -201.2036         -777.4440          895.1965  
-   Post.MonthJun     Post.MonthMar     Post.MonthMay  
-        727.4582         -338.0111          281.9842  
-   Post.MonthNov     Post.MonthOct     Post.MonthSep  
-        675.2298         1016.5307          988.2724  
- Post.WeekdayMon   Post.WeekdaySat   Post.WeekdaySun  
-        239.8912           34.8302           55.8315  
- Post.WeekdayThu   Post.WeekdayTue   Post.WeekdayWed  
-        -26.9925            6.8544          223.9480  
-       Post.Hour           PaidYes  
-         -4.8014          216.0266 
+     (Intercept)  Page.total.likes         TypePhoto
+       5348.8727           -0.0463          534.9196
+      TypeStatus         TypeVideo        CategoryC2
+       1993.5764         1527.9009         -194.5406
+      CategoryC3     Post.MonthAug     Post.MonthDec
+       -227.0303          795.2857         1034.8361
+   Post.MonthFeb     Post.MonthJan     Post.MonthJul
+       -201.2036         -777.4440          895.1965
+   Post.MonthJun     Post.MonthMar     Post.MonthMay
+        727.4582         -338.0111          281.9842
+   Post.MonthNov     Post.MonthOct     Post.MonthSep
+        675.2298         1016.5307          988.2724
+ Post.WeekdayMon   Post.WeekdaySat   Post.WeekdaySun
+        239.8912           34.8302           55.8315
+ Post.WeekdayThu   Post.WeekdayTue   Post.WeekdayWed
+        -26.9925            6.8544          223.9480
+       Post.Hour           PaidYes
+         -4.8014          216.0266
 \end{verbatim}
 \normalsize
 \end{frame}
@@ -638,7 +639,7 @@ One appealing aspect of linear models is the interpretability of their coefficie
 \item When the feature $x_1$ increases by $1$ unit, the outcome $y$ increases in average by $a_1$ units (same for all features $1,\ldots,p$).
 \item A positive weight $a_j$ means a positive linear association between the feature $x_j$ and the outcome $y$.
 \item The larger the coefficients, the larger the association, in absolute value. (note: pay attention to the scale!)
-\item For the categorical features, the coefficients estimate the average change in the outcome $y$ when the feature switches from the reference level to any other level. It is thus a {\bf contrast} with the reference level.  
+\item For the categorical features, the coefficients estimate the average change in the outcome $y$ when the feature switches from the reference level to any other level. It is thus a {\bf contrast} with the reference level.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -648,8 +649,8 @@ Case with {\tt Page.total.likes}, {\tt Category}, {\tt Paid}:
 \begin{itemize}
 \item If {\tt Page.total.likes} increases by 1 unit, then {\tt Lifetime.Post.Consumers} decreases in average by $(-)0.01$ units.
 \item Switching {\tt Paid} from {\tt No} to {\tt Yes}, increases in average by 196 units.
-\item Switching {\tt Category} from {\tt C1} to {\tt C2} increases in average the outcome by 288.6. 
-\item Switching {\tt Category} from {\tt C1} to {\tt C3} decreases in average the outcome by $(-)128.5$. 
+\item Switching {\tt Category} from {\tt C1} to {\tt C2} increases in average the outcome by 288.6.
+\item Switching {\tt Category} from {\tt C1} to {\tt C3} decreases in average the outcome by $(-)128.5$.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -668,7 +669,7 @@ In particular, we expect the residual distribution to be symmetric around $0$ an
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
 \frametitle{Model assumptions}
-A commonly used (unbiased) estimate of $\sigma^2$ is\footnote{for short we write $y(x_i;\hat{a})=\hat{y}_i$.} 
+A commonly used (unbiased) estimate of $\sigma^2$ is\footnote{for short we write $y(x_i;\hat{a})=\hat{y}_i$.}
 $$
 s^2 = \frac{1}{n-(p+1)} \sum_{i=1}^n (y_i-\hat{y}_i)^2
 $$
@@ -705,7 +706,7 @@ The {\bf probability prediction} (sigmoid):
 $$
 p_i = P(Y_i=1 | X_i=x_i) = \frac{\exp\{z_i\}}{1+\exp\{z_i\}}.
 $$
-The {\bf prediction of the class}: 
+The {\bf prediction of the class}:
 $$
 y_i = \left\{
 \begin{array}{ll}
@@ -721,7 +722,7 @@ $$
 The {\bf logit function} is the inverse of the {\bf sigmoid function} and thus transforms $p_i$ to $z_i$.
 $$
 z_i = \log \frac{p_i}{1-p_i}
-$$ 
+$$
 Representation of a logistic regression:
 \begin{center}
 \includegraphics[width=5cm]{../../Graphs/LogReg_Network.png}
@@ -739,9 +740,9 @@ $$
 E(a) = -\sum_{i=1}^n y_i \log p_i + (1-y_i) \log(1-p_i).
 $$
 \small
-Notes: 
+Notes:
 \begin{itemize}
-\item the likelihood is more common to statistics, wherase entropy is more common to neural networks. They are however equivalent in this case. 
+\item the likelihood is more common to statistics, wherase entropy is more common to neural networks. They are however equivalent in this case.
 \item The entropy is sometimes expressed in $\log_2$.
 \end{itemize}
 \end{frame}
@@ -752,7 +753,7 @@ Looking carefully, the log-likelihood sum up all the $\log p_i$ for which $y_i=1
 $$
 \ell(a) = \sum_i \log P(\mbox{observe }Y_i=y_i).
 $$
-In other words, this is the sum of the (log-)probabilities of observing what was actually observed.\\ 
+In other words, this is the sum of the (log-)probabilities of observing what was actually observed.\\
 \vspace{0.2cm}
 Therefore, maximizing $\ell(a)$ is equivalent to look for a logistic regression that has the highest probability of observing what was indeed observed. And this makes sense...
 \end{frame}
@@ -761,7 +762,7 @@ Therefore, maximizing $\ell(a)$ is equivalent to look for a logistic regression 
 \frametitle{Interpretation of the coefficients}
 Because of the sigmoid transform, the interpretation of the coefficients is more difficult than with the linear regression:
 \begin{itemize}
-\item With a positive $a_j$, an increase of $x_j$ is associated with an increase of the probability of $y=1$. 
+\item With a positive $a_j$, an increase of $x_j$ is associated with an increase of the probability of $y=1$.
 \item The larger the coefficient, the larger the increase. However, it the increase is not linear and depends on the other features.
 \item A negative coefficient means a decrease in the probability of the positive class ($y=1$).
 \end{itemize}
@@ -775,7 +776,7 @@ Note: one should not say that an increase in $x_j$ {\it causes} an increase of t
 A researcher studies how GRE (Graduate Record Exam scores), GPA (grade point average) and prestige of the undergraduate institution effects admission into graduate school (admit/don't admit).\footnote{source: {\url https://stats.idre.ucla.edu/r/dae/logit-regression/}}
 \\
 \vspace{0.3cm}
-Variable {\tt rank} is categorical and represents the prestige institution prestige (1="High prestige" to 4="Low prestige"). {\tt rank} 1 is the reference level. 
+Variable {\tt rank} is categorical and represents the prestige institution prestige (1="High prestige" to 4="Low prestige"). {\tt rank} 1 is the reference level.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
@@ -786,11 +787,11 @@ Variable {\tt rank} is categorical and represents the prestige institution prest
 > summary(mylogit)
 [...]
 Coefficients:
-             Estimate Std. Error z value Pr(>|z|)    
+             Estimate Std. Error z value Pr(>|z|)
 (Intercept) -3.989979   1.139951  -3.500 0.000465 ***
-gre          0.002264   0.001094   2.070 0.038465 *  
-gpa          0.804038   0.331819   2.423 0.015388 *  
-rank2       -0.675443   0.316490  -2.134 0.032829 *  
+gre          0.002264   0.001094   2.070 0.038465 *
+gpa          0.804038   0.331819   2.423 0.015388 *
+rank2       -0.675443   0.316490  -2.134 0.032829 *
 rank3       -1.340204   0.345306  -3.881 0.000104 ***
 rank4       -1.551464   0.417832  -3.713 0.000205 ***
 ---
@@ -804,7 +805,7 @@ rank4       -1.551464   0.417832  -3.713 0.000205 ***
 The interpretation of the coefficients are:
 \begin{itemize}
 \item {\tt gre} is positively associated with admission ($y=1$)
-\item {\tt gpa} is also\footnote{An increase of 1 unit of {\tt gpa} is associated with a larger increase in the probability of being admitted than with an increase of 1 unit of {\tt gre}.} 
+\item {\tt gpa} is also\footnote{An increase of 1 unit of {\tt gpa} is associated with a larger increase in the probability of being admitted than with an increase of 1 unit of {\tt gre}.}
 \item The predicted probability of being admitted for rank 2 is lower than for {\tt rank} 1.
 \item The predicted probability of being admitted for rank 3 is lower than for {\tt rank} 1 (and also than lower for {\tt rank} 2).
 \item etc.
@@ -821,7 +822,7 @@ then
 $$
 p = \frac{e^{-1.578}}{1+e^{-1.578}} = 0.171 < 0.5
 $$
-then $\hat{y}=0$.\\ 
+then $\hat{y}=0$.\\
 \vspace{0.2cm}
 Note that the actual observation for this instance was indeed $y=0$. The contribution to the entropy of observation is thus\footnote{$0.27$ with $\log_2$}:
 $$
@@ -831,7 +832,7 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Certainty}
-The probability provides an interpretation of the certainty the model provides on a classification. Consider: 
+The probability provides an interpretation of the certainty the model provides on a classification. Consider:
 \begin{itemize}
 \item $\hat{y}=1$ with $\hat{p} = 0.99$: the prediction is {\bf certain}.
 \item $\hat{y}=1$ with $\hat{p} = 0.53$: the prediction is {\bf uncertain}.

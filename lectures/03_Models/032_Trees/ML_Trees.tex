@@ -5,9 +5,9 @@
 %% Edit the title page
 \title{Machine Learning}
 \subtitle{Module 3.2 - Models: Classification And Regression Trees}
-\author[MOB]{Marc-Olivier Boldi}
+\author[A. Vialfont]{Arnold Vialfont}
 \institute[HEC MSc Mgt BA]{Master in Management, Business Analytics, HEC UNIL}
-\date[Spring 2024]{Spring 2024}
+\date{Spring 2026}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,7 +29,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{CART}
-CART stands for {\bf C}lassification {\bf A}nd {\bf R}egression {\bf T}rees. It consists of 
+CART stands for {\bf C}lassification {\bf A}nd {\bf R}egression {\bf T}rees. It consists of
 \begin{itemize}
 \item A hierarchical set of binary rules,
 \item A representation in a shape of a tree.
@@ -60,14 +60,14 @@ If Petal length $< 2.45$ then Setosa, else
 \frametitle{The prediction formula}
 The set of rules including the order of the features and the thresholds at each node can be embedded into a set of parameters $\theta$. \\
 \vspace{0.3cm}
-After the training, the tree contains of final nodes. We use the notation below,
+After the training, the tree contains final nodes. We use the notation below,
 \begin{itemize}
 \item Applying the rules to features $x$ send the instance $(y,x)$ to the final node that we call $N(x)$.
 \item In the training set $(y_1,x_1), \ldots, (y_n,x_n)$, the set of instances that were sent to node $N$ is called $I(N)$. E.g., $I(N)=\{1,3,4\}$ means that instances $(y_1,x_1),(y_3,x_3),(y_4,x_4)$ were sent to node $N$.
 \item The prediction for features $x$ is noted $f(x;\theta)$. That prediction only depends on the node to which $x$ is sent. In other words,
 $$
 N(x) = N(x') \quad \Longrightarrow \quad f(x;\theta) = f(x';\theta).
-$$ 
+$$
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -75,7 +75,7 @@ $$
 \frametitle{The prediction formula: regression}
 For regression, $f(x;\theta)$, the prediction for $x$, is the mean of the $y_i$'s that were sent to the node of $x$ during the training.\\
 \vspace{0.3cm}
-In more fancy terms, 
+In more fancy terms,
 $$
 f(x;\theta) = \frac{1}{|I(N(x))|}\sum_{i \in I(N(x))} y_i.
 $$
@@ -83,16 +83,16 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{The prediction formula: classification}
-For classification, 
+For classification,
 \begin{itemize}
-\item The node $N(x)$ has a predicted probability vector: probabilities one each possible class 
+\item The node $N(x)$ has a predicted probability vector: probabilities one each possible class
 $$
 p(x;\theta) = (p_1(x;\theta), \ldots, p_C(x;\theta)),
 $$
 \item The prediction $f(x;\theta)$ is the class that has highest probability:
 $$
 f(x;\theta) = \arg\max_{c=1,\ldots,C} p_c(x;\theta).
-$$ 
+$$
 \end{itemize}
 The predicted probabilities $p(x;\theta)$ at node $N(x)$ are the proportions of each class taken on all the instances sent to $N(x)$ during the training.\\
 \vspace{0.2cm}
@@ -117,7 +117,7 @@ For the classification case, the most used loss is the {\bf entropy}. It is diff
 {\cal L}(y, p) &=& - p_1 \log p_1 - p_2 \log p_2 - \cdots - p_C \log p_C\\
 &=& - \sum_{c=1}^C p_C \log p_c.
 \end{eqnarray*}
-A the global entropy is thus
+The global entropy is thus
 \begin{eqnarray*}
 \bar{\cal L}(\theta) &=& - \sum_{i=1}^n\sum_{c=1}^C p_c(x_i;\theta) \log p_c(x_i;\theta).
 \end{eqnarray*}
@@ -127,7 +127,7 @@ A the global entropy is thus
 \frametitle{The loss function: classification}
 Other possible choices for the loss function are: \\
 \vspace{0.3cm}
-The {\bf classification error}: 
+The {\bf classification error}:
 $$
 {\cal L}(y,p) = 1 - p_y.
 $$
@@ -142,7 +142,7 @@ This index is smaller if $p$ has one large component and the other ones small (e
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{The greedy algorithm}
-Finding the optimal $\theta$ cannot be obtained using a Newton-Raphson algorithm because $f(x;\theta)$ is not differentiable.\\ 
+Finding the optimal $\theta$ cannot be obtained using a Newton-Raphson algorithm because $f(x;\theta)$ is not differentiable.\\
 \vspace{0.3cm}
 To obtain the optimal $\hat{\theta}$, one should search among all possible splitting combinations. The complexity of such task is enormous and cannot be achieved even with the most powerful imaginable computers. \\
 \vspace{0.3cm}
@@ -157,16 +157,16 @@ The tree splits the space into rectangles\footnote{Several trees may be equivale
 \begin{center}
 \includegraphics[width=10cm]{../../Graphs/CART_Picture.png}
 \end{center}
-Each rectangle is associated to one node and one prediction. 
+Each rectangle is associated to one node and one prediction.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{A greedy algorithm}
 The greedy algorithm grows the tree step by step as follows:
 \begin{itemize}
-\item Start with no partition, 
+\item Start with no partition,
 \item Along each feature $x_j$, find the best split of the training set by this feature. This gives $p$ splits (one for each feature).
-\item Compare the $p$ splits and select the best one: the one diminishing the loss the most. 
+\item Compare the $p$ splits and select the best one: the one diminishing the loss the most.
 \end{itemize}
 You obtain two nodes, $N_1$ and $N_2$, say. Repeat the above rule on each node until a stopping rule is reached (see later).
 \end{frame}
@@ -203,11 +203,11 @@ Example of regression:
 The algorithm could go on splitting the feature space forever. Several stopping rules can be used. For example in {\tt R} with {\tt rpart} (see {\tt ?rpart.control}):
 \begin{itemize}
 \item {\tt minsplit}: the minimum number of observations that must exist in a node in order for a split to be attempted (default is 20).
-\item {\tt cp}: Any split that does not decrease the overall lack of fit by a factor of cp is not attempted (default to 0.1).
-\item {\tt minbucket}: the minimum number of observations in any terminal node (default to {\tt minsplit/3}).  
+\item {\tt cp} (cost-complexity parameter): Any split that does not decrease the overall lack of fit by a factor of cp is not attempted (default to 0.1).
+\item {\tt minbucket}: the minimum number of observations in any terminal node (default to {\tt minsplit/3}).
 \item etc.
 \end{itemize}
-Even with these rules, once the tree is grown, it might be too large. The procedure of cutting nodes is called {\tt pruning} the tree.  
+Even with these rules, once the tree is grown, it might be too large. The procedure of cutting nodes is called {\bf pruning} the tree.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Interpretation}
@@ -217,13 +217,15 @@ Even with these rules, once the tree is grown, it might be too large. The proced
 Trees can be interpreted by reading directly on the graph the link between the features and the outcome.
 \begin{itemize}
 \item The most important feature is at the top of the graph. The first split influence the other ones.
-\item The final nodes should be organized in a logical way to ease the reading. E.g., 
+\item The final nodes should be organized in a logical way to ease the reading. E.g.,
 \begin{itemize}
 \item (regression) Low predictions to the left, high predictions to the right.
 \item (binary) predictions "0" to the left, and "1" to the right.
 \end{itemize}
 \end{itemize}
-Interpretation must be done with cautious. The tree structure is unstable: several trees can produce similar predictions. The greedy algorithm may just pick one at random.
+Interpretation must be done with cautious. \\
+\vspace{0.2cm}
+The tree structure is unstable: several trees can produce similar predictions. The greedy algorithm may just pick one at random. Repeating the training may lead to a complete different tree.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Pruning}
@@ -232,22 +234,22 @@ Interpretation must be done with cautious. The tree structure is unstable: sever
 \frametitle{Occam's razor}
 For linear and logistic regressions, the more variables are in the model, the more complex that model is.\\
 \vspace{0.3cm}
-For trees, model complexities can be measured by the length of the tree: a shorter tree is more simple than a longer one.\\
+For trees, complexity is measured by the length of the tree: a shorter tree is simpler than a longer one.\\
 \vspace{0.3cm}
 To apply Occan's razor, one needs to shorten the tree without impeding too much its prediction quality.\\
 \vspace{0.3cm}
-To {\bf prune} the tree consists of cutting branches while maintaining enough prediction quality. 
+To {\bf prune} the tree consists of cutting branches (i.e., a posteriori) while maintaining enough prediction quality.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{1-SE rule}
-There exist several ways to prune the tree. One of the most used is the {\bf 1-SE} rule. 
+There exist several ways to prune the tree. One of the most used is the {\bf 1-SE rule}.
 \begin{itemize}
-\item Build a long tree (using the default stopping rules)
-\item For all the sub-trees compute the error of the tree 
-\item For the best tree (lowest error) compute the uncertainty on that error measure: the {\bf standard error} SE.
+\item Start with a long tree (using the default stopping rules)
+\item For all the sub-trees compute the error of the tree
+\item For the best tree (i.e., with the lowest error), compute the uncertainty on that error measure: the {\bf standard error} SE.
 \item Any tree whose error is below the lowest error plus one SE is considered equivalent to the best tree.
-\item Select the shortest tree among those that are equivalent to the best one.
+\item Select the shortest tree among those that are equivalent to be the best one.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -255,11 +257,11 @@ There exist several ways to prune the tree. One of the most used is the {\bf 1-S
 \frametitle{Technical details}
 \begin{itemize}
 \item The SE is computed using cross-validation (see later).
-\item The 1-SE rule can be replaced by other rules (like cutting at a given CP, etc.). 
+\item The 1-SE rule can be replaced by other rules (like cutting at a given CP, etc.).
 \end{itemize}
-In practice, 
+In practice,
 \begin{itemize}
-\item the pruning is not a guarantee to obtain a good model. 
+\item the pruning is not a guarantee to obtain a good model.
 \item It should be used to simplify the model and avoid overfitting.
 \item (empirical) it works well to build a very large tree then to prune it.
 \end{itemize}
@@ -271,7 +273,7 @@ In practice,
 \frametitle{Pruning}
 Example {\tt BreastCancer} data set (in {\tt mlbench}).\\
 \scriptsize
-The objective is to identify each of a number of benign or malignant classes. [...] Each variable except for the first was converted into 11 primitive numerical attributes with values ranging from 0 through 10. 
+The objective is to identify each of a number of benign or malignant classes. [...] Each variable except for the first was converted into 11 primitive numerical attributes with values ranging from 0 through 10.
 \normalsize
 \begin{center}
 \includegraphics[width=6cm]{../../Graphs/BreastCancerLongTree.pdf}
@@ -297,17 +299,17 @@ After the pruning, we will use the tree of size 3.
 
 \begin{frame}
 \frametitle{A greedy algorithm}
-On the following step, the two splits are built from the previous one. The left one is the best. 
+On the following step, the two splits are built from the previous one. The left one is the best.
 \begin{center}
 \includegraphics[width=9cm]{../../Graphs/RT_Build2.png}
 \end{center}
-The construction goes on like for the classification tree.  
+The construction goes on like for the classification tree.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Impurity}
 \begin{itemize}
-\item A {\it good} split is define relative to a criterion of error called {\bf impurity} (measure of bad quality). 
+\item A {\it good} split is define relative to a criterion of error called {\bf impurity} (measure of bad quality).
 \item A good split minimizes the impurity.
 \item The impurity depends on the task: classification or regression.
 \end{itemize}
@@ -317,7 +319,7 @@ The construction goes on like for the classification tree.
 \frametitle{Impurity for classification}
 Impurity $Q(D)$, for node $D$, with class prediction $c_D$. Common choices are
 \begin{itemize}
-\item {\bf Classification error}: 
+\item {\bf Classification error}:
 $$
 Q(D)=1-p_{c_D}(D).
 $$
@@ -330,7 +332,7 @@ $$
 Q(D) = -\sum_{c=1}^C p_c(D)\log_2 p_c(D).
 $$
 \end{itemize}
-\vspace{0.2cm} 
+\vspace{0.2cm}
 where, $p_c(D)$ is the proportion of instances with class $c$ in node a $D$
 $$
 p_c(D) = \frac{1}{|D|}\sum_{i\in D} 1_{\{y_i = c\}}.
@@ -367,7 +369,7 @@ $D_3$ (Vir) & $0/36$ & $2/36$ & $34/36$\\
 \begin{frame}
 \frametitle{Impurity: example}
 \begin{itemize}
-\item Classification error for $D_3$:  
+\item Classification error for $D_3$:
 \begin{eqnarray*}
 c(D_3)= \mbox{Vir}, \quad Q(D_3)= 1 - 34/36 = 1/18.\\
 \end{eqnarray*}
@@ -414,10 +416,10 @@ The algorithm could go on splitting forever without stopping rules. Several rule
 \begin{itemize}
 \item {\tt minsplit}: the minimum number of observations that must exist in a node in order for a split to be attempted (default is 20).
 \item {\tt cp}: Any split that does not decrease the overall lack of fit by a factor of cp is not attempted (default to 0.1).
-\item {\tt minbucket}: the minimum number of observations in any terminal node (default to {\tt minsplit/3}).  
+\item {\tt minbucket}: the minimum number of observations in any terminal node (default to {\tt minsplit/3}).
 \item etc.
 \end{itemize}
-Even with these rules, once the tree is grown, it might be too large. The procedure of cutting nodes is called {\tt pruning} the tree.  
+Even with these rules, once the tree is grown, it might be too large. The procedure of cutting nodes is called {\tt pruning} the tree.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -451,9 +453,9 @@ Each rectangle is associated to one outcome. Several trees may be equivalent.
 \frametitle{A greedy algorithm}
 To find the optimum partition is computationally infeasible: too many possibilities. One (sub-optimal) solution is to grow the tree step by step: greedy algorithm.
 \begin{itemize}
-\item Start with no partition, 
+\item Start with no partition,
 \item For each $x_j$, find the best split of the training set by $x_j$.
-\item Select the best split over all $x_j$.  
+\item Select the best split over all $x_j$.
 \end{itemize}
 You obtain two sets, say $D_1$ and $D_2$, called nodes. Repeat the above rule on each node until a stopping rule is reached.\\
 \vspace{0.5cm}
@@ -464,22 +466,22 @@ You obtain two sets, say $D_1$ and $D_2$, called nodes. Repeat the above rule on
 \frametitle{A greedy algorithm}
 A split along $x_j$ is a rule of prediction, with two classes $c_1$ and $c_2$ and one threshold $s$:
 $$
-\hat{y} = \left\{ 
+\hat{y} = \left\{
 \begin{array}{ll}
 c_1, & \mbox{if } x_{j} \leq s,\\
 c_2, & \mbox{if } x_{j} > s.
 \end{array}\right.
 $$
-Where $c_1$ and $c_2$ are 
+Where $c_1$ and $c_2$ are
 \begin{itemize}
-\item (classification) the most frequent class in each side of $s$. 
+\item (classification) the most frequent class in each side of $s$.
 \item (regression) the average of the outcome in each side of $s$.
 \end{itemize}
 Ties are often resolved at random.\\
 %\vspace{0.2cm}
-%{\bf Example}: 
+%{\bf Example}:
 %\begin{itemize}
-%\item The first split is along Petal length ($x_3$) with $s=2.45$. $c_1$ is setosa and $c_2$ is versicolor (chosen at random). 
+%\item The first split is along Petal length ($x_3$) with $s=2.45$. $c_1$ is setosa and $c_2$ is versicolor (chosen at random).
 %\item The second split: the node "versicolor" is split along Petal width at $s=1.65$.
 %\end{itemize}
 \end{frame}
@@ -510,17 +512,17 @@ Example of regression:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{A greedy algorithm}
-On the following step, the two splits are built from the previous one. The left one is the best. 
+On the following step, the two splits are built from the previous one. The left one is the best.
 \begin{center}
 \includegraphics[width=9cm]{../../Graphs/RT_Build2.png}
 \end{center}
-The construction goes on like for the classification tree.  
+The construction goes on like for the classification tree.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Impurity}
 \begin{itemize}
-\item A {\it good} split is define relative to a criterion of error called {\bf impurity} (measure of bad quality). 
+\item A {\it good} split is define relative to a criterion of error called {\bf impurity} (measure of bad quality).
 \item A good split minimizes the impurity.
 \item The impurity depends on the task: classification or regression.
 \end{itemize}
@@ -530,7 +532,7 @@ The construction goes on like for the classification tree.
 \frametitle{Impurity for classification}
 Impurity $Q(D)$, for node $D$, with class prediction $c_D$. Common choices are
 \begin{itemize}
-\item {\bf Classification error}: 
+\item {\bf Classification error}:
 $$
 Q(D)=1-p_{c_D}(D).
 $$
@@ -543,7 +545,7 @@ $$
 Q(D) = -\sum_{c=1}^C p_c(D)\log_2 p_c(D).
 $$
 \end{itemize}
-\vspace{0.2cm} 
+\vspace{0.2cm}
 where, $p_c(D)$ is the proportion of instances with class $c$ in node a $D$
 $$
 p_c(D) = \frac{1}{|D|}\sum_{i\in D} 1_{\{y_i = c\}}.
@@ -580,7 +582,7 @@ $D_3$ (Vir) & $0/36$ & $2/36$ & $34/36$\\
 \begin{frame}
 \frametitle{Impurity: example}
 \begin{itemize}
-\item Classification error for $D_3$:  
+\item Classification error for $D_3$:
 \begin{eqnarray*}
 c(D_3)= \mbox{Vir}, \quad Q(D_3)= 1 - 34/36 = 1/18.\\
 \end{eqnarray*}
@@ -627,29 +629,29 @@ The algorithm could go on splitting forever without stopping rules. Several rule
 \begin{itemize}
 \item {\tt minsplit}: the minimum number of observations that must exist in a node in order for a split to be attempted (default is 20).
 \item {\tt cp}: Any split that does not decrease the overall lack of fit by a factor of cp is not attempted (default to 0.1).
-\item {\tt minbucket}: the minimum number of observations in any terminal node (default to {\tt minsplit/3}).  
+\item {\tt minbucket}: the minimum number of observations in any terminal node (default to {\tt minsplit/3}).
 \item etc.
 \end{itemize}
-Even with these rules, once the tree is grown, it might be too large. The procedure of cutting nodes is called {\tt pruning} the tree.  
+Even with these rules, once the tree is grown, it might be too large. The procedure of cutting nodes is called {\tt pruning} the tree.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Pruning the tree}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Occam's razor}
-To prune the tree consists of simplifying it by cutting "useless" branches. It means that branches can be cut if they do not participate enough to the prediction quality. This is the same idea as the model selection: 
+To prune the tree consists of simplifying it by cutting "useless" branches. It means that branches can be cut if they do not participate enough to the prediction quality. This is the same idea as the model selection:
 \begin{center}
 Between two equally good models (in terms of predictions), choose the simplest one\footnote{Occam's razor}.
 \end{center}
-The idea is to control if the larger prediction quality of a long tree worth the extra complexity over a shorter tree (that is less precise). 
+The idea is to control if the larger prediction quality of a long tree worth the extra complexity over a shorter tree (that is less precise).
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Pruning concept}
-There exist several ways to prune the tree. One of the most used is the {\bf 1-SE} rule. 
+There exist several ways to prune the tree. One of the most used is the {\bf 1-SE} rule.
 \begin{itemize}
 \item Build a long tree (using the default stopping rules)
-\item For all the sub-trees compute the error of the tree 
+\item For all the sub-trees compute the error of the tree
 \item For the best tree (lowest error) compute the uncertainty on that error measure: the {\bf standard error} SE.
 \item Any tree whose error is below the lowest error plus one SE is considered equivalent to the best tree.
 \item Select the shortest tree among the equivalent to the best one.
@@ -660,7 +662,7 @@ There exist several ways to prune the tree. One of the most used is the {\bf 1-S
 \frametitle{Pruning}
 Example {\tt BreastCancer} data set (in {\tt mlbench}).\\
 \scriptsize
-The objective is to identify each of a number of benign or malignant classes. [...] Each variable except for the first was converted into 11 primitive numerical attributes with values ranging from 0 through 10. 
+The objective is to identify each of a number of benign or malignant classes. [...] Each variable except for the first was converted into 11 primitive numerical attributes with values ranging from 0 through 10.
 \normalsize
 \begin{center}
 \includegraphics[width=6cm]{../../Graphs/BreastCancerLongTree.pdf}
@@ -689,11 +691,11 @@ Technical details
 \begin{itemize}
 \item The error measure shown on the graph is relative.
 \item The SE is computed using cross-validation (see later).
-\item The 1-SE rule can be replaced by other rules (like cutting at a given CP, etc.). 
+\item The 1-SE rule can be replaced by other rules (like cutting at a given CP, etc.).
 \end{itemize}
-In practice, 
+In practice,
 \begin{itemize}
-\item the pruning is not a guarantee to obtain a good model. 
+\item the pruning is not a guarantee to obtain a good model.
 \item It should be used to simplify the model and avoid overfitting.
 \item (empirical) it works well to build a very large tree then to prune it.
 \end{itemize}
@@ -716,7 +718,7 @@ In {\tt R} the tree can be summarized by using function {\tt summary}. A partial
 Node number 3: 70 observations,    complexity param=0.4571429
   predicted class=versicolor  expected loss=0.5  P(node) =0.6666667
     class counts:     0    35    35
-   probabilities: 0.000 0.500 0.500 
+   probabilities: 0.000 0.500 0.500
   left son=6 (34 obs) right son=7 (36 obs)
   Primary splits:
       Petal.Width  < 1.65 to the left,  improve=29.281050, (0 missing)
@@ -736,9 +738,9 @@ It describes node versicolor (0/35/35).
 \frametitle{CART: surrogate splits and missing data}
 \begin{itemize}
 \item Primary split: "Petal.Width $<$ 1.65", the selected one. Improves the impurity by 29.28. The one below are its competitors. Not of direct use.
-\item Surrogate splits: 
+\item Surrogate splits:
 \begin{itemize}
-\item "Petal.Length $<$ 4.75". If Petal.Width was messing, the prediction could be done using Petal.Length instead (go left on the tree). The agreement between the two rules is $92.9\%$ (measured on the training set). 
+\item "Petal.Length $<$ 4.75". If Petal.Width was messing, the prediction could be done using Petal.Length instead (go left on the tree). The agreement between the two rules is $92.9\%$ (measured on the training set).
 \item If Petal.Length is also missing, then "Sepal.Length $<$ 6.15" can be used. The agreement would be $75.5\%$.
 \end{itemize}
 \end{itemize}
@@ -754,9 +756,9 @@ CART looks great for
 \item Interpretation: the role and importance of each feature appears clearly on the tree.
 \item Missing value: surrogate splits provide alternative rules.
 \end{itemize}
-However, 
+However,
 \begin{itemize}
-\item CART are {\it unstable}. 
+\item CART are {\it unstable}.
 \item Repeating the analysis on a similar data set (even very mildly different) can lead to very different trees. If the prediction performance will remain similar, the interpretation might be different.
 \end{itemize}
 \end{frame}
@@ -812,15 +814,15 @@ However,
 %\tiny
 %\begin{verbatim}
 %Classification tree:
-%rpart(formula = class ~ mcv + gvh + lip + chg + aac + alm1 + 
+%rpart(formula = class ~ mcv + gvh + lip + chg + aac + alm1 +
     %alm2, data = ecoli.df)
 %
 %Variables actually used in tree construction:
-%[1] aac  alm1 gvh  mcv 
+%[1] aac  alm1 gvh  mcv
 %
 %Root node error: 193/336 = 0.5744
 %
-%n= 336 
+%n= 336
 %
         %CP nsplit rel error  xerror     xstd
 %1 0.388601      0   1.00000 1.00000 0.046959
@@ -841,7 +843,7 @@ However,
 %\begin{itemize}
 %\item x-axis (top) on the plot is the {\bf size of the tree} whereas in the table it is the {\bf number of splits} (size = nsplit+1).
 %\item y-axis on the plot is the {\bf relative} and the standard error is given for this relative error. In the table, the xstd is the standard error of the {\bf absolute} error. We don't have the std for the relative error.
-%\end{itemize} 
+%\end{itemize}
 %Of course, the final results are coherent and, in the example, the pruned tree will be of size 5 (i.e. 4 splits).
 %\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -849,9 +851,9 @@ However,
 %\frametitle{CART: $k$-fold Cross-Validation}
 %How is the standard deviation computed? Using cross-validation (CV).\\
 %\vspace{0.2cm}
-%The idea is 
+%The idea is
 %\begin{enumerate}
-%\item Split the data set into $k$ several similar subsets (generally $k=10$ for CART), 
+%\item Split the data set into $k$ several similar subsets (generally $k=10$ for CART),
 %\item Fit a tree of a given size $d$ on each of these subset,
 %\item Compute the $k$ errors on each of these $k$ trees,
 %\item Compute the mean and the standard deviation of these $k$ errors.
@@ -879,11 +881,11 @@ However,
 %rpart(formula = Species ~ ., data = iris[Train, ], method = "class")
 %
 %Variables actually used in tree construction:
-%[1] Petal.Length Petal.Width 
+%[1] Petal.Length Petal.Width
 %
 %Root node error: 70/105 = 0.66667
 %
-%n= 105 
+%n= 105
 %
        %CP nsplit rel error   xerror     xstd
 %1 0.50000      0  1.000000 1.185714 0.059574
@@ -921,9 +923,9 @@ However,
 %{\tt Post.Month} & {\tt Dec} \\
 %{\tt Post.Weekday} & {\tt Thu}\\
 %{\tt Post.Hour} & 3\\
-%{\tt Paid} & {\tt No}\\ 
+%{\tt Paid} & {\tt No}\\
 %\hline
-%\end{tabular} 
+%\end{tabular}
 %\end{center}
 %\normalsize
 %The prediction is 5.5.
@@ -935,7 +937,7 @@ However,
 %$$
 %SS_{\T} = \sum_{i=1}^n \left\{y_i - y(x_i)\right\}^2.
 %$$
-%The minimization is a very complex problem. In general a greedy algorithm is applied.\\ 
+%The minimization is a very complex problem. In general a greedy algorithm is applied.\\
 %\vspace{0.2cm}
 %First note that, given a assignment of instances to nodes, the best estimate of $c_D$ is simply the average of the $y_i$'s assigned to $D$:
 %$$
@@ -948,13 +950,13 @@ However,
 %\frametitle{Estimation: a greedy algorithm}
 %Again, similarly to classification tree, the tree is grown by looking at the best splitting feature $j$ and the best split point $s_j$.\\
 %\vspace{0.2cm}
-%Start: The tree has only one node $D_0$ and all instances are in it. 
+%Start: The tree has only one node $D_0$ and all instances are in it.
 %\begin{enumerate}
 %\item Try feature $1$: the node $D_0$ is split into $D_1$ and $D_2$ along feature 1 looking for the best splitting point $s_1$, that is $D_1=\{i\, :\, x_{i1} < s_1\}$ and $D_2=\{i\, :\, x_{i1} \geq s_1\}$. To find $s_1$, solve
 %$$
 %\min_{s_1} \left[\sum_{i\in D_1}(y_i - c_1)^2 + \sum_{i\in D_2}(y_i - c_2)^2\right].
 %$$
-%\item Repeat step 2 for each feature $j$: the node $D_0$ is split into two nodes with the best $s_j$. 
+%\item Repeat step 2 for each feature $j$: the node $D_0$ is split into two nodes with the best $s_j$.
 %\item Keep the feature $j$: maximize the sum of squares reduction (i.e. best improvement).
 %\item Assign the instances according to the split.
 %\end{enumerate}
@@ -962,13 +964,13 @@ However,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %\frametitle{Estimation: a greedy algorithm}
-%Grow the tree: from a tree with nodes $D_1, \ldots, D_m$, 
+%Grow the tree: from a tree with nodes $D_1, \ldots, D_m$,
 %\begin{itemize}
 %\item Scan each node, with each feature: select the best split $s$ each time
 %\item Select the best feature for each node, and finally the best node.
 %\item The best means the highest reduction in sum of squares.
 %\end{itemize}
-%This is repeated again and again until no improvement can be found or some stopping criteria are met (see the classification trees). 
+%This is repeated again and again until no improvement can be found or some stopping criteria are met (see the classification trees).
 %\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
@@ -993,11 +995,11 @@ However,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %\frametitle{Example}
-%On the following step, the two splits are built from the previous one. The left one is the best. 
+%On the following step, the two splits are built from the previous one. The left one is the best.
 %\begin{center}
 %\includegraphics[width=9cm]{../../Graphs/RT_Build2.png}
 %\end{center}
-%The construction goes on like for the classification tree.  
+%The construction goes on like for the classification tree.
 %\end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}[fragile]
@@ -1010,8 +1012,8 @@ However,
 %> printcp(fb1.rt)
 %
 %Regression tree:
-%rpart(formula = log(Lifetime.Post.Consumers) ~ Page.total.likes + 
-    %Type + Category + Post.Month + Post.Weekday + Post.Hour + 
+%rpart(formula = log(Lifetime.Post.Consumers) ~ Page.total.likes +
+    %Type + Category + Post.Month + Post.Weekday + Post.Hour +
     %Paid, data = facebook.dat)
 %
 %[...]
@@ -1032,7 +1034,7 @@ However,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %\frametitle{Pruning}
-%Lowest {\tt xerror} is 0.71597 with an uncertainty of {\tt xstd} 0.082959. With the 1-SE rule, it is indistinguishable from a tree with {\tt xerror} of 
+%Lowest {\tt xerror} is 0.71597 with an uncertainty of {\tt xstd} 0.082959. With the 1-SE rule, it is indistinguishable from a tree with {\tt xerror} of
 %$$
 %0.71597 + 0.082959 = 0.798929
 %$$
@@ -1065,12 +1067,12 @@ However,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{frame}
 %\frametitle{Concept}
-%Regression trees are similar to classification trees.\\ 
+%Regression trees are similar to classification trees.\\
 %\vspace{0.2cm}
 %A value $c_D$ is assigned to each node $D$. The prediction function can be written as
 %$$
 %y(x) = \sum_{D \in \T} c_D \delta_D(x),
-%$$ 
+%$$
 %where the sum above is over $D$, the nodes of the tree $\T$, and
 %$$
 %\delta_D(x) =\left\{

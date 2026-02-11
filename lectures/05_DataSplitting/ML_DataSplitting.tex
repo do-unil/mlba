@@ -5,9 +5,9 @@
 %% Edit the title page
 \title{Machine Learning}
 \subtitle{Module 5: Data Splitting}
-\author[MOB]{Marc-Olivier Boldi}
+\author[A. Vialfont]{Arnold Vialfont}
 \institute[HEC MSc Mgt BA]{Master in Management, Business Analytics, HEC UNIL}
-\date[Spring 2024]{Spring 2024}
+\date{Spring 2026}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,8 +68,8 @@ The simplest data split consists of:
 Often,
 \begin{itemize}
 \item The split is {\bf random} (assignment of the instances).
-\item The two sets are {\bf disjoint}: no common instance, except if they are already multiple in the data base. 
-\item Common proportions Tr/Te are like $75/25$ or $80/20$. 
+\item The two sets are {\bf disjoint}: no common instance, except if they are already multiple in the data base.
+\item Common proportions Tr/Te are like $75/25$ or $80/20$.
 \item However, with very large data base, it is useless to have too large training set. With millions of data points, often a $10\%$ training set is enough (if the data are representative and rich enough).
 \end{itemize}
 \end{frame}
@@ -77,7 +77,7 @@ Often,
 \begin{frame}
 \frametitle{Apparent and test metrics}
 \begin{itemize}
-\item On the training set, the metrics (accuracies, etc.) are called {\bf apparent metrics}: often too optimistic. 
+\item On the training set, the metrics (accuracies, etc.) are called {\bf apparent metrics}: often too optimistic.
 \item The test set they are called {\bf test metrics}: close to the one expected when the model will be in use on new data.
 \end{itemize}
 To {\bf detect} overfitting, for a positive metric (e.g., accuracy),
@@ -85,19 +85,21 @@ To {\bf detect} overfitting, for a positive metric (e.g., accuracy),
 \item If $Metric(Tr) >> Metric(Te)$: overfitting.
 \item If $Metric(Tr) \approx Metric(Te)$: no sign of overfitting.
 \end{itemize}
+\vspace{0.2cm}
+Exceptionally, "apparent underfitting" is possible: $Metric(Tr) < Metric(Te)$. This is unlikely. It can be due to chance (e.g., with small data set) or sometimes information leakage (e.g., selection of hyperparameters based on the test set).
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
 \frametitle{Example}
 A data set with 1000 instances,
 \begin{itemize}
-\item Split at random: 
+\item Split at random:
 \begin{itemize}
 \item training set of 750 instances,
-\item Test set of 250 instances. 
+\item Test set of 250 instances.
 \end{itemize}
-\item A logistic regression is fitted to the training set. 
-\item The features of the test set are given to the model to make the test set predictions. These are compared to the correct classes in the test set. 
+\item A logistic regression is fitted to the training set.
+\item The features of the test set are given to the model to make the test set predictions. These are compared to the correct classes in the test set.
 \item The apparent (left) and test (right) confusion matrices:\\
 \scriptsize
 \begin{columns}
@@ -129,7 +131,7 @@ $$
 A_{tr} = \frac{30+506}{750} = 0.715, \quad
 A_{te} = \frac{6+168}{250} = 0.696.
 $$
-The accuracy on the test set is closer to the one that can be expected if the model was used on new instances (e.g., in production).\\
+The accuracy on the test set is closer to the one that can be expected if the model was used on new instances.\\
 \vspace{0.3cm}
 Here, the test accuracy is lower than the apparent accuracy. This is a usual sign of over-fitting\footnote{Mild though.}.
 \end{frame}
@@ -146,7 +148,7 @@ When the training set is split further into a training set\footnote{There is no 
 \item The best model is selected based on the metrics obtained on the validation set.
 \item The test metric of best model is computed to have a final evaluation of what this metric will be on new data.
 \end{itemize}
-This avoids {\bf information leakage}: selecting the best model on the test set may cause overfitting of this test set...\\
+This avoids {\bf information leakage}: using the best model on the test set can cause overfitting of this test set...\\
 \vspace{0.3cm}
 Validation set is also used for cross-validation, hyperparameter selection, early stopping, etc. See below.
 \end{frame}
@@ -162,7 +164,7 @@ Validation set is also used for cross-validation, hyperparameter selection, earl
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Repeated splits}
-One single training/validation/test split taken at random can be unstable or impossible to replicate: the randomness was badly balanced or too much dependence on this specific split.\\ 
+One single training/validation/test split taken at random can be unstable or impossible to replicate: the randomness was badly balanced or too much dependence on this specific split.\\
 \vspace{0.3cm}
 {\bf Repeated splits} can be used to address this issue. They are under two forms:
 \begin{itemize}
@@ -174,20 +176,20 @@ One single training/validation/test split taken at random can be unstable or imp
 \begin{frame}
 \frametitle{$K$-fold CV}
 \begin{enumerate}
-\item Split the data set into non-overlapping $K$ subsets, 
-\item For each $k=1,\ldots,K$, 
+\item Split the data set into non-overlapping $K$ subsets,
+\item For each $k=1,\ldots,K$,
 \begin{itemize}
 \item Use subset $k$ as the validation set, and the rest of the data set as the training set,
 \item Train the model on the training set
 \item Compute the predictions on the validation set
-\item Compute and record the metric $S_k$ 
+\item Compute and record the metric $S_k$
 \end{itemize}
 \end{enumerate}
 This provides $K$ metrics: $S_1, \ldots, S_K$. The final CV metric is their average:
 $$
 \hat{S} = \frac{1}{K}\sum_{k=1}^K S_k.
 $$
-In addition, these metrics are used to estimate the standard deviation\footnote{Technically, this is the method used in 1-SE rule for trees.} of $\hat{S}$. 
+In addition, these metrics are used to estimate the standard deviation\footnote{Technically, this is the method used in 1-SE rule for trees.} of $\hat{S}$.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -211,7 +213,7 @@ S_1 & S_2 & S_3 & S_4 & S_5 & S_6 & S_7 & S_8 & S_9 & S_{10}\\
 $$
 The CV accuracy (standard deviation) is $0.713$ $(0.049)$.\\
 \vspace{0.3cm}
-On the same data split, another model gives CV accuracy of 0.654 (0.053).\\ 
+On the same data split, another model gives CV accuracy of 0.654 (0.053).\\
 \vspace{0.3cm}
 The logistic regression should be preferred here.
 \end{frame}
@@ -222,17 +224,16 @@ The logistic regression should be preferred here.
 How to choose $K$?
 \end{center}
 \begin{itemize}
-\item No universal good choice.
-\item Choice of $K$ is a trade-off between 
+\item No universal good choice. In practice, use $K=5$ or $K=10$.
+\item A special case is $K=n$, known as {\bf leave-one-out} (LOO).
+\item If a more specific choice of $K$ is needed, then look for a trade-off between
 \begin{itemize}
 \item computational capacity: large $K$ gives more iterations and larger training sets, thus longer computation.
 \item number of validation metrics: large $K$ gives more $S_k$ so $\hat{S}$ is well estimated.
 \item number of data to train the model: large $K$ gives large training set thus better estimated models.
 \item number of data to estimate the validation metric: large $K$ gives small validation set, thus $S_k$ is not well estimated.
 \end{itemize}
-\item In practice, use $K=5$ or $K=10$.\\
-\item A special case is $K=n$, known as {\bf leave-one-out} (LOO). \\
-\end{itemize} 
+\end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -240,17 +241,17 @@ How to choose $K$?
 In context of ML, {\bf bootstrap} stands for {\bf re-sampling with replacement}. It is an alternative to CV. The differences between CV and bootstrap are
 \begin{itemize}
 \item for CV, the whole data base is split once. Training and validation sets do not have common instances.
-\item For bootstrap, the training and validation sets vary in size and composition at each step. 
+\item For bootstrap, the training and validation sets vary in size and composition at each step.
 \end{itemize}
-The fact that instances can be repeated in the training set can create a bias. A weighted estimate tackles this issue: the {\bf 632-rule}. 
+The fact that instances can be repeated in the training set can create a bias. A weighted estimate tackles this issue: the {\bf 632-rule}.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Bootstrap: Procedure}
 In practice, one bootstrap step consists of
 \begin{enumerate}
-\item Select at random a training set by sampling from the original data base, {\it with replacements}, a training set {\it of the same size}.
-\item The instances in the original data base {\it that are not in the generated training set} constitute the validation set. 
+\item Select at random a training set by sampling from the original data base, {\it with replacements}, and {\it of the same size}.
+\item The instances in the original data base {\it that are not in the generated training set} constitute the validation set.
 \item Compute the metric on the validation set after having trained the model with the training set: {\bf out-of-bag} metric, $\hat{S}_{oob}$.
 \item Compute also the prediction of the training set itself: {\bf apparent} metric, $\hat{S}_{app}$.
 \item Estimate the metric using the {\bf 632-rule}:
@@ -269,7 +270,7 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Bootstrap estimate}
-The previous bootstrap step is repeated a large number of times; typically 500 to 10'000, depending on the time it takes (computation power).\\ 
+The previous bootstrap step is repeated a large number of times; typically 500 to 10'000, depending on the time it takes (computation power).\\
 \vspace{0.3cm}
 The final estimate is the average of each $\hat{S}$. Standard deviation can be also computed.\\
 \vspace{0.3cm}
@@ -279,20 +280,22 @@ The final estimate is the average of each $\hat{S}$. Standard deviation can be a
 \frametitle{Bootstrap samples}
 \begin{center}
 How many bootstrap samples ($R$) should be used?
-\end{center} 
+\end{center}
 \begin{itemize}
 \item There is no theoretical number but people consider that it should be at least large enough so that all the instances of the data base are at least once selected in a validation set.
-\item In general, a large number, depending on the computational power and the data set size. 
+\item In practice, a large number depending on the computational power and the size of the data set.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Practical use}
+In practice,
 \begin{itemize}
-\item With small data base, prefer bootstrap.
-\item With large data base, prefer CV.
-\item CV can be repeated: several CV pattern are simulated independently and aggregated at the end. 
+\item With small data base, prefer bootstrap over CV.
+\item With large data base, prefer CV over bootstrap
+\item CV can be repeated: several CV pattern are simulated independently and aggregated at the end.
 \item These procedures can be computed in parallel for better performance.
+\item CV is more commonly used.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -302,45 +305,45 @@ How many bootstrap samples ($R$) should be used?
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Solving overfitting}
-Comparing apparent and test metrics allows to detect overfitting only. How can we improve the situation?\\
+Comparing apparent and test metrics allows only to detect overfitting. How can we improve the situation?\\
 \vspace{0.3cm}
-A model that overfits the training data set is too flexible/complex. We can use the methods seen for each model to try to simplify them:
+Models overfitting the training data set are too flexible or complex. We can use the methods seen for each model to try to simplify them:
 \begin{itemize}
 \item Linear and logistic regression: variable selection and/or use $L_1$ and $L_2$ penalization.
 \item Trees: prune the tree.
 \item SVM: tune the cost parameter and/or the parameters of the kernel.
-\item NN: use $L_1$ and $L_2$ penalization and/or simplify the structure of the network.
+\item NN: use $L_1$ and $L_2$ penalization, simplify the structure of the network, use early stopping.
 \end{itemize}
 
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Hyperparameters}
-Some of these methods require to set parameters: penalization parameter, cost parameter, others.\\ 
+Some of these methods require to set parameters: penalization parameter, cost parameter, others.\\
 \vspace{0.3cm}
-These are called {\bf hyperparameters}.Hyperparameters are structural parameters or "pseudo-parameters" of the models.\\
+These are called {\bf hyperparameters}. Hyperparameters are structural parameters or "pseudo-parameters" of the models.\\
 \vspace{0.3cm}
 An informal definition is "whatever cannot be optimized by the training algorithm".\\
 \vspace{0.3cm}
-To set these parameters is called {\bf tuning}.
+Setting these parameters is called {\bf tuning}.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Tuning hyperparameters}
 The main technique consists of direct comparison (brute force):
 \begin{itemize}
-\item Create a list of possible hyperparameter values. 
+\item Create a list of possible hyperparameter values.
 \item Train all the models from the list.
 \item Select the best in class according to the validation metric.
 \end{itemize}
 This approach can be done on
 \begin{itemize}
-\item A simple split: training and validation
+\item A simple split: training set and validation set.
 \item A repeated split: bootstrap or CV.
 \end{itemize}
-The choice of the hyperparameters must not be done on the test: a part of the information contained in the test set may {\it leaks} to the model choice and thus to the training.\\ 
-\vspace{0.3cm}
-Avoid any {\bf information leakage}: the {\bf test set must not be seen} by the model, at any stage.
+The choice of the hyperparameters must not be done on the test set: a part of the information contained in the test set may {\it leaks} to the model choice and thus to the training.\\
+\vspace{0.2cm}
+$\Rightarrow$ To avoid any {\bf information leakage}: the {\bf test set must not be seen} by the model, at any stage.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Solving the unbalance problem}
@@ -350,11 +353,11 @@ Avoid any {\bf information leakage}: the {\bf test set must not be seen} by the 
 "Unbalanced classes" refers to data set where the classes frequencies are unbalanced. E.g., doctor visit data have 4 times more ``No'' than ``Yes''.\\
 \scriptsize
 \begin{verbatim}
-  No  Yes 
+  No  Yes
 4141 1049
 \end{verbatim}
 \normalsize
-During the training, the model favors the predictions of the ``No'' to reach a better accuracy. 
+During the training, the model favors the predictions of the ``No'' to reach a better accuracy.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
@@ -364,10 +367,10 @@ E.g., the logistic regression, gives:\\
 \begin{verbatim}
 Confusion Matrix and Statistics
 [...]
-               Accuracy : 0.8091          
-[...]                                          
-            Sensitivity : 0.9771          
-            Specificity : 0.1435          
+               Accuracy : 0.8091
+[...]
+            Sensitivity : 0.9771
+            Specificity : 0.1435
 [...]
       Balanced Accuracy : 0.5603
 \end{verbatim}
@@ -394,7 +397,7 @@ To maximize the balanced accuracy, find the threshold $\lambda$ that maximizes t
 $$
 J(\lambda) = \mbox{Spec}(\lambda) + \mbox{Sens}(\lambda) - 1.
 $$
-Note: this optimization is always at at cost of a lower accuracy.
+Note: this optimization is always at the cost of a lower accuracy.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
@@ -403,18 +406,18 @@ Example after optimization:\\
 \scriptsize
 \begin{verbatim}
 Confusion Matrix and Statistics
-[...]                     
-               Accuracy : 0.6991          
 [...]
-            Sensitivity : 0.7186          
-            Specificity : 0.6220          
+               Accuracy : 0.6991
 [...]
-      Balanced Accuracy : 0.6703  
+            Sensitivity : 0.7186
+            Specificity : 0.6220
+[...]
+      Balanced Accuracy : 0.6703
 \end{verbatim}
 \normalsize
 Sensitivity decreased, specificity increased. Overall BA increased (and accuracy decreased).\\
 \vspace{0.3cm}
-{\bf The probability threshold $\lambda$ is an hyperparameter}. Use the splitting data method to avoid overfitting.
+{\bf The probability threshold $\lambda$ is an hyperparameter}. Use the splitting data method to avoid overfitting or information leakage.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -438,7 +441,7 @@ In details
 \end{itemize}
 Variations are possible to increase or decrease the weight of each class, to take into account for the proportions.\\
 \vspace{0.3cm}
-Note: {\bf the test set must NOT be balanced}.
+Note: {\bf Never balance the test set}.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
@@ -448,21 +451,21 @@ Example,\\
 \scriptsize
 With sub-sampling
 \begin{verbatim}
-               Accuracy : 0.7049          
+               Accuracy : 0.7049
 [...]
-            Sensitivity : 0.7331          
-            Specificity : 0.5933          
+            Sensitivity : 0.7331
+            Specificity : 0.5933
 [...]
-      Balanced Accuracy : 0.6632          
+      Balanced Accuracy : 0.6632
 \end{verbatim}
 With re-sampling
 \begin{verbatim}
-               Accuracy : 0.7097       
+               Accuracy : 0.7097
 [...]
-            Sensitivity : 0.7391          
-            Specificity : 0.5933          
+            Sensitivity : 0.7391
+            Specificity : 0.5933
 [...]
-      Balanced Accuracy : 0.6662          
+      Balanced Accuracy : 0.6662
 \end{verbatim}
 The results are similar to tuning of $\lambda$.
 \end{frame}
@@ -475,24 +478,8 @@ The results are similar to tuning of $\lambda$.
 \item Unlike tuning of the probability threshold, class balancing can be apply to no-probability models and multi-class problems.
 \item There is no guarantee. The final performances must be inspected.
 \item {\bf The test set must remain unbalanced} to be representative of future data.
-\item If you use CV or bootstrap, the validation set must remain unbalanced (often not the case in built-in methods). 
+\item If you use CV or bootstrap, the validation set must remain unbalanced (often not the case in built-in methods).
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
-
-\begin{frame}[fragile]
-\frametitle{Unbalanced classes}
-Unbalanced classes refer to data set where the classes frequencies are very unbalanced. E.g., the visits data have 4 times more ``No'' than ``Yes''.\\
-\scriptsize
-\begin{verbatim}
-> table(DocVis$visits)
-
-  No  Yes 
-4141 1049                                                                                                                        $
-\end{verbatim}
-\normalsize
-Therefore, any training set will approximately inherit these proportions. The model training will consequently favor the predictions of the ``No'' because t allows to overall reach a better metric (typically accuracy but also entropy). 
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-

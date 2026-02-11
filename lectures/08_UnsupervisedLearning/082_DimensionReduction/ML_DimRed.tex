@@ -5,9 +5,9 @@
 %% Edit the title page
 \title{Machine Learning}
 \subtitle{Module 8.2 - Unsupervised Learning: Dimension Reduction}
-\author[MOB]{Marc-Olivier Boldi}
+\author[A. Vialfont]{Arnold Vialfont}
 \institute[HEC MSc Mgt BA]{Master in Management, Business Analytics, HEC UNIL}
-\date[Spring 2024]{Spring 2024}
+\date{Spring 2026}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -32,7 +32,7 @@ For unsupervised learning, {\bf data representation and simplification} is an im
 {\bf Example:} {\tt iris} data has $4$ features (species not used). The data cannot be represented on a single graph.
 \begin{center}
 \includegraphics[width=11cm]{../../Graphs/Iris_raw.pdf}
-\end{center} 
+\end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -42,7 +42,7 @@ Observation: {\tt Petal.Length} and {\tt Petal.Width} are highly correlated: if 
 To simplify the representation, we do not need these two features: replace them by their average {\tt Petal.WL = (Petal.W+Petal.L)/2}:
 \begin{center}
 \includegraphics[width=10cm]{../../Graphs/Iris_raw2.pdf}
-\end{center} 
+\end{center}
 Same observation for {\tt Petal.WL} and {\tt Sepal.Length}...
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -63,19 +63,19 @@ The PCA is a method that looks for dimensions that are linear combinations of th
 $$
 a_1 x_1 + a_2 x_2 + \cdots + a_p x_p.
 $$
-These linear combinations are called the principal components. There are $p$ principal components. 
+These linear combinations are called the principal components. There are $p$ principal components.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{PCA: the first component}
-To find the first component (i.e. coefficients $a$), one should maximize the variance along it. That is, $a$ should be the solution to 
+To find the first component (i.e. coefficients $a$), one should maximize the variance along it. That is, $a$ should be the solution to
 \begin{eqnarray*}
 \max_a &&Var (a_1 x_{1} + \cdots + a_p x_{p})\\
 s.t.&& \sum_j a_j^2 = 1
 \end{eqnarray*}
 where the variance is computed on the data set.\\
 \vspace{0.2cm}
-The constraint on $a$ is here because $a$ is only indicating a direction and should therefore be scaled to 1. 
+The constraint on $a$ is here because $a$ is only indicating a direction and should therefore be scaled to 1.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -89,7 +89,7 @@ As an example, let's look at a toy case where we only have 2 features $x_1$ and 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{PCA: the first component}
-When extended to $p\geq 2$ features, the principle remains the same. For a choice of $a$ with $\sum a_j^2=1$, 
+When extended to $p\geq 2$ features, the principle remains the same. For a choice of $a$ with $\sum a_j^2=1$,
 \begin{itemize}
 \item $z_i = a_1 x_{i1} + \cdots + a_p x_{ip}$ are computed on the data set ($i=1,\ldots,n$), \item the variance of the $z_i$ is computed.
 \end{itemize}
@@ -104,14 +104,14 @@ $$
 $$
 The procedure is repeated until $p$ principal components are found (each one is orthogonal to all the previous ones). \\
 \vspace{0.3cm}
-Note: the result can be easily obtained by computing the {\bf spectral decomposition} of the variance matrix of the data. 
+Note: the result can be quickly obtained by computing the {\bf spectral decomposition} of the variance matrix of the data.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{PCA: scaling}
 Before computing the PCA, the data can be standardized. Like any standardization, this is a choice of the user, which depends strongly on the application and on the scale (units) of the data. \\
 \vspace{0.3cm}
-When the data are first standardized, the {\bf spectral decomposition} is made on the correlation matrix of the data. 
+When the data are first standardized, the spectral decomposition is made on the correlation matrix of the data.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -120,10 +120,10 @@ For each PC $j$, we have the corresponding projections of the data $x_i$
 $$
 z_i^{(j)} = a^{(j)}_1 x_{i1} + \cdots + a^{(j)}_p x_{ip}.
 $$
-We thus have a new data set $z$ whose column are the projection of the features $x$ on the PCA's. These new features $z_1, \ldots, z_p$ can be used 
+We thus have a new data set $z$ whose column are the projection of the features $x$ on the PCA's. These new features $z_1, \ldots, z_p$ can be used
 \begin{itemize}
 \item for data representation (dimension reduction),
-\item to describe the dependence between the features (factor analysis).  
+\item to describe the dependence between the features (factor analysis).
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -151,11 +151,11 @@ It represents how well the data are represented on the component $z_j$.
 \frametitle{PCA: example}
 \scriptsize
 \begin{verbatim}
-> iris.pca <- PCA(iris[,-5], graph=FALSE) 
+> iris.pca <- PCA(iris[,-5], graph=FALSE)
 > summary(iris.pca)
 
 Call:
-PCA(X = iris[, -5], graph = FALSE) 
+PCA(X = iris[, -5], graph = FALSE)
 
 
 Eigenvalues
@@ -184,10 +184,10 @@ We see that
 \item PC$_2$ is (negatively) correlated with sepal width. The larger PC$_2$ the smaller this feature.
 \item PC$_1$ explains $73\%$ of the total data variation. PC$_2$ explains $23\%$ of it.
 \end{itemize}
-With one graph, we know 
+With one graph, we know
 \begin{itemize}
 \item which features are correlated/independent
-\item how to summarize the data into two dimensions. 
+\item how to summarize the data into two dimensions.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,7 +201,7 @@ The circle of correlations relates the dimensions and the features. Another view
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{PCA: the biplot}
-The {\bf biplot} shows a {\bf map of the individuals} in the dimensions and adds the circle of correlations. 
+The {\bf biplot} shows a {\bf map of the individuals} in the dimensions and adds the circle of correlations.
 \begin{center}
 \includegraphics[width=9cm]{../../Graphs/Iris_biplot.pdf}
 \end{center}
@@ -219,7 +219,7 @@ For example, we can conclude that
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{PCA: number of components}
-Here, two components explain more than $95\%$ of the data variability. Sometimes, more components are needed.\\ 
+Here, two components explain more than $95\%$ of the data variability. Sometimes, more components are needed.\\
 \vspace{0.2cm}
 One way to set the number of components is to target the proportion of explained variance: often between $75\%$ and $95\%$. \\
 \vspace{0.2cm}
@@ -237,7 +237,7 @@ The {\bf screeplot} may help.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{PCA and machine learning}
-In the context of machine learning, PCA is often used 
+In the context of machine learning, PCA is often used
 \begin{itemize}
 \item To inspect the data, find/explain clusters, find dependence between the features. {\bf PCA} can be used for {\bf EDA}.
 \item To diminish the number of features when there are too many: dimension reduction $=>$ only keep few first PC.
@@ -273,7 +273,7 @@ PCA is a "linear" technique, based on the explanation of the correlation between
 \end{itemize}
 If, after traning, the model can recover $X$ from $X$, then it can recover $X$ from its image in the intermediate layer $h(X)$. Thus, only $p$ dimensions would be needed to recover $X$. \\
 \vspace{0.2cm}
-Thus, 
+Thus,
 \begin{itemize}
 \item the left part of the NN {\bf encodes} $X$ in its lower-dimension version $h(X)$
 \item the right part of the NN {\bf decodes} $h(X)$ in an output $g(h(X))$, hopefully close to the original image $X$.
@@ -286,7 +286,7 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Autoencoder vs PCA}
-In ML, often autoencoder are used to 
+In ML, often autoencoder are used to
 \begin{itemize}
 \item Reduce the noise in the data (smoothing)
 \item Reduce the memory needed (compressing)
@@ -324,7 +324,7 @@ Relate each component of $h(X)$ to each component of $X$ using variable importan
 \frametitle{Categorical features}
 For categorical features, using dummy variables with PCA usually {\bf do not} provide good results.\\
 \vspace{0.2cm}
-For pure categorical data analysis, the technique similar to PCA is {\bf Multiple Correspondence Analysis} (MCA). 
+For pure categorical data analysis, the technique similar to PCA is {\bf Multiple Correspondence Analysis} (MCA).
 \begin{itemize}
 \item Based on spectral decomposition and interpretation of its component (mathematics are very similar to PCA)
 \item Not based on the correlation matrix but a the contingency matrix (variance is replaced by inertia).
@@ -350,7 +350,7 @@ Much less known than PCA, FAMD is a mixture of two techniques
 \end{itemize}
 For sake of time, we do not see MCA in detail in this course. The focus is made on the interpretation and its use for dimensional reduction. \\
 \vspace{0.3cm}
-One must pay attention to the subtleties of different interpretations between the part of numerical features (PCA) and the one for categorical features (MCA). 
+One must pay attention to the subtleties of different interpretations between the part of numerical features (PCA) and the one for categorical features (MCA).
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
@@ -398,7 +398,7 @@ MCA\footnote{With only categorical variables, FAMD is simply an MCA.} builds art
 \end{itemize}
 Similar to the PCA, these dimensions can be represented on a map, associated to the modalities of the variables, explains a proportion of the information of the data. Unlike PCA, the information is not measure by variance but by the {\bf inertia}.\\
 \vspace{0.3cm}
-Because proportions sum up to 1, there are $(3-1)\times (3-1) = 4$ possible dimensions. 
+Because proportions sum up to 1, there are $(3-1)\times (3-1) = 4$ possible dimensions.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}

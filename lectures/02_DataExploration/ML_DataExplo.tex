@@ -5,9 +5,9 @@
 %% Edit the title page
 \title{Machine Learning}
 \subtitle{Module 2: Data Exploration}
-\author[MOB]{Marc-Olivier Boldi}
+\author[A. Vialfont]{Arnold Vialfont}
 \institute[HEC MSc Mgt BA]{Master in Management, Business Analytics, HEC UNIL}
-\date[Spring 2024]{Spring 2024}
+\date{Spring 2026}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -35,7 +35,7 @@
 \item Its file type (csv, xlxs, etc.).
 \item Its shape and a general description of its content (each column for tabular data).
 \end{itemize}
-E.g., see {\tt ?bank} in the package {\tt liver}. 
+%E.g., see {\tt ?bank} in the package {\tt liver}.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data Expolration}
@@ -55,11 +55,11 @@ There exist endless possibilities of EDA. A range of classical and efficient met
 \begin{frame}
 \frametitle{EDA strategy}
 Without prior knowledge of the case:
-\begin{itemize}
+\begin{enumerate}
 \item One by one: univariate analysis.
-\item By pairs: bivariate analysis. 
+\item By pairs: bivariate analysis.
 \item More variables if needed and/or possible.
-\end{itemize}
+\end{enumerate}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -68,7 +68,7 @@ For univariate analysis (one variable):\\
 \vspace{0.3cm}
 Graphical:
 \begin{itemize}
-\item Categorical variables: barplot and stacked barplot
+\item Categorical variables: barplot,
 \item Numerical variables: boxplot, violin plot, and histogram.
 \end{itemize}
 Numerical:
@@ -85,9 +85,9 @@ For bivariate analysis (two variables):\\
 \vspace{0.3cm}
 Graphical:
 \begin{itemize}
-\item cat*cat: barplots, mosaic plots 
-\item cat*num: boxplots or histograms of num per modality of cat 
-\item num*num: scatterplot 
+\item cat*cat: barplots, mosaic plots
+\item cat*num: boxplots or histograms of num per modality of cat
+\item num*num: scatterplot
 \end{itemize}
 Numerical:
 \begin{itemize}
@@ -118,15 +118,15 @@ Many possibilities. Consider,
 \item Multivariate: $x_1 x_2$, $x_1 + x_2$, etc.
 \item Num to ordinal: categorize $x$ by intervals.
 \end{itemize}
-Applying any transformation must be guided by the aim of the study (e.g., use $\ln(1+x)$ on the outcome $x\geq 0$). 
+Applying any transformation must be guided by the aim of the study (e.g., use $\ln(1+x)$ on the outcome $x\geq 0$).
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Categorical variables}
 Many possibilities. Consider,
 \begin{itemize}
-\item Turn ordinal into num (1, 2, 3, etc.).
-\item Diminish the number of modalities if too many: e.g., A, B, C covers $80\%$ of the cases. Create a category "other" for the rest.
+\item Turn ordinal into numerical: e.g., "Small", "Medium", "Large" $\rightarrow$ 1, 2, 3.
+\item Diminish the number of modalities if too many: e.g., There are 10 modalities A, B, \ldots, J ($100\%$ of observations) but A, B, C covers $80\%$ of the observations $\rightarrow$ create a category "other" and use A, B, C, "other".
 \item Create dummy variables.
 \end{itemize}
 \end{frame}
@@ -143,25 +143,26 @@ Most functions in {\tt R} handle these representations automatically. However, i
 Transform a categorical variable into several numerical variables:
 \begin{itemize}
 \item One modality is the {\bf reference} (choice of the user).
-\item For the other modalities: $0/1$ variables, one per modality. 
+\item For the other modalities: $0/1$ variables, one per modality.
 \item Value is 1 if the modality is the same as the modality of the dummy variable, 0 otherwise.
+\item One variable, called {\bf intercept}\footnote{In most algorithm, especially in regressions. In Neural Network, it is called the {\bf bias}.}, made of 1's, is added.
 \end{itemize}
-Note: one variable, called {\bf intercept}\footnote{In most algorithm, especially in regressions. In Neural Network, it is called the {\bf bias}.}, made of 1's, is added.
+Transforming one categorical variable into dummy variables is called {\bf one-hot encoding}.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Dummy variable example}
-A variable indicates a shape. It has three levels {\tt Cloud}, {\tt Moon}, and {\tt Star}. The reference level below is {\tt Cloud}. Below, 15 instances. 
+A variable indicates a shape. It has three levels {\tt Cloud}, {\tt Moon}, and {\tt Star}. The reference level below is {\tt Cloud}. Below, 15 instances.
 \begin{center}
-\includegraphics[width=8cm]{../Graphs/Dummy_1.png}  
+\includegraphics[width=8cm]{../Graphs/Dummy_1.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Dummy variable example}
-The same example when the reference level below is {\tt Moon}. 
+The same example when the reference level below is {\tt Moon}.
 \begin{center}
-\includegraphics[width=8cm]{../Graphs/Dummy_2.png}  
+\includegraphics[width=8cm]{../Graphs/Dummy_2.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -171,11 +172,11 @@ The same example when the reference level below is {\tt Moon}.
 \frametitle{Dealing with (without) missing values}
 Missing value analysis is {\bf never} easy and would deserve a whole course. In a quick fix, consider
 \begin{itemize}
-\item Detect: which variables, which code (e.g., {\tt NA}, $-999$, etc.).  
+\item Detect: which variables, which code (e.g., {\tt NA}, $-999$, etc.).
 \item Quantify: how many (number and proportion) for variables and cases.
 \item Relate: two (or more) variables are systematically missing together?
 \end{itemize}
-In absence of data, lot of techniques break down. Can this be solved perfectly? No.
+In absence of data, lots of techniques will break down. Can this be solved perfectly? No.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -211,13 +212,13 @@ Cons:
 \begin{itemize}
 \item Can leave out important information.
 \end{itemize}
-Consider also replacing the feature by indicator "0/1" for missing or not. 
+Consider also replacing the feature by indicator "0/1" for missing or not.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Imputation}
 \begin{itemize}
-\item {\bf Naive:} per feature, replace NA by average or median (num), or the most frequent modality (cat). 
+\item {\bf Naive:} per feature, replace NA by average or median (num), or the most frequent modality (cat).
 \begin{itemize}
 \item Pro: None.
 \item Cons: Avoid if possible (even if it is often used).
@@ -238,7 +239,7 @@ More advanced methods: repeated random imputation, EM algorithm, etc.
 Behind the term {\bf outlier} hides lots of ideas. It can be (non-exhaustive)
 \begin{itemize}
 \item An impossible value: exceeding physical limits.
-\item An extreme value of a feature: possible but out of some predefined bounds. 
+\item An extreme value of a feature: possible but out of some predefined bounds.
 \item An unlikely value: unlikely given the other features.
 \end{itemize}
 The second case is limited to numerical features. The two others can be categorical features.
@@ -248,8 +249,8 @@ The second case is limited to numerical features. The two others can be categori
 \frametitle{Detection}
 For the three previous cases, consider
 \begin{itemize}
-\item Often easy to detect from prior information. E.g., negative surface in a real estate data study, time exceeding 1 hour in a 1-hour observation study, etc. 
-\item Use boxplot to point them: values beyond $1.5$ IQR from the quartile. E.g., age of 101 years when the other largest observed is 35 years.
+\item Often easy to detect from prior information. E.g., negative surface in a real estate data study, time exceeding 1 hour in a 1-hour observation study, etc.
+\item Use boxplots to point them: values beyond $1.5$ IQR from the quartile. E.g., age of 101 years when the other largest observed is 35 years.
 \item Complex: use prior knowledge or a model. E.g., a room used for an RMI in a hospital for a specific diagnostic for which this room is never used, a yearly wage greater than $\$1'000'000$ for a job in manufacturing.
 \end{itemize}
 \end{frame}
@@ -270,17 +271,17 @@ With outliers, things are never simple and automatic removal is often a bad idea
 \begin{frame}
 \frametitle{Further words}
 \begin{itemize}
-\item Analyze all variables systematically (univariate).
-\item Bivariate can be too complex. Select the intersting ones (e.g., in supervised learning, outcome vs other).
-\item Multivariate analysis be selective.
+\item Univariate: be exhaustive, analyze all variables systematically.
+\item Bivariate: select the interesting ones (e.g., in supervised learning, outcome vs other).
+\item More than bivariate: be selective.
 \end{itemize}
-Common fallacies:
+General advices:
 \begin{itemize}
-\item Use too many modalities in a categorical variable.
-\item Compute correlations between dummy variables.
-\item Use missing value indicator as a number (e.g., -999).
+\item Avoid using too many modalities in a categorical variable.
+\item Do not compute correlations between dummy variables.
+\item Do not use missing value indicator as a number (e.g., -999).
 \item Transformations are not neutral. They influence the final conclusion. They must be taken into account and transparent.
-\item Think that EDA is a one way through. It is a recursive/trial-and-error process (not unusual $90\%$ of the work...)
+\item Think that EDA is not a one way through. It is a recursive/trial-and-error process (not unusual $95\%$ of the work...)
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -301,7 +302,7 @@ There exist lots of other possibilities and modifications of the previous exampl
 
 \begin{frame}
 \frametitle{Cat - Cat}
-Crossing two categorical variables: barplots 
+Crossing two categorical variables: barplots
 \begin{center}
 \includegraphics[width=8cm]{../Graphs/imports85_barplots.png}
 \end{center}
@@ -309,7 +310,7 @@ Crossing two categorical variables: barplots
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Num - Num}
-Crossing two numerical variables: scatterplots 
+Crossing two numerical variables: scatterplots
 \begin{center}
 \includegraphics[width=8cm]{../Graphs/imports85_scatterplot.png}
 \end{center}
@@ -317,7 +318,7 @@ Crossing two numerical variables: scatterplots
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Num - Cat}
-Crossing one numerical and one categorical variable: boxplots 
+Crossing one numerical and one categorical variable: boxplots
 \begin{center}
 \includegraphics[width=8cm]{../Graphs/imports85_boxplots.png}
 \end{center}
@@ -330,11 +331,11 @@ Crossing one numerical and one categorical variable: boxplots
 Several data transformations can be useful:
 \begin{itemize}
 \item Coding categorical variables: dummy variables for nominal data, numerical rank for ordinal data.
-\item Transformation of numerical variables: functions like $\log(x)$, $\exp(x)$, $x^2$. 
+\item Transformation of numerical variables: functions like $\log(x)$, $\exp(x)$, $x^2$.
 \item Recoding categorical variables: e.g., merge the smallest classes as ``others''.
 \item Recoding numerical variable: value to interval to ordinal data.
 \item Interaction: combine several variables.
-\end{itemize} 
+\end{itemize}
 Often referred to as {\bf feature engineering}.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -350,7 +351,7 @@ Most functions in {\tt R} handle these representations automatically. However, i
 \begin{itemize}
 \item A categorical variables has a given number of possible values called {\bf levels}.
 \item One level is taken as the {\bf reference}. This is arbitrary (choice of the user).
-\item The dummy variables consist in a set of 0/1 valued variables, one per levels {\bf that are not the reference level}. 
+\item The dummy variables consist in a set of 0/1 valued variables, one per levels {\bf that are not the reference level}.
 \item The value of each dummy variable is 1 if the categorical variable value is the same as the level of the dummy variable, 0 otherwise.
 \item One variable, called {\bf intercept}\footnote{In most algorithm, especially in regressions. In Neural Network, it is called the {\bf bias}.}, made of 1's, is added.
 \end{itemize}
@@ -358,17 +359,17 @@ Most functions in {\tt R} handle these representations automatically. However, i
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{One variable example}
-A variable indicates a shape. It has three levels {\tt Cloud}, {\tt Moon}, and {\tt Star}. The reference level below is {\tt Cloud}. Below, 15 instances. 
+A variable indicates a shape. It has three levels {\tt Cloud}, {\tt Moon}, and {\tt Star}. The reference level below is {\tt Cloud}. Below, 15 instances.
 \begin{center}
-\includegraphics[width=8cm]{../Graphs/Dummy_1.png}  
+\includegraphics[width=8cm]{../Graphs/Dummy_1.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{One variable example}
-The same example when the reference level below is {\tt Moon}. 
+The same example when the reference level below is {\tt Moon}.
 \begin{center}
-\includegraphics[width=8cm]{../Graphs/Dummy_2.png}  
+\includegraphics[width=8cm]{../Graphs/Dummy_2.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -386,7 +387,7 @@ When there are several categorical variables,
 \frametitle{More than one variable}
 Below the example with two categorical variables:
 \begin{center}
-\includegraphics[width=10cm]{../Graphs/Dummy_3.png}  
+\includegraphics[width=10cm]{../Graphs/Dummy_3.png}
 \end{center}
 \scriptsize
 Notes: there could have been more than three levels each time. The reference levels are indicated in yellow.
@@ -397,19 +398,19 @@ Notes: there could have been more than three levels each time. The reference lev
 \frametitle{Why an intercept?}
 Having an intercept is the most efficient\footnote{There exist several ways to code categorical variables into dummy variables but they all define reference levels and an intercept of some sort.} way of coding several categorical variables. Keeping all the dummy, like in the example below, impose to carry more columns in the data set, that is {\it redundant information}. We do not want that.
 \begin{center}
-\includegraphics[width=10cm]{../Graphs/Dummy_4.png}  
+\includegraphics[width=10cm]{../Graphs/Dummy_4.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Number of columns and levels}
 \begin{itemize}
-\item The number of columns in the data set depends on the number of levels. Thus, it cannot be known in advance if the data itself is not known. In practice, one cannot add levels to a categorical variable without handling a new analysis/model training. 
+\item The number of columns in the data set depends on the number of levels. Thus, it cannot be known in advance if the data itself is not known. In practice, one cannot add levels to a categorical variable without handling a new analysis/model training.
 \item If there are $J$ categorical variables, each with $n_j$ levels, the number of columns will be
 $$
 1 + \sum_{j=1}^J (n_j - 1)
 $$
-That number can grow very quickly with either the number of variables and the number of levels. 
+That number can grow very quickly with either the number of variables and the number of levels.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -457,7 +458,7 @@ When feature engineering comes into play, there is no limit a priori since one c
 \item The interest of $\log$ or any power $0<p<1$ (like $\sqrt{x}$) is to ``de-concentrate'' the data.
 \item The interest of $\exp$ is to expand the data.
 \item The interest of $x^2$ or $|x|$ is to see the effect of removing the sign of the variable value.
-\item New features {\bf must} never include the outcome in any way. 
+\item New features {\bf must} never include the outcome in any way.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -510,9 +511,9 @@ Example with the interactions between shape and color:
 \begin{frame}
 \frametitle{Discussion}
 \begin{itemize}
-\item The number of columns in the data set can expand very quickly. 
-\item One can also consider three-way interactions (based on $x_1x_2x_3$) or higher-order interaction terms. 
-\item Once being defined, interactions can be treated like any other features and further transformation can be applied to them. 
+\item The number of columns in the data set can expand very quickly.
+\item One can also consider three-way interactions (based on $x_1x_2x_3$) or higher-order interaction terms.
+\item Once being defined, interactions can be treated like any other features and further transformation can be applied to them.
 \item More generally, feature engineering also includes combinations like $\log(x_1x_2+1)$, $\exp(x_1/x_2)$, etc.
 \end{itemize}
 \end{frame}
@@ -520,7 +521,7 @@ Example with the interactions between shape and color:
 
 \begin{frame}
 \frametitle{Structure}
-{\tt imports.85}: a data frame of characteristics of cars. let's see its structure. 
+{\tt imports.85}: a data frame of characteristics of cars. let's see its structure.
 \begin{center}
 \includegraphics[width=7cm]{../Graphs/imports85_structure.png}
 \includegraphics[width=7cm]{../Graphs/imports85_head.png}
@@ -604,7 +605,7 @@ When there are several categorical variables,
 \frametitle{More than one variable}
 Below the example with two categorical variables:
 \begin{center}
-\includegraphics[width=10cm]{../Graphs/Dummy_3.png}  
+\includegraphics[width=10cm]{../Graphs/Dummy_3.png}
 \end{center}
 \scriptsize
 Notes: there could have been more than three levels each time. The reference levels are indicated in yellow.
@@ -615,19 +616,19 @@ Notes: there could have been more than three levels each time. The reference lev
 \frametitle{Why an intercept?}
 Having an intercept is the most efficient\footnote{There exist several ways to code categorical variables into dummy variables but they all define reference levels and an intercept of some sort.} way of coding several categorical variables. Keeping all the dummy, like in the example below, impose to carry more columns in the data set, that is {\it redundant information}. We do not want that.
 \begin{center}
-\includegraphics[width=10cm]{../Graphs/Dummy_4.png}  
+\includegraphics[width=10cm]{../Graphs/Dummy_4.png}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Number of columns and levels}
 \begin{itemize}
-\item The number of columns in the data set depends on the number of levels. Thus, it cannot be known in advance if the data itself is not known. In practice, one cannot add levels to a categorical variable without handling a new analysis/model training. 
+\item The number of columns in the data set depends on the number of levels. Thus, it cannot be known in advance if the data itself is not known. In practice, one cannot add levels to a categorical variable without handling a new analysis/model training.
 \item If there are $J$ categorical variables, each with $n_j$ levels, the number of columns will be
 $$
 1 + \sum_{j=1}^J (n_j - 1)
 $$
-That number can grow very quickly with either the number of variables and the number of levels. 
+That number can grow very quickly with either the number of variables and the number of levels.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

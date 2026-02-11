@@ -5,9 +5,9 @@
 %% Edit the title page
 \title{Machine Learning}
 \subtitle{Module 7: Interpretable Machine Learning}
-\author[MOB]{Marc-Olivier Boldi}
+\author[A. Vialfont]{Arnold Vialfont}
 \institute[HEC MSc Mgt BA]{Master in Management, Business Analytics, HEC UNIL}
-\date[Spring 2024]{Spring 2024}
+\date{Spring 2026}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,12 +27,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Concept}
-In ML, some models are interpretable (e.g., regression, CART) and some are not (e.g., SVM, NN). \\
+In ML, some models are interpretable (e.g., regression, CART) and some are not (e.g., SVM, NN, RF). \\
 \vspace{0.3cm}
 So called {\bf interpretable machine learning} is a set of techniques aiming at
 \begin{itemize}
-\item Discover / rank variables or features by their importance on the predicted outcome,
-\item Associate variation of the important features with a direction of the outcome (positive vs negative association).
+\item Discover/rank variables or features by their importance on the predicted outcome,
+\item Associate variation of the important features with a direction of the outcome (e.g., positive or negative association).
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -42,15 +42,16 @@ So called {\bf interpretable machine learning} is a set of techniques aiming at
 \frametitle{Variable importance}
 {\bf Variable importance} is a method that provides a measure of the importance of each feature for the model prediction.\\
 \vspace{0.3cm}
-The variables importance {\bf for a trained model} can be evaluated for one variable by:
+The variables importance {\it for a trained model} can be evaluated for each variable:
 \begin{itemize}
-\item In the test set, shuffle the instances on one variable,
+\item In the test set, modify the observed values of one variable,
 \item Make the predictions of this new test set,
 \item Compute the quality metric (RMSE, Accuracy, ...),
 \item Compare it to the quality metric on the original test set.
-\item If the variable is important, giving to the model an incorrect values of this variable {\bf should decrease} the quality metric,
 \end{itemize}
-This is repeated for each variable.
+If the variable is important, the metric on the modified data set will be lower than the original one. \\
+\vspace{0.2cm}
+Note: The most used method for modifying the variable is the {\bf shuffling} or {\bf permutation}.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -58,7 +59,7 @@ This is repeated for each variable.
 \begin{center}
 \includegraphics[width=10cm]{../Graphs/VI_Illustr.png}
 \end{center}
-If predictions using the right-hand side data are the same as the left-hand side ones, then Var2 is not important.
+If predictions using the right-hand side data are the same as the left-hand side ones, then Var2 is not important (i.e., not used by the model).
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -67,7 +68,7 @@ With the iris data and a CART, trained on $80\%$ of the data (test set at $20\%$
 \begin{center}
 \includegraphics[width=6cm]{../Graphs/VarImp_iris_CART.png}
 \end{center}
-We see directly that Petal length and Petal width are the only two important features (except in case of missing data). 
+We see directly that Petal length and Petal width are the only two important features (except in case of missing data).
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -101,7 +102,7 @@ On the other hand, the Sepal length does not appear on the graph. And, indeed, i
 \begin{frame}
 \frametitle{Example}
 \small
-For tree, the importance of a variable can be read to some extend directly on the graph (if it is not too large). For a model like SVM, it is not. But we can still make the same analysis by shuffling the instances for a given feature (top: original; left: Petal length; right: Sepal length).
+For tree, the importance of a variable can be read to some extend directly on the graph (if it is not too large). For a model like SVM, it is not. But we can still make the same analysis using feature permutation (top: original; left: Petal length; right: Sepal length).
 \\
 \normalsize
 \begin{center}
@@ -119,12 +120,12 @@ For tree, the importance of a variable can be read to some extend directly on th
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Several versions}
-The variable importance presented previously is called {\bf model-agnostic}: it is independent of the model type.\\ 
+The variable importance presented previously is called {\bf model-agnostic}: it can be applied to any model.\\
 \vspace{0.3cm}
-There exist several ways of it:
+There exist several versions:
 \begin{itemize}
-\item Modification of the variable: shuffling is one possibility. Perturbation is another (add a random noise). Simulation from another distribution.
-\item Modification of the score: accuracy is one possibility. Specificity/Sensitivity/Bal. accuracy, Entropy... The importance can be linked to the prediction of one level only. 
+\item Modification of the variable: shuffling is one possibility. Perturbation is another, e.g., add random noises. Simulation from another distribution.
+\item Modification of the score: accuracy is one possibility. Specificity/Sensitivity/Bal. accuracy, Entropy... The importance can be linked to the prediction of one level only.
 \item Regression: use RMSE, MAE, etc.
 \end{itemize}
 \end{frame}
@@ -133,7 +134,7 @@ There exist several ways of it:
 \frametitle{Model-specific VI}
 There exist also {\bf model-specific} approaches that are specific to the model that is used. \\
 \vspace{0.2cm}
-In {\tt R}, 
+In {\tt R},
 \begin{itemize}
 \item {\tt iml} allows to compute model-agnostic variable importance, with any loss function.
 \item {\tt caret} allows to compute mainly model-specific variable importance. Also model-agnostic type (limited choice of loss functions).
@@ -168,8 +169,8 @@ VI on SVM estimated on AUC.
 \begin{verbatim}
 library(caret)
 trctrl <- trainControl(method = "repeatedcv", repeats= 3, number=5)
-iris.caret <- caret::train(form=Species ~., data = iris.tr, 
-                    method = "svmLinear", 
+iris.caret <- caret::train(form=Species ~., data = iris.tr,
+                    method = "svmLinear",
                     trControl=trctrl)
 plot(varImp(iris.caret))
 \end{verbatim}
@@ -184,12 +185,12 @@ plot(varImp(iris.caret))
 Since no specific method was developped for SVM, a {\bf filter-based} method is implemented. From the help of {\tt VarImp}:\\
 \scriptsize
 \begin{verbatim}
-For classification, [...] the area under the ROC curve [...] is used 
-as the measure of variable importance. For multi-class outcomes, the problem 
+For classification, [...] the area under the ROC curve [...] is used
+as the measure of variable importance. For multi-class outcomes, the problem
 is decomposed into all pair-wise problems and the area under the curve is
-calculated for each class pair (i.e class 1 vs. class 2, class 2 vs. 
-class 3 etc.). For a specific class, the maximum area under the 
-curve across the relevant pair-wise AUC's is used as the variable importance 
+calculated for each class pair (i.e class 1 vs. class 2, class 2 vs.
+class 3 etc.). For a specific class, the maximum area under the
+curve across the relevant pair-wise AUC's is used as the variable importance
 measure.
 \end{verbatim}
 \normalsize
@@ -200,13 +201,13 @@ measure.
 Even for one model, there may exist lots of implementations. Below, we give one example: {\tt VarImp} for CART. CART is recognized as {\it Recursive Partitioning} (from {\tt rpart}). From the help of {\tt VarImp}:\\
 \scriptsize
 \begin{verbatim}
-The reduction in the loss function (e.g. mean squared error) attributed 
-to each variable at each split is tabulated and the sum is returned. 
+The reduction in the loss function (e.g. mean squared error) attributed
+to each variable at each split is tabulated and the sum is returned.
 \end{verbatim}
 \normalsize
 \begin{itemize}
 \item At each split, the reduction of loss due to the best split on each variable is extracted.
-\item These loss reductions are summed. 
+\item These loss reductions are summed.
 \end{itemize}
 (No resampling or measure of error on the VI estimate)
 \end{frame}
@@ -220,12 +221,12 @@ to each variable at each split is tabulated and the sum is returned.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Discussion}
-Whatever implementation you use, VI aims at the same objective: quantify the importance of variables for the predictions of the model.\\
+Whatever implementation you use, variable importance aims at the same objective: quantify the importance of variables for the predictions of the model.\\
 \vspace{0.3cm}
 Some limitations are:
 \begin{itemize}
-\item {\bf Instability}: the estimation of the importance can be unstable due to the random perturbation. Resampling can help (i.e., repeat the shufling several times). 
-\item {\bf Interactions}: sometimes it is the combination of two features that makes a good prediction (typ. trees). Variable importance cannot see this. 
+\item {\bf Instability}: the estimation of the importance can be unstable due to the random perturbation. Resampling can help (i.e., repeat the shufling several times).
+\item {\bf Interactions}: sometimes it is the combination of two features that makes a good prediction (typ. trees). Variable importance cannot see this.
 \end{itemize}
 The variable importance is only seen with {\bf the eyes of the model}. If the model is doing a poor job (e.g., low accuracy) then the variable importance analysis is of low quality.
 \end{frame}
@@ -234,9 +235,9 @@ The variable importance is only seen with {\bf the eyes of the model}. If the mo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Partial Dependence Plot}
-Variable important allows to inspect how much a variable is important in the construction of the prediction by a model.\\ 
+Variable important allows to inspect how much a variable is important in the construction of the prediction by a model.\\
 \vspace{0.2cm}
-{\bf Partial dependence plots} (PDP) show in which direction is the association between a feature $x$ and the prediction of $y$. 
+{\bf Partial dependence plots} (PDP) show in which direction the association between a feature $x$ and the prediction of $y$ is.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -256,15 +257,15 @@ $$
 \begin{frame}
 \frametitle{Estimation}
 \begin{center}
-\includegraphics[width=10cm]{../Graphs/PDP_Illustr.png}
+\includegraphics[width=10cm]{../Graphs/PDP_Illustr.pdf}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Interpretation}
 \begin{center}
-\includegraphics[width=5cm]{../Graphs/PDP_Growing.png}
-\includegraphics[width=5cm]{../Graphs/PDP_Stable.png}
+\includegraphics[width=5cm]{../Graphs/PDP_Growing.pdf}
+\includegraphics[width=5cm]{../Graphs/PDP_Stable.pdf}
 \end{center}
 \begin{itemize}
 \item Left: PDP increases. The prediction increases in average when the feature increases ; it is a positive association.
@@ -279,8 +280,8 @@ $$
 \item PDP can be also used to see the {\bf feature importance} with the {\bf amplitude} of the graph (the larger the more important):
 $$
 \vert \max_{x_s} F_{X_s}(x_s) - \min F_{X_s}(x_s) \vert.
-$$ 
-It is richer than VI but also longer to run.
+$$
+It is richer than variable importance but also longer to run.
 \item PDP can be made {\bf multivariate} with $X_s$ being several features (usually, max. 2).
 \item By averaging, PDP {\bf ignores any interaction} between $x_S$ and $x_{-S}$.
 \end{itemize}
@@ -290,22 +291,22 @@ It is richer than VI but also longer to run.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{LIME}
-LIME stands for {\bf Local interpretable model-agnostic explanations}. The paradigm is that a large ML model can be {\bf locally} approximated by an interpretable (smaller) model, a {\bf surrogate model}. 
-\begin{itemize}
+LIME stands for {\bf Local interpretable model-agnostic explanations}. The paradigm is that a large ML model can be {\bf locally} approximated by a {\bf surrogate model}: an interpretable (smaller) model.
+\begin{enumerate}
 \item Select a instance of interest.
 \item Build instances close to it and predict them.
 \item Fit a surrogate model.
 \item Interpret it coefficients.
-\end{itemize}
+\end{enumerate}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Illustration in 2 dimensions}
 \small
-On iris data, a random forest predicts setosa/virginica/versicolor from length and width (sum of the petal/sepal features). It is globally complex (left graph). Select a point of interest (blue circle). Around it (right plot), a logistic regression could be used. If you fit it on the black dots, you will find a positive association between large width and "being green", and no association with length. 
+On iris data, a random forest predicts setosa/virginica/versicolor from length and width (sum of the petal/sepal features). It is globally complex (left graph). Select a point of interest (blue circle). Around it (right plot), a logistic regression could be used. If you fit it on the black dots, you will find a positive association between large width and "being green", and no association with length.
 \normalsize
 \begin{center}
-\includegraphics[width=12cm, page=2]{../Graphs/LIME_illustr.png}
+\includegraphics[width=12cm, page=2]{../Graphs/LIME_illustr.pdf}
 \end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -332,21 +333,21 @@ With the bank data (see R code of examples). Three cases: Label 0 with high prob
 \begin{frame}
 \frametitle{Interpretation for duration: no local behavior discovered}
 \begin{itemize}
-\item Around Case 1: Duration being lower than 759 supports a label 0. This means that a low duration supports label 0 and, consequently, a larger duration would support label 1. 
+\item Around Case 1: Duration being lower than 759 supports a label 0. This means that a low duration supports label 0 and, consequently, a larger duration would support label 1.
 \item Around Case 2: Duration being greater than 759 (lower than 1514) supports label 1. This means that a large duration supports label 1 and, consequently, a lower duration would support label 0.
 \item Around case 3: same as Case 2.
 \end{itemize}
 Regarding duration, case 1 and case 2 coincide. They also coincide with the general previous findings that duration is an important factor, with prob. of label 1 increasing with it.\\
 \vspace{0.2cm}
-The exploration of this two cases did not reveal any local behavior linked to duration. A similar analysis can be done for contact, housing, etc. 
+The exploration of this two cases did not reveal any local behavior linked to duration. A similar analysis can be done for contact, housing, etc.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Interpretation for campaign: local behavior}
 \begin{itemize}
-\item Around Case 1: Campaign being low supports label 0. 
+\item Around Case 1: Campaign being low supports label 0.
 \item Around Case 2: Campaign being low contradicts label 1. This is in line with Case 1.
-\item Around Case 3: Campaign being low supports label 1. This is in contradiction with Cases 1 and 2. 
+\item Around Case 3: Campaign being low supports label 1. This is in contradiction with Cases 1 and 2.
 \end{itemize}
 This example shows that a global behavior (campaign is positively associated with label 1) can change locally. The fact that Case 3 has a probability around 0.5 makes it interesting. \\
 \vspace{0.2cm}
@@ -354,11 +355,11 @@ Limitation: here the effect of Campaign is so small that a good explanation is t
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{Discussion}
+\frametitle{Discussion for LIME}
 \begin{itemize}
 \item The choice of the point of interest can be anything, even non-observed instances. Average, extreme, and change points are often of interest.
 \item This method interprets locally the link between the features and the response, again, with the eyes of the model.
-\item The surrogate models (as well as the global model) cannot support rigorous causal analysis. We can discover only association here. 
+\item The surrogate models (as well as the global model) cannot support rigorous causal analysis. We can discover only association here.
 \item Like often, this method can be unstable (implementation, choice of the model, etc.). Try several combinations and be cautious with conclusions.
 \end{itemize}
 \end{frame}
