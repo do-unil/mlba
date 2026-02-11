@@ -103,7 +103,7 @@ params <- list(
 
 ## Run the boosting for 1000 rounds (boosting iterations)
 set.seed(987)
-boost_model <- xgboost(data = dtrain, 
+boost_model <- xgb.train(data = dtrain, 
                        params = params, 
                        nrounds = 1000)
 
@@ -112,8 +112,8 @@ tr_predictions <- predict(boost_model, dtrain)
 te_predictions <- predict(boost_model, dtest)
 boost_pred_tr <- factor(ifelse(tr_predictions > 0.5, "yes", "no"))
 boost_pred_te <- factor(ifelse(te_predictions > 0.5, "yes", "no"))
-confusionMatrix(data=boost_pred_tr, reference = df_tr$deposit, positive = "yes")
-confusionMatrix(data=boost_pred_te, reference = df_te$deposit, positive = "yes")
+caret::confusionMatrix(data=boost_pred_tr, reference = df_tr$deposit, positive = "yes")
+caret::confusionMatrix(data=boost_pred_te, reference = df_te$deposit, positive = "yes")
 
 ## Overfitting... nrounds (T in the course) is much too large
 
@@ -132,15 +132,15 @@ cv$best_iteration ## the best number of iterations...
 
 ## We fit the model with this best number of iterations and check if overfitting 
 ## is solved
-boost_model <- xgboost(data = dtrain, 
+boost_model <- xgb.train(data = dtrain, 
                        params = params, 
                        nrounds = cv$best_iteration)
 tr_predictions <- predict(boost_model, dtrain)
 te_predictions <- predict(boost_model, dtest)
 boost_pred_tr <- factor(ifelse(tr_predictions > 0.5, "yes", "no"))
 boost_pred_te <- factor(ifelse(te_predictions > 0.5, "yes", "no"))
-confusionMatrix(data=boost_pred_tr, reference = df_tr$deposit, positive = "yes")
-confusionMatrix(data=boost_pred_te, reference = df_te$deposit, positive = "yes")
+caret::confusionMatrix(data=boost_pred_tr, reference = df_tr$deposit, positive = "yes")
+caret::confusionMatrix(data=boost_pred_te, reference = df_te$deposit, positive = "yes")
 ## On the example I could run, it was only partially solved: 
 ## apparent accuracy = 93%, test accuracy=90%
 
@@ -162,15 +162,15 @@ cv <- xgb.cv(data = dtrain,
              early_stopping_rounds = 10)
 print(cv)
 cv$best_iteration ## the best number of iterations...
-boost_model <- xgboost(data = dtrain, 
+boost_model <- xgb.train(data = dtrain, 
                        params = params, 
                        nrounds = cv$best_iteration)
 tr_predictions <- predict(boost_model, dtrain)
 te_predictions <- predict(boost_model, dtest)
 boost_pred_tr <- factor(ifelse(tr_predictions > 0.5, "yes", "no"))
 boost_pred_te <- factor(ifelse(te_predictions > 0.5, "yes", "no"))
-confusionMatrix(data=boost_pred_tr, reference = df_tr$deposit, positive = "yes")
-confusionMatrix(data=boost_pred_te, reference = df_te$deposit, positive = "yes")
+caret::confusionMatrix(data=boost_pred_tr, reference = df_tr$deposit, positive = "yes")
+caret::confusionMatrix(data=boost_pred_te, reference = df_te$deposit, positive = "yes")
 
 ## This solved almost completely the overfitting.
 
