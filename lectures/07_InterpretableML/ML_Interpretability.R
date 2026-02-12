@@ -182,7 +182,7 @@ mypred <- function(object, newdata){
   factor(ifelse(predict(object, newdata, type="response")>0.5,"yes","no"))
 }
 ## Set the predictor; here we use the logistic regression after AIC-based selection
-predictor <- Predictor$new(bank_lr_sel, data = bank_var, y=bank_var$deposit,                           
+predictor <- Predictor$new(bank_lr_sel, data = df, y=df$deposit,                           
                            predict.function = mypred)
 ## Compute the variable importance based on Classification Error (!!! not Cross-Entropy)
 imp <- FeatureImp$new(predictor, loss="ce")
