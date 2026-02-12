@@ -4,14 +4,8 @@ library(dplyr)
 library(ggplot2)
 library(FactoMineR) 
 library(factoextra) 
-library(keras) ## for Auto-Encoder
 library(vip) ## for the variable importance (ae interpretation)
 
-install.packages("remotes")
-library(remotes)
-remotes::install_github("rstudio/tensorflow")
-library(tensorflow)
-install_tensorflow(envname = "r-tensorflow")
 
 ## load data
 data(house) 

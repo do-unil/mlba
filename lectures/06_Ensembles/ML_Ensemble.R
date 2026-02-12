@@ -1,4 +1,6 @@
 ## Libraries
+#remove.packages("xgboost") # incompatibility between caret::train(method="xgbTree") and recent xgboost (3.x)
+#install.packages("xgboost", repos = "https://p3m.dev/cran/2025-12-01") 
 library(liver)
 library(caret)
 library(dplyr)
