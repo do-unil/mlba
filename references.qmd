@@ -19,6 +19,8 @@ There are no mandatory readings for this course, except our `MLBA` website; howe
 
 - Molnar C. (2023) *Interpretable Machine Learning: A Guide for Making Black Box Models Explainable*. Available at: [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/) (retrieved the 2023-08-10)
 
+- Deisenroth, M., Faisal, A., & Ong, C. (2020). *Mathematics for Machine Learning*. Cambridge University Press. Available at: [mml-book.com](https://mml-book.com)
+
 
 ### License
 

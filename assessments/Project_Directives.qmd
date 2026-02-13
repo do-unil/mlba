@@ -21,7 +21,7 @@ The project grade accounts for 70% of the final grade: 30% for the presentation 
 
 ### Organization of Groups
 
-The size of groups is 3 students. You may now register [via our moodle page](https://moodle.unil.ch/mod/choicegroup/view.php?id=1889003). Because we do not know the final number of participants yet, we may create groups of 4 by the end of the grouping process. By default, only groups of 3 can register for the moment.
+The size of groups is 3 students. You may now register [via our moodle page](https://moodle.unil.ch/mod/choicegroup/view.php?id=2092144). Because we do not know the final number of participants yet, we may create groups of 4 by the end of the grouping process. By default, only groups of 3 can register for the moment.
 
 <!-- ### Evaluation Criteria
 

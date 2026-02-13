@@ -10,7 +10,7 @@ code-link: false
 ::: {.callout-important}
 
 ## Important dates (more info during the class)
-- Monday the 27^th^ of April: **[Written exam (in-class)]{.underline}**
+- Monday the 27^th^ of April: **[Written exam (9h00-11h00, Room Internef-272)]{.underline}**
 - Wednesday the 27^th^ of May: **[Project report deadline]{.underline}**
 - Friday the 29^th^ of May: **[Slides submission deadline]{.underline}**
 - Monday the 1^st^ of June: **[Presentations of the projects]{.underline}**

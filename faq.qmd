@@ -51,7 +51,7 @@ Follow these steps to propose changes/suggestions to correct the material. First
 -   Before opening an issue, you must the existing ones at <https://github.com/do-unil/mlba/issues> to make sure you're not reporting something someone else has already reported.
 -   Issues can refer to the text of the lecture or the labs.
 
-[^1]: GitHub is a code hosting platform for collaboration and version control. You *do not need* not need to learn about GitHub for this class, *however* it is also where our open-source textbook is hosted so we're asking you to make an account on GitHub to be able to provide feedback on the book.
+[^1]: GitHub is a code hosting platform for collaboration and version control. You *do not need* to learn about GitHub for this class, *however* it is also where our open-source textbook is hosted so we're asking you to make an account on GitHub to be able to provide feedback on the book.
 
 
 ### I am lost with Github, what should I do?
