@@ -53,6 +53,7 @@ jobs:
             any::janitor
             any::downlit
             any::reticulate
+            any::formatR
 
       # Note: renv setup removed - project uses freeze: auto with _freeze directory
       # This avoids compilation failures for packages like reticulate that aren't needed for the build
