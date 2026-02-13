@@ -148,6 +148,23 @@ knitr::include_url({"https://do-unil.github.io/mlba/resources/beginners_r"})
 1. Install `reticulate` package in R.
 2. Use `reticulate::use_python()` or `reticulate::use_condaenv()` to specify the location of your python environment.
 ```{r}
+#| include: false
+library(reticulate)
+tryCatch({
+  if (!"MLBA" %in% conda_list()$name) {
+    conda_create("MLBA")
+    conda_install("MLBA", c("pandas", "matplotlib", "statsmodels"))
+  }
+}, error = function(e) {
+  try({
+    install_miniconda()
+    conda_create("MLBA")
+    conda_install("MLBA", c("pandas", "matplotlib", "statsmodels"))
+  }, silent = TRUE)
+})
+```
+
+```{r}
 #| output: false
 library(reticulate)
 use_condaenv('MLBA')
