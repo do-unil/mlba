@@ -1,7 +1,7 @@
 ---
 title: "MLBA Lab 1 - Introduction to Quarto"
 subtitle: "An introduction to [Quarto]{.flow}"
-date: "Spring 2026"
+date: "16.03.2026"
 preview-links: true
 ---
 
@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 #  fig.align="center",
   eval = T,
   echo = T,
+  warning = FALSE,
+  message = FALSE,
   tidy.opts = list(width.cutoff = 40),
   tidy = TRUE
 )

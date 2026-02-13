@@ -1,7 +1,7 @@
 ---
 title: "MLBA Lab 1 - Setup"
 subtitle: "[MLBA]{.flow} Tools & Lab Setup"
-date: "Spring 2026"
+date: "02.03.2026"
 ---
 
 ## Objectives
@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 #  fig.align="center",
   eval = T,
   echo = T,
+  warning = FALSE,
+  message = FALSE,
   tidy.opts = list(width.cutoff = 40),
   tidy = TRUE
 )
