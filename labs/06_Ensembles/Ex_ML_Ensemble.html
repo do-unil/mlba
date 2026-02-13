@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Ensemble Methods – MLBA - S24</title>
 <style>
 code{white-space: pre-wrap;}
@@ -57,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,8 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-9fc88ccb7d1699df7914753e2965a537.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -108,12 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -139,12 +129,10 @@ window.Quarto = {
   typesetMath
 };
 </script>
-
 <meta property="og:title" content="Ensemble Methods – MLBA - S24">
 <meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
 <meta property="og:site_name" content="MLBA - S24 ">
 </head>
-
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -310,9 +298,7 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -323,17 +309,11 @@ window.Quarto = {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../images/logo.light.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../images/logo.light.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
-      </a>
+      <img src="../../images/logo.light.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../../images/logo.light.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://moodle.unil.ch/course/view.php?id=36198" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
@@ -347,7 +327,7 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
@@ -355,8 +335,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -381,7 +361,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -390,8 +370,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/01_Introduction/ML_Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to ML</span></a>
@@ -476,7 +456,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -485,8 +465,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/00_lab/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
@@ -553,7 +533,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
@@ -562,8 +542,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../assessments/Exam.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exam</span></a>
@@ -577,8 +557,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../assessments/Project_Directives.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Directives</span></a>
@@ -591,9 +571,9 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
@@ -602,8 +582,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../resources/beginners_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Beginners in R</span></a>
@@ -628,47 +608,52 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#random-forest" id="toc-random-forest" class="nav-link active" data-scroll-target="#random-forest">Random Forest</a>
+<li>
+<a href="#random-forest" id="toc-random-forest" class="nav-link active" data-scroll-target="#random-forest">Random Forest</a>
   <ul class="collapse">
-  <li><a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a>
+<li>
+<a href="#classification" id="toc-classification" class="nav-link" data-scroll-target="#classification">Classification</a>
   <ul class="collapse">
-  <li><a href="#data-preparation-for-random-forest" id="toc-data-preparation-for-random-forest" class="nav-link" data-scroll-target="#data-preparation-for-random-forest">Data preparation for Random Forest</a></li>
+<li><a href="#data-preparation-for-random-forest" id="toc-data-preparation-for-random-forest" class="nav-link" data-scroll-target="#data-preparation-for-random-forest">Data preparation for Random Forest</a></li>
   <li><a href="#training-and-testing-the-model" id="toc-training-and-testing-the-model" class="nav-link" data-scroll-target="#training-and-testing-the-model">Training and testing the model</a></li>
   <li><a href="#variable-importance" id="toc-variable-importance" class="nav-link" data-scroll-target="#variable-importance">Variable importance</a></li>
-  </ul></li>
-  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
-  </ul></li>
-  <li><a href="#gradient-boosting-machines-gbm" id="toc-gradient-boosting-machines-gbm" class="nav-link" data-scroll-target="#gradient-boosting-machines-gbm">Gradient Boosting Machines (GBM)</a>
-  <ul class="collapse">
-  <li><a href="#classification-1" id="toc-classification-1" class="nav-link" data-scroll-target="#classification-1">Classification</a>
-  <ul class="collapse">
-  <li><a href="#training-and-testing-the-model-1" id="toc-training-and-testing-the-model-1" class="nav-link" data-scroll-target="#training-and-testing-the-model-1">Training and testing the model</a></li>
-  </ul></li>
-  <li><a href="#regression-1" id="toc-regression-1" class="nav-link" data-scroll-target="#regression-1">Regression</a></li>
-  </ul></li>
-  <li><a href="#bonus-xgboost" id="toc-bonus-xgboost" class="nav-link" data-scroll-target="#bonus-xgboost">Bonus: XGBoost</a>
-  <ul class="collapse">
-  <li><a href="#what-is-xgboost" id="toc-what-is-xgboost" class="nav-link" data-scroll-target="#what-is-xgboost">What is XGBoost?</a></li>
-  <li><a href="#modelling-with-xgboost" id="toc-modelling-with-xgboost" class="nav-link" data-scroll-target="#modelling-with-xgboost">Modelling with XGBoost</a></li>
-  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/labs/06_Ensembles/Ex_ML_Ensemble.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</li>
+  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#gradient-boosting-machines-gbm" id="toc-gradient-boosting-machines-gbm" class="nav-link" data-scroll-target="#gradient-boosting-machines-gbm">Gradient Boosting Machines (GBM)</a>
+  <ul class="collapse">
+<li>
+<a href="#classification-1" id="toc-classification-1" class="nav-link" data-scroll-target="#classification-1">Classification</a>
+  <ul class="collapse">
+<li><a href="#training-and-testing-the-model-1" id="toc-training-and-testing-the-model-1" class="nav-link" data-scroll-target="#training-and-testing-the-model-1">Training and testing the model</a></li>
+  </ul>
+</li>
+  <li><a href="#regression-1" id="toc-regression-1" class="nav-link" data-scroll-target="#regression-1">Regression</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#bonus-xgboost" id="toc-bonus-xgboost" class="nav-link" data-scroll-target="#bonus-xgboost">Bonus: XGBoost</a>
+  <ul class="collapse">
+<li><a href="#what-is-xgboost" id="toc-what-is-xgboost" class="nav-link" data-scroll-target="#what-is-xgboost">What is XGBoost?</a></li>
+  <li><a href="#modelling-with-xgboost" id="toc-modelling-with-xgboost" class="nav-link" data-scroll-target="#modelling-with-xgboost">Modelling with XGBoost</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/labs/06_Ensembles/Ex_ML_Ensemble.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<script type="application/javascript">
+<main class="content" id="quarto-document-content"><script type="application/javascript">
 // Description: Change image src depending on body class (quarto-light or quarto-dark)
 function updateImageSrc() {
   var bodyClass = window.document.body.classList;
@@ -701,10 +686,7 @@ observer.observe(window.document.body, {
 });
 
 updateImageSrc();
-</script>
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/00_lab/setup.html">Labs</a></li><li class="breadcrumb-item"><a href="../../labs/06_Ensembles/Ex_ML_Ensemble.html">Ensemble Methods</a></li></ol></nav>
-<div class="quarto-title">
+</script><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/00_lab/setup.html">Labs</a></li><li class="breadcrumb-item"><a href="../../labs/06_Ensembles/Ex_ML_Ensemble.html">Ensemble Methods</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Ensemble Methods</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -719,11 +701,7 @@ updateImageSrc();
   
 
 
-</header>
-
-
-<section id="random-forest" class="level1">
-<h1>Random Forest</h1>
+</header><section id="random-forest" class="level1"><h1>Random Forest</h1>
 <p>In this part of the lab, we will look at how the <code>randomForest</code> library (alternative to <code>ranger</code>) can be applied for classification and regression tasks. At the very end, please feel free to apply these techniques to one of your favorite datasets seen in class (classification or regression).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -737,18 +715,27 @@ updateImageSrc();
 <div class="callout-body-container callout-body">
 <p>R (using the <code>randomForest</code> library):</p>
 <ol type="1">
-<li><code>ntree</code>: The number of trees in the forest (equivalent to <code>n_estimators</code> in python).</li>
-<li><code>mtry</code>: The number of features to consider when looking for the best split. (similar to <code>max_features</code> in python)</li>
-<li><code>max.depth</code>: The maximum depth of each tree.</li>
-<li><code>nodesize</code>: The minimum number of samples required to split an internal node (equivalent to <code>min_samples_split</code> in python).</li>
+<li>
+<code>ntree</code>: The number of trees in the forest (equivalent to <code>n_estimators</code> in python).</li>
+<li>
+<code>mtry</code>: The number of features to consider when looking for the best split. (similar to <code>max_features</code> in python)</li>
+<li>
+<code>max.depth</code>: The maximum depth of each tree.</li>
+<li>
+<code>nodesize</code>: The minimum number of samples required to split an internal node (equivalent to <code>min_samples_split</code> in python).</li>
 </ol>
 <p>Python (using the <code>sklearn</code> library):</p>
 <ol type="1">
-<li><code>n_estimators</code>: The number of trees in the forest.</li>
-<li><code>max_features</code>: The number of features to consider when looking for the best split.</li>
-<li><code>max_depth</code>: The maximum depth of each tree.</li>
-<li><code>min_samples_split</code>: The minimum number of samples required to split an internal node.</li>
-<li><code>min_samples_leaf</code>: The minimum number of samples required to be at a leaf node.</li>
+<li>
+<code>n_estimators</code>: The number of trees in the forest.</li>
+<li>
+<code>max_features</code>: The number of features to consider when looking for the best split.</li>
+<li>
+<code>max_depth</code>: The maximum depth of each tree.</li>
+<li>
+<code>min_samples_split</code>: The minimum number of samples required to split an internal node.</li>
+<li>
+<code>min_samples_leaf</code>: The minimum number of samples required to be at a leaf node.</li>
 </ol>
 </div>
 </div>
@@ -764,17 +751,19 @@ updateImageSrc();
 <div class="callout-body-container callout-body">
 <p>A few (among many) tips for finding the ideal hyperparameters for RF:</p>
 <ol type="1">
-<li><code>ntree</code> (R) / <code>n_estimators</code> (python): Use a large number of trees in the forest to improve model performance, but be aware of the increased computation time. The default value is usually a good starting point.</li>
-<li><code>mtry</code> (R) / <code>max_features</code> (python): Experiment with different values, usually starting with the default (square root of the number of features for classification or one-third of the number of features for regression). Increasing this value may improve model performance but can also increase computation time.</li>
-<li><code>max.depth</code>: Control the depth of each tree to manage overfitting. Deeper trees capture more complex patterns but can lead to overfitting. Experiment with different values, keeping in mind that a shallower tree can be more interpretable and less prone to overfitting.</li>
-<li><code>nodesize</code> (R) / <code>min_samples_split</code> (python): Increasing this value can help reduce overfitting, but setting it too high might lead to underfitting. Experiment with different values to find the optimal balance.</li>
+<li>
+<code>ntree</code> (R) / <code>n_estimators</code> (python): Use a large number of trees in the forest to improve model performance, but be aware of the increased computation time. The default value is usually a good starting point.</li>
+<li>
+<code>mtry</code> (R) / <code>max_features</code> (python): Experiment with different values, usually starting with the default (square root of the number of features for classification or one-third of the number of features for regression). Increasing this value may improve model performance but can also increase computation time.</li>
+<li>
+<code>max.depth</code>: Control the depth of each tree to manage overfitting. Deeper trees capture more complex patterns but can lead to overfitting. Experiment with different values, keeping in mind that a shallower tree can be more interpretable and less prone to overfitting.</li>
+<li>
+<code>nodesize</code> (R) / <code>min_samples_split</code> (python): Increasing this value can help reduce overfitting, but setting it too high might lead to underfitting. Experiment with different values to find the optimal balance.</li>
 </ol>
 </div>
 </div>
-<section id="classification" class="level2">
-<h2 class="anchored" data-anchor-id="classification">Classification</h2>
-<section id="data-preparation-for-random-forest" class="level3">
-<h3 class="anchored" data-anchor-id="data-preparation-for-random-forest">Data preparation for Random Forest</h3>
+<section id="classification" class="level2"><h2 class="anchored" data-anchor-id="classification">Classification</h2>
+<section id="data-preparation-for-random-forest" class="level3"><h3 class="anchored" data-anchor-id="data-preparation-for-random-forest">Data preparation for Random Forest</h3>
 <p>Load the library <code>randomForest</code> in R. Then, load the <code>wine</code> data set. This dataset is about white wine quality (in fact Portuguese vinho verde). The data contains 11 numerical features and 1 factor variable:</p>
 <ul>
 <li><code>fixed.acidity</code></li>
@@ -793,37 +782,40 @@ updateImageSrc();
 <p>All the numerical features have units. The data source can be found <a href="https://archive.ics.uci.edu/ml/datasets/wine+quality">here</a>. For simplicity, only an extraction of 200 wines are used in this exercise. Note that in the original data set, the <code>quality</code> is a score (0 to 10) that was turned as factor here for the exercise (Bad: 0 to 5, Good: 6 to 10). Also, note that in the data source, the objective is to predict the quality from the other features (supervised learning).</p>
 <p>As mentioned, the outcome variable used for this dataset is the wine <code>quality</code>. We should first coerce the classes as factors. Then, we make the training/test set random split with a 75/25 scheme.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>wine <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"data/Wine.csv"</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>wine<span class="sc">$</span>quality <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(wine<span class="sc">$</span>quality)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># define a function to get the splitting index (training and testing) of a given dataset</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>get_split_index <span class="ot">&lt;-</span> <span class="cf">function</span>(dataset, <span class="at">train_proportion =</span> <span class="fl">0.75</span>) {</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  index <span class="ot">&lt;-</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sample</span>(</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="fu">nrow</span>(dataset),</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">prob =</span> <span class="fu">c</span>(train_proportion, <span class="dv">1</span> <span class="sc">-</span> train_proportion)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(index)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>wine_index <span class="ot">&lt;-</span> <span class="fu">get_split_index</span>(wine)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>wine_tr <span class="ot">&lt;-</span> wine[wine_index <span class="sc">==</span> <span class="dv">1</span>, ]</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>wine_te <span class="ot">&lt;-</span> wine[wine_index <span class="sc">==</span> <span class="dv">2</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.stat.berkeley.edu/~breiman/RandomForests/">randomForest</a></span><span class="op">)</span></span>
+<span><span class="va">wine</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"data/Wine.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">wine</span><span class="op">$</span><span class="va">quality</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">wine</span><span class="op">$</span><span class="va">quality</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># define a function to get the splitting index (training and testing) of a given dataset</span></span>
+<span><span class="va">get_split_index</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">dataset</span>, <span class="va">train_proportion</span> <span class="op">=</span> <span class="fl">0.75</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span>  <span class="va">index</span> <span class="op">&lt;-</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span></span>
+<span>      x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,</span>
+<span>      size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">dataset</span><span class="op">)</span>,</span>
+<span>      replace <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>      prob <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">train_proportion</span>, <span class="fl">1</span> <span class="op">-</span> <span class="va">train_proportion</span><span class="op">)</span></span>
+<span>    <span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">index</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">wine_index</span> <span class="op">&lt;-</span> <span class="fu">get_split_index</span><span class="op">(</span><span class="va">wine</span><span class="op">)</span></span>
+<span><span class="va">wine_tr</span> <span class="op">&lt;-</span> <span class="va">wine</span><span class="op">[</span><span class="va">wine_index</span> <span class="op">==</span> <span class="fl">1</span>, <span class="op">]</span></span>
+<span><span class="va">wine_te</span> <span class="op">&lt;-</span> <span class="va">wine</span><span class="op">[</span><span class="va">wine_index</span> <span class="op">==</span> <span class="fl">2</span>, <span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the course python environment as usual with a r code chunks.</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">"MLBA"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the course python environment as usual with a r code chunks.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/reticulate/">reticulate</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html">use_condaenv</a></span><span class="op">(</span><span class="st">"MLBA"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Similar to the previous labs, in python, we can use the usual <code>sklearn</code> library to do all our modelling. Please note that we will load the data again in python to make the demo easier. Additionally, we’ll load all the necessary libraries for this lab in this code chunk.</p>
 <div class="cell">
@@ -847,20 +839,21 @@ updateImageSrc();
 </div>
 </div>
 <p><strong>Note:</strong> Here, we have written a function to make the split as we will also need to apply it also for another dataset in the regression part.</p>
-</section>
-<section id="training-and-testing-the-model" class="level3">
-<h3 class="anchored" data-anchor-id="training-and-testing-the-model">Training and testing the model</h3>
+</section><section id="training-and-testing-the-model" class="level3"><h3 class="anchored" data-anchor-id="training-and-testing-the-model">Training and testing the model</h3>
 <p>Fit a random forest on the train set. The target is the <code>taste</code> variable that we want to predict. Specify for the number of trees <code>ntree=1000</code> (by default, the function selects <span class="math inline">\(500\)</span> trees). Remember to exclude <code>quality</code> in the predictors of the formula. Also, use the option <code>importance=TRUE</code>, we will need it afterward. Then test the model by computing the accuracy on the test set. You may use <code>confusionMatrix</code> from <code>caret</code>.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>wine_rf <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(quality<span class="sc">~</span>., <span class="at">data=</span>wine_tr, <span class="at">ntree=</span><span class="dv">1000</span>, <span class="at">importance=</span><span class="cn">TRUE</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>wine.pred_rf <span class="ot">&lt;-</span> <span class="fu">predict</span>(wine_rf, <span class="at">newdata=</span>wine_te)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>wine.pred_rf, <span class="at">reference =</span> wine_te<span class="sc">$</span>quality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">wine_rf</span> <span class="op">&lt;-</span> <span class="fu">randomForest</span><span class="op">(</span><span class="va">quality</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">wine_tr</span>, ntree<span class="op">=</span><span class="fl">1000</span>, importance<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">wine.pred_rf</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">wine_rf</span>, newdata<span class="op">=</span><span class="va">wine_te</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
+<span><span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="va">wine.pred_rf</span>, reference <span class="op">=</span> <span class="va">wine_te</span><span class="op">$</span><span class="va">quality</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
@@ -878,17 +871,18 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section>
-<section id="variable-importance" class="level3">
-<h3 class="anchored" data-anchor-id="variable-importance">Variable importance</h3>
+</section><section id="variable-importance" class="level3"><h3 class="anchored" data-anchor-id="variable-importance">Variable importance</h3>
 <p>Extract the model-specific variable importance using the functions <code>varImpPlot</code> (plots) and <code>importance</code> (values) on the model. Observe well that the mean decrease in accuracy of each variable is also computed for each specific class. In particular, what makes <code>density</code> special for predicting <code>Good</code> compare to another variable (like for example <code>citric.acid</code>)?</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(wine_rf)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">importance</span>(wine_rf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">varImpPlot</span><span class="op">(</span><span class="va">wine_rf</span><span class="op">)</span></span>
+<span><span class="fu">importance</span><span class="op">(</span><span class="va">wine_rf</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
@@ -901,40 +895,40 @@ updateImageSrc();
 </div>
 </div>
 <p><code>density</code> is important for predicting the <code>Good</code> since their predictions is much less accurate if we do not use it. <code>citric.acid</code> is both overall less important than <code>density</code> but especially for prediction of <code>Good</code>.</p>
-</section>
-</section>
-<section id="regression" class="level2">
-<h2 class="anchored" data-anchor-id="regression">Regression</h2>
+</section></section><section id="regression" class="level2"><h2 class="anchored" data-anchor-id="regression">Regression</h2>
 <p>In this part, we will be using the <code>real_estate_data.csv</code> once again. After reading the data, apply a random forest to predict <code>price</code> using all the other variables except <code>No</code>, <code>Month</code> and <code>Year</code>. Compute the RMSE and inspect the prediction quality with a graph. Note that the importance is not specific to any class here.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>real_estate_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"labs/data/real_estate_data.csv"</span>))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># select the columns of interest</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>real_estate_data <span class="ot">&lt;-</span> </span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  real_estate_data <span class="sc">%&gt;%</span> </span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(No, Month, Year))</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># once again, divide the data into training and testing sets using the function created earlier</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>restate_index <span class="ot">&lt;-</span> <span class="fu">get_split_index</span>(real_estate_data)</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>restate_tr <span class="ot">&lt;-</span> real_estate_data[restate_index <span class="sc">==</span> <span class="dv">1</span>, ]</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>restate_te <span class="ot">&lt;-</span> real_estate_data[restate_index <span class="sc">==</span> <span class="dv">2</span>, ]</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># apply the RF model as a regression</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>restate_rf <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(Price<span class="sc">~</span>., <span class="at">data=</span>restate_tr, <span class="at">ntree=</span><span class="dv">1000</span>, <span class="at">importance=</span><span class="cn">TRUE</span>)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>restate.pred_rf<span class="ot">&lt;-</span><span class="fu">predict</span>(restate_rf, <span class="at">newdata=</span>restate_te)</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># compute rmse and plot the results as well the VarImp</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>(rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((restate_te<span class="sc">$</span>Price <span class="sc">-</span> restate.pred_rf)<span class="sc">^</span><span class="dv">2</span>)))</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(restate_te<span class="sc">$</span>Price <span class="sc">~</span> restate.pred_rf)</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(restate_rf)</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="fu">importance</span>(restate_rf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org">magrittr</a></span><span class="op">)</span></span>
+<span><span class="va">real_estate_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"labs/data/real_estate_data.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># select the columns of interest</span></span>
+<span><span class="va">real_estate_data</span> <span class="op">&lt;-</span> </span>
+<span>  <span class="va">real_estate_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">No</span>, <span class="va">Month</span>, <span class="va">Year</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># once again, divide the data into training and testing sets using the function created earlier</span></span>
+<span><span class="va">restate_index</span> <span class="op">&lt;-</span> <span class="fu">get_split_index</span><span class="op">(</span><span class="va">real_estate_data</span><span class="op">)</span></span>
+<span><span class="va">restate_tr</span> <span class="op">&lt;-</span> <span class="va">real_estate_data</span><span class="op">[</span><span class="va">restate_index</span> <span class="op">==</span> <span class="fl">1</span>, <span class="op">]</span></span>
+<span><span class="va">restate_te</span> <span class="op">&lt;-</span> <span class="va">real_estate_data</span><span class="op">[</span><span class="va">restate_index</span> <span class="op">==</span> <span class="fl">2</span>, <span class="op">]</span></span>
+<span></span>
+<span><span class="co"># apply the RF model as a regression</span></span>
+<span><span class="va">restate_rf</span> <span class="op">&lt;-</span> <span class="fu">randomForest</span><span class="op">(</span><span class="va">Price</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">restate_tr</span>, ntree<span class="op">=</span><span class="fl">1000</span>, importance<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">restate.pred_rf</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">restate_rf</span>, newdata<span class="op">=</span><span class="va">restate_te</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># compute rmse and plot the results as well the VarImp</span></span>
+<span><span class="op">(</span><span class="va">rmse</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">restate_te</span><span class="op">$</span><span class="va">Price</span> <span class="op">-</span> <span class="va">restate.pred_rf</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">restate_te</span><span class="op">$</span><span class="va">Price</span> <span class="op">~</span> <span class="va">restate.pred_rf</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span></span>
+<span><span class="fu">varImpPlot</span><span class="op">(</span><span class="va">restate_rf</span><span class="op">)</span></span>
+<span><span class="fu">importance</span><span class="op">(</span><span class="va">restate_rf</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
@@ -971,10 +965,7 @@ updateImageSrc();
 </div>
 </div>
 <p>Compare this model with the one you came up with in <code>Ex_ML_LinLogReg</code> . Which one would you go for?</p>
-</section>
-</section>
-<section id="gradient-boosting-machines-gbm" class="level1">
-<h1>Gradient Boosting Machines (GBM)</h1>
+</section></section><section id="gradient-boosting-machines-gbm" class="level1"><h1>Gradient Boosting Machines (GBM)</h1>
 <p>In this part of the lab, we will look at how the <code>gbm</code> library in R and the <code>GradientBoostingClassifier</code> and <code>GradientBoostingRegressor</code> in Python can be applied for classification and regression tasks. We will continue using the <code>wine</code> dataset for classification and <code>real_estate_data</code> for regression.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -988,20 +979,31 @@ updateImageSrc();
 <div class="callout-body-container callout-body">
 <p>R (using the <code>gbm</code> library):</p>
 <ol type="1">
-<li><code>n.trees</code>: The number of boosting stages to perform (equivalent to <code>n_estimators</code> in python).</li>
-<li><code>interaction.depth</code>: The maximum depth of each tree (equivalent to <code>max_depth</code> in python).</li>
-<li><code>shrinkage</code>: The learning rate.</li>
-<li><code>n.minobsinnode</code>: The minimum number of samples required to split an internal node (equivalent to <code>min_samples_split</code> in python).</li>
-<li><code>bag.fraction</code>: The fraction of samples to be used for fitting individual base learners (equivalent to <code>subsample</code> in python).</li>
+<li>
+<code>n.trees</code>: The number of boosting stages to perform (equivalent to <code>n_estimators</code> in python).</li>
+<li>
+<code>interaction.depth</code>: The maximum depth of each tree (equivalent to <code>max_depth</code> in python).</li>
+<li>
+<code>shrinkage</code>: The learning rate.</li>
+<li>
+<code>n.minobsinnode</code>: The minimum number of samples required to split an internal node (equivalent to <code>min_samples_split</code> in python).</li>
+<li>
+<code>bag.fraction</code>: The fraction of samples to be used for fitting individual base learners (equivalent to <code>subsample</code> in python).</li>
 </ol>
 <p>Python (using the <code>sklearn</code> library):</p>
 <ol type="1">
-<li><code>n_estimators</code>: The number of boosting stages to perform. Similar to Random Forest, increasing the number of estimators can improve the model’s performance but may also increase the computational complexity and training time.</li>
-<li><code>learning_rate</code>: The learning rate shrinks the contribution of each tree. A smaller learning rate requires more boosting stages to achieve the same performance as a larger learning rate, but it can also result in a more robust model.</li>
-<li><code>max_depth</code>: The maximum depth of each tree. Similar to Random Forest, a higher depth can capture more complex patterns in the data, but it may also lead to overfitting.</li>
-<li><code>min_samples_split</code>: The minimum number of samples required to split an internal node. Similar to Random Forest, a smaller value allows the model to capture finer details in the data, while a larger value can help prevent overfitting.</li>
-<li><code>min_samples_leaf</code>: The minimum number of samples required to be at a leaf node. Similar to Random Forest, a smaller value allows the model to capture finer details, while a larger value can help prevent overfitting.</li>
-<li><code>subsample</code>: The fraction of samples to be used for fitting individual base learners. A value smaller than 1.0 can lead to a reduction in variance and an increase in bias, resulting in a more robust model.</li>
+<li>
+<code>n_estimators</code>: The number of boosting stages to perform. Similar to Random Forest, increasing the number of estimators can improve the model’s performance but may also increase the computational complexity and training time.</li>
+<li>
+<code>learning_rate</code>: The learning rate shrinks the contribution of each tree. A smaller learning rate requires more boosting stages to achieve the same performance as a larger learning rate, but it can also result in a more robust model.</li>
+<li>
+<code>max_depth</code>: The maximum depth of each tree. Similar to Random Forest, a higher depth can capture more complex patterns in the data, but it may also lead to overfitting.</li>
+<li>
+<code>min_samples_split</code>: The minimum number of samples required to split an internal node. Similar to Random Forest, a smaller value allows the model to capture finer details in the data, while a larger value can help prevent overfitting.</li>
+<li>
+<code>min_samples_leaf</code>: The minimum number of samples required to be at a leaf node. Similar to Random Forest, a smaller value allows the model to capture finer details, while a larger value can help prevent overfitting.</li>
+<li>
+<code>subsample</code>: The fraction of samples to be used for fitting individual base learners. A value smaller than 1.0 can lead to a reduction in variance and an increase in bias, resulting in a more robust model.</li>
 </ol>
 </div>
 </div>
@@ -1017,31 +1019,37 @@ updateImageSrc();
 <div class="callout-body-container callout-body">
 <p>Similar to R, here are some tips for finding the best combination of the hyperparameters:</p>
 <ol type="1">
-<li><code>n.trees</code> (R) / <code>n_estimators</code> (python): Start with a lower number of trees and increase it until no further improvement in performance is observed. Be aware of the increased computation time with a larger number of trees.</li>
-<li><code>interaction.depth</code> (R) / <code>max_depth</code> (python): Keep the depth of each tree relatively shallow (3-5 levels) to prevent overfitting. Deeper trees can capture more complex patterns but may lead to overfitting.</li>
-<li><code>shrinkage</code> (R) / <code>learning_rate</code> (python): Use a smaller learning rate for better model performance, but be prepared for slower convergence and increased computation time. Typically, values range between 0.01 and 0.1.</li>
-<li><code>n.minobsinnode</code> (R) / <code>min_samples_split</code> (python): Similar to Random Forest, experiment with different values to find the optimal balance between overfitting and underfitting.</li>
-<li><code>bag.fraction</code> (R) / <code>subsample</code> (python): Using a subsample of the data (e.g., 0.5-0.8) can help reduce overfitting and speed up the training process. Experiment with different values to find the best trade-off between performance and computation time.</li>
+<li>
+<code>n.trees</code> (R) / <code>n_estimators</code> (python): Start with a lower number of trees and increase it until no further improvement in performance is observed. Be aware of the increased computation time with a larger number of trees.</li>
+<li>
+<code>interaction.depth</code> (R) / <code>max_depth</code> (python): Keep the depth of each tree relatively shallow (3-5 levels) to prevent overfitting. Deeper trees can capture more complex patterns but may lead to overfitting.</li>
+<li>
+<code>shrinkage</code> (R) / <code>learning_rate</code> (python): Use a smaller learning rate for better model performance, but be prepared for slower convergence and increased computation time. Typically, values range between 0.01 and 0.1.</li>
+<li>
+<code>n.minobsinnode</code> (R) / <code>min_samples_split</code> (python): Similar to Random Forest, experiment with different values to find the optimal balance between overfitting and underfitting.</li>
+<li>
+<code>bag.fraction</code> (R) / <code>subsample</code> (python): Using a subsample of the data (e.g., 0.5-0.8) can help reduce overfitting and speed up the training process. Experiment with different values to find the best trade-off between performance and computation time.</li>
 </ol>
 </div>
 </div>
-<section id="classification-1" class="level2">
-<h2 class="anchored" data-anchor-id="classification-1">Classification</h2>
-<section id="training-and-testing-the-model-1" class="level3">
-<h3 class="anchored" data-anchor-id="training-and-testing-the-model-1">Training and testing the model</h3>
+<section id="classification-1" class="level2"><h2 class="anchored" data-anchor-id="classification-1">Classification</h2>
+<section id="training-and-testing-the-model-1" class="level3"><h3 class="anchored" data-anchor-id="training-and-testing-the-model-1">Training and testing the model</h3>
 <p>We now fit a GBM model on the <code>wine</code> training set and apply it to the same target variable <code>quality</code>. We can train the model and add</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gbm)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>wine_gbm <span class="ot">&lt;-</span> <span class="fu">gbm</span>(quality<span class="sc">~</span>., <span class="at">data=</span>wine_tr, <span class="at">distribution=</span><span class="st">"multinomial"</span>, <span class="at">n.trees=</span><span class="dv">1000</span>, <span class="at">interaction.depth=</span><span class="dv">4</span>, <span class="at">shrinkage=</span><span class="fl">0.01</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>wine.pred_gbm <span class="ot">&lt;-</span> <span class="fu">predict</span>(wine_gbm, <span class="at">newdata=</span>wine_te, <span class="at">n.trees=</span><span class="dv">1000</span>, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>wine.pred_gbm_class <span class="ot">&lt;-</span> <span class="fu">apply</span>(wine.pred_gbm, <span class="dv">1</span>, which.max)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(wine_te<span class="sc">$</span>quality) <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">levels</span>(wine_te<span class="sc">$</span>quality))</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="fu">factor</span>(wine.pred_gbm_class), wine_te<span class="sc">$</span>quality)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/gbm-developers/gbm">gbm</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">wine_gbm</span> <span class="op">&lt;-</span> <span class="fu">gbm</span><span class="op">(</span><span class="va">quality</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">wine_tr</span>, distribution<span class="op">=</span><span class="st">"multinomial"</span>, n.trees<span class="op">=</span><span class="fl">1000</span>, interaction.depth<span class="op">=</span><span class="fl">4</span>, shrinkage<span class="op">=</span><span class="fl">0.01</span><span class="op">)</span></span>
+<span><span class="va">wine.pred_gbm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">wine_gbm</span>, newdata<span class="op">=</span><span class="va">wine_te</span>, n.trees<span class="op">=</span><span class="fl">1000</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span><span class="va">wine.pred_gbm_class</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">wine.pred_gbm</span>, <span class="fl">1</span>, <span class="va">which.max</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">wine_te</span><span class="op">$</span><span class="va">quality</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">wine_te</span><span class="op">$</span><span class="va">quality</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">confusionMatrix</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">wine.pred_gbm_class</span><span class="op">)</span>, <span class="va">wine_te</span><span class="op">$</span><span class="va">quality</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
@@ -1060,24 +1068,24 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="regression-1" class="level2">
-<h2 class="anchored" data-anchor-id="regression-1">Regression</h2>
+</section></section><section id="regression-1" class="level2"><h2 class="anchored" data-anchor-id="regression-1">Regression</h2>
 <p>In this part, we will continue using the <code>real_estate_data.csv</code>. Fit a GBM model on the real estate training set to predict <code>price</code> using all the other variables except <code>No</code>, <code>Month</code>, and <code>Year</code>. Then compute the metrics and plot the predictions.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>restate_gbm <span class="ot">&lt;-</span> <span class="fu">gbm</span>(Price<span class="sc">~</span>., <span class="at">data=</span>restate_tr, <span class="at">distribution=</span><span class="st">"gaussian"</span>, <span class="at">n.trees=</span><span class="dv">1000</span>, <span class="at">interaction.depth=</span><span class="dv">4</span>, <span class="at">shrinkage=</span><span class="fl">0.01</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>restate.pred_gbm<span class="ot">&lt;-</span><span class="fu">predict</span>(restate_gbm, <span class="at">newdata=</span>restate_te, <span class="at">n.trees=</span><span class="dv">1000</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># compute rmse and plot the results</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>(rmse_gbm <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((restate_te<span class="sc">$</span>Price <span class="sc">-</span> restate.pred_gbm)<span class="sc">^</span><span class="dv">2</span>)))</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(restate_te<span class="sc">$</span>Price <span class="sc">~</span> restate.pred_gbm)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">restate_gbm</span> <span class="op">&lt;-</span> <span class="fu">gbm</span><span class="op">(</span><span class="va">Price</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">restate_tr</span>, distribution<span class="op">=</span><span class="st">"gaussian"</span>, n.trees<span class="op">=</span><span class="fl">1000</span>, interaction.depth<span class="op">=</span><span class="fl">4</span>, shrinkage<span class="op">=</span><span class="fl">0.01</span><span class="op">)</span></span>
+<span><span class="va">restate.pred_gbm</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">restate_gbm</span>, newdata<span class="op">=</span><span class="va">restate_te</span>, n.trees<span class="op">=</span><span class="fl">1000</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># compute rmse and plot the results</span></span>
+<span><span class="op">(</span><span class="va">rmse_gbm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">restate_te</span><span class="op">$</span><span class="va">Price</span> <span class="op">-</span> <span class="va">restate.pred_gbm</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">restate_te</span><span class="op">$</span><span class="va">Price</span> <span class="op">~</span> <span class="va">restate.pred_gbm</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
@@ -1106,16 +1114,10 @@ updateImageSrc();
 </div>
 </div>
 <p>Compare the GBM model with the Random Forest model you came up with earlier. Which one would you go for?</p>
-</section>
-</section>
-<section id="bonus-xgboost" class="level1">
-<h1>Bonus: XGBoost</h1>
-<section id="what-is-xgboost" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-xgboost">What is XGBoost?</h2>
+</section></section><section id="bonus-xgboost" class="level1"><h1>Bonus: XGBoost</h1>
+<section id="what-is-xgboost" class="level2"><h2 class="anchored" data-anchor-id="what-is-xgboost">What is XGBoost?</h2>
 <p>XGBoost (Extreme Gradient Boosting) is an optimized implementation of the gradient boosting algorithm. It is designed for high performance and efficient memory usage. XGBoost improves upon the base Gradient Boosting Machine (GBM) by incorporating regularization to prevent overfitting and implementing parallel processing techniques for faster training. The algorithm also offers built-in cross-validation and early stopping to save time and resources during model training.</p>
-</section>
-<section id="modelling-with-xgboost" class="level2">
-<h2 class="anchored" data-anchor-id="modelling-with-xgboost">Modelling with XGBoost</h2>
+</section><section id="modelling-with-xgboost" class="level2"><h2 class="anchored" data-anchor-id="modelling-with-xgboost">Modelling with XGBoost</h2>
 <p>We’ll use the <a href="https://xgboost.readthedocs.io/en/stable/index.html"><code>xgboost</code></a> library in both R and python. You can see some of the hyperparameters below:</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1128,43 +1130,49 @@ updateImageSrc();
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><code>eta</code>: Controls the learning rate, which determines the step size at each iteration while updating the model weights. Smaller values make the model more robust to overfitting but require more iterations to converge. Typical values range from 0.01 to 0.3.</li>
-<li><code>max_depth</code>: Controls the maximum depth of each tree. Deeper trees can model more complex relationships but are more prone to overfitting. Experiment with different values, keeping in mind that a shallower tree can be more interpretable and less prone to overfitting.</li>
-<li><code>min_child_weight</code>: Controls the minimum sum of instance weights needed in a child node. Increasing this value helps to prevent overfitting by making the model more conservative.</li>
+<li>
+<code>eta</code>: Controls the learning rate, which determines the step size at each iteration while updating the model weights. Smaller values make the model more robust to overfitting but require more iterations to converge. Typical values range from 0.01 to 0.3.</li>
+<li>
+<code>max_depth</code>: Controls the maximum depth of each tree. Deeper trees can model more complex relationships but are more prone to overfitting. Experiment with different values, keeping in mind that a shallower tree can be more interpretable and less prone to overfitting.</li>
+<li>
+<code>min_child_weight</code>: Controls the minimum sum of instance weights needed in a child node. Increasing this value helps to prevent overfitting by making the model more conservative.</li>
 </ol>
 </div>
 </div>
 <p>You can read more about the package in its documentation.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install and load the package</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("xgboost")</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xgboost)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data for XGBoost</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>dtrain <span class="ot">&lt;-</span> <span class="fu">xgb.DMatrix</span>(<span class="at">data =</span> <span class="fu">as.matrix</span>(restate_tr[, <span class="sc">-</span><span class="fu">ncol</span>(restate_tr)]), <span class="at">label =</span> restate_tr<span class="sc">$</span>Price)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>dtest <span class="ot">&lt;-</span> <span class="fu">xgb.DMatrix</span>(<span class="at">data =</span> <span class="fu">as.matrix</span>(restate_te[, <span class="sc">-</span><span class="fu">ncol</span>(restate_te)]), <span class="at">label =</span> restate_te<span class="sc">$</span>Price)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Set hyperparameters</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">objective =</span> <span class="st">"reg:squarederror"</span>,</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">eta =</span> <span class="fl">0.1</span>,</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">max_depth =</span> <span class="dv">5</span>,</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">min_child_weight =</span> <span class="dv">1</span>,</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">subsample =</span> <span class="dv">1</span>,</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">colsample_bytree =</span> <span class="dv">1</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>xgb_model <span class="ot">&lt;-</span> <span class="fu">xgb.train</span>(params, dtrain, <span class="at">nrounds =</span> <span class="dv">1000</span>)</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the model and compute the RMSE</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>restate_pred_xgb <span class="ot">&lt;-</span> <span class="fu">predict</span>(xgb_model, dtest)</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>rmse_xgb <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>((restate_te<span class="sc">$</span>Price <span class="sc">-</span> restate_pred_xgb)<span class="sc">^</span><span class="dv">2</span>))</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"RMSE:"</span>, rmse_xgb))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Install and load the package</span></span>
+<span><span class="co"># install.packages("xgboost")</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/dmlc/xgboost">xgboost</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Prepare data for XGBoost</span></span>
+<span><span class="va">dtrain</span> <span class="op">&lt;-</span> <span class="fu">xgb.DMatrix</span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">restate_tr</span><span class="op">[</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">restate_tr</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>, label <span class="op">=</span> <span class="va">restate_tr</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span>
+<span><span class="va">dtest</span> <span class="op">&lt;-</span> <span class="fu">xgb.DMatrix</span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">as.matrix</a></span><span class="op">(</span><span class="va">restate_te</span><span class="op">[</span>, <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">restate_te</span><span class="op">)</span><span class="op">]</span><span class="op">)</span>, label <span class="op">=</span> <span class="va">restate_te</span><span class="op">$</span><span class="va">Price</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Set hyperparameters</span></span>
+<span><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span></span>
+<span>  objective <span class="op">=</span> <span class="st">"reg:squarederror"</span>,</span>
+<span>  eta <span class="op">=</span> <span class="fl">0.1</span>,</span>
+<span>  max_depth <span class="op">=</span> <span class="fl">5</span>,</span>
+<span>  min_child_weight <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  subsample <span class="op">=</span> <span class="fl">1</span>,</span>
+<span>  colsample_bytree <span class="op">=</span> <span class="fl">1</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Train the model</span></span>
+<span><span class="va">xgb_model</span> <span class="op">&lt;-</span> <span class="fu">xgb.train</span><span class="op">(</span><span class="va">params</span>, <span class="va">dtrain</span>, nrounds <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Test the model and compute the RMSE</span></span>
+<span><span class="va">restate_pred_xgb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">xgb_model</span>, <span class="va">dtest</span><span class="op">)</span></span>
+<span><span class="va">rmse_xgb</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="op">(</span><span class="va">restate_te</span><span class="op">$</span><span class="va">Price</span> <span class="op">-</span> <span class="va">restate_pred_xgb</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"RMSE:"</span>, <span class="va">rmse_xgb</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
@@ -1204,11 +1212,7 @@ updateImageSrc();
 
 <!-- -->
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1671,9 +1675,7 @@ updateImageSrc();
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../labs/05_DataSplitting/Ex_ML_Data_Splitting.html" class="pagination-link" aria-label="Data Splitting">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Data Splitting</span>
       </a>          
@@ -2143,8 +2145,7 @@ updateImageSrc();
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2026, <a href="https://iliaazizi.com/">Ilia Azizi</a></p>
 </div>   
@@ -2156,8 +2157,6 @@ updateImageSrc();
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

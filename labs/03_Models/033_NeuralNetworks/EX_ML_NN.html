@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Models: Neural Networks – MLBA - S24</title>
 <style>
 code{white-space: pre-wrap;}
@@ -57,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,8 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/bootstrap/bootstrap-dark-9fc88ccb7d1699df7914753e2965a537.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -109,8 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-
-
 <meta property="og:title" content="Models: Neural Networks – MLBA - S24">
 <meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
 <meta property="og:image" content="https://do-unil.github.io/mlba/labs/03_Models/033_NeuralNetworks/NNLastLayer.png">
@@ -118,7 +111,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta property="og:image:height" content="388">
 <meta property="og:image:width" content="865">
 </head>
-
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -284,9 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -297,17 +287,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../images/logo.light.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../../images/logo.light.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
-      </a>
+      <img src="../../../images/logo.light.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../../../images/logo.light.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://moodle.unil.ch/course/view.php?id=36198" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
@@ -321,7 +305,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
@@ -329,8 +313,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -355,7 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -364,8 +348,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../lectures/01_Introduction/ML_Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to ML</span></a>
@@ -450,7 +434,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -459,8 +443,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../labs/00_lab/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
@@ -527,7 +511,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
@@ -536,8 +520,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../assessments/Exam.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exam</span></a>
@@ -551,8 +535,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../assessments/Project_Directives.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Directives</span></a>
@@ -565,9 +549,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
@@ -576,8 +560,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../resources/beginners_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Beginners in R</span></a>
@@ -602,42 +586,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#regression-for-structured-data" id="toc-regression-for-structured-data" class="nav-link" data-scroll-target="#regression-for-structured-data">Regression for Structured Data</a>
+  <li>
+<a href="#regression-for-structured-data" id="toc-regression-for-structured-data" class="nav-link" data-scroll-target="#regression-for-structured-data">Regression for Structured Data</a>
   <ul class="collapse">
-  <li><a href="#boston-housing-dataset" id="toc-boston-housing-dataset" class="nav-link" data-scroll-target="#boston-housing-dataset">Boston Housing Dataset</a></li>
+<li><a href="#boston-housing-dataset" id="toc-boston-housing-dataset" class="nav-link" data-scroll-target="#boston-housing-dataset">Boston Housing Dataset</a></li>
   <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a></li>
   <li><a href="#model-definition" id="toc-model-definition" class="nav-link" data-scroll-target="#model-definition">Model Definition</a></li>
   <li><a href="#model-training" id="toc-model-training" class="nav-link" data-scroll-target="#model-training">Model Training</a></li>
   <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation">Model Evaluation</a></li>
-  </ul></li>
-  <li><a href="#image-classification" id="toc-image-classification" class="nav-link" data-scroll-target="#image-classification">Image Classification</a>
+  </ul>
+</li>
+  <li>
+<a href="#image-classification" id="toc-image-classification" class="nav-link" data-scroll-target="#image-classification">Image Classification</a>
   <ul class="collapse">
-  <li><a href="#cifar-10-dataset" id="toc-cifar-10-dataset" class="nav-link" data-scroll-target="#cifar-10-dataset">CIFAR-10 Dataset</a></li>
+<li><a href="#cifar-10-dataset" id="toc-cifar-10-dataset" class="nav-link" data-scroll-target="#cifar-10-dataset">CIFAR-10 Dataset</a></li>
   <li><a href="#data-preparation-1" id="toc-data-preparation-1" class="nav-link" data-scroll-target="#data-preparation-1">Data Preparation</a></li>
   <li><a href="#model-definition-1" id="toc-model-definition-1" class="nav-link" data-scroll-target="#model-definition-1">Model definition</a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#your-turn-nns-applied-to-the-nursing-data" id="toc-your-turn-nns-applied-to-the-nursing-data" class="nav-link" data-scroll-target="#your-turn-nns-applied-to-the-nursing-data">Your turn: NNs applied to the nursing data</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/labs/03_Models/033_NeuralNetworks/EX_ML_NN.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/labs/03_Models/033_NeuralNetworks/EX_ML_NN.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<script type="application/javascript">
+<main class="content" id="quarto-document-content"><script type="application/javascript">
 // Description: Change image src depending on body class (quarto-light or quarto-dark)
 function updateImageSrc() {
   var bodyClass = window.document.body.classList;
@@ -670,10 +653,7 @@ observer.observe(window.document.body, {
 });
 
 updateImageSrc();
-</script>
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../labs/00_lab/setup.html">Labs</a></li><li class="breadcrumb-item"><a href="../../../labs/03_Models/033_NeuralNetworks/EX_ML_NN.html">Neural Networks</a></li></ol></nav>
-<div class="quarto-title">
+</script><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../labs/00_lab/setup.html">Labs</a></li><li class="breadcrumb-item"><a href="../../../labs/03_Models/033_NeuralNetworks/EX_ML_NN.html">Neural Networks</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Models: Neural Networks</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -688,12 +668,8 @@ updateImageSrc();
   
 
 
-</header>
-
-
-<p>In this tutorial, we will demonstrate how to use <code>keras</code> and <code>tensorflow</code> in R for two common tasks in deep learning (DL): regression for structured data and image classification. We will use two datasets for this purpose: the <code>Boston Housing dataset</code> for regression and the <code>CIFAR-10</code> dataset for image classification.</p>
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+</header><p>In this tutorial, we will demonstrate how to use <code>keras</code> and <code>tensorflow</code> in R for two common tasks in deep learning (DL): regression for structured data and image classification. We will use two datasets for this purpose: the <code>Boston Housing dataset</code> for regression and the <code>CIFAR-10</code> dataset for image classification.</p>
+<section id="introduction" class="level1"><h1>Introduction</h1>
 <p><code>Keras</code> and <code>TensorFlow</code> are open-source machine learning frameworks for building and training deep learning models. <code>TensorFlow</code> is a low-level framework that provides a foundation for building and training neural networks. <code>keras</code>, on the other hand, is a high-level API built on top of <code>TensorFlow</code>, making it easier to construct and train deep learning models. This means that <code>keras</code> is much more plug-and-play than <code>TensorFlow</code>.</p>
 <p>In <code>keras</code>, two main ways to build and run deep learning models are the <code>sequential API</code> and the <code>functional API</code>. The <code>sequential API</code> is a simple way to create a neural network by adding layers in a linear sequence. On the other hand, the <code>functional API</code> provides more flexibility and allows you to create more complex models with shared layers or multiple inputs and outputs. In this lab session, we deal with the more straightforward <code>sequential API</code>; however, feel free to also read about <code>functional API</code> <a href="https://tensorflow.rstudio.com/guides/keras/functional_api">here</a>.</p>
 <p>The <code>sequential API</code> is suitable for building simple models quickly and easily. Initially, one has to define the desired network architecture by one layer at a time to a new <code>sequential</code> model. Once the architecture is defined, we need to <code>compile</code> the model and then <code>fit</code> the model to the data to start training. Here is a summary of all the steps:</p>
@@ -702,30 +678,27 @@ updateImageSrc();
 <li><p><em>Compile the model:</em> Once the model’s architecture has been defined, it has to be compiled using the <code>compile()</code> method. This involves specifying the loss function, optimizer, and any additional metrics you want to track during training.</p></li>
 <li><p><em>Train the model:</em> To train the model, use the <code>fit()</code> method and pass in your training data and any necessary hyperparameters (e.g., batch size, number of epochs). A validation set can also be specified to monitor the model’s performance during training. Additionally, there are techniques such as early stopping, which stops the training if the model’s performance on the validation set does not improve after a certain number of epochs.</p></li>
 <li><p><em>Evaluate the model:</em> After training, the model’s performance on a test set can be evaluated using the <code>evaluate()</code> method. This will return the loss and any metrics specified during compilation (step 2).</p></li>
-<li><p><em>Use the model to make predictions:</em> Finally, one can use the trained model to make predictions on new data using the <code>predict()</code> method either from base R or as an attribute of the model (i.e., <code>model$predict()</code>). This stage is also known as “inference” in DL.</p></li>
-</ol>
-</section>
-<section id="setup" class="level1">
-<h1>Setup</h1>
+<li><p><em>Use the model to make predictions:</em> Finally, one can use the trained model to make predictions on new data using the <code><a href="https://rdrr.io/r/stats/predict.html">predict()</a></code> method either from base R or as an attribute of the model (i.e., <code>model$predict()</code>). This stage is also known as “inference” in DL.</p></li>
+</ol></section><section id="setup" class="level1"><h1>Setup</h1>
 <p>We will use the <code>keras</code> and <code>tensorflow</code> libraries in R, which are wrappers around <code>keras</code> and <code>TensorFlow</code> libraries in python. Wrappers provide an abstraction layer that enables users to use a library or framework from a different programming language. Due to this, the syntax of using these libraries in R and python are very close, and maybe except for the <code>%&gt;%</code> operator, there are no major differences. For this reason, all examples are provided in R and we only provide one example of using <code>keras</code> in with the Boston housing data. For the other part of the lab, if you’re more interested in implementing it in python, you can adapt the code yourself based on the provided example.</p>
 <p>We first need to get started with the setup. We will install <code>keras</code> into our <code>MLBA</code> environment created during <code>setup.Rmd</code>. This applies whether you’re using only R or both R &amp; python; therefore, if you have not already created a conda virtual environment, please refer to <code>setup.Rmd</code>. Once the the virtual environment already exists, we can then install both <code>keras</code> and <code>tensorflow</code> with <code>keras::install_keras()</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"keras"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tensorflow"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>keras<span class="sc">::</span><span class="fu">install_keras</span>(<span class="at">method =</span> <span class="st">"conda"</span>, <span class="at">envname =</span> <span class="st">"MLBA"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"keras"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tensorflow"</span><span class="op">)</span></span>
+<span><span class="fu">keras</span><span class="fu">::</span><span class="fu">install_keras</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"conda"</span>, envname <span class="op">=</span> <span class="st">"MLBA"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can now check if the installation was successful</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">use_condaenv</span>(<span class="st">"MLBA"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(keras)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tensorflow)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html">use_condaenv</a></span><span class="op">(</span><span class="st">"MLBA"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tensorflow.rstudio.com/">keras</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/tensorflow">tensorflow</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Once the setup is over, we check if everything works as expected.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tflow <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"tensorflow"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>tflow<span class="sc">$</span><span class="fu">constant</span>(<span class="st">"Hello Tensorflow!"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># we typically have to do `tf$` to call tensorflow that is automatically loaded like below</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tf$constant("Hello Tensorflow!")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">tflow</span> <span class="op">&lt;-</span> <span class="fu">import</span><span class="op">(</span><span class="st">"tensorflow"</span><span class="op">)</span></span>
+<span><span class="va">tflow</span><span class="op">$</span><span class="fu">constant</span><span class="op">(</span><span class="st">"Hello Tensorflow!"</span><span class="op">)</span></span>
+<span><span class="co"># we typically have to do `tf$` to call tensorflow that is automatically loaded like below</span></span>
+<span><span class="co"># tf$constant("Hello Tensorflow!")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If you have the same output, you’re good to go. Also, sometimes when you run <code>tf$constant()</code> command for the first time, you may get <code>Error in py_module_proxy_import(proxy) : Module proxy does not contain module name</code> because you just loaded <code>keras</code>. If it was the case, just rerun this code chunk.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -744,37 +717,30 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 <p><code>tensorflow</code> has been optimized to work on graphical processing units (GPUs), and sometimes there are specific configurations for improving the performance of <code>keras</code> on central processing units (CPUs). You can safely ignore these warnings. Training on GPUs, especially when using images or high-dimensional data, drastically speeds up the training process and is one of the reasons behind the popularity of DL. If your computer has an Nvidia GPU (it would not work on AMD or Intel GPUs), you can also set it up to work with <code>tensorflow</code> by following the instructions from <a href="https://tensorflow.rstudio.com/install/local_gpu">here</a>.</p>
 </div>
 </div>
-</section>
-<section id="regression-for-structured-data" class="level1">
-<h1>Regression for Structured Data</h1>
-<section id="boston-housing-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="boston-housing-dataset">Boston Housing Dataset</h2>
+</section><section id="regression-for-structured-data" class="level1"><h1>Regression for Structured Data</h1>
+<section id="boston-housing-dataset" class="level2"><h2 class="anchored" data-anchor-id="boston-housing-dataset">Boston Housing Dataset</h2>
 <p>The <a href="http://lib.stat.cmu.edu/datasets/boston">Boston Housing dataset</a> is a well-known dataset used for regression tasks. It contains 506 instances and 13 features, including the median value of owner-occupied homes in $1000s. We will use this dataset to demonstrate how to perform regression on the sales price.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(keras)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>houses <span class="ot">&lt;-</span> <span class="fu">dataset_boston_housing</span>()</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>train_x <span class="ot">&lt;-</span> houses<span class="sc">$</span>train<span class="sc">$</span>x</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>train_y <span class="ot">&lt;-</span> houses<span class="sc">$</span>train<span class="sc">$</span>y</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>test_x <span class="ot">&lt;-</span> houses<span class="sc">$</span>test<span class="sc">$</span>x</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>test_y <span class="ot">&lt;-</span> houses<span class="sc">$</span>test<span class="sc">$</span>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tensorflow.rstudio.com/">keras</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">houses</span> <span class="op">&lt;-</span> <span class="fu">dataset_boston_housing</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">train_x</span> <span class="op">&lt;-</span> <span class="va">houses</span><span class="op">$</span><span class="va">train</span><span class="op">$</span><span class="va">x</span></span>
+<span><span class="va">train_y</span> <span class="op">&lt;-</span> <span class="va">houses</span><span class="op">$</span><span class="va">train</span><span class="op">$</span><span class="va">y</span></span>
+<span></span>
+<span><span class="va">test_x</span> <span class="op">&lt;-</span> <span class="va">houses</span><span class="op">$</span><span class="va">test</span><span class="op">$</span><span class="va">x</span></span>
+<span><span class="va">test_y</span> <span class="op">&lt;-</span> <span class="va">houses</span><span class="op">$</span><span class="va">test</span><span class="op">$</span><span class="va">y</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="data-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
+</section><section id="data-preparation" class="level2"><h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
 <p>We need to normalize the data. This is especially relevant for neural networks to stabilize the computation of the gradients and consequently improve the training process.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> <span class="fu">apply</span>(train_x, <span class="dv">2</span>, mean)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sds <span class="ot">&lt;-</span> <span class="fu">apply</span>(train_x, <span class="dv">2</span>, sd)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>train_x <span class="ot">&lt;-</span> <span class="fu">scale</span>(train_x, means, sds)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>test_x <span class="ot">&lt;-</span> <span class="fu">scale</span>(test_x, means, sds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">means</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">train_x</span>, <span class="fl">2</span>, <span class="va">mean</span><span class="op">)</span></span>
+<span><span class="va">sds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/apply.html">apply</a></span><span class="op">(</span><span class="va">train_x</span>, <span class="fl">2</span>, <span class="va">sd</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">train_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">train_x</span>, <span class="va">means</span>, <span class="va">sds</span><span class="op">)</span></span>
+<span><span class="va">test_x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/scale.html">scale</a></span><span class="op">(</span><span class="va">test_x</span>, <span class="va">means</span>, <span class="va">sds</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="model-definition" class="level2">
-<h2 class="anchored" data-anchor-id="model-definition">Model Definition</h2>
+</section><section id="model-definition" class="level2"><h2 class="anchored" data-anchor-id="model-definition">Model Definition</h2>
 <p>We will use a simple neural network with two hidden layers to perform regression.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -793,8 +759,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="NNLastLayer.png" class="img-fluid figure-img" width="600"></p>
+<figure class="figure"><p><img src="NNLastLayer.png" class="img-fluid figure-img" width="600"></p>
 </figure>
 </div>
 </div>
@@ -806,25 +771,28 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we set a seed (this sometimes disables GPU performance)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>tensorflow<span class="sc">::</span><span class="fu">set_random_seed</span>(<span class="dv">123</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># define the model structure</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>model_reg <span class="ot">&lt;-</span> <span class="fu">keras_model_sequential</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">64</span>, <span class="at">activation =</span> <span class="st">"relu"</span>, <span class="at">input_shape =</span> <span class="fu">c</span>(<span class="fu">ncol</span>(train_x))) <span class="sc">%&gt;%</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">64</span>, <span class="at">activation =</span> <span class="st">"relu"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">1</span>, <span class="at">activation =</span> <span class="st">"linear"</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># compile the model</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>model_reg <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">optimizer =</span> <span class="st">"adam"</span>,</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss =</span> <span class="st">"mean_squared_error"</span>,</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">c</span>(<span class="st">"mean_absolute_error"</span>)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># we set a seed (this sometimes disables GPU performance)</span></span>
+<span><span class="fu">tensorflow</span><span class="fu">::</span><span class="fu">set_random_seed</span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># define the model structure</span></span>
+<span><span class="va">model_reg</span> <span class="op">&lt;-</span> <span class="fu">keras_model_sequential</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_dense</span><span class="op">(</span>units <span class="op">=</span> <span class="fl">64</span>, activation <span class="op">=</span> <span class="st">"relu"</span>, input_shape <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">train_x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_dense</span><span class="op">(</span>units <span class="op">=</span> <span class="fl">64</span>, activation <span class="op">=</span> <span class="st">"relu"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_dense</span><span class="op">(</span>units <span class="op">=</span> <span class="fl">1</span>, activation <span class="op">=</span> <span class="st">"linear"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># compile the model</span></span>
+<span><span class="va">model_reg</span> <span class="op">%&gt;%</span> <span class="fu">compile</span><span class="op">(</span></span>
+<span>  optimizer <span class="op">=</span> <span class="st">"adam"</span>,</span>
+<span>  loss <span class="op">=</span> <span class="st">"mean_squared_error"</span>,</span>
+<span>  metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"mean_absolute_error"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
@@ -851,23 +819,24 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 </div>
-</section>
-<section id="model-training" class="level2">
-<h2 class="anchored" data-anchor-id="model-training">Model Training</h2>
+</section><section id="model-training" class="level2"><h2 class="anchored" data-anchor-id="model-training">Model Training</h2>
 <p>We can then train the model:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>history <span class="ot">&lt;-</span> model_reg <span class="sc">%&gt;%</span> <span class="fu">fit</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  train_x, train_y,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">epochs =</span> <span class="dv">10</span>, <span class="co">#300 to get the best results</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">batch_size =</span> <span class="dv">32</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">validation_split =</span> <span class="fl">0.2</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">callbacks =</span> <span class="fu">callback_early_stopping</span>(<span class="at">patience =</span> <span class="dv">30</span>,<span class="at">restore_best_weights =</span> T),</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">verbose =</span> <span class="dv">1</span> <span class="co"># to control the printing of the output</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">history</span> <span class="op">&lt;-</span> <span class="va">model_reg</span> <span class="op">%&gt;%</span> <span class="fu">fit</span><span class="op">(</span></span>
+<span>  <span class="va">train_x</span>, <span class="va">train_y</span>,</span>
+<span>  epochs <span class="op">=</span> <span class="fl">10</span>, <span class="co">#300 to get the best results</span></span>
+<span>  batch_size <span class="op">=</span> <span class="fl">32</span>,</span>
+<span>  validation_split <span class="op">=</span> <span class="fl">0.2</span>,</span>
+<span>  callbacks <span class="op">=</span> <span class="fu">callback_early_stopping</span><span class="op">(</span>patience <span class="op">=</span> <span class="fl">30</span>,restore_best_weights <span class="op">=</span> <span class="cn">T</span><span class="op">)</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="fl">1</span> <span class="co"># to control the printing of the output</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You don’t need to assign <code>model %&gt;% fit()</code> to <code>history</code>. We only do that to plot the results later (e.g., with <code>plot(history)</code>.</p>
 </div>
@@ -889,20 +858,21 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 </div>
 </div>
-</section>
-<section id="model-evaluation" class="level2">
-<h2 class="anchored" data-anchor-id="model-evaluation">Model Evaluation</h2>
+</section><section id="model-evaluation" class="level2"><h2 class="anchored" data-anchor-id="model-evaluation">Model Evaluation</h2>
 <p>Finally, we can evaluate the model on the testing set:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nn_results <span class="ot">&lt;-</span> model_reg <span class="sc">%&gt;%</span> <span class="fu">evaluate</span>(test_x, test_y)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>nn_results</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, you can use the `predict` attribute from `model` as shown below</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># nn_results &lt;- model$predict(test_x)</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># caret::MAE(obs = test_y, pred = as.vector(nn_results))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nn_results</span> <span class="op">&lt;-</span> <span class="va">model_reg</span> <span class="op">%&gt;%</span> <span class="fu">evaluate</span><span class="op">(</span><span class="va">test_x</span>, <span class="va">test_y</span><span class="op">)</span></span>
+<span><span class="va">nn_results</span></span>
+<span><span class="co"># alternatively, you can use the `predict` attribute from `model` as shown below</span></span>
+<span><span class="co"># nn_results &lt;- model$predict(test_x)</span></span>
+<span><span class="co"># caret::MAE(obs = test_y, pred = as.vector(nn_results))</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
@@ -915,130 +885,116 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
 <p>To put these results (from R) in context, we can compare it with a simple linear regression:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_tr <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(train_y, train_x)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>lm_mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(train_y <span class="sc">~</span> ., <span class="at">data =</span> df_tr)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>lm_preds <span class="ot">&lt;-</span> <span class="fu">as.vector</span>(<span class="fu">predict</span>(lm_mod, <span class="at">newdata=</span><span class="fu">data.frame</span>(test_x))) <span class="co"># `predict()` for lm doesn't accept matrices</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate mean absolute error with caret `MAE` installed in the `K-NN excercises`</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">MAE</span>(<span class="at">obs =</span> test_y, <span class="at">pred =</span> lm_preds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">train_y</span>, <span class="va">train_x</span><span class="op">)</span></span>
+<span><span class="va">lm_mod</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">train_y</span> <span class="op">~</span> <span class="va">.</span>, data <span class="op">=</span> <span class="va">df_tr</span><span class="op">)</span></span>
+<span><span class="va">lm_preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html">as.vector</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">lm_mod</span>, newdata<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">test_x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="co"># `predict()` for lm doesn't accept matrices</span></span>
+<span></span>
+<span><span class="co"># calculate mean absolute error with caret `MAE` installed in the `K-NN excercises`</span></span>
+<span><span class="fu">caret</span><span class="fu">::</span><span class="fu">MAE</span><span class="op">(</span>obs <span class="op">=</span> <span class="va">test_y</span>, pred <span class="op">=</span> <span class="va">lm_preds</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We see that the neural network does significantly better than a regression model. We can also compare it with the trees seen in the CART series.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>tree_model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(train_y <span class="sc">~</span> ., <span class="at">data=</span>df_tr)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>tree_preds <span class="ot">&lt;-</span> <span class="fu">predict</span>(tree_model,<span class="at">newdata =</span> <span class="fu">data.frame</span>(test_x))</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the performance on tree</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>caret<span class="sc">::</span><span class="fu">MAE</span>(<span class="at">obs =</span> test_y, <span class="at">pred =</span> tree_preds)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/bethatkinson/rpart">rpart</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">tree_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/rpart/man/rpart.html">rpart</a></span><span class="op">(</span><span class="va">train_y</span> <span class="op">~</span> <span class="va">.</span>, data<span class="op">=</span><span class="va">df_tr</span><span class="op">)</span></span>
+<span><span class="va">tree_preds</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">tree_model</span>,newdata <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">test_x</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># calculate the performance on tree</span></span>
+<span><span class="fu">caret</span><span class="fu">::</span><span class="fu">MAE</span><span class="op">(</span>obs <span class="op">=</span> <span class="va">test_y</span>, pred <span class="op">=</span> <span class="va">tree_preds</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The neural network also outperforms CART (if you run NN for 300 epochs). This is due to multiple reasons, including a higher complexity of the neural network (more parameters), using a validation set, and so on. You will learn about ensemble methods (bagging and boosting) in the upcoming lectures. Ensemble methods are the true champions for structured data and usually outperform neural networks for structured/low-dimensional data.</p>
-</section>
-</section>
-<section id="image-classification" class="level1">
-<h1>Image Classification</h1>
-<section id="cifar-10-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="cifar-10-dataset">CIFAR-10 Dataset</h2>
+</section></section><section id="image-classification" class="level1"><h1>Image Classification</h1>
+<section id="cifar-10-dataset" class="level2"><h2 class="anchored" data-anchor-id="cifar-10-dataset">CIFAR-10 Dataset</h2>
 <p>The <a href="https://www.cs.toronto.edu/~kriz/cifar.html">CIFAR-10 dataset</a> is a well-known dataset used for image classification tasks. It contains 50,000 training images and 10,000 testing images of size 32x32 pixels, each belonging to one of ten classes. We will use this dataset to demonstrate how to perform image classification.</p>
 <p>In this case, we had our inputs already prepared, but if it was not the case, you can always do:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the CIFAR-10 dataset (it'll take a while for it to download)</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>cifar10 <span class="ot">&lt;-</span> <span class="fu">dataset_cifar10</span>()</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Split the data into training and testing sets</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>train_images <span class="ot">&lt;-</span> cifar10<span class="sc">$</span>train<span class="sc">$</span>x</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>train_labels <span class="ot">&lt;-</span> cifar10<span class="sc">$</span>train<span class="sc">$</span>y</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>test_images <span class="ot">&lt;-</span> cifar10<span class="sc">$</span>test<span class="sc">$</span>x</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>test_labels <span class="ot">&lt;-</span> cifar10<span class="sc">$</span>test<span class="sc">$</span>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the CIFAR-10 dataset (it'll take a while for it to download)</span></span>
+<span><span class="va">cifar10</span> <span class="op">&lt;-</span> <span class="fu">dataset_cifar10</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Split the data into training and testing sets</span></span>
+<span><span class="va">train_images</span> <span class="op">&lt;-</span> <span class="va">cifar10</span><span class="op">$</span><span class="va">train</span><span class="op">$</span><span class="va">x</span></span>
+<span><span class="va">train_labels</span> <span class="op">&lt;-</span> <span class="va">cifar10</span><span class="op">$</span><span class="va">train</span><span class="op">$</span><span class="va">y</span></span>
+<span><span class="va">test_images</span> <span class="op">&lt;-</span> <span class="va">cifar10</span><span class="op">$</span><span class="va">test</span><span class="op">$</span><span class="va">x</span></span>
+<span><span class="va">test_labels</span> <span class="op">&lt;-</span> <span class="va">cifar10</span><span class="op">$</span><span class="va">test</span><span class="op">$</span><span class="va">y</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If you do an <code>str(train_images)</code>, you can see that the output is a four-dimensional array. In this array, the first element is the number of images in the training set, the second and third elements represent the (pixel values) for each image’s width and height, respectively, and the last element is the color channel of the image. If you had a black-and-white image (called greyscale), the number of channels would be just one. Typically, an image in color is represented with a combination of three colors known as RGB (red, green, and blue). Therefore, here we have three elements associated with the pixel number for each color, and their combination provides us with the colors you see in the image.</p>
-</section>
-<section id="data-preparation-1" class="level2">
-<h2 class="anchored" data-anchor-id="data-preparation-1">Data Preparation</h2>
+</section><section id="data-preparation-1" class="level2"><h2 class="anchored" data-anchor-id="data-preparation-1">Data Preparation</h2>
 <p>Before building our image classification model, we need to prepare the data by normalizing the values to obtain pixel values between 0-1. Similar to standardization of tabular data, this helps to avoid exploding/vanishing gradients and can improve the convergence of the model.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize the pixel values</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>train_images <span class="ot">&lt;-</span> train_images <span class="sc">/</span> <span class="dv">255</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>test_images <span class="ot">&lt;-</span> test_images <span class="sc">/</span> <span class="dv">255</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Normalize the pixel values</span></span>
+<span><span class="va">train_images</span> <span class="op">&lt;-</span> <span class="va">train_images</span> <span class="op">/</span> <span class="fl">255</span></span>
+<span><span class="va">test_images</span> <span class="op">&lt;-</span> <span class="va">test_images</span> <span class="op">/</span> <span class="fl">255</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can also plot some of the example images.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the first 9 images</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>label_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"airplane"</span>, <span class="st">"automobile"</span>, <span class="st">"bird"</span>, <span class="st">"cat"</span>, <span class="st">"deer"</span>, <span class="st">"dog"</span>, <span class="st">"frog"</span>, <span class="st">"horse"</span>, <span class="st">"ship"</span>, <span class="st">"truck"</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>) {</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  img <span class="ot">&lt;-</span> train_images[i,,,]</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># label &lt;- train_labels[i]</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  label <span class="ot">&lt;-</span> label_names[train_labels[i] <span class="sc">+</span> <span class="dv">1</span>]  <span class="co"># Add 1 to convert from 0-based to 1-based indexing</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  img <span class="ot">&lt;-</span> <span class="fu">array_reshape</span>(img, <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">32</span>, <span class="dv">3</span>))</span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(<span class="fu">as.raster</span>(img))</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">title</span>(<span class="fu">paste</span>(<span class="st">"Label:"</span>, label))</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Plot the first 9 images</span></span>
+<span><span class="va">label_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"airplane"</span>, <span class="st">"automobile"</span>, <span class="st">"bird"</span>, <span class="st">"cat"</span>, <span class="st">"deer"</span>, <span class="st">"dog"</span>, <span class="st">"frog"</span>, <span class="st">"horse"</span>, <span class="st">"ship"</span>, <span class="st">"truck"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">img</span> <span class="op">&lt;-</span> <span class="va">train_images</span><span class="op">[</span><span class="va">i</span>,,,<span class="op">]</span></span>
+<span>  <span class="co"># label &lt;- train_labels[i]</span></span>
+<span>  <span class="va">label</span> <span class="op">&lt;-</span> <span class="va">label_names</span><span class="op">[</span><span class="va">train_labels</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">+</span> <span class="fl">1</span><span class="op">]</span>  <span class="co"># Add 1 to convert from 0-based to 1-based indexing</span></span>
+<span>  <span class="va">img</span> <span class="op">&lt;-</span> <span class="fu">array_reshape</span><span class="op">(</span><span class="va">img</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">32</span>, <span class="fl">32</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/grDevices/as.raster.html">as.raster</a></span><span class="op">(</span><span class="va">img</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Label:"</span>, <span class="va">label</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can now one-hot encode our labels to be better adapted to the loss function we will be using (otherwise you can use “sparse” variation of the loss functions).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>train_labels <span class="ot">&lt;-</span> <span class="fu">to_categorical</span>(train_labels)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>test_labels <span class="ot">&lt;-</span> <span class="fu">to_categorical</span>(test_labels)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">train_labels</span> <span class="op">&lt;-</span> <span class="fu">to_categorical</span><span class="op">(</span><span class="va">train_labels</span><span class="op">)</span></span>
+<span><span class="va">test_labels</span> <span class="op">&lt;-</span> <span class="fu">to_categorical</span><span class="op">(</span><span class="va">test_labels</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="model-definition-1" class="level2">
-<h2 class="anchored" data-anchor-id="model-definition-1">Model definition</h2>
+</section><section id="model-definition-1" class="level2"><h2 class="anchored" data-anchor-id="model-definition-1">Model definition</h2>
 <p>We can build our image classification model using <code>keras</code> by defining the layers of the neural network. For this task we’ll be using Convolutional neural networks (CNNs). CNNs are a type of deep learning model that are commonly used for image and video processing. They consist of multiple layers, including convolutional layers, pooling layers, and fully connected layers. The convolutional layers use filters to extract features from the input image, and the pooling layers downsample the output of the convolutional layers. The fully connected layers combine the extracted features to produce the final output of the network. CNNs have been shown to be effective in a wide range of applications, including image classification, object detection, and semantic segmentation.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a seed again for reproducibility</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>tensorflow<span class="sc">::</span><span class="fu">set_random_seed</span>(<span class="dv">123</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the model</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>model_cnn <span class="ot">&lt;-</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">keras_model_sequential</span>()<span class="sc">%&gt;%</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">32</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">input_shape =</span> <span class="fu">c</span>(<span class="dv">32</span>, <span class="dv">32</span>, <span class="dv">3</span>),  <span class="at">activation =</span> <span class="st">"relu"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">64</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>), <span class="at">activation =</span> <span class="st">"relu"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_max_pooling_2d</span>(<span class="at">pool_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_conv_2d</span>(<span class="at">filters =</span> <span class="dv">64</span>, <span class="at">kernel_size =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="at">activation =</span> <span class="st">"relu"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_flatten</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">64</span>, <span class="at">activation =</span> <span class="st">"relu"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layer_dense</span>(<span class="at">units =</span> <span class="dv">10</span>, <span class="at">activation =</span> <span class="st">"softmax"</span>)</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Compile the model</span></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>model_cnn <span class="sc">%&gt;%</span> <span class="fu">compile</span>(</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">loss =</span> <span class="st">"categorical_crossentropy"</span>,</span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">optimizer =</span> <span class="fu">optimizer_adam</span>(),</span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">metrics =</span> <span class="fu">c</span>(<span class="st">"accuracy"</span>)</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Set a seed again for reproducibility</span></span>
+<span><span class="fu">tensorflow</span><span class="fu">::</span><span class="fu">set_random_seed</span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Define the model</span></span>
+<span><span class="va">model_cnn</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu">keras_model_sequential</span><span class="op">(</span><span class="op">)</span><span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_conv_2d</span><span class="op">(</span>filters <span class="op">=</span> <span class="fl">32</span>, kernel_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span>, input_shape <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">32</span>, <span class="fl">32</span>, <span class="fl">3</span><span class="op">)</span>,  activation <span class="op">=</span> <span class="st">"relu"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_max_pooling_2d</span><span class="op">(</span>pool_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_conv_2d</span><span class="op">(</span>filters <span class="op">=</span> <span class="fl">64</span>, kernel_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span>, activation <span class="op">=</span> <span class="st">"relu"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_max_pooling_2d</span><span class="op">(</span>pool_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_conv_2d</span><span class="op">(</span>filters <span class="op">=</span> <span class="fl">64</span>, kernel_size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">3</span><span class="op">)</span>, activation <span class="op">=</span> <span class="st">"relu"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_flatten</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_dense</span><span class="op">(</span>units <span class="op">=</span> <span class="fl">64</span>, activation <span class="op">=</span> <span class="st">"relu"</span><span class="op">)</span> <span class="op">%&gt;%</span></span>
+<span>  <span class="fu">layer_dense</span><span class="op">(</span>units <span class="op">=</span> <span class="fl">10</span>, activation <span class="op">=</span> <span class="st">"softmax"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Compile the model</span></span>
+<span><span class="va">model_cnn</span> <span class="op">%&gt;%</span> <span class="fu">compile</span><span class="op">(</span></span>
+<span>  loss <span class="op">=</span> <span class="st">"categorical_crossentropy"</span>,</span>
+<span>  optimizer <span class="op">=</span> <span class="fu">optimizer_adam</span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  metrics <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"accuracy"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Depending on youer computer, this may take some time to run.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>history <span class="ot">&lt;-</span> model_cnn <span class="sc">%&gt;%</span> <span class="fu">fit</span>(</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> train_images,</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> train_labels,</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">epochs =</span> <span class="dv">10</span>,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">batch_size =</span> <span class="dv">64</span>,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># validation_split = 0.2</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">validation_data=</span> <span class="fu">list</span>(test_images, test_labels)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">history</span> <span class="op">&lt;-</span> <span class="va">model_cnn</span> <span class="op">%&gt;%</span> <span class="fu">fit</span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="va">train_images</span>,</span>
+<span>  y <span class="op">=</span> <span class="va">train_labels</span>,</span>
+<span>  epochs <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  batch_size <span class="op">=</span> <span class="fl">64</span>,</span>
+<span>  <span class="co"># validation_split = 0.2</span></span>
+<span>  validation_data<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">test_images</span>, <span class="va">test_labels</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model_cnn <span class="sc">%&gt;%</span> <span class="fu">evaluate</span>(</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> test_images,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> test_labels</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">model_cnn</span> <span class="op">%&gt;%</span> <span class="fu">evaluate</span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="va">test_images</span>,</span>
+<span>  y <span class="op">=</span> <span class="va">test_labels</span></span>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>You may notice that we did not obtain extremely high accuracy, but this is okay for multiple reasons:</p>
 <ol type="1">
 <li>We only trained the model for a few epochs and stopped the training very early. You’re welcome to let it run for more epochs.</li>
 <li>We’re dealing with at least ten classes; this is a rather complicated problem.</li>
 <li>In DL, you can define many different architectures and hyperparameters, and since we did not play around with these values, this could also explain the lower performance.</li>
-</ol>
-</section>
-</section>
-<section id="your-turn-nns-applied-to-the-nursing-data" class="level1">
-<h1>Your turn: NNs applied to the nursing data</h1>
+</ol></section></section><section id="your-turn-nns-applied-to-the-nursing-data" class="level1"><h1>Your turn: NNs applied to the nursing data</h1>
 <p>Use NNs to fit nursing data, with the <strong>cost</strong> variable once again set as the prediction outcome. Compare the performance against the tree-based methods. Which type of machine learning model would you go for and why? (think in terms of interpretability and performance)</p>
-</section>
-<section id="references" class="level1">
-<h1>References</h1>
+</section><section id="references" class="level1"><h1>References</h1>
 <ul>
 <li><a href="https://tensorflow.rstudio.com/install/local_gpu">Setting up GPU <code>tensorflow</code> in R</a></li>
 <li><a href="https://developers.google.com/machine-learning/guides/text-classification/step-4">Google ML image showing the two types of activation functions for classifier neural networks</a></li>
@@ -1048,10 +1004,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 
 <!-- -->
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1514,9 +1467,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../labs/03_Models/032_Trees/Ex_ML_Tree.html" class="pagination-link" aria-label="Decision Trees">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Decision Trees</span>
       </a>          
@@ -1896,8 +1847,7 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2026, <a href="https://iliaazizi.com/">Ilia Azizi</a></p>
 </div>   
@@ -1909,8 +1859,6 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

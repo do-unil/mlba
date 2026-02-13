@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Data splitting – MLBA - S24</title>
 <style>
 code{white-space: pre-wrap;}
@@ -57,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,8 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark-9fc88ccb7d1699df7914753e2965a537.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -109,13 +104,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-
-
 <meta property="og:title" content="Data splitting – MLBA - S24">
 <meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
 <meta property="og:site_name" content="MLBA - S24 ">
 </head>
-
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -281,9 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -294,17 +284,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../index.html" class="sidebar-logo-link">
-      <img src="../../images/logo.light.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../images/logo.light.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
-      </a>
+      <img src="../../images/logo.light.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../../images/logo.light.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://moodle.unil.ch/course/view.php?id=36198" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
@@ -318,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
@@ -326,8 +310,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -352,7 +336,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -361,8 +345,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../lectures/01_Introduction/ML_Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to ML</span></a>
@@ -447,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -456,8 +440,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../labs/00_lab/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
@@ -524,7 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
@@ -533,8 +517,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../assessments/Exam.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exam</span></a>
@@ -548,8 +532,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../assessments/Project_Directives.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Directives</span></a>
@@ -562,9 +546,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
@@ -573,8 +557,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../resources/beginners_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Beginners in R</span></a>
@@ -599,43 +583,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link active" data-scroll-target="#data-preparation">Data preparation</a></li>
-  <li><a href="#fold-cross-validation" id="toc-fold-cross-validation" class="nav-link" data-scroll-target="#fold-cross-validation">10-fold Cross-validation</a>
+<li><a href="#data-preparation" id="toc-data-preparation" class="nav-link active" data-scroll-target="#data-preparation">Data preparation</a></li>
+  <li>
+<a href="#fold-cross-validation" id="toc-fold-cross-validation" class="nav-link" data-scroll-target="#fold-cross-validation">10-fold Cross-validation</a>
   <ul class="collapse">
-  <li><a href="#first-fold" id="toc-first-fold" class="nav-link" data-scroll-target="#first-fold">First fold</a></li>
+<li><a href="#first-fold" id="toc-first-fold" class="nav-link" data-scroll-target="#first-fold">First fold</a></li>
   <li><a href="#loop-on-the-10-folds" id="toc-loop-on-the-10-folds" class="nav-link" data-scroll-target="#loop-on-the-10-folds">Loop on the 10 folds</a></li>
   <li><a href="#automated-approach" id="toc-automated-approach" class="nav-link" data-scroll-target="#automated-approach">Automated approach</a></li>
-  </ul></li>
-  <li><a href="#bootstrap-with-100-replicates" id="toc-bootstrap-with-100-replicates" class="nav-link" data-scroll-target="#bootstrap-with-100-replicates">Bootstrap with 100 replicates</a>
+  </ul>
+</li>
+  <li>
+<a href="#bootstrap-with-100-replicates" id="toc-bootstrap-with-100-replicates" class="nav-link" data-scroll-target="#bootstrap-with-100-replicates">Bootstrap with 100 replicates</a>
   <ul class="collapse">
-  <li><a href="#first-sample" id="toc-first-sample" class="nav-link" data-scroll-target="#first-sample">First sample</a></li>
+<li><a href="#first-sample" id="toc-first-sample" class="nav-link" data-scroll-target="#first-sample">First sample</a></li>
   <li><a href="#loop-on-the-100-sample" id="toc-loop-on-the-100-sample" class="nav-link" data-scroll-target="#loop-on-the-100-sample">Loop on the 100 sample</a></li>
   <li><a href="#automated-approach-1" id="toc-automated-approach-1" class="nav-link" data-scroll-target="#automated-approach-1">Automated approach</a></li>
-  </ul></li>
-  <li><a href="#balancing-data" id="toc-balancing-data" class="nav-link" data-scroll-target="#balancing-data">Balancing data</a>
-  <ul class="collapse">
-  <li><a href="#sub-sampling" id="toc-sub-sampling" class="nav-link" data-scroll-target="#sub-sampling">Sub-sampling</a></li>
-  <li><a href="#resampling" id="toc-resampling" class="nav-link" data-scroll-target="#resampling">Resampling</a></li>
-  </ul></li>
-  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your turn</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/labs/05_DataSplitting/Ex_ML_Data_Splitting.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</li>
+  <li>
+<a href="#balancing-data" id="toc-balancing-data" class="nav-link" data-scroll-target="#balancing-data">Balancing data</a>
+  <ul class="collapse">
+<li><a href="#sub-sampling" id="toc-sub-sampling" class="nav-link" data-scroll-target="#sub-sampling">Sub-sampling</a></li>
+  <li><a href="#resampling" id="toc-resampling" class="nav-link" data-scroll-target="#resampling">Resampling</a></li>
+  </ul>
+</li>
+  <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your turn</a></li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/labs/05_DataSplitting/Ex_ML_Data_Splitting.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<script type="application/javascript">
+<main class="content" id="quarto-document-content"><script type="application/javascript">
 // Description: Change image src depending on body class (quarto-light or quarto-dark)
 function updateImageSrc() {
   var bodyClass = window.document.body.classList;
@@ -668,10 +653,7 @@ observer.observe(window.document.body, {
 });
 
 updateImageSrc();
-</script>
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/00_lab/setup.html">Labs</a></li><li class="breadcrumb-item"><a href="../../labs/05_DataSplitting/Ex_ML_Data_Splitting.html">Data Splitting</a></li></ol></nav>
-<div class="quarto-title">
+</script><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../labs/00_lab/setup.html">Labs</a></li><li class="breadcrumb-item"><a href="../../labs/05_DataSplitting/Ex_ML_Data_Splitting.html">Data Splitting</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Data splitting</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -686,61 +668,57 @@ updateImageSrc();
   
 
 
-</header>
-
-
-<section id="data-preparation" class="level1">
-<h1>Data preparation</h1>
+</header><section id="data-preparation" class="level1"><h1>Data preparation</h1>
 <p>In this series, we practice the data splitting strategies seen in class. The data are the doctor visits, already used in previous applications: cross-validation, bootstrap, and balancing.</p>
 <p>We’ll be using the <code>DocVis</code> dataset for this lab session.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>DocVis <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"labs/data/DocVis.csv"</span>))</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>DocVis<span class="sc">$</span>visits <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(DocVis<span class="sc">$</span>visits) <span class="do">## make sure that visits is a factor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">DocVis</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org/reference/here.html">here</a></span><span class="op">(</span><span class="st">"labs/data/DocVis.csv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">DocVis</span><span class="op">$</span><span class="va">visits</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">DocVis</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span> <span class="co">## make sure that visits is a factor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We need to set aside a test set. This will be used after to check that there was no overfitting during the training of the model and to ensure that the score we have obtained generalizes outside the training data.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">346</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>index_tr <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(<span class="at">y =</span> DocVis<span class="sc">$</span>visits, <span class="at">p=</span> <span class="fl">0.8</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df_tr <span class="ot">&lt;-</span> DocVis[index_tr,]</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df_te <span class="ot">&lt;-</span> DocVis[<span class="sc">-</span>index_tr,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">346</span><span class="op">)</span></span>
+<span><span class="va">index_tr</span> <span class="op">&lt;-</span> <span class="fu">createDataPartition</span><span class="op">(</span>y <span class="op">=</span> <span class="va">DocVis</span><span class="op">$</span><span class="va">visits</span>, p<span class="op">=</span> <span class="fl">0.8</span>, list <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">df_tr</span> <span class="op">&lt;-</span> <span class="va">DocVis</span><span class="op">[</span><span class="va">index_tr</span>,<span class="op">]</span></span>
+<span><span class="va">df_te</span> <span class="op">&lt;-</span> <span class="va">DocVis</span><span class="op">[</span><span class="op">-</span><span class="va">index_tr</span>,<span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note that the splitting techniques used are applied <code>on the training set</code> only.</p>
-</section>
-<section id="fold-cross-validation" class="level1">
-<h1>10-fold Cross-validation</h1>
+</section><section id="fold-cross-validation" class="level1"><h1>10-fold Cross-validation</h1>
 <p>In this part, we practice the cross-validation by first building it “by hand” then in an automatic way using <code>caret</code>. A 10-fold cross-validation is prepared.</p>
-<section id="first-fold" class="level2">
-<h2 class="anchored" data-anchor-id="first-fold">First fold</h2>
+<section id="first-fold" class="level2"><h2 class="anchored" data-anchor-id="first-fold">First fold</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>First, we create the folds by using the <code>createFolds</code> function of <code>caret</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>index_CV <span class="ot">&lt;-</span> <span class="fu">createFolds</span>(<span class="at">y =</span> df_tr<span class="sc">$</span>visits, <span class="at">k=</span><span class="dv">10</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>index_CV[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">index_CV</span> <span class="op">&lt;-</span> <span class="fu">createFolds</span><span class="op">(</span>y <span class="op">=</span> <span class="va">df_tr</span><span class="op">$</span><span class="va">visits</span>, k<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">index_CV</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>As seen before, the <code>index_CV</code> object is a list of row indices. The first element of the list <code>index_CV[[1]]</code> corresponds to the first fold. It is the vector of row indices of the validation set for the first fold (i.e., the validation is made of the rows of the training set that are in this vector). All the indices that are not in <code>index_CV[[1]]</code> will be in the training set (for this fold).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df_cv_tr <span class="ot">&lt;-</span> df_tr[<span class="sc">-</span>index_CV[[<span class="dv">1</span>]],]</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_cv_val <span class="ot">&lt;-</span> df_tr[index_CV[[<span class="dv">1</span>]],]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_cv_tr</span> <span class="op">&lt;-</span> <span class="va">df_tr</span><span class="op">[</span><span class="op">-</span><span class="va">index_CV</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,<span class="op">]</span></span>
+<span><span class="va">df_cv_val</span> <span class="op">&lt;-</span> <span class="va">df_tr</span><span class="op">[</span><span class="va">index_CV</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,<span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For this fold, <code>df_cv_tr</code> is the training set (it contains 9/10 of the original training set <code>df_tr</code>) and <code>df_cv_val</code> is the validation set (it contains 1/10 of the original training set <code>df_tr</code>). These two sets are disjoints.</p>
 <p>Now, we simply fit the model with the training set and compute its accuracy on the validation set. For this exercise, we use a logistic regression with AIC-based variable selection.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>Doc_cv <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits<span class="sc">~</span>., <span class="at">data=</span>df_cv_tr, <span class="at">family=</span><span class="st">"binomial"</span>) <span class="sc">%&gt;%</span> <span class="fu">step</span>()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Doc_cv_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_cv, <span class="at">newdata=</span>df_cv_val, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Doc_cv_pred <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_cv_prob<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_cv_pred), <span class="at">reference =</span> df_cv_val<span class="sc">$</span>visits)<span class="sc">$</span>overall[<span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Doc_cv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">visits</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">df_cv_tr</span>, family<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/step.html">step</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">Doc_cv_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_cv</span>, newdata<span class="op">=</span><span class="va">df_cv_val</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span><span class="va">Doc_cv_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_cv_prob</span><span class="op">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
+<span><span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_cv_pred</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_cv_val</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span><span class="op">$</span><span class="va">overall</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the course python environment as usual with a r code chunks.</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">"MLBA"</span>, <span class="at">required =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Load the course python environment as usual with a r code chunks.</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/reticulate/">reticulate</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html">use_condaenv</a></span><span class="op">(</span><span class="st">"MLBA"</span>, required <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We will one-hot encode the categorical variables using <code>pd.get_dummies()</code> and then divide the data into <code>X_train</code>, <code>y_train</code>, <code>X_test</code> and <code>y_test</code>.</p>
 <div class="cell">
@@ -791,33 +769,34 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section>
-<section id="loop-on-the-10-folds" class="level2">
-<h2 class="anchored" data-anchor-id="loop-on-the-10-folds">Loop on the 10 folds</h2>
+</section><section id="loop-on-the-10-folds" class="level2"><h2 class="anchored" data-anchor-id="loop-on-the-10-folds">Loop on the 10 folds</h2>
 <p>Now we repeat the previous steps for all the folds.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>In order to track the 10 accuracy measures obtained, we store them into a vector (<code>acc_vec</code>). Note also that the option <code>trace=0</code> was set in the function <code>step</code> to avoid all the print outs of the AIC selections.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>acc_vec <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">10</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>){</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  df_cv_tr <span class="ot">&lt;-</span> df_tr[<span class="sc">-</span>index_CV[[i]],]</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  df_cv_val <span class="ot">&lt;-</span> df_tr[index_CV[[i]],]</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  Doc_cv <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits<span class="sc">~</span>., <span class="at">data=</span>df_cv_tr, <span class="at">family=</span><span class="st">"binomial"</span>) <span class="sc">%&gt;%</span> <span class="fu">step</span>(<span class="at">trace=</span><span class="dv">0</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  Doc_cv_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_cv, <span class="at">newdata=</span>df_cv_val, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  Doc_cv_pred <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_cv_prob<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  acc_vec[i] <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_cv_pred), <span class="at">reference =</span> df_cv_val<span class="sc">$</span>visits)<span class="sc">$</span>overall[<span class="dv">1</span>]</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>acc_vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">acc_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">df_cv_tr</span> <span class="op">&lt;-</span> <span class="va">df_tr</span><span class="op">[</span><span class="op">-</span><span class="va">index_CV</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>,<span class="op">]</span></span>
+<span>  <span class="va">df_cv_val</span> <span class="op">&lt;-</span> <span class="va">df_tr</span><span class="op">[</span><span class="va">index_CV</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>,<span class="op">]</span></span>
+<span>  </span>
+<span>  <span class="va">Doc_cv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">visits</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">df_cv_tr</span>, family<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/step.html">step</a></span><span class="op">(</span>trace<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="va">Doc_cv_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_cv</span>, newdata<span class="op">=</span><span class="va">df_cv_val</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span>  <span class="va">Doc_cv_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_cv_prob</span><span class="op">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
+<span>  <span class="va">acc_vec</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_cv_pred</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_cv_val</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span><span class="op">$</span><span class="va">overall</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="op">}</span></span>
+<span><span class="va">acc_vec</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>By definition of the CV, all the 10 validations sets in this loop are disjoints. Thus, these 10 accuracy measures are in a way representative of what can be expected on the test set, except if we are very unlucky when we created the test set.</p>
 <p>Now we can estimate the expected accuracy (i.e., the mean) and its variation (below we use the standard deviation).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(acc_vec)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(acc_vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">acc_vec</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">acc_vec</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The small SD shows that the results are reliable and that we have good chance that the model, trained on the whole training set, will have this accuracy on the test set.</p>
 </div>
@@ -853,29 +832,30 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section>
-<section id="automated-approach" class="level2">
-<h2 class="anchored" data-anchor-id="automated-approach">Automated approach</h2>
+</section><section id="automated-approach" class="level2"><h2 class="anchored" data-anchor-id="automated-approach">Automated approach</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">R - <code>caret</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Python - <code>sklearn</code></a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">R - <code>caret</code></a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Python - <code>sklearn</code></a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>The 10-CV can be easily obtained from <code>caret</code>. First, set up the splitting data method using the <code>trainControl</code> function.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>trctrl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number=</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">trctrl</span> <span class="op">&lt;-</span> <span class="fu">trainControl</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"cv"</span>, number<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Then pass this method to the <code>train</code> function (from <code>caret</code>). In addition, we use the model (below unhappily called “method” also) <code>glmStepAIC</code> which, combined with the <code>binomial</code> family, applies a logistic regression and a AIC-based variable selection (backward; exactly like the <code>step</code> function used above). Of course, we also provide the model formula.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">346</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>Doc_cv <span class="ot">&lt;-</span> <span class="fu">train</span>(visits <span class="sc">~</span>., <span class="at">data =</span> df_tr, <span class="at">method =</span> <span class="st">"glmStepAIC"</span>, <span class="at">family=</span><span class="st">"binomial"</span>,</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trControl=</span>trctrl, <span class="at">trace=</span><span class="dv">0</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>Doc_cv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">346</span><span class="op">)</span></span>
+<span><span class="va">Doc_cv</span> <span class="op">&lt;-</span> <span class="fu">train</span><span class="op">(</span><span class="va">visits</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">df_tr</span>, method <span class="op">=</span> <span class="st">"glmStepAIC"</span>, family<span class="op">=</span><span class="st">"binomial"</span>,</span>
+<span>                    trControl<span class="op">=</span><span class="va">trctrl</span>, trace<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">Doc_cv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Note that the function “only” provides the expected accuracy and the expected kappa. It does not provides their standard deviations.</p>
 <p>The final model (i.e., the model trained on the whole training set <code>df_tr</code>) is stored in <code>Doc_cv$finalModel</code>. It can be used to compute the accuracy on the test set.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Doc_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_cv, <span class="at">newdata =</span> df_te)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>Doc_pred, <span class="at">reference =</span> df_te<span class="sc">$</span>visits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Doc_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_cv</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span></span>
+<span><span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="va">Doc_pred</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
@@ -901,47 +881,46 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="bootstrap-with-100-replicates" class="level1">
-<h1>Bootstrap with 100 replicates</h1>
+</section></section><section id="bootstrap-with-100-replicates" class="level1"><h1>Bootstrap with 100 replicates</h1>
 <p>We now apply the bootstrap with 100 replicates. Like for CV, we first make it by hand and then we use some kind of automated approach like <code>caret</code>.</p>
-<section id="first-sample" class="level2">
-<h2 class="anchored" data-anchor-id="first-sample">First sample</h2>
+<section id="first-sample" class="level2"><h2 class="anchored" data-anchor-id="first-sample">First sample</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p>We need to first create the replicates using the <code>caret</code> function <code>createResample</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">897</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>index_boot <span class="ot">&lt;-</span> <span class="fu">createResample</span>(<span class="at">y=</span>df_tr<span class="sc">$</span>visits, <span class="at">times=</span><span class="dv">100</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>index_boot[[<span class="dv">1</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">897</span><span class="op">)</span></span>
+<span><span class="va">index_boot</span> <span class="op">&lt;-</span> <span class="fu">createResample</span><span class="op">(</span>y<span class="op">=</span><span class="va">df_tr</span><span class="op">$</span><span class="va">visits</span>, times<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="va">index_boot</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Again, it creates a list of indices. The first element of the list, <code>index_boot[[1]]</code>, contains the row indices that will be in the training set. Note that, it is of length 4,153. In other words, the training set during this first replicate is of the same dimension as the whole training set <code>df_tr</code>. Note also that, in <code>index_boot[[1]]</code>, there are indices that are replicated. This is the bootstrap sampling process. Some rows will be replicated in the training set. This also means that some rows of <code>df_tr</code> will not be in <code>index_boot[[1]]</code>. These rows are said to be <code>out-of-bag</code> and form the validation set. See below the dimensions of the data frames.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_boot_tr <span class="ot">&lt;-</span> df_tr[index_boot[[<span class="dv">1</span>]],]</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_boot_tr)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>df_boot_val <span class="ot">&lt;-</span> df_tr[<span class="sc">-</span>index_boot[[<span class="dv">1</span>]],]</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df_boot_val)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df_boot_tr</span> <span class="op">&lt;-</span> <span class="va">df_tr</span><span class="op">[</span><span class="va">index_boot</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">df_boot_tr</span><span class="op">)</span></span>
+<span><span class="va">df_boot_val</span> <span class="op">&lt;-</span> <span class="va">df_tr</span><span class="op">[</span><span class="op">-</span><span class="va">index_boot</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,<span class="op">]</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">df_boot_val</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We now fit the data to this first sample training set.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>Doc_boot <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits<span class="sc">~</span>., <span class="at">data=</span>df_boot_tr, <span class="at">family=</span><span class="st">"binomial"</span>) <span class="sc">%&gt;%</span> <span class="fu">step</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Doc_boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">visits</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">df_boot_tr</span>, family<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/step.html">step</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The accuracy is then computed with the 632-rule: first, the apparent accuracy is computed (accuracy on the sample training set), then the out-of-bag accuracy (the accuracy on the validation set), then the final accuracy estimate is the 0.368/0.632-combination of the two.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>Doc_boot_prob_val <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_boot, <span class="at">newdata=</span>df_boot_val, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>Doc_boot_pred_val <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_boot_prob_val<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>oob_acc <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_boot_pred_val), <span class="at">reference =</span> df_boot_val<span class="sc">$</span>visits)<span class="sc">$</span>overall[<span class="dv">1</span>]</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>Doc_boot_prob_tr <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_boot, <span class="at">newdata=</span>df_boot_tr, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>Doc_boot_pred_tr <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_boot_prob_tr<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>app_acc <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_boot_pred_tr), <span class="at">reference =</span> df_boot_tr<span class="sc">$</span>visits)<span class="sc">$</span>overall[<span class="dv">1</span>]</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>oob_acc <span class="do">## out-of-bag accuracy</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>app_acc <span class="do">## apparent accuracy</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fl">0.368</span><span class="sc">*</span>app_acc <span class="sc">+</span> <span class="fl">0.632</span><span class="sc">*</span>oob_acc <span class="do">## accuracy estimate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Doc_boot_prob_val</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_boot</span>, newdata<span class="op">=</span><span class="va">df_boot_val</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span><span class="va">Doc_boot_pred_val</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_boot_prob_val</span><span class="op">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
+<span><span class="va">oob_acc</span> <span class="op">&lt;-</span> <span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_boot_pred_val</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_boot_val</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span><span class="op">$</span><span class="va">overall</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">Doc_boot_prob_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_boot</span>, newdata<span class="op">=</span><span class="va">df_boot_tr</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span><span class="va">Doc_boot_pred_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_boot_prob_tr</span><span class="op">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
+<span><span class="va">app_acc</span> <span class="op">&lt;-</span> <span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_boot_pred_tr</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_boot_tr</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span><span class="op">$</span><span class="va">overall</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span></span>
+<span><span class="va">oob_acc</span> <span class="co">## out-of-bag accuracy</span></span>
+<span><span class="va">app_acc</span> <span class="co">## apparent accuracy</span></span>
+<span><span class="fl">0.368</span><span class="op">*</span><span class="va">app_acc</span> <span class="op">+</span> <span class="fl">0.632</span><span class="op">*</span><span class="va">oob_acc</span> <span class="co">## accuracy estimate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
@@ -963,40 +942,41 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section>
-<section id="loop-on-the-100-sample" class="level2">
-<h2 class="anchored" data-anchor-id="loop-on-the-100-sample">Loop on the 100 sample</h2>
+</section><section id="loop-on-the-100-sample" class="level2"><h2 class="anchored" data-anchor-id="loop-on-the-100-sample">Loop on the 100 sample</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p>The previous code is looped. The accuracy measures are stored in vectors. The code can be quite long to run.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>oob_acc_vec <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">100</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>app_acc_vec <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">100</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>acc_vec <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="dv">100</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  df_boot_tr <span class="ot">&lt;-</span> df_tr[index_boot[[i]],]</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  df_boot_val <span class="ot">&lt;-</span> df_tr[<span class="sc">-</span>index_boot[[i]],]</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  Doc_boot <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits<span class="sc">~</span>., <span class="at">data=</span>df_boot_tr, <span class="at">family=</span><span class="st">"binomial"</span>) <span class="sc">%&gt;%</span> <span class="fu">step</span>(<span class="at">trace=</span><span class="dv">0</span>)</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  Doc_boot_prob_val <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_boot, <span class="at">newdata=</span>df_boot_val, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  Doc_boot_pred_val <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_boot_prob_val<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  oob_acc_vec[i] <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_boot_pred_val), <span class="at">reference =</span> df_boot_val<span class="sc">$</span>visits)<span class="sc">$</span>overall[<span class="dv">1</span>]</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  Doc_boot_prob_tr <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_boot, <span class="at">newdata=</span>df_boot_tr, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  Doc_boot_pred_tr <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_boot_prob_tr<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  app_acc_vec[i] <span class="ot">&lt;-</span> <span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_boot_pred_tr), <span class="at">reference =</span> df_boot_tr<span class="sc">$</span>visits)<span class="sc">$</span>overall[<span class="dv">1</span>]</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  acc_vec[i] <span class="ot">&lt;-</span> <span class="fl">0.368</span><span class="sc">*</span>app_acc_vec[i] <span class="sc">+</span> <span class="fl">0.632</span><span class="sc">*</span>oob_acc_vec[i]</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>acc_vec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">oob_acc_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="va">app_acc_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="va">acc_vec</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">numeric</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">df_boot_tr</span> <span class="op">&lt;-</span> <span class="va">df_tr</span><span class="op">[</span><span class="va">index_boot</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>,<span class="op">]</span></span>
+<span>  <span class="va">df_boot_val</span> <span class="op">&lt;-</span> <span class="va">df_tr</span><span class="op">[</span><span class="op">-</span><span class="va">index_boot</span><span class="op">[[</span><span class="va">i</span><span class="op">]</span><span class="op">]</span>,<span class="op">]</span></span>
+<span>  </span>
+<span>  <span class="va">Doc_boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">visits</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">df_boot_tr</span>, family<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/step.html">step</a></span><span class="op">(</span>trace<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span>  <span class="va">Doc_boot_prob_val</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_boot</span>, newdata<span class="op">=</span><span class="va">df_boot_val</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span>  <span class="va">Doc_boot_pred_val</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_boot_prob_val</span><span class="op">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
+<span>  <span class="va">oob_acc_vec</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_boot_pred_val</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_boot_val</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span><span class="op">$</span><span class="va">overall</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>  </span>
+<span>  <span class="va">Doc_boot_prob_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_boot</span>, newdata<span class="op">=</span><span class="va">df_boot_tr</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span>  <span class="va">Doc_boot_pred_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_boot_prob_tr</span><span class="op">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
+<span>  <span class="va">app_acc_vec</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_boot_pred_tr</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_boot_tr</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span><span class="op">$</span><span class="va">overall</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>  </span>
+<span>  <span class="va">acc_vec</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fl">0.368</span><span class="op">*</span><span class="va">app_acc_vec</span><span class="op">[</span><span class="va">i</span><span class="op">]</span> <span class="op">+</span> <span class="fl">0.632</span><span class="op">*</span><span class="va">oob_acc_vec</span><span class="op">[</span><span class="va">i</span><span class="op">]</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">acc_vec</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Like for the CV, we can estimate the expected accuracy and its dispersion.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(acc_vec)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(acc_vec)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">acc_vec</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">acc_vec</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
@@ -1083,7 +1063,8 @@ Note
 <li>Compute the out-of-bag accuracy by predicting on the validation set and comparing the predicted labels to the true labels.</li>
 <li>Compute the apparent accuracy by predicting on the bootstrap training set and comparing the predicted labels to the true labels.</li>
 <li>Calculate the final accuracy estimate for the current bootstrap sample using the 0.368/0.632 rule.</li>
-</ol></li>
+</ol>
+</li>
 <li>Once the loop is complete, the <code>acc_vec</code> array will contain the final accuracy estimates for all 100 bootstrap samples. We can then calculate the mean and standard deviation of these accuracy estimates to get an overall understanding of the model’s performance.</li>
 </ol>
 <div class="cell">
@@ -1127,20 +1108,21 @@ Note
 </div>
 </div>
 </div>
-</section>
-<section id="automated-approach-1" class="level2">
-<h2 class="anchored" data-anchor-id="automated-approach-1">Automated approach</h2>
+</section><section id="automated-approach-1" class="level2"><h2 class="anchored" data-anchor-id="automated-approach-1">Automated approach</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">R - <code>caret</code></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Python - <code>sklearn</code> &amp; <code>mlxtend</code></a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-6-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-1" role="tab" aria-controls="tabset-6-1" aria-selected="true" href="">R - <code>caret</code></a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-6-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-6-2" role="tab" aria-controls="tabset-6-2" aria-selected="false" href="">Python - <code>sklearn</code> &amp; <code>mlxtend</code></a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-6-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-6-1-tab">
 <p>We only need to change the method in the <code>trainControl</code> function. The corresponding method is “boot632”.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">346</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>trctrl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"boot632"</span>, <span class="at">number=</span><span class="dv">100</span>)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>Doc_boot <span class="ot">&lt;-</span> <span class="fu">train</span>(visits <span class="sc">~</span>., <span class="at">data =</span> df_tr, <span class="at">method =</span> <span class="st">"glmStepAIC"</span>, <span class="at">family=</span><span class="st">"binomial"</span>,</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">trControl=</span>trctrl, <span class="at">trace =</span> <span class="dv">0</span>)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>Doc_boot</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">346</span><span class="op">)</span></span>
+<span><span class="va">trctrl</span> <span class="op">&lt;-</span> <span class="fu">trainControl</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"boot632"</span>, number<span class="op">=</span><span class="fl">100</span><span class="op">)</span></span>
+<span><span class="va">Doc_boot</span> <span class="op">&lt;-</span> <span class="fu">train</span><span class="op">(</span><span class="va">visits</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">df_tr</span>, method <span class="op">=</span> <span class="st">"glmStepAIC"</span>, family<span class="op">=</span><span class="st">"binomial"</span>,</span>
+<span>                   trControl<span class="op">=</span><span class="va">trctrl</span>, trace <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">Doc_boot</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-6-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-6-2-tab">
@@ -1165,25 +1147,25 @@ Note
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="balancing-data" class="level1">
-<h1>Balancing data</h1>
+</section></section><section id="balancing-data" class="level1"><h1>Balancing data</h1>
 <p>In this part, we apply the balancing data technique in order to improve the prediction of “yes” with the doctor visit data. The table below reveals the unbalance problem.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-7-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-1" role="tab" aria-controls="tabset-7-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-7-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-7-2" role="tab" aria-controls="tabset-7-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-7-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-7-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Statistics on the training set</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_tr<span class="sc">$</span>visits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">## Statistics on the training set</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">df_tr</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Since there are many more “No” than “Yes”, any model favors the prediction of the “No”. It results a good accuracy but the specificity (or the sensitivity depending on the choice of the positive class) is low, as well as the balanced accuracy.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Doc_lr <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits<span class="sc">~</span>., <span class="at">data=</span>df_tr, <span class="at">family=</span><span class="st">"binomial"</span>) <span class="sc">%&gt;%</span> <span class="fu">step</span>(<span class="at">trace=</span><span class="dv">0</span>)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>Doc_lr_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_lr, <span class="at">newdata=</span>df_te, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>Doc_lr_pred <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_lr_prob<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_lr_pred), <span class="at">reference =</span> df_te<span class="sc">$</span>visits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Doc_lr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">visits</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">df_tr</span>, family<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/step.html">step</a></span><span class="op">(</span>trace<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">Doc_lr_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_lr</span>, newdata<span class="op">=</span><span class="va">df_te</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span><span class="va">Doc_lr_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_lr_prob</span><span class="op">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
+<span><span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_lr_pred</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-7-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-7-2-tab">
@@ -1217,30 +1199,32 @@ Note
 </div>
 </div>
 </div>
-<section id="sub-sampling" class="level2">
-<h2 class="anchored" data-anchor-id="sub-sampling">Sub-sampling</h2>
+<section id="sub-sampling" class="level2"><h2 class="anchored" data-anchor-id="sub-sampling">Sub-sampling</h2>
 <p>Balancing using sub-sampling consists of taking all the cases in the smallest class (i.e., <code>Yes</code>) and extract at random the same amount of cases in the largest category (i.e., <code>No</code>).</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-8-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-1" role="tab" aria-controls="tabset-8-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-8-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-8-2" role="tab" aria-controls="tabset-8-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-8-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-8-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>n_yes <span class="ot">&lt;-</span> <span class="fu">min</span>(<span class="fu">table</span>(df_tr<span class="sc">$</span>visits)) <span class="do">## 840</span></span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>df_tr_no <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_tr, visits<span class="sc">==</span><span class="st">"No"</span>) <span class="do">## the "No" cases</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>df_tr_yes <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_tr, visits<span class="sc">==</span><span class="st">"Yes"</span>) <span class="do">## The "Yes" cases</span></span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>index_no <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">size=</span>n_yes, <span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df_tr_no), <span class="at">replace=</span><span class="cn">FALSE</span>) <span class="do">## sub-sample 840 instances from the "No"</span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>df_tr_subs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">rbind</span>(df_tr_yes, df_tr_no[index_no,])) <span class="do">## Bind all the "Yes" and the sub-sampled "No"</span></span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_tr_subs<span class="sc">$</span>visits) <span class="do">## The cases are balanced</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_yes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">df_tr</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span><span class="op">)</span> <span class="co">## 840</span></span>
+<span></span>
+<span><span class="va">df_tr_no</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">df_tr</span>, <span class="va">visits</span><span class="op">==</span><span class="st">"No"</span><span class="op">)</span> <span class="co">## the "No" cases</span></span>
+<span><span class="va">df_tr_yes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">df_tr</span>, <span class="va">visits</span><span class="op">==</span><span class="st">"Yes"</span><span class="op">)</span> <span class="co">## The "Yes" cases</span></span>
+<span></span>
+<span><span class="va">index_no</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>size<span class="op">=</span><span class="va">n_yes</span>, x<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df_tr_no</span><span class="op">)</span>, replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co">## sub-sample 840 instances from the "No"</span></span>
+<span></span>
+<span><span class="va">df_tr_subs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">df_tr_yes</span>, <span class="va">df_tr_no</span><span class="op">[</span><span class="va">index_no</span>,<span class="op">]</span><span class="op">)</span><span class="op">)</span> <span class="co">## Bind all the "Yes" and the sub-sampled "No"</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">df_tr_subs</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span> <span class="co">## The cases are balanced</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now let us see the result on the accuracy measures.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Doc_lr_subs <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits<span class="sc">~</span>., <span class="at">data=</span>df_tr_subs, <span class="at">family=</span><span class="st">"binomial"</span>) <span class="sc">%&gt;%</span> <span class="fu">step</span>(<span class="at">trace=</span><span class="dv">0</span>)</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>Doc_lr_subs_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_lr_subs, <span class="at">newdata=</span>df_te, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>Doc_lr_subs_pred <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_lr_subs_prob<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_lr_subs_pred), <span class="at">reference =</span> df_te<span class="sc">$</span>visits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Doc_lr_subs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">visits</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">df_tr_subs</span>, family<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/step.html">step</a></span><span class="op">(</span>trace<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">Doc_lr_subs_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_lr_subs</span>, newdata<span class="op">=</span><span class="va">df_te</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span><span class="va">Doc_lr_subs_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_lr_subs_prob</span><span class="op">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
+<span><span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_lr_subs_pred</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-8-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-8-2-tab">
@@ -1283,30 +1267,31 @@ Note
 </div>
 </div>
 <p>As expected, the accuracy has decreased but the balanced accuracy has increased. Depending on the aim of the prediction, this model may be much better to use than the one trained on the unbalanced data.</p>
-</section>
-<section id="resampling" class="level2">
-<h2 class="anchored" data-anchor-id="resampling">Resampling</h2>
+</section><section id="resampling" class="level2"><h2 class="anchored" data-anchor-id="resampling">Resampling</h2>
 <p>Balancing by resampling follows the same aim. The difference with sub-sampling is that the resampling increases the number of cases in the smallest class by resampling at random from them. The codes below are explicit:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-9-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-1" role="tab" aria-controls="tabset-9-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-9-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-9-2" role="tab" aria-controls="tabset-9-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-9-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-9-1-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>n_no <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fu">table</span>(df_tr<span class="sc">$</span>visits)) <span class="do">## 3313</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>df_tr_no <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_tr, visits<span class="sc">==</span><span class="st">"No"</span>)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>df_tr_yes <span class="ot">&lt;-</span> <span class="fu">filter</span>(df_tr, visits<span class="sc">==</span><span class="st">"Yes"</span>)</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>index_yes <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">size=</span>n_no, <span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(df_tr_yes), <span class="at">replace=</span><span class="cn">TRUE</span>)</span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>df_tr_res <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">rbind</span>(df_tr_no, df_tr_yes[index_yes,]))</span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df_tr_res<span class="sc">$</span>visits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">n_no</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">df_tr</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span><span class="op">)</span> <span class="co">## 3313</span></span>
+<span></span>
+<span><span class="va">df_tr_no</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">df_tr</span>, <span class="va">visits</span><span class="op">==</span><span class="st">"No"</span><span class="op">)</span></span>
+<span><span class="va">df_tr_yes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">df_tr</span>, <span class="va">visits</span><span class="op">==</span><span class="st">"Yes"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">index_yes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>size<span class="op">=</span><span class="va">n_no</span>, x<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">df_tr_yes</span><span class="op">)</span>, replace<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">df_tr_res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span><span class="op">(</span><span class="va">df_tr_no</span>, <span class="va">df_tr_yes</span><span class="op">[</span><span class="va">index_yes</span>,<span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">df_tr_res</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, we have a balanced data set where each class has the same amount as the largest class (i.e., “No”) in the original training set. The effect on the model fit is very similar to the subsampling:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>Doc_lr_res <span class="ot">&lt;-</span> <span class="fu">glm</span>(visits<span class="sc">~</span>., <span class="at">data=</span>df_tr_res, <span class="at">family=</span><span class="st">"binomial"</span>) <span class="sc">%&gt;%</span> <span class="fu">step</span>(<span class="at">trace=</span><span class="dv">0</span>)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>Doc_lr_res_prob <span class="ot">&lt;-</span> <span class="fu">predict</span>(Doc_lr_res, <span class="at">newdata=</span>df_te, <span class="at">type=</span><span class="st">"response"</span>)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>Doc_lr_res_pred <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(Doc_lr_res_prob<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span>)</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span><span class="fu">as.factor</span>(Doc_lr_res_pred), <span class="at">reference =</span> df_te<span class="sc">$</span>visits)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">Doc_lr_res</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">visits</span><span class="op">~</span><span class="va">.</span>, data<span class="op">=</span><span class="va">df_tr_res</span>, family<span class="op">=</span><span class="st">"binomial"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/stats/step.html">step</a></span><span class="op">(</span>trace<span class="op">=</span><span class="fl">0</span><span class="op">)</span></span>
+<span><span class="va">Doc_lr_res_prob</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">Doc_lr_res</span>, newdata<span class="op">=</span><span class="va">df_te</span>, type<span class="op">=</span><span class="st">"response"</span><span class="op">)</span></span>
+<span><span class="va">Doc_lr_res_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Doc_lr_res_prob</span><span class="op">&gt;</span><span class="fl">0.5</span>,<span class="st">"Yes"</span>,<span class="st">"No"</span><span class="op">)</span></span>
+<span><span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">Doc_lr_res_pred</span><span class="op">)</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">visits</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
 <div id="tabset-9-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-9-2-tab">
@@ -1348,20 +1333,14 @@ Note
 </div>
 </div>
 <p>Whether one should prefer sub-sampling or resampling depends on the amount and the richness of the data.</p>
-</section>
-</section>
-<section id="your-turn" class="level1">
-<h1>Your turn</h1>
+</section></section><section id="your-turn" class="level1"><h1>Your turn</h1>
 <p>Repeat the analysis on the German credit data. Balance the data using either method. Then, using <code>caret</code> (R) or <code>sklearn</code> (python) and either CV or Bootstrap, put several models in competition. Select the best one according to your choice of score. Finally, use the test set to see if the best model does not overfit the training set.</p>
 <p>Doing this will have achieved a complete supervised learning task from A to Z.</p>
 
 
 <!-- -->
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1824,9 +1803,7 @@ Note
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../labs/04_Metrics/Ex_ML_Scoring.html" class="pagination-link" aria-label="Metrics">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Metrics</span>
       </a>          
@@ -2571,8 +2548,7 @@ Note
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2026, <a href="https://iliaazizi.com/">Ilia Azizi</a></p>
 </div>   
@@ -2584,8 +2560,6 @@ Note
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

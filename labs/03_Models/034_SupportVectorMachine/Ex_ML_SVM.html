@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
 <title>Models: Support Vector Machine – MLBA - S24</title>
 <style>
 code{white-space: pre-wrap;}
@@ -57,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -81,8 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/bootstrap/bootstrap-dark-9fc88ccb7d1699df7914753e2965a537.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../../site_libs/bootstrap/bootstrap-e7d98c3c06872cc71abfe53bf8dbfef8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -108,12 +103,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
+}</script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script><script type="text/javascript">
 const typesetMath = (el) => {
   if (window.MathJax) {
     // MathJax Typeset
@@ -139,12 +129,10 @@ window.Quarto = {
   typesetMath
 };
 </script>
-
 <meta property="og:title" content="Models: Support Vector Machine – MLBA - S24">
 <meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
 <meta property="og:site_name" content="MLBA - S24 ">
 </head>
-
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
@@ -310,9 +298,7 @@ window.Quarto = {
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -323,17 +309,11 @@ window.Quarto = {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
-    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../images/logo.light.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="../../../images/logo.light.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
-      </a>
+      <img src="../../../images/logo.light.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none"><img src="../../../images/logo.light.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none"></a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://moodle.unil.ch/course/view.php?id=36198" title="Moodle" class="quarto-navigation-tool px-1" aria-label="Moodle"><i class="bi bi-person-rolodex"></i></a>
     <a href="https://github.com/do-unil/mlba" title="GitHub Repo" class="quarto-navigation-tool px-1" aria-label="GitHub Repo"><i class="bi bi-github"></i></a>
@@ -347,7 +327,7 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
+<li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Course information</span></a>
@@ -355,8 +335,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
@@ -381,7 +361,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
@@ -390,8 +370,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../lectures/01_Introduction/ML_Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Intro to ML</span></a>
@@ -476,7 +456,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
@@ -485,8 +465,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../labs/00_lab/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
@@ -553,7 +533,7 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
@@ -562,8 +542,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../assessments/Exam.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exam</span></a>
@@ -577,8 +557,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../assessments/Project_Directives.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Project Directives</span></a>
@@ -591,9 +571,9 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
@@ -602,8 +582,8 @@ window.Quarto = {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../resources/beginners_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Beginners in R</span></a>
@@ -628,33 +608,30 @@ window.Quarto = {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#support-vector-machine-svm" id="toc-support-vector-machine-svm" class="nav-link active" data-scroll-target="#support-vector-machine-svm">Support Vector Machine (SVM)</a>
+<li>
+<a href="#support-vector-machine-svm" id="toc-support-vector-machine-svm" class="nav-link active" data-scroll-target="#support-vector-machine-svm">Support Vector Machine (SVM)</a>
   <ul class="collapse">
-  <li><a href="#prepare-the-data" id="toc-prepare-the-data" class="nav-link" data-scroll-target="#prepare-the-data">Prepare the data</a></li>
+<li><a href="#prepare-the-data" id="toc-prepare-the-data" class="nav-link" data-scroll-target="#prepare-the-data">Prepare the data</a></li>
   <li><a href="#linear_svm" id="toc-linear_svm" class="nav-link" data-scroll-target="#linear_svm">Linear SVM</a></li>
   <li><a href="#radial-basis-svm" id="toc-radial-basis-svm" class="nav-link" data-scroll-target="#radial-basis-svm">Radial basis SVM</a></li>
   <li><a href="#tuning-the-hyperparameter" id="toc-tuning-the-hyperparameter" class="nav-link" data-scroll-target="#tuning-the-hyperparameter">Tuning the hyperparameter</a></li>
   <li><a href="#best-model" id="toc-best-model" class="nav-link" data-scroll-target="#best-model">Best model</a></li>
   <li><a href="#your-turn" id="toc-your-turn" class="nav-link" data-scroll-target="#your-turn">Your turn</a></li>
-  </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/do-unil/mlba/blob/main/labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/do-unil/mlba/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<script type="application/javascript">
+<main class="content" id="quarto-document-content"><script type="application/javascript">
 // Description: Change image src depending on body class (quarto-light or quarto-dark)
 function updateImageSrc() {
   var bodyClass = window.document.body.classList;
@@ -687,10 +664,7 @@ observer.observe(window.document.body, {
 });
 
 updateImageSrc();
-</script>
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../labs/00_lab/setup.html">Labs</a></li><li class="breadcrumb-item"><a href="../../../labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.html">Support Vector Machines</a></li></ol></nav>
-<div class="quarto-title">
+</script><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../labs/00_lab/setup.html">Labs</a></li><li class="breadcrumb-item"><a href="../../../labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.html">Support Vector Machines</a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">Models: Support Vector Machine</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -705,59 +679,55 @@ updateImageSrc();
   
 
 
-</header>
-
-
-<section id="support-vector-machine-svm" class="level1">
-<h1>Support Vector Machine (SVM)</h1>
+</header><section id="support-vector-machine-svm" class="level1"><h1>Support Vector Machine (SVM)</h1>
 <p>In this exercise, we apply the Support Vector Machines (SVM) to the classification problem of the data set <code>Carseats</code> from the package <code>ISLR</code> (already used with CART).</p>
 <p>SVM are often difficult to interpret. They are typically what we call “a black box” model, that is, a model which provides predictions without understanding what is behind (except if you have followed the course…) and how the features influences these predictions. Therefore, and because we do not want to get bored, we will also use the <code>caret::train()</code> function to make our first real machine learning application. Note that this application can be done also with the models that have been seen previously.</p>
-<section id="prepare-the-data" class="level2">
-<h2 class="anchored" data-anchor-id="prepare-the-data">Prepare the data</h2>
+<section id="prepare-the-data" class="level2"><h2 class="anchored" data-anchor-id="prepare-the-data">Prepare the data</h2>
 <p>The lines below are just a repetition/reminder of the CART series to have the data ready. The only difference is the cast of <code>SalesHigh</code> into factors rather than characters because the SVM functions require it.</p>
 <p>To proceed we first have to build the data (below is the) Install the package <code>ISLR</code> in order to access the data set <code>Carseats</code>. Use <code>?Carseats</code> to read its description.</p>
 <p>To apply a classification of the sales, we first create a categorical outcome <code>SaleHigh</code> which equals “Yes” if <code>Sales</code> &gt; 7.5 and “No” otherwise. Then we create a data frame <code>MyCarseats</code> containing <code>SaleHigh</code> and all the features of <code>Carseats</code> except <code>Sales</code>. Finally, split <code>MyCarseats</code> into a training and a test set (2/3 vs 1/3). Below we call them <code>df_tr</code> and <code>df_te</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>MyCarseats <span class="ot">&lt;-</span> Carseats <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">SaleHigh=</span><span class="fu">ifelse</span>(Sales <span class="sc">&gt;</span> <span class="fl">7.5</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>))</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>MyCarseats <span class="ot">&lt;-</span> MyCarseats <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Sales)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>MyCarseats<span class="sc">$</span>SaleHigh <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(MyCarseats<span class="sc">$</span>SaleHigh)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># for reproducibility </span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>index_tr <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(MyCarseats), <span class="at">size=</span><span class="fl">0.8</span><span class="sc">*</span><span class="fu">nrow</span>(MyCarseats), <span class="at">replace=</span><span class="cn">FALSE</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df_tr <span class="ot">&lt;-</span> MyCarseats[index_tr,]</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df_te <span class="ot">&lt;-</span> MyCarseats[<span class="sc">-</span>index_tr,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.statlearning.com">ISLR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="va">MyCarseats</span> <span class="op">&lt;-</span> <span class="va">Carseats</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>SaleHigh<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">Sales</span> <span class="op">&gt;</span> <span class="fl">7.5</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">MyCarseats</span> <span class="op">&lt;-</span> <span class="va">MyCarseats</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Sales</span><span class="op">)</span></span>
+<span><span class="va">MyCarseats</span><span class="op">$</span><span class="va">SaleHigh</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">MyCarseats</span><span class="op">$</span><span class="va">SaleHigh</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span> <span class="co"># for reproducibility </span></span>
+<span><span class="va">index_tr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">MyCarseats</span><span class="op">)</span>, size<span class="op">=</span><span class="fl">0.8</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">MyCarseats</span><span class="op">)</span>, replace<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="va">df_tr</span> <span class="op">&lt;-</span> <span class="va">MyCarseats</span><span class="op">[</span><span class="va">index_tr</span>,<span class="op">]</span></span>
+<span><span class="va">df_te</span> <span class="op">&lt;-</span> <span class="va">MyCarseats</span><span class="op">[</span><span class="op">-</span><span class="va">index_tr</span>,<span class="op">]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section>
-<section id="linear_svm" class="level2">
-<h2 class="anchored" data-anchor-id="linear_svm">Linear SVM</h2>
+</section><section id="linear_svm" class="level2"><h2 class="anchored" data-anchor-id="linear_svm">Linear SVM</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>The <code>e1071::svm()</code> function of the <code>e1071</code> package allows to fit SVM to the data with several possible kernels. Below, it is the linear kernel. We fit a linear kernel and check the predictions on the test set.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>carseats_svm <span class="ot">&lt;-</span> <span class="fu">svm</span>(SaleHigh <span class="sc">~</span> ., <span class="at">data=</span>df_tr, <span class="at">kernel=</span><span class="st">"linear"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>carseats_svm</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>carseats_svm_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(carseats_svm, <span class="at">newdata =</span> df_te)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="at">Pred=</span>carseats_svm_pred, <span class="at">obs=</span>df_te<span class="sc">$</span>SaleHigh)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">carseats_svm</span> <span class="op">&lt;-</span> <span class="fu">svm</span><span class="op">(</span><span class="va">SaleHigh</span> <span class="op">~</span> <span class="va">.</span>, data<span class="op">=</span><span class="va">df_tr</span>, kernel<span class="op">=</span><span class="st">"linear"</span><span class="op">)</span></span>
+<span><span class="va">carseats_svm</span></span>
+<span><span class="va">carseats_svm_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">carseats_svm</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span>Pred<span class="op">=</span><span class="va">carseats_svm_pred</span>, obs<span class="op">=</span><span class="va">df_te</span><span class="op">$</span><span class="va">SaleHigh</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To obtain a better insight about the prediction quality, we will use the accuracy measure. It is simply the proportion of correct predictions. This can be conveniently obtained (and much more) from the function <code>caret::confusionMatrix()</code> of the library <code>caret</code>. In the parameters, <code>data</code> are the predictions, and <code>reference</code> are the observations.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>carseats_svm_pred, <span class="at">reference =</span> df_te<span class="sc">$</span>SaleHigh )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/topepo/caret/">caret</a></span><span class="op">)</span></span>
+<span><span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="va">carseats_svm_pred</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">SaleHigh</span> <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We should only focus on the accuracy for now (the other measures will be studied later). In our run, it was ≈<span class="math inline">\(86\%\)</span>. That number is obtained using the default parameter, cost <span class="math inline">\(C=1\)</span>.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># The usual loading of our environment</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">use_condaenv</span>(<span class="st">"MLBA"</span>, <span class="at">required =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># The usual loading of our environment</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/reticulate/">reticulate</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/use_python.html">use_condaenv</a></span><span class="op">(</span><span class="st">"MLBA"</span>, required <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Similar to the CART exercises, we use the <code>df_train</code> and <code>df_te</code> created in R to carry out our SVM training. Once again, we continue using the <code>sklearn</code> library. First, we copy our dataset from the R variable to a python variable. Then we use <code>LabelEncoder()</code> from <code>sklearn.preprocessing</code> to convert categorical data into a numeric form, which many <code>sklearn</code> machine learning algorithms require. The encoding assigns a unique numerical value to each categorical value, which can sometimes help the performance. In the case of <code>caret::train()</code>, the function handles this transformation automatically. Also, we standardize the data in the case of python for faster computations using <code>StandardScaler</code>, because of the same numerical stability mentioned for CART. After this, we divide the training and test sets into predictors (e.g., <code>X_train</code>) and the outcome (e.g., <code>y_train</code>) and initialize our linear kernel SVM to fit the model to the data.</p>
 <p>We will use <code>classification_report</code> and <code>accuracy_score</code> from <code>sklearn.metrics</code> to get more information on the performance. (you could also use <code>confusion_matrix</code> from the same module.)</p>
@@ -827,20 +797,21 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section>
-<section id="radial-basis-svm" class="level2">
-<h2 class="anchored" data-anchor-id="radial-basis-svm">Radial basis SVM</h2>
+</section><section id="radial-basis-svm" class="level2"><h2 class="anchored" data-anchor-id="radial-basis-svm">Radial basis SVM</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>We try now with a radial basis kernel (the default).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>carseats_rb <span class="ot">&lt;-</span> <span class="fu">svm</span>(SaleHigh <span class="sc">~</span> ., <span class="at">data=</span>df_tr, <span class="at">kernel=</span><span class="st">"radial"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>carseats_rb</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>carseats_rb_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(carseats_rb, <span class="at">newdata =</span> df_te)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>carseats_rb_pred, <span class="at">reference =</span> df_te<span class="sc">$</span>SaleHigh )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span>
+<span><span class="va">carseats_rb</span> <span class="op">&lt;-</span> <span class="fu">svm</span><span class="op">(</span><span class="va">SaleHigh</span> <span class="op">~</span> <span class="va">.</span>, data<span class="op">=</span><span class="va">df_tr</span>, kernel<span class="op">=</span><span class="st">"radial"</span><span class="op">)</span></span>
+<span><span class="va">carseats_rb</span></span>
+<span><span class="va">carseats_rb_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">carseats_rb</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span></span>
+<span><span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="va">carseats_rb_pred</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">SaleHigh</span> <span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The accuracy is now ≈<span class="math inline">\(81\%\)</span>. This shows how important that choice can be. In the same vein, we are now relying on the default parameters of the function. For the cost <span class="math inline">\(C\)</span> it is <span class="math inline">\(1\)</span>, for the parameter <code>gamma</code> of the kernel, it is 1/(data dimension) (see <code>?svm</code>). The <code>train</code> function allows us to make a better selection.</p>
 </div>
@@ -870,11 +841,12 @@ updateImageSrc();
 </div>
 </div>
 <p>In both cases (R &amp; python), with the default parameters, the linear kernel seems to do better than the radial one.</p>
-</section>
-<section id="tuning-the-hyperparameter" class="level2">
-<h2 class="anchored" data-anchor-id="tuning-the-hyperparameter">Tuning the hyperparameter</h2>
+</section><section id="tuning-the-hyperparameter" class="level2"><h2 class="anchored" data-anchor-id="tuning-the-hyperparameter">Tuning the hyperparameter</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>In R, <code>caret</code> uses various libraries to run the svm models (check for yourself <a href="https://topepo.github.io/caret/available-models.html">by searching for <code>support vector machine</code> here</a>). For instance, calling <code>svmLinear</code> or <code>svmRadial</code> uses the library <code>kernlab</code>, and the <code>kernlab::ksvm()</code> function.</p>
@@ -887,45 +859,42 @@ updateImageSrc();
 <li>a method (i.e.&nbsp;the model which in this case is SVM with linear kernel).</li>
 <li>a training control procedure.</li>
 </ul>
-<section id="linear-svm" class="level4">
-<h4 class="anchored" data-anchor-id="linear-svm">Linear SVM</h4>
+<section id="linear-svm" class="level4"><h4 class="anchored" data-anchor-id="linear-svm">Linear SVM</h4>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>trctrl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number=</span><span class="dv">10</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">143</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>svm_Linear <span class="ot">&lt;-</span> <span class="fu">train</span>(SaleHigh <span class="sc">~</span>., <span class="at">data =</span> df_tr, <span class="at">method =</span> <span class="st">"svmLinear"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">trControl=</span>trctrl)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>svm_Linear</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">trctrl</span> <span class="op">&lt;-</span> <span class="fu">trainControl</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"cv"</span>, number<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">143</span><span class="op">)</span></span>
+<span><span class="va">svm_Linear</span> <span class="op">&lt;-</span> <span class="fu">train</span><span class="op">(</span><span class="va">SaleHigh</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">df_tr</span>, method <span class="op">=</span> <span class="st">"svmLinear"</span>,</span>
+<span>                    trControl<span class="op">=</span><span class="va">trctrl</span><span class="op">)</span></span>
+<span><span class="va">svm_Linear</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>For now, the validation accuracy is very high (≈<span class="math inline">\(89\%\)</span>). This is normal since this accuracy is computed on the training set.</p>
 <p>We now supply a grid of values for the cost that we want to try and pass to the argugment<code>tuneGrid</code>. Be patient, it may take time.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">C =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>grid</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">143</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>svm_Linear_Grid <span class="ot">&lt;-</span> <span class="fu">train</span>(SaleHigh <span class="sc">~</span>., <span class="at">data =</span> df_tr, <span class="at">method =</span> <span class="st">"svmLinear"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">trControl=</span>trctrl,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">tuneGrid =</span> grid)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>svm_Linear_Grid</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(svm_Linear_Grid)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>svm_Linear_Grid<span class="sc">$</span>bestTune</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">grid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span>C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">1</span>, <span class="fl">10</span>, <span class="fl">100</span>, <span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">grid</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">143</span><span class="op">)</span></span>
+<span><span class="va">svm_Linear_Grid</span> <span class="op">&lt;-</span> <span class="fu">train</span><span class="op">(</span><span class="va">SaleHigh</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">df_tr</span>, method <span class="op">=</span> <span class="st">"svmLinear"</span>,</span>
+<span>                           trControl<span class="op">=</span><span class="va">trctrl</span>,</span>
+<span>                           tuneGrid <span class="op">=</span> <span class="va">grid</span><span class="op">)</span></span>
+<span><span class="va">svm_Linear_Grid</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">svm_Linear_Grid</span><span class="op">)</span></span>
+<span><span class="va">svm_Linear_Grid</span><span class="op">$</span><span class="va">bestTune</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We see that setting the cost to 1 provides the best model. The accuracy apparently reaches a plateau at this value. This is same as our cost parameter in section <a href="#linear_svm">1.2</a>.</p>
-</section>
-<section id="radial-basis-svm-1" class="level4">
-<h4 class="anchored" data-anchor-id="radial-basis-svm-1">Radial Basis SVM</h4>
+</section><section id="radial-basis-svm-1" class="level4"><h4 class="anchored" data-anchor-id="radial-basis-svm-1">Radial Basis SVM</h4>
 <p>The <code>sigma</code> hyperparameter (also from <code>kernlab::ksvm()</code>) controls the width of the radial basis function kernel, which is used to transform the input data into a higher-dimensional feature space. A larger value of sigma corresponds to a narrower kernel and a more complex model, while a smaller value corresponds to a wider kernel and a simpler model.</p>
 <p>We repeat the procedure for SVM with a radial basis kernel. Here, there are two parameters ( <code>sigma</code> and <code>C</code>) to tune. The grid choice is rather arbitrary (often the result of trials and errors), and very few general useful guidelines exist. The code below may take a few minutes to run.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>grid_radial <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(<span class="at">sigma =</span> <span class="fu">c</span>(<span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span>),</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                           <span class="at">C =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">500</span>, <span class="dv">1000</span>))</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>grid_radial</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">143</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>svm_Radial_Grid <span class="ot">&lt;-</span> <span class="fu">train</span>(SaleHigh <span class="sc">~</span>., <span class="at">data =</span> df_tr, <span class="at">method =</span> <span class="st">"svmRadial"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">trControl=</span>trctrl,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>                           <span class="at">tuneGrid =</span> grid_radial)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>svm_Radial_Grid</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(svm_Radial_Grid)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>svm_Radial_Grid<span class="sc">$</span>bestTune</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">grid_radial</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html">expand.grid</a></span><span class="op">(</span>sigma <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.02</span>, <span class="fl">0.05</span>, <span class="fl">0.1</span><span class="op">)</span>,</span>
+<span>                           C <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span>, <span class="fl">100</span>, <span class="fl">500</span>, <span class="fl">1000</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">grid_radial</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">143</span><span class="op">)</span></span>
+<span><span class="va">svm_Radial_Grid</span> <span class="op">&lt;-</span> <span class="fu">train</span><span class="op">(</span><span class="va">SaleHigh</span> <span class="op">~</span><span class="va">.</span>, data <span class="op">=</span> <span class="va">df_tr</span>, method <span class="op">=</span> <span class="st">"svmRadial"</span>,</span>
+<span>                           trControl<span class="op">=</span><span class="va">trctrl</span>,</span>
+<span>                           tuneGrid <span class="op">=</span> <span class="va">grid_radial</span><span class="op">)</span></span>
+<span><span class="va">svm_Radial_Grid</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">svm_Radial_Grid</span><span class="op">)</span></span>
+<span><span class="va">svm_Radial_Grid</span><span class="op">$</span><span class="va">bestTune</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The optimal model from this search is with <code>sigma = 0.01</code> and <code>C=100</code>.</p>
 </section>
@@ -983,20 +952,21 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section>
-<section id="best-model" class="level2">
-<h2 class="anchored" data-anchor-id="best-model">Best model</h2>
+</section><section id="best-model" class="level2"><h2 class="anchored" data-anchor-id="best-model">Best model</h2>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">R</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Python</a></li></ul>
+<ul class="nav nav-tabs" role="tablist">
+<li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">R</a></li>
+<li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">Python</a></li>
+</ul>
 <div class="tab-content">
 <div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
 <p>After finding the best hyperparameters, it is often good practice to re-train the model with the best hyperparameters on the entire training set before evaluating everything on the test set. We do not need to re-train the model with the entire dataset for the linear SVM, as the best cost matched those used in section <a href="#linear_svm">1.2</a>. We re-train the final model with the entire training set using optimal hyperparameters for the radial basis kernel.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>carseats_rb_tuned <span class="ot">&lt;-</span> <span class="fu">svm</span>(SaleHigh <span class="sc">~</span> .,<span class="at">data =</span> df_tr,</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">kernel =</span> <span class="st">"radial"</span>, <span class="at">gamma =</span> svm_Radial_Grid<span class="sc">$</span>bestTune<span class="sc">$</span>sigma,</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">cost =</span> svm_Radial_Grid<span class="sc">$</span>bestTune<span class="sc">$</span>C)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>carseats_rb_tuned_pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(carseats_rb_tuned, <span class="at">newdata =</span> df_te)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>carseats_rb_tuned_pred, <span class="at">reference =</span> df_te<span class="sc">$</span>SaleHigh)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">carseats_rb_tuned</span> <span class="op">&lt;-</span> <span class="fu">svm</span><span class="op">(</span><span class="va">SaleHigh</span> <span class="op">~</span> <span class="va">.</span>,data <span class="op">=</span> <span class="va">df_tr</span>,</span>
+<span>                         kernel <span class="op">=</span> <span class="st">"radial"</span>, gamma <span class="op">=</span> <span class="va">svm_Radial_Grid</span><span class="op">$</span><span class="va">bestTune</span><span class="op">$</span><span class="va">sigma</span>,</span>
+<span>                         cost <span class="op">=</span> <span class="va">svm_Radial_Grid</span><span class="op">$</span><span class="va">bestTune</span><span class="op">$</span><span class="va">C</span><span class="op">)</span></span>
+<span><span class="va">carseats_rb_tuned_pred</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/predict.html">predict</a></span><span class="op">(</span><span class="va">carseats_rb_tuned</span>, newdata <span class="op">=</span> <span class="va">df_te</span><span class="op">)</span></span>
+<span><span class="fu">confusionMatrix</span><span class="op">(</span>data<span class="op">=</span><span class="va">carseats_rb_tuned_pred</span>, reference <span class="op">=</span> <span class="va">df_te</span><span class="op">$</span><span class="va">SaleHigh</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Overall, if we compare all the models, we see that the linear kernel SVM with cost of 1 looks like the best model. We already saw that it provides a <span class="math inline">\(86\%\)</span> accuracy on the test set. This is what can be expected in the future from that model.</p>
 </div>
@@ -1018,19 +988,13 @@ updateImageSrc();
 </div>
 </div>
 </div>
-</section>
-<section id="your-turn" class="level2">
-<h2 class="anchored" data-anchor-id="your-turn">Your turn</h2>
+</section><section id="your-turn" class="level2"><h2 class="anchored" data-anchor-id="your-turn">Your turn</h2>
 <p>Repeat the analysis on the German credit data (<code>german.csv</code>). Since dataset is much larger than <code>MyCarSeats</code>, the tuning procedure may be longer. For this reason, just limit to a linear SVM model for the tuning with limited range for the grid search.</p>
 
 
 <!-- -->
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
@@ -1493,9 +1457,7 @@ updateImageSrc();
       }
     }
   });
-  </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+  </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../../labs/03_Models/033_NeuralNetworks/EX_ML_NN.html" class="pagination-link" aria-label="Neural Networks">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Neural Networks</span>
       </a>          
@@ -1885,8 +1847,7 @@ updateImageSrc();
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>© Copyright 2026, <a href="https://iliaazizi.com/">Ilia Azizi</a></p>
 </div>   
@@ -1898,8 +1859,6 @@ updateImageSrc();
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>
