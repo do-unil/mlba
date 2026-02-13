@@ -1,7 +1,7 @@
 ---
 title: "MLBA Lab 1 - Introduction to Quarto"
 subtitle: "An introduction to [Quarto]{.flow}"
-date: "03.03.2025"
+date: "Spring 2026"
 preview-links: true
 ---
 
