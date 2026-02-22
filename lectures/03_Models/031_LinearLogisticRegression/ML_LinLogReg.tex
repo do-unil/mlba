@@ -135,7 +135,7 @@ This has no consequence on the final result. But it can bring confusion from tim
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Optimal parameters}
-To obtain the optimal parameters, the best algorithm is the {\bf Newton-Raphson} algorithm. It requires
+To obtain the optimal parameters, one of the best algorithm is the {\bf Newton-Raphson} algorithm. It requires
 \begin{itemize}
 \item To compute the first and second derivatives of $\bar{\cal L}(\theta)$,
 \item To build a sequence of $\hat{\theta}_k$ that converges to the optimal one using these derivatives.
@@ -175,7 +175,7 @@ Note: one should not say that an increase in $x_j$ {\it causes} an increase of t
 For the {\bf logistic regression}, because of the sigmoid transform, the interpretation of the coefficients is not direct like with the linear regression:
 \begin{itemize}
 \item With a positive $\theta_j$, an increase of $x_j$ is associated with an increase of the probability that $y=1$.
-\item The larger the coefficient, the larger the increase. However, it the increase is not linear and depends on the other features.
+\item The larger the coefficient, the larger the increase. However, the increase is not linear and depends on the other features.
 \item A negative coefficient means a decrease in the probability of the positive class ($y=1$).
 \end{itemize}
 Note: coefficients can be interpreted in terms of odds ratio. We will not pursue this here.
@@ -215,7 +215,7 @@ In particular, we expect the residual distribution to be symmetric around $0$ an
 \frametitle{Certainty for linear regression}
 Therefore, to find $[L,U]$, we set
 $$
-0.95 = P(L \leq y(x) \leq U) = P\left(\frac{L-f(x;\theta)}{\sigma} \leq e \leq \frac{U-f(x;\theta}{\sigma})\right).
+0.95 = P(L \leq y(x) \leq U) = P\left(\frac{L-f(x;\theta)}{\sigma} \leq e \leq \frac{U-f(x;\theta)}{\sigma}\right).
 $$
 Using the normal distribution, we find that
 $$
@@ -260,7 +260,7 @@ In both cases, the predicted class is the same but the probability provides a mo
 \vspace{0.2cm}
 The prediction "Good" for a customer with a probability of $0.51$ is uncertain. Alternatively, the prediction rule could set to a larger value than 0.5 to increase the certainty. \\
 \vspace{0.2cm}
-Also, a model with a lot of predictions close to 0.5 is considered as poor because of its uncertainty\footnote{A little thought on that will brings us back to the entropy.}.
+Also, a model with a lot of predictions close to 0.5 can be considered as poor because of its uncertainty\footnote{A little thought on that will brings us back to the entropy.}, unless the data itself is inherently ambiguous.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Selection of variables}
@@ -297,7 +297,7 @@ where
 For linear regressions,
 \begin{itemize}
 \item The number of parameters is $k=p+2$ with $\theta_0,\theta_1,\ldots,\theta_p$ and $\sigma$,
-\item The log-likelihood part equals
+\item The log-likelihood part, derived from a gaussian model, equals
 $$
 -2\hat{\ell} = n\ln 2\pi + n \ln \hat{\sigma}^2 + \frac{1}{\hat{\sigma}^2}\sum_{i=1}^n \left\{y_i - f(x;\hat{\theta})\right\}^2,
 $$
@@ -306,7 +306,7 @@ where $\hat{\sigma}^2 = (n-p-1)s^2/n$.
 For logistic regressions,
 \begin{itemize}
 \item The number of parameters is $k=p+1$ for $\theta_0,\theta_1,\ldots,\theta_p$,
-\item The log-likelihood part equals
+\item The log-likelihood part, derived from a Bernoulli model, equals
 $$
 -2\hat{\ell} = 2 \sum_{i=1}^n y_i \ln p(x_i;\hat{\theta}) + (1-y_i) \ln \{1-p(x_i;\hat{\theta})\}.
 $$
