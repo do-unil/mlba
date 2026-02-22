@@ -52,7 +52,7 @@ bank_logreg_sel <- step(bank_logreg, trace = FALSE)
 
 ## Discussion: 
 ## - Check which variables were removed from the model.
-## - Recover what selection was applied (backward, forwar or both)
+## - Recover what selection was applied (backward, forward or both)
 
 ## using LASSO
 ## Technically more complex in R
