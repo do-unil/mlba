@@ -85,7 +85,7 @@ $$
 \frametitle{The prediction formula: classification}
 For classification,
 \begin{itemize}
-\item The node $N(x)$ has a predicted probability vector: probabilities one each possible class
+\item The node $N(x)$ has a predicted probability vector: probabilities for each possible class
 $$
 p(x;\theta) = (p_1(x;\theta), \ldots, p_C(x;\theta)),
 $$
@@ -200,7 +200,7 @@ Example of regression:
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Stopping rule}
-The algorithm could go on splitting the feature space forever. Several stopping rules can be used. For example in {\tt R} with {\tt rpart} (see {\tt ?rpart.control}):
+The algorithm could go on splitting the feature space "forever" (entropy/impurity is zero). Several stopping rules can be used. For example in {\tt R} with {\tt rpart} (see {\tt ?rpart.control}):
 \begin{itemize}
 \item {\tt minsplit}: the minimum number of observations that must exist in a node in order for a split to be attempted (default is 20).
 \item {\tt cp} (cost-complexity parameter): Any split that does not decrease the overall lack of fit by a factor of cp is not attempted (default to 0.1).
