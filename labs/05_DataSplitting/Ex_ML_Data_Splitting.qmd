@@ -3,7 +3,7 @@ title: "Data splitting"
 ---
 
 ```{r global_options, include = FALSE}
-knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+knitr::opts_chunk$set(fig.align="center", results = 'hold', fig.show = 'show', warning = FALSE, message = FALSE)
 ```
 
 # Data preparation
@@ -114,7 +114,7 @@ import numpy as np
 
 model = LogisticRegression(solver='liblinear')
 rfe = RFE(model)
-rfe.fit(X_cv_tr, y_cv_tr)
+rfe.fit(X_cv_tr, y_cv_tr);
 pred_probs = rfe.predict_proba(X_cv_val)[:, 1]
 Doc_cv_pred = np.where(pred_probs > 0.5, "Yes", "No")
 acc = accuracy_score(y_cv_val, Doc_cv_pred)
@@ -172,7 +172,7 @@ for train_idx, val_idx in kf.split(X_train, y_train):
     X_cv_tr, y_cv_tr = X_train.iloc[train_idx, :], y_train.iloc[train_idx]
     X_cv_val, y_cv_val = X_train.iloc[val_idx, :], y_train.iloc[val_idx]
     
-    rfe.fit(X_cv_tr, y_cv_tr)
+    rfe.fit(X_cv_tr, y_cv_tr);
     pred_probs = rfe.predict_proba(X_cv_val)[:, 1]
     Doc_cv_pred = np.where(pred_probs > 0.5, "Yes", "No")
     acc = accuracy_score(y_cv_val, Doc_cv_pred)
@@ -191,7 +191,7 @@ mean_acc, std_acc
 Now, we fit the final model using the whole training set and evaluate its performance on the test set.
 
 ```{python}
-rfe.fit(X_train, y_train)
+rfe.fit(X_train, y_train);
 y_test_pred = rfe.predict(X_test)
 test_accuracy = accuracy_score(y_test, y_test_pred)
 test_cm = confusion_matrix(y_test, y_test_pred)
@@ -239,7 +239,7 @@ model = LogisticRegression(solver='liblinear')
 rfe = RFE(model)
 param_grid = {'n_features_to_select': list(range(1, X_train.shape[1] + 1))}
 grid_search = GridSearchCV(rfe, param_grid, scoring='accuracy', cv=kf)
-grid_search.fit(X_train, y_train)
+grid_search.fit(X_train, y_train);
 print(grid_search.best_score_, grid_search.best_params_)
 ```
 
@@ -465,7 +465,7 @@ for i in range(100):
 
     model = LogisticRegression(solver='liblinear')
     rfe = RFE(model)
-    rfe.fit(X_boot_tr, y_boot_tr)
+    rfe.fit(X_boot_tr, y_boot_tr);
 
     pred_probs_val = rfe.predict_proba(X_boot_val)[:, 1]
     Doc_boot_pred_val = (pred_probs_val > 0.5).astype(int)
@@ -553,7 +553,7 @@ r.df_tr['visits'].value_counts()
 
 ```{python}
 lr = LogisticRegression(solver='liblinear')
-lr.fit(X_train, y_train)
+lr.fit(X_train, y_train);
 lr_pred = lr.predict(X_test)
 lr_cf = confusion_matrix(y_test, lr_pred)
 print(lr_cf)
@@ -630,7 +630,7 @@ X_train_subs = pd.get_dummies(df_tr_subs.drop(columns=['visits']))
 y_train_subs = df_tr_subs['visits']
 
 lr_subs = LogisticRegression(solver='liblinear')
-lr_subs.fit(X_train_subs, y_train_subs)
+lr_subs.fit(X_train_subs, y_train_subs);
 lr_subs_pred = lr_subs.predict(X_test)
 lr_subs_cf = confusion_matrix(y_test, lr_subs_pred)
 
@@ -701,7 +701,7 @@ X_train_res = pd.get_dummies(df_tr_res.drop(columns=['visits']))
 y_train_res = df_tr_res['visits']
 
 lr_res = LogisticRegression(solver='liblinear')
-lr_res.fit(X_train_res, y_train_res)
+lr_res.fit(X_train_res, y_train_res);
 lr_res_pred = lr_res.predict(X_test)
 
 lr_res_cf = confusion_matrix(y_test, lr_res_pred)

@@ -1,0 +1,28 @@
+# Python dependencies for the MLBA course labs
+# Install with: pip install -r requirements.txt
+# These packages are used across all labs with both R (via reticulate) and Python
+
+# Core data science
+jupyter
+pandas
+numpy
+matplotlib
+seaborn
+scipy
+statsmodels
+
+# Machine learning
+scikit-learn>=1.4
+xgboost
+mlxtend
+lime
+scikit-learn-extra
+
+# Deep learning (Neural Networks + Autoencoders labs)
+tensorflow
+keras
+torch
+torchvision
+
+# Platform-specific: Intel MKL threading (not needed on macOS)
+mkl-service; sys_platform == "win32" or sys_platform == "linux"

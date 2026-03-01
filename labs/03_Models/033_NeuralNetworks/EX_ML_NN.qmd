@@ -3,66 +3,62 @@ title: "Models: Neural Networks"
 ---
 
 ```{r global_options, include = FALSE}
-knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+knitr::opts_chunk$set(fig.align="center", results = 'hold', fig.show = 'show', warning = FALSE, message = FALSE)
 ```
 
-In this tutorial, we will demonstrate how to use `keras` and `tensorflow` in R for two common tasks in deep learning (DL): regression for structured data and image classification. We will use two datasets for this purpose: the `Boston Housing dataset` for regression and the `CIFAR-10` dataset for image classification.
+In this tutorial, we will demonstrate how to use neural networks for two common tasks in deep learning (DL): regression for structured data and image classification. We will use two datasets for this purpose: the `Boston Housing dataset` for regression and the `CIFAR-10` dataset for image classification. It is highly recommended that you use Python for this part since R does not have a very good support for DL. However, we will provide the R code for the regression part to show how you can use the [`keras3`](https://github.com/rstudio/keras3) package to build and train neural networks in R.
 
 # Introduction
 
-`Keras` and `TensorFlow` are open-source machine learning frameworks for building and training deep learning models. `TensorFlow` is a low-level framework that provides a foundation for building and training neural networks. `keras`, on the other hand, is a high-level API built on top of `TensorFlow`, making it easier to construct and train deep learning models. This means that `keras` is much more plug-and-play than `TensorFlow`.
+Neural networks are powerful machine learning models inspired by the human brain. Two popular frameworks for building them are:
 
-In `keras`, two main ways to build and run deep learning models are the `sequential API` and the `functional API`. The `sequential API` is a simple way to create a neural network by adding layers in a linear sequence. On the other hand, the `functional API` provides more flexibility and allows you to create more complex models with shared layers or multiple inputs and outputs. In this lab session, we deal with the more straightforward `sequential API`; however, feel free to also read about `functional API` [here](https://tensorflow.rstudio.com/guides/keras/functional_api).
+- **PyTorch**: A flexible deep learning framework popular in research, offering an intuitive "define-by-run" approach.
+- **Keras** (with TensorFlow backend): A high-level API that makes it easy to construct and train deep learning models. Keras 3 is actively maintained and supports multiple backends (TensorFlow, PyTorch, JAX). Note that raw `TensorFlow` has limited support on some platforms (e.g., Apple Silicon).
 
-The `sequential API` is suitable for building simple models quickly and easily. Initially, one has to define the desired network architecture
-by one layer at a time to a new `sequential` model. Once the architecture is defined, we need to `compile` the model and then `fit` the model to the data to start training. Here is a summary of all the steps:
+In both frameworks, the basic workflow for building a neural network is:
 
-1.  *Define the model architecture:* Create a new sequential model object and add layers to it using the pipe operator (`%>%`), which translates to the `add()` method in Python. We can add as many layers as needed where the type of each layer can also be specified (e.g., dense, convolutional) and any necessary parameters for each layer (e.g., number of nodes, activation function).
+1.  *Define the model architecture:* Create a model and add layers to it. We can add as many layers as needed where the type of each layer can also be specified (e.g., dense, convolutional) and any necessary parameters for each layer (e.g., number of nodes, activation function).
 
-2.  *Compile the model:* Once the model's architecture has been defined, it has to be compiled using the `compile()` method. This involves specifying the loss function, optimizer, and any additional metrics you want to track during training.
+2.  *Compile/configure the model:* Specify the loss function, optimizer, and any additional metrics you want to track during training.
 
-3.  *Train the model:* To train the model, use the `fit()` method and pass in your training data and any necessary hyperparameters (e.g., batch size, number of epochs). A validation set can also be specified to monitor the model's performance during training. Additionally, there are techniques such as early stopping, which stops the training if the model's performance on the validation set does not improve after a certain number of epochs.
+3.  *Train the model:* Pass in your training data and any necessary hyperparameters (e.g., batch size, number of epochs). A validation set can also be specified to monitor the model's performance during training. Additionally, there are techniques such as early stopping, which stops the training if the model's performance on the validation set does not improve after a certain number of epochs.
 
-4.  *Evaluate the model:* After training, the model's performance on a test set can be evaluated using the `evaluate()` method. This will return the loss and any metrics specified during compilation (step 2).
+4.  *Evaluate the model:* After training, evaluate the model's performance on a test set.
 
-5.  *Use the model to make predictions:* Finally, one can use the trained model to make predictions on new data using the `predict()` method either from base R or as an attribute of the model (i.e., `model$predict()`). This stage is also known as "inference" in DL.
+5.  *Use the model to make predictions:* Use the trained model to make predictions on new data. This stage is also known as "inference" in DL.
 
 # Setup
 
-We will use the `keras` and `tensorflow` libraries in R, which are wrappers around `keras` and `TensorFlow` libraries in python. Wrappers provide an abstraction layer that enables users to use a library or framework from a different programming language. Due to this, the syntax of using these libraries in R and python are very close, and maybe except for the `%>%` operator, there are no major differences. For this reason, all examples are provided in R and we only provide one example of using `keras` in with the Boston housing data. For the other part of the lab, if you're more interested in implementing it in python, you can adapt the code yourself based on the provided example.
+::: {.panel-tabset}
 
-We first need to get started with the setup. We will install `keras` into our `MLBA` environment created during `setup.Rmd`. This applies whether you're using only R or both R & python; therefore, if you have not already created a conda virtual environment, please refer to `setup.Rmd`. Once the the virtual environment already exists, we can then install both `keras` and `tensorflow` with `keras::install_keras()`.
+### Python (PyTorch)
+
+```{python}
+import numpy as np
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import TensorDataset, DataLoader
+print(f"PyTorch version: {torch.__version__}")
+```
+
+### Python (TensorFlow)
+
+```{python}
+import numpy as np
+import keras
+from keras import layers
+print(f"Keras version: {keras.__version__}")
+```
+
+### R
 
 ```{r}
-install.packages("keras")
-install.packages("tensorflow")
-keras::install_keras(method = "conda", envname = "MLBA")
+# keras3 should already be installed via renv::restore()
+# If not, run: install.packages("keras3"); keras3::install_keras(backend = "tensorflow")
+library(keras3)
 ```
 
-We can now check if the installation was successful
-```{r, results = "show"}
-reticulate::use_condaenv("MLBA")
-library(keras)
-library(tensorflow)
-```
-
-Once the setup is over, we check if everything works as expected.
-```{r, results = 'show'}
-tflow <- import("tensorflow")
-tflow$constant("Hello Tensorflow!")
-# we typically have to do `tf$` to call tensorflow that is automatically loaded like below
-# tf$constant("Hello Tensorflow!")
-```
-If you have the same output, you're good to go. Also, sometimes when you run `tf$constant()` command for the first time, you may get `Error in py_module_proxy_import(proxy) : Module proxy does not contain module name` because you just loaded `keras`. If it was the case, just rerun this code chunk.
-
-::: callout-note
-## Getting a warning when loading `tensorflow`
-When loading something from `keras`/`tensorflow`, if you get a warning like the one below, you should not worry:
-```
-I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
-To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
-```
-`tensorflow` has been optimized to work on graphical processing units (GPUs), and sometimes there are specific configurations for improving the performance of `keras` on central processing units (CPUs). You can safely ignore these warnings. Training on GPUs, especially when using images or high-dimensional data, drastically speeds up the training process and is one of the reasons behind the popularity of DL. If your computer has an Nvidia GPU (it would not work on AMD or Intel GPUs), you can also set it up to work with `tensorflow` by following the instructions from [here](https://tensorflow.rstudio.com/install/local_gpu).
 :::
 
 # Regression for Structured Data
@@ -71,21 +67,72 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 
 The [Boston Housing dataset](http://lib.stat.cmu.edu/datasets/boston) is a well-known dataset used for regression tasks. It contains 506 instances and 13 features, including the median value of owner-occupied homes in \$1000s. We will use this dataset to demonstrate how to perform regression on the sales price.
 
-```{r}
-library(keras)
+::: {.panel-tabset}
 
-houses <- dataset_boston_housing()
+### Python (PyTorch)
+
+```{python}
+from keras.datasets import boston_housing
+
+(train_x_np, train_y_np), (test_x_np, test_y_np) = boston_housing.load_data()
+print(f"Train: {train_x_np.shape}, Test: {test_x_np.shape}")
+```
+
+### Python (TensorFlow)
+
+```{python}
+from keras.datasets import boston_housing
+
+(train_x, train_y), (test_x, test_y) = boston_housing.load_data()
+print(f"Train: {train_x.shape}, Test: {test_x.shape}")
+```
+
+### R
+
+```{r}
+houses <- keras3::dataset_boston_housing()
 
 train_x <- houses$train$x
 train_y <- houses$train$y
-
 test_x <- houses$test$x
 test_y <- houses$test$y
 ```
 
+:::
+
 ## Data Preparation
 
 We need to normalize the data. This is especially relevant for neural networks to stabilize the computation of the gradients and consequently improve the training process.
+
+::: {.panel-tabset}
+
+### Python (PyTorch)
+
+```{python}
+means_np = train_x_np.mean(axis=0)
+stds_np = train_x_np.std(axis=0)
+
+train_x_np = (train_x_np - means_np) / stds_np
+test_x_np = (test_x_np - means_np) / stds_np
+
+# Convert to PyTorch tensors
+train_x_t = torch.tensor(train_x_np, dtype=torch.float32)
+train_y_t = torch.tensor(train_y_np, dtype=torch.float32).unsqueeze(1)
+test_x_t = torch.tensor(test_x_np, dtype=torch.float32)
+test_y_t = torch.tensor(test_y_np, dtype=torch.float32).unsqueeze(1)
+```
+
+### Python (TensorFlow)
+
+```{python}
+means = train_x.mean(axis=0)
+stds = train_x.std(axis=0)
+
+train_x = (train_x - means) / stds
+test_x = (test_x - means) / stds
+```
+
+### R
 
 ```{r}
 means <- apply(train_x, 2, mean)
@@ -95,6 +142,8 @@ train_x <- scale(train_x, means, sds)
 test_x <- scale(test_x, means, sds)
 ```
 
+:::
+
 ## Model Definition
 
 We will use a simple neural network with two hidden layers to perform regression.
@@ -103,135 +152,189 @@ We will use a simple neural network with two hidden layers to perform regression
 ### Learning about some of the hyperparameters
 You have many options for different hyperparameters; however, one lab session barely scratches the surface of DL and its hyperparameters. There are a couple of points that we need to specify here:
 
-1. You can use any activation function in the middle layers, from a simple linear regression (`linear`) to more common ones such as `hyperbolic tagnet` or `tanh` (often suitable for tabular data) to more sophisticated ones such as `rectified linear unit` or `relu` (better suited to high dimensional data). What is imperative is that in the last dense layer, the number of units and the activation function determine the kind of task (e.g., classification, regression, etc.) you're trying to accomplish. If you're doing a regression, the last dense layer has to have 1 unit and a `linear` activation function. If you're doing a binary classification (logistic regression), you still use 1 dense unit but must apply the `sigmoid` activation function. If you're doing multi-class classification, then the number of dense units must equal the number of classes, and the activation function is `softmax` (which is a generalization of `sigmoid` for multiple classes). [Google](https://developers.google.com/machine-learning/guides/text-classification/step-4) also provides a nice visual that explains the difference between the classification models. If you remove the `>0.5` rule (i.e., `sigmoid`), you essentially get a linear regression for that layer.
+1. You can use any activation function in the middle layers, from a simple linear regression (`linear`) to more common ones such as `hyperbolic tangent` or `tanh` (often suitable for tabular data) to more sophisticated ones such as `rectified linear unit` or `relu` (better suited to high dimensional data). What is imperative is that in the last dense layer, the number of units and the activation function determine the kind of task (e.g., classification, regression, etc.) you're trying to accomplish. If you're doing a regression, the last dense layer has to have 1 unit and a `linear` activation function. If you're doing a binary classification (logistic regression), you still use 1 dense unit but must apply the `sigmoid` activation function. If you're doing multi-class classification, then the number of dense units must equal the number of classes, and the activation function is `softmax` (which is a generalization of `sigmoid` for multiple classes). [Google](https://developers.google.com/machine-learning/guides/text-classification/step-4) also provides a nice visual that explains the difference between the classification models. If you remove the `>0.5` rule (i.e., `sigmoid`), you essentially get a linear regression for that layer.
 ```{r, echo = F, eval = T, fig.show= 'show', results = 'show', out.width = "600px"}
 knitr::include_graphics("NNLastLayer.png")
 ```
 
 2. It is imperative that, depending on the task, you use the correct type of loss function. For instance, you can use `mean squared error` (mse) for regression and `categorical cross-entropy` for multi-class classification.
 
-As mentioned, during the ML course, we cannot cover the details of DL. Suppose you want to understand these hyperparameters better and learn about many new ones. In that case, you can check out the video recordings and the slides for the [Deep learning course previously taught at HEC](https://irudnyts.github.io/deep/lectures/) (last given in 2021).
+As mentioned, during the ML course, we cannot cover the details of DL. If you want to understand these hyperparameters better and explore additional ones, some excellent resources include Stanford's [CS231n: Deep Learning for Computer Vision](https://cs231n.stanford.edu/) and the [PyTorch tutorials](https://pytorch.org/tutorials/).
 :::
 
-::: panel-tabset
+::: {.panel-tabset}
+
+### Python (PyTorch)
+
+```{python}
+_ = torch.manual_seed(123)
+
+# Define the model
+model_reg_pt = nn.Sequential(
+    nn.Linear(train_x_t.shape[1], 64),
+    nn.ReLU(),
+    nn.Linear(64, 64),
+    nn.ReLU(),
+    nn.Linear(64, 1)
+)
+
+# Define loss function and optimizer
+criterion = nn.MSELoss()
+optimizer_pt = optim.Adam(model_reg_pt.parameters())
+```
+
+### Python (TensorFlow)
+
+```{python}
+keras.utils.set_random_seed(123)
+
+# Define the model
+model_reg = keras.Sequential([
+    layers.Dense(64, activation='relu', input_shape=(train_x.shape[1],)),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(1, activation='linear')
+])
+
+# Compile the model
+model_reg.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolute_error'])
+model_reg.summary()
+```
+
 ### R
 
 ```{r}
-# we set a seed (this sometimes disables GPU performance)
-tensorflow::set_random_seed(123)
+keras3::set_random_seed(123)
 
-# define the model structure
-model_reg <- keras_model_sequential() %>%
-  layer_dense(units = 64, activation = "relu", input_shape = c(ncol(train_x))) %>%
-  layer_dense(units = 64, activation = "relu") %>%
+model_reg <- keras_model_sequential(input_shape = ncol(train_x)) |>
+  layer_dense(units = 64, activation = "relu") |>
+  layer_dense(units = 64, activation = "relu") |>
   layer_dense(units = 1, activation = "linear")
 
-# compile the model
-model_reg %>% compile(
+model_reg |> compile(
   optimizer = "adam",
   loss = "mean_squared_error",
   metrics = c("mean_absolute_error")
 )
 ```
 
-### Python
-
-We can run the same thing in Python with the datasets created in R, e.g. `r.train_x`.
-
-```{python}
-# import necessary libraries
-import tensorflow as tf
-from tensorflow import keras
-from tensorflow.keras import layers
-
-# Set random seed
-tf.random.set_seed(123)
-
-# define the model structure
-model_reg = keras.Sequential([
-    layers.Dense(units=64, activation='relu', input_shape=(r.train_x.shape[1],)),
-    layers.Dense(units=64, activation='relu'),
-    layers.Dense(units=1, activation='linear')
-])
-
-# compile the model
-model_reg.compile(optimizer='adam', loss='mean_squared_error', metrics=['mean_absolute_error'])
-```
-
 :::
 
 ## Model Training
 
-We can then train the model:
+::: {.panel-tabset}
 
+### Python (PyTorch)
 
-::: panel-tabset
-### R
+```{python}
+import matplotlib.pyplot as plt
 
-```{r}
-history <- model_reg %>% fit(
-  train_x, train_y,
-  epochs = 10, #300 to get the best results
-  batch_size = 32,
-  validation_split = 0.2,
-  callbacks = callback_early_stopping(patience = 30,restore_best_weights = T),
-  verbose = 1 # to control the printing of the output
-)
+# Create data loaders
+train_dataset = TensorDataset(train_x_t, train_y_t)
+train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
+
+# Training loop
+loss_history = []
+_ = model_reg_pt.train()
+for epoch in range(10):  # 300 for best results
+    epoch_loss = 0
+    for batch_x, batch_y in train_loader:
+        optimizer_pt.zero_grad()
+        pred = model_reg_pt(batch_x)
+        loss = criterion(pred, batch_y)
+        loss.backward()
+        optimizer_pt.step()
+        epoch_loss += loss.item()
+    avg_loss = epoch_loss / len(train_loader)
+    loss_history.append(avg_loss)
+    if (epoch + 1) % 5 == 0:
+        print(f"Epoch {epoch+1}, Loss: {avg_loss:.4f}")
+
+plt.plot(loss_history);
+plt.xlabel("Epoch");
+plt.ylabel("Loss (MSE)");
+plt.title("Training Loss");
+plt.show()
 ```
 
-You don't need to assign `model %>% fit()` to `history`. We only do that to plot the results later (e.g., with `plot(history)`.
+### Python (TensorFlow)
 
-### Python
 ```{python}
-# import necessary libraries
-from tensorflow.keras.callbacks import EarlyStopping
+import matplotlib.pyplot as plt
 
-# fit the model
-model_reg.fit(
-    r.train_x, r.train_y,
-    epochs=10, #300
+history = model_reg.fit(
+    train_x, train_y,
+    epochs=10,  # 300 to get the best results
     batch_size=32,
     validation_split=0.2,
-    callbacks=[EarlyStopping(patience=30,restore_best_weights=True)],
+    callbacks=[keras.callbacks.EarlyStopping(patience=30, restore_best_weights=True)],
     verbose=1
 )
 
+plt.plot(history.history['loss'], label='Train');
+plt.plot(history.history['val_loss'], label='Validation');
+plt.xlabel("Epoch");
+plt.ylabel("Loss (MSE)");
+plt.title("Training Loss");
+plt.legend();
+plt.show()
+```
+
+### R
+
+```{r}
+history <- model_reg |> fit(
+  train_x, train_y,
+  epochs = 10,  # 300 to get the best results
+  batch_size = 32,
+  validation_split = 0.2,
+  callbacks = callback_early_stopping(patience = 30, restore_best_weights = TRUE),
+  verbose = 1
+)
+
+plot(history)
 ```
 
 :::
 
 ## Model Evaluation
-Finally, we can evaluate the model on the testing set:
 
-::: panel-tabset
+::: {.panel-tabset}
+
+### Python (PyTorch)
+
+```{python}
+_ = model_reg_pt.eval()
+with torch.no_grad():
+    preds = model_reg_pt(test_x_t)
+    test_mae = torch.mean(torch.abs(preds - test_y_t)).item()
+    test_mse = criterion(preds, test_y_t).item()
+print(f"Test MSE: {test_mse:.4f}, Test MAE: {test_mae:.4f}")
+```
+
+### Python (TensorFlow)
+
+```{python}
+nn_results = model_reg.evaluate(test_x, test_y)
+print(f"Test Loss (MSE): {nn_results[0]:.4f}, Test MAE: {nn_results[1]:.4f}")
+```
+
 ### R
 
 ```{r}
-nn_results <- model_reg %>% evaluate(test_x, test_y)
+nn_results <- model_reg |> evaluate(test_x, test_y)
 nn_results
-# alternatively, you can use the `predict` attribute from `model` as shown below
-# nn_results <- model$predict(test_x)
-# caret::MAE(obs = test_y, pred = as.vector(nn_results))
-```
-
-### Python
-```{python}
-nn_results = model_reg.evaluate(r.test_x, r.test_y)
-print(nn_results)
 ```
 
 :::
 
-To put these results (from R) in context, we can compare it with a simple linear regression:
+To put these results in context, we can compare it with a simple linear regression in R:
 
 ```{r}
 df_tr <- data.frame(train_y, train_x)
 lm_mod <- lm(train_y ~ ., data = df_tr)
-lm_preds <- as.vector(predict(lm_mod, newdata=data.frame(test_x))) # `predict()` for lm doesn't accept matrices
+lm_preds <- as.vector(predict(lm_mod, newdata=data.frame(test_x)))
 
-# calculate mean absolute error with caret `MAE` installed in the `K-NN excercises`
 caret::MAE(obs = test_y, pred = lm_preds)
-
 ```
 
 We see that the neural network does significantly better than a regression model. We can also compare it with the trees seen in the CART series.
@@ -242,7 +345,6 @@ set.seed(123)
 tree_model <- rpart(train_y ~ ., data=df_tr)
 tree_preds <- predict(tree_model,newdata = data.frame(test_x))
 
-# calculate the performance on tree
 caret::MAE(obs = test_y, pred = tree_preds)
 ```
 
@@ -254,102 +356,214 @@ The neural network also outperforms CART (if you run NN for 300 epochs). This is
 
 The [CIFAR-10 dataset](https://www.cs.toronto.edu/~kriz/cifar.html) is a well-known dataset used for image classification tasks. It contains 50,000 training images and 10,000 testing images of size 32x32 pixels, each belonging to one of ten classes. We will use this dataset to demonstrate how to perform image classification.
 
-In this case, we had our inputs already prepared, but if it was not the case, you can always do:
+::: {.panel-tabset}
+
+### Python (PyTorch)
+
+```{python}
+import torchvision
+import torchvision.transforms as transforms
+
+transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])
+trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
+testset = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transform)
+train_loader_img = DataLoader(trainset, batch_size=64, shuffle=True)
+test_loader_img = DataLoader(testset, batch_size=64, shuffle=False)
+
+# Display some sample images
+classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+fig, axes = plt.subplots(2, 5, figsize=(10, 4))
+for i, ax in enumerate(axes.flat):
+    img = testset[i][0].permute(1, 2, 0) * 0.5 + 0.5  # unnormalize
+    ax.imshow(img);
+    ax.set_title(classes[testset[i][1]]);
+    ax.axis('off');
+plt.suptitle("Sample CIFAR-10 Images");
+plt.tight_layout();
+plt.show()
+
+_ = torch.manual_seed(123)
+
+model_cnn_pt = nn.Sequential(
+    nn.Conv2d(3, 32, 3, padding=0), nn.ReLU(), nn.MaxPool2d(2),
+    nn.Conv2d(32, 64, 5, padding=0), nn.ReLU(), nn.MaxPool2d(3),
+    nn.Conv2d(64, 64, 3, padding=0), nn.ReLU(),
+    nn.Flatten(),
+    nn.Linear(64, 64), nn.ReLU(),
+    nn.Linear(64, 10)
+)
+
+criterion_cnn = nn.CrossEntropyLoss()
+optimizer_cnn = optim.Adam(model_cnn_pt.parameters())
+
+for epoch in range(10):
+    _ = model_cnn_pt.train()
+    running_loss, correct_train, total_train = 0, 0, 0
+    for images, labels in train_loader_img:
+        optimizer_cnn.zero_grad()
+        outputs = model_cnn_pt(images)
+        loss = criterion_cnn(outputs, labels)
+        loss.backward()
+        optimizer_cnn.step()
+        running_loss += loss.item()
+        _, predicted = torch.max(outputs, 1)
+        total_train += labels.size(0)
+        correct_train += (predicted == labels).sum().item()
+    train_acc = correct_train / total_train
+    avg_loss = running_loss / len(train_loader_img)
+    print(f"Epoch {epoch+1}, Loss: {avg_loss:.4f}, Accuracy: {train_acc:.4f}")
+
+# Evaluate
+correct, total = 0, 0
+_ = model_cnn_pt.eval()
+with torch.no_grad():
+    for images, labels in test_loader_img:
+        outputs = model_cnn_pt(images)
+        _, predicted = torch.max(outputs, 1)
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+print(f"Test Accuracy: {correct/total:.4f}")
+
+# Show predictions on sample images
+_ = model_cnn_pt.eval()
+fig, axes = plt.subplots(2, 5, figsize=(10, 4))
+with torch.no_grad():
+    for i, ax in enumerate(axes.flat):
+        img = testset[i][0].unsqueeze(0)
+        pred = model_cnn_pt(img).argmax(1).item()
+        true_label = testset[i][1]
+        img_show = testset[i][0].permute(1, 2, 0) * 0.5 + 0.5
+        ax.imshow(img_show);
+        color = 'green' if pred == true_label else 'red'
+        ax.set_title(f"{classes[pred]}", color=color);
+        ax.set_xlabel(f"({classes[true_label]})", fontsize=8);
+        ax.set_xticks([]); ax.set_yticks([]);
+plt.suptitle("Predictions (true label in parentheses)");
+plt.tight_layout();
+plt.show()
+```
+
+### Python (TensorFlow)
+
+```{python}
+(train_images, train_labels), (test_images, test_labels) = keras.datasets.cifar10.load_data()
+
+# Normalize
+train_images = train_images / 255.0
+test_images = test_images / 255.0
+
+classes = ['plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+
+# Display some sample images
+fig, axes = plt.subplots(2, 5, figsize=(10, 4))
+for i, ax in enumerate(axes.flat):
+    ax.imshow(test_images[i]);
+    ax.set_title(classes[test_labels[i][0]]);
+    ax.axis('off');
+plt.suptitle("Sample CIFAR-10 Images");
+plt.tight_layout();
+plt.show()
+
+# One-hot encode labels
+train_labels_cat = keras.utils.to_categorical(train_labels, 10)
+test_labels_cat = keras.utils.to_categorical(test_labels, 10)
+
+keras.utils.set_random_seed(123)
+
+model_cnn = keras.Sequential([
+    layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(64, (5, 5), activation='relu'),
+    layers.MaxPooling2D((3, 3)),
+    layers.Conv2D(64, (3, 3), activation='relu'),
+    layers.Flatten(),
+    layers.Dense(64, activation='relu'),
+    layers.Dense(10, activation='softmax')
+])
+
+model_cnn.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+
+model_cnn.fit(train_images, train_labels_cat, epochs=10, batch_size=64,
+              validation_data=(test_images, test_labels_cat))
+model_cnn.evaluate(test_images, test_labels_cat)
+
+# Show predictions on sample images
+predictions = model_cnn.predict(test_images[:10])
+fig, axes = plt.subplots(2, 5, figsize=(10, 4))
+for i, ax in enumerate(axes.flat):
+    ax.imshow(test_images[i]);
+    pred = predictions[i].argmax()
+    true_label = test_labels[i][0]
+    color = 'green' if pred == true_label else 'red'
+    ax.set_title(f"{classes[pred]}", color=color);
+    ax.set_xlabel(f"({classes[true_label]})", fontsize=8);
+    ax.set_xticks([]); ax.set_yticks([]);
+plt.suptitle("Predictions (true label in parentheses)");
+plt.tight_layout();
+plt.show()
+```
+
+### R
 
 ```{r}
-# Load the CIFAR-10 dataset (it'll take a while for it to download)
 cifar10 <- dataset_cifar10()
 
-# Split the data into training and testing sets
-train_images <- cifar10$train$x
-train_labels <- cifar10$train$y
-test_images <- cifar10$test$x
-test_labels <- cifar10$test$y
-```
+train_images <- cifar10$train$x / 255
+test_images <- cifar10$test$x / 255
+train_labels_raw <- cifar10$train$y
+test_labels_raw <- cifar10$test$y
+train_labels <- to_categorical(train_labels_raw, 10)
+test_labels <- to_categorical(test_labels_raw, 10)
 
-If you do an `str(train_images)`, you can see that the output is a four-dimensional array. In this array, the first element is the number of images in the training set, the second and third elements represent the (pixel values) for each image's width and height, respectively, and the last element is the color channel of the image. If you had a black-and-white image (called greyscale), the number of channels would be just one. Typically, an image in color is represented with a combination of three colors known as RGB (red, green, and blue). Therefore, here we have three elements associated with the pixel number for each color, and their combination provides us with the colors you see in the image.
+classes <- c("plane", "car", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck")
 
-## Data Preparation
-
-Before building our image classification model, we need to prepare the data by normalizing the values to obtain pixel values between 0-1. Similar to standardization of tabular data, this helps to avoid exploding/vanishing gradients and can improve the convergence of the model.
-
-```{r}
-# Normalize the pixel values
-train_images <- train_images / 255
-test_images <- test_images / 255
-```
-
-We can also plot some of the example images.
-
-```{r}
-# Plot the first 9 images
-label_names <- c("airplane", "automobile", "bird", "cat", "deer", "dog", "frog", "horse", "ship", "truck")
-
-par(mfrow = c(3, 3))
-for (i in 1:9) {
-  img <- train_images[i,,,]
-  # label <- train_labels[i]
-  label <- label_names[train_labels[i] + 1]  # Add 1 to convert from 0-based to 1-based indexing
-  img <- array_reshape(img, c(32, 32, 3))
+# Display some sample images
+par(mfrow = c(2, 5), mar = c(1, 0.5, 2, 0.5))
+for (i in 1:10) {
+  img <- test_images[i, , , ]
+  img <- aperm(img, c(2, 1, 3))  # transpose for correct orientation
   plot(as.raster(img))
-  title(paste("Label:", label))
+  title(main = classes[test_labels_raw[i] + 1], cex.main = 1)
 }
-```
 
-We can now one-hot encode our labels to be better adapted to the loss function we will be using (otherwise you can use "sparse" variation of the loss functions).
+set_random_seed(123)
 
-```{r}
-train_labels <- to_categorical(train_labels)
-test_labels <- to_categorical(test_labels)
-```
-
-## Model definition
-We can build our image classification model using `keras` by defining the layers of the neural network. For this task we'll be using Convolutional neural networks (CNNs). CNNs are a type of deep learning model that are commonly used for image and video processing. They consist of multiple layers, including convolutional layers, pooling layers, and fully connected layers. The convolutional layers use filters to extract features from the input image, and the pooling layers downsample the output of the convolutional layers. The fully connected layers combine the extracted features to produce the final output of the network. CNNs have been shown to be effective in a wide range of applications, including image classification, object detection, and semantic segmentation.
-
-```{r, eval = F}
-# Set a seed again for reproducibility
-tensorflow::set_random_seed(123)
-
-# Define the model
-model_cnn <-
-  keras_model_sequential()%>%
-  layer_conv_2d(filters = 32, kernel_size = c(3, 3), input_shape = c(32, 32, 3),  activation = "relu") %>%
-  layer_max_pooling_2d(pool_size = c(2, 2)) %>%
-  layer_conv_2d(filters = 64, kernel_size = c(5, 5), activation = "relu") %>%
-  layer_max_pooling_2d(pool_size = c(3, 3)) %>%
-  layer_conv_2d(filters = 64, kernel_size = c(3, 3), activation = "relu") %>%
-  layer_flatten() %>%
-  layer_dense(units = 64, activation = "relu") %>%
+model_cnn <- keras_model_sequential(input_shape = c(32, 32, 3)) |>
+  layer_conv_2d(filters = 32, kernel_size = c(3, 3), activation = "relu") |>
+  layer_max_pooling_2d(pool_size = c(2, 2)) |>
+  layer_conv_2d(filters = 64, kernel_size = c(5, 5), activation = "relu") |>
+  layer_max_pooling_2d(pool_size = c(3, 3)) |>
+  layer_conv_2d(filters = 64, kernel_size = c(3, 3), activation = "relu") |>
+  layer_flatten() |>
+  layer_dense(units = 64, activation = "relu") |>
   layer_dense(units = 10, activation = "softmax")
 
-# Compile the model
-model_cnn %>% compile(
+model_cnn |> compile(
   loss = "categorical_crossentropy",
   optimizer = optimizer_adam(),
   metrics = c("accuracy")
 )
 
+model_cnn |> fit(train_images, train_labels, epochs = 10, batch_size = 64,
+                 validation_data = list(test_images, test_labels))
+model_cnn |> evaluate(test_images, test_labels)
+
+# Show predictions on sample images
+predictions <- model_cnn |> predict(test_images[1:10, , , , drop = FALSE])
+par(mfrow = c(2, 5), mar = c(2, 0.5, 2, 0.5))
+for (i in 1:10) {
+  img <- test_images[i, , , ]
+  img <- aperm(img, c(2, 1, 3))
+  pred <- which.max(predictions[i, ])
+  true_label <- test_labels_raw[i] + 1
+  plot(as.raster(img))
+  color <- if (pred == true_label) "darkgreen" else "red"
+  title(main = classes[pred], col.main = color, cex.main = 1)
+  mtext(paste0("(", classes[true_label], ")"), side = 1, cex = 0.7)
+}
 ```
 
-Depending on youer computer, this may take some time to run.
-
-```{r, eval = F}
-history <- model_cnn %>% fit(
-  x = train_images,
-  y = train_labels,
-  epochs = 10,
-  batch_size = 64,
-  # validation_split = 0.2
-  validation_data= list(test_images, test_labels)
-)
-```
-
-```{r, eval = F}
-model_cnn %>% evaluate(
-  x = test_images,
-  y = test_labels
-)
-```
+:::
 
 You may notice that we did not obtain extremely high accuracy, but this is okay for multiple reasons:
 
@@ -361,6 +575,8 @@ You may notice that we did not obtain extremely high accuracy, but this is okay 
 Use NNs to fit nursing data, with the **cost** variable once again set as the prediction outcome. Compare the performance against the tree-based methods. Which type of machine learning model would you go for and why? (think in terms of interpretability and performance)
 
 # References
-- [Setting up GPU `tensorflow` in R](https://tensorflow.rstudio.com/install/local_gpu)
-- [Google ML image showing the two types of activation functions for classifier neural networks](https://developers.google.com/machine-learning/guides/text-classification/step-4)
-- [Material for the Deep learning course previously taught at HEC](https://irudnyts.github.io/deep/lectures/)
+- [Keras 3 documentation](https://keras.io/)
+- [PyTorch documentation](https://pytorch.org/docs/stable/)
+- [PyTorch tutorials](https://pytorch.org/tutorials/)
+- [Stanford CS231n: Deep Learning for Computer Vision](https://cs231n.stanford.edu/)
+- [Google ML guide: activation functions for classifier neural networks](https://developers.google.com/machine-learning/guides/text-classification/step-4)

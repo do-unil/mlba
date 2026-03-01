@@ -141,14 +141,14 @@ import matplotlib.pyplot as plt
 
 plt.clf()
 plt.figure(figsize=(10, 8))
-plt.scatter(encoded_wine[:, 0], encoded_wine[:, 1], s=50, alpha=0.8)
-plt.xlabel('Dimension 1')
-plt.ylabel('Dimension 2')
-plt.title('2D Representation of Wine Data using Autoencoders')
+plt.scatter(encoded_wine[:, 0], encoded_wine[:, 1], s=50, alpha=0.8);
+plt.xlabel('Dimension 1');
+plt.ylabel('Dimension 2');
+plt.title('2D Representation of Wine Data using Autoencoders');
 
 # OPTIONAL: Add the wine index as labels (you can comment the code below)
 for i in range(len(wine)):
-  plt.annotate(wine.index[i], (encoded_wine[i, 0], encoded_wine[i, 1]), fontsize=8)
+  plt.annotate(wine.index[i], (encoded_wine[i, 0], encoded_wine[i, 1]), fontsize=8);
 
 plt.show()
 ```

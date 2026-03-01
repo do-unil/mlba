@@ -262,10 +262,10 @@ import matplotlib.pyplot as plt
 tmp_test_plt = r.tmp_te.copy()
 tmp_test_plt["pred"]= tmp_pred
 fig, ax = plt.subplots()
-ax.plot(tmp_test_plt["price"], tmp_test_plt["pred"], '.', color='black')
-ax.plot(tmp_test_plt["price"], tmp_test_plt["price"], '-', color='blue')
-ax.set_xlabel("Price")
-ax.set_ylabel("Predicted price")
+ax.plot(tmp_test_plt["price"], tmp_test_plt["pred"], '.', color='black');
+ax.plot(tmp_test_plt["price"], tmp_test_plt["price"], '-', color='blue');
+ax.set_xlabel("Price");
+ax.set_ylabel("Predicted price");
 plt.show()
 ```
 
@@ -358,10 +358,10 @@ tmp_pred = mod_knn_py.predict(X_te)
 tmp_test_plt = r.imp_te.copy()
 tmp_test_plt["pred"]= tmp_pred
 fig, ax = plt.subplots()
-ax.plot(tmp_test_plt["price"], tmp_test_plt["pred"], '.', color='black')
-ax.plot(tmp_test_plt["price"], tmp_test_plt["price"], '-', color='blue')
-ax.set_xlabel("Price")
-ax.set_ylabel("Predicted price")
+ax.plot(tmp_test_plt["price"], tmp_test_plt["pred"], '.', color='black');
+ax.plot(tmp_test_plt["price"], tmp_test_plt["price"], '-', color='blue');
+ax.set_xlabel("Price");
+ax.set_ylabel("Predicted price");
 plt.show()
 ```
 

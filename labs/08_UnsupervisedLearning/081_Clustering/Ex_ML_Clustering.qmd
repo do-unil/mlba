@@ -3,7 +3,7 @@ title: "Clustering"
 ---
 
 ```{r global_options, include = FALSE}
-knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+knitr::opts_chunk$set(fig.align="center", results = 'hold', fig.show = 'show', warning = FALSE, message = FALSE)
 ```
 
 # Data
@@ -90,31 +90,31 @@ plt.clf()
 wss = []
 for k in range(1, 26):
     model = AgglomerativeClustering(n_clusters=k, metric='manhattan', linkage='complete')
-    model.fit(X)
+    model.fit(X);
     labels = model.labels_
     centroids = np.array([X[labels == i].mean(axis=0) for i in range(k)])
     wss.append(sum(((X - centroids[labels]) ** 2).sum(axis=1)))
 
 plt.figure(figsize=(10, 6))
-plt.plot(range(1, 26), wss, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Within sum-of-squares')
-plt.title('Elbow Method for Optimal k')
+plt.plot(range(1, 26), wss, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Within sum-of-squares');
+plt.title('Elbow Method for Optimal k');
 plt.show()
 
 # Silhouette
 silhouette_scores = []
 for k in range(2, 26):
     model = AgglomerativeClustering(n_clusters=k, metric='manhattan', linkage='complete')
-    model.fit(X)
+    model.fit(X);
     labels = model.labels_
     silhouette_scores.append(silhouette_score(X, labels))
 
 plt.figure(figsize=(10, 6))
-plt.plot(range(2, 26), silhouette_scores, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Silhouette score')
-plt.title('Silhouette Method for Optimal k')
+plt.plot(range(2, 26), silhouette_scores, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Silhouette score');
+plt.title('Silhouette Method for Optimal k');
 plt.show()
 
 # Alternative metrics
@@ -124,25 +124,25 @@ k_range = range(2, 26)
 
 for k in k_range:
     model = AgglomerativeClustering(n_clusters=k, metric='manhattan', linkage='complete')
-    model.fit(X)
+    model.fit(X);
     labels = model.labels_
     ch_scores.append(calinski_harabasz_score(X, labels))
     db_scores.append(davies_bouldin_score(X, labels))
 
 # Plot Calinski-Harabasz Index
 plt.figure(figsize=(10, 6))
-plt.plot(list(k_range), ch_scores, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Calinski-Harabasz Index (higher is better)')
-plt.title('Calinski-Harabasz Index for determining optimal k')
+plt.plot(list(k_range), ch_scores, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Calinski-Harabasz Index (higher is better)');
+plt.title('Calinski-Harabasz Index for determining optimal k');
 plt.show()
 
 # Plot Davies-Bouldin Index
 plt.figure(figsize=(10, 6))
-plt.plot(list(k_range), db_scores, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Davies-Bouldin Index (lower is better)')
-plt.title('Davies-Bouldin Index for determining optimal k')
+plt.plot(list(k_range), db_scores, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Davies-Bouldin Index (lower is better)');
+plt.title('Davies-Bouldin Index for determining optimal k');
 plt.show()
 ```
 
@@ -193,7 +193,7 @@ wine_d = pd.DataFrame(cdist(wine.iloc[:, :-1], wine.iloc[:, :-1], metric='citybl
 wine_melt = wine_d.reset_index().melt(id_vars='index', var_name='Var1', value_name='value')
 
 plt.figure(figsize=(10, 8))
-sns.heatmap(wine_d, cmap="coolwarm", center=0)
+sns.heatmap(wine_d, cmap="coolwarm", center=0);
 plt.show()
 ```
 :::
@@ -217,7 +217,7 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 
 wine_linkage = linkage(wine.iloc[:, :-1], method='complete', metric='cityblock')
 plt.figure(figsize=(10, 8))
-dendrogram(wine_linkage, labels=wine.index, orientation='top', color_threshold=0, leaf_font_size=10)
+dendrogram(wine_linkage, labels=wine.index, orientation='top', color_threshold=0, leaf_font_size=10);
 plt.show()
 ```
 :::
@@ -243,8 +243,8 @@ wine_clust
 from scipy.cluster.hierarchy import fcluster
 
 plt.figure(figsize=(10, 8))
-dendrogram(wine_linkage, labels=wine.index, orientation='top', color_threshold=80, leaf_font_size=10)
-plt.axhline(y=80, color='black', linestyle='--')
+dendrogram(wine_linkage, labels=wine.index, orientation='top', color_threshold=80, leaf_font_size=10);
+plt.axhline(y=80, color='black', linestyle='--');
 plt.show()
 
 wine_clust = fcluster(wine_linkage, 4, criterion='maxclust')
@@ -282,9 +282,9 @@ wine_comp['Id'] = wine.index
 wine_melt = wine_comp.melt(id_vars=['Id', 'Clust'])
 
 plt.figure(figsize=(14, 10))
-sns.boxplot(x='variable', y='value', hue='Clust', data=wine_melt)
-plt.xticks(rotation=90)
-plt.legend(title='Cluster')
+sns.boxplot(x='variable', y='value', hue='Clust', data=wine_melt);
+plt.xticks(rotation=90);
+plt.legend(title='Cluster');
 plt.show()
 ```
 :::
@@ -378,31 +378,31 @@ plt.clf()
 wss = []
 for k in range(1, 26):
     model = AgglomerativeClustering(n_clusters=k, metric='manhattan', linkage='complete')
-    model.fit(X)
+    model.fit(X);
     labels = model.labels_
     centroids = np.array([X[labels == i].mean(axis=0) for i in range(k)])
     wss.append(sum(((X - centroids[labels]) ** 2).sum(axis=1)))
 
 plt.figure(figsize=(10, 6))
-plt.plot(range(1, 26), wss, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Within sum-of-squares')
-plt.title('Elbow Method for Optimal k')
+plt.plot(range(1, 26), wss, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Within sum-of-squares');
+plt.title('Elbow Method for Optimal k');
 plt.show()
 
 # Silhouette method
 silhouette_scores = []
 for k in range(2, 26):
     model = AgglomerativeClustering(n_clusters=k, metric='manhattan', linkage='complete')
-    model.fit(X)
+    model.fit(X);
     labels = model.labels_
     silhouette_scores.append(silhouette_score(X, labels))
 
 plt.figure(figsize=(10, 6))
-plt.plot(range(2, 26), silhouette_scores, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Silhouette score')
-plt.title('Silhouette Method for Optimal k')
+plt.plot(range(2, 26), silhouette_scores, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Silhouette score');
+plt.title('Silhouette Method for Optimal k');
 plt.show()
 
 # Alternative metrics to gap statistic
@@ -412,25 +412,25 @@ k_range = range(2, 26)
 
 for k in k_range:
     model = AgglomerativeClustering(n_clusters=k, metric='manhattan', linkage='complete')
-    model.fit(X)
+    model.fit(X);
     labels = model.labels_
     ch_scores.append(calinski_harabasz_score(X, labels))
     db_scores.append(davies_bouldin_score(X, labels))
 
 # Plot Calinski-Harabasz Index
 plt.figure(figsize=(10, 6))
-plt.plot(list(k_range), ch_scores, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Calinski-Harabasz Index (higher is better)')
-plt.title('Calinski-Harabasz Index for determining optimal k')
+plt.plot(list(k_range), ch_scores, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Calinski-Harabasz Index (higher is better)');
+plt.title('Calinski-Harabasz Index for determining optimal k');
 plt.show()
 
 # Plot Davies-Bouldin Index
 plt.figure(figsize=(10, 6))
-plt.plot(list(k_range), db_scores, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Davies-Bouldin Index (lower is better)')
-plt.title('Davies-Bouldin Index for determining optimal k')
+plt.plot(list(k_range), db_scores, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Davies-Bouldin Index (lower is better)');
+plt.title('Davies-Bouldin Index for determining optimal k');
 plt.show()
 ```
 
@@ -484,29 +484,29 @@ import os
 wss = []
 for k in range(1, 26):
     model = KMeans(n_clusters=k, n_init=10)
-    model.fit(X)
+    model.fit(X);
     wss.append(model.inertia_)
 
 plt.figure(figsize=(10, 6))
-plt.plot(range(1, 26), wss, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Within sum-of-squares')
-plt.title('Elbow Method for Optimal k')
+plt.plot(range(1, 26), wss, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Within sum-of-squares');
+plt.title('Elbow Method for Optimal k');
 plt.show()
 
 # Silhouette method
 silhouette_scores = []
 for k in range(2, 26):
     model = KMeans(n_clusters=k, n_init=10)
-    model.fit(X)
+    model.fit(X);
     labels = model.labels_
     silhouette_scores.append(silhouette_score(X, labels))
 
 plt.figure(figsize=(10, 6))
-plt.plot(range(2, 26), silhouette_scores, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Silhouette score')
-plt.title('Silhouette Method for Optimal k')
+plt.plot(range(2, 26), silhouette_scores, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Silhouette score');
+plt.title('Silhouette Method for Optimal k');
 plt.show()
 
 # Alternative metrics to gap statistic
@@ -516,30 +516,30 @@ k_range = range(2, 26)
 
 for k in k_range:
     model = KMeans(n_clusters=k, n_init=10)
-    model.fit(X)
+    model.fit(X);
     labels = model.labels_
     ch_scores.append(calinski_harabasz_score(X, labels))
     db_scores.append(davies_bouldin_score(X, labels))
 
 # Plot Calinski-Harabasz Index
 plt.figure(figsize=(10, 6))
-plt.plot(list(k_range), ch_scores, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Calinski-Harabasz Index (higher is better)')
-plt.title('Calinski-Harabasz Index for determining optimal k')
+plt.plot(list(k_range), ch_scores, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Calinski-Harabasz Index (higher is better)');
+plt.title('Calinski-Harabasz Index for determining optimal k');
 plt.show()
 
 # Plot Davies-Bouldin Index
 plt.figure(figsize=(10, 6))
-plt.plot(list(k_range), db_scores, marker='o')
-plt.xlabel('Number of clusters')
-plt.ylabel('Davies-Bouldin Index (lower is better)')
-plt.title('Davies-Bouldin Index for determining optimal k')
+plt.plot(list(k_range), db_scores, marker='o');
+plt.xlabel('Number of clusters');
+plt.ylabel('Davies-Bouldin Index (lower is better)');
+plt.title('Davies-Bouldin Index for determining optimal k');
 plt.show()
 
 # Final K-means with k=2
 wine_km = KMeans(n_clusters=2, n_init=10)
-wine_km.fit(X)
+wine_km.fit(X);
 wine_km.labels_
 ```
 :::
@@ -568,7 +568,13 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
-from sklearn_extra.cluster import KMedoids
+try:
+    from sklearn_extra.cluster import KMedoids
+    HAS_KMEDOIDS = True
+except (ImportError, ValueError):
+    # sklearn_extra may fail with newer numpy versions
+    print("Warning: sklearn_extra not available, using KMeans as fallback for KMedoids")
+    HAS_KMEDOIDS = False
 from sklearn.metrics import silhouette_samples
 from scipy.spatial.distance import pdist, squareform
 import os
@@ -614,8 +620,12 @@ wine_scaled = pd.DataFrame(
 X = wine_scaled.values
 
 # PAM with k=3
-wine_pam = KMedoids(n_clusters=3, metric='manhattan', method='pam')
-wine_pam.fit(X)
+if HAS_KMEDOIDS:
+    wine_pam = KMedoids(n_clusters=3, metric='manhattan', method='pam')
+else:
+    from sklearn.cluster import KMeans
+    wine_pam = KMeans(n_clusters=3, random_state=42)
+wine_pam.fit(X);
 wine_pam.labels_
 
 # Silhouette plot function
@@ -632,15 +642,15 @@ def plot_silhouette(data, labels, metric='euclidean', figsize=(10, 6)):
         cluster_silhouette_vals = silhouette_vals[labels == i]
         cluster_silhouette_vals.sort()
         y_upper += len(cluster_silhouette_vals)
-        ax.barh(range(y_lower, y_upper), cluster_silhouette_vals, height=1)
-        ax.text(-0.03, (y_lower + y_upper) / 2, str(i + 1))
+        ax.barh(range(y_lower, y_upper), cluster_silhouette_vals, height=1);
+        ax.text(-0.03, (y_lower + y_upper) / 2, str(i + 1));
         y_lower += len(cluster_silhouette_vals)
-    
+
     silhouette_avg = np.mean(silhouette_vals)
-    ax.axvline(silhouette_avg, color='red', linestyle='--')
-    ax.set_xlabel('Silhouette coefficient values')
-    ax.set_ylabel('Cluster labels')
-    ax.set_title('Silhouette plot for the various clusters')
+    ax.axvline(silhouette_avg, color='red', linestyle='--');
+    ax.set_xlabel('Silhouette coefficient values');
+    ax.set_ylabel('Cluster labels');
+    ax.set_title('Silhouette plot for the various clusters');
     plt.show()
 
 # Create the silhouette plot

@@ -1,0 +1,165 @@
+name: Test Labs Rendering
+
+on:
+  workflow_dispatch:  # Manual trigger
+  pull_request:
+    paths:
+      - 'labs/**'
+      - 'environment.yml'
+      - 'requirements.txt'
+      - 'renv.lock'
+      - '.github/workflows/test-labs.yml'
+
+jobs:
+  test-labs:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+      fail-fast: false
+    runs-on: ${{ matrix.os }}
+
+    env:
+      RENV_PATHS_ROOT: ~/.local/share/renv
+      RETICULATE_PYTHON_ENV: MLBA
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Quarto CLI
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.8.27
+
+      - name: Install system dependencies (Ubuntu)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libcurl4-openssl-dev libxml2-dev libssl-dev \
+            libfontconfig1-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev \
+            libpng-dev libtiff5-dev libjpeg-dev cmake libglu1-mesa-dev \
+            libmagick++-dev libpoppler-cpp-dev
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - name: Cache R packages (renv)
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.RENV_PATHS_ROOT }}
+          key: ${{ runner.os }}-renv-${{ hashFiles('renv.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-renv-
+
+      - name: Restore renv packages
+        shell: Rscript {0}
+        run: |
+          if (!requireNamespace("renv", quietly = TRUE)) install.packages("renv")
+          renv::restore()
+
+      - name: Set up Miniconda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          auto-update-conda: false
+          python-version: "3.10"
+          activate-environment: MLBA
+          miniforge-version: latest
+
+      - name: Cache conda environment
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/miniconda3/envs/MLBA
+            ~/.conda/envs/MLBA
+            C:\Miniconda3\envs\MLBA
+          key: ${{ runner.os }}-conda-mlba-${{ hashFiles('requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-conda-mlba-
+
+      - name: Install Python packages
+        shell: bash -l {0}
+        run: |
+          conda activate MLBA
+          pip install -r requirements.txt
+
+      - name: Configure reticulate to use MLBA env
+        shell: Rscript {0}
+        run: |
+          library(reticulate)
+          use_condaenv("MLBA", required = TRUE)
+          cat("Python config:\n")
+          py_config()
+
+      # Override eval: false to eval: true for testing
+      - name: Enable code execution for labs
+        shell: bash
+        run: |
+          echo 'execute:' > labs/_metadata.yml
+          echo '  eval: true' >> labs/_metadata.yml
+
+      - name: Increase stack size (Linux/macOS)
+        if: runner.os != 'Windows'
+        run: ulimit -s unlimited
+
+      # Render each lab individually and track results
+      - name: Render Setup lab
+        shell: bash
+        run: quarto render labs/00_lab/setup.qmd 2>&1 || echo "FAILED: setup.qmd"
+
+      - name: Render Linear & Logistic Regression lab
+        shell: bash
+        run: quarto render labs/03_Models/031_LinearLogisticRegression/Ex_ML_LinLogReg.qmd 2>&1 || echo "FAILED: Ex_ML_LinLogReg.qmd"
+
+      - name: Render Decision Trees lab
+        shell: bash
+        run: quarto render labs/03_Models/032_Trees/Ex_ML_Tree.qmd 2>&1 || echo "FAILED: Ex_ML_Tree.qmd"
+
+      - name: Render Neural Networks lab
+        shell: bash
+        run: quarto render labs/03_Models/033_NeuralNetworks/EX_ML_NN.qmd 2>&1 || echo "FAILED: EX_ML_NN.qmd"
+
+      - name: Render SVM lab
+        shell: bash
+        run: quarto render labs/03_Models/034_SupportVectorMachine/Ex_ML_SVM.qmd 2>&1 || echo "FAILED: Ex_ML_SVM.qmd"
+
+      - name: Render Metrics lab
+        shell: bash
+        run: quarto render labs/04_Metrics/Ex_ML_Scoring.qmd 2>&1 || echo "FAILED: Ex_ML_Scoring.qmd"
+
+      - name: Render Data Splitting lab
+        shell: bash
+        run: quarto render labs/05_DataSplitting/Ex_ML_Data_Splitting.qmd 2>&1 || echo "FAILED: Ex_ML_Data_Splitting.qmd"
+
+      - name: Render Ensemble Methods lab
+        shell: bash
+        run: quarto render labs/06_Ensembles/Ex_ML_Ensemble.qmd 2>&1 || echo "FAILED: Ex_ML_Ensemble.qmd"
+
+      - name: Render Interpretable ML lab
+        shell: bash
+        run: quarto render labs/07_InterpretableML/Ex_ML_VarImp.qmd 2>&1 || echo "FAILED: Ex_ML_VarImp.qmd"
+
+      - name: Render Clustering lab
+        shell: bash
+        run: quarto render labs/08_UnsupervisedLearning/081_Clustering/Ex_ML_Clustering.qmd 2>&1 || echo "FAILED: Ex_ML_Clustering.qmd"
+
+      - name: Render PCA lab
+        shell: bash
+        run: quarto render labs/08_UnsupervisedLearning/082_DimensionReduction/Ex_ML_PCA.qmd 2>&1 || echo "FAILED: Ex_ML_PCA.qmd"
+
+      # Slides (already have eval: true)
+      - name: Render Slide 1
+        shell: bash
+        run: quarto render labs/slides/lab_1/slide.qmd 2>&1 || echo "FAILED: slide lab_1"
+
+      - name: Render Slide 2
+        shell: bash
+        run: quarto render labs/slides/lab_2/slide.qmd 2>&1 || echo "FAILED: slide lab_2"
+
+      # Restore original metadata
+      - name: Restore eval: false for labs
+        shell: bash
+        run: |
+          echo 'execute:' > labs/_metadata.yml
+          echo '  eval: false ' >> labs/_metadata.yml

@@ -15,3 +15,10 @@ _site/
 
 /lectures/cours_ml/
 **/*.quarto_ipynb
+
+# Downloaded datasets (CIFAR-10, etc.) — auto-downloaded at runtime
+/data/
+labs/**/data/
+
+# Render artifacts (intermediate files from local renders)
+**/*_files/

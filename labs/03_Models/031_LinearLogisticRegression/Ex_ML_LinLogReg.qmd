@@ -4,7 +4,7 @@ output-file: Ex_ML_LinLogReg.html
 ---
 
 ```{r global_options, include = FALSE}
-knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+knitr::opts_chunk$set(fig.align="center", results = 'hold', fig.show = 'show', warning = FALSE, message = FALSE)
 ```
 
 # Linear regression: real estate application
@@ -203,10 +203,10 @@ abline(0,1) # line showing the obs -- pred agreement
 
 mod_lm_sel_pred = mod_lm_sel_py.predict(r.dat_te_restate)
 fig, ax = plt.subplots()
-ax.scatter(x=mod_lm_sel_pred, y=r.dat_te_restate['Price'])
-ax.set_xlabel('Prediction')
-ax.set_ylabel('Observed prices')
-ax.plot(ax.get_xlim(), ax.get_ylim(), ls="--", c=".3")
+ax.scatter(x=mod_lm_sel_pred, y=r.dat_te_restate['Price']);
+ax.set_xlabel('Prediction');
+ax.set_ylabel('Observed prices');
+ax.plot(ax.get_xlim(), ax.get_ylim(), ls="--", c=".3");
 plt.show()
 ```
 
@@ -454,10 +454,10 @@ boxplot(prob_te_visit~dat_te_visit$visits)
 #| eval: false
 
 fig, ax = plt.subplots()
-ax.boxplot([prob_te_visit[r.dat_te_visit['visits']==0], prob_te_visit[r.dat_te_visit['visits']==1]])
-ax.set_xticklabels(['No Visit', 'Visit'])
-ax.set_ylabel('Predicted Probability')
-ax.set_title('Predicted Probabilities by Visit Status')
+ax.boxplot([prob_te_visit[r.dat_te_visit['visits']==0], prob_te_visit[r.dat_te_visit['visits']==1]]);
+ax.set_xticklabels(['No Visit', 'Visit']);
+ax.set_ylabel('Predicted Probability');
+ax.set_title('Predicted Probabilities by Visit Status');
 plt.show()
 ```
 
@@ -575,25 +575,25 @@ np.random.seed(123)
 
 # Fit Lasso regression model
 lasso_cv = LassoCV(cv=10)
-lasso_cv.fit(r.dat_tr_re_mat_x, r.dat_tr_re_mat_y)
+lasso_cv.fit(r.dat_tr_re_mat_x, r.dat_tr_re_mat_y);
 
 # Get the optimal regularization parameter
 lasso_optimal_alpha = lasso_cv.alpha_
 
 # Fit the Lasso model with the optimal alpha
 lasso_best_py = Lasso(alpha=lasso_optimal_alpha)
-lasso_best_py.fit(r.dat_tr_re_mat_x, r.dat_tr_re_mat_y)
+lasso_best_py.fit(r.dat_tr_re_mat_x, r.dat_tr_re_mat_y);
 
 # Fit Ridge regression model with cross-validation
 ridge_cv = RidgeCV(cv=10)
-ridge_cv.fit(r.dat_tr_re_mat_x, r.dat_tr_re_mat_y)
+ridge_cv.fit(r.dat_tr_re_mat_x, r.dat_tr_re_mat_y);
 
 # Get the optimal regularization parameter
 ridge_optimal_alpha = ridge_cv.alpha_
 
 # Fit the Ridge model with the optimal alpha
 ridge_best_py = Ridge(alpha=ridge_optimal_alpha)
-ridge_best_py.fit(r.dat_tr_re_mat_x, r.dat_tr_re_mat_y)
+ridge_best_py.fit(r.dat_tr_re_mat_x, r.dat_tr_re_mat_y);
 ```
 
 

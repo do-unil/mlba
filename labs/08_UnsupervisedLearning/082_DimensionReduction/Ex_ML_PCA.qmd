@@ -3,7 +3,7 @@ title: "Principal Component Analysis"
 ---
 
 ```{r global_options, include = FALSE}
-knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+knitr::opts_chunk$set(fig.align="center", results = 'hold', fig.show = 'show', warning = FALSE, message = FALSE)
 ```
 
 # Data preparation
@@ -54,7 +54,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 plt.figure(figsize=(10, 8))
-sns.heatmap(wine.iloc[:, :-1].corr(), annot=True, cmap="coolwarm", center=0)
+sns.heatmap(wine.iloc[:, :-1].corr(), annot=True, cmap="coolwarm", center=0);
 plt.show()
 ```
 ::: {.callout-warning}
@@ -116,24 +116,24 @@ loading_matrix = loading_matrix.iloc[:, :2]
 loading_matrix_normalized = loading_matrix / np.sqrt(np.sum(loading_matrix**2, axis=0))
 
 fig, ax = plt.subplots(figsize=(8, 8))
-ax.scatter(loading_matrix_normalized["PC1"], loading_matrix_normalized["PC2"], color="r", marker="o", s=100)
+ax.scatter(loading_matrix_normalized["PC1"], loading_matrix_normalized["PC2"], color="r", marker="o", s=100);
 
 for i, feature in enumerate(loading_matrix_normalized.index):
-    ax.arrow(0, 0, loading_matrix_normalized.loc[feature, "PC1"], loading_matrix_normalized.loc[feature, "PC2"], color="r", alpha=0.8)
-    ax.text(loading_matrix_normalized.loc[feature, "PC1"], loading_matrix_normalized.loc[feature, "PC2"], feature, color="black", fontsize=12)
+    ax.arrow(0, 0, loading_matrix_normalized.loc[feature, "PC1"], loading_matrix_normalized.loc[feature, "PC2"], color="r", alpha=0.8);
+    ax.text(loading_matrix_normalized.loc[feature, "PC1"], loading_matrix_normalized.loc[feature, "PC2"], feature, color="black", fontsize=12);
 
-ax.axhline(0, color="black", linewidth=1)
-ax.axvline(0, color="black", linewidth=1)
-ax.set_xlim(-1.1, 1.1)
-ax.set_ylim(-1.1, 1.1)
+ax.axhline(0, color="black", linewidth=1);
+ax.axvline(0, color="black", linewidth=1);
+ax.set_xlim(-1.1, 1.1);
+ax.set_ylim(-1.1, 1.1);
 
 circle = plt.Circle((0, 0), 1, color='gray', fill=False, linestyle="--", linewidth=1)
-ax.add_artist(circle)
+ax.add_artist(circle);
 
-ax.set_xlabel("PC1")
-ax.set_ylabel("PC2")
-ax.set_title("Circle of Correlations")
-ax.grid()
+ax.set_xlabel("PC1");
+ax.set_ylabel("PC2");
+ax.set_title("Circle of Correlations");
+ax.grid();
 plt.show()
 ```
 ::: {.callout-note}
@@ -155,24 +155,24 @@ loading_matrix_normalized = loading_matrix / np.sqrt(np.sum(loading_matrix**2, a
 loading_matrix_normalized["PC2"] = -loading_matrix_normalized["PC2"]
 
 fig, ax = plt.subplots(figsize=(8, 8))
-ax.scatter(loading_matrix_normalized["PC1"], loading_matrix_normalized["PC2"], color="r", marker="o", s=100)
+ax.scatter(loading_matrix_normalized["PC1"], loading_matrix_normalized["PC2"], color="r", marker="o", s=100);
 
 for i, feature in enumerate(loading_matrix_normalized.index):
-    ax.arrow(0, 0, loading_matrix_normalized.loc[feature, "PC1"], loading_matrix_normalized.loc[feature, "PC2"], color="r", alpha=0.8)
-    ax.text(loading_matrix_normalized.loc[feature, "PC1"], loading_matrix_normalized.loc[feature, "PC2"], feature, color="black", fontsize=12)
+    ax.arrow(0, 0, loading_matrix_normalized.loc[feature, "PC1"], loading_matrix_normalized.loc[feature, "PC2"], color="r", alpha=0.8);
+    ax.text(loading_matrix_normalized.loc[feature, "PC1"], loading_matrix_normalized.loc[feature, "PC2"], feature, color="black", fontsize=12);
 
-ax.axhline(0, color="black", linewidth=1)
-ax.axvline(0, color="black", linewidth=1)
-ax.set_xlim(-1.1, 1.1)
-ax.set_ylim(-1.1, 1.1)
+ax.axhline(0, color="black", linewidth=1);
+ax.axvline(0, color="black", linewidth=1);
+ax.set_xlim(-1.1, 1.1);
+ax.set_ylim(-1.1, 1.1);
 
 circle = plt.Circle((0, 0), 1, color='gray', fill=False, linestyle="--", linewidth=1)
-ax.add_artist(circle)
+ax.add_artist(circle);
 
-ax.set_xlabel("PC1")
-ax.set_ylabel("PC2")
-ax.set_title("Circle of Correlations")
-ax.grid()
+ax.set_xlabel("PC1");
+ax.set_ylabel("PC2");
+ax.set_title("Circle of Correlations");
+ax.grid();
 plt.show()
 ```
 :::
@@ -203,10 +203,10 @@ contributions = square_loading_matrix * 100 / explained_variance[:2]
 contributions = contributions["PC1"].sort_values(ascending=False)
 
 plt.figure(figsize=(10, 6))
-sns.barplot(x=contributions.values, y=contributions.index, palette="viridis")
-plt.xlabel("Contribution (%)")
-plt.ylabel("Features")
-plt.title("Feature Contributions for PC1")
+sns.barplot(x=contributions.values, y=contributions.index, palette="viridis");
+plt.xlabel("Contribution (%)");
+plt.ylabel("Features");
+plt.title("Feature Contributions for PC1");
 plt.show()
 ```
 :::
@@ -245,20 +245,20 @@ scale_factor = arrow_max / np.max(np.abs(loadings_scaled))
 
 # Create a scatter plot of the scores
 plt.figure(figsize=(10, 8))
-plt.scatter(scores.iloc[:, 0], scores.iloc[:, 1], s=50, alpha=0.8)
+plt.scatter(scores.iloc[:, 0], scores.iloc[:, 1], s=50, alpha=0.8);
 
 # Add arrows for each variable's loadings
 for i, variable in enumerate(wine.columns[:-1]):
-    plt.arrow(0, 0, loadings_scaled[i, 0]*scale_factor, loadings_scaled[i, 1]*scale_factor, color='r', alpha=0.8)
-    plt.text(loadings_scaled[i, 0]*scale_factor, loadings_scaled[i, 1]*scale_factor, variable, color='black', fontsize=12)
+    plt.arrow(0, 0, loadings_scaled[i, 0]*scale_factor, loadings_scaled[i, 1]*scale_factor, color='r', alpha=0.8);
+    plt.text(loadings_scaled[i, 0]*scale_factor, loadings_scaled[i, 1]*scale_factor, variable, color='black', fontsize=12);
 
 # Add axis labels and title
-plt.xlabel('PC1')
-plt.ylabel('PC2')
-plt.title('Biplot of Wine Dataset')
+plt.xlabel('PC1');
+plt.ylabel('PC2');
+plt.title('Biplot of Wine Dataset');
 
 # Add grid lines
-plt.grid()
+plt.grid();
 
 # Show the plot
 plt.show()
@@ -287,12 +287,12 @@ fviz_eig(wine_pca, addlabels = TRUE, ncp=11)
 ### Python
 ```{python}
 plt.figure(figsize=(10, 6))
-plt.plot(range(1, 12), explained_variance * 100, 'o-')
-plt.xticks(range(1, 12), [f"PC{i}" for i in range(1, 12)])
-plt.xlabel("Principal Components")
-plt.ylabel("Explained Variance (%)")
-plt.title("Scree Plot")
-plt.grid()
+plt.plot(range(1, 12), explained_variance * 100, 'o-');
+plt.xticks(range(1, 12), [f"PC{i}" for i in range(1, 12)]);
+plt.xlabel("Principal Components");
+plt.ylabel("Explained Variance (%)");
+plt.title("Scree Plot");
+plt.grid();
 plt.show()
 ```
 :::
@@ -342,20 +342,20 @@ labels = ['Cluster {}'.format(i+1) for i in range(4)]
 loading_matrix_rescaled = loading_matrix.div(loading_matrix.std())
 
 plt.figure(figsize=(10, 10))
-plt.scatter(wine_pca[0], wine_pca[1], c=colors, marker="o", s=100, alpha=0.7)
+plt.scatter(wine_pca[0], wine_pca[1], c=colors, marker="o", s=100, alpha=0.7);
 
 for i, feature in enumerate(loading_matrix_rescaled.index):
-    plt.arrow(0, 0, loading_matrix_rescaled.loc[feature, "PC1"], loading_matrix_rescaled.loc[feature, "PC2"], color="r", alpha=0.8)
-    plt.text(loading_matrix_rescaled.loc[feature, "PC1"], loading_matrix_rescaled.loc[feature, "PC2"], feature, color="black", fontsize=12)
+    plt.arrow(0, 0, loading_matrix_rescaled.loc[feature, "PC1"], loading_matrix_rescaled.loc[feature, "PC2"], color="r", alpha=0.8);
+    plt.text(loading_matrix_rescaled.loc[feature, "PC1"], loading_matrix_rescaled.loc[feature, "PC2"], feature, color="black", fontsize=12);
 
-plt.xlabel("PC1")
-plt.ylabel("PC2")
-plt.title("PCA Biplot with Clusters")
-plt.grid()
+plt.xlabel("PC1");
+plt.ylabel("PC2");
+plt.title("PCA Biplot with Clusters");
+plt.grid();
 
 # Create legend patches and group them in a Legend instance
 legend_patches = [Patch(color=cmap(i/3), label=labels[i]) for i in range(4)]
-plt.legend(handles=legend_patches, title='', loc='upper right', bbox_to_anchor=(1.0, 1.0))
+plt.legend(handles=legend_patches, title='', loc='upper right', bbox_to_anchor=(1.0, 1.0));
 
 plt.show()
 ```
