@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Models: K-Nearest Neighbors – MLBA - S24</title>
+<title>Models: K-Nearest Neighbors – MLBA - S26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -102,9 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="Models: K-Nearest Neighbors – MLBA - S24">
-<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
-<meta property="og:site_name" content="MLBA - S24 ">
+<meta property="og:title" content="Models: K-Nearest Neighbors – MLBA - S26">
+<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2026.">
+<meta property="og:site_name" content="MLBA - S26">
 </head>
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -868,10 +868,10 @@ updateImageSrc();
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>tmp_test_plt <span class="op">=</span> r.tmp_te.copy()</span>
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>tmp_test_plt[<span class="st">"pred"</span>]<span class="op">=</span> tmp_pred</span>
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"pred"</span>], <span class="st">'.'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"price"</span>], <span class="st">'-'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Price"</span>)</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted price"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"pred"</span>], <span class="st">'.'</span>, color<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"price"</span>], <span class="st">'-'</span>, color<span class="op">=</span><span class="st">'blue'</span>)<span class="op">;</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Price"</span>)<span class="op">;</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted price"</span>)<span class="op">;</span></span>
 <span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We obtained the same results as R.</p>
@@ -955,10 +955,10 @@ updateImageSrc();
 <span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>tmp_test_plt <span class="op">=</span> r.imp_te.copy()</span>
 <span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>tmp_test_plt[<span class="st">"pred"</span>]<span class="op">=</span> tmp_pred</span>
 <span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"pred"</span>], <span class="st">'.'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"price"</span>], <span class="st">'-'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Price"</span>)</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted price"</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"pred"</span>], <span class="st">'.'</span>, color<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"price"</span>], <span class="st">'-'</span>, color<span class="op">=</span><span class="st">'blue'</span>)<span class="op">;</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Price"</span>)<span class="op">;</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted price"</span>)<span class="op">;</span></span>
 <span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </div>
@@ -1698,10 +1698,10 @@ updateImageSrc();
 <span id="cb25-294"><a href="#cb25-294" aria-hidden="true" tabindex="-1"></a>tmp_test_plt <span class="op">=</span> r.tmp_te.copy()</span>
 <span id="cb25-295"><a href="#cb25-295" aria-hidden="true" tabindex="-1"></a>tmp_test_plt[<span class="st">"pred"</span>]<span class="op">=</span> tmp_pred</span>
 <span id="cb25-296"><a href="#cb25-296" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb25-297"><a href="#cb25-297" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"pred"</span>], <span class="st">'.'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb25-298"><a href="#cb25-298" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"price"</span>], <span class="st">'-'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb25-299"><a href="#cb25-299" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Price"</span>)</span>
-<span id="cb25-300"><a href="#cb25-300" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted price"</span>)</span>
+<span id="cb25-297"><a href="#cb25-297" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"pred"</span>], <span class="st">'.'</span>, color<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span>
+<span id="cb25-298"><a href="#cb25-298" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"price"</span>], <span class="st">'-'</span>, color<span class="op">=</span><span class="st">'blue'</span>)<span class="op">;</span></span>
+<span id="cb25-299"><a href="#cb25-299" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Price"</span>)<span class="op">;</span></span>
+<span id="cb25-300"><a href="#cb25-300" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted price"</span>)<span class="op">;</span></span>
 <span id="cb25-301"><a href="#cb25-301" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb25-302"><a href="#cb25-302" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-303"><a href="#cb25-303" aria-hidden="true" tabindex="-1"></a></span>
@@ -1794,10 +1794,10 @@ updateImageSrc();
 <span id="cb25-398"><a href="#cb25-398" aria-hidden="true" tabindex="-1"></a>tmp_test_plt <span class="op">=</span> r.imp_te.copy()</span>
 <span id="cb25-399"><a href="#cb25-399" aria-hidden="true" tabindex="-1"></a>tmp_test_plt[<span class="st">"pred"</span>]<span class="op">=</span> tmp_pred</span>
 <span id="cb25-400"><a href="#cb25-400" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb25-401"><a href="#cb25-401" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"pred"</span>], <span class="st">'.'</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb25-402"><a href="#cb25-402" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"price"</span>], <span class="st">'-'</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb25-403"><a href="#cb25-403" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Price"</span>)</span>
-<span id="cb25-404"><a href="#cb25-404" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted price"</span>)</span>
+<span id="cb25-401"><a href="#cb25-401" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"pred"</span>], <span class="st">'.'</span>, color<span class="op">=</span><span class="st">'black'</span>)<span class="op">;</span></span>
+<span id="cb25-402"><a href="#cb25-402" aria-hidden="true" tabindex="-1"></a>ax.plot(tmp_test_plt[<span class="st">"price"</span>], tmp_test_plt[<span class="st">"price"</span>], <span class="st">'-'</span>, color<span class="op">=</span><span class="st">'blue'</span>)<span class="op">;</span></span>
+<span id="cb25-403"><a href="#cb25-403" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Price"</span>)<span class="op">;</span></span>
+<span id="cb25-404"><a href="#cb25-404" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Predicted price"</span>)<span class="op">;</span></span>
 <span id="cb25-405"><a href="#cb25-405" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb25-406"><a href="#cb25-406" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb25-407"><a href="#cb25-407" aria-hidden="true" tabindex="-1"></a></span>

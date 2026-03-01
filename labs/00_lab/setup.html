@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>General Instructions – MLBA - S24</title>
+<title>General Instructions – MLBA - S26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,10 +104,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="General Instructions – MLBA - S24">
-<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
+<meta property="og:title" content="General Instructions – MLBA - S26">
+<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2026.">
 <meta property="og:image" content="https://do-unil.github.io/mlba/labs/00_lab/python_rstudio_global_options.JPG">
-<meta property="og:site_name" content="MLBA - S24 ">
+<meta property="og:site_name" content="MLBA - S26">
 </head>
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -738,7 +738,7 @@ updateImageSrc();
 <li><p>Reproducibility: Reproducibility is critical in machine learning lab sessions. With <strong><code>renv</code></strong>, you can easily share your code and the exact packages used in your project with your peers or instructors, making it easy for them to reproduce your results.</p></li>
 </ol>
 <p>In summary, <strong><code>renv</code></strong> is an essential tool for managing packages in R and ensuring that your machine learning lab sessions are efficient and reproducible. It helps you avoid compatibility issues, simplifies installation and setup, and makes it easy to share your work with others. In python, you have similar tools such as <code>virtualenv</code>, <code>venv</code> and <code>conda</code>. We hope you find <strong><code>renv</code></strong> useful as you begin your journey into machine learning with R!</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Check if renv is installed</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://rstudio.github.io/renv/">"renv"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># Install renv if it is not already installed</span></span>
@@ -747,7 +747,7 @@ updateImageSrc();
 </div>
 </section><section id="the-how" class="level2"><h2 class="anchored" data-anchor-id="the-how">The How</h2>
 <p>To create a new <strong><code>renv</code></strong> project, first set your working directory to the location where you want to create the project, and then run the command <code><a href="https://rstudio.github.io/renv/reference/init.html">renv::init()</a></code> which has to be executed only once. We recommend creating a main folder for all your ML-related exercises and running the command at the top directory. Running the initialization will create a bunch of auxiliary files, such as <code>renv.lock</code> to keep track of the packages that you’re using and all their versions. If you move to another computer or something goes wrong with your packages, you can always re-install the packages listed in your <code>renv.lock</code> to the previous versions using <code><a href="https://rstudio.github.io/renv/reference/restore.html">renv::restore()</a></code>. To occasionally update your packages, you can always use <code><a href="https://rstudio.github.io/renv/reference/snapshot.html">renv::snapshot()</a></code>; however, every time that you start a new R session, if <code>renv</code> detects any changes, it will automatically ask you to run <code><a href="https://rstudio.github.io/renv/reference/status.html">renv::status()</a></code> to see if the list in <code>renv.lock</code> needs updating.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Check if renv is already initialized</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="st">"renv.lock"</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># Initialize renv project</span></span>
@@ -763,16 +763,16 @@ updateImageSrc();
 </section><section id="configuration" class="level2"><h2 class="anchored" data-anchor-id="configuration">Configuration</h2>
 <p>You need to follow a few steps to ensure that everything runs smoothly. There are several solutions for running the python part of the exercises. Our preferred method is to run python in R using the <code>reticulate</code> package as recently there has been a smooth integration between the two languages, especially if your IDE of choice (integrated development environment) is Rstudio. This library provides a comprehensive set of tools for interoperability (i.e., exchanging languages) between python and R. You can either do this in your own central python installation or use a virtual environment where we’ll install the desired python packages. In python, virtual environments are similar to those of R (i.e.&nbsp;<code>renv</code>), allowing you to create isolated python installations, making it easier to manage different projects, and avoiding compatibility issues between dependencies. This setup usually works well, but if there are any individual issues, do not hesitate to contact me (Ilia). With that said, let’s get started with python!</p>
 <p>First, load all the corresponding libraries to install and run python:</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/reticulate/">reticulate</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>To install python in R, we will use <a href="https://docs.conda.io/en/latest/miniconda.html">miniconda</a>, a smaller version of Anaconda package manager. If you don’t have Miniconda or Anaconda, first run <code><a href="https://rstudio.github.io/reticulate/reference/install_miniconda.html">reticulate::install_miniconda()</a></code>, which will automatically create a virtual environment for you.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># reticulate::install_miniconda() # if you got an error, you could also try `install_python()` or installing conda seperately on your OS</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, we will create our virtual environment with the command <code><a href="https://rstudio.github.io/reticulate/reference/conda-tools.html">reticulate::conda_create()</a></code>. We will then make sure our rstudio is using this correct conda environment by enforcing it via <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html">reticulate::use_condaenv()</a></code>.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># assign the right virtual environment for the exercises</span></span>
 <span><span class="va">env_name</span> <span class="op">&lt;-</span> <span class="st">"MLBA"</span></span>
 <span></span>
@@ -797,13 +797,23 @@ updateImageSrc();
 <section id="python-data-oriented-libraries" class="level3"><h3 class="anchored" data-anchor-id="python-data-oriented-libraries">Python data-oriented libraries</h3>
 <p>Python provides a range of libraries for data manipulation, analysis, and modeling, including <code>Pandas</code> (similar to <code>tibble</code>+<code>dplyr</code>), which offers easy-to-use data structures for working with tabular data, and NumPy (<code>dplyr</code>+<code>data.table</code>), which provides powerful tools for array manipulation, linear algebra, and Fourier analysis. For data visualization, python offers <code>Matplotlib</code> (similar to <code><a href="https://rdrr.io/r/graphics/plot.default.html">plot()</a></code> in base R). For machine learning, <code>Scikit-learn</code> (similar to the <code>caret</code> package in R which we will be introduced later) provides a wide range of tools for classification, regression, clustering, and dimensionality reduction, while <code>Tensorflow</code> &amp; <code>Keras</code> (both used for deep learning and neural networks) are also popular libraries in this space which are available in both R and Python. These libraries are just a few examples of the many tools available in python that can help you work with data and build machine learning models. If you’re interested to learn about these libraries and how to manipulate Pandas dataframes, you can check out this other video on <a href="https://www.youtube.com/watch?v=r-uOLxNrNk8">Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)</a> (it’s slightly long).</p>
 </section><section id="assign-vars" class="level3"><h3 class="anchored" data-anchor-id="assign-vars">Assigning variables in Python vs.&nbsp;R</h3>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://blog.penjee.com/wp-content/uploads/2015/02/pass-by-reference-vs-pass-by-value-animation.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>For those of you new to python, there’s an important difference between R and Python when assignment variables. In Python, when you assign a variable to another variable, you are creating a reference to the same object in memory, so any changes made to one variable will be reflected in the other variable as well. This is demonostrated in the example below:</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span> <span class="co"># we only change `b`</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b) <span class="co"># the variable `a` also changed unlike how R treats the variable</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1, 2, 3] [1, 2, 3]</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span> <span class="co"># we only change `b`</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b) <span class="co"># the variable `a` also changed unlike how R treats the variable</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4, 2, 3] [4, 2, 3]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -819,21 +829,23 @@ updateImageSrc();
 </div>
 </div>
 <p>To create a separate copy of the object, you need to use the <code>.copy()</code> method (python way of saying a function).</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a.copy() <span class="co"># create a separate copy of the list</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span> <span class="co"># modify only `b`</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b) <span class="co"># variable `a` does not change</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1, 2, 3] [1, 2, 3]</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span> <span class="co"># modify only `b`</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b) <span class="co"># variable `a` does not change</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1, 2, 3] [4, 2, 3]</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In R, on the other hand, assignment creates a copy by default, so you don’t need to use a <code>.copy()</code> method. Any changes you make to one variable will not affect the other variable, because they are separate copies of the same object.</p>
 </section></section><section id="use-python-in-r" class="level2"><h2 class="anchored" data-anchor-id="use-python-in-r">Calling Python in R</h2>
 <section id="installing-python-libraries" class="level3"><h3 class="anchored" data-anchor-id="installing-python-libraries">Installing Python libraries</h3>
 <p>You can install any python package in R using the <code><a href="https://rstudio.github.io/reticulate/reference/py_install.html">reticulate::py_install()</a></code> command. This is similar to calling <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> in R. You may have heard of CRAN in R, a central repository for all R packages. In Python, the equivalent of CRAN is PyPI (Python Package Index). If you want the latest version of the packages, it is recommended to install packages using <code>pip</code>. To do so, you must set the argument <code>pip=TRUE</code> inside <code><a href="https://rstudio.github.io/reticulate/reference/py_install.html">reticulate::py_install()</a></code>, as demonstrated below.</p>
 <p>We will install all the packages we need for this particular setup. This should be go smoothly with the following command:</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Install python package into virtual environment</span></span>
-<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_install.html">py_install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"jupyter"</span>, <span class="st">"pandas"</span>, <span class="st">"matplotlib"</span>,<span class="st">"statsmodels"</span>,<span class="st">"scikit-learn"</span>, <span class="st">"seaborn"</span>, <span class="st">"mlxtend"</span>, <span class="st">"lime"</span>, <span class="st">"mkl-service"</span>, <span class="st">"xgboost"</span>,<span class="st">"scikit-learn-extra"</span><span class="op">)</span>, envname <span class="op">=</span> <span class="st">"MLBA"</span>, pip<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/py_install.html">py_install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"jupyter"</span>, <span class="st">"pandas"</span>, <span class="st">"matplotlib"</span>,<span class="st">"statsmodels"</span>,<span class="st">"scikit-learn"</span>, <span class="st">"seaborn"</span>, <span class="st">"mlxtend"</span>, <span class="st">"lime"</span>, <span class="st">"mkl-service"</span>, <span class="st">"xgboost"</span>,<span class="st">"scikit-learn-extra"</span>, <span class="st">"tensorflow"</span>, <span class="st">"keras"</span>, <span class="st">"torch"</span>, <span class="st">"torchvision"</span><span class="op">)</span>, envname <span class="op">=</span> <span class="st">"MLBA"</span>, pip<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -849,7 +861,7 @@ updateImageSrc();
 </div>
 </div>
 <p>Let’s checked if the package is installed successfully.</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># import package that is used for dealing with data.frames in Python (equivalent of tibble+dplyr)</span></span>
 <span><span class="va">pd</span> <span class="op">&lt;-</span> <span class="fu">reticulate</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/reticulate/reference/import.html">import</a></span><span class="op">(</span><span class="st">"pandas"</span><span class="op">)</span></span>
 <span><span class="co"># import the package for plotting in python</span></span>
@@ -862,66 +874,121 @@ updateImageSrc();
 <p>All the data types in R vs.&nbsp;Python are explained below (image from <code>reticulate</code>’s home page). If you need to explicitly change between objects in R and Python (usually R handles that automatically) to get the objects from the image above, you can use <code><a href="https://rstudio.github.io/reticulate/reference/r-py-conversion.html">reticulate::r_to_py()</a></code> and <code><a href="https://rstudio.github.io/reticulate/reference/r-py-conversion.html">reticulate::py_to_r()</a></code> (e.g., R dataframes to pandas dataframes).</p>
 <p><img src="reticulate_r_python_objects.JPG" class="img-fluid"></p>
 <p>To run objects from python in R, you have to use <code>$</code> to access their elements. For instance, when you want to load a python library, you can use <code><a href="https://rstudio.github.io/reticulate/reference/import.html">reticulate::import()</a></code> function and then assign it to a variable with the name of your choice as we did in the previous part. If that library contains a function (in python called module or sub-module), it always follows the format <code>LIBRARY$FUNCTION()</code>. We can see an example of that below:</p>
-<div class="cell">
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Using R</span></span>
 <span><span class="co">## load mtcars dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">## plot it using base R plot function (or ggplot)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">mpg</span>, <span class="va">mtcars</span><span class="op">$</span><span class="va">disp</span><span class="op">)</span></span>
-<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">mpg</span>, <span class="va">mtcars</span><span class="op">$</span><span class="va">disp</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="setup_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span></span>
 <span><span class="co"># Using Python</span></span>
 <span><span class="co"># plot it using matplotlib in python (or another python library for plots)</span></span>
 <span><span class="va">plt</span><span class="op">$</span><span class="fu">scatter</span><span class="op">(</span><span class="va">mtcars</span><span class="op">$</span><span class="va">mpg</span>,<span class="va">mtcars</span><span class="op">$</span><span class="va">disp</span><span class="op">)</span></span>
+<span><span class="co">#&gt; &lt;matplotlib.collections.PathCollection object at 0x000001AD887012A0&gt;</span></span>
 <span><span class="va">plt</span><span class="op">$</span><span class="fu">xlabel</span><span class="op">(</span><span class="st">'mpg'</span>, fontsize <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Text(0.5, 0, 'mpg')</span></span>
 <span><span class="va">plt</span><span class="op">$</span><span class="fu">ylabel</span><span class="op">(</span><span class="st">'disp'</span>, fontsize <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Text(0, 0.5, 'disp')</span></span>
 <span></span>
 <span><span class="co"># save the figure and then include in the Rmd</span></span>
 <span><span class="va">plt</span><span class="op">$</span><span class="fu">savefig</span><span class="op">(</span><span class="st">"pyplot.png"</span><span class="op">)</span></span>
-<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"pyplot.png"</span><span class="op">)</span></span>
-<span><span class="co"># alternatively, when not knitting, you can uncomment and run the two following lines</span></span>
+<span><span class="fu">knitr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/knitr/man/include_graphics.html">include_graphics</a></span><span class="op">(</span><span class="st">"pyplot.png"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="pyplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># alternatively, when not knitting, you can uncomment and run the two following lines</span></span>
 <span><span class="co"># instead of save the figure</span></span>
 <span><span class="co"># plt$show() # you always have to call this for the plot to be made</span></span>
 <span><span class="co"># plt$clf() #this means clear figure</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now, this is using R inside Python, but if you wanted to do it the other way around, that’s also possible by using a dot <code>.</code> instead of <code>$</code>. If you’re running python in markdown, you can replace <code>{r...}</code> at the beginning of the code chunk with <code>{python...}</code>, and it’ll run python code. Additionally, if you would like to run a script instead (interactively or the whole script), you can do it by going to <code>file &gt; New File &gt; Python Script</code> in your Rstudio, and then running any part of your python script starts the interactive python session using <code><a href="https://rstudio.github.io/reticulate/reference/repl_python.html">reticulate::repl_python()</a></code>. Alternatively, you can call the <code><a href="https://rstudio.github.io/reticulate/reference/repl_python.html">repl_python()</a></code> to start the interactive session.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Your python code goes here</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Your python code goes here</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>We will now create a code chunk that purely runs Python and accesses the objects object with <code>r.OBJECT_NAME</code>:</p>
-<div class="cell" data-verbatim="true">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we access mtcars dataset from R</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r.mtcars.head())</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># we open iris data from `sklearn` python package</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> datasets.load_iris()</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>iris_data <span class="op">=</span> pd.DataFrame(data<span class="op">=</span>iris[<span class="st">'data'</span>], columns<span class="op">=</span>iris[<span class="st">'feature_names'</span>])</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the head of the DataFrame</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris_data.head())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell" data-layout-align="center" data-verbatim="true">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we access mtcars dataset from R</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r.mtcars.head())</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                     mpg  cyl   disp     hp  drat  ...   qsec   vs   am  gear  carb</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4          21.0  6.0  160.0  110.0  3.90  ...  16.46  0.0  1.0   4.0   4.0</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Mazda RX4 Wag      21.0  6.0  160.0  110.0  3.90  ...  17.02  0.0  1.0   4.0   4.0</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Datsun 710         22.8  4.0  108.0   93.0  3.85  ...  18.61  1.0  1.0   4.0   1.0</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hornet 4 Drive     21.4  6.0  258.0  110.0  3.08  ...  19.44  1.0  0.0   3.0   1.0</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Hornet Sportabout  18.7  8.0  360.0  175.0  3.15  ...  17.02  0.0  0.0   3.0   2.0</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5 rows x 11 columns]</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># we open iris data from `sklearn` python package</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> datasets.load_iris()</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>iris_data <span class="op">=</span> pd.DataFrame(data<span class="op">=</span>iris[<span class="st">'data'</span>], columns<span class="op">=</span>iris[<span class="st">'feature_names'</span>])</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the head of the DataFrame</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris_data.head())</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    sepal length (cm)  sepal width (cm)  petal length (cm)  petal width (cm)</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0                5.1               3.5                1.4               0.2</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1                4.9               3.0                1.4               0.2</span></span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2                4.7               3.2                1.3               0.2</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3                4.6               3.1                1.5               0.2</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4                5.0               3.6                1.4               0.2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="setup_files/figure-html/unnamed-chunk-12-1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 <p>We can do the same thing in R by calling <code>py$OBJECT_NAME</code> by using <code>reticulate::py$OBJECT_NAME</code>:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plotting the iris data from python</span></span>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># plotting the iris data from python</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">py</span><span class="op">$</span><span class="va">iris_data</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="modelling-in-r-python" class="level2"><h2 class="anchored" data-anchor-id="modelling-in-r-python">Modelling in R &amp; Python</h2>
 <p>Let’s take a simple use case of making a regression in R and Python so you can see how the two languages compare:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remove the spaces and `(cm)` from the column names</span></span>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># remove the spaces and `(cm)` from the column names</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">py</span><span class="op">$</span><span class="va">iris_data</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">' '</span>, <span class="st">'_'</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">py</span><span class="op">$</span><span class="va">iris_data</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">py</span><span class="op">$</span><span class="va">iris_data</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span><span class="op">(</span><span class="st">'_\\(cm\\)'</span>, <span class="st">''</span>, <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">py</span><span class="op">$</span><span class="va">iris_data</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># example of running a model on iris data</span></span>
 <span><span class="va">r_lm</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="st">"sepal_length ~. "</span>, data <span class="op">=</span> <span class="va">py</span><span class="op">$</span><span class="va">iris_data</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">r_lm</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">r_lm</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Call:</span></span>
+<span><span class="co">#&gt; lm(formula = "sepal_length ~. ", data = py$iris_data)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residuals:</span></span>
+<span><span class="co">#&gt;      Min       1Q   Median       3Q      Max </span></span>
+<span><span class="co">#&gt; -0.82816 -0.21989  0.01875  0.19709  0.84570 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Coefficients:</span></span>
+<span><span class="co">#&gt;              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">#&gt; (Intercept)   1.85600    0.25078   7.401 9.85e-12 ***</span></span>
+<span><span class="co">#&gt; sepal_width   0.65084    0.06665   9.765  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; petal_length  0.70913    0.05672  12.502  &lt; 2e-16 ***</span></span>
+<span><span class="co">#&gt; petal_width  -0.55648    0.12755  -4.363 2.41e-05 ***</span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Residual standard error: 0.3145 on 146 degrees of freedom</span></span>
+<span><span class="co">#&gt; Multiple R-squared:  0.8586, Adjusted R-squared:  0.8557 </span></span>
+<span><span class="co">#&gt; F-statistic: 295.5 on 3 and 146 DF,  p-value: &lt; 2.2e-16</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Within R, you can still use python to run the same linear regression with the <code>statsmodels</code> python library.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># example of runnning lm model in python -&gt; firstly, process the data</span></span>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># example of runnning lm model in python -&gt; firstly, process the data</span></span>
 <span><span class="co"># specify your dependent variable and independent variables</span></span>
 <span><span class="va">y_iris</span> <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">py</span><span class="op">$</span><span class="va">iris_data</span>, <span class="st">"sepal_length"</span><span class="op">)</span></span>
 <span><span class="va">x_iris</span> <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">py</span><span class="op">$</span><span class="va">iris_data</span>, <span class="op">-</span><span class="st">"sepal_length"</span><span class="op">)</span></span>
@@ -933,30 +1000,87 @@ updateImageSrc();
 <span><span class="va">py_lm</span> <span class="op">=</span> <span class="va">sm</span><span class="op">$</span><span class="fu">OLS</span><span class="op">(</span><span class="va">y_iris</span>, <span class="va">x_iris</span><span class="op">)</span><span class="op">$</span><span class="fu">fit</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># get the model summary</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">py_lm</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">py_lm</span><span class="op">$</span><span class="fu">summary</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; &lt;class 'statsmodels.iolib.summary.Summary'&gt;</span></span>
+<span><span class="co">#&gt; """</span></span>
+<span><span class="co">#&gt;                             OLS Regression Results                            </span></span>
+<span><span class="co">#&gt; ==============================================================================</span></span>
+<span><span class="co">#&gt; Dep. Variable:           sepal_length   R-squared:                       0.859</span></span>
+<span><span class="co">#&gt; Model:                            OLS   Adj. R-squared:                  0.856</span></span>
+<span><span class="co">#&gt; Method:                 Least Squares   F-statistic:                     295.5</span></span>
+<span><span class="co">#&gt; Date:              dim., 01 mars 2026   Prob (F-statistic):           8.59e-62</span></span>
+<span><span class="co">#&gt; Time:                        01:34:22   Log-Likelihood:                -37.321</span></span>
+<span><span class="co">#&gt; No. Observations:                 150   AIC:                             82.64</span></span>
+<span><span class="co">#&gt; Df Residuals:                     146   BIC:                             94.69</span></span>
+<span><span class="co">#&gt; Df Model:                           3                                         </span></span>
+<span><span class="co">#&gt; Covariance Type:            nonrobust                                         </span></span>
+<span><span class="co">#&gt; ================================================================================</span></span>
+<span><span class="co">#&gt;                    coef    std err          t      P&gt;|t|      [0.025      0.975]</span></span>
+<span><span class="co">#&gt; --------------------------------------------------------------------------------</span></span>
+<span><span class="co">#&gt; const            1.8560      0.251      7.401      0.000       1.360       2.352</span></span>
+<span><span class="co">#&gt; sepal_width      0.6508      0.067      9.765      0.000       0.519       0.783</span></span>
+<span><span class="co">#&gt; petal_length     0.7091      0.057     12.502      0.000       0.597       0.821</span></span>
+<span><span class="co">#&gt; petal_width     -0.5565      0.128     -4.363      0.000      -0.809      -0.304</span></span>
+<span><span class="co">#&gt; ==============================================================================</span></span>
+<span><span class="co">#&gt; Omnibus:                        0.345   Durbin-Watson:                   2.060</span></span>
+<span><span class="co">#&gt; Prob(Omnibus):                  0.842   Jarque-Bera (JB):                0.504</span></span>
+<span><span class="co">#&gt; Skew:                           0.007   Prob(JB):                        0.777</span></span>
+<span><span class="co">#&gt; Kurtosis:                       2.716   Cond. No.                         54.7</span></span>
+<span><span class="co">#&gt; ==============================================================================</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Notes:</span></span>
+<span><span class="co">#&gt; [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</span></span>
+<span><span class="co">#&gt; """</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>As you can see, the results are the same (those of <code>statsmodels</code> have been rounded). This could have also been done purely in python, as demonstrated below. Please note that here we have brought the iris data from python to R, then manipulated it in R (with the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> operation), and now we have two options to use these objects in pure python (just one is needed):</p>
 <ul>
 <li><p>We can simply call the objects from R by <code>r.x_iris</code> and <code>r.y_axis</code>.</p></li>
 <li><p>We can do the same <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> operation in python with it’s own syntax on the original python iris data:</p></li>
 </ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>py_y_iris <span class="op">=</span> iris_data[<span class="st">"sepal_length"</span>]</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>py_x_iris <span class="op">=</span> iris_data.drop(<span class="st">"sepal_length"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>py_y_iris <span class="op">=</span> iris_data[<span class="st">"sepal_length"</span>]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>py_x_iris <span class="op">=</span> iris_data.drop(<span class="st">"sepal_length"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Needless to say that in this case, the most efficient approach is the first one as demonstrated below:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the sm library with it's alias</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add the constant again</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>x_iris <span class="op">=</span> sm.add_constant(r.x_iris)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a linear regression model and fit it to the data</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>py_lm <span class="op">=</span> sm.OLS(r.y_iris, r.x_iris).fit()</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary</span></span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(py_lm.summary())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell" data-layout-align="center">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the sm library with it's alias</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># add the constant again</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>x_iris <span class="op">=</span> sm.add_constant(r.x_iris)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># create a linear regression model and fit it to the data</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>py_lm <span class="op">=</span> sm.OLS(r.y_iris, r.x_iris).fit()</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(py_lm.summary())</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                             OLS Regression Results                            </span></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ==============================================================================</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Dep. Variable:           sepal_length   R-squared:                       0.859</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Model:                            OLS   Adj. R-squared:                  0.856</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Method:                 Least Squares   F-statistic:                     295.5</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Date:              dim., 01 mars 2026   Prob (F-statistic):           8.59e-62</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Time:                        01:34:22   Log-Likelihood:                -37.321</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No. Observations:                 150   AIC:                             82.64</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Df Residuals:                     146   BIC:                             94.69</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Df Model:                           3                                         </span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Covariance Type:            nonrobust                                         </span></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ================================================================================</span></span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;                    coef    std err          t      P&gt;|t|      [0.025      0.975]</span></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; --------------------------------------------------------------------------------</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; const            1.8560      0.251      7.401      0.000       1.360       2.352</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sepal_width      0.6508      0.067      9.765      0.000       0.519       0.783</span></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; petal_length     0.7091      0.057     12.502      0.000       0.597       0.821</span></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; petal_width     -0.5565      0.128     -4.363      0.000      -0.809      -0.304</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ==============================================================================</span></span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Omnibus:                        0.345   Durbin-Watson:                   2.060</span></span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Prob(Omnibus):                  0.842   Jarque-Bera (JB):                0.504</span></span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Skew:                           0.007   Prob(JB):                        0.777</span></span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Kurtosis:                       2.716   Cond. No.                         54.7</span></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ==============================================================================</span></span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Notes:</span></span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>The outcome is the same as calling python within R.</p>
 </section></section><section id="closing-words-why-not-be-polyglot-programmers" class="level1"><h1>Closing words: Why not be <code>polyglot programmers</code>?</h1>
@@ -1447,346 +1571,348 @@ updateImageSrc();
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "General Instructions"</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objectives</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>This setup tutorial is optional for those who are interested in the following:</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Learning about (and using) virtual environments in R to ensure reproducibility (benefits explained below).</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Learning about using python 🐍 in (and with) R. This is useful for some ML lab sessions, and cutting-edge ML is often first implemented in python.</span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Accessing the source code</span></span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>Although we do not provide the Qmd file for the source code, you can always use the <span class="in">`&lt;/&gt; Code`</span> button on the top right of the page to get the source code.</span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data for the labs</span></span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>The datasets used for all the labs can be found <span class="co">[</span><span class="ot">here 📁</span><span class="co">](https://github.com/do-unil/mlba/tree/main/labs/data)</span>.</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Setting the rmardkown global options --&gt;</span></span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r global_options, include=FALSE}</span></span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">collapse =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">comment =</span> <span class="st">"#&gt;"</span>,</span>
-<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">paste0</span>(<span class="st">"```{"</span>, knitr<span class="sc">::</span>opts_current<span class="sc">$</span><span class="fu">get</span>(<span class="st">"engine.name"</span>), <span class="st">"}"</span>),</span>
-<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="st">"```"</span>,</span>
-<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.align=</span><span class="st">"center"</span></span>
-<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">expressions =</span> <span class="dv">10000</span>)</span>
-<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a><span class="fu"># Virtual environments in R (`renv`)</span></span>
-<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## The What &amp; The Why</span></span>
-<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a>As you start working on machine learning in R, you'll be using various R packages that provide different functionalities. As you might know, managing multiple packages and their dependencies can be a daunting task, especially when you're new to programming.</span>
-<span id="cb18-43"><a href="#cb18-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-44"><a href="#cb18-44" aria-hidden="true" tabindex="-1"></a>This is where **`renv`** comes in handy. **`renv`** is a package management tool that helps you manage the packages used in an R project, making it easier to handle dependencies and ensuring that your project is reproducible. Here are some specific reasons why **`renv`** is particularly useful for machine learning lab sessions:</span>
-<span id="cb18-45"><a href="#cb18-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-46"><a href="#cb18-46" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Consistent environment: When you work on machine learning lab sessions, you'll often be working with complex models that use multiple R packages. It's crucial to ensure that all the packages used in your project are compatible with each other. With **`renv`**, you can create a consistent environment by isolating the packages used in your project and making sure they work well together.</span>
-<span id="cb18-47"><a href="#cb18-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-48"><a href="#cb18-48" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Easy installation and setup: **`renv`** makes it easy to set up a new R project with the required packages. Once you've created an **`renv`** project, you can easily install all the required packages with a single command. This saves you time and ensures that you have all the necessary packages for your machine learning lab sessions.</span>
-<span id="cb18-49"><a href="#cb18-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-50"><a href="#cb18-50" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Reproducibility: Reproducibility is critical in machine learning lab sessions. With **`renv`**, you can easily share your code and the exact packages used in your project with your peers or instructors, making it easy for them to reproduce your results.</span>
-<span id="cb18-51"><a href="#cb18-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-52"><a href="#cb18-52" aria-hidden="true" tabindex="-1"></a>In summary, **`renv`** is an essential tool for managing packages in R and ensuring that your machine learning lab sessions are efficient and reproducible. It helps you avoid compatibility issues, simplifies installation and setup, and makes it easy to share your work with others. In python, you have similar tools such as `virtualenv`, `venv` and `conda`. We hope you find **`renv`** useful as you begin your journey into machine learning with R!</span>
-<span id="cb18-53"><a href="#cb18-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-54"><a href="#cb18-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results='hide'}</span></span>
-<span id="cb18-55"><a href="#cb18-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if renv is installed</span></span>
-<span id="cb18-56"><a href="#cb18-56" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"renv"</span>)) {</span>
-<span id="cb18-57"><a href="#cb18-57" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Install renv if it is not already installed</span></span>
-<span id="cb18-58"><a href="#cb18-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"renv"</span>)</span>
-<span id="cb18-59"><a href="#cb18-59" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-60"><a href="#cb18-60" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-61"><a href="#cb18-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-62"><a href="#cb18-62" aria-hidden="true" tabindex="-1"></a><span class="fu">## The How</span></span>
-<span id="cb18-63"><a href="#cb18-63" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-64"><a href="#cb18-64" aria-hidden="true" tabindex="-1"></a>To create a new **`renv`** project, first set your working directory to the location where you want to create the project, and then run the command <span class="in">`renv::init()`</span> which has to be executed only once. We recommend creating a main folder for all your ML-related exercises and running the command at the top directory. Running the initialization will create a bunch of auxiliary files, such as <span class="in">`renv.lock`</span> to keep track of the packages that you're using and all their versions. If you move to another computer or something goes wrong with your packages, you can always re-install the packages listed in your <span class="in">`renv.lock`</span> to the previous versions using <span class="in">`renv::restore()`</span>. To occasionally update your packages, you can always use <span class="in">`renv::snapshot()`</span>; however, every time that you start a new R session, if <span class="in">`renv`</span> detects any changes, it will automatically ask you to run <span class="in">`renv::status()`</span> to see if the list in <span class="in">`renv.lock`</span> needs updating.</span>
-<span id="cb18-65"><a href="#cb18-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-66"><a href="#cb18-66" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results='hide'}</span></span>
-<span id="cb18-67"><a href="#cb18-67" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if renv is already initialized</span></span>
-<span id="cb18-68"><a href="#cb18-68" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">"renv.lock"</span>)) {</span>
-<span id="cb18-69"><a href="#cb18-69" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize renv project</span></span>
-<span id="cb18-70"><a href="#cb18-70" aria-hidden="true" tabindex="-1"></a>  renv<span class="sc">::</span><span class="fu">init</span>()</span>
-<span id="cb18-71"><a href="#cb18-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-72"><a href="#cb18-72" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Restore packages</span></span>
-<span id="cb18-73"><a href="#cb18-73" aria-hidden="true" tabindex="-1"></a>  renv<span class="sc">::</span><span class="fu">restore</span>()</span>
-<span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a><span class="fu"># Python **🐍** in R (`reticulate`)</span></span>
-<span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## Small Motivation</span></span>
-<span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a>Most careers after HEC require data literacy and data-driven insights to solve business problems. To that end, R is a potent tool; however, in the realm of machine learning, Python is arguably more demanded and, therefore, can be a good tool in your toolbox. Additionally, python is a widely-used language in the industry and offers powerful libraries for data manipulation, analysis, and modeling. Furthermore, you don't need to be a technical person to learn python as there are many resources available online, and it's a language that is relatively easy to pick up, even for absolute beginners to programming. Combining the strengths of both R and Python can enhance your workflow and improve your ability to work with data. To understand how R and Python compare, you are highly encouraged to watch <span class="co">[</span><span class="ot">this video by IBM on R vs Python</span><span class="co">](https://www.youtube.com/watch?v=4lcwTGA7MZw)</span>.</span>
-<span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a><span class="fu">## Configuration</span></span>
-<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a>You need to follow a few steps to ensure that everything runs smoothly. There are several solutions for running the python part of the exercises. Our preferred method is to run python in R using the <span class="in">`reticulate`</span> package as recently there has been a smooth integration between the two languages, especially if your IDE of choice (integrated development environment) is Rstudio. This library provides a comprehensive set of tools for interoperability (i.e., exchanging languages) between python and R. You can either do this in your own central python installation or use a virtual environment where we'll install the desired python packages. In python, virtual environments are similar to those of R (i.e. <span class="in">`renv`</span>), allowing you to create isolated python installations, making it easier to manage different projects, and avoiding compatibility issues between dependencies. This setup usually works well, but if there are any individual issues, do not hesitate to contact me (Ilia). With that said, let's get started with python!</span>
-<span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a>First, load all the corresponding libraries to install and run python:</span>
-<span id="cb18-89"><a href="#cb18-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-90"><a href="#cb18-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results='hide'}</span></span>
-<span id="cb18-91"><a href="#cb18-91" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
-<span id="cb18-92"><a href="#cb18-92" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb18-93"><a href="#cb18-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-94"><a href="#cb18-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-95"><a href="#cb18-95" aria-hidden="true" tabindex="-1"></a>To install python in R, we will use <span class="co">[</span><span class="ot">miniconda</span><span class="co">](https://docs.conda.io/en/latest/miniconda.html)</span>, a smaller version of Anaconda package manager. If you don't have Miniconda or Anaconda, first run <span class="in">`reticulate::install_miniconda()`</span>, which will automatically create a virtual environment for you.</span>
-<span id="cb18-96"><a href="#cb18-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-97"><a href="#cb18-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
-<span id="cb18-98"><a href="#cb18-98" aria-hidden="true" tabindex="-1"></a><span class="co"># reticulate::install_miniconda() # if you got an error, you could also try `install_python()` or installing conda seperately on your OS</span></span>
-<span id="cb18-99"><a href="#cb18-99" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-100"><a href="#cb18-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-101"><a href="#cb18-101" aria-hidden="true" tabindex="-1"></a>Now, we will create our virtual environment with the command <span class="in">`reticulate::conda_create()`</span>. We will then make sure our rstudio is using this correct conda environment by enforcing it via <span class="in">`reticulate::use_condaenv()`</span>.</span>
-<span id="cb18-102"><a href="#cb18-102" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-105"><a href="#cb18-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-106"><a href="#cb18-106" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb18-107"><a href="#cb18-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb18-108"><a href="#cb18-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-109"><a href="#cb18-109" aria-hidden="true" tabindex="-1"></a><span class="co"># assign the right virtual environment for the exercises</span></span>
-<span id="cb18-110"><a href="#cb18-110" aria-hidden="true" tabindex="-1"></a>env_name <span class="ot">&lt;-</span> <span class="st">"MLBA"</span></span>
-<span id="cb18-111"><a href="#cb18-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-112"><a href="#cb18-112" aria-hidden="true" tabindex="-1"></a><span class="co"># if the virtual enviroment does not already exist, only then create then</span></span>
-<span id="cb18-113"><a href="#cb18-113" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>env_name <span class="sc">%in%</span> reticulate<span class="sc">::</span><span class="fu">conda_list</span>()<span class="sc">$</span>name) {</span>
-<span id="cb18-114"><a href="#cb18-114" aria-hidden="true" tabindex="-1"></a>  reticulate<span class="sc">::</span><span class="fu">conda_create</span>(env_name, <span class="at">pip =</span> <span class="cn">TRUE</span>) <span class="co"># we use pip for installations</span></span>
-<span id="cb18-115"><a href="#cb18-115" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb18-116"><a href="#cb18-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-117"><a href="#cb18-117" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure we're using the right environment</span></span>
-<span id="cb18-118"><a href="#cb18-118" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">use_condaenv</span>(env_name)</span>
-<span id="cb18-119"><a href="#cb18-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-120"><a href="#cb18-120" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if python is setup properly now</span></span>
-<span id="cb18-121"><a href="#cb18-121" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_available</span>()</span>
-<span id="cb18-122"><a href="#cb18-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-123"><a href="#cb18-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-124"><a href="#cb18-124" aria-hidden="true" tabindex="-1"></a>If you have made it here so far and see the name <span class="in">`MLBA`</span> in your python path, you have successfully installed/configured python and setup the virtual environment(s)🥳.</span>
-<span id="cb18-125"><a href="#cb18-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-126"><a href="#cb18-126" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bonus: Using Rstudio to select Python path</span></span>
-<span id="cb18-127"><a href="#cb18-127" aria-hidden="true" tabindex="-1"></a>In case you wanted to use the Rstudio interface, you can always go to <span class="in">`Tools &gt; Project Options`</span> (or <span class="in">`Global Options`</span> if you're not using <span class="in">`renv`</span>) and then select the version inside the <span class="in">`Python`</span> field as shown below.</span>
-<span id="cb18-128"><a href="#cb18-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-129"><a href="#cb18-129" aria-hidden="true" tabindex="-1"></a><span class="al">![](python_rstudio_global_options.JPG)</span></span>
-<span id="cb18-130"><a href="#cb18-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-131"><a href="#cb18-131" aria-hidden="true" tabindex="-1"></a><span class="fu">## Python (very brief) overview</span></span>
-<span id="cb18-132"><a href="#cb18-132" aria-hidden="true" tabindex="-1"></a>We do not teach the principles of python programming during this course. With that said, if you already have a background in R from your previous courses (e.g., *DSFBA*, *QMM*), we provide a few links to help you get started. If you're new to python, feel free to continue reading; otherwise, skip to the section <span class="co">[</span><span class="ot">Calling Python in R</span><span class="co">](#use-python-in-r)</span>.</span>
-<span id="cb18-133"><a href="#cb18-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-134"><a href="#cb18-134" aria-hidden="true" tabindex="-1"></a>If you would like to see a crash course in python on different data structures and types, check out this video on <span class="co">[</span><span class="ot">Python for Data Science \[Crash Course\]</span><span class="co">](https://www.youtube.com/watch?v=eAoZjemZXrM)</span> (you can skip the installation part). You may notice that much of the syntax is similar to R. </span>
-<span id="cb18-135"><a href="#cb18-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-136"><a href="#cb18-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### Python data-oriented libraries</span></span>
-<span id="cb18-137"><a href="#cb18-137" aria-hidden="true" tabindex="-1"></a>Python provides a range of libraries for data manipulation, analysis, and modeling, including <span class="in">`Pandas`</span> (similar to <span class="in">`tibble`</span>+<span class="in">`dplyr`</span>), which offers easy-to-use data structures for working with tabular data, and NumPy (<span class="in">`dplyr`</span>+<span class="in">`data.table`</span>), which provides powerful tools for array manipulation, linear algebra, and Fourier analysis. For data visualization, python offers <span class="in">`Matplotlib`</span> (similar to <span class="in">`plot()`</span> in base R). For machine learning, <span class="in">`Scikit-learn`</span> (similar to the <span class="in">`caret`</span> package in R which we will be introduced later) provides a wide range of tools for classification, regression, clustering, and dimensionality reduction, while <span class="in">`Tensorflow`</span> &amp; <span class="in">`Keras`</span> (both used for deep learning and neural networks) are also popular libraries in this space which are available in both R and Python. These libraries are just a few examples of the many tools available in python that can help you work with data and build machine learning models. If you're interested to learn about these libraries and how to manipulate Pandas dataframes, you can check out this other video on <span class="co">[</span><span class="ot">Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)</span><span class="co">](https://www.youtube.com/watch?v=r-uOLxNrNk8)</span> (it's slightly long).</span>
-<span id="cb18-138"><a href="#cb18-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-139"><a href="#cb18-139" aria-hidden="true" tabindex="-1"></a><span class="fu">### Assigning variables in Python vs. R {#assign-vars}</span></span>
-<span id="cb18-140"><a href="#cb18-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-141"><a href="#cb18-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.align="center", out.width= "80%", echo = F}</span></span>
-<span id="cb18-142"><a href="#cb18-142" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"https://blog.penjee.com/wp-content/uploads/2015/02/pass-by-reference-vs-pass-by-value-animation.gif"</span>)</span>
-<span id="cb18-143"><a href="#cb18-143" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-144"><a href="#cb18-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-145"><a href="#cb18-145" aria-hidden="true" tabindex="-1"></a>For those of you new to python, there's an important difference between R and Python when assignment variables. In Python, when you assign a variable to another variable, you are creating a reference to the same object in memory, so any changes made to one variable will be reflected in the other variable as well. This is demonostrated in the example below:</span>
-<span id="cb18-146"><a href="#cb18-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-149"><a href="#cb18-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb18-150"><a href="#cb18-150" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
-<span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b)</span>
-<span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span> <span class="co"># we only change `b`</span></span>
-<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b) <span class="co"># the variable `a` also changed unlike how R treats the variable</span></span>
-<span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
-<span id="cb18-158"><a href="#cb18-158" aria-hidden="true" tabindex="-1"></a><span class="fu">## Indexing in R vs. Python</span></span>
-<span id="cb18-159"><a href="#cb18-159" aria-hidden="true" tabindex="-1"></a>Another difference between R &amp; Python is that the index (first value of any object) starts from 0 (python) rather than 1 (R). So if you have a list, the first element is python is starting at element 0.</span>
-<span id="cb18-160"><a href="#cb18-160" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb18-161"><a href="#cb18-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-162"><a href="#cb18-162" aria-hidden="true" tabindex="-1"></a>To create a separate copy of the object, you need to use the <span class="in">`.copy()`</span> method (python way of saying a function).</span>
-<span id="cb18-163"><a href="#cb18-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-166"><a href="#cb18-166" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb18-167"><a href="#cb18-167" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb18-168"><a href="#cb18-168" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a.copy() <span class="co"># create a separate copy of the list</span></span>
-<span id="cb18-169"><a href="#cb18-169" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b)</span>
-<span id="cb18-170"><a href="#cb18-170" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span> <span class="co"># modify only `b`</span></span>
-<span id="cb18-171"><a href="#cb18-171" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b) <span class="co"># variable `a` does not change</span></span>
-<span id="cb18-172"><a href="#cb18-172" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-173"><a href="#cb18-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-174"><a href="#cb18-174" aria-hidden="true" tabindex="-1"></a>In R, on the other hand, assignment creates a copy by default, so you don't need to use a <span class="in">`.copy()`</span> method. Any changes you make to one variable will not affect the other variable, because they are separate copies of the same object.</span>
-<span id="cb18-175"><a href="#cb18-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-176"><a href="#cb18-176" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calling Python in R {#use-python-in-r}</span></span>
-<span id="cb18-177"><a href="#cb18-177" aria-hidden="true" tabindex="-1"></a><span class="fu">### Installing Python libraries</span></span>
-<span id="cb18-178"><a href="#cb18-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-179"><a href="#cb18-179" aria-hidden="true" tabindex="-1"></a>You can install any python package in R using the <span class="in">`reticulate::py_install()`</span> command. This is similar to calling <span class="in">`install.packages()`</span> in R. You may have heard of CRAN in R, a central repository for all R packages. In Python, the equivalent of CRAN is PyPI (Python Package Index). If you want the latest version of the packages, it is recommended to install packages using <span class="in">`pip`</span>. To do so, you must set the argument <span class="in">`pip=TRUE`</span> inside <span class="in">`reticulate::py_install()`</span>, as demonstrated below.</span>
-<span id="cb18-180"><a href="#cb18-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-181"><a href="#cb18-181" aria-hidden="true" tabindex="-1"></a>We will install all the packages we need for this particular setup. This should be go smoothly with the following command:</span>
-<span id="cb18-182"><a href="#cb18-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-185"><a href="#cb18-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-186"><a href="#cb18-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: hide</span></span>
-<span id="cb18-187"><a href="#cb18-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
-<span id="cb18-188"><a href="#cb18-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
-<span id="cb18-189"><a href="#cb18-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
-<span id="cb18-190"><a href="#cb18-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-191"><a href="#cb18-191" aria-hidden="true" tabindex="-1"></a><span class="co"># Install python package into virtual environment</span></span>
-<span id="cb18-192"><a href="#cb18-192" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(<span class="fu">c</span>(<span class="st">"jupyter"</span>, <span class="st">"pandas"</span>, <span class="st">"matplotlib"</span>,<span class="st">"statsmodels"</span>,<span class="st">"scikit-learn"</span>, <span class="st">"seaborn"</span>, <span class="st">"mlxtend"</span>, <span class="st">"lime"</span>, <span class="st">"mkl-service"</span>, <span class="st">"xgboost"</span>,<span class="st">"scikit-learn-extra"</span>), <span class="at">envname =</span> <span class="st">"MLBA"</span>, <span class="at">pip=</span><span class="cn">TRUE</span>)</span>
-<span id="cb18-193"><a href="#cb18-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-194"><a href="#cb18-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-195"><a href="#cb18-195" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
-<span id="cb18-196"><a href="#cb18-196" aria-hidden="true" tabindex="-1"></a><span class="fu">### `mkl-service` for Mac Users</span></span>
-<span id="cb18-197"><a href="#cb18-197" aria-hidden="true" tabindex="-1"></a>Please note that the <span class="in">`mkl-service`</span> python package from above is specific to windows/linux users and is not needed for Mac users. In case of any errors (especially on M1 chips), feel free to remove it.</span>
-<span id="cb18-198"><a href="#cb18-198" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb18-199"><a href="#cb18-199" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-200"><a href="#cb18-200" aria-hidden="true" tabindex="-1"></a>Let's checked if the package is installed successfully.</span>
-<span id="cb18-201"><a href="#cb18-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-204"><a href="#cb18-204" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-205"><a href="#cb18-205" aria-hidden="true" tabindex="-1"></a><span class="co"># import package that is used for dealing with data.frames in Python (equivalent of tibble+dplyr)</span></span>
-<span id="cb18-206"><a href="#cb18-206" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"pandas"</span>)</span>
-<span id="cb18-207"><a href="#cb18-207" aria-hidden="true" tabindex="-1"></a><span class="co"># import the package for plotting in python</span></span>
-<span id="cb18-208"><a href="#cb18-208" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"matplotlib.pyplot"</span>)</span>
-<span id="cb18-209"><a href="#cb18-209" aria-hidden="true" tabindex="-1"></a><span class="co"># import the library which we will use for linear regression</span></span>
-<span id="cb18-210"><a href="#cb18-210" aria-hidden="true" tabindex="-1"></a>sm <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"statsmodels.api"</span>)</span>
-<span id="cb18-211"><a href="#cb18-211" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-212"><a href="#cb18-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-213"><a href="#cb18-213" aria-hidden="true" tabindex="-1"></a>No error messages? Then installation was successful!</span>
-<span id="cb18-214"><a href="#cb18-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-215"><a href="#cb18-215" aria-hidden="true" tabindex="-1"></a><span class="fu">### Calling Python and R objects interchangeably</span></span>
-<span id="cb18-216"><a href="#cb18-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-217"><a href="#cb18-217" aria-hidden="true" tabindex="-1"></a>All the data types in R vs. Python are explained below (image from <span class="in">`reticulate`</span>'s home page). If you need to explicitly change between objects in R and Python (usually R handles that automatically) to get the objects from the image above, you can use <span class="in">`reticulate::r_to_py()`</span> and <span class="in">`reticulate::py_to_r()`</span> (e.g., R dataframes to pandas dataframes).</span>
-<span id="cb18-218"><a href="#cb18-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-219"><a href="#cb18-219" aria-hidden="true" tabindex="-1"></a><span class="al">![](reticulate_r_python_objects.JPG)</span></span>
-<span id="cb18-220"><a href="#cb18-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-221"><a href="#cb18-221" aria-hidden="true" tabindex="-1"></a>To run objects from python in R, you have to use <span class="in">`$`</span> to access their elements. For instance, when you want to load a python library, you can use <span class="in">`reticulate::import()`</span> function and then assign it to a variable with the name of your choice as we did in the previous part. If that library contains a function (in python called module or sub-module), it always follows the format <span class="in">`LIBRARY$FUNCTION()`</span>. We can see an example of that below:</span>
-<span id="cb18-222"><a href="#cb18-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-223"><a href="#cb18-223" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, out.width="100%"}</span></span>
-<span id="cb18-224"><a href="#cb18-224" aria-hidden="true" tabindex="-1"></a><span class="co"># Using R</span></span>
-<span id="cb18-225"><a href="#cb18-225" aria-hidden="true" tabindex="-1"></a><span class="do">## load mtcars dataset</span></span>
-<span id="cb18-226"><a href="#cb18-226" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
-<span id="cb18-227"><a href="#cb18-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-228"><a href="#cb18-228" aria-hidden="true" tabindex="-1"></a><span class="do">## plot it using base R plot function (or ggplot)</span></span>
-<span id="cb18-229"><a href="#cb18-229" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>disp)</span>
-<span id="cb18-230"><a href="#cb18-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-231"><a href="#cb18-231" aria-hidden="true" tabindex="-1"></a><span class="co"># Using Python</span></span>
-<span id="cb18-232"><a href="#cb18-232" aria-hidden="true" tabindex="-1"></a><span class="co"># plot it using matplotlib in python (or another python library for plots)</span></span>
-<span id="cb18-233"><a href="#cb18-233" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">scatter</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>disp)</span>
-<span id="cb18-234"><a href="#cb18-234" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">xlabel</span>(<span class="st">'mpg'</span>, <span class="at">fontsize =</span> <span class="dv">12</span>)</span>
-<span id="cb18-235"><a href="#cb18-235" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">ylabel</span>(<span class="st">'disp'</span>, <span class="at">fontsize =</span> <span class="dv">12</span>)</span>
-<span id="cb18-236"><a href="#cb18-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-237"><a href="#cb18-237" aria-hidden="true" tabindex="-1"></a><span class="co"># save the figure and then include in the Rmd</span></span>
-<span id="cb18-238"><a href="#cb18-238" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">"pyplot.png"</span>)</span>
-<span id="cb18-239"><a href="#cb18-239" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"pyplot.png"</span>)</span>
-<span id="cb18-240"><a href="#cb18-240" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, when not knitting, you can uncomment and run the two following lines</span></span>
-<span id="cb18-241"><a href="#cb18-241" aria-hidden="true" tabindex="-1"></a><span class="co"># instead of save the figure</span></span>
-<span id="cb18-242"><a href="#cb18-242" aria-hidden="true" tabindex="-1"></a><span class="co"># plt$show() # you always have to call this for the plot to be made</span></span>
-<span id="cb18-243"><a href="#cb18-243" aria-hidden="true" tabindex="-1"></a><span class="co"># plt$clf() #this means clear figure</span></span>
-<span id="cb18-244"><a href="#cb18-244" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-245"><a href="#cb18-245" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-246"><a href="#cb18-246" aria-hidden="true" tabindex="-1"></a>Now, this is using R inside Python, but if you wanted to do it the other way around, that's also possible by using a dot <span class="in">`.`</span> instead of <span class="in">`$`</span>. If you're running python in markdown, you can replace <span class="in">`{r...}`</span> at the beginning of the code chunk with <span class="in">`{python...}`</span>, and it'll run python code. Additionally, if you would like to run a script instead (interactively or the whole script), you can do it by going to <span class="in">`file &gt; New File &gt; Python Script`</span> in your Rstudio, and then running any part of your python script starts the interactive python session using <span class="in">`reticulate::repl_python()`</span>. Alternatively, you can call the <span class="in">`repl_python()`</span> to start the interactive session.</span>
-<span id="cb18-247"><a href="#cb18-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-248"><a href="#cb18-248" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb18-249"><a href="#cb18-249" aria-hidden="true" tabindex="-1"></a><span class="co"># Your python code goes here</span></span>
-<span id="cb18-250"><a href="#cb18-250" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-251"><a href="#cb18-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-252"><a href="#cb18-252" aria-hidden="true" tabindex="-1"></a>We will now create a code chunk that purely runs Python and accesses the objects object with <span class="in">`r.OBJECT_NAME`</span>:</span>
-<span id="cb18-253"><a href="#cb18-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-254"><a href="#cb18-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{python dev = "jpg", verbatim = TRUE}</span></span>
-<span id="cb18-255"><a href="#cb18-255" aria-hidden="true" tabindex="-1"></a><span class="co"># we access mtcars dataset from R</span></span>
-<span id="cb18-256"><a href="#cb18-256" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r.mtcars.head())</span>
-<span id="cb18-257"><a href="#cb18-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-258"><a href="#cb18-258" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
-<span id="cb18-259"><a href="#cb18-259" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb18-260"><a href="#cb18-260" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-261"><a href="#cb18-261" aria-hidden="true" tabindex="-1"></a><span class="co"># we open iris data from `sklearn` python package</span></span>
-<span id="cb18-262"><a href="#cb18-262" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> datasets.load_iris()</span>
-<span id="cb18-263"><a href="#cb18-263" aria-hidden="true" tabindex="-1"></a>iris_data <span class="op">=</span> pd.DataFrame(data<span class="op">=</span>iris[<span class="st">'data'</span>], columns<span class="op">=</span>iris[<span class="st">'feature_names'</span>])</span>
-<span id="cb18-264"><a href="#cb18-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-265"><a href="#cb18-265" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the head of the DataFrame</span></span>
-<span id="cb18-266"><a href="#cb18-266" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris_data.head())</span>
-<span id="cb18-267"><a href="#cb18-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-268"><a href="#cb18-268" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-269"><a href="#cb18-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-270"><a href="#cb18-270" aria-hidden="true" tabindex="-1"></a>We can do the same thing in R by calling <span class="in">`py$OBJECT_NAME`</span> by using <span class="in">`reticulate::py$OBJECT_NAME`</span>:</span>
-<span id="cb18-271"><a href="#cb18-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-272"><a href="#cb18-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = FALSE}</span></span>
-<span id="cb18-273"><a href="#cb18-273" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting the iris data from python</span></span>
-<span id="cb18-274"><a href="#cb18-274" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(py<span class="sc">$</span>iris_data)</span>
-<span id="cb18-275"><a href="#cb18-275" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-276"><a href="#cb18-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-277"><a href="#cb18-277" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modelling in R &amp; Python</span></span>
-<span id="cb18-278"><a href="#cb18-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-279"><a href="#cb18-279" aria-hidden="true" tabindex="-1"></a>Let's take a simple use case of making a regression in R and Python so you can see how the two languages compare:</span>
-<span id="cb18-280"><a href="#cb18-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-283"><a href="#cb18-283" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-284"><a href="#cb18-284" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the spaces and `(cm)` from the column names</span></span>
-<span id="cb18-285"><a href="#cb18-285" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(py<span class="sc">$</span>iris_data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">' '</span>, <span class="st">'_'</span>, <span class="fu">names</span>(py<span class="sc">$</span>iris_data))</span>
-<span id="cb18-286"><a href="#cb18-286" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(py<span class="sc">$</span>iris_data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">'_</span><span class="sc">\\</span><span class="st">(cm</span><span class="sc">\\</span><span class="st">)'</span>, <span class="st">''</span>, <span class="fu">names</span>(py<span class="sc">$</span>iris_data))</span>
-<span id="cb18-287"><a href="#cb18-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-288"><a href="#cb18-288" aria-hidden="true" tabindex="-1"></a><span class="co"># example of running a model on iris data</span></span>
-<span id="cb18-289"><a href="#cb18-289" aria-hidden="true" tabindex="-1"></a>r_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="st">"sepal_length ~. "</span>, <span class="at">data =</span> py<span class="sc">$</span>iris_data)</span>
-<span id="cb18-290"><a href="#cb18-290" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(r_lm)</span>
-<span id="cb18-291"><a href="#cb18-291" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-292"><a href="#cb18-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-293"><a href="#cb18-293" aria-hidden="true" tabindex="-1"></a>Within R, you can still use python to run the same linear regression with the <span class="in">`statsmodels`</span> python library.</span>
-<span id="cb18-294"><a href="#cb18-294" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-297"><a href="#cb18-297" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb18-298"><a href="#cb18-298" aria-hidden="true" tabindex="-1"></a><span class="co"># example of runnning lm model in python -&gt; firstly, process the data</span></span>
-<span id="cb18-299"><a href="#cb18-299" aria-hidden="true" tabindex="-1"></a><span class="co"># specify your dependent variable and independent variables</span></span>
-<span id="cb18-300"><a href="#cb18-300" aria-hidden="true" tabindex="-1"></a>y_iris <span class="ot">=</span> <span class="fu">select</span>(py<span class="sc">$</span>iris_data, <span class="st">"sepal_length"</span>)</span>
-<span id="cb18-301"><a href="#cb18-301" aria-hidden="true" tabindex="-1"></a>x_iris <span class="ot">=</span> <span class="fu">select</span>(py<span class="sc">$</span>iris_data, <span class="sc">-</span><span class="st">"sepal_length"</span>)</span>
-<span id="cb18-302"><a href="#cb18-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-303"><a href="#cb18-303" aria-hidden="true" tabindex="-1"></a><span class="co"># for python approach, we need to add a constant to predictor variables</span></span>
-<span id="cb18-304"><a href="#cb18-304" aria-hidden="true" tabindex="-1"></a>x_iris <span class="ot">=</span> sm<span class="sc">$</span><span class="fu">add_constant</span>(x_iris)</span>
-<span id="cb18-305"><a href="#cb18-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-306"><a href="#cb18-306" aria-hidden="true" tabindex="-1"></a><span class="co"># create a linear regression model and fit it to the data</span></span>
-<span id="cb18-307"><a href="#cb18-307" aria-hidden="true" tabindex="-1"></a>py_lm <span class="ot">=</span> sm<span class="sc">$</span><span class="fu">OLS</span>(y_iris, x_iris)<span class="sc">$</span><span class="fu">fit</span>()</span>
-<span id="cb18-308"><a href="#cb18-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-309"><a href="#cb18-309" aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary</span></span>
-<span id="cb18-310"><a href="#cb18-310" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(py_lm<span class="sc">$</span><span class="fu">summary</span>())</span>
-<span id="cb18-311"><a href="#cb18-311" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-312"><a href="#cb18-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-313"><a href="#cb18-313" aria-hidden="true" tabindex="-1"></a>As you can see, the results are the same (those of <span class="in">`statsmodels`</span> have been rounded). This could have also been done purely in python, as demonstrated below. Please note that here we have brought the iris data from python to R, then manipulated it in R (with the <span class="in">`select()`</span> operation), and now we have two options to use these objects in pure python (just one is needed):</span>
-<span id="cb18-314"><a href="#cb18-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-315"><a href="#cb18-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-316"><a href="#cb18-316" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We can simply call the objects from R by <span class="in">`r.x_iris`</span> and <span class="in">`r.y_axis`</span>.</span>
-<span id="cb18-317"><a href="#cb18-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-318"><a href="#cb18-318" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We can do the same <span class="in">`select()`</span> operation in python with it's own syntax on the original python iris data:</span>
-<span id="cb18-319"><a href="#cb18-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-322"><a href="#cb18-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb18-323"><a href="#cb18-323" aria-hidden="true" tabindex="-1"></a>py_y_iris <span class="op">=</span> iris_data[<span class="st">"sepal_length"</span>]</span>
-<span id="cb18-324"><a href="#cb18-324" aria-hidden="true" tabindex="-1"></a>py_x_iris <span class="op">=</span> iris_data.drop(<span class="st">"sepal_length"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb18-325"><a href="#cb18-325" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-326"><a href="#cb18-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-327"><a href="#cb18-327" aria-hidden="true" tabindex="-1"></a>Needless to say that in this case, the most efficient approach is the first one as demonstrated below:</span>
-<span id="cb18-328"><a href="#cb18-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-331"><a href="#cb18-331" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb18-332"><a href="#cb18-332" aria-hidden="true" tabindex="-1"></a><span class="co"># load the sm library with it's alias</span></span>
-<span id="cb18-333"><a href="#cb18-333" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb18-334"><a href="#cb18-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-335"><a href="#cb18-335" aria-hidden="true" tabindex="-1"></a><span class="co"># add the constant again</span></span>
-<span id="cb18-336"><a href="#cb18-336" aria-hidden="true" tabindex="-1"></a>x_iris <span class="op">=</span> sm.add_constant(r.x_iris)</span>
-<span id="cb18-337"><a href="#cb18-337" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-338"><a href="#cb18-338" aria-hidden="true" tabindex="-1"></a><span class="co"># create a linear regression model and fit it to the data</span></span>
-<span id="cb18-339"><a href="#cb18-339" aria-hidden="true" tabindex="-1"></a>py_lm <span class="op">=</span> sm.OLS(r.y_iris, r.x_iris).fit()</span>
-<span id="cb18-340"><a href="#cb18-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-341"><a href="#cb18-341" aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary</span></span>
-<span id="cb18-342"><a href="#cb18-342" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(py_lm.summary())</span>
-<span id="cb18-343"><a href="#cb18-343" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-344"><a href="#cb18-344" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb18-345"><a href="#cb18-345" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-346"><a href="#cb18-346" aria-hidden="true" tabindex="-1"></a>The outcome is the same as calling python within R.</span>
-<span id="cb18-347"><a href="#cb18-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-348"><a href="#cb18-348" aria-hidden="true" tabindex="-1"></a><span class="fu"># Closing words: Why not be `polyglot programmers`?</span></span>
-<span id="cb18-349"><a href="#cb18-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-350"><a href="#cb18-350" aria-hidden="true" tabindex="-1"></a>The possibilities for using R and Python are endless. With that said, the integration is not always perfect, therefore sometimes libraries don't translate entirely, and you have to play around with the two, but in most cases, the transition is seamless. Also, many other functions in <span class="in">`reticulate`</span> can help you, which we haven't discussed here, such as <span class="in">`reticulate::source_python()`</span> to run an entire python script, among many of it's other functions. Check out their page if you are interested to learn more.</span>
-<span id="cb18-351"><a href="#cb18-351" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-352"><a href="#cb18-352" aria-hidden="true" tabindex="-1"></a><span class="fu">### References</span></span>
-<span id="cb18-353"><a href="#cb18-353" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-354"><a href="#cb18-354" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`rnev`: Introduction to `renv`</span><span class="co">](https://rstudio.github.io/renv/articles/renv.html)</span></span>
-<span id="cb18-355"><a href="#cb18-355" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`reticulate`: R Interface to Python</span><span class="co">](https://rstudio.github.io/reticulate/)</span></span>
-<span id="cb18-356"><a href="#cb18-356" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Python for Data Science \[Crash Course\]</span><span class="co">](https://www.youtube.com/watch?v=eAoZjemZXrM)</span> </span>
-<span id="cb18-357"><a href="#cb18-357" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)</span><span class="co">](https://www.youtube.com/watch?v=r-uOLxNrNk8)</span></span>
-<span id="cb18-358"><a href="#cb18-358" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">R vs Python</span><span class="co">](https://www.youtube.com/watch?v=4lcwTGA7MZw)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "General Instructions"</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## Objectives</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>This setup tutorial is optional for those who are interested in the following:</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Learning about (and using) virtual environments in R to ensure reproducibility (benefits explained below).</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Learning about using python 🐍 in (and with) R. This is useful for some ML lab sessions, and cutting-edge ML is often first implemented in python.</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Accessing the source code</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>Although we do not provide the Qmd file for the source code, you can always use the <span class="in">`&lt;/&gt; Code`</span> button on the top right of the page to get the source code.</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>::: callout-important</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## Data for the labs</span></span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>The datasets used for all the labs can be found <span class="co">[</span><span class="ot">here 📁</span><span class="co">](https://github.com/do-unil/mlba/tree/main/labs/data)</span>.</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- Setting the rmardkown global options --&gt;</span></span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r global_options, include=FALSE}</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">collapse =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">comment =</span> <span class="st">"#&gt;"</span>,</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">header =</span> <span class="fu">paste0</span>(<span class="st">"```{"</span>, knitr<span class="sc">::</span>opts_current<span class="sc">$</span><span class="fu">get</span>(<span class="st">"engine.name"</span>), <span class="st">"}"</span>),</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">footer =</span> <span class="st">"```"</span>,</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>  <span class="at">fig.align=</span><span class="st">"center"</span>,</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a>  <span class="at">warning =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>  <span class="at">message =</span> <span class="cn">FALSE</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">expressions =</span> <span class="dv">10000</span>)</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a><span class="fu"># Virtual environments in R (`renv`)</span></span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## The What &amp; The Why</span></span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>As you start working on machine learning in R, you'll be using various R packages that provide different functionalities. As you might know, managing multiple packages and their dependencies can be a daunting task, especially when you're new to programming.</span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>This is where **`renv`** comes in handy. **`renv`** is a package management tool that helps you manage the packages used in an R project, making it easier to handle dependencies and ensuring that your project is reproducible. Here are some specific reasons why **`renv`** is particularly useful for machine learning lab sessions:</span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Consistent environment: When you work on machine learning lab sessions, you'll often be working with complex models that use multiple R packages. It's crucial to ensure that all the packages used in your project are compatible with each other. With **`renv`**, you can create a consistent environment by isolating the packages used in your project and making sure they work well together.</span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Easy installation and setup: **`renv`** makes it easy to set up a new R project with the required packages. Once you've created an **`renv`** project, you can easily install all the required packages with a single command. This saves you time and ensures that you have all the necessary packages for your machine learning lab sessions.</span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Reproducibility: Reproducibility is critical in machine learning lab sessions. With **`renv`**, you can easily share your code and the exact packages used in your project with your peers or instructors, making it easy for them to reproduce your results.</span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>In summary, **`renv`** is an essential tool for managing packages in R and ensuring that your machine learning lab sessions are efficient and reproducible. It helps you avoid compatibility issues, simplifies installation and setup, and makes it easy to share your work with others. In python, you have similar tools such as `virtualenv`, `venv` and `conda`. We hope you find **`renv`** useful as you begin your journey into machine learning with R!</span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if renv is installed</span></span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"renv"</span>)) {</span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Install renv if it is not already installed</span></span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"renv"</span>)</span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a><span class="fu">## The How</span></span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>To create a new **`renv`** project, first set your working directory to the location where you want to create the project, and then run the command <span class="in">`renv::init()`</span> which has to be executed only once. We recommend creating a main folder for all your ML-related exercises and running the command at the top directory. Running the initialization will create a bunch of auxiliary files, such as <span class="in">`renv.lock`</span> to keep track of the packages that you're using and all their versions. If you move to another computer or something goes wrong with your packages, you can always re-install the packages listed in your <span class="in">`renv.lock`</span> to the previous versions using <span class="in">`renv::restore()`</span>. To occasionally update your packages, you can always use <span class="in">`renv::snapshot()`</span>; however, every time that you start a new R session, if <span class="in">`renv`</span> detects any changes, it will automatically ask you to run <span class="in">`renv::status()`</span> to see if the list in <span class="in">`renv.lock`</span> needs updating.</span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if renv is already initialized</span></span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">file.exists</span>(<span class="st">"renv.lock"</span>)) {</span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Initialize renv project</span></span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>  renv<span class="sc">::</span><span class="fu">init</span>()</span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Restore packages</span></span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a>  renv<span class="sc">::</span><span class="fu">restore</span>()</span>
+<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a><span class="fu"># Python **🐍** in R (`reticulate`)</span></span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## Small Motivation</span></span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>Most careers after HEC require data literacy and data-driven insights to solve business problems. To that end, R is a potent tool; however, in the realm of machine learning, Python is arguably more demanded and, therefore, can be a good tool in your toolbox. Additionally, python is a widely-used language in the industry and offers powerful libraries for data manipulation, analysis, and modeling. Furthermore, you don't need to be a technical person to learn python as there are many resources available online, and it's a language that is relatively easy to pick up, even for absolute beginners to programming. Combining the strengths of both R and Python can enhance your workflow and improve your ability to work with data. To understand how R and Python compare, you are highly encouraged to watch <span class="co">[</span><span class="ot">this video by IBM on R vs Python</span><span class="co">](https://www.youtube.com/watch?v=4lcwTGA7MZw)</span>.</span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a><span class="fu">## Configuration</span></span>
+<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>You need to follow a few steps to ensure that everything runs smoothly. There are several solutions for running the python part of the exercises. Our preferred method is to run python in R using the <span class="in">`reticulate`</span> package as recently there has been a smooth integration between the two languages, especially if your IDE of choice (integrated development environment) is Rstudio. This library provides a comprehensive set of tools for interoperability (i.e., exchanging languages) between python and R. You can either do this in your own central python installation or use a virtual environment where we'll install the desired python packages. In python, virtual environments are similar to those of R (i.e. <span class="in">`renv`</span>), allowing you to create isolated python installations, making it easier to manage different projects, and avoiding compatibility issues between dependencies. This setup usually works well, but if there are any individual issues, do not hesitate to contact me (Ilia). With that said, let's get started with python!</span>
+<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a>First, load all the corresponding libraries to install and run python:</span>
+<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results='hide'}</span></span>
+<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reticulate)</span>
+<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a>To install python in R, we will use <span class="co">[</span><span class="ot">miniconda</span><span class="co">](https://docs.conda.io/en/latest/miniconda.html)</span>, a smaller version of Anaconda package manager. If you don't have Miniconda or Anaconda, first run <span class="in">`reticulate::install_miniconda()`</span>, which will automatically create a virtual environment for you.</span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE}</span></span>
+<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a><span class="co"># reticulate::install_miniconda() # if you got an error, you could also try `install_python()` or installing conda seperately on your OS</span></span>
+<span id="cb20-101"><a href="#cb20-101" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a>Now, we will create our virtual environment with the command <span class="in">`reticulate::conda_create()`</span>. We will then make sure our rstudio is using this correct conda environment by enforcing it via <span class="in">`reticulate::use_condaenv()`</span>.</span>
+<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-107"><a href="#cb20-107" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-108"><a href="#cb20-108" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb20-110"><a href="#cb20-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-111"><a href="#cb20-111" aria-hidden="true" tabindex="-1"></a><span class="co"># assign the right virtual environment for the exercises</span></span>
+<span id="cb20-112"><a href="#cb20-112" aria-hidden="true" tabindex="-1"></a>env_name <span class="ot">&lt;-</span> <span class="st">"MLBA"</span></span>
+<span id="cb20-113"><a href="#cb20-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-114"><a href="#cb20-114" aria-hidden="true" tabindex="-1"></a><span class="co"># if the virtual enviroment does not already exist, only then create then</span></span>
+<span id="cb20-115"><a href="#cb20-115" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span>env_name <span class="sc">%in%</span> reticulate<span class="sc">::</span><span class="fu">conda_list</span>()<span class="sc">$</span>name) {</span>
+<span id="cb20-116"><a href="#cb20-116" aria-hidden="true" tabindex="-1"></a>  reticulate<span class="sc">::</span><span class="fu">conda_create</span>(env_name, <span class="at">pip =</span> <span class="cn">TRUE</span>) <span class="co"># we use pip for installations</span></span>
+<span id="cb20-117"><a href="#cb20-117" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-118"><a href="#cb20-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-119"><a href="#cb20-119" aria-hidden="true" tabindex="-1"></a><span class="co"># make sure we're using the right environment</span></span>
+<span id="cb20-120"><a href="#cb20-120" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">use_condaenv</span>(env_name)</span>
+<span id="cb20-121"><a href="#cb20-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-122"><a href="#cb20-122" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if python is setup properly now</span></span>
+<span id="cb20-123"><a href="#cb20-123" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_available</span>()</span>
+<span id="cb20-124"><a href="#cb20-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-125"><a href="#cb20-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-126"><a href="#cb20-126" aria-hidden="true" tabindex="-1"></a>If you have made it here so far and see the name <span class="in">`MLBA`</span> in your python path, you have successfully installed/configured python and setup the virtual environment(s)🥳.</span>
+<span id="cb20-127"><a href="#cb20-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-128"><a href="#cb20-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### Bonus: Using Rstudio to select Python path</span></span>
+<span id="cb20-129"><a href="#cb20-129" aria-hidden="true" tabindex="-1"></a>In case you wanted to use the Rstudio interface, you can always go to <span class="in">`Tools &gt; Project Options`</span> (or <span class="in">`Global Options`</span> if you're not using <span class="in">`renv`</span>) and then select the version inside the <span class="in">`Python`</span> field as shown below.</span>
+<span id="cb20-130"><a href="#cb20-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-131"><a href="#cb20-131" aria-hidden="true" tabindex="-1"></a><span class="al">![](python_rstudio_global_options.JPG)</span></span>
+<span id="cb20-132"><a href="#cb20-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-133"><a href="#cb20-133" aria-hidden="true" tabindex="-1"></a><span class="fu">## Python (very brief) overview</span></span>
+<span id="cb20-134"><a href="#cb20-134" aria-hidden="true" tabindex="-1"></a>We do not teach the principles of python programming during this course. With that said, if you already have a background in R from your previous courses (e.g., *DSFBA*, *QMM*), we provide a few links to help you get started. If you're new to python, feel free to continue reading; otherwise, skip to the section <span class="co">[</span><span class="ot">Calling Python in R</span><span class="co">](#use-python-in-r)</span>.</span>
+<span id="cb20-135"><a href="#cb20-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-136"><a href="#cb20-136" aria-hidden="true" tabindex="-1"></a>If you would like to see a crash course in python on different data structures and types, check out this video on <span class="co">[</span><span class="ot">Python for Data Science \[Crash Course\]</span><span class="co">](https://www.youtube.com/watch?v=eAoZjemZXrM)</span> (you can skip the installation part). You may notice that much of the syntax is similar to R. </span>
+<span id="cb20-137"><a href="#cb20-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-138"><a href="#cb20-138" aria-hidden="true" tabindex="-1"></a><span class="fu">### Python data-oriented libraries</span></span>
+<span id="cb20-139"><a href="#cb20-139" aria-hidden="true" tabindex="-1"></a>Python provides a range of libraries for data manipulation, analysis, and modeling, including <span class="in">`Pandas`</span> (similar to <span class="in">`tibble`</span>+<span class="in">`dplyr`</span>), which offers easy-to-use data structures for working with tabular data, and NumPy (<span class="in">`dplyr`</span>+<span class="in">`data.table`</span>), which provides powerful tools for array manipulation, linear algebra, and Fourier analysis. For data visualization, python offers <span class="in">`Matplotlib`</span> (similar to <span class="in">`plot()`</span> in base R). For machine learning, <span class="in">`Scikit-learn`</span> (similar to the <span class="in">`caret`</span> package in R which we will be introduced later) provides a wide range of tools for classification, regression, clustering, and dimensionality reduction, while <span class="in">`Tensorflow`</span> &amp; <span class="in">`Keras`</span> (both used for deep learning and neural networks) are also popular libraries in this space which are available in both R and Python. These libraries are just a few examples of the many tools available in python that can help you work with data and build machine learning models. If you're interested to learn about these libraries and how to manipulate Pandas dataframes, you can check out this other video on <span class="co">[</span><span class="ot">Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)</span><span class="co">](https://www.youtube.com/watch?v=r-uOLxNrNk8)</span> (it's slightly long).</span>
+<span id="cb20-140"><a href="#cb20-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-141"><a href="#cb20-141" aria-hidden="true" tabindex="-1"></a><span class="fu">### Assigning variables in Python vs. R {#assign-vars}</span></span>
+<span id="cb20-142"><a href="#cb20-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-143"><a href="#cb20-143" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.align="center", out.width= "80%", echo = F}</span></span>
+<span id="cb20-144"><a href="#cb20-144" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"https://blog.penjee.com/wp-content/uploads/2015/02/pass-by-reference-vs-pass-by-value-animation.gif"</span>)</span>
+<span id="cb20-145"><a href="#cb20-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-146"><a href="#cb20-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-147"><a href="#cb20-147" aria-hidden="true" tabindex="-1"></a>For those of you new to python, there's an important difference between R and Python when assignment variables. In Python, when you assign a variable to another variable, you are creating a reference to the same object in memory, so any changes made to one variable will be reflected in the other variable as well. This is demonostrated in the example below:</span>
+<span id="cb20-148"><a href="#cb20-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-151"><a href="#cb20-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb20-152"><a href="#cb20-152" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb20-153"><a href="#cb20-153" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
+<span id="cb20-154"><a href="#cb20-154" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b)</span>
+<span id="cb20-155"><a href="#cb20-155" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span> <span class="co"># we only change `b`</span></span>
+<span id="cb20-156"><a href="#cb20-156" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b) <span class="co"># the variable `a` also changed unlike how R treats the variable</span></span>
+<span id="cb20-157"><a href="#cb20-157" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-158"><a href="#cb20-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-159"><a href="#cb20-159" aria-hidden="true" tabindex="-1"></a>::: callout-tip</span>
+<span id="cb20-160"><a href="#cb20-160" aria-hidden="true" tabindex="-1"></a><span class="fu">## Indexing in R vs. Python</span></span>
+<span id="cb20-161"><a href="#cb20-161" aria-hidden="true" tabindex="-1"></a>Another difference between R &amp; Python is that the index (first value of any object) starts from 0 (python) rather than 1 (R). So if you have a list, the first element is python is starting at element 0.</span>
+<span id="cb20-162"><a href="#cb20-162" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb20-163"><a href="#cb20-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-164"><a href="#cb20-164" aria-hidden="true" tabindex="-1"></a>To create a separate copy of the object, you need to use the <span class="in">`.copy()`</span> method (python way of saying a function).</span>
+<span id="cb20-165"><a href="#cb20-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-168"><a href="#cb20-168" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb20-169"><a href="#cb20-169" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb20-170"><a href="#cb20-170" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a.copy() <span class="co"># create a separate copy of the list</span></span>
+<span id="cb20-171"><a href="#cb20-171" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b)</span>
+<span id="cb20-172"><a href="#cb20-172" aria-hidden="true" tabindex="-1"></a>b[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span> <span class="co"># modify only `b`</span></span>
+<span id="cb20-173"><a href="#cb20-173" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(a, b) <span class="co"># variable `a` does not change</span></span>
+<span id="cb20-174"><a href="#cb20-174" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-175"><a href="#cb20-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-176"><a href="#cb20-176" aria-hidden="true" tabindex="-1"></a>In R, on the other hand, assignment creates a copy by default, so you don't need to use a <span class="in">`.copy()`</span> method. Any changes you make to one variable will not affect the other variable, because they are separate copies of the same object.</span>
+<span id="cb20-177"><a href="#cb20-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-178"><a href="#cb20-178" aria-hidden="true" tabindex="-1"></a><span class="fu">## Calling Python in R {#use-python-in-r}</span></span>
+<span id="cb20-179"><a href="#cb20-179" aria-hidden="true" tabindex="-1"></a><span class="fu">### Installing Python libraries</span></span>
+<span id="cb20-180"><a href="#cb20-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-181"><a href="#cb20-181" aria-hidden="true" tabindex="-1"></a>You can install any python package in R using the <span class="in">`reticulate::py_install()`</span> command. This is similar to calling <span class="in">`install.packages()`</span> in R. You may have heard of CRAN in R, a central repository for all R packages. In Python, the equivalent of CRAN is PyPI (Python Package Index). If you want the latest version of the packages, it is recommended to install packages using <span class="in">`pip`</span>. To do so, you must set the argument <span class="in">`pip=TRUE`</span> inside <span class="in">`reticulate::py_install()`</span>, as demonstrated below.</span>
+<span id="cb20-182"><a href="#cb20-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-183"><a href="#cb20-183" aria-hidden="true" tabindex="-1"></a>We will install all the packages we need for this particular setup. This should be go smoothly with the following command:</span>
+<span id="cb20-184"><a href="#cb20-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-187"><a href="#cb20-187" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-188"><a href="#cb20-188" aria-hidden="true" tabindex="-1"></a><span class="co">#| results: hide</span></span>
+<span id="cb20-189"><a href="#cb20-189" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: true</span></span>
+<span id="cb20-190"><a href="#cb20-190" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb20-191"><a href="#cb20-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: false</span></span>
+<span id="cb20-192"><a href="#cb20-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-193"><a href="#cb20-193" aria-hidden="true" tabindex="-1"></a><span class="co"># Install python package into virtual environment</span></span>
+<span id="cb20-194"><a href="#cb20-194" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_install</span>(<span class="fu">c</span>(<span class="st">"jupyter"</span>, <span class="st">"pandas"</span>, <span class="st">"matplotlib"</span>,<span class="st">"statsmodels"</span>,<span class="st">"scikit-learn"</span>, <span class="st">"seaborn"</span>, <span class="st">"mlxtend"</span>, <span class="st">"lime"</span>, <span class="st">"mkl-service"</span>, <span class="st">"xgboost"</span>,<span class="st">"scikit-learn-extra"</span>, <span class="st">"tensorflow"</span>, <span class="st">"keras"</span>, <span class="st">"torch"</span>, <span class="st">"torchvision"</span>), <span class="at">envname =</span> <span class="st">"MLBA"</span>, <span class="at">pip=</span><span class="cn">TRUE</span>)</span>
+<span id="cb20-195"><a href="#cb20-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-196"><a href="#cb20-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-197"><a href="#cb20-197" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb20-198"><a href="#cb20-198" aria-hidden="true" tabindex="-1"></a><span class="fu">### `mkl-service` for Mac Users</span></span>
+<span id="cb20-199"><a href="#cb20-199" aria-hidden="true" tabindex="-1"></a>Please note that the <span class="in">`mkl-service`</span> python package from above is specific to windows/linux users and is not needed for Mac users. In case of any errors (especially on M1 chips), feel free to remove it.</span>
+<span id="cb20-200"><a href="#cb20-200" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb20-201"><a href="#cb20-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-202"><a href="#cb20-202" aria-hidden="true" tabindex="-1"></a>Let's checked if the package is installed successfully.</span>
+<span id="cb20-203"><a href="#cb20-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-206"><a href="#cb20-206" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-207"><a href="#cb20-207" aria-hidden="true" tabindex="-1"></a><span class="co"># import package that is used for dealing with data.frames in Python (equivalent of tibble+dplyr)</span></span>
+<span id="cb20-208"><a href="#cb20-208" aria-hidden="true" tabindex="-1"></a>pd <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"pandas"</span>)</span>
+<span id="cb20-209"><a href="#cb20-209" aria-hidden="true" tabindex="-1"></a><span class="co"># import the package for plotting in python</span></span>
+<span id="cb20-210"><a href="#cb20-210" aria-hidden="true" tabindex="-1"></a>plt <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"matplotlib.pyplot"</span>)</span>
+<span id="cb20-211"><a href="#cb20-211" aria-hidden="true" tabindex="-1"></a><span class="co"># import the library which we will use for linear regression</span></span>
+<span id="cb20-212"><a href="#cb20-212" aria-hidden="true" tabindex="-1"></a>sm <span class="ot">&lt;-</span> reticulate<span class="sc">::</span><span class="fu">import</span>(<span class="st">"statsmodels.api"</span>)</span>
+<span id="cb20-213"><a href="#cb20-213" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-214"><a href="#cb20-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-215"><a href="#cb20-215" aria-hidden="true" tabindex="-1"></a>No error messages? Then installation was successful!</span>
+<span id="cb20-216"><a href="#cb20-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-217"><a href="#cb20-217" aria-hidden="true" tabindex="-1"></a><span class="fu">### Calling Python and R objects interchangeably</span></span>
+<span id="cb20-218"><a href="#cb20-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-219"><a href="#cb20-219" aria-hidden="true" tabindex="-1"></a>All the data types in R vs. Python are explained below (image from <span class="in">`reticulate`</span>'s home page). If you need to explicitly change between objects in R and Python (usually R handles that automatically) to get the objects from the image above, you can use <span class="in">`reticulate::r_to_py()`</span> and <span class="in">`reticulate::py_to_r()`</span> (e.g., R dataframes to pandas dataframes).</span>
+<span id="cb20-220"><a href="#cb20-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-221"><a href="#cb20-221" aria-hidden="true" tabindex="-1"></a><span class="al">![](reticulate_r_python_objects.JPG)</span></span>
+<span id="cb20-222"><a href="#cb20-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-223"><a href="#cb20-223" aria-hidden="true" tabindex="-1"></a>To run objects from python in R, you have to use <span class="in">`$`</span> to access their elements. For instance, when you want to load a python library, you can use <span class="in">`reticulate::import()`</span> function and then assign it to a variable with the name of your choice as we did in the previous part. If that library contains a function (in python called module or sub-module), it always follows the format <span class="in">`LIBRARY$FUNCTION()`</span>. We can see an example of that below:</span>
+<span id="cb20-224"><a href="#cb20-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-225"><a href="#cb20-225" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, out.width="100%"}</span></span>
+<span id="cb20-226"><a href="#cb20-226" aria-hidden="true" tabindex="-1"></a><span class="co"># Using R</span></span>
+<span id="cb20-227"><a href="#cb20-227" aria-hidden="true" tabindex="-1"></a><span class="do">## load mtcars dataset</span></span>
+<span id="cb20-228"><a href="#cb20-228" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(mtcars)</span>
+<span id="cb20-229"><a href="#cb20-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-230"><a href="#cb20-230" aria-hidden="true" tabindex="-1"></a><span class="do">## plot it using base R plot function (or ggplot)</span></span>
+<span id="cb20-231"><a href="#cb20-231" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars<span class="sc">$</span>mpg, mtcars<span class="sc">$</span>disp)</span>
+<span id="cb20-232"><a href="#cb20-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-233"><a href="#cb20-233" aria-hidden="true" tabindex="-1"></a><span class="co"># Using Python</span></span>
+<span id="cb20-234"><a href="#cb20-234" aria-hidden="true" tabindex="-1"></a><span class="co"># plot it using matplotlib in python (or another python library for plots)</span></span>
+<span id="cb20-235"><a href="#cb20-235" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">scatter</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>disp)</span>
+<span id="cb20-236"><a href="#cb20-236" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">xlabel</span>(<span class="st">'mpg'</span>, <span class="at">fontsize =</span> <span class="dv">12</span>)</span>
+<span id="cb20-237"><a href="#cb20-237" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">ylabel</span>(<span class="st">'disp'</span>, <span class="at">fontsize =</span> <span class="dv">12</span>)</span>
+<span id="cb20-238"><a href="#cb20-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-239"><a href="#cb20-239" aria-hidden="true" tabindex="-1"></a><span class="co"># save the figure and then include in the Rmd</span></span>
+<span id="cb20-240"><a href="#cb20-240" aria-hidden="true" tabindex="-1"></a>plt<span class="sc">$</span><span class="fu">savefig</span>(<span class="st">"pyplot.png"</span>)</span>
+<span id="cb20-241"><a href="#cb20-241" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"pyplot.png"</span>)</span>
+<span id="cb20-242"><a href="#cb20-242" aria-hidden="true" tabindex="-1"></a><span class="co"># alternatively, when not knitting, you can uncomment and run the two following lines</span></span>
+<span id="cb20-243"><a href="#cb20-243" aria-hidden="true" tabindex="-1"></a><span class="co"># instead of save the figure</span></span>
+<span id="cb20-244"><a href="#cb20-244" aria-hidden="true" tabindex="-1"></a><span class="co"># plt$show() # you always have to call this for the plot to be made</span></span>
+<span id="cb20-245"><a href="#cb20-245" aria-hidden="true" tabindex="-1"></a><span class="co"># plt$clf() #this means clear figure</span></span>
+<span id="cb20-246"><a href="#cb20-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-247"><a href="#cb20-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-248"><a href="#cb20-248" aria-hidden="true" tabindex="-1"></a>Now, this is using R inside Python, but if you wanted to do it the other way around, that's also possible by using a dot <span class="in">`.`</span> instead of <span class="in">`$`</span>. If you're running python in markdown, you can replace <span class="in">`{r...}`</span> at the beginning of the code chunk with <span class="in">`{python...}`</span>, and it'll run python code. Additionally, if you would like to run a script instead (interactively or the whole script), you can do it by going to <span class="in">`file &gt; New File &gt; Python Script`</span> in your Rstudio, and then running any part of your python script starts the interactive python session using <span class="in">`reticulate::repl_python()`</span>. Alternatively, you can call the <span class="in">`repl_python()`</span> to start the interactive session.</span>
+<span id="cb20-249"><a href="#cb20-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-250"><a href="#cb20-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb20-251"><a href="#cb20-251" aria-hidden="true" tabindex="-1"></a><span class="co"># Your python code goes here</span></span>
+<span id="cb20-252"><a href="#cb20-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-253"><a href="#cb20-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-254"><a href="#cb20-254" aria-hidden="true" tabindex="-1"></a>We will now create a code chunk that purely runs Python and accesses the objects object with <span class="in">`r.OBJECT_NAME`</span>:</span>
+<span id="cb20-255"><a href="#cb20-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-256"><a href="#cb20-256" aria-hidden="true" tabindex="-1"></a><span class="in">```{python dev = "jpg", verbatim = TRUE}</span></span>
+<span id="cb20-257"><a href="#cb20-257" aria-hidden="true" tabindex="-1"></a><span class="co"># we access mtcars dataset from R</span></span>
+<span id="cb20-258"><a href="#cb20-258" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(r.mtcars.head())</span>
+<span id="cb20-259"><a href="#cb20-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-260"><a href="#cb20-260" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
+<span id="cb20-261"><a href="#cb20-261" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb20-262"><a href="#cb20-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-263"><a href="#cb20-263" aria-hidden="true" tabindex="-1"></a><span class="co"># we open iris data from `sklearn` python package</span></span>
+<span id="cb20-264"><a href="#cb20-264" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> datasets.load_iris()</span>
+<span id="cb20-265"><a href="#cb20-265" aria-hidden="true" tabindex="-1"></a>iris_data <span class="op">=</span> pd.DataFrame(data<span class="op">=</span>iris[<span class="st">'data'</span>], columns<span class="op">=</span>iris[<span class="st">'feature_names'</span>])</span>
+<span id="cb20-266"><a href="#cb20-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-267"><a href="#cb20-267" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the head of the DataFrame</span></span>
+<span id="cb20-268"><a href="#cb20-268" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(iris_data.head())</span>
+<span id="cb20-269"><a href="#cb20-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-270"><a href="#cb20-270" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-271"><a href="#cb20-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-272"><a href="#cb20-272" aria-hidden="true" tabindex="-1"></a>We can do the same thing in R by calling <span class="in">`py$OBJECT_NAME`</span> by using <span class="in">`reticulate::py$OBJECT_NAME`</span>:</span>
+<span id="cb20-273"><a href="#cb20-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-274"><a href="#cb20-274" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval = FALSE}</span></span>
+<span id="cb20-275"><a href="#cb20-275" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting the iris data from python</span></span>
+<span id="cb20-276"><a href="#cb20-276" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(py<span class="sc">$</span>iris_data)</span>
+<span id="cb20-277"><a href="#cb20-277" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-278"><a href="#cb20-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-279"><a href="#cb20-279" aria-hidden="true" tabindex="-1"></a><span class="fu">## Modelling in R &amp; Python</span></span>
+<span id="cb20-280"><a href="#cb20-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-281"><a href="#cb20-281" aria-hidden="true" tabindex="-1"></a>Let's take a simple use case of making a regression in R and Python so you can see how the two languages compare:</span>
+<span id="cb20-282"><a href="#cb20-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-285"><a href="#cb20-285" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-286"><a href="#cb20-286" aria-hidden="true" tabindex="-1"></a><span class="co"># remove the spaces and `(cm)` from the column names</span></span>
+<span id="cb20-287"><a href="#cb20-287" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(py<span class="sc">$</span>iris_data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">' '</span>, <span class="st">'_'</span>, <span class="fu">names</span>(py<span class="sc">$</span>iris_data))</span>
+<span id="cb20-288"><a href="#cb20-288" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(py<span class="sc">$</span>iris_data) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">'_</span><span class="sc">\\</span><span class="st">(cm</span><span class="sc">\\</span><span class="st">)'</span>, <span class="st">''</span>, <span class="fu">names</span>(py<span class="sc">$</span>iris_data))</span>
+<span id="cb20-289"><a href="#cb20-289" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-290"><a href="#cb20-290" aria-hidden="true" tabindex="-1"></a><span class="co"># example of running a model on iris data</span></span>
+<span id="cb20-291"><a href="#cb20-291" aria-hidden="true" tabindex="-1"></a>r_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="st">"sepal_length ~. "</span>, <span class="at">data =</span> py<span class="sc">$</span>iris_data)</span>
+<span id="cb20-292"><a href="#cb20-292" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(r_lm)</span>
+<span id="cb20-293"><a href="#cb20-293" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-294"><a href="#cb20-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-295"><a href="#cb20-295" aria-hidden="true" tabindex="-1"></a>Within R, you can still use python to run the same linear regression with the <span class="in">`statsmodels`</span> python library.</span>
+<span id="cb20-296"><a href="#cb20-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-299"><a href="#cb20-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb20-300"><a href="#cb20-300" aria-hidden="true" tabindex="-1"></a><span class="co"># example of runnning lm model in python -&gt; firstly, process the data</span></span>
+<span id="cb20-301"><a href="#cb20-301" aria-hidden="true" tabindex="-1"></a><span class="co"># specify your dependent variable and independent variables</span></span>
+<span id="cb20-302"><a href="#cb20-302" aria-hidden="true" tabindex="-1"></a>y_iris <span class="ot">=</span> <span class="fu">select</span>(py<span class="sc">$</span>iris_data, <span class="st">"sepal_length"</span>)</span>
+<span id="cb20-303"><a href="#cb20-303" aria-hidden="true" tabindex="-1"></a>x_iris <span class="ot">=</span> <span class="fu">select</span>(py<span class="sc">$</span>iris_data, <span class="sc">-</span><span class="st">"sepal_length"</span>)</span>
+<span id="cb20-304"><a href="#cb20-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-305"><a href="#cb20-305" aria-hidden="true" tabindex="-1"></a><span class="co"># for python approach, we need to add a constant to predictor variables</span></span>
+<span id="cb20-306"><a href="#cb20-306" aria-hidden="true" tabindex="-1"></a>x_iris <span class="ot">=</span> sm<span class="sc">$</span><span class="fu">add_constant</span>(x_iris)</span>
+<span id="cb20-307"><a href="#cb20-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-308"><a href="#cb20-308" aria-hidden="true" tabindex="-1"></a><span class="co"># create a linear regression model and fit it to the data</span></span>
+<span id="cb20-309"><a href="#cb20-309" aria-hidden="true" tabindex="-1"></a>py_lm <span class="ot">=</span> sm<span class="sc">$</span><span class="fu">OLS</span>(y_iris, x_iris)<span class="sc">$</span><span class="fu">fit</span>()</span>
+<span id="cb20-310"><a href="#cb20-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-311"><a href="#cb20-311" aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary</span></span>
+<span id="cb20-312"><a href="#cb20-312" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(py_lm<span class="sc">$</span><span class="fu">summary</span>())</span>
+<span id="cb20-313"><a href="#cb20-313" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-314"><a href="#cb20-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-315"><a href="#cb20-315" aria-hidden="true" tabindex="-1"></a>As you can see, the results are the same (those of <span class="in">`statsmodels`</span> have been rounded). This could have also been done purely in python, as demonstrated below. Please note that here we have brought the iris data from python to R, then manipulated it in R (with the <span class="in">`select()`</span> operation), and now we have two options to use these objects in pure python (just one is needed):</span>
+<span id="cb20-316"><a href="#cb20-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-317"><a href="#cb20-317" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-318"><a href="#cb20-318" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We can simply call the objects from R by <span class="in">`r.x_iris`</span> and <span class="in">`r.y_axis`</span>.</span>
+<span id="cb20-319"><a href="#cb20-319" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-320"><a href="#cb20-320" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>We can do the same <span class="in">`select()`</span> operation in python with it's own syntax on the original python iris data:</span>
+<span id="cb20-321"><a href="#cb20-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-324"><a href="#cb20-324" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb20-325"><a href="#cb20-325" aria-hidden="true" tabindex="-1"></a>py_y_iris <span class="op">=</span> iris_data[<span class="st">"sepal_length"</span>]</span>
+<span id="cb20-326"><a href="#cb20-326" aria-hidden="true" tabindex="-1"></a>py_x_iris <span class="op">=</span> iris_data.drop(<span class="st">"sepal_length"</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb20-327"><a href="#cb20-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-328"><a href="#cb20-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-329"><a href="#cb20-329" aria-hidden="true" tabindex="-1"></a>Needless to say that in this case, the most efficient approach is the first one as demonstrated below:</span>
+<span id="cb20-330"><a href="#cb20-330" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-333"><a href="#cb20-333" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb20-334"><a href="#cb20-334" aria-hidden="true" tabindex="-1"></a><span class="co"># load the sm library with it's alias</span></span>
+<span id="cb20-335"><a href="#cb20-335" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb20-336"><a href="#cb20-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-337"><a href="#cb20-337" aria-hidden="true" tabindex="-1"></a><span class="co"># add the constant again</span></span>
+<span id="cb20-338"><a href="#cb20-338" aria-hidden="true" tabindex="-1"></a>x_iris <span class="op">=</span> sm.add_constant(r.x_iris)</span>
+<span id="cb20-339"><a href="#cb20-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-340"><a href="#cb20-340" aria-hidden="true" tabindex="-1"></a><span class="co"># create a linear regression model and fit it to the data</span></span>
+<span id="cb20-341"><a href="#cb20-341" aria-hidden="true" tabindex="-1"></a>py_lm <span class="op">=</span> sm.OLS(r.y_iris, r.x_iris).fit()</span>
+<span id="cb20-342"><a href="#cb20-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-343"><a href="#cb20-343" aria-hidden="true" tabindex="-1"></a><span class="co"># get the model summary</span></span>
+<span id="cb20-344"><a href="#cb20-344" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(py_lm.summary())</span>
+<span id="cb20-345"><a href="#cb20-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-346"><a href="#cb20-346" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb20-347"><a href="#cb20-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-348"><a href="#cb20-348" aria-hidden="true" tabindex="-1"></a>The outcome is the same as calling python within R.</span>
+<span id="cb20-349"><a href="#cb20-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-350"><a href="#cb20-350" aria-hidden="true" tabindex="-1"></a><span class="fu"># Closing words: Why not be `polyglot programmers`?</span></span>
+<span id="cb20-351"><a href="#cb20-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-352"><a href="#cb20-352" aria-hidden="true" tabindex="-1"></a>The possibilities for using R and Python are endless. With that said, the integration is not always perfect, therefore sometimes libraries don't translate entirely, and you have to play around with the two, but in most cases, the transition is seamless. Also, many other functions in <span class="in">`reticulate`</span> can help you, which we haven't discussed here, such as <span class="in">`reticulate::source_python()`</span> to run an entire python script, among many of it's other functions. Check out their page if you are interested to learn more.</span>
+<span id="cb20-353"><a href="#cb20-353" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-354"><a href="#cb20-354" aria-hidden="true" tabindex="-1"></a><span class="fu">### References</span></span>
+<span id="cb20-355"><a href="#cb20-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-356"><a href="#cb20-356" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`rnev`: Introduction to `renv`</span><span class="co">](https://rstudio.github.io/renv/articles/renv.html)</span></span>
+<span id="cb20-357"><a href="#cb20-357" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">`reticulate`: R Interface to Python</span><span class="co">](https://rstudio.github.io/reticulate/)</span></span>
+<span id="cb20-358"><a href="#cb20-358" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Python for Data Science \[Crash Course\]</span><span class="co">](https://www.youtube.com/watch?v=eAoZjemZXrM)</span> </span>
+<span id="cb20-359"><a href="#cb20-359" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)</span><span class="co">](https://www.youtube.com/watch?v=r-uOLxNrNk8)</span></span>
+<span id="cb20-360"><a href="#cb20-360" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">R vs Python</span><span class="co">](https://www.youtube.com/watch?v=4lcwTGA7MZw)</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

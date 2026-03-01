@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Variable Importance – MLBA - S24</title>
+<title>Variable Importance – MLBA - S26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,9 +104,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="Variable Importance – MLBA - S24">
-<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
-<meta property="og:site_name" content="MLBA - S24 ">
+<meta property="og:title" content="Variable Importance – MLBA - S26">
+<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2026.">
+<meta property="og:site_name" content="MLBA - S26">
 </head>
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -715,15 +715,15 @@ updateImageSrc();
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a linear regression</span></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>carseats_lr <span class="op">=</span> LinearRegression()</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>carseats_lr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>carseats_lr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])<span class="op">;</span></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a decision tree regressor</span></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>carseats_dtr <span class="op">=</span> DecisionTreeRegressor()</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>carseats_dtr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>carseats_dtr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])<span class="op">;</span></span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a support-vector machine</span></span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>carseats_svr <span class="op">=</span> SVR()</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>carseats_svr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>carseats_svr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 </div>
@@ -783,7 +783,7 @@ updateImageSrc();
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>importance_svr <span class="op">=</span> permutation_importance(carseats_svr, carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>], n_repeats<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">2022</span>)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the SVM model on scaled data</span></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>carseats_svr_scaled <span class="op">=</span> SVR(kernel<span class="op">=</span><span class="st">'linear'</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>carseats_svr_scaled.fit(carseats_train_scaled.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train_scaled[<span class="st">'Sales'</span>])</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>carseats_svr_scaled.fit(carseats_train_scaled.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train_scaled[<span class="st">'Sales'</span>])<span class="op">;</span></span>
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>importance_svr_scaled <span class="op">=</span> permutation_importance(carseats_svr_scaled, carseats_train_scaled.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train_scaled[<span class="st">'Sales'</span>], n_repeats<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">2022</span>)</span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the feature importances</span></span>
@@ -983,7 +983,7 @@ Note
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>svm_caret_model <span class="op">=</span> svm.LinearSVR(random_state<span class="op">=</span><span class="dv">2022</span>)</span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>svm_caret_model.fit(X_train, y_train)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>svm_caret_model.fit(X_train, y_train)<span class="op">;</span></span>
 <span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on a test instance</span></span>
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>test_instance <span class="op">=</span> X_test.iloc[<span class="dv">0</span>:<span class="dv">4</span>]</span>
@@ -1052,7 +1052,7 @@ Note
 <p>What can you observe from these subplots?</p>
 </section></section><section id="your-turn" class="level1"><h1>Your turn</h1>
 <p>After having done this for the training set, make a selection of the most important variables and run the model again. Would you go for this simpler model that has less features or the more complicated one? (hint: you can compute some scores to see whether dropping features would justify the performance drop).</p>
-<p>As a final remark, the same kind of analysis can also be done for classification and different loss functions. As a good example, you can see <a href="https://bookdown.org/gaetan_lovey/data_analytics/dalex.html">a project</a> done by some of the previous students of MScM_BA which also includes a section on feature importance.</p>
+<p>As a final remark, the same kind of analysis can also be done for classification and different loss functions.</p>
 
 
 <!-- -->
@@ -1536,7 +1536,7 @@ Note
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r global_options, include = FALSE}</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.align=</span><span class="st">"center"</span>, <span class="at">results =</span> <span class="st">'hide'</span>, <span class="at">fig.show =</span> <span class="st">'hide'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.align=</span><span class="st">"center"</span>, <span class="at">results =</span> <span class="st">'hold'</span>, <span class="at">fig.show =</span> <span class="st">'show'</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu"># Data &amp; models</span></span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
@@ -1601,15 +1601,15 @@ Note
 <span id="cb18-74"><a href="#cb18-74" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-75"><a href="#cb18-75" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a linear regression</span></span>
 <span id="cb18-76"><a href="#cb18-76" aria-hidden="true" tabindex="-1"></a>carseats_lr <span class="op">=</span> LinearRegression()</span>
-<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a>carseats_lr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])</span>
+<span id="cb18-77"><a href="#cb18-77" aria-hidden="true" tabindex="-1"></a>carseats_lr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])<span class="op">;</span></span>
 <span id="cb18-78"><a href="#cb18-78" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-79"><a href="#cb18-79" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a decision tree regressor</span></span>
 <span id="cb18-80"><a href="#cb18-80" aria-hidden="true" tabindex="-1"></a>carseats_dtr <span class="op">=</span> DecisionTreeRegressor()</span>
-<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a>carseats_dtr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])</span>
+<span id="cb18-81"><a href="#cb18-81" aria-hidden="true" tabindex="-1"></a>carseats_dtr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])<span class="op">;</span></span>
 <span id="cb18-82"><a href="#cb18-82" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-83"><a href="#cb18-83" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a support-vector machine</span></span>
 <span id="cb18-84"><a href="#cb18-84" aria-hidden="true" tabindex="-1"></a>carseats_svr <span class="op">=</span> SVR()</span>
-<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a>carseats_svr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])</span>
+<span id="cb18-85"><a href="#cb18-85" aria-hidden="true" tabindex="-1"></a>carseats_svr.fit(carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>])<span class="op">;</span></span>
 <span id="cb18-86"><a href="#cb18-86" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb18-87"><a href="#cb18-87" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-88"><a href="#cb18-88" aria-hidden="true" tabindex="-1"></a>:::</span>
@@ -1674,7 +1674,7 @@ Note
 <span id="cb18-151"><a href="#cb18-151" aria-hidden="true" tabindex="-1"></a>importance_svr <span class="op">=</span> permutation_importance(carseats_svr, carseats_train.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train[<span class="st">'Sales'</span>], n_repeats<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">2022</span>)</span>
 <span id="cb18-152"><a href="#cb18-152" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the SVM model on scaled data</span></span>
 <span id="cb18-153"><a href="#cb18-153" aria-hidden="true" tabindex="-1"></a>carseats_svr_scaled <span class="op">=</span> SVR(kernel<span class="op">=</span><span class="st">'linear'</span>)</span>
-<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a>carseats_svr_scaled.fit(carseats_train_scaled.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train_scaled[<span class="st">'Sales'</span>])</span>
+<span id="cb18-154"><a href="#cb18-154" aria-hidden="true" tabindex="-1"></a>carseats_svr_scaled.fit(carseats_train_scaled.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train_scaled[<span class="st">'Sales'</span>])<span class="op">;</span></span>
 <span id="cb18-155"><a href="#cb18-155" aria-hidden="true" tabindex="-1"></a>importance_svr_scaled <span class="op">=</span> permutation_importance(carseats_svr_scaled, carseats_train_scaled.drop(columns<span class="op">=</span>[<span class="st">'Sales'</span>]), carseats_train_scaled[<span class="st">'Sales'</span>], n_repeats<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">2022</span>)</span>
 <span id="cb18-156"><a href="#cb18-156" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-157"><a href="#cb18-157" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the feature importances</span></span>
@@ -1887,7 +1887,7 @@ Note
 <span id="cb18-380"><a href="#cb18-380" aria-hidden="true" tabindex="-1"></a>svm_caret_model <span class="op">=</span> svm.LinearSVR(random_state<span class="op">=</span><span class="dv">2022</span>)</span>
 <span id="cb18-381"><a href="#cb18-381" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-382"><a href="#cb18-382" aria-hidden="true" tabindex="-1"></a><span class="co"># Train the model</span></span>
-<span id="cb18-383"><a href="#cb18-383" aria-hidden="true" tabindex="-1"></a>svm_caret_model.fit(X_train, y_train)</span>
+<span id="cb18-383"><a href="#cb18-383" aria-hidden="true" tabindex="-1"></a>svm_caret_model.fit(X_train, y_train)<span class="op">;</span></span>
 <span id="cb18-384"><a href="#cb18-384" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-385"><a href="#cb18-385" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict on a test instance</span></span>
 <span id="cb18-386"><a href="#cb18-386" aria-hidden="true" tabindex="-1"></a>test_instance <span class="op">=</span> X_test.iloc[<span class="dv">0</span>:<span class="dv">4</span>]</span>
@@ -1966,7 +1966,7 @@ Note
 <span id="cb18-467"><a href="#cb18-467" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-468"><a href="#cb18-468" aria-hidden="true" tabindex="-1"></a>After having done this for the training set, make a selection of the most important variables and run the model again. Would you go for this simpler model that has less features or the more complicated one? (hint: you can compute some scores to see whether dropping features would justify the performance drop).</span>
 <span id="cb18-469"><a href="#cb18-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-470"><a href="#cb18-470" aria-hidden="true" tabindex="-1"></a>As a final remark, the same kind of analysis can also be done for classification and different loss functions. As a good example, you can see <span class="co">[</span><span class="ot">a project</span><span class="co">](https://bookdown.org/gaetan_lovey/data_analytics/dalex.html)</span> done by some of the previous students of MScM_BA which also includes a section on feature importance.</span>
+<span id="cb18-470"><a href="#cb18-470" aria-hidden="true" tabindex="-1"></a>As a final remark, the same kind of analysis can also be done for classification and different loss functions.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

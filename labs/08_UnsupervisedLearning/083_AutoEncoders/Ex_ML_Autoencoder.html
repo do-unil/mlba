@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.8.27">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Autoencoders – MLBA - S24</title>
+<title>Autoencoders – MLBA - S26</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -102,9 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
-<meta property="og:title" content="Autoencoders – MLBA - S24">
-<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024.">
-<meta property="og:site_name" content="MLBA - S24 ">
+<meta property="og:title" content="Autoencoders – MLBA - S26">
+<meta property="og:description" content="Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2026.">
+<meta property="og:site_name" content="MLBA - S26">
 </head>
 <body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
@@ -783,14 +783,14 @@ updateImageSrc();
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(encoded_wine[:, <span class="dv">0</span>], encoded_wine[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">50</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Dimension 1'</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Dimension 2'</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'2D Representation of Wine Data using Autoencoders'</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(encoded_wine[:, <span class="dv">0</span>], encoded_wine[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">50</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)<span class="op">;</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Dimension 1'</span>)<span class="op">;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Dimension 2'</span>)<span class="op">;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'2D Representation of Wine Data using Autoencoders'</span>)<span class="op">;</span></span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTIONAL: Add the wine index as labels (you can comment the code below)</span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(wine)):</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  plt.annotate(wine.index[i], (encoded_wine[i, <span class="dv">0</span>], encoded_wine[i, <span class="dv">1</span>]), fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  plt.annotate(wine.index[i], (encoded_wine[i, <span class="dv">0</span>], encoded_wine[i, <span class="dv">1</span>]), fontsize<span class="op">=</span><span class="dv">8</span>)<span class="op">;</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -1595,14 +1595,14 @@ Important
 <span id="cb14-155"><a href="#cb14-155" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-156"><a href="#cb14-156" aria-hidden="true" tabindex="-1"></a>plt.clf()</span>
 <span id="cb14-157"><a href="#cb14-157" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
-<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a>plt.scatter(encoded_wine[:, <span class="dv">0</span>], encoded_wine[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">50</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)</span>
-<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Dimension 1'</span>)</span>
-<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Dimension 2'</span>)</span>
-<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'2D Representation of Wine Data using Autoencoders'</span>)</span>
+<span id="cb14-158"><a href="#cb14-158" aria-hidden="true" tabindex="-1"></a>plt.scatter(encoded_wine[:, <span class="dv">0</span>], encoded_wine[:, <span class="dv">1</span>], s<span class="op">=</span><span class="dv">50</span>, alpha<span class="op">=</span><span class="fl">0.8</span>)<span class="op">;</span></span>
+<span id="cb14-159"><a href="#cb14-159" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Dimension 1'</span>)<span class="op">;</span></span>
+<span id="cb14-160"><a href="#cb14-160" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Dimension 2'</span>)<span class="op">;</span></span>
+<span id="cb14-161"><a href="#cb14-161" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'2D Representation of Wine Data using Autoencoders'</span>)<span class="op">;</span></span>
 <span id="cb14-162"><a href="#cb14-162" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-163"><a href="#cb14-163" aria-hidden="true" tabindex="-1"></a><span class="co"># OPTIONAL: Add the wine index as labels (you can comment the code below)</span></span>
 <span id="cb14-164"><a href="#cb14-164" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(wine)):</span>
-<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a>  plt.annotate(wine.index[i], (encoded_wine[i, <span class="dv">0</span>], encoded_wine[i, <span class="dv">1</span>]), fontsize<span class="op">=</span><span class="dv">8</span>)</span>
+<span id="cb14-165"><a href="#cb14-165" aria-hidden="true" tabindex="-1"></a>  plt.annotate(wine.index[i], (encoded_wine[i, <span class="dv">0</span>], encoded_wine[i, <span class="dv">1</span>]), fontsize<span class="op">=</span><span class="dv">8</span>)<span class="op">;</span></span>
 <span id="cb14-166"><a href="#cb14-166" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-167"><a href="#cb14-167" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb14-168"><a href="#cb14-168" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
