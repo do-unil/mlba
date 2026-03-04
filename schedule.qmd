@@ -11,9 +11,9 @@ code-link: false
 
 ## Important dates (more info during the class)
 - Monday the 27^th^ of April: **[Written exam (9h00-11h00, Room Internef-272)]{.underline}**
-- Wednesday the 27^th^ of May: **[Project report deadline]{.underline}**
-- Friday the 29^th^ of May: **[Slides submission deadline]{.underline}**
-- Monday the 1^st^ of June: **[Presentations of the projects]{.underline}**
+- Wednesday the 13^th^ of May: **[Project report deadline]{.underline}**
+- Friday the 15^th^ of May: **[Slides submission deadline]{.underline}**
+- Monday the 18th of May: **[Presentations of the projects]{.underline}**
 :::
 
 ```{r}
