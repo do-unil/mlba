@@ -84,14 +84,14 @@ Z_{12} &=& \sigma(\eta_{12}) = \frac{e^{\eta_{12}}}{1+e^{\eta_{12}}}
 \frametitle{The output}
 The $Z$ values are {\bf passed forward} to the outcome nodes. E.g., at {\tt setosa}:
 \begin{eqnarray*}
-\eta_{12} &=& \theta_{12}^{(0)} + \theta_{12}^{(1)} Z_{11} + \theta_{12}^{(1)} Z_{21} \\
- &=& -5.2\times 10^{-4} + 5.5\times 10^{-4} Z_{11} + 1.0 Z_{21}
+\eta_{21} &=& \theta_{21}^{(0)} + \theta_{21}^{(1)} Z_{11} + \theta_{21}^{(2)} Z_{12} \\
+ &=& -5.2\times 10^{-4} + 5.5\times 10^{-4} Z_{11} + 1.0 Z_{12}
 \end{eqnarray*}
-The calculation is repeated for each node giving $\eta_{12}, \eta_{22}, \eta_{32}$. Then, the value of the node is obtained applying the {\bf softmax function}:
+The calculation is repeated for each node giving $\eta_{21}, \eta_{22}, \eta_{23}$. Then, the value of the node is obtained applying the {\bf softmax function}:
 \begin{eqnarray*}
-Z_{12} &=& \frac{e^{\eta_{12}}}{e^{\eta_{12}}+e^{\eta_{22}}+e^{\eta_{32}}},\\
-Z_{22} &=& \frac{e^{\eta_{22}}}{e^{\eta_{12}}+e^{\eta_{22}}+e^{\eta_{32}}},\\
-Z_{32} &=& \frac{e^{\eta_{32}}}{e^{\eta_{12}}+e^{\eta_{22}}+e^{\eta_{32}}}.
+Z_{21} &=& \frac{e^{\eta_{21}}}{e^{\eta_{21}}+e^{\eta_{22}}+e^{\eta_{23}}},\\
+Z_{22} &=& \frac{e^{\eta_{22}}}{e^{\eta_{21}}+e^{\eta_{22}}+e^{\eta_{23}}},\\
+Z_{23} &=& \frac{e^{\eta_{23}}}{e^{\eta_{21}}+e^{\eta_{22}}+e^{\eta_{23}}}.
 \end{eqnarray*}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,11 +99,11 @@ Z_{32} &=& \frac{e^{\eta_{32}}}{e^{\eta_{12}}+e^{\eta_{22}}+e^{\eta_{32}}}.
 \frametitle{The prediction formula}
 The values at the output are the probabilities of each class predicted for the input $x$:
 $$
-p_c(x;\theta) = Z_{c2}, \quad c=1,2,3.
+p_c(x;\theta) = Z_{2c}, \quad c=1,2,3.
 $$
 Indeed, the softmax function guaranties that
 $$
-0 < Z_{c2} < 1, \quad Z_{12}+Z_{22}+Z_{32} = 1.
+0 < Z_{2c} < 1, \quad Z_{21}+Z_{22}+Z_{23} = 1.
 $$
 The prediction for $x$ is the class with maximum probability:
 $$
@@ -115,7 +115,7 @@ $$
 \frametitle{The regression case}
 For the regression, the main difference is that the output layer is made of just one node whose value is the final prediction. In the example,
 $$
-f(x;\theta) = \theta_{12}^{(0)} + \theta_{12}^{(1)} Z_{11} + \theta_{12}^{(2)} Z_{21}
+f(x;\theta) = \theta_{21}^{(0)} + \theta_{21}^{(1)} Z_{11} + \theta_{21}^{(2)} Z_{12}
 $$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -224,7 +224,7 @@ $$
 $$
 \item Iterate until convergence.
 \end{itemize}
-Above, $\eta$ controls the learning rate. Its choice is crucial. It varies from iterations and can be a vector, i.e., one learning rate per weight (AdaGrad, RMSProp, Adam).
+Above, $\eta$ controls the learning rate. Its choice is crucial. It varies from iterations, potentially adaptive, and can be a vector, i.e., one learning rate per weight (AdaGrad, RMSProp, Adam).
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -244,11 +244,11 @@ is heavy to compute. It can be approximated by a partial sum over a random subse
 $$
 \nabla \bar{\cal L}(\theta)=\sum_{i=1}^n \nabla \bar{\cal L}_i(\theta) \approx \sum_{i \in S} \nabla \bar{\cal L}_i(\theta)
 $$
-This is a called {\bf stochastic gradient descent} (SDG).
+This is a called {\bf stochastic gradient descent} (SGD).
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{SDG: batches and epochs}
+\frametitle{SGD: batches and epochs}
 For SGD, the practice is to
 \begin{itemize}
 \item Split the set $\{1,\ldots,n\}$ randomly into $m$ {\bf batches} of the same size: $b_1,\ldots,b_m$,
@@ -261,7 +261,7 @@ $$
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
-\frametitle{SDG: batches and epochs}
+\frametitle{SGD: batches and epochs}
 The choice of the size of the batch is a compromise between computation time and the quality of the gradient approximation:
 \begin{itemize}
 \item A large batch size (at the limit $n$) makes the gradient approximation, $\sum_{i\in b} \nabla \bar{\cal L}_i(\theta)$, long to compute. However, $\sum_{i \in b} \nabla \bar{\cal L}_i(\theta)$ is an accurate approximation of $\sum_{i=1}^n \nabla \bar{\cal L}_i(\theta)$ because $b\approx \{1,\ldots,n\}$.\\
@@ -396,7 +396,7 @@ $$
 \nabla CE(\theta) \approx \sum_{i \in S} \nabla CE_i
 $$
 where $S$ is a random subset of the training set: stochastic gradient descent {\bf SGD}.
-\item For SGD, $S$ is called a {\bf batch}. The training set is divided in random, disjoint batches $S_1,\ldots,S_k$. The SDG is iterated on those batches. A pass through all the batches is called an {\bf epoch}.
+\item For SGD, $S$ is called a {\bf batch}. The training set is divided in random, disjoint batches $S_1,\ldots,S_k$. The SGD is iterated on those batches. A pass through all the batches is called an {\bf epoch}.
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
