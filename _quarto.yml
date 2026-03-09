@@ -12,8 +12,8 @@ project:
 
 website:
   page-navigation: true
-  title: "MLBA - S24 "
-  description: "Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2024."
+  title: "MLBA - S26"
+  description: "Homepage for Machine Learning in Business Analytics at HEC Lausanne, Spring 2026."
   site-url: "https://do-unil.github.io/mlba"
   favicon: images/logo.dark.png
   repo-url: https://github.com/do-unil/mlba

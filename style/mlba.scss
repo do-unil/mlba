@@ -48,4 +48,9 @@ div.sidebar-item-container .active, div.sidebar-item-container .show>.nav-link, 
 //       color: #0086CA !important; /* or another color that fits your dark theme */
 //   }
 // }
+
+.cell-output pre {
+  max-height: 400px;
+  overflow-y: auto;
+}
       

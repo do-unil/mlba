@@ -1,9 +1,9 @@
-How can I render the following?---
+---
 title: "Model scoring"
 ---
 
 ```{r global_options, include = FALSE}
-knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+knitr::opts_chunk$set(fig.align="center", results = 'hold', fig.show = 'show', warning = FALSE, message = FALSE)
 ```
 
 # Regression task
@@ -210,28 +210,28 @@ import matplotlib.pyplot as plt
 
 plt.figure(figsize=(8, 6))
 
-plt.subplot(221)
-plt.scatter(est_lm.predict(r.df_te[predictors]), r.df_te[target], alpha=0.5)
-plt.xlabel("Prediction")
-plt.ylabel("Observed prices")
-plt.title("Lin. Reg.")
-plt.plot(r.df_te[target], r.df_te[target], color='red')
+plt.subplot(221);
+plt.scatter(est_lm.predict(r.df_te[predictors]), r.df_te[target], alpha=0.5);
+plt.xlabel("Prediction");
+plt.ylabel("Observed prices");
+plt.title("Lin. Reg.");
+plt.plot(r.df_te[target], r.df_te[target], color='red');
 
-plt.subplot(222)
-plt.scatter(est_rt.predict(r.df_te[predictors]), r.df_te[target], alpha=0.5)
-plt.xlabel("Prediction")
-plt.ylabel("Observed prices")
-plt.title("Regression Tree")
-plt.plot(r.df_te[target], r.df_te[target], color='red')
+plt.subplot(222);
+plt.scatter(est_rt.predict(r.df_te[predictors]), r.df_te[target], alpha=0.5);
+plt.xlabel("Prediction");
+plt.ylabel("Observed prices");
+plt.title("Regression Tree");
+plt.plot(r.df_te[target], r.df_te[target], color='red');
 
-plt.subplot(223)
-plt.scatter(est_knn.predict(r.df_te[predictors]), r.df_te[target], alpha=0.5)
-plt.xlabel("Prediction")
-plt.ylabel("Observed prices")
-plt.title("KNN")
-plt.plot(r.df_te[target], r.df_te[target], color='red')
+plt.subplot(223);
+plt.scatter(est_knn.predict(r.df_te[predictors]), r.df_te[target], alpha=0.5);
+plt.xlabel("Prediction");
+plt.ylabel("Observed prices");
+plt.title("KNN");
+plt.plot(r.df_te[target], r.df_te[target], color='red');
 
-plt.tight_layout()
+plt.tight_layout();
 plt.show()
 ```
 :::
@@ -300,15 +300,15 @@ y_test = r.df_te['visits']
 
 ## Logistic regression
 doc_lr = LogisticRegression()
-doc_lr.fit(X_train, y_train)
+doc_lr.fit(X_train, y_train);
 
 ## Classification tree
 doc_ct = DecisionTreeClassifier(random_state=123)
-doc_ct.fit(X_train, y_train)
+doc_ct.fit(X_train, y_train);
 
 ## SVM radial basis
 doc_svm = SVC(kernel='rbf', gamma=0.001, C=1000, probability=True, random_state=123)
-doc_svm.fit(X_train, y_train)
+doc_svm.fit(X_train, y_train);
 
 ```
 :::
@@ -513,7 +513,7 @@ plot(ROC_lr_tr, print.thres="best")
 
 The best threshold is 0.193. Now let us compute the confusion table with this threshold.
 
-```{r, results='hide', fig.show='hide'}
+```{r}
 Doc_lr_pred_opt <- ifelse(Doc_lr_prob>0.193,"Yes","No")
 confusionMatrix(data=as.factor(Doc_lr_pred_opt), reference = df_te$visits)
 ```
@@ -530,13 +530,13 @@ If the aim is to predict both "Yes" and "No", this last model (log. reg. with tu
 doc_lr_prob_dict = {'Yes': 1, 'No': 0}
 y_test_binary = np.array([doc_lr_prob_dict[x] for x in y_test])
 fpr_lr, tpr_lr, thresholds_lr = roc_curve(y_test_binary, doc_lr_prob)
-plt.plot(fpr_lr, tpr_lr, label="Logistic Regression")
+plt.plot(fpr_lr, tpr_lr, label="Logistic Regression");
 
 ## Classification tree
 doc_ct_prob_dict = {'Yes': 1, 'No': 0}
 y_test_binary = np.array([doc_ct_prob_dict[x] for x in y_test])
 fpr_ct, tpr_ct, thresholds_ct = roc_curve(y_test_binary, doc_ct_prob)
-plt.plot(fpr_ct, tpr_ct, label="Classification Tree")
+plt.plot(fpr_ct, tpr_ct, label="Classification Tree");
 
 ## SVM radial basis
 doc_svm_prob_dict = {'Yes': 1, 'No': 0}
@@ -546,13 +546,13 @@ fpr_svm, tpr_svm, thresholds_svm = roc_curve(y_test_binary, doc_svm_prob)
 # Clear the last plot (if any)
 # plt.clf()
 
-plt.plot(fpr_svm, tpr_svm, label="SVM Radial Basis")
+plt.plot(fpr_svm, tpr_svm, label="SVM Radial Basis");
 # Plot the ROC curve
-plt.plot([0, 1], [0, 1], 'k--', label="Random Classifier")
-plt.xlabel("False Positive Rate")
-plt.ylabel("True Positive Rate")
-plt.title("ROC Curve")
-plt.legend()
+plt.plot([0, 1], [0, 1], 'k--', label="Random Classifier");
+plt.xlabel("False Positive Rate");
+plt.ylabel("True Positive Rate");
+plt.title("ROC Curve");
+plt.legend();
 plt.show()
 ```
 

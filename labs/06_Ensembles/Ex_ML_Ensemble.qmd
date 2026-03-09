@@ -3,7 +3,7 @@ title: "Ensemble Methods"
 ---
 
 ```{r global_options, include = FALSE}
-knitr::opts_chunk$set(eval = F, fig.align="center", results = 'hide', fig.show = 'hide')
+knitr::opts_chunk$set(fig.align="center", results = 'hold', fig.show = 'show', warning = FALSE, message = FALSE)
 ```
 
 # Random Forest
@@ -67,7 +67,7 @@ As mentioned, the outcome variable used for this dataset is the wine `quality`. 
 #### R
 ```{r}
 library(randomForest)
-wine <- read.csv(here::here("data/Wine.csv"))
+wine <- read.csv(here::here("labs/data/Wine.csv"))
 wine$quality <- as.factor(wine$quality)
 
 # define a function to get the splitting index (training and testing) of a given dataset
@@ -139,7 +139,7 @@ confusionMatrix(data=wine.pred_rf, reference = wine_te$quality)
 ```{python}
 # Fit a Random Forest classifier on the train set
 wine_rf = RandomForestClassifier(n_estimators=1000, random_state=123)
-wine_rf.fit(train_wine.drop('quality', axis=1), train_wine['quality'])
+wine_rf.fit(train_wine.drop('quality', axis=1), train_wine['quality']);
 
 # Test the model and compute the accuracy
 wine_pred_rf = wine_rf.predict(test_wine.drop('quality', axis=1))
@@ -166,7 +166,7 @@ importance(wine_rf)
 ```{python}
 # Variable importance
 wine_importances = pd.Series(wine_rf.feature_importances_, index=train_wine.drop('quality', axis=1).columns)
-wine_importances.sort_values(ascending=False).plot(kind='bar')
+wine_importances.sort_values(ascending=False).plot(kind='bar');
 ```
 
 :::
@@ -220,7 +220,7 @@ train_restate, test_restate = train_test_split(real_estate_data, test_size=0.25,
 
 # Fit a Random Forest regressor on the train set
 restate_rf = RandomForestRegressor(n_estimators=1000, random_state=123)
-restate_rf.fit(train_restate.drop('Price', axis=1), train_restate['Price'])
+restate_rf.fit(train_restate.drop('Price', axis=1), train_restate['Price']);
 
 # Test the model and compute the RMSE
 restate_pred_rf = restate_rf.predict(test_restate.drop('Price', axis=1))
@@ -228,15 +228,15 @@ rmse = np.sqrt(mean_squared_error(test_restate['Price'], restate_pred_rf))
 print("RMSE:", rmse)
 
 # Plot the prediction quality
-plt.scatter(test_restate['Price'], restate_pred_rf)
-plt.xlabel('Actual Price')
-plt.ylabel('Predicted Price')
-plt.plot([min(test_restate['Price']), max(test_restate['Price'])], [min(test_restate['Price']), max(test_restate['Price'])], color='red')
+plt.scatter(test_restate['Price'], restate_pred_rf);
+plt.xlabel('Actual Price');
+plt.ylabel('Predicted Price');
+plt.plot([min(test_restate['Price']), max(test_restate['Price'])], [min(test_restate['Price']), max(test_restate['Price'])], color='red');
 plt.show()
 
 # Variable importance
 restate_importances = pd.Series(restate_rf.feature_importances_, index=train_restate.drop('Price', axis=1).columns)
-restate_importances.sort_values(ascending=False).plot(kind='bar')
+restate_importances.sort_values(ascending=False).plot(kind='bar');
 ```
 
 :::
@@ -307,7 +307,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 
 # Fit a Gradient Boosting classifier on the train set
 wine_gbm = GradientBoostingClassifier(n_estimators=1000, learning_rate=0.01, max_depth=4, random_state=123)
-wine_gbm.fit(train_wine.drop('quality', axis=1), train_wine['quality'])
+wine_gbm.fit(train_wine.drop('quality', axis=1), train_wine['quality']);
 
 # Test the model and compute the accuracy
 wine_pred_gbm = wine_gbm.predict(test_wine.drop('quality', axis=1))
@@ -344,7 +344,7 @@ plt.clf()
 from sklearn.ensemble import GradientBoostingRegressor
 # Fit a Gradient Boosting regressor on the train set
 restate_gbm = GradientBoostingRegressor(n_estimators=1000, learning_rate=0.01, max_depth=4, random_state=123)
-restate_gbm.fit(train_restate.drop('Price', axis=1), train_restate['Price'])
+restate_gbm.fit(train_restate.drop('Price', axis=1), train_restate['Price']);
 # Test the model and compute the RMSE
 
 restate_pred_gbm = restate_gbm.predict(test_restate.drop('Price', axis=1))
@@ -352,10 +352,10 @@ rmse_gbm = np.sqrt(mean_squared_error(test_restate['Price'], restate_pred_gbm))
 print("RMSE:", rmse_gbm)
 # Plot the prediction quality
 
-plt.scatter(test_restate['Price'], restate_pred_gbm)
-plt.xlabel('Actual Price')
-plt.ylabel('Predicted Price')
-plt.plot([min(test_restate['Price']), max(test_restate['Price'])], [min(test_restate['Price']), max(test_restate['Price'])], color='red')
+plt.scatter(test_restate['Price'], restate_pred_gbm);
+plt.xlabel('Actual Price');
+plt.ylabel('Predicted Price');
+plt.plot([min(test_restate['Price']), max(test_restate['Price'])], [min(test_restate['Price']), max(test_restate['Price'])], color='red');
 plt.show()
 
 ```

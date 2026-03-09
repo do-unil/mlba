@@ -3,7 +3,7 @@ title: "Models: CART"
 ---
 
 ```{r global_options, include = FALSE}
-knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+knitr::opts_chunk$set(fig.align="center", results = 'hold', fig.show = 'show', warning = FALSE, message = FALSE)
 ```
 
 # Classification tree
@@ -100,7 +100,7 @@ plt.clf()
 np.random.seed(1234)
 carseats_tree = DecisionTreeClassifier().fit(X_train, y_train)
 plt.figure(figsize=(20,10))
-plot_tree(carseats_tree,filled=True, feature_names=X_train.columns, label = 'root',fontsize=5)
+plot_tree(carseats_tree,filled=True, feature_names=X_train.columns, label = 'root',fontsize=5);
 plt.savefig('tree_high_dpi', dpi=300)
 # for a better quality, save the image and load it again
 #plt.show()
@@ -155,11 +155,11 @@ ccp_alphas, impurities = path.ccp_alphas, path.impurities
 
 # Create a plot to visualize the relationship between effective alphas and total impurities
 fig, ax = plt.subplots()
-ax.plot(ccp_alphas, impurities, marker='o', linestyle="-")
-ax.set_xlabel("Effective alpha")
-ax.set_ylabel("Total impurity of leaves")
-ax.set_title("Total Impurity vs Effective alpha for Car Seats dataset")
-ax.invert_xaxis()
+ax.plot(ccp_alphas, impurities, marker='o', linestyle="-");
+ax.set_xlabel("Effective alpha");
+ax.set_ylabel("Total impurity of leaves");
+ax.set_title("Total Impurity vs Effective alpha for Car Seats dataset");
+ax.invert_xaxis();
 plt.show()
 ```
 
@@ -186,11 +186,11 @@ def plotcp(X_train, y_train, random_state=123):
 
     # Plot the cross-validation scores vs alpha
     fig, ax = plt.subplots()
-    ax.plot(ccp_alphas, scores, marker='o', linestyle="-")
-    ax.set_xlabel("ccp_alpha")
-    ax.set_ylabel("Cross-validation score (accuracy)")
-    ax.set_title("Pruning Complexity Parameter (ccp) vs Cross-validation Score")
-    ax.invert_xaxis()
+    ax.plot(ccp_alphas, scores, marker='o', linestyle="-");
+    ax.set_xlabel("ccp_alpha");
+    ax.set_ylabel("Cross-validation score (accuracy)");
+    ax.set_title("Pruning Complexity Parameter (ccp) vs Cross-validation Score");
+    ax.invert_xaxis();
     plt.show()
 
 plotcp(X_train, y_train)
@@ -205,12 +205,12 @@ Once you find the ideal alpha, you can specify it with the `ccp_alpha` argument 
 carseats_tree_prune = DecisionTreeClassifier(random_state=123, ccp_alpha=0.008)
 
 # Fit the model to the data
-carseats_tree_prune.fit(X_train, y_train)
+carseats_tree_prune.fit(X_train, y_train);
 
 # You can again plot the figure with
 plt.clf()
 plt.figure(figsize=(12,10))
-plot_tree(carseats_tree_prune,filled=True, feature_names=X_train.columns, label = 'root',fontsize=5)
+plot_tree(carseats_tree_prune,filled=True, feature_names=X_train.columns, label = 'root',fontsize=5);
 plt.savefig('tree_pruned_high_dpi', dpi=200)
 plt.close()
 
@@ -235,14 +235,14 @@ param_grid = {'max_depth': range(1, 11)}
 
 # Run grid search cross-validation to find optimal tree depth
 grid_search = GridSearchCV(tree, param_grid=param_grid, cv=10)
-grid_search.fit(X_train, y_train)
+grid_search.fit(X_train, y_train);
 
 # Use the best estimator to fit and prune the tree
 pruned_tree = grid_search.best_estimator_
 
 plt.clf()
 fig, ax = plt.subplots(figsize=(15, 10))
-plot_tree(pruned_tree, ax=ax, feature_names=X_train.columns)
+plot_tree(pruned_tree, ax=ax, feature_names=X_train.columns);
 plt.show()
 # you can choose to re-train the model once again with this new parameter
 ```
@@ -265,7 +265,7 @@ param_grid = {'max_depth': range(1, 11)}
 
 # Run grid search cross-validation to find optimal tree depth
 grid_search = GridSearchCV(tree, param_grid=param_grid, cv=10)
-grid_search.fit(X_train, y_train)
+grid_search.fit(X_train, y_train);
 
 # Calculate the mean and standard error of test scores for each tree depth
 mean_scores = grid_search.cv_results_['mean_test_score']
@@ -285,7 +285,7 @@ for depth in range(optimal_depth - 1, -1, -1):
 
 # Use the best estimator to fit and prune the tree
 pruned_tree = DecisionTreeClassifier(max_depth=best_depth)
-pruned_tree.fit(X_train, y_train)
+pruned_tree.fit(X_train, y_train);
 ```
 
 The results are the same as not using 1-SE.
@@ -425,7 +425,7 @@ X[categorical_cols] = encoder.fit_transform(X[categorical_cols])
 
 # Build the regression tree model
 carseats_reg = DecisionTreeRegressor(random_state=123)
-carseats_reg.fit(X, y)
+carseats_reg.fit(X, y);
 
 # Visualize the tree (a bit messy)
 # fig, ax = plt.subplots(figsize=(12, 8))
@@ -441,10 +441,10 @@ carseat_reg_pred = carseats_reg.predict(X)
 # Create a scatter plot of predicted versus true values
 plt.clf()
 fig, ax = plt.subplots(figsize=(8, 8))
-ax.scatter(y, carseat_reg_pred, alpha=0.5)
-ax.set_xlabel('Sales')
-ax.set_ylabel('Predictions')
-ax.plot(ax.get_xlim(), ax.get_ylim(), ls="--", c=".3")
+ax.scatter(y, carseat_reg_pred, alpha=0.5);
+ax.set_xlabel('Sales');
+ax.set_ylabel('Predictions');
+ax.plot(ax.get_xlim(), ax.get_ylim(), ls="--", c=".3");
 plt.show()
 ```
 

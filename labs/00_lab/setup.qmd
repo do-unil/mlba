@@ -30,7 +30,9 @@ knitr::opts_chunk$set(
   comment = "#>",
   header = paste0("```{", knitr::opts_current$get("engine.name"), "}"),
   footer = "```",
-  fig.align="center"
+  fig.align="center",
+  warning = FALSE,
+  message = FALSE
 )
 options(expressions = 10000)
 ```
@@ -181,7 +183,7 @@ We will install all the packages we need for this particular setup. This should 
 #| output: false
 
 # Install python package into virtual environment
-reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost","scikit-learn-extra"), envname = "MLBA", pip=TRUE)
+reticulate::py_install(c("jupyter", "pandas", "matplotlib","statsmodels","scikit-learn", "seaborn", "mlxtend", "lime", "mkl-service", "xgboost","scikit-learn-extra", "tensorflow", "keras", "torch", "torchvision"), envname = "MLBA", pip=TRUE)
 ```
 
 ::: callout-note

@@ -5,7 +5,7 @@ title: "Models: Support Vector Machine"
 ```{r}
 #| label: global-options
 #| include: false
-knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+knitr::opts_chunk$set(fig.align="center", results = 'hold', fig.show = 'show', warning = FALSE, message = FALSE)
 ```
 
 # Support Vector Machine (SVM)
@@ -120,7 +120,7 @@ np.random.seed(123)
 carseats_svm_py = svm.SVC(kernel="linear")
 
 # Fit the SVM model to the training data
-carseats_svm_py.fit(X_train, y_train)
+carseats_svm_py.fit(X_train, y_train);
 
 # Print the model parameters
 print(carseats_svm_py)
@@ -172,7 +172,7 @@ np.random.seed(123) # once again, for reproducibility
 
 # Use a radial kernel in the SVM classifier
 carseats_svm_rb_py = svm.SVC(kernel="rbf")
-carseats_svm_rb_py.fit(X_train, y_train)
+carseats_svm_rb_py.fit(X_train, y_train);
 print(carseats_svm_rb_py)
 
 # Predict the values with the radial approach
@@ -286,7 +286,7 @@ param_grid = {'C': [1, 10, 100, 500, 1000],
 # Perform grid search with cross-validation
 grid_search = GridSearchCV(svm.SVC(), param_grid, cv=10, scoring='accuracy', n_jobs=1) # you can also set n_jobs = -1 to use all the cores and obtain the results faster (but unfortunately atm it only works on Mac/Linux and not Windows OS with `reticulate`)
 # for more info, please see https://github.com/rstudio/reticulate/issues/1346
-grid_search.fit(X_train, y_train)
+grid_search.fit(X_train, y_train);
 
 print("Best hyperparameters:", grid_search.best_params_)
 print("Best score:", grid_search.best_score_)
@@ -322,10 +322,10 @@ plt.clf()
 
 # Create the heatmap
 ax = sns.heatmap(grouped_results, annot=True, fmt='.3f', cmap='viridis', cbar=False)
-ax.invert_yaxis()  # invert the y-axis to match your preference
+ax.invert_yaxis();  # invert the y-axis to match your preference
 
-plt.xlabel('Kernel')
-plt.ylabel('C-Gamma')
+plt.xlabel('Kernel');
+plt.ylabel('C-Gamma');
 plt.show()
 ```
 
@@ -357,7 +357,7 @@ Overall, if we compare all the models, we see that the linear kernel SVM with co
 #| label: best-model-python
 # re-train the model with best hyperparameters
 svm_best_py = svm.SVC(**grid_search.best_params_)
-svm_best_py.fit(X_train, y_train)
+svm_best_py.fit(X_train, y_train);
 
 # predict on test dataset
 carseats_svm_pred_py = svm_best_py.predict(X_test)

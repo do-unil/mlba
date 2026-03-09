@@ -3,7 +3,7 @@ title: "Variable Importance"
 ---
 
 ```{r global_options, include = FALSE}
-knitr::opts_chunk$set(fig.align="center", results = 'hide', fig.show = 'hide')
+knitr::opts_chunk$set(fig.align="center", results = 'hold', fig.show = 'show', warning = FALSE, message = FALSE)
 ```
 # Data & models
 
@@ -68,15 +68,15 @@ carseats_train, carseats_test = pd.get_dummies(r.carseats_tr.copy()), pd.get_dum
 
 # Define a linear regression
 carseats_lr = LinearRegression()
-carseats_lr.fit(carseats_train.drop(columns=['Sales']), carseats_train['Sales'])
+carseats_lr.fit(carseats_train.drop(columns=['Sales']), carseats_train['Sales']);
 
 # Define a decision tree regressor
 carseats_dtr = DecisionTreeRegressor()
-carseats_dtr.fit(carseats_train.drop(columns=['Sales']), carseats_train['Sales'])
+carseats_dtr.fit(carseats_train.drop(columns=['Sales']), carseats_train['Sales']);
 
 # Define a support-vector machine
 carseats_svr = SVR()
-carseats_svr.fit(carseats_train.drop(columns=['Sales']), carseats_train['Sales'])
+carseats_svr.fit(carseats_train.drop(columns=['Sales']), carseats_train['Sales']);
 ```
 
 :::
@@ -141,7 +141,7 @@ importance_dtr = permutation_importance(carseats_dtr, carseats_train.drop(column
 importance_svr = permutation_importance(carseats_svr, carseats_train.drop(columns=['Sales']), carseats_train['Sales'], n_repeats=10, random_state=2022)
 # Train the SVM model on scaled data
 carseats_svr_scaled = SVR(kernel='linear')
-carseats_svr_scaled.fit(carseats_train_scaled.drop(columns=['Sales']), carseats_train_scaled['Sales'])
+carseats_svr_scaled.fit(carseats_train_scaled.drop(columns=['Sales']), carseats_train_scaled['Sales']);
 importance_svr_scaled = permutation_importance(carseats_svr_scaled, carseats_train_scaled.drop(columns=['Sales']), carseats_train_scaled['Sales'], n_repeats=10, random_state=2022)
 
 # Print the feature importances
@@ -354,7 +354,7 @@ X_test = carseats_test.drop(columns='Sales')
 svm_caret_model = svm.LinearSVR(random_state=2022)
 
 # Train the model
-svm_caret_model.fit(X_train, y_train)
+svm_caret_model.fit(X_train, y_train);
 
 # Predict on a test instance
 test_instance = X_test.iloc[0:4]
@@ -433,4 +433,4 @@ What can you observe from these subplots?
 
 After having done this for the training set, make a selection of the most important variables and run the model again. Would you go for this simpler model that has less features or the more complicated one? (hint: you can compute some scores to see whether dropping features would justify the performance drop).
 
-As a final remark, the same kind of analysis can also be done for classification and different loss functions. As a good example, you can see [a project](https://bookdown.org/gaetan_lovey/data_analytics/dalex.html) done by some of the previous students of MScM_BA which also includes a section on feature importance.
+As a final remark, the same kind of analysis can also be done for classification and different loss functions.
