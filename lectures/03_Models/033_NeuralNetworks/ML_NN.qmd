@@ -9,7 +9,7 @@ code-fold: false
 code-link: false
 ---
 
-[In-class Python Jupyter Notebook 📄](MyNN.ipynb)
+[In-class Python Jupyter Notebook 📄](https://github.com/do-unil/mlba/blob/main/lectures/03_Models/033_NeuralNetworks/MyNN.ipynb)
 
 Concept and prediction formula
 ==============================
@@ -257,3 +257,4 @@ $$\bar{\cal L}(\theta) + \lambda_1 \sum_{j} |\theta_j| + \lambda_2 \sum_{j} \the
 Again there is no simple way to set the penalty parameters $\lambda_1$ and $\lambda_2$. Note that it is possible to have different penalty parameters in different layers. Unlike regression and trees, and like SVM, this regularization can help to avoid overfitting but cannot be interpreted easily.
 
 [^1]: See logistic regression.
+
