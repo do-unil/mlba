@@ -47,7 +47,7 @@ Metrics for classifications can be grouped as
 \begin{itemize}
 \item Metrics based on the predicted classes only (e.g., accuracy)
 \item Metrics based on the predicted probabilities (e.g., AUC)
-\item Metrics for binary classifications only (e.g., specificity, sensitivity, $F_1$)
+\item Metrics for binary classifications only (e.g., precision, sensitivity, specificity, $F_1$)
 \end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -106,7 +106,7 @@ $$
 A random model would have proportions in each cell resulting from the independence between "Observation" and "Prediction". E.g.,
 \begin{eqnarray*}
 P(Obs=B\; \cap\; Pred=A) &=& P(Obs=B)P(Pred=A)\\
-&=& 0.330 \times 0.352\\
+&=& 0.352 \times 0.330 \\
 &=& 0.116.
 \end{eqnarray*}
 Given that there are $n=182$ observations, we would expect in this cell to contain a frequency of
@@ -408,9 +408,9 @@ RMSE(M2) &<& RMSE(M1)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
 \frametitle{The $R^2$}
-In the ML context, the $R^2$ ({\bf $R$ squared}) is the square of the correlation between the observations and the predictions.
+In the ML context, the $R^2$ ({\bf $R$ squared}) is sometimes computed as the square of the correlation between the observations and the predictions.
 $$
-R^2 = cor^2(y,f(x;\theta))
+R^2 = cor(y,f(x;\theta))^2
 $$
 The $R^2$ is bounded between 0 and 1. The larger the $R^2$, the better the model.\\
 \vspace{0.3cm}
