@@ -42,7 +42,7 @@ Base learners are often simple learners, coming from an homogenous family of lea
 \item For each sample, construct a separate model and separate predictions for your test set.
 \item Aggregate* these predictions to create a final prediction value.
 \end{itemize}
-The objective of the intensive randomization is to built many small {\it uncorrelated} learners rather than one unique big learner.\\
+The objective of the intensive randomization is to build many small {\it uncorrelated} learners rather than one unique big learner.\\
 \vspace{0.3cm}
 *Aggregate: average for regression, majority vote for classification.
 \end{frame}
@@ -104,7 +104,7 @@ This may happen when the resampling has little effect. It is important that the 
 \end{enumerate}
 Therefore, \\
 \begin{itemize}
-\item Point 1. is bagging.
+\item Points 1 and 3 are bagging.
 \item Point 2 is an additional mixing technique to enhance sub-model non-correlation.
 \end{itemize}
 \end{frame}
@@ -125,7 +125,7 @@ Furthermore, with the additional mixing of the features when constructing the tr
 There exist several variants of RF. Below, some default settings of {\tt randomForest} function:
 \begin{itemize}
 \item If the re-sampling is with replacement, then the subset is of the same size as the training set.
-\item If the re-sampling is without replacement, then the subset is of size 0.632 of the training set .
+\item If the re-sampling is without replacement, then the subset is of size 0.632 of the training set.
 \item The number of features at each split is $\sqrt{p}$ for classification and $p/3$ for regression.
 \end{itemize}
 \end{frame}
@@ -166,7 +166,7 @@ Unlike bagging that creates models in parallel, {\bf boosting} is an ensemble te
 $$
 F_T(x) = \sum_{t=1}^T \alpha_t f_t(x),
 $$
-\item At each step $k$, the next model $f_{k+1}$ is trained by giving more importance to the instance that are incorrectly classified by the current boosting model $F_k=\sum_{t=1}^k \alpha_t f_t$.
+\item At each step $k$, the next model $f_{k+1}$ focuses on errors, potentially by giving more importance to the instance that are incorrectly classified by the current boosting model $F_k=\sum_{t=1}^k \alpha_t f_t$.
 \item The model weight $\alpha_t$ is associated with the overall quality of $f_t$ (the better the quality, the larger the weight).
 \end{itemize}
 \end{frame}
@@ -193,7 +193,7 @@ One of the first boosting model\footnote{Freund, Y and Schapire, R E (1997). "A 
 $$
 L(F_k) = \sum_{i=1}^N e^{-y_i F_k(x_i)}
 $$
-\item Next model: $f_{k+1}$ minimize $\sum_i 1_{\{y_i \neq f_{k+1}(x_i)\}} e^{-y_i F_{k}(x_i)}$.
+\item Next model: $f_{k+1}$ minimizes $\sum_i 1_{\{y_i \neq f_{k+1}(x_i)\}} e^{-y_i F_{k}(x_i)}$.
 \item Model weight:
 $$
 \alpha_{k+1} = \frac{1}{2} \ln \left(\frac{\sum_i 1_{\{y_i \neq f_{k+1}(x_i)\}} e^{-y_i F_{k}(x_i)}}{\sum_i 1_{\{y_i = f_{k+1}(x_i)\}} e^{-y_i F_{k}(x_i)}}\right)

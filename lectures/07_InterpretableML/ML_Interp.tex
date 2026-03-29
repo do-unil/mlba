@@ -335,11 +335,11 @@ With the bank data (see R code of examples). Three cases: Label 0 with high prob
 \begin{itemize}
 \item Around Case 1: Duration being lower than 759 supports a label 0. This means that a low duration supports label 0 and, consequently, a larger duration would support label 1.
 \item Around Case 2: Duration being greater than 759 (lower than 1514) supports label 1. This means that a large duration supports label 1 and, consequently, a lower duration would support label 0.
-\item Around case 3: same as Case 2.
+\item Around case 3: same as Case 1.
 \end{itemize}
-Regarding duration, case 1 and case 2 coincide. They also coincide with the general previous findings that duration is an important factor, with prob. of label 1 increasing with it.\\
-\vspace{0.2cm}
-The exploration of this two cases did not reveal any local behavior linked to duration. A similar analysis can be done for contact, housing, etc.
+
+The exploration of these cases suggests an important and consistent directional effect of duration (low values push toward label 0, higher values toward label 1). A similar analysis can be conducted for contact = cellular, housing = yes, etc.
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -349,9 +349,9 @@ The exploration of this two cases did not reveal any local behavior linked to du
 \item Around Case 2: Campaign being low contradicts label 1. This is in line with Case 1.
 \item Around Case 3: Campaign being low supports label 1. This is in contradiction with Cases 1 and 2.
 \end{itemize}
-This example shows that a global behavior (campaign is positively associated with label 1) can change locally. The fact that Case 3 has a probability around 0.5 makes it interesting. \\
-\vspace{0.2cm}
-Limitation: here the effect of Campaign is so small that a good explanation is that it has almost no effect everywhere. That was just a toy example.
+
+The exploration does not reveal any meaningful local behavior for campaign, as its contributions are consistently small and unstable across cases. The fact that Case 3 has a probability around 0.5 makes it interesting. \\
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
