@@ -231,7 +231,7 @@ Starting from an initial assignment of instances to $k$ clusters, the method all
 \vspace{0.3cm}
 Two popular methods are
 \begin{itemize}
-\item The {\bf K-means}.
+\item The {\bf K-means} (Lloyd, 1957).
 \item The {\bf Partitioning Around the Medoid} (PAM).
 \end{itemize}
 \end{frame}
@@ -245,7 +245,9 @@ For $k$ clusters:
 \item Each instance is then re-assigned to the cluster with the closest center.
 \item Step 2. and 3. are repeated until a convergence criterion is satisfied.
 \end{enumerate}
-The K-means is suitable for {\bf numerical features only}. The Euclidean distance is often used.
+The K-means is suitable for {\bf numerical features only}. The Euclidean distance is often used. A sequential version (by MacQueen, 1967) assigns observations using K intial observations is not presented here.
+
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
@@ -418,14 +420,6 @@ A detailed analysis of the clustering can be obtained using the {\bf silhouette 
 \includegraphics[width=8cm]{../../Graphs/Polstress-silhou.png}
 \end{center}
 Clusters 1 and 3 are well formed, Clusters 2 and 3 are less homogeneous.
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{Silhouette plot}
-PAM $k=4$
-\begin{center}
-\includegraphics[width=8cm]{../../Graphs/Polstress-silhou.png}
-\end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Interpretation}

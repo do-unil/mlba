@@ -1,6 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Styles, packages and new commands
 \input{../../Main/ML_Main.tex}
+
+% PB black print => blue
+%\usepackage{xcolor}
+%\usepackage{enumitem}
+%\AtBeginDocument{\color{blue}}
+%\setlist[itemize]{label=\textcolor{blue}{\textbullet}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Edit the title page
 \title{Machine Learning}
@@ -48,9 +55,9 @@ Same observation for {\tt Petal.WL} and {\tt Sepal.Length}...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{Concept}
-In summary, two correlated features can be replaced by one combination without keeping the information. \\
+In summary, two correlated features can be replaced by one combination without loosing the information. \\
 \vspace{0.3cm}
-The resulting representation shows as much variance as possible: theinformation is kept.\\
+The resulting representation shows as much variance as possible: the information is kept.\\
 \vspace{0.3cm}
 This is the principle of {\bf Principal Component Analysis} (PCA).
 \end{frame}
@@ -140,13 +147,6 @@ $$
 It represents how well the data are represented on the component $z_j$.
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}
-\frametitle{PCA: example}
-\begin{center}
-\includegraphics[width=7cm]{../../Graphs/Iris_pca.pdf}
-\end{center}
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[fragile]
 \frametitle{PCA: example}
 \scriptsize
@@ -165,12 +165,19 @@ Variance               2.918   0.914   0.147   0.021
 Cumulative % of var.  72.962  95.813  99.482 100.000
 \end{verbatim}
 \normalsize
-Together, PC1 and PC2 explain $95.8\%$ of the variation of the data. The scatter plot matrix shows that it is a good representation of the data with only two dimensions (PC$_1$, PC$_2$).
+Together, PC1 and PC2 explain $95.8\%$ of the variation of the data. The scatter plot matrix shows that it is a good representation of the data with only two dimensions (PC$_1$, PC$_2$) : little separation is lost by projection.
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{PCA: example}
+\begin{center}
+\includegraphics[width=7cm]{../../Graphs/Iris_pca.pdf}
+\end{center}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}
 \frametitle{PCA: the circle of correlations}
-Correlation between the PC and the features $x$ can be computed to see how is PC is correlated to each features.
+Correlation between the PC and the features $x$ can be computed to see how a PC is correlated to each feature.
 \begin{center}
 \includegraphics[width=10cm]{../../Graphs/Iris_pcacircle.pdf}
 \end{center}
@@ -181,7 +188,7 @@ Correlation between the PC and the features $x$ can be computed to see how is PC
 We see that
 \begin{itemize}
 \item PC$_1$ is positively and strongly correlated with petal length, petal width, and sepal length. This component summarizes these 3 features: the larger PC$_1$, the larger these 3 features.
-\item PC$_2$ is (negatively) correlated with sepal width. The larger PC$_2$ the smaller this feature.
+\item PC$_2$ is positively correlated with sepal width. The larger PC$_2$ the larger this feature.
 \item PC$_1$ explains $73\%$ of the total data variation. PC$_2$ explains $23\%$ of it.
 \end{itemize}
 With one graph, we know
@@ -269,9 +276,9 @@ PCA is a "linear" technique, based on the explanation of the correlation between
 \begin{itemize}
 \item The input and the output (response) are the same instance ($X$), of dimension $p$.
 \item The intermediate layer (at least one) is of dimension $k<p$.
-\item The model is trained to recover $X$ ate the end.
+\item The model is trained to recover $X$ at the end.
 \end{itemize}
-If, after traning, the model can recover $X$ from $X$, then it can recover $X$ from its image in the intermediate layer $h(X)$. Thus, only $p$ dimensions would be needed to recover $X$. \\
+If, after training, the model can recover $X$ from $X$, then it can recover $X$ from its image in the intermediate layer $h(X)$. Thus, only $k$ dimensions would be needed to recover $X$. \\
 \vspace{0.2cm}
 Thus,
 \begin{itemize}
