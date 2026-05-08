@@ -12,7 +12,7 @@ code-link: false
 ## Important dates (more info during the class)
 - Monday the 27^th^ of April: **[Written exam (9h00-11h00, Room Internef-272)]{.underline}**
 - Wednesday the 13^th^ of May: **[Project report deadline]{.underline}**
-- Friday the 15^th^ of May: **[Slides submission deadline]{.underline}**
+- Monday the 18^th^ of May: **[Slides submission deadline]{.underline}**
 - Monday the 18th of May: **[Presentations of the projects]{.underline}**
 :::
 
@@ -96,7 +96,7 @@ d |>
     footnote = "📩 Report & Slides submission at 23:59",
     locations = cells_body(
       columns = 2,
-      rows = date %in% as.Date(c("2026-05-20", "2026-05-24"))
+      rows = date %in% as.Date(c("2026-05-13", "2026-05-18"))
     )
   )
 
