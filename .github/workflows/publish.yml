@@ -19,6 +19,7 @@ jobs:
       cancel-in-progress: true
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RENV_CONFIG_AUTOLOADER_ENABLED: FALSE
     # defaults:
     #   run:
     #     shell: bash -l {0}
@@ -46,6 +47,7 @@ jobs:
       - name: Install R dependencies for unfrozen pages
         uses: r-lib/actions/setup-r-dependencies@v2
         with:
+          cache-version: 2
           packages: |
             any::googlesheets4
             any::gt
